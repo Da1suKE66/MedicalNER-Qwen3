@@ -1,0 +1,27 @@
+[
+  {
+    "id": 18,
+    "title": "Autism spectrum disorder without disorder of intellectual development and with mild or no impairment of functional language",
+    "label": "short"
+  },
+  {
+    "id": 149,
+    "title": "Single episode depressive disorder, moderate, without psychotic symptoms",
+    "label": "short"
+  },
+  {
+    "id": 1,
+    "title": "Disorder of intellectual development, mild",
+    "label": "medium"
+  },
+  {
+    "id": 10,
+    "title": "Developmental language disorder",
+    "label": "long"
+  },
+  {
+    "id": 32,
+    "title": "Attention deficit hyperactivity disorder",
+    "label": "long"
+  }
+]
