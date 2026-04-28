@@ -113,6 +113,12 @@ related Hugging Face cache variables if your server requires a different disk.
 The script validates that the selected training dataset exists and does not
 contain Gemini-style `<thinking>` tags before launching LLaMA-Factory.
 
+The committed CoT training configs use 4-bit bitsandbytes QLoRA
+(`quantization_bit: 4`) with bf16 compute. To try int8 instead, change
+`quantization_bit: 4` to `quantization_bit: 8` in the selected YAML.
+Evaluation and checkpointing run every 25 update steps, which gives roughly
+8-9 eval/checkpoint points for the 0413 datasets instead of only 2.
+
 ## 6. One-Command Specific-CoT Pipeline
 
 After setup and input data are ready, this runs generation, conversion, and
