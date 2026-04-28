@@ -6,8 +6,8 @@ fine-tuning Qwen with LoRA.
 The project is organized as a runnable pipeline:
 
 ```text
-data/raw/             Input disorder records, not committed
-data/generated/       Gemini CoT generation outputs, not committed
+data/raw/             Input disorder records
+data/generated/       Gemini CoT generation outputs
 data/llamafactory/    ShareGPT datasets plus dataset_info.json
 configs/llamafactory/ LLaMA-Factory LoRA configs
 src/kg_lora/          Python modules for generation, conversion, and evaluation
@@ -31,14 +31,22 @@ Fill `GEMINI_API_KEY` in `.env`. Install LLaMA-Factory separately if
 
 ## 2. Prepare Input Data
 
-Put the source disorder records at:
+The deployment data is committed in the repository:
 
 ```text
-data/raw/mental_disorders.json
+data/raw/mental_disorders_20251125_165535.json
+data/generated/0413_cot_specific_614_12000_8000.json
+data/generated/0413_cot_standard_635_12000_8000.json
+data/llamafactory/kg_cot_specific_614.json
+data/llamafactory/kg_cot_standard_635.json
 ```
 
-You can also pass another JSON path to the scripts. The generator reads this
-path through `KG_DATA_PATH` or the first positional argument.
+The two `data/llamafactory/*.json` files are already converted to ShareGPT
+format for LLaMA-Factory and use Qwen3 `<think>...</think>` tags.
+
+You can still pass another raw JSON path to the generation scripts. The
+generator reads this path through `KG_DATA_PATH` or the first positional
+argument.
 
 ## 3. Generate CoT Extraction Data
 
@@ -85,7 +93,8 @@ bash scripts/02_convert_to_llamafactory.sh \
 
 ## 5. Fine-Tune LoRA
 
-Train the specific-CoT adapter:
+On a server with LLaMA-Factory installed, train directly from the committed
+datasets:
 
 ```bash
 bash scripts/03_train_lora.sh specific
@@ -97,7 +106,12 @@ Train the standard-CoT adapter:
 bash scripts/03_train_lora.sh standard
 ```
 
-The adapter outputs go to `models/adapters/`.
+The adapter outputs go to `models/adapters/`. The training script sets cache
+paths under `.cache/` by default. Override `KG_CACHE_ROOT`, `HF_HOME`, or
+related Hugging Face cache variables if your server requires a different disk.
+
+The script validates that the selected training dataset exists and does not
+contain Gemini-style `<thinking>` tags before launching LLaMA-Factory.
 
 ## 6. One-Command Specific-CoT Pipeline
 
@@ -105,7 +119,7 @@ After setup and input data are ready, this runs generation, conversion, and
 specific-CoT LoRA training:
 
 ```bash
-bash scripts/run_specific_pipeline.sh data/raw/mental_disorders.json
+bash scripts/run_specific_pipeline.sh data/raw/mental_disorders_20251125_165535.json
 ```
 
 ## 7. Compare Base and LoRA Outputs
@@ -121,8 +135,9 @@ The latest existing report is kept in `reports/qwen_compare_analysis_report.md`.
 
 ## Notes
 
-- This repository intentionally does not commit full generated datasets or model
-  weights.
+- This repository commits the raw source JSON, the two 0413 CoT generated JSON
+  files, and the two converted LLaMA-Factory training JSON files needed for
+  server training. It still does not commit model weights.
 - The default training configs use Qwen3-8B with LoRA rank 8 and Qwen3 chat
   template.
 - For quick checks, prefer `MAX_SAMPLES=3 WORKERS=1` before launching a full

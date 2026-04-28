@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${ROOT_DIR}"
 
-INPUT_JSON="${1:-${KG_DATA_PATH:-data/raw/mental_disorders.json}}"
+INPUT_JSON="${1:-${KG_DATA_PATH:-data/raw/mental_disorders_20251125_165535.json}}"
 
 COT_STYLE=specific bash scripts/01_generate_cot_data.sh "${INPUT_JSON}" data/generated
 

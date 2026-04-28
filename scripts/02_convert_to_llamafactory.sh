@@ -22,3 +22,8 @@ PYTHONPATH=src python3 -m kg_lora.convert_to_llamafactory \
   --dataset-info "${DATASET_INFO}" \
   --dataset-name "${DATASET_NAME}" \
   --fallback-cot-style "${COT_STYLE}"
+
+if grep -q "<thinking>" "${OUTPUT_JSON}" || grep -q "</thinking>" "${OUTPUT_JSON}"; then
+  echo "ERROR: ${OUTPUT_JSON} still contains <thinking> tags. Qwen3 training requires <think> tags." >&2
+  exit 1
+fi

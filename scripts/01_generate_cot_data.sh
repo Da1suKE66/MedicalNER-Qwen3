@@ -10,7 +10,7 @@ if [[ -f ".env" ]]; then
   set +a
 fi
 
-INPUT_JSON="${1:-${KG_DATA_PATH:-data/raw/mental_disorders.json}}"
+INPUT_JSON="${1:-${KG_DATA_PATH:-data/raw/mental_disorders_20251125_165535.json}}"
 OUTPUT_DIR="${2:-data/generated}"
 COT_STYLE="${COT_STYLE:-specific}"
 MAX_SAMPLES="${MAX_SAMPLES:-}"

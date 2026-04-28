@@ -62,9 +62,21 @@ HIGH_COVERAGE_REQUIREMENTS = """Coverage requirements:
 2) Keep explicitly listed symptoms, criteria, subtypes, differential diagnoses, patient features, and risk factors whenever they appear.
 3) Never infer; keep only text-supported information."""
 
-COT_TEMPLATE_PROMPT = """<thinking>
+QWEN_THINK_OPEN = "<think>"
+QWEN_THINK_CLOSE = "</think>"
+
+
+def normalize_qwen_think_tags(text: str) -> str:
+    return (
+        str(text)
+        .replace("<thinking>", QWEN_THINK_OPEN)
+        .replace("</thinking>", QWEN_THINK_CLOSE)
+    )
+
+
+COT_TEMPLATE_PROMPT = """<think>
 Write a concise reasoning trace in no more than 6 steps, and keep the total length as short as possible.
-</thinking>
+</think>
 <output>
 Write the final JSON object here.
 </output>
@@ -74,7 +86,7 @@ Requirements:
 2) `<output>` must be strict JSON.
 3) Prioritize a complete `<output>` over a longer thinking trace."""
 
-COT_SPECIFIC_PROMPT = """<thinking>
+COT_SPECIFIC_PROMPT = """<think>
 Write only extraction decisions that are specific to this sample, and do not repeat a generic workflow template.
 Focus on:
 1) the most important disease, subtype, or severity information in this text
@@ -86,7 +98,7 @@ Constraints:
 - Do not write generic steps such as "identify the disease, then extract symptoms, then build relations"
 - Do not restate the whole text
 - Keep it within 4 bullets or short items, and keep the total length as short as possible
-</thinking>
+</think>
 <output>
 Write the final JSON object here.
 </output>
@@ -161,9 +173,9 @@ def build_assistant_text(output: dict, cot_text: str):
     cot_text = (cot_text or "").strip()
     if cot_text:
         return (
-            "<thinking>\n"
+            f"{QWEN_THINK_OPEN}\n"
             f"{cot_text}\n"
-            "</thinking>\n"
+            f"{QWEN_THINK_CLOSE}\n"
             "<output>\n"
             f"{final_json}\n"
             "</output>"
@@ -186,7 +198,7 @@ def convert_conversations_item(item: dict):
             continue
         if content is None:
             continue
-        messages.append({"role": role, "content": str(content)})
+        messages.append({"role": role, "content": normalize_qwen_think_tags(content)})
 
     if len(messages) < 2:
         return None
