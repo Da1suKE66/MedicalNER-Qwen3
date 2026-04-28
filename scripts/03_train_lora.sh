@@ -11,8 +11,9 @@ export HF_DATASETS_CACHE="${HF_DATASETS_CACHE:-${HF_HOME}/datasets}"
 export HUGGINGFACE_HUB_CACHE="${HUGGINGFACE_HUB_CACHE:-${HF_HOME}/hub}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${KG_CACHE_ROOT}}"
 export TMPDIR="${TMPDIR:-${KG_CACHE_ROOT}/tmp}"
+export MPLCONFIGDIR="${MPLCONFIGDIR:-${KG_CACHE_ROOT}/matplotlib}"
 
-mkdir -p "${HF_HOME}" "${TRANSFORMERS_CACHE}" "${HF_DATASETS_CACHE}" "${TMPDIR}" models/adapters
+mkdir -p "${HF_HOME}" "${TRANSFORMERS_CACHE}" "${HF_DATASETS_CACHE}" "${TMPDIR}" "${MPLCONFIGDIR}" models/adapters
 
 if [[ $# -lt 1 ]]; then
   echo "Usage: bash scripts/03_train_lora.sh <specific|standard|sft>"

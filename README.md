@@ -18,16 +18,34 @@ outputs/              Evaluation outputs, not committed
 
 ## 1. Setup
 
+For ModelArts jobs, use the setup helper. It creates or repairs the conda env,
+keeps Python from loading packages installed under `~/.local`, installs a CUDA
+12 compatible PyTorch build, installs LLaMA-Factory, and checks CUDA/bf16:
+
 ```bash
-cd github/kg-lora
+cd ~/workspace/llc/MedicalNER-Qwen3
+ENV_PREFIX=/cache/llc/KG bash scripts/setup_modelarts_env.sh
+source /home/ma-user/miniconda3/bin/activate /cache/llc/KG
+export PYTHONNOUSERSITE=1
+cp .env.example .env
+```
+
+For a normal local Python environment:
+
+```bash
+cd MedicalNER-Qwen3
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Fill `GEMINI_API_KEY` in `.env`. Install LLaMA-Factory separately if
-`llamafactory-cli` is not already available in your environment.
+Fill `GEMINI_API_KEY` in `.env` before running Gemini data generation. LoRA
+training from the committed LLaMA-Factory datasets does not require Gemini.
+
+The training requirements pin `torch==2.6.0` so CUDA 12.x ModelArts drivers do
+not accidentally load newer CUDA 13 wheels from user site packages. If you are
+using a different driver stack, adjust the PyTorch version before setup.
 
 ## 2. Prepare Input Data
 
@@ -97,13 +115,13 @@ On a server with LLaMA-Factory installed, train directly from the committed
 datasets:
 
 ```bash
-bash scripts/03_train_lora.sh specific
+PYTHONNOUSERSITE=1 bash scripts/03_train_lora.sh specific
 ```
 
 Train the standard-CoT adapter:
 
 ```bash
-bash scripts/03_train_lora.sh standard
+PYTHONNOUSERSITE=1 bash scripts/03_train_lora.sh standard
 ```
 
 The adapter outputs go to `models/adapters/`. The training script sets cache
@@ -118,6 +136,9 @@ The committed CoT training configs use 4-bit bitsandbytes QLoRA
 `quantization_bit: 4` to `quantization_bit: 8` in the selected YAML.
 Evaluation and checkpointing run every 10 update steps, which gives roughly
 20 eval/checkpoint points for the 0413 datasets instead of only 2.
+
+The configs use `Qwen/Qwen3-8B`. The `Qwen/Qwen3-8B-Instruct` identifier is not
+used because it is not available on the Hugging Face mirror used by ModelArts.
 
 ## 6. One-Command Specific-CoT Pipeline
 
