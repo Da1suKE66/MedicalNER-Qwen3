@@ -20,14 +20,14 @@ max_samples: 100000
 overwrite_cache: true
 preprocessing_num_workers: 8
 dataloader_num_workers: 2
-val_size: 0.05
+val_size: 0.10
 
 ### output
 output_dir: models/adapters/qwen3-8b-cot-standard
 logging_steps: 5
 save_strategy: steps
-save_steps: 25
-save_total_limit: 10
+save_steps: 10
+save_total_limit: 30
 plot_loss: true
 overwrite_output_dir: true
 save_only_model: false
@@ -50,4 +50,4 @@ resume_from_checkpoint: null
 ### eval
 per_device_eval_batch_size: 1
 eval_strategy: steps
-eval_steps: 25
+eval_steps: 10
