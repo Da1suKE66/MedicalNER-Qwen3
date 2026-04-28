@@ -82,5 +82,33 @@
       "assistant_tag": "assistant",
       "system_tag": "system"
     }
+  },
+  "pro_cot_001_005_schema0413": {
+    "file_name": "pro_cot_001_005_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_006_110_schema0413": {
+    "file_name": "pro_cot_006_110_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
   }
 }

@@ -15,11 +15,15 @@ data/generated/*
 !data/generated/.gitkeep
 !data/generated/0413_cot_specific_614_12000_8000.json
 !data/generated/0413_cot_standard_635_12000_8000.json
+!data/generated/gemini_split/
+!data/generated/gemini_split/*.json
 data/llamafactory/*.json
 !data/llamafactory/dataset_info.json
 !data/llamafactory/.gitkeep
 !data/llamafactory/kg_cot_specific_614.json
 !data/llamafactory/kg_cot_standard_635.json
+!data/llamafactory/pro_cot_001_005_llamafactory.json
+!data/llamafactory/pro_cot_006_110_llamafactory.json
 
 outputs/*
 !outputs/.gitkeep
