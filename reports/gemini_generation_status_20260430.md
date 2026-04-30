@@ -55,12 +55,25 @@ Recommended resume order:
 
 ## Flash Progress
 
-Current Flash artifact in this repository:
+Current Flash artifacts in this repository:
 
 - `data/generated/gemini_split/flash_structure_011_110_schema0413_partial.json`
+- `data/generated/gemini_split/flash_structure_011_110_schema0413.json`
+- `data/generated/gemini_split/flash_long_text_011_110_schema0413.json`
+- `data/generated/gemini_split/flash_merged_011_110_schema0413.json`
 
-Known status before continuing:
+Current status:
 
-- The Flash structure run for 11-110 was interrupted earlier after 90 records.
-- It covers 11-100 and still needs 101-110 for structure.
-- The Flash long-text pass for 11-110 still needs to be generated before a merged Flash 11-110 output can be produced.
+- Flash 11-110 is complete.
+- Structure pass: 100 records, 0 failures.
+- Long-text pass: 100 records, 0 failures.
+- Merged output: 858 manifest records, with generated KG content for records 11-110.
+- Non-empty merged records: 100.
+- Invalid relation endpoints: 0.
+- Chinese character hits: 0.
+
+Repair note:
+
+- The Flash long-text output for `6A05` was truncated at a final incomplete relation.
+- The raw output contained complete entities and 185 complete relations before the truncated tail.
+- The final incomplete trailing relation was dropped and the JSON was closed before merging.
