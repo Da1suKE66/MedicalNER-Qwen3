@@ -1,0 +1,272 @@
+{
+  "batches": [
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_111_115_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_116_120_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_121_125_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_126_130_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_131_135_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_136_140_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_141_145_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_146_150_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_151_155_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_156_160_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_161_165_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_166_170_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_171_175_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_176_180_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_181_185_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_186_190_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_191_195_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_196_200_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_201_205_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_206_210_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    }
+  ],
+  "records": 100,
+  "sidecar_failures": 0,
+  "duplicate_global_idx": [],
+  "missing_global_idx": [],
+  "global_idx_range": [
+    110,
+    209
+  ]
+}

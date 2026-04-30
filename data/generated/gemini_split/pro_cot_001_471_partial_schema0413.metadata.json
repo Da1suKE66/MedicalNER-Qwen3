@@ -1,0 +1,219 @@
+{
+  "batches": [
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_1_5_schema0413_v3.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_006_110_schema0413.json",
+      "records": 105,
+      "metadata_records": null,
+      "metadata_failures": null,
+      "finish_reasons": []
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_111_210_schema0413.json",
+      "records": 100,
+      "metadata_records": null,
+      "metadata_failures": null,
+      "finish_reasons": []
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_211_310_schema0413.json",
+      "records": 100,
+      "metadata_records": null,
+      "metadata_failures": null,
+      "finish_reasons": []
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_311_410_schema0413.json",
+      "records": 100,
+      "metadata_records": null,
+      "metadata_failures": null,
+      "finish_reasons": []
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_411_415_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_416_420_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_421_425_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_426_430_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_431_435_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_436_440_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_441_445_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_446_450_schema0413.json",
+      "records": 5,
+      "metadata_records": 5,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_451_455_schema0413.json",
+      "records": 1,
+      "metadata_records": 1,
+      "metadata_failures": 4,
+      "finish_reasons": [
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_retry_452_schema0413.json",
+      "records": 1,
+      "metadata_records": 1,
+      "metadata_failures": 0,
+      "finish_reasons": [
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_retry_453_455_schema0413.json",
+      "records": 2,
+      "metadata_records": 2,
+      "metadata_failures": 1,
+      "finish_reasons": [
+        "STOP",
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_456_460_schema0413.json",
+      "records": 1,
+      "metadata_records": 1,
+      "metadata_failures": 4,
+      "finish_reasons": [
+        "STOP"
+      ]
+    },
+    {
+      "path": "Mental_KG-main/data/gemini_split/pro_cot_471_475_schema0413.json",
+      "records": 1,
+      "metadata_records": 1,
+      "metadata_failures": 2,
+      "finish_reasons": [
+        "STOP"
+      ]
+    }
+  ],
+  "records": 456,
+  "sidecar_failures": 11,
+  "duplicate_global_idx": [],
+  "missing_global_idx": [
+    454,
+    456,
+    457,
+    458,
+    459,
+    460,
+    461,
+    462,
+    463,
+    464,
+    465,
+    466,
+    467,
+    468,
+    469
+  ],
+  "global_idx_range": [
+    0,
+    470
+  ]
+}
