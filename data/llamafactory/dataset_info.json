@@ -82,5 +82,19 @@
       "assistant_tag": "assistant",
       "system_tag": "system"
     }
+  },
+  "pro_cot_001_471_partial": {
+    "file_name": "pro_cot_001_471_partial_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
   }
 }

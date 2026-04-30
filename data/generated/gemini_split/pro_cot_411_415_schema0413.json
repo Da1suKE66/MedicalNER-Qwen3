@@ -1,0 +1,1140 @@
+[
+  {
+    "input": "Sedative, hypnotic or anxiolytic-induced delirium\n\nSedative, hypnotic or anxiolytic-induced delirium is characterised by an acute state of disturbed attention and awareness with specific features of delirium that develops during or soon after substance intoxication or withdrawal or during the use of sedatives, hypnotics, or anxiolytics. Specific features of Sedative, hypnotic or anxiolytic-induced delirium may include confusion and disorientation, paranoid delusions, and recurrent visual, tactile or auditory hallucinations. The amount and duration of sedative, hypnotic, or anxiolytic use must be capable of producing delirium. The symptoms are not better explained by a primary mental disorder, by use of or withdrawal from a different substance, or by another health condition that is not classified under Mental, behavioural and neurodevelopmental disorders.\n\n## Essential (Required) Features: \n- All diagnostic requirements for 6D70 Delirium are met. \n- There is evidence from history, physical examination, or laboratory findings that the neurocognitive disturbance is caused by the direct physiological consequences of the use of sedatives, hypnotics or anxiolytics. This judgment depends on establishing that the course of the Delirium (e.g., onset, trajectory of symptoms, eventual remission with elimination of the substance from the body) is consistent with causation by the use of sedatives, hypnotics or anxiolytics. \n- The duration or severity of the symptoms is substantially in excess of the characteristic syndrome of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The diagnostic requirements for 6D70.2 Delirium Due to Multiple Etiological Factors are not met.\n\n## Additional Clinical Features:\n- Sedative, Hypnotic or Anxiolytic Withdrawal, especially when untreated, may progress to a very severe form of Delirium, characterized by confusion and disorientation, delusions, and more prolonged visual, tactile or auditory hallucinations. In such cases, both Sedative, Hypnotic or Anxiolytic Withdrawal and Sedative, Hypnotic or Anxiolytic-induced Delirium should be diagnosed. \n\n***Note:*** See 6D70 Delirium for other CDDR sections, including Additional Clinical Features, Boundary with Normality (Threshold), Course Features, Developmental Presentations, Culture-Related Features, and Boundaries with Other Disorders and Conditions (Differential Diagnosis).",
+    "input_used": "Sedative, hypnotic or anxiolytic-induced delirium\n\nSedative, hypnotic or anxiolytic-induced delirium is characterised by an acute state of disturbed attention and awareness with specific features of delirium that develops during or soon after substance intoxication or withdrawal or during the use of sedatives, hypnotics, or anxiolytics. Specific features of Sedative, hypnotic or anxiolytic-induced delirium may include confusion and disorientation, paranoid delusions, and recurrent visual, tactile or auditory hallucinations. The amount and duration of sedative, hypnotic, or anxiolytic use must be capable of producing delirium. The symptoms are not better explained by a primary mental disorder, by use of or withdrawal from a different substance, or by another health condition that is not classified under Mental, behavioural and neurodevelopmental disorders.\n\n## Essential (Required) Features: \n- All diagnostic requirements for 6D70 Delirium are met. \n- There is evidence from history, physical examination, or laboratory findings that the neurocognitive disturbance is caused by the direct physiological consequences of the use of sedatives, hypnotics or anxiolytics. This judgment depends on establishing that the course of the Delirium (e.g., onset, trajectory of symptoms, eventual remission with elimination of the substance from the body) is consistent with causation by the use of sedatives, hypnotics or anxiolytics. \n- The duration or severity of the symptoms is substantially in excess of the characteristic syndrome of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The diagnostic requirements for 6D70.2 Delirium Due to Multiple Etiological Factors are not met.\n\n## Additional Clinical Features:\n- Sedative, Hypnotic or Anxiolytic Withdrawal, especially when untreated, may progress to a very severe form of Delirium, characterized by confusion and disorientation, delusions, and more prolonged visual, tactile or auditory hallucinations. In such cases, both Sedative, Hypnotic or Anxiolytic Withdrawal and Sedative, Hypnotic or Anxiolytic-induced Delirium should be diagnosed. \n\n***Note:*** See 6D70 Delirium for other CDDR sections, including Additional Clinical Features, Boundary with Normality (Threshold), Course Features, Developmental Presentations, Culture-Related Features, and Boundaries with Other Disorders and Conditions (Differential Diagnosis).",
+    "cot": "**Analyzing the Case: Sedative, Hypnotic, or Anxiolytic-Induced Delirium**\n\nOkay, here's how I'm approaching this. First, I need to pinpoint the primary issue – it's clearly \"Sedative, hypnotic or anxiolytic-induced delirium\". Now, let's break down the clinical presentation. The crucial symptoms are that disturbed attention and awareness. The rest, confusion, disorientation, paranoid delusions, and recurrent hallucinations (visual, tactile, auditory), are all relevant, but those initial symptoms are key to me.\n\nNext, I need to confirm the diagnosis. The text clearly states that \"All diagnostic requirements for 6D70 Delirium are met,\" so that's a good starting point. I also note that this is specifically “caused by the direct physiological consequences of the use of sedatives, hypnotics or anxiolytics”. I have to make sure that the duration and/or severity of the symptoms exceed what’s normally expected from intoxication or withdrawal, and I also need to confirm that this isn’t a case of “Delirium Due to Multiple Etiological Factors”.\n\nNow, let's keep the differential diagnoses in mind: “6D70 Delirium”, “Sedative, Hypnotic or Anxiolytic Intoxication”, “Sedative, Hypnotic or Anxiolytic Withdrawal” and “6D70.2 Delirium Due to Multiple Etiological Factors”.\n\nFinally, I will map all of the relevant entities: the disease, symptoms and diagnostic criteria. Then, I'll establish the relationships between them. Symptoms will be linked to the disease, diagnostic criteria will be connected to the disease, and I will place the disease within its appropriate hierarchy, clarifying the differentiation from other related conditions.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic-induced delirium",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic-induced delirium",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "develops during or soon after substance intoxication or withdrawal or during the use of sedatives, hypnotics, or anxiolytics",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "disturbed attention and awareness",
+          "properties": {
+            "Symptom Description": "acute state of disturbed attention and awareness",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "confusion and disorientation",
+          "properties": {
+            "Symptom Description": "confusion and disorientation",
+            "Occurrence Frequency": "",
+            "Severity Description": "",
+            "Diagnostic Value": ""
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "paranoid delusions",
+          "properties": {
+            "Symptom Description": "paranoid delusions",
+            "Occurrence Frequency": "",
+            "Severity Description": "",
+            "Diagnostic Value": ""
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "recurrent visual, tactile or auditory hallucinations",
+          "properties": {
+            "Symptom Description": "recurrent visual, tactile or auditory hallucinations",
+            "Occurrence Frequency": "recurrent",
+            "Severity Description": "",
+            "Diagnostic Value": ""
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "All diagnostic requirements for 6D70 Delirium are met",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "DC2",
+          "label": "Diagnostic Criteria",
+          "name": "caused by the direct physiological consequences of the use of sedatives, hypnotics or anxiolytics",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "DC3",
+          "label": "Diagnostic Criteria",
+          "name": "duration or severity of the symptoms is substantially in excess of the characteristic syndrome of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "DC4",
+          "label": "Diagnostic Criteria",
+          "name": "The diagnostic requirements for 6D70.2 Delirium Due to Multiple Etiological Factors are not met",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": "The diagnostic requirements for 6D70.2 Delirium Due to Multiple Etiological Factors are not met"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "6D70 Delirium",
+          "properties": {
+            "DSM-5 Code": "6D70",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Intoxication",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "6D70.2 Delirium Due to Multiple Etiological Factors",
+          "properties": {
+            "DSM-5 Code": "6D70.2",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Sedative, hypnotic or anxiolytic-induced delirium is characterised by an acute state of disturbed attention and awareness"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Specific features of Sedative, hypnotic or anxiolytic-induced delirium may include confusion and disorientation"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Specific features of Sedative, hypnotic or anxiolytic-induced delirium may include... paranoid delusions"
+        },
+        {
+          "source": "S4",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Specific features of Sedative, hypnotic or anxiolytic-induced delirium may include... recurrent visual, tactile or auditory hallucinations"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "All diagnostic requirements for 6D70 Delirium are met."
+        },
+        {
+          "source": "DC2",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "There is evidence from history, physical examination, or laboratory findings that the neurocognitive disturbance is caused by the direct physiological consequences of the use of sedatives, hypnotics or anxiolytics."
+        },
+        {
+          "source": "DC3",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The duration or severity of the symptoms is substantially in excess of the characteristic syndrome of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal."
+        },
+        {
+          "source": "DC4",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The diagnostic requirements for 6D70.2 Delirium Due to Multiple Etiological Factors are not met."
+        },
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "All diagnostic requirements for 6D70 Delirium are met."
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The duration or severity of the symptoms is substantially in excess of the characteristic syndrome of Sedative, Hypnotic or Anxiolytic Intoxication"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The duration or severity of the symptoms is substantially in excess of the characteristic syndrome of... Sedative, Hypnotic or Anxiolytic Withdrawal."
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The diagnostic requirements for 6D70.2 Delirium Due to Multiple Etiological Factors are not met."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 410,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1226243628",
+    "code": "6C44.5",
+    "title": "Sedative, hypnotic or anxiolytic-induced delirium",
+    "input_chars": 2431,
+    "original_input_chars": 2431,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic-induced psychotic disorder\n\nSedative, hypnotic or anxiolytic-induced psychotic disorder is characterised by psychotic symptoms (e.g. delusions, hallucinations, disorganised thinking, grossly disorganised behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the symptoms is substantially in excess of psychotic-like disturbances of perception, cognition, or behaviour that are characteristic of intoxication or withdrawal due to sedatives, hypnotics or anxiolytics. The amount and duration of sedative, hypnotic or anxiolytic use must be capable of producing psychotic symptoms. The symptoms are not better explained by a primary mental disorder (e.g. Schizophrenia, a Mood disorder with psychotic symptoms), as might be the case if the psychotic symptoms preceded the onset of the sedative, hypnotic or anxiolytic use, if the symptoms persist for a substantial period of time after cessation of the sedative, hypnotic or anxiolytic use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with psychotic symptoms (e.g. a history of prior episodes not associated with sedative, hypnotic or anxiolytic use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by psychotic symptoms (e.g., delusions, hallucinations, or disorganized thinking or behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics.\n- The intensity or duration of the psychotic symptoms is substantially in excess of psychotic-like disturbances of perception, cognition, or behaviour that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as Schizophrenia or a Mood Disorder with psychotic symptoms. Evidence supporting a diagnosis of another mental disorder would include psychotic symptoms preceding the onset of sedative, hypnotic or anxiolytic use, the symptoms persisting for a substantial period of time after cessation of sedative, hypnotic or anxiolytic use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with psychotic symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use). \n- The symptoms are not a manifestation of another medical condition.\n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, and Sedative, Hypnotic or Anxiolytic Dependence. A diagnosis of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal may also be assigned if applicable.\n\n## Additional Clinical Features: \n\n- Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder may present with varying patterns of symptoms, depending on the specific substance used, that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Sedative, Hypnotic or Anxiolytic use in higher amounts or over longer periods of time is more likely to be associated with the development of a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder. \n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use.\n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Psychotic Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Psychotic Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Psychotic Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Psychotic Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Psychotic Disorder, the corresponding specific Substance-Induced Psychotic Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders should be differentiated from known side effects of psychoactive medication that are not significantly impairing or distressing and from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal:*** Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence:*** The impact of repeated or continuous use of sedatives, hypnotics or anxiolytics characteristic of Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics and Sedative, Hypnotic or Anxiolytic Dependence may include Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder. Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders can also be associated with a single episode of sedative, hypnotic or anxiolytic use. In such cases, a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence.\n- ***Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics:*** Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics on the basis of their onset, course and clinical features. A diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent sedative, hypnotic or anxiolytic use, intoxication or withdrawal. Most Sedative, Hypnotic or Anxiolytic-Induced Mental Disorders resolve or improve within several weeks of cessation of sedative, hypnotic or anxiolytic use. Mental disorders not induced by sedatives, hypnotics or anxiolytics may precede the onset of sedative, hypnotic or anxiolytic use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of sedative, hypnotic or anxiolytic use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, sedative, hypnotic or anxiolytic use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, sedative, hypnotic or anxiolytic use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence may still be appropriate.",
+    "input_used": "Sedative, hypnotic or anxiolytic-induced psychotic disorder\n\nSedative, hypnotic or anxiolytic-induced psychotic disorder is characterised by psychotic symptoms (e.g. delusions, hallucinations, disorganised thinking, grossly disorganised behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the symptoms is substantially in excess of psychotic-like disturbances of perception, cognition, or behaviour that are characteristic of intoxication or withdrawal due to sedatives, hypnotics or anxiolytics. The amount and duration of sedative, hypnotic or anxiolytic use must be capable of producing psychotic symptoms. The symptoms are not better explained by a primary mental disorder (e.g. Schizophrenia, a Mood disorder with psychotic symptoms), as might be the case if the psychotic symptoms preceded the onset of the sedative, hypnotic or anxiolytic use, if the symptoms persist for a substantial period of time after cessation of the sedative, hypnotic or anxiolytic use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with psychotic symptoms (e.g. a history of prior episodes not associated with sedative, hypnotic or anxiolytic use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by psychotic symptoms (e.g., delusions, hallucinations, or disorganized thinking or behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics.\n- The intensity or duration of the psychotic symptoms is substantially in excess of psychotic-like disturbances of perception, cognition, or behaviour that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as Schizophrenia or a Mood Disorder with psychotic symptoms. Evidence supporting a diagnosis of another mental disorder would include psychotic symptoms preceding the onset of sedative, hypnotic or anxiolytic use, the symptoms persisting for a substantial period of time after cessation of sedative, hypnotic or anxiolytic use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with psychotic symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use). \n- The symptoms are not a manifestation of another medical condition.\n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, and Sedative, Hypnotic or Anxiolytic Dependence. A diagnosis of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal may also be assigned if applicable.\n\n## Additional Clinical Features: \n\n- Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder may present with varying patterns of symptoms, depending on the specific substance used, that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Sedative, Hypnotic or Anxiolytic use in higher amounts or over longer periods of time is more likely to be associated with the development of a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder. \n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use.\n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Psychotic Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Psychotic Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Psychotic Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Psychotic Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Psychotic Disorder, the corresponding specific Substance-Induced Psychotic Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders should be differentiated from known side effects of psychoactive medication that are not significantly impairing or distressing and from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal:*** Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence:*** The impact of repeated or continuous use of sedatives, hypnotics or anxiolytics characteristic of Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics and Sedative, Hypnotic or Anxiolytic Dependence may include Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder. Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders can also be associated with a single episode of sedative, hypnotic or anxiolytic use. In such cases, a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence.\n- ***Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics:*** Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics on the basis of their onset, course and clinical features. A diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent sedative, hypnotic or anxiolytic use, intoxication or withdrawal. Most Sedative, Hypnotic or Anxiolytic-Induced Mental Disorders resolve or improve within several weeks of cessation of sedative, hypnotic or anxiolytic use. Mental disorders not induced by sedatives, hypnotics or anxiolytics may precede the onset of sedative, hypnotic or anxiolytic use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of sedative, hypnotic or anxiolytic use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, sedative, hypnotic or anxiolytic use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, sedative, hypnotic or anxiolytic use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence may still be appropriate.",
+    "cot": "1.  **Analyze the Request**: The user wants to extract entities and relations from a medical text about \"Sedative, hypnotic or anxiolytic-induced psychotic disorder\" into a strict JSON format based on a provided schema.\n2.  **Identify Entities**:\n    *   *Disease*: Sedative, hypnotic or anxiolytic-induced psychotic disorder (Main), Schizophrenia, Mood disorder with psychotic symptoms, Sedative, Hypnotic or Anxiolytic Intoxication, Sedative, Hypnotic or Anxiolytic Withdrawal, Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, Sedative, Hypnotic or Anxiolytic Dependence, Substance-Induced Psychotic Disorder Due to Multiple Specified Psychoactive Substances including Medications.\n    *   *Symptom*: psychotic symptoms (delusions, hallucinations, disorganised thinking, grossly disorganised behaviour), significant distress or significant impairment in functioning.\n    *   *Diagnostic Criteria*: Essential (Required) Features.\n3.  **Map to Schema**:\n    *   Assign IDs to each entity.\n    *   Populate allowed properties (e.g., `Course Requirements`, `Exclusion Details`).\n4.  **Identify Relations**:\n    *   `is_core_symptom_of` (Symptom -> Disease)\n    *   `required_for_diagnosis_of` (Diagnostic Criteria -> Disease)\n    *   `excludes_if_present` (Diagnostic Criteria -> Disease)\n    *   `differentiates_from` (Disease -> Disease)\n    *   `co_occurs_with_frequency` (Disease -> Disease)\n5.  **Format Output**: Ensure the output is strictly JSON, without markdown code fences, and uses only the allowed labels and relation types.\n6.  **Review against Constraints**: Check that no inferred data is added, English source wording is used, and relation source/target IDs match the entities list.",
+    "output": {
+      "source_id": "sedative_hypnotic_anxiolytic_induced_psychotic_disorder",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic-induced psychotic disorder",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic-induced psychotic disorder",
+          "properties": {
+            "Course Requirements": "develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics",
+            "Comorbidity Types": "Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, Sedative, Hypnotic or Anxiolytic Dependence"
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "psychotic symptoms",
+          "properties": {
+            "Symptom Description": "delusions, hallucinations, disorganised thinking, grossly disorganised behaviour",
+            "Severity Description": "intensity or duration of the symptoms is substantially in excess of psychotic-like disturbances of perception, cognition, or behaviour that are characteristic of intoxication or withdrawal"
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "significant distress or significant impairment",
+          "properties": {
+            "Symptom Description": "significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning"
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Essential (Required) Features",
+          "properties": {
+            "Required Core Symptoms": "psychotic symptoms (e.g., delusions, hallucinations, or disorganized thinking or behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics",
+            "Functional Impairment Requirements": "cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning",
+            "Exclusion Details": "not better accounted for by another mental disorder such as Schizophrenia or a Mood Disorder with psychotic symptoms; not a manifestation of another medical condition"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Schizophrenia",
+          "properties": {}
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Mood disorder with psychotic symptoms",
+          "properties": {}
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Intoxication",
+          "properties": {}
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Withdrawal",
+          "properties": {}
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics",
+          "properties": {}
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics",
+          "properties": {}
+        },
+        {
+          "id": "D8",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Dependence",
+          "properties": {}
+        },
+        {
+          "id": "D9",
+          "label": "Disease",
+          "name": "Substance-Induced Psychotic Disorder Due to Multiple Specified Psychoactive Substances including Medications",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Sedative, hypnotic or anxiolytic-induced psychotic disorder is characterised by psychotic symptoms (e.g. delusions, hallucinations, disorganised thinking, grossly disorganised behaviour)"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning."
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "Essential (Required) Features:"
+        },
+        {
+          "source": "DC1",
+          "target": "D2",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as Schizophrenia"
+        },
+        {
+          "source": "DC1",
+          "target": "D3",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as Schizophrenia or a Mood Disorder with psychotic symptoms."
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics: Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Co-occurrence Frequency",
+          "relation": "co_occurs_with_frequency",
+          "evidence": "When making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Psychotic Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Co-occurrence Frequency",
+          "relation": "co_occurs_with_frequency",
+          "evidence": "These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics"
+        },
+        {
+          "source": "D1",
+          "target": "D8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Co-occurrence Frequency",
+          "relation": "co_occurs_with_frequency",
+          "evidence": "and Sedative, Hypnotic or Anxiolytic Dependence."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 411,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/744305598",
+    "code": "6C44.6",
+    "title": "Sedative, hypnotic or anxiolytic-induced psychotic disorder",
+    "input_chars": 9294,
+    "original_input_chars": 9294,
+    "cot_style": "template",
+    "response_had_think_tag": true,
+    "response_had_output_tag": false,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Certain specified sedatives, hypnotics or anxiolytic-induced mental or behavioural disorders",
+    "input_used": "Certain specified sedatives, hypnotics or anxiolytic-induced mental or behavioural disorders",
+    "cot": "**My Analysis of the Input**\n\nOkay, here's what I'm seeing: the input is a concise phrase: \"Certain specified sedatives, hypnotics or anxiolytic-induced mental or behavioural disorders.\" My first instinct is to break this down. It's short, so let's get right to it.\n\nThe primary thing here is clearly a \"Disease.\" The text itself tells me what type. I'm noting that there aren't any specific properties or identifiers provided, like a DSM-5 code, or subtypes. Nothing further to extract!\n\nSince there's only one entity presented, I don't see any relationships to be teased out.\n\nNow, I'll format the output as a strict JSON with just this single entity. I'll make sure it's valid, and then review against the constraints: a single \"Disease\" label and no inferred data, so it should be straightforward.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Certain specified sedatives, hypnotics or anxiolytic-induced mental or behavioural disorders",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Certain specified sedatives, hypnotics or anxiolytic-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 412,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1954860287",
+    "code": "6C44.7",
+    "title": "Certain specified sedatives, hypnotics or anxiolytic-induced mental or behavioural disorders",
+    "input_chars": 92,
+    "original_input_chars": 92,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic-induced mood disorder\n\nSedative, hypnotic or anxiolytic-induced mood disorder is characterised by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the symptoms is substantially in excess of mood disturbances that are characteristic of intoxication or withdrawal due to sedatives, hypnotics or anxiolytics. The amount and duration of sedative, hypnotic or anxiolytic use must be capable of producing mood symptoms. The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder), as might be the case if the mood symptoms preceded the onset of the sedative, hypnotic or anxiolytic use, if the symptoms persist for a substantial period of time after cessation of the sedative, hypnotic or anxiolytic use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with mood symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics.\n- The intensity or duration of the mood symptoms is substantially in excess of mood symptoms that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder. Evidence supporting a diagnosis of another mental disorder would include mood symptoms preceding the onset of sedative, hypnotic or anxiolytic use, the symptoms persisting for a substantial period of time after cessation of sedative, hypnotic or anxiolytic use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with mood symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, and Sedative, Hypnotic or Anxiolytic Dependence. A diagnosis of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal may also be assigned if applicable.\n\n## Specifiers for sedative, hypnotic or anxiolytic-induced mood symptoms:\n\null additional specifier can be added to denote the presence of either depressive symptoms in the absence of manic symptoms, manic symptoms in the absence of depressive symptoms, or mixed manic and depressive symptoms. \n\n### 6C44.700 Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder with depressive symptoms\n\n- All diagnostic requirements for Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder are met.\n- The presentation is characterized by depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Manic symptoms are not present. \n\n### 6C44.701 Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with manic symptoms\n\n- All diagnostic requirements for Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder are met.\n- The presentation is characterized by manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Depressive symptoms are not present. \n\n### 6C44.702 Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with mixed depressive and manic symptoms\n\n- All diagnostic requirements for Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder are met.\n- The presentation is characterized by both depressive and manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n\n### 6C44.70Z Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder, unspecified\n\n<br>\n\n## Additional Clinical Features: \n\n- Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder may present with patterns of symptoms, depending on the specific substance used, that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Sedatives, Hypnotics or Anxiolytics use in higher amounts or over longer periods of time is more likely to be associated with the development of a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder. \n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use.\n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Mood Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Mood Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Mood Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Mood Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Mood Disorder, the corresponding specific Substance-Induced Mood Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders should be differentiated from known side effects of psychoactive medication that are not significantly impairing or distressing and from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal:*** Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence:*** The impact of repeated or continuous use of sedatives, hypnotics or anxiolytics characteristic of Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics and Sedatives, Hypnotics or Anxiolytics Dependence may include Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder. Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders can also be associated with a single episode of sedative, hypnotic or anxiolytic use. In such cases, a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence.\n- ***Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics:*** Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics on the basis of their onset, course and clinical features. A diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent sedative, hypnotic or anxiolytic use, intoxication or withdrawal. Most Sedative, Hypnotic or Anxiolytic-Induced Mental Disorders resolve or improve within several weeks of cessation of sedative, hypnotic or anxiolytic use. Mental disorders not induced by sedatives, hypnotics or anxiolytics may precede the onset of sedative, hypnotic or anxiolytic use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of sedative, hypnotic or anxiolytic use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, sedative, hypnotic or anxiolytic use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, sedative, hypnotic or anxiolytic use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence may still be appropriate.",
+    "input_used": "Sedative, hypnotic or anxiolytic-induced mood disorder\n\nSedative, hypnotic or anxiolytic-induced mood disorder is characterised by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the symptoms is substantially in excess of mood disturbances that are characteristic of intoxication or withdrawal due to sedatives, hypnotics or anxiolytics. The amount and duration of sedative, hypnotic or anxiolytic use must be capable of producing mood symptoms. The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder), as might be the case if the mood symptoms preceded the onset of the sedative, hypnotic or anxiolytic use, if the symptoms persist for a substantial period of time after cessation of the sedative, hypnotic or anxiolytic use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with mood symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics.\n- The intensity or duration of the mood symptoms is substantially in excess of mood symptoms that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder. Evidence supporting a diagnosis of another mental disorder would include mood symptoms preceding the onset of sedative, hypnotic or anxiolytic use, the symptoms persisting for a substantial period of time after cessation of sedative, hypnotic or anxiolytic use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with mood symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, and Sedative, Hypnotic or Anxiolytic Dependence. A diagnosis of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal may also be assigned if applicable.\n\n## Specifiers for sedative, hypnotic or anxiolytic-induced mood symptoms:\n\null additional specifier can be added to denote the presence of either depressive symptoms in the absence of manic symptoms, manic symptoms in the absence of depressive symptoms, or mixed manic and depressive symptoms. \n\n### 6C44.700 Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder with depressive symptoms\n\n- All diagnostic requirements for Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder are met.\n- The presentation is characterized by depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Manic symptoms are not present. \n\n### 6C44.701 Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with manic symptoms\n\n- All diagnostic requirements for Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder are met.\n- The presentation is characterized by manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Depressive symptoms are not present. \n\n### 6C44.702 Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with mixed depressive and manic symptoms\n\n- All diagnostic requirements for Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder are met.\n- The presentation is characterized by both depressive and manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n\n### 6C44.70Z Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder, unspecified\n\n<br>\n\n## Additional Clinical Features: \n\n- Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder may present with patterns of symptoms, depending on the specific substance used, that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Sedatives, Hypnotics or Anxiolytics use in higher amounts or over longer periods of time is more likely to be associated with the development of a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder. \n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use.\n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Mood Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Mood Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Mood Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Mood Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Mood Disorder, the corresponding specific Substance-Induced Mood Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders should be differentiated from known side effects of psychoactive medication that are not significantly impairing or distressing and from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal:*** Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence:*** The impact of repeated or continuous use of sedatives, hypnotics or anxiolytics characteristic of Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics and Sedatives, Hypnotics or Anxiolytics Dependence may include Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder. Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders can also be associated with a single episode of sedative, hypnotic or anxiolytic use. In such cases, a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence.\n- ***Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics:*** Sedative, Hypnotic or Anxiolytic-Induced Mood Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics on the basis of their onset, course and clinical features. A diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent sedative, hypnotic or anxiolytic use, intoxication or withdrawal. Most Sedative, Hypnotic or Anxiolytic-Induced Mental Disorders resolve or improve within several weeks of cessation of sedative, hypnotic or anxiolytic use. Mental disorders not induced by sedatives, hypnotics or anxiolytics may precede the onset of sedative, hypnotic or anxiolytic use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of sedative, hypnotic or anxiolytic use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, sedative, hypnotic or anxiolytic use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, sedative, hypnotic or anxiolytic use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence may still be appropriate.",
+    "cot": "1. Identify the main disease: \"Sedative, hypnotic or anxiolytic-induced mood disorder\".\n2. Identify subtypes: 6C44.700 (with depressive symptoms), 6C44.701 (with manic symptoms), 6C44.702 (with mixed depressive and manic symptoms), 6C44.70Z (unspecified).\n3. Identify core symptoms: \"depressed or elevated mood\", \"decreased engagement in pleasurable activities\", \"increased or decreased energy levels\", \"depressive symptoms\", \"manic symptoms\".\n4. Identify differential diagnoses: \"Depressive disorder\", \"Bipolar disorder\", \"Schizoaffective disorder\", \"Schizophrenia or Other Primary Psychotic Disorder\", \"Sedative, Hypnotic or Anxiolytic Intoxication\", \"Sedative, Hypnotic or Anxiolytic Withdrawal\".\n5. Identify diagnostic criteria and map properties (Required Core Symptoms, Functional Impairment Requirements, Exclusion Details).\n6. Construct relations: subsumes, differentiates_from, is_core_symptom_of, required_for_diagnosis_of, excludes_if_present. Ensure strict JSON format without markdown fences.",
+    "output": {
+      "source_id": "sedative_hypnotic_anxiolytic_induced_mood_disorder",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic-induced mood disorder",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic-induced mood disorder",
+          "properties": {
+            "Subtype": "with depressive symptoms, with manic symptoms, with mixed depressive and manic symptoms, unspecified",
+            "Comorbidity Types": "Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, Sedative, Hypnotic or Anxiolytic Dependence"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder with depressive symptoms",
+          "properties": {
+            "DSM-5 Code": "6C44.700"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with manic symptoms",
+          "properties": {
+            "DSM-5 Code": "6C44.701"
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with mixed depressive and manic symptoms",
+          "properties": {
+            "DSM-5 Code": "6C44.702"
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C44.70Z"
+          }
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Depressive disorder",
+          "properties": {}
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Bipolar disorder",
+          "properties": {}
+        },
+        {
+          "id": "D8",
+          "label": "Disease",
+          "name": "Schizoaffective disorder",
+          "properties": {}
+        },
+        {
+          "id": "D9",
+          "label": "Disease",
+          "name": "Schizophrenia or Other Primary Psychotic Disorder",
+          "properties": {}
+        },
+        {
+          "id": "D10",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Intoxication",
+          "properties": {}
+        },
+        {
+          "id": "D11",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Withdrawal",
+          "properties": {}
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "depressed or elevated mood",
+          "properties": {
+            "Symptom Description": "develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics"
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "decreased engagement in pleasurable activities",
+          "properties": {
+            "Symptom Description": "develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics"
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "increased or decreased energy levels",
+          "properties": {
+            "Symptom Description": "develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics"
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "depressive symptoms",
+          "properties": {
+            "Symptom Description": "judged to be the direct consequence of the use of or withdrawal from a specified substance or medication"
+          }
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "manic symptoms",
+          "properties": {
+            "Symptom Description": "judged to be the direct consequence of the use of or withdrawal from a specified substance or medication"
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder",
+          "properties": {
+            "Required Core Symptoms": "The presentation is characterized by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the mood symptoms is substantially in excess of mood symptoms that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.",
+            "Functional Impairment Requirements": "The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+            "Exclusion Details": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder. The symptoms are not a manifestation of another medical condition."
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C44.700 Sedative, Hypnotic or Anxiolytic-Induced Mood Disorder with depressive symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C44.701 Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with manic symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C44.702 Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder with mixed depressive and manic symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C44.70Z Sedative, Hypnotic or Anxiolytic -Induced Mood Disorder, unspecified"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder)"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder)"
+        },
+        {
+          "source": "D1",
+          "target": "D8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder)"
+        },
+        {
+          "source": "D1",
+          "target": "D9",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder."
+        },
+        {
+          "source": "D1",
+          "target": "D10",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "D11",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal"
+        },
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Sedative, hypnotic or anxiolytic-induced mood disorder is characterised by mood symptoms (e.g., depressed or elevated mood...)"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Sedative, hypnotic or anxiolytic-induced mood disorder is characterised by mood symptoms (e.g., ... decreased engagement in pleasurable activities...)"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Sedative, hypnotic or anxiolytic-induced mood disorder is characterised by mood symptoms (e.g., ... increased or decreased energy levels)"
+        },
+        {
+          "source": "S4",
+          "target": "D2",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication."
+        },
+        {
+          "source": "S5",
+          "target": "D3",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication."
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "Essential (Required) Features: The presentation is characterized by mood symptoms..."
+        },
+        {
+          "source": "DC1",
+          "target": "D6",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder."
+        },
+        {
+          "source": "DC1",
+          "target": "D7",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder."
+        },
+        {
+          "source": "DC1",
+          "target": "D9",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 413,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/890653406",
+    "code": "6C44.70",
+    "title": "Sedative, hypnotic or anxiolytic-induced mood disorder",
+    "input_chars": 10738,
+    "original_input_chars": 10738,
+    "cot_style": "template",
+    "response_had_think_tag": true,
+    "response_had_output_tag": false,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic-induced anxiety disorder\n\nSedative, hypnotic or anxiolytic-induced anxiety disorder is characterised by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the symptoms is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal due to sedatives, hypnotics or anxiolytics. The amount and duration of sedative, hypnotic or anxiolytic use must be capable of producing anxiety symptoms. The symptoms are not better explained by a primary mental disorder (e.g., an Anxiety and Fear-Related Disorder, a Depressive Disorder with prominent anxiety symptoms), as might be the case if the anxiety symptoms preceded the onset of the sedative, hypnotic or anxiolytic use, if the symptoms persist for a substantial period of time after cessation of the sedative, hypnotic or anxiolytic use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics.\n- The intensity or duration of the anxiety symptoms is substantially in excess of anxiety symptoms that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as an Anxiety or Fear-Related Disorder, a Depressive Disorder with prominent anxiety symptoms, or Post-Traumatic Stress Disorder. Evidence supporting a diagnosis of another mental disorder would include anxiety symptoms preceding the onset of sedative, hypnotic or anxiolytic use, the symptoms persisting for a substantial period of time after cessation of sedatives, hypnotics or anxiolytics or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, and Sedative, Hypnotic or Anxiolytic Dependence. A diagnosis of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal may also be assigned if applicable.\n\n## Additional Clinical Features: \n\n- Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder may present with patterns of symptoms, depending on the specific substance used, that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Sedatives, Hypnotics or Anxiolytics use in higher amounts or over longer periods of time is more likely to be associated with the development of a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder. \n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use. \n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Anxiety Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Anxiety Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Anxiety Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Anxiety Disorder, the corresponding specific Substance-Induced Anxiety Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders should be differentiated from known side effects of psychoactive medication that are not significantly impairing or distressing and from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal:*** Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence:*** The impact of repeated or continuous use of sedatives, hypnotics or anxiolytics characteristic of Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics and Sedatives, Hypnotics or Anxiolytics Dependence may include Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder. Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders can also be associated with a single episode of sedative, hypnotic or anxiolytic use. In such cases, a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence.\n- ***Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics:*** Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics on the basis of their onset, course and clinical features. A diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent sedative, hypnotic or anxiolytic use, intoxication or withdrawal. Most Sedative, Hypnotic or Anxiolytic-Induced Mental Disorders resolve or improve within several weeks of cessation of sedative, hypnotic or anxiolytic use. Mental disorders not induced by sedatives, hypnotics or anxiolytics may precede the onset of sedative, hypnotic or anxiolytic use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of sedative, hypnotic or anxiolytic use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, sedative, hypnotic or anxiolytic use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, sedative, hypnotic or anxiolytic use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence may still be appropriate.",
+    "input_used": "Sedative, hypnotic or anxiolytic-induced anxiety disorder\n\nSedative, hypnotic or anxiolytic-induced anxiety disorder is characterised by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics. The intensity or duration of the symptoms is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal due to sedatives, hypnotics or anxiolytics. The amount and duration of sedative, hypnotic or anxiolytic use must be capable of producing anxiety symptoms. The symptoms are not better explained by a primary mental disorder (e.g., an Anxiety and Fear-Related Disorder, a Depressive Disorder with prominent anxiety symptoms), as might be the case if the anxiety symptoms preceded the onset of the sedative, hypnotic or anxiolytic use, if the symptoms persist for a substantial period of time after cessation of the sedative, hypnotic or anxiolytic use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics.\n- The intensity or duration of the anxiety symptoms is substantially in excess of anxiety symptoms that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as an Anxiety or Fear-Related Disorder, a Depressive Disorder with prominent anxiety symptoms, or Post-Traumatic Stress Disorder. Evidence supporting a diagnosis of another mental disorder would include anxiety symptoms preceding the onset of sedative, hypnotic or anxiolytic use, the symptoms persisting for a substantial period of time after cessation of sedatives, hypnotics or anxiolytics or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with sedative, hypnotic or anxiolytic use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, and Sedative, Hypnotic or Anxiolytic Dependence. A diagnosis of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal may also be assigned if applicable.\n\n## Additional Clinical Features: \n\n- Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder may present with patterns of symptoms, depending on the specific substance used, that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Sedatives, Hypnotics or Anxiolytics use in higher amounts or over longer periods of time is more likely to be associated with the development of a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder. \n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use. \n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Anxiety Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Anxiety Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Anxiety Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Anxiety Disorder, the corresponding specific Substance-Induced Anxiety Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders should be differentiated from known side effects of psychoactive medication that are not significantly impairing or distressing and from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal:*** Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Sedative, Hypnotic or Anxiolytic Intoxication or Sedative, Hypnotic or Anxiolytic Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence:*** The impact of repeated or continuous use of sedatives, hypnotics or anxiolytics characteristic of Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics and Sedatives, Hypnotics or Anxiolytics Dependence may include Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder. Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders can also be associated with a single episode of sedative, hypnotic or anxiolytic use. In such cases, a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence.\n- ***Boundary with mental disorders not induced by sedatives, hypnotics or anxiolytics:*** Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorders are differentiated from mental disorders with similar features that are not induced by sedatives, hypnotics or anxiolytics on the basis of their onset, course and clinical features. A diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent sedative, hypnotic or anxiolytic use, intoxication or withdrawal. Most Sedative, Hypnotic or Anxiolytic-Induced Mental Disorders resolve or improve within several weeks of cessation of sedative, hypnotic or anxiolytic use. Mental disorders not induced by sedatives, hypnotics or anxiolytics may precede the onset of sedative, hypnotic or anxiolytic use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of sedative, hypnotic or anxiolytic use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, sedative, hypnotic or anxiolytic use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, sedative, hypnotic or anxiolytic use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, or Sedative, Hypnotic or Anxiolytic Dependence may still be appropriate.",
+    "cot": "1.  **Analyze the Request**: The user wants to extract medical entities and relations from a text about \"Sedative, hypnotic or anxiolytic-induced anxiety disorder\" into a strict JSON format.\n2.  **Identify Entities**:\n    *   *Disease*: Sedative, hypnotic or anxiolytic-induced anxiety disorder, Anxiety and Fear-Related Disorder, Depressive Disorder with prominent anxiety symptoms, Post-Traumatic Stress Disorder, Sedative, Hypnotic or Anxiolytic Intoxication, Sedative, Hypnotic or Anxiolytic Withdrawal, Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, Sedative, Hypnotic or Anxiolytic Dependence, Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications.\n    *   *Symptom*: apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, avoidance behaviour, panic attacks.\n    *   *Diagnostic Criteria*: Essential Features of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder.\n    *   *Medication*: sedatives, hypnotics or anxiolytics.\n3.  **Identify Relations**:\n    *   Symptoms -> Disease (`is_core_symptom_of`)\n    *   Diagnostic Criteria -> Disease (`required_for_diagnosis_of`)\n    *   Disease -> Disease (`differentiates_from` for boundaries/differentials, `co_occurs_with_frequency` for comorbidities like harmful use/dependence).\n4.  **Format Properties**:\n    *   Disease: Course Requirements (\"develop during or soon after intoxication with or withdrawal\", \"usually resolve or improve after sustained cessation\"), Comorbidity Types (\"Episode of Harmful Use...\", etc.).\n    *   Diagnostic Criteria: Required Core Symptoms, Functional Impairment Requirements, Exclusion Details.\n5.  **Construct JSON**: Ensure all labels, relation types, and relation names strictly match the provided schema. No markdown formatting in the final output.\n6.  **Review against constraints**: No markdown fences, strict JSON, English only, exact relation names.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic-induced anxiety disorder",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics; usually resolve or improve after sustained cessation of sedative, hypnotic or anxiolytic use",
+            "Comorbidity Types": "Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics, Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics, Sedative, Hypnotic or Anxiolytic Dependence",
+            "Prognosis Factors": "use in higher amounts or over longer periods of time is more likely to be associated with the development"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Anxiety and Fear-Related Disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Depressive Disorder with prominent anxiety symptoms",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Post-Traumatic Stress Disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Intoxication",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D8",
+          "label": "Disease",
+          "name": "Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D9",
+          "label": "Disease",
+          "name": "Sedative, Hypnotic or Anxiolytic Dependence",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D10",
+          "label": "Disease",
+          "name": "Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "apprehension or worry",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": "intensity or duration is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal"
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "fear",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": "intensity or duration is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal"
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "physiological symptoms of excessive autonomic arousal",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": "intensity or duration is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal"
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "avoidance behaviour",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": "intensity or duration is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal"
+          }
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "panic attacks",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": "intensity or duration is substantially in excess of anxiety symptoms that are characteristic of intoxication or withdrawal"
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Essential Features of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder",
+          "properties": {
+            "Required Core Symptoms": "anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from sedatives, hypnotics or anxiolytics",
+            "Functional Impairment Requirements": "cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning",
+            "Exclusion Details": "not better accounted for by another mental disorder; not a manifestation of another medical condition; must be in excess of side effects or ‘hangover effects’ of Sedatives, Hypnotics or Anxiolytics"
+          }
+        },
+        {
+          "id": "M1",
+          "label": "Medication",
+          "name": "sedatives, hypnotics or anxiolytics",
+          "properties": {
+            "Generic Name": "",
+            "Indications": "",
+            "Contraindications": "",
+            "Dosage for Special Populations": "",
+            "Common Side Effects": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S4",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S5",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "Essential (Required) Features: The presentation is characterized by anxiety symptoms... The intensity or duration of the anxiety symptoms is substantially in excess... The symptoms are not better accounted for by another mental disorder... The symptoms are not a manifestation of another medical condition... The symptoms cause significant distress or significant impairment"
+        },
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as an Anxiety or Fear-Related Disorder"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as... a Depressive Disorder with prominent anxiety symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as... Post-Traumatic Stress Disorder"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal: Mental or behavioural symptoms that occur during Sedative, Hypnotic or Anxiolytic Intoxication... should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder if the intensity or duration of the symptoms is substantially in excess"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Sedative, Hypnotic or Anxiolytic Intoxication and Sedative, Hypnotic or Anxiolytic Withdrawal: Mental or behavioural symptoms that occur during... Sedative, Hypnotic or Anxiolytic Withdrawal should only be used as a basis for diagnosing a Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder if the intensity or duration of the symptoms is substantially in excess"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Co-occurrence Frequency",
+          "relation": "co_occurs_with_frequency",
+          "evidence": "When making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include Episode of Harmful Use of Sedatives, Hypnotics or Anxiolytics"
+        },
+        {
+          "source": "D1",
+          "target": "D8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Co-occurrence Frequency",
+          "relation": "co_occurs_with_frequency",
+          "evidence": "When making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include... Harmful Pattern of Use of Sedatives, Hypnotics or Anxiolytics"
+        },
+        {
+          "source": "D1",
+          "target": "D9",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Co-occurrence Frequency",
+          "relation": "co_occurs_with_frequency",
+          "evidence": "When making a diagnosis of Sedative, Hypnotic or Anxiolytic-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of sedative, hypnotic or anxiolytic use should also be assigned. These include... Sedative, Hypnotic or Anxiolytic Dependence"
+        },
+        {
+          "source": "D10",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 414,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1506172532",
+    "code": "6C44.71",
+    "title": "Sedative, hypnotic or anxiolytic-induced anxiety disorder",
+    "input_chars": 9319,
+    "original_input_chars": 9319,
+    "cot_style": "template",
+    "response_had_think_tag": true,
+    "response_had_output_tag": false,
+    "response_had_thought_parts": true
+  }
+]

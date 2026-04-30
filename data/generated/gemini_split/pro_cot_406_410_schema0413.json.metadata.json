@@ -1,0 +1,62 @@
+{
+  "input": "Mental_KG-main/data/gemini_split/mental_disorders_20251125_165535.long_text.json",
+  "model": "gemini-3-pro-preview",
+  "offset": 405,
+  "requested_samples": 5,
+  "max_output_tokens": 65535,
+  "records": 5,
+  "failures": 0,
+  "generation_diagnostics": [
+    {
+      "global_idx": 405,
+      "code": "6C44.40",
+      "prompt_chars": 1220,
+      "finish_reason": "STOP",
+      "prompt_token_count": 1271,
+      "candidates_token_count": 665,
+      "total_token_count": 2656,
+      "thoughts_token_count": 720
+    },
+    {
+      "global_idx": 406,
+      "code": "6C44.41",
+      "prompt_chars": 1448,
+      "finish_reason": "STOP",
+      "prompt_token_count": 1313,
+      "candidates_token_count": 1539,
+      "total_token_count": 3815,
+      "thoughts_token_count": 963
+    },
+    {
+      "global_idx": 407,
+      "code": "6C44.42",
+      "prompt_chars": 1266,
+      "finish_reason": "STOP",
+      "prompt_token_count": 1285,
+      "candidates_token_count": 1559,
+      "total_token_count": 3502,
+      "thoughts_token_count": 658
+    },
+    {
+      "global_idx": 408,
+      "code": "6C44.43",
+      "prompt_chars": 1424,
+      "finish_reason": "STOP",
+      "prompt_token_count": 1313,
+      "candidates_token_count": 2066,
+      "total_token_count": 4266,
+      "thoughts_token_count": 887
+    },
+    {
+      "global_idx": 409,
+      "code": "6C44.4Z",
+      "prompt_chars": 1049,
+      "finish_reason": "STOP",
+      "prompt_token_count": 1242,
+      "candidates_token_count": 148,
+      "total_token_count": 1552,
+      "thoughts_token_count": 162
+    }
+  ],
+  "failures_detail": []
+}

@@ -1,0 +1,563 @@
+[
+  {
+    "input": "Harmful pattern of use of cocaine, episodic\n\nA pattern of episodic or intermittent cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others. The pattern of episodic cocaine use is evident over a period of at least 12 months. Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication; (2) direct or secondary toxic effects on body organs and systems; or (3) a harmful route of administration. Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication on the part of the person to whom the diagnosis of Harmful pattern of use of cocaine applies.",
+    "input_used": "Harmful pattern of use of cocaine, episodic\n\nA pattern of episodic or intermittent cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others. The pattern of episodic cocaine use is evident over a period of at least 12 months. Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication; (2) direct or secondary toxic effects on body organs and systems; or (3) a harmful route of administration. Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication on the part of the person to whom the diagnosis of Harmful pattern of use of cocaine applies.",
+    "cot": "**My Analysis of the \"Harmful Pattern of Use of Cocaine, Episodic\" Text**\n\nOkay, let's break this down. First, the core task: I need to extract information from this medical text about \"Harmful pattern of use of cocaine, episodic\" and convert it into a strict JSON format based on a predefined schema. No inferences are allowed; I'm strictly mapping what's there.\n\nI've identified two key entities: a *Disease*, which is \"Harmful pattern of use of cocaine, episodic\" (and I'll have to see if there's a DSM-5 code later but will leave it empty if not provided, or simply use the title) and the *Diagnostic Criteria* related to that disease.\n\nThe text provides the details. The critical criteria are: a \"pattern of episodic or intermittent cocaine use that has caused damage to a person’s physical or mental health or has resulted in behavior leading to harm to the health of others,\" which should be evident \"over a period of at least 12 months.\" There's further detail about harm to the individual, caused by behavior related to intoxication, toxic effects, or harmful administration routes. There's also mention of harm to others.\n\nNow for the mapping. My schema involves specific labels and properties. I'll create an *Entity 1*, which is the *Disease*, \"Harmful pattern of use of cocaine, episodic.\" This entity has a property, its course requirement, \"evident over a period of at least 12 months.\" Then, I have *Entity 2*, the *Diagnostic Criteria*, which I'll name “Harmful pattern of use of cocaine, episodic criteria.” Its *Properties* will include the \"pattern of episodic or intermittent cocaine use...harm to others\" and the specific components of harm.\n\nNext, I need to define the relation between these entities. Clearly, the *Diagnostic Criteria* is *required_for_diagnosis_of* the *Disease*. This means I will have a relation that links the criteria to the diagnosis.\n\nI'm thinking of breaking the criteria node down a bit further to see if there is potential for more granularity, or if I should keep the whole thing as one comprehensive criteria node.\n\nFinal Refinement: I'll refine this by creating two key entities: `E1` (Disease) - \"Harmful pattern of use of cocaine, episodic,\" and `E2` (Diagnostic Criteria) - \"Diagnostic Criteria for Harmful pattern of use of cocaine, episodic.\" Specifically I’ll include Required Core Symptoms: \"pattern of episodic or intermittent cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others,\" and include \"evident over a period of at least 12 months.\" I then define a relation: `E2` `required_for_diagnosis_of` `E1`.\n\nThe final step: Ensure I construct the JSON output strictly according to the format I know the system requires, paying close attention to the schema.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Harmful pattern of use of cocaine, episodic",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cocaine, episodic",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "episodic",
+            "Course Requirements": "evident over a period of at least 12 months",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic Criteria for Harmful pattern of use of cocaine, episodic",
+          "properties": {
+            "Required Core Symptoms": "pattern of episodic or intermittent cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others; Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication; (2) direct or secondary toxic effects on body organs and systems; or (3) a harmful route of administration; Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "A pattern of episodic or intermittent cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others. The pattern of episodic cocaine use is evident over a period of at least 12 months. Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication; (2) direct or secondary toxic effects on body organs and systems; or (3) a harmful route of administration. Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication on the part of the person to whom the diagnosis of Harmful pattern of use of cocaine applies."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 420,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1179645529",
+    "code": "6C45.10",
+    "title": "Harmful pattern of use of cocaine, episodic",
+    "input_chars": 802,
+    "original_input_chars": 802,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Harmful pattern of use of cocaine, continuous\n\nA pattern of continuous (daily or almost daily) cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others. The pattern of continuous cocaine use is evident over a period of at least one month. Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication; (2) direct or secondary toxic effects on body organs and systems; or (3) a harmful route of administration. Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication on the part of the person to whom the diagnosis of Harmful pattern of use of cocaine applies.",
+    "input_used": "Harmful pattern of use of cocaine, continuous\n\nA pattern of continuous (daily or almost daily) cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others. The pattern of continuous cocaine use is evident over a period of at least one month. Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication; (2) direct or secondary toxic effects on body organs and systems; or (3) a harmful route of administration. Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication on the part of the person to whom the diagnosis of Harmful pattern of use of cocaine applies.",
+    "cot": "**My Analysis of Cocaine Use Disorder Criteria**\n\nOkay, let me break this down. First, I need to identify the key entities involved. I see \"Harmful pattern of use of cocaine, continuous\" as the central disease concept. Then I'm pulling out the key symptoms: continuous (daily or almost daily) cocaine use; damage to physical or mental health; and behavior leading to harm to others. The diagnostic criterion here seems to be the one-month duration requirement. Additional symptoms related to intoxication, toxic effects, harmful administration routes, and physical or mental harm are also included.\n\nNext, I'm mapping these components to a structured schema. The \"Harmful pattern of use of cocaine, continuous\" is the disease, with an \"empty\" DSM-5 code (since this isn't about DSM-5 at all, and is an ICD-11 concept); I'll simply leave this blank. Subtype is \"continuous,\" and course requirements specify the \"evident over a period of at least one month\" duration. \"Continuous cocaine use\" is clearly a daily or near-daily symptom. I'm noting the occurrence frequency where applicable. I'm treating the duration criterion as the key diagnostic criteria, requiring the core symptom of continuous cocaine use.\n\nNow I need to clarify the relationship between these entities. I am defining that \"continuous cocaine use\", \"damage to physical or mental health\", and \"behaviour leading to harm to the health of others\" are core symptoms of the \"Harmful pattern of use of cocaine, continuous\". The \"evident over a period of at least one month\" diagnostic criteria is *required* for the diagnosis. \"Behaviour related to intoxication\", \"direct or secondary toxic effects on body organs and systems\", \"harmful route of administration\", and \"physical harm, including trauma, or mental disorder\" are associated symptoms.\n\nNext, I'll need to double-check my work. Make sure all my labels are exact: Disease, Symptom, Diagnostic Criteria, and that I'm using the exact appropriate relationship types. It's crucial for the downstream processes.\n\nFinally, I'll build the JSON structure. I'll need to define a `source_id`, add an empty `code`, the `title`, then define an `entities` array and a `relations` array. I'll also assign unique IDs to each entity (D1, S1, S2, etc.) and use those IDs when defining the relations, linking symptoms to the disease entity. I will remove the markdown fences, ensure the JSON is valid, and check that I've maintained the correct labels. And of course, everything has to be perfect, or it won't work in the pipeline!",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Harmful pattern of use of cocaine, continuous",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cocaine, continuous",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "continuous",
+            "Course Requirements": "evident over a period of at least one month",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "continuous (daily or almost daily) cocaine use",
+          "properties": {
+            "Symptom Description": "A pattern of continuous cocaine use",
+            "Occurrence Frequency": "daily or almost daily",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "damage to a person’s physical or mental health",
+          "properties": {
+            "Symptom Description": "has caused damage to a person’s physical or mental health",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "behaviour leading to harm to the health of others",
+          "properties": {
+            "Symptom Description": "has resulted in behaviour leading to harm to the health of others",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "evident over a period of at least one month",
+          "properties": {
+            "Required Core Symptoms": "pattern of continuous cocaine use",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "behaviour related to intoxication",
+          "properties": {
+            "Symptom Description": "Harm to health of the individual occurs due to behaviour related to intoxication",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "direct or secondary toxic effects on body organs and systems",
+          "properties": {
+            "Symptom Description": "Harm to health of the individual occurs due to direct or secondary toxic effects on body organs and systems",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S6",
+          "label": "Symptom",
+          "name": "harmful route of administration",
+          "properties": {
+            "Symptom Description": "Harm to health of the individual occurs due to a harmful route of administration",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S7",
+          "label": "Symptom",
+          "name": "physical harm, including trauma, or mental disorder",
+          "properties": {
+            "Symptom Description": "Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "A pattern of continuous (daily or almost daily) cocaine use that has caused damage to a person’s physical or mental health or has resulted in behaviour leading to harm to the health of others."
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "A pattern of continuous (daily or almost daily) cocaine use that has caused damage to a person’s physical or mental health"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "or has resulted in behaviour leading to harm to the health of others."
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The pattern of continuous cocaine use is evident over a period of at least one month."
+        },
+        {
+          "source": "S4",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Harm to health of the individual occurs due to one or more of the following: (1) behaviour related to intoxication;"
+        },
+        {
+          "source": "S5",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Harm to health of the individual occurs due to one or more of the following: ... (2) direct or secondary toxic effects on body organs and systems;"
+        },
+        {
+          "source": "S6",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Harm to health of the individual occurs due to one or more of the following: ... (3) a harmful route of administration."
+        },
+        {
+          "source": "S7",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "Harm to health of others includes any form of physical harm, including trauma, or mental disorder that is directly attributable to behaviour related to cocaine intoxication on the part of the person to whom the diagnosis of Harmful pattern of use of cocaine applies."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 421,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/378773400",
+    "code": "6C45.11",
+    "title": "Harmful pattern of use of cocaine, continuous",
+    "input_chars": 816,
+    "original_input_chars": 816,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": false,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Harmful pattern of use of cocaine, unspecified",
+    "input_used": "Harmful pattern of use of cocaine, unspecified",
+    "cot": "**My Analysis of \"Harmful pattern of use of cocaine, unspecified\"**\n\nOkay, let's break this down. First, I see \"Harmful pattern of use of cocaine, unspecified.\" That's classic medical text, probably a diagnosis or classification entry. My initial thought is it's a very succinct label, perhaps from a system like ICD-11 or similar, maybe not DSM-5.\n\nNext, I need to identify the core entities. \"Harmful pattern of use of cocaine, unspecified\" is clearly a single entity: a disease or condition. Now, I need to extract any properties. But there isn't much to grab here. I've got the name of the condition, a high-level descriptor, which could provide the severity or specificity. There's no DSM-5 code, no subtypes, no course of the disease, no comorbidities, or any prognostic information explicitly mentioned. It's simply \"Harmful pattern of use of cocaine, unspecified.\"\n\nSince I'm only dealing with one entity and the provided text provides no other context, there are no relations to define. The output is straightforward. All that’s left is formatting the output as JSON, and I should be good to go. It should be a strict JSON structure, with the right labels, no inferred properties, and no relations.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Harmful pattern of use of cocaine, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cocaine, unspecified",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 422,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/275218837/unspecified",
+    "code": "6C45.1Z",
+    "title": "Harmful pattern of use of cocaine, unspecified",
+    "input_chars": 46,
+    "original_input_chars": 46,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine dependence\n\nCocaine dependence is a disorder of regulation of cocaine use arising from repeated or continuous use of cocaine. The characteristic feature is a strong internal drive to use cocaine, which is manifested by impaired ability to control use, increasing priority given to use over other activities and persistence of use despite harm or negative consequences. These experiences are often accompanied by a subjective sensation of urge or craving to use cocaine. Physiological features of dependence may also be present, including tolerance to the effects of cocaine, withdrawal symptoms following cessation or reduction in use of cocaine, or repeated use of cocaine or pharmacologically similar substances to prevent or alleviate withdrawal symptoms. The features of dependence are usually evident over a period of at least 12 months but the diagnosis may be made if cocaine use is continuous (daily or almost daily) for at least 3 months.\n\n## Essential (Required) Features:\n\n- A pattern of recurrent episodic or continuous use of cocaine with evidence of impaired regulation of cocaine use that is manifested by two or more of the following: \n - Impaired control over cocaine use (i.e., onset, frequency, intensity, duration, termination, context); \n - Increasing precedence of cocaine use over other aspects of life, including maintenullce of health, and daily activities and responsibilities, such that cocaine use continues or escalates despite the occurrence of harm or negative consequences (e.g., repeated relationship disruption, occupational or scholastic consequences, negative impact on health);\n - Physiological features indicative of neuroadaptation to the substance, including: 1) tolerance to the effects of cocaine or a need to use increasing amounts of cocaine to achieve the same effect; 2) withdrawal symptoms following cessation or reduction in use of cocaine (see Cocaine Withdrawal), or 3) repeated use of cocaine or pharmacologically similar substances to prevent or alleviate withdrawal symptoms. \n- The features of dependence are usually evident over a period of at least 12 months but the diagnosis may be made if use is continuous (daily or almost daily) for at least 3 months.\n\n## Course Specifiers:\n\nA specifier is also used to describe the pattern of substance use in the context of Cocaine Dependence. Unlike alcohol, separate codes for continuous and episodic current use are not provided. \n\n### 6C45.20 Cocaine Dependence, current use\n\nCurrent Cocaine Dependence with episodic or continuous use of cocaine within the past month.\n\n### 6C45.21 Cocaine Dependence, early full remission \n\nAfter a diagnosis of Cocaine Dependence and often following a treatment episode or other intervention (including self-help intervention), the individual has been abstinent from cocaine during a period lasting from between 1 and 12 months.\n\n### 6C45.22 Cocaine Dependence, sustained partial remission \n\nAfter a diagnosis of Cocaine Dependence, and often following a treatment episode or other intervention (including self-help intervention), there is a significant reduction in cocaine use for more than 12 months, such that even though intermittent or continuous use has occurred during this period, the diagnostic requirements for dependence have not been met.\n\n### 6C45.22 Cocaine Dependence, sustained full remission \n\nAfter a diagnosis of Cocaine Dependence, and often following a treatment episode or other intervention (including self-intervention), the person has been abstinent from cocaine for 12 months or longer.\n\n### 6C45.2Z Cocaine Dependence, unspecified\n\n<br>\n\n## Additional Clinical Features:\n\n- A subjective sensation of urge or craving to use cocaine often, but not always, accompanies the Essential Features of Cocaine Dependence.\n- When present as an aspect of Cocaine Dependence, withdrawal symptoms must be consistent with the known withdrawal state for cocaine (see Cocaine Withdrawal). \n- Tolerance varies as a function of individual factors (e.g., substance use history, genetics) and should be differentiated from initial levels of response during intoxication, which also exhibit significant individual variability. Laboratory testing that reveals high levels of the substance in bodily fluids with no evidence of significant symptoms of intoxication may be suggestive of tolerance. Tolerance to the effects to substances as indicated by different psychophysiological responses can develop at varying rates (e.g., tolerance to respiratory depression caused by opioid intoxication may develop prior to tolerance to the sedating effects of the drug). With abstinence, tolerance effects diminish over time. \n- Individuals with certain comorbid medical conditions (e.g., chronic liver disease) typically have reduced tolerances to substances.\n- Physical or mental health consequences (beyond the Essential Features of Substance Dependence) typically occur in persons with Substance Dependence but are not required for the diagnosis. Similarly, functional impairment in one or several domains of life (e.g., work, domestic responsibilities, child-rearing) is commonly seen in persons with Substance Dependence, but is not required in order to assign the diagnosis. \n- Individuals with Substance Dependence have elevated rates of many other mental disorders, including Conduct-Dissocial Disorder, Attention Deficit Hyperactivity Disorder, Impulse Control Disorders, Post-Traumatic Stress Disorder, Social Anxiety Disorder, Generalized Anxiety Disorder, Mood Disorders, Psychotic Disorders, and Personality Disorder with prominent dissocial features, as well as subthreshold symptoms. The specific pattern of co-occurrence depends on the specific substance involved, and reflects common risk factors and common causal pathways. These are distinguished from Substance-Induced Mental Disorders, in which the symptoms are a result of the direct physiological effects of the substance on the central nervous system. \n- A pattern of substance use that includes frequent or high dose administration occurs more often among certain subgroups (e.g., adolescents). In these cases, peer group dynamics may contribute to the maintenullce of substance use. Regardless of the social contributions to the behaviour, a pattern of substance use that is consistent with subgroup norms should not be considered as presumptive evidence of Substance Dependence unless all diagnostic requirements for the disorder are met.\n\n## Boundary with Normality (Threshold): \n\n- Frequent or even daily substance use of a cocaine does not automatically imply a diagnosis of Cocaine Dependence. There must also be evidence of the Essential Features of Cocaine Dependence such as impaired control over use, increasing precedence of use over other life priorities, or physiological features.\n- The presence of physiological features such as tolerance and withdrawal is sometimes referred to as ‘physiological dependence’. These features may occur, for example, in response to prolonged therapeutic use of certain medications, such as in patients who are appropriately prescribed opioid analgesics for cancer pain. By themselves, however, these features are not sufficient for a diagnosis of Cocaine Dependence, which also requires either impaired control over substance use or increasing precedence of cocaine use over other activities. \n\n## Course Features:\n\n- The course of Substance Dependence varies by substance, frequency, intensity, and duration of use. The central features of the dependence syndrome may be overshadowed by the harms to physical and mental health that patients with dependence often experience and for which they frequently seek treatment. Numerous medical conditions can occur due to substance use in the course of Substance Dependence. These conditions tend to be specific for each substance, although some are shared across substances. Negative consequences to physical health reflect either the known pharmacological effects of the relevant substance, the toxic effects of the substance on tissues and organs, or the route of administration (e.g., intravenous self-administration). Examples include alcoholic cirrhosis, infective endocarditis, and HIV/AIDS. Medical conditions caused by substance use should be diagnosed separately.\n\n## Developmental Presentations:\n\n- Substance Dependence may develop more rapidly during adolescence than is usual during adulthood, especially when there are familial or other risk factors for Substance Dependence. \n- Tolerance to psychoactive substances may develop rapidly in adolescents and young adults, and decline equally rapidly when substance use ceases or is reduced in quantity or frequency.\n- Withdrawal symptoms are well recognized in neonates born to women with Substance Dependence who have used psychoactive substances during pregnullcy. However, the presence of a withdrawal state in a neonate should not be the sole basis for a diagnosis of Substance Dependence in the mother. \n- Older adults often have reduced tolerance to substances. \n\n## Sex- and/or Gender-Related Features:\n\n- Substance Dependence has similar features in men and women, although the intensity of substance use and duration of use necessary to result in dependence may differ by sex. \n- Women are less likely to be involved with the legal system in relation to substance use and therefore may be less likely to come to clinical attention than men. In clinical contexts, women may be reluctant to admit using substances due to prevailing social attitudes and proscriptions. \n- In some societies it may be culturally unacceptable for women to admit to substance use. Specific probing may be necessary to elicit a history of substance use and dependence.\n\n## Boundaries with Other Disorders and with Normality:\n\n- ***Boundary with Cocaine Intoxication:*** Episodic or continuous intoxication with cocaine is a typical feature of Cocaine Dependence, but is not an Essential Feature. Conversely, even if frequent and severe, Cocaine Intoxication alone is not a basis for a diagnosis of Cocaine Dependence. If all diagnostic requirements of both conditions are met for the same episode of care, Cocaine Dependence should be assigned as the primary diagnosis, with an associated diagnosis of Cocaine Intoxication (e.g., Cocaine Dependence with Cocaine Intoxication) if appropriate to the specific clinical situation (e.g., in emergency settings). \n- ***Boundary with Harmful Use of Cocaine:*** Cocaine Dependence is often associated with physical and mental health consequences, such as those seen in Harmful Pattern of Use of Cocaine. In the absence of the Essential Features of Cocaine Dependence, a diagnosis of Harmful Use of Cocaine can be given when there has been demonstrable harm to the individual’s physical or mental health or that of others. Harmful Pattern of Use of Cocaine and Cocaine Dependence should not be diagnosed together.\n- ***Boundary with Cocaine Withdrawal:*** Many individuals with Cocaine Dependence develop Cocaine Withdrawal upon cessation or reduction in the amount of a cocaine consumed. In such cases, both Cocaine Dependence and Cocaine Withdrawal should be diagnosed. However, Cocaine Withdrawal can be diagnosed in the absence of a diagnosis of Cocaine Dependence.\n- ***Boundary with Cocaine-Induced Mental Disorders:*** The impact of repeated or continuous use of substances characteristic of Cocaine Dependence may include Cocaine-Induced Mental Disorders, in which case both Cocaine Dependence and the relevant Cocaine-Induced Mental Disorder should be diagnosed (e.g., Cocaine Dependence with Cocaine-Induced Delirium).",
+    "input_used": "Cocaine dependence\n\nCocaine dependence is a disorder of regulation of cocaine use arising from repeated or continuous use of cocaine. The characteristic feature is a strong internal drive to use cocaine, which is manifested by impaired ability to control use, increasing priority given to use over other activities and persistence of use despite harm or negative consequences. These experiences are often accompanied by a subjective sensation of urge or craving to use cocaine. Physiological features of dependence may also be present, including tolerance to the effects of cocaine, withdrawal symptoms following cessation or reduction in use of cocaine, or repeated use of cocaine or pharmacologically similar substances to prevent or alleviate withdrawal symptoms. The features of dependence are usually evident over a period of at least 12 months but the diagnosis may be made if cocaine use is continuous (daily or almost daily) for at least 3 months.\n\n## Essential (Required) Features:\n\n- A pattern of recurrent episodic or continuous use of cocaine with evidence of impaired regulation of cocaine use that is manifested by two or more of the following: \n - Impaired control over cocaine use (i.e., onset, frequency, intensity, duration, termination, context); \n - Increasing precedence of cocaine use over other aspects of life, including maintenullce of health, and daily activities and responsibilities, such that cocaine use continues or escalates despite the occurrence of harm or negative consequences (e.g., repeated relationship disruption, occupational or scholastic consequences, negative impact on health);\n - Physiological features indicative of neuroadaptation to the substance, including: 1) tolerance to the effects of cocaine or a need to use increasing amounts of cocaine to achieve the same effect; 2) withdrawal symptoms following cessation or reduction in use of cocaine (see Cocaine Withdrawal), or 3) repeated use of cocaine or pharmacologically similar substances to prevent or alleviate withdrawal symptoms. \n- The features of dependence are usually evident over a period of at least 12 months but the diagnosis may be made if use is continuous (daily or almost daily) for at least 3 months.\n\n## Course Specifiers:\n\nA specifier is also used to describe the pattern of substance use in the context of Cocaine Dependence. Unlike alcohol, separate codes for continuous and episodic current use are not provided. \n\n### 6C45.20 Cocaine Dependence, current use\n\nCurrent Cocaine Dependence with episodic or continuous use of cocaine within the past month.\n\n### 6C45.21 Cocaine Dependence, early full remission \n\nAfter a diagnosis of Cocaine Dependence and often following a treatment episode or other intervention (including self-help intervention), the individual has been abstinent from cocaine during a period lasting from between 1 and 12 months.\n\n### 6C45.22 Cocaine Dependence, sustained partial remission \n\nAfter a diagnosis of Cocaine Dependence, and often following a treatment episode or other intervention (including self-help intervention), there is a significant reduction in cocaine use for more than 12 months, such that even though intermittent or continuous use has occurred during this period, the diagnostic requirements for dependence have not been met.\n\n### 6C45.22 Cocaine Dependence, sustained full remission \n\nAfter a diagnosis of Cocaine Dependence, and often following a treatment episode or other intervention (including self-intervention), the person has been abstinent from cocaine for 12 months or longer.\n\n### 6C45.2Z Cocaine Dependence, unspecified\n\n<br>\n\n## Additional Clinical Features:\n\n- A subjective sensation of urge or craving to use cocaine often, but not always, accompanies the Essential Features of Cocaine Dependence.\n- When present as an aspect of Cocaine Dependence, withdrawal symptoms must be consistent with the known withdrawal state for cocaine (see Cocaine Withdrawal). \n- Tolerance varies as a function of individual factors (e.g., substance use history, genetics) and should be differentiated from initial levels of response during intoxication, which also exhibit significant individual variability. Laboratory testing that reveals high levels of the substance in bodily fluids with no evidence of significant symptoms of intoxication may be suggestive of tolerance. Tolerance to the effects to substances as indicated by different psychophysiological responses can develop at varying rates (e.g., tolerance to respiratory depression caused by opioid intoxication may develop prior to tolerance to the sedating effects of the drug). With abstinence, tolerance effects diminish over time. \n- Individuals with certain comorbid medical conditions (e.g., chronic liver disease) typically have reduced tolerances to substances.\n- Physical or mental health consequences (beyond the Essential Features of Substance Dependence) typically occur in persons with Substance Dependence but are not required for the diagnosis. Similarly, functional impairment in one or several domains of life (e.g., work, domestic responsibilities, child-rearing) is commonly seen in persons with Substance Dependence, but is not required in order to assign the diagnosis. \n- Individuals with Substance Dependence have elevated rates of many other mental disorders, including Conduct-Dissocial Disorder, Attention Deficit Hyperactivity Disorder, Impulse Control Disorders, Post-Traumatic Stress Disorder, Social Anxiety Disorder, Generalized Anxiety Disorder, Mood Disorders, Psychotic Disorders, and Personality Disorder with prominent dissocial features, as well as subthreshold symptoms. The specific pattern of co-occurrence depends on the specific substance involved, and reflects common risk factors and common causal pathways. These are distinguished from Substance-Induced Mental Disorders, in which the symptoms are a result of the direct physiological effects of the substance on the central nervous system. \n- A pattern of substance use that includes frequent or high dose administration occurs more often among certain subgroups (e.g., adolescents). In these cases, peer group dynamics may contribute to the maintenullce of substance use. Regardless of the social contributions to the behaviour, a pattern of substance use that is consistent with subgroup norms should not be considered as presumptive evidence of Substance Dependence unless all diagnostic requirements for the disorder are met.\n\n## Boundary with Normality (Threshold): \n\n- Frequent or even daily substance use of a cocaine does not automatically imply a diagnosis of Cocaine Dependence. There must also be evidence of the Essential Features of Cocaine Dependence such as impaired control over use, increasing precedence of use over other life priorities, or physiological features.\n- The presence of physiological features such as tolerance and withdrawal is sometimes referred to as ‘physiological dependence’. These features may occur, for example, in response to prolonged therapeutic use of certain medications, such as in patients who are appropriately prescribed opioid analgesics for cancer pain. By themselves, however, these features are not sufficient for a diagnosis of Cocaine Dependence, which also requires either impaired control over substance use or increasing precedence of cocaine use over other activities. \n\n## Course Features:\n\n- The course of Substance Dependence varies by substance, frequency, intensity, and duration of use. The central features of the dependence syndrome may be overshadowed by the harms to physical and mental health that patients with dependence often experience and for which they frequently seek treatment. Numerous medical conditions can occur due to substance use in the course of Substance Dependence. These conditions tend to be specific for each substance, although some are shared across substances. Negative consequences to physical health reflect either the known pharmacological effects of the relevant substance, the toxic effects of the substance on tissues and organs, or the route of administration (e.g., intravenous self-administration). Examples include alcoholic cirrhosis, infective endocarditis, and HIV/AIDS. Medical conditions caused by substance use should be diagnosed separately.\n\n## Developmental Presentations:\n\n- Substance Dependence may develop more rapidly during adolescence than is usual during adulthood, especially when there are familial or other risk factors for Substance Dependence. \n- Tolerance to psychoactive substances may develop rapidly in adolescents and young adults, and decline equally rapidly when substance use ceases or is reduced in quantity or frequency.\n- Withdrawal symptoms are well recognized in neonates born to women with Substance Dependence who have used psychoactive substances during pregnullcy. However, the presence of a withdrawal state in a neonate should not be the sole basis for a diagnosis of Substance Dependence in the mother. \n- Older adults often have reduced tolerance to substances. \n\n## Sex- and/or Gender-Related Features:\n\n- Substance Dependence has similar features in men and women, although the intensity of substance use and duration of use necessary to result in dependence may differ by sex. \n- Women are less likely to be involved with the legal system in relation to substance use and therefore may be less likely to come to clinical attention than men. In clinical contexts, women may be reluctant to admit using substances due to prevailing social attitudes and proscriptions. \n- In some societies it may be culturally unacceptable for women to admit to substance use. Specific probing may be necessary to elicit a history of substance use and dependence.\n\n## Boundaries with Other Disorders and with Normality:\n\n- ***Boundary with Cocaine Intoxication:*** Episodic or continuous intoxication with cocaine is a typical feature of Cocaine Dependence, but is not an Essential Feature. Conversely, even if frequent and severe, Cocaine Intoxication alone is not a basis for a diagnosis of Cocaine Dependence. If all diagnostic requirements of both conditions are met for the same episode of care, Cocaine Dependence should be assigned as the primary diagnosis, with an associated diagnosis of Cocaine Intoxication (e.g., Cocaine Dependence with Cocaine Intoxication) if appropriate to the specific clinical situation (e.g., in emergency settings). \n- ***Boundary with Harmful Use of Cocaine:*** Cocaine Dependence is often associated with physical and mental health consequences, such as those seen in Harmful Pattern of Use of Cocaine. In the absence of the Essential Features of Cocaine Dependence, a diagnosis of Harmful Use of Cocaine can be given when there has been demonstrable harm to the individual’s physical or mental health or that of others. Harmful Pattern of Use of Cocaine and Cocaine Dependence should not be diagnosed together.\n- ***Boundary with Cocaine Withdrawal:*** Many individuals with Cocaine Dependence develop Cocaine Withdrawal upon cessation or reduction in the amount of a cocaine consumed. In such cases, both Cocaine Dependence and Cocaine Withdrawal should be diagnosed. However, Cocaine Withdrawal can be diagnosed in the absence of a diagnosis of Cocaine Dependence.\n- ***Boundary with Cocaine-Induced Mental Disorders:*** The impact of repeated or continuous use of substances characteristic of Cocaine Dependence may include Cocaine-Induced Mental Disorders, in which case both Cocaine Dependence and the relevant Cocaine-Induced Mental Disorder should be diagnosed (e.g., Cocaine Dependence with Cocaine-Induced Delirium).",
+    "cot": "1.  **Analyze the Request**: The user wants to extract medical entities and relations from a text about \"Cocaine dependence\" into a strict JSON format based on a provided schema. No markdown code fences are allowed in the output.\n2.  **Identify Entities**:\n    *   *Disease*: Cocaine dependence (Main), Cocaine Intoxication, Harmful Use of Cocaine, Cocaine Withdrawal, Cocaine-Induced Mental Disorders.\n    *   *Symptom*: Impaired control over cocaine use, Increasing precedence of cocaine use, Physiological features indicative of neuroadaptation, Subjective sensation of urge or craving.\n    *   *Diagnostic Criteria*: Diagnostic requirements for Cocaine Dependence.\n    *   *Patient Information*: Adolescents, Older adults, Neonates, Women, Individuals with chronic liver disease.\n    *   *Interview Tool*: Specific probing for substance use.\n3.  **Extract Properties**:\n    *   *Cocaine dependence*: Subtypes (6C45.20, 6C45.21, 6C45.22, 6C45.2Z), Course Requirements (12 months or 3 months continuous), Comorbidity Types (Conduct-Dissocial Disorder, ADHD, etc.).\n    *   *Symptoms*: Descriptions directly from the text.\n    *   *Differential Diagnoses*: Key differentiation points extracted from the \"Boundaries with Other Disorders\" section.\n4.  **Establish Relations**:\n    *   Symptoms -> Disease (`is_core_symptom_of`, `is_associated_symptom_of`).\n    *   Disease -> Disease (`differentiates_from`).\n    *   Diagnostic Criteria -> Disease (`required_for_diagnosis_of`).\n    *   Interview Tool -> Patient Information (`informed_by_patient_demographics`).\n5.  **Format Output**: Construct the JSON object ensuring all labels, property names, and relation types strictly match the prompt's schema.\n6.  **Final Review**: Check against constraints (no markdown fences, English only, strict JSON, correct relation source/target IDs).",
+    "output": {
+      "source_id": "cocaine_dependence",
+      "code": "6C45.2",
+      "title": "Cocaine dependence",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine dependence",
+          "properties": {
+            "Subtype": "6C45.20 Cocaine Dependence, current use; 6C45.21 Cocaine Dependence, early full remission; 6C45.22 Cocaine Dependence, sustained partial remission; 6C45.22 Cocaine Dependence, sustained full remission; 6C45.2Z Cocaine Dependence, unspecified",
+            "Course Requirements": "The features of dependence are usually evident over a period of at least 12 months but the diagnosis may be made if cocaine use is continuous (daily or almost daily) for at least 3 months.",
+            "Comorbidity Types": "Conduct-Dissocial Disorder, Attention Deficit Hyperactivity Disorder, Impulse Control Disorders, Post-Traumatic Stress Disorder, Social Anxiety Disorder, Generalized Anxiety Disorder, Mood Disorders, Psychotic Disorders, and Personality Disorder with prominent dissocial features"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Symptom",
+          "name": "Impaired control over cocaine use",
+          "properties": {
+            "Symptom Description": "Impaired control over cocaine use (i.e., onset, frequency, intensity, duration, termination, context)"
+          }
+        },
+        {
+          "id": "E3",
+          "label": "Symptom",
+          "name": "Increasing precedence of cocaine use",
+          "properties": {
+            "Symptom Description": "Increasing precedence of cocaine use over other aspects of life, including maintenance of health, and daily activities and responsibilities, such that cocaine use continues or escalates despite the occurrence of harm or negative consequences"
+          }
+        },
+        {
+          "id": "E4",
+          "label": "Symptom",
+          "name": "Physiological features indicative of neuroadaptation",
+          "properties": {
+            "Symptom Description": "tolerance to the effects of cocaine or a need to use increasing amounts of cocaine to achieve the same effect; withdrawal symptoms following cessation or reduction in use of cocaine; or repeated use of cocaine or pharmacologically similar substances to prevent or alleviate withdrawal symptoms"
+          }
+        },
+        {
+          "id": "E5",
+          "label": "Symptom",
+          "name": "Subjective sensation of urge or craving",
+          "properties": {
+            "Symptom Description": "A subjective sensation of urge or craving to use cocaine often, but not always, accompanies the Essential Features of Cocaine Dependence."
+          }
+        },
+        {
+          "id": "E6",
+          "label": "Disease",
+          "name": "Cocaine Intoxication",
+          "properties": {
+            "Key Differentiation Points": "Episodic or continuous intoxication with cocaine is a typical feature of Cocaine Dependence, but is not an Essential Feature. Conversely, even if frequent and severe, Cocaine Intoxication alone is not a basis for a diagnosis of Cocaine Dependence."
+          }
+        },
+        {
+          "id": "E7",
+          "label": "Disease",
+          "name": "Harmful Use of Cocaine",
+          "properties": {
+            "Key Differentiation Points": "In the absence of the Essential Features of Cocaine Dependence, a diagnosis of Harmful Use of Cocaine can be given when there has been demonstrable harm to the individual’s physical or mental health or that of others. Harmful Pattern of Use of Cocaine and Cocaine Dependence should not be diagnosed together."
+          }
+        },
+        {
+          "id": "E8",
+          "label": "Disease",
+          "name": "Cocaine Withdrawal",
+          "properties": {
+            "Key Differentiation Points": "Many individuals with Cocaine Dependence develop Cocaine Withdrawal upon cessation or reduction in the amount of a cocaine consumed. In such cases, both Cocaine Dependence and Cocaine Withdrawal should be diagnosed. However, Cocaine Withdrawal can be diagnosed in the absence of a diagnosis of Cocaine Dependence."
+          }
+        },
+        {
+          "id": "E9",
+          "label": "Disease",
+          "name": "Cocaine-Induced Mental Disorders",
+          "properties": {
+            "Key Differentiation Points": "The impact of repeated or continuous use of substances characteristic of Cocaine Dependence may include Cocaine-Induced Mental Disorders, in which case both Cocaine Dependence and the relevant Cocaine-Induced Mental Disorder should be diagnosed."
+          }
+        },
+        {
+          "id": "E10",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Cocaine Dependence",
+          "properties": {
+            "Required Core Symptoms": "A pattern of recurrent episodic or continuous use of cocaine with evidence of impaired regulation of cocaine use that is manifested by two or more of the following: Impaired control over cocaine use; Increasing precedence of cocaine use; Physiological features indicative of neuroadaptation",
+            "Exclusion Details": "Harmful Pattern of Use of Cocaine and Cocaine Dependence should not be diagnosed together."
+          }
+        },
+        {
+          "id": "E11",
+          "label": "Patient Information",
+          "name": "Adolescents",
+          "properties": {
+            "Age Group": "Adolescents",
+            "Special Conditions": "Substance Dependence may develop more rapidly during adolescence than is usual during adulthood. Tolerance to psychoactive substances may develop rapidly in adolescents and young adults, and decline equally rapidly when substance use ceases or is reduced."
+          }
+        },
+        {
+          "id": "E12",
+          "label": "Patient Information",
+          "name": "Older adults",
+          "properties": {
+            "Age Group": "Older adults",
+            "Special Conditions": "Older adults often have reduced tolerance to substances."
+          }
+        },
+        {
+          "id": "E13",
+          "label": "Patient Information",
+          "name": "Women",
+          "properties": {
+            "Special Conditions": "Women are less likely to be involved with the legal system in relation to substance use and therefore may be less likely to come to clinical attention than men. In clinical contexts, women may be reluctant to admit using substances due to prevailing social attitudes and proscriptions."
+          }
+        },
+        {
+          "id": "E14",
+          "label": "Patient Information",
+          "name": "Neonates",
+          "properties": {
+            "Age Group": "Neonates",
+            "Special Conditions": "Withdrawal symptoms are well recognized in neonates born to women with Substance Dependence who have used psychoactive substances during pregnancy. However, the presence of a withdrawal state in a neonate should not be the sole basis for a diagnosis of Substance Dependence in the mother."
+          }
+        },
+        {
+          "id": "E15",
+          "label": "Patient Information",
+          "name": "Individuals with chronic liver disease",
+          "properties": {
+            "Comorbidities": "chronic liver disease",
+            "Special Conditions": "typically have reduced tolerances to substances"
+          }
+        },
+        {
+          "id": "E16",
+          "label": "Interview Tool",
+          "name": "Specific probing for substance use",
+          "properties": {
+            "Key Inquiry Directions": "Specific probing may be necessary to elicit a history of substance use and dependence."
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Impaired control over cocaine use (i.e., onset, frequency, intensity, duration, termination, context)"
+        },
+        {
+          "source": "E3",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Increasing precedence of cocaine use over other aspects of life, including maintenullce of health, and daily activities and responsibilities"
+        },
+        {
+          "source": "E4",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Physiological features indicative of neuroadaptation to the substance"
+        },
+        {
+          "source": "E5",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "A subjective sensation of urge or craving to use cocaine often, but not always, accompanies the Essential Features of Cocaine Dependence."
+        },
+        {
+          "source": "E1",
+          "target": "E6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Episodic or continuous intoxication with cocaine is a typical feature of Cocaine Dependence, but is not an Essential Feature. Conversely, even if frequent and severe, Cocaine Intoxication alone is not a basis for a diagnosis of Cocaine Dependence."
+        },
+        {
+          "source": "E1",
+          "target": "E7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "In the absence of the Essential Features of Cocaine Dependence, a diagnosis of Harmful Use of Cocaine can be given when there has been demonstrable harm to the individual’s physical or mental health or that of others. Harmful Pattern of Use of Cocaine and Cocaine Dependence should not be diagnosed together."
+        },
+        {
+          "source": "E1",
+          "target": "E8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Many individuals with Cocaine Dependence develop Cocaine Withdrawal upon cessation or reduction in the amount of a cocaine consumed. In such cases, both Cocaine Dependence and Cocaine Withdrawal should be diagnosed. However, Cocaine Withdrawal can be diagnosed in the absence of a diagnosis of Cocaine Dependence."
+        },
+        {
+          "source": "E1",
+          "target": "E9",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The impact of repeated or continuous use of substances characteristic of Cocaine Dependence may include Cocaine-Induced Mental Disorders, in which case both Cocaine Dependence and the relevant Cocaine-Induced Mental Disorder should be diagnosed"
+        },
+        {
+          "source": "E10",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "A pattern of recurrent episodic or continuous use of cocaine with evidence of impaired regulation of cocaine use that is manifested by two or more of the following"
+        },
+        {
+          "source": "E16",
+          "target": "E13",
+          "relation_type": "Interview Tool-Symptom-Patient Info",
+          "relation_name": "Informed By Patient Demographics",
+          "relation": "informed_by_patient_demographics",
+          "evidence": "In some societies it may be culturally unacceptable for women to admit to substance use. Specific probing may be necessary to elicit a history of substance use and dependence."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 423,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1691013484",
+    "code": "6C45.2",
+    "title": "Cocaine dependence",
+    "input_chars": 11621,
+    "original_input_chars": 11621,
+    "cot_style": "template",
+    "response_had_think_tag": true,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine dependence, current use\n\nCurrent cocaine dependence with cocaine use within the past month.",
+    "input_used": "Cocaine dependence, current use\n\nCurrent cocaine dependence with cocaine use within the past month.",
+    "cot": "**My Analysis of the \"Cocaine Dependence\" Text**\n\nOkay, let's break this down systematically. The input is short, but we need to extract the core clinical meaning. First, I see \"Cocaine dependence, current use\" – that's a *disease* entity. Specifically, it seems to be a subtype of Cocaine dependence, indicated by \"current use\". My expert intuition tells me that means it is a diagnosis.\n\nThen, the phrase \"cocaine use within the past month\" pops out. That’s a *symptom* – specifically a diagnostic criterion, or core symptom. It's a key indicator for this specific disease state. The \"within the past month\" part is essential; it defines the recency, and therefore, the clinical relevance.\n\nNow, let's map these concepts to the schema. We've got a Disease entity, \"Cocaine dependence, current use,\" with a \"current use\" subtype. On the other hand, we also have a Symptom entity, \"cocaine use within the past month\".\n\nThe critical relationship here is the symptom's relevance to the diagnosis. \"Cocaine use within the past month\" *is a core symptom of* \"Cocaine dependence, current use\". This is the Symptom-Disease relationship.\n\nFinally, the JSON structure. I have to make sure to build the JSON object correctly, ensuring that the labels are precise and conform to the request. No markdown, strict JSON format, and English-only. The goal is a clear, concise representation of the clinical information.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine dependence, current use",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine dependence, current use",
+          "properties": {
+            "Subtype": "current use"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Symptom",
+          "name": "cocaine use within the past month",
+          "properties": {
+            "Occurrence Frequency": "within the past month"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Current cocaine dependence with cocaine use within the past month."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 424,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1870512253",
+    "code": "6C45.20",
+    "title": "Cocaine dependence, current use",
+    "input_chars": 99,
+    "original_input_chars": 99,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  }
+]

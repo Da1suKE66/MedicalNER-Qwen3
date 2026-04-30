@@ -1,0 +1,575 @@
+[
+  {
+    "input": "Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is not accompanied by perceptual disturbances or seizures.",
+    "input_used": "Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is not accompanied by perceptual disturbances or seizures.",
+    "cot": "**My Analysis of Sedative, Hypnotic, or Anxiolytic Withdrawal**\n\nOkay, let's break this down. First, I'm given text describing \"Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\". My immediate thought is to identify the key elements. This is clearly a *subtype* of \"Sedative, hypnotic or anxiolytic withdrawal\", and the text specifically states that all diagnostic criteria for *the parent disease* are met, but without complications.\n\nI've identified:\n\n*   **Diseases:** \"Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\" and its parent, \"Sedative, hypnotic or anxiolytic withdrawal\".\n*   **Excluded Symptoms:** \"perceptual disturbances\" and \"seizures\" – critical in defining the \"uncomplicated\" nature.\n*   **Diagnostic Criteria:** \"All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is not accompanied by perceptual disturbances or seizures.\" This is key to identifying the *uncomplicated* state.\n\nNow, let's map these to a structured schema. I'll define:\n\n*   An entity for the *subtype* which is the \"Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\" disease. Properties include a 'Subtype' attribute, which is 'uncomplicated'.\n*   An entity for the *parent*: \"Sedative, hypnotic or anxiolytic withdrawal\".\n*   Entities for the excluded symptoms: \"perceptual disturbances\" and \"seizures\".\n*   An entity for the diagnostic criteria, \"Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\". And I can define properties here of Exclusion Details: 'not accompanied by perceptual disturbances or seizures'.\n\nThen comes the relations. \"Sedative, hypnotic or anxiolytic withdrawal\" *subsumes* \"Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\" – a simple disease hierarchy.\n\nThe diagnostic criteria *require* \"Sedative, hypnotic or anxiolytic withdrawal\" *for diagnosis*. And I need to be careful here... my schema has 'required_for_diagnosis_of' as diagnostic criteria to disease.\n\nCritically, the criteria *exclude* both \"perceptual disturbances\" and \"seizures\". This exclusion is fundamental. And that relationship is critical for differentiating the uncomplicated state.\n\nTherefore, finally, I have to refine these entities and the relations:\n\n*   E1: Disease: \"Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\"\n*   E2: Disease: \"Sedative, hypnotic or anxiolytic withdrawal\"\n*   E3: Symptom: \"perceptual disturbances\"\n*   E4: Symptom: \"seizures\"\n*   E5: Diagnostic Criteria: \"Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal, uncomplicated\"\n*   R1: E2 subsumes E1\n*   R2: E5 required\\_for\\_diagnosis\\_of E1\n*   R3: E5 excludes\\_if\\_present E3\n*   R4: E5 excludes\\_if\\_present E4\n\nThis should allow for the correct construction of a JSON, accurately reflecting this structured knowledge.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic withdrawal, uncomplicated",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal, uncomplicated",
+          "properties": {
+            "Subtype": "uncomplicated"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal",
+          "properties": {}
+        },
+        {
+          "id": "E3",
+          "label": "Symptom",
+          "name": "perceptual disturbances",
+          "properties": {}
+        },
+        {
+          "id": "E4",
+          "label": "Symptom",
+          "name": "seizures",
+          "properties": {}
+        },
+        {
+          "id": "E5",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal, uncomplicated",
+          "properties": {
+            "Exclusion Details": "not accompanied by perceptual disturbances or seizures"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "Sedative, hypnotic or anxiolytic withdrawal, uncomplicated"
+        },
+        {
+          "source": "E5",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is not accompanied by perceptual disturbances or seizures."
+        },
+        {
+          "source": "E5",
+          "target": "E3",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "the withdrawal state is not accompanied by perceptual disturbances"
+        },
+        {
+          "source": "E5",
+          "target": "E4",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "the withdrawal state is not accompanied by perceptual disturbances or seizures"
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 405,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/405069624",
+    "code": "6C44.40",
+    "title": "Sedative, hypnotic or anxiolytic withdrawal, uncomplicated",
+    "input_chars": 227,
+    "original_input_chars": 227,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by perceptual disturbances (e.g., visual or tactile hallucinations or illusions) with intact reality testing. There is no evidence of confusion and other diagnostic requirements for Delirium are not met. The withdrawal state is not accompanied by seizures.",
+    "input_used": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by perceptual disturbances (e.g., visual or tactile hallucinations or illusions) with intact reality testing. There is no evidence of confusion and other diagnostic requirements for Delirium are not met. The withdrawal state is not accompanied by seizures.",
+    "cot": "**My Diagnostic Assessment of Sedative, Hypnotic, or Anxiolytic Withdrawal with Perceptual Disturbances**\n\nAlright, let's break this down systematically. My initial task is to create a structured representation of this clinical presentation. I'm focusing on the condition described: \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances.\"\n\nFirst, I need to identify the key entities. I see a primary disease, \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances,\" which I'll relate back to its broader parent, \"Sedative, hypnotic or anxiolytic withdrawal.\" We'll also need to consider \"Delirium\" as a critical differential diagnosis here.\n\nNow, for the key symptoms. \"Perceptual disturbances\" is the core symptom driving this presentation, and is further delineated by \"visual or tactile hallucinations or illusions.\" Equally important, we are clearly stating \"intact reality testing\". We also need to note what _isn't_ present: \"confusion\" and \"seizures\". These are critical exclusion criteria.\n\nThe diagnostic requirements appear to revolve around several key factors, including the presence of perceptual disturbances and the exclusion of confusion, delirium, and seizures. I am building a clear distinction between the \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances\" and \"Delirium\", which will aid in the differential assessment.\n\nNow to formalize these relationships. \"Sedative, hypnotic or anxiolytic withdrawal\" is the broader category that encompasses the withdrawal *with* perceptual disturbances. \"Perceptual disturbances\" are core to the current description. \"Visual or tactile hallucinations or illusions\" and \"intact reality testing\" are associated symptoms. \"Confusion\" and \"seizures\" are explicit exclusion criteria. \"Delirium\" is what we are specifically differentiating from.\n\nFinally, I will summarize this into structured entities. I am defining and labelling the Diseases: D1 (Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances), D2 (Sedative, hypnotic or anxiolytic withdrawal), D3 (Delirium). I am assigning unique IDs and descriptive names to each entity. The key is in accurately constructing the schema. I then construct similar labels and structure for the symptoms, and finally, I will organize all of this into a valid and complete JSON format. This will give a succinct and complete representation of this clinical presentation.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Delirium",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "perceptual disturbances",
+          "properties": {
+            "Symptom Description": "perceptual disturbances",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "visual or tactile hallucinations or illusions",
+          "properties": {
+            "Symptom Description": "visual or tactile hallucinations or illusions",
+            "Occurrence Frequency": "",
+            "Severity Description": "",
+            "Diagnostic Value": ""
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "intact reality testing",
+          "properties": {
+            "Symptom Description": "intact reality testing",
+            "Occurrence Frequency": "",
+            "Severity Description": "",
+            "Diagnostic Value": ""
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "confusion",
+          "properties": {
+            "Symptom Description": "confusion",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "seizures",
+          "properties": {
+            "Symptom Description": "seizures",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances",
+          "properties": {
+            "Required Core Symptoms": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by perceptual disturbances",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": "There is no evidence of confusion and other diagnostic requirements for Delirium are not met. The withdrawal state is not accompanied by seizures."
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met"
+        },
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "the withdrawal state is accompanied by perceptual disturbances"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "(e.g., visual or tactile hallucinations or illusions)"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "with intact reality testing"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by perceptual disturbances (e.g., visual or tactile hallucinations or illusions) with intact reality testing. There is no evidence of confusion and other diagnostic requirements for Delirium are not met. The withdrawal state is not accompanied by seizures."
+        },
+        {
+          "source": "DC1",
+          "target": "S4",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "There is no evidence of confusion"
+        },
+        {
+          "source": "DC1",
+          "target": "S5",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The withdrawal state is not accompanied by seizures."
+        },
+        {
+          "source": "D3",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "other diagnostic requirements for Delirium are not met"
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 406,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1065937748",
+    "code": "6C44.41",
+    "title": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances",
+    "input_chars": 455,
+    "original_input_chars": 455,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic withdrawal, with seizures\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by seizures (i.e., generalised tonic-clonic seizures) but not by perceptual disturbances.",
+    "input_used": "Sedative, hypnotic or anxiolytic withdrawal, with seizures\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by seizures (i.e., generalised tonic-clonic seizures) but not by perceptual disturbances.",
+    "cot": "1.  **Analyze the input text:** The text describes \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\". It states that all diagnostic requirements for \"Sedative, hypnotic or anxiolytic withdrawal\" are met, accompanied by \"seizures (i.e., generalised tonic-clonic seizures)\", but not by \"perceptual disturbances\".\n2.  **Identify Entities:**\n    *   Disease: \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\" (Subtype of Sedative, hypnotic or anxiolytic withdrawal).\n    *   Disease: \"Sedative, hypnotic or anxiolytic withdrawal\" (Parent disease).\n    *   Symptom: \"seizures\" / \"generalised tonic-clonic seizures\" (Core symptom).\n    *   Symptom: \"perceptual disturbances\" (Excluded symptom).\n    *   Diagnostic Criteria: \"diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by seizures... but not by perceptual disturbances\"\n3.  **Map to Schema:**\n    *   *Disease*: \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\" (label: Disease)\n    *   *Disease*: \"Sedative, hypnotic or anxiolytic withdrawal\" (label: Disease)\n    *   *Symptom*: \"seizures (i.e., generalised tonic-clonic seizures)\" (label: Symptom)\n    *   *Symptom*: \"perceptual disturbances\" (label: Symptom)\n    *   *Diagnostic Criteria*: \"diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by seizures... but not by perceptual disturbances\" (label: Diagnostic Criteria)\n4.  **Identify Relations:**\n    *   \"Sedative, hypnotic or anxiolytic withdrawal\" subsumes \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\" (Disease Hierarchy -> Subsumes -> subsumes).\n    *   \"seizures (i.e., generalised tonic-clonic seizures)\" is a core symptom of \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\" (Symptom-Disease -> Core Symptom Of -> is_core_symptom_of).\n    *   \"perceptual disturbances\" is excluded if present for \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\" (Diagnostic Criteria-Disease-Symptom Triangle -> Excludes If Present -> excludes_if_present).\n    *   Diagnostic Criteria requires \"seizures (i.e., generalised tonic-clonic seizures)\" for diagnosis of \"Sedative, hypnotic or anxiolytic withdrawal, with seizures\" (Diagnostic Criteria-Disease-Symptom Triangle -> Required For Diagnosis Of -> required_for_diagnosis_of).\n5.  **Construct JSON:** Create the entities and relations arrays with appropriate IDs and properties.\n6.  **Review against constraints:** Ensure strict JSON, correct labels (Disease, Symptom, Diagnostic Criteria), correct relation types/names, and no markdown fences in the output block.",
+    "output": {
+      "source_id": "sedative_hypnotic_anxiolytic_withdrawal_seizures",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic withdrawal, with seizures",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal, with seizures",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "seizures (i.e., generalised tonic-clonic seizures)",
+          "properties": {
+            "Symptom Description": "generalised tonic-clonic seizures",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "perceptual disturbances",
+          "properties": {
+            "Symptom Description": "perceptual disturbances",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal, with seizures",
+          "properties": {
+            "Required Core Symptoms": "seizures (i.e., generalised tonic-clonic seizures)",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": "not by perceptual disturbances"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by seizures"
+        },
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "the withdrawal state is accompanied by seizures (i.e., generalised tonic-clonic seizures)"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by seizures (i.e., generalised tonic-clonic seizures) but not by perceptual disturbances."
+        },
+        {
+          "source": "DC1",
+          "target": "S2",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "but not by perceptual disturbances."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 407,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1298868599",
+    "code": "6C44.42",
+    "title": "Sedative, hypnotic or anxiolytic withdrawal, with seizures",
+    "input_chars": 273,
+    "original_input_chars": 273,
+    "cot_style": "template",
+    "response_had_think_tag": true,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by both seizures (i.e., generalised tonic-clonic seizures) and perceptual disturbances (e.g., visual or tactile hallucinations or illusions) with intact reality testing. Diagnostic requirements for Delirium are not met.",
+    "input_used": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\n\nAll diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by both seizures (i.e., generalised tonic-clonic seizures) and perceptual disturbances (e.g., visual or tactile hallucinations or illusions) with intact reality testing. Diagnostic requirements for Delirium are not met.",
+    "cot": "1.  **Analyze the input text:** The text describes \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\". It states that diagnostic requirements for \"Sedative, hypnotic or anxiolytic withdrawal\" are met, accompanied by \"seizures\" (generalised tonic-clonic seizures) and \"perceptual disturbances\" (visual or tactile hallucinations or illusions) with intact reality testing. It also states that diagnostic requirements for \"Delirium\" are not met.\n2.  **Identify Entities:**\n    *   Disease: \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\"\n    *   Disease: \"Sedative, hypnotic or anxiolytic withdrawal\"\n    *   Symptom: \"seizures\" (generalised tonic-clonic seizures)\n    *   Symptom: \"perceptual disturbances\" (visual or tactile hallucinations or illusions, intact reality testing)\n    *   Disease: \"Delirium\"\n    *   Diagnostic Criteria: \"diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met\"\n    *   Diagnostic Criteria: \"Diagnostic requirements for Delirium are not met\"\n3.  **Map to Schema:**\n    *   *Disease*: \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\" (Subtype: with perceptual disturbances and seizures)\n    *   *Disease*: \"Sedative, hypnotic or anxiolytic withdrawal\"\n    *   *Symptom*: \"seizures\" (Symptom Description: generalised tonic-clonic seizures)\n    *   *Symptom*: \"perceptual disturbances\" (Symptom Description: visual or tactile hallucinations or illusions with intact reality testing)\n    *   *Disease*: \"Delirium\" (Differential Diagnosis)\n    *   *Diagnostic Criteria*: \"Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal\" (Required Core Symptoms: seizures, perceptual disturbances)\n    *   *Diagnostic Criteria*: \"Diagnostic requirements for Delirium\" (Exclusion Details: Diagnostic requirements for Delirium are not met)\n4.  **Identify Relations:**\n    *   \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\" subsumes \"Sedative, hypnotic or anxiolytic withdrawal\" (Wait, the base is \"Sedative, hypnotic or anxiolytic withdrawal\", the specific one is the subtype. So \"Sedative, hypnotic or anxiolytic withdrawal\" subsumes \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\").\n    *   \"seizures\" is_core_symptom_of \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\".\n    *   \"perceptual disturbances\" is_core_symptom_of \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\".\n    *   \"Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal\" required_for_diagnosis_of \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\".\n    *   \"Diagnostic requirements for Delirium\" excludes_if_present \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\".\n    *   \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\" differentiates_from \"Delirium\".\n5.  **Refine Entities and Relations:**\n    *   E1: Disease - \"Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures\"\n    *   E2: Disease - \"Sedative, hypnotic or anxiolytic withdrawal\"\n    *   E3: Symptom - \"seizures\"\n    *   E4: Symptom - \"perceptual disturbances\"\n    *   E5: Disease - \"Delirium\"\n    *   E6: Diagnostic Criteria - \"Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal\"\n    *   E7: Diagnostic Criteria - \"Diagnostic requirements for Delirium\"\n6.  **Construct JSON:** Ensure strict adherence to the requested schema, labels, and relation types.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "E3",
+          "label": "Symptom",
+          "name": "seizures",
+          "properties": {
+            "Symptom Description": "generalised tonic-clonic seizures",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "E4",
+          "label": "Symptom",
+          "name": "perceptual disturbances",
+          "properties": {
+            "Symptom Description": "visual or tactile hallucinations or illusions with intact reality testing",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "E5",
+          "label": "Disease",
+          "name": "Delirium",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "E6",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal",
+          "properties": {
+            "Required Core Symptoms": "seizures, perceptual disturbances",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "E7",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic requirements for Delirium",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": "Diagnostic requirements for Delirium are not met"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met and the withdrawal state is accompanied by both seizures... and perceptual disturbances"
+        },
+        {
+          "source": "E3",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "the withdrawal state is accompanied by both seizures (i.e., generalised tonic-clonic seizures)"
+        },
+        {
+          "source": "E4",
+          "target": "E1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "and perceptual disturbances (e.g., visual or tactile hallucinations or illusions) with intact reality testing"
+        },
+        {
+          "source": "E6",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "All diagnostic requirements for Sedative, hypnotic or anxiolytic withdrawal are met"
+        },
+        {
+          "source": "E7",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "Diagnostic requirements for Delirium are not met."
+        },
+        {
+          "source": "E1",
+          "target": "E5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Diagnostic requirements for Delirium are not met."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 408,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1087947331",
+    "code": "6C44.43",
+    "title": "Sedative, hypnotic or anxiolytic withdrawal, with perceptual disturbances and seizures",
+    "input_chars": 431,
+    "original_input_chars": 431,
+    "cot_style": "template",
+    "response_had_think_tag": true,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Sedative, hypnotic or anxiolytic withdrawal, unspecified",
+    "input_used": "Sedative, hypnotic or anxiolytic withdrawal, unspecified",
+    "cot": "**My Analysis of this Concise Clinical Note**\n\nOkay, here's the deal. I'm looking at the phrase \"Sedative, hypnotic or anxiolytic withdrawal, unspecified,\" and it's pretty straightforward.\n\nFirst, I need to break it down. My immediate read is that this is a description of a *Disease*. It's a very specific clinical situation, and my goal is to process it correctly to support clinical workflows.\n\nNow, I'm going to look for any hidden details. There's no DSM-5 code mentioned, no specifics on the type of withdrawal other than the \"unspecified\" descriptor, and no hints about the course, possible other diagnoses, or how things might play out. It's a bare-bones description. This doesn't help with clinical outcomes, but is perfect for my purpose.\n\nSince there's only one entity, \"Disease\", there are no relationships to tease out. No other entities or context are provided.\n\nFinally, I'm getting ready to output this. For consistency and interoperability, this needs to be a nice, clean JSON format. I am creating a \"Disease\" entity with no additional, inferred properties. This meets all formatting constraints. It's concise and correct.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Sedative, hypnotic or anxiolytic withdrawal, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Sedative, hypnotic or anxiolytic withdrawal, unspecified",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 409,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/989359552/unspecified",
+    "code": "6C44.4Z",
+    "title": "Sedative, hypnotic or anxiolytic withdrawal, unspecified",
+    "input_chars": 56,
+    "original_input_chars": 56,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  }
+]
