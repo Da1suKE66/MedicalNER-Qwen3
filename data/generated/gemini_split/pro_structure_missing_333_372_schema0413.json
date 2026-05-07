@@ -1,0 +1,2973 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/pro_structure_missing_from_333_schema0413.input.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 0,
+    "requested_samples": 40,
+    "max_output_tokens": 8192,
+    "records": 39,
+    "failures": 1,
+    "generation_diagnostics": [
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/373645975",
+        "code": "6C41.20",
+        "prompt_chars": 8971,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3050,
+        "candidates_token_count": 1024,
+        "total_token_count": 5363,
+        "thoughts_token_count": 1289
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/911861819",
+        "code": "6C41.21",
+        "prompt_chars": 8998,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3053,
+        "candidates_token_count": 731,
+        "total_token_count": 5099,
+        "thoughts_token_count": 1315
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/740218593",
+        "code": "6C41.22",
+        "prompt_chars": 9019,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3053,
+        "candidates_token_count": 794,
+        "total_token_count": 5366,
+        "thoughts_token_count": 1519
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/750347921",
+        "code": "6C41.23",
+        "prompt_chars": 9010,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3053,
+        "candidates_token_count": 1020,
+        "total_token_count": 6343,
+        "thoughts_token_count": 2270
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1129015467/unspecified",
+        "code": "6C41.2Z",
+        "prompt_chars": 7591,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2337,
+        "candidates_token_count": 281,
+        "total_token_count": 3648,
+        "thoughts_token_count": 1030
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1387132352",
+        "code": "6C41.3",
+        "prompt_chars": 9001,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3030,
+        "candidates_token_count": 511,
+        "total_token_count": 4539,
+        "thoughts_token_count": 998
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/637576511",
+        "code": "6C41.4",
+        "prompt_chars": 7817,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2528,
+        "candidates_token_count": 273,
+        "total_token_count": 4120,
+        "thoughts_token_count": 1319
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1441674923",
+        "code": "6C41.5",
+        "prompt_chars": 10436,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3699,
+        "candidates_token_count": 759,
+        "total_token_count": 6858,
+        "thoughts_token_count": 2400
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/816184127",
+        "code": "6C41.6",
+        "prompt_chars": 9031,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3064,
+        "candidates_token_count": 417,
+        "total_token_count": 4937,
+        "thoughts_token_count": 1456
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/597251719",
+        "code": "6C41.7",
+        "prompt_chars": 10428,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3772,
+        "candidates_token_count": 617,
+        "total_token_count": 5689,
+        "thoughts_token_count": 1300
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1141591590",
+        "code": "6C41.70",
+        "prompt_chars": 10335,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3646,
+        "candidates_token_count": 887,
+        "total_token_count": 7063,
+        "thoughts_token_count": 2530
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1978307484",
+        "code": "6C41.71",
+        "prompt_chars": 9226,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3173,
+        "candidates_token_count": 655,
+        "total_token_count": 5680,
+        "thoughts_token_count": 1852
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404/other",
+        "code": "6C41.Y",
+        "prompt_chars": 8133,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2842,
+        "candidates_token_count": 286,
+        "total_token_count": 3911,
+        "thoughts_token_count": 783
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404/unspecified",
+        "code": "6C41.Z",
+        "prompt_chars": 8550,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2999,
+        "candidates_token_count": 442,
+        "total_token_count": 4492,
+        "thoughts_token_count": 1051
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+        "code": "6C42",
+        "prompt_chars": 18383,
+        "finish_reason": "STOP",
+        "prompt_token_count": 7669,
+        "candidates_token_count": 1895,
+        "total_token_count": 13004,
+        "thoughts_token_count": 3440
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912934263",
+        "code": "6C42.0",
+        "prompt_chars": 8709,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2869,
+        "candidates_token_count": 526,
+        "total_token_count": 4467,
+        "thoughts_token_count": 1072
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783",
+        "code": "6C42.1",
+        "prompt_chars": 10836,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3885,
+        "candidates_token_count": 1215,
+        "total_token_count": 6592,
+        "thoughts_token_count": 1492
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+        "code": "6C42.10",
+        "prompt_chars": 9063,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3028,
+        "candidates_token_count": 1033,
+        "total_token_count": 6885,
+        "thoughts_token_count": 2824
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+        "code": "6C42.11",
+        "prompt_chars": 9076,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3035,
+        "candidates_token_count": 1039,
+        "total_token_count": 6032,
+        "thoughts_token_count": 1958
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783/other",
+        "code": "6C42.1Y",
+        "prompt_chars": 7121,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2118,
+        "candidates_token_count": 293,
+        "total_token_count": 3598,
+        "thoughts_token_count": 1187
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783/unspecified",
+        "code": "6C42.1Z",
+        "prompt_chars": 7430,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2226,
+        "candidates_token_count": 321,
+        "total_token_count": 3689,
+        "thoughts_token_count": 1142
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+        "code": "6C42.2",
+        "prompt_chars": 12062,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4479,
+        "candidates_token_count": 1486,
+        "total_token_count": 8249,
+        "thoughts_token_count": 2284
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/333795413",
+        "code": "6C42.20",
+        "prompt_chars": 9069,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3050,
+        "candidates_token_count": 1027,
+        "total_token_count": 6174,
+        "thoughts_token_count": 2097
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2648920",
+        "code": "6C42.21",
+        "prompt_chars": 9082,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3039,
+        "candidates_token_count": 1019,
+        "total_token_count": 5212,
+        "thoughts_token_count": 1154
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+        "code": "6C42.22",
+        "prompt_chars": 9124,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3060,
+        "candidates_token_count": 1029,
+        "total_token_count": 5323,
+        "thoughts_token_count": 1234
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/819411618",
+        "code": "6C42.23",
+        "prompt_chars": 9109,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3054,
+        "candidates_token_count": 1023,
+        "total_token_count": 5297,
+        "thoughts_token_count": 1220
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/686500513/other",
+        "code": "6C42.2Y",
+        "prompt_chars": 7114,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2136,
+        "candidates_token_count": 298,
+        "total_token_count": 3735,
+        "thoughts_token_count": 1301
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/686500513/unspecified",
+        "code": "6C42.2Z",
+        "prompt_chars": 7275,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2189,
+        "candidates_token_count": 283,
+        "total_token_count": 3531,
+        "thoughts_token_count": 1059
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/508603587",
+        "code": "6C42.3",
+        "prompt_chars": 8512,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2842,
+        "candidates_token_count": 276,
+        "total_token_count": 3906,
+        "thoughts_token_count": 788
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/397276103",
+        "code": "6C42.4",
+        "prompt_chars": 7877,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2527,
+        "candidates_token_count": 276,
+        "total_token_count": 3840,
+        "thoughts_token_count": 1037
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/138091123",
+        "code": "6C42.5",
+        "prompt_chars": 10187,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3623,
+        "candidates_token_count": 754,
+        "total_token_count": 6481,
+        "thoughts_token_count": 2104
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1995589534",
+        "code": "6C42.6",
+        "prompt_chars": 8920,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3020,
+        "candidates_token_count": 427,
+        "total_token_count": 4584,
+        "thoughts_token_count": 1137
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+        "code": "6C42.7",
+        "prompt_chars": 10531,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3762,
+        "candidates_token_count": 894,
+        "total_token_count": 6719,
+        "thoughts_token_count": 2063
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+        "code": "6C42.70",
+        "prompt_chars": 10436,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3637,
+        "candidates_token_count": 1230,
+        "total_token_count": 6219,
+        "thoughts_token_count": 1352
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+        "code": "6C42.71",
+        "prompt_chars": 9303,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3176,
+        "candidates_token_count": 664,
+        "total_token_count": 5028,
+        "thoughts_token_count": 1188
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/804833492/other",
+        "code": "6C42.Y",
+        "prompt_chars": 8181,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2838,
+        "candidates_token_count": 288,
+        "total_token_count": 3983,
+        "thoughts_token_count": 857
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/804833492/unspecified",
+        "code": "6C42.Z",
+        "prompt_chars": 8500,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2947,
+        "candidates_token_count": 291,
+        "total_token_count": 4072,
+        "thoughts_token_count": 834
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/398872858",
+        "code": "6C43.0",
+        "prompt_chars": 8871,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3025,
+        "candidates_token_count": 789,
+        "total_token_count": 5216,
+        "thoughts_token_count": 1402
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+        "code": "6C43.1",
+        "prompt_chars": 10736,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3944,
+        "candidates_token_count": 897,
+        "total_token_count": 6401,
+        "thoughts_token_count": 1560
+      }
+    ]
+  },
+  "records": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/373645975",
+      "code": "6C41.20",
+      "title": "Cannabis dependence, current use",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/373645975",
+          "label": "Disease",
+          "name": "Cannabis dependence, current use",
+          "properties": {
+            "DSM-5 Code": "6C41.20"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "label": "Disease",
+          "name": "Cannabis dependence",
+          "properties": {
+            "DSM-5 Code": "6C41.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/854520906",
+          "label": "Disease",
+          "name": "Episode of harmful use of cannabis",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/937834582",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cannabis",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/373645975",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/373645975",
+          "target": "http://id.who.int/icd/entity/854520906",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/373645975",
+          "target": "http://id.who.int/icd/entity/937834582",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/911861819",
+      "code": "6C41.21",
+      "title": "Cannabis dependence, early full remission",
+      "entities": [
+        {
+          "id": "911861819",
+          "label": "Disease",
+          "name": "Cannabis dependence, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C41.21"
+          }
+        },
+        {
+          "id": "1129015467",
+          "label": "Disease",
+          "name": "Cannabis dependence",
+          "properties": {
+            "DSM-5 Code": "6C41.2"
+          }
+        },
+        {
+          "id": "1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "854520906",
+          "label": "Disease",
+          "name": "Episode of harmful use of cannabis",
+          "properties": {}
+        },
+        {
+          "id": "937834582",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cannabis",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "1129015467",
+          "target": "911861819",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1913137404",
+          "target": "1129015467",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "911861819",
+          "target": "854520906",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "911861819",
+          "target": "937834582",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/740218593",
+      "code": "6C41.22",
+      "title": "Cannabis dependence, sustained partial remission",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/740218593",
+          "label": "Disease",
+          "name": "Cannabis dependence, sustained partial remission",
+          "properties": {
+            "DSM-5 Code": "6C41.22"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "label": "Disease",
+          "name": "Cannabis dependence",
+          "properties": {
+            "DSM-5 Code": "6C41.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/854520906",
+          "label": "Disease",
+          "name": "Episode of harmful use of cannabis",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/937834582",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cannabis",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/740218593",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/740218593",
+          "target": "http://id.who.int/icd/entity/854520906",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/740218593",
+          "target": "http://id.who.int/icd/entity/937834582",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/750347921",
+      "code": "6C41.23",
+      "title": "Cannabis dependence, sustained full remission",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/750347921",
+          "label": "Disease",
+          "name": "Cannabis dependence, sustained full remission",
+          "properties": {
+            "DSM-5 Code": "6C41.23"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "label": "Disease",
+          "name": "Cannabis dependence",
+          "properties": {
+            "DSM-5 Code": "6C41.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/854520906",
+          "label": "Disease",
+          "name": "Episode of harmful use of cannabis",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/937834582",
+          "label": "Disease",
+          "name": "Harmful pattern of use of cannabis",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/750347921",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1129015467",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/750347921",
+          "target": "http://id.who.int/icd/entity/854520906",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/750347921",
+          "target": "http://id.who.int/icd/entity/937834582",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1129015467/unspecified",
+      "code": "6C41.2Z",
+      "title": "Cannabis dependence, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cannabis dependence, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C41.2Z"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Cannabis dependence",
+          "properties": {
+            "DSM-5 Code": "6C41.2"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1387132352",
+      "code": "6C41.3",
+      "title": "Cannabis intoxication",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cannabis intoxication",
+          "properties": {
+            "DSM-5 Code": "6C41.3"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "cannabinoid poisoning",
+          "properties": {}
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Possession trance disorder",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved: Disorders due to use of cannabis"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions: cannabinoid poisoning"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions: Possession trance disorder"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/637576511",
+      "code": "6C41.4",
+      "title": "Cannabis withdrawal",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cannabis withdrawal",
+          "properties": {
+            "DSM-5 Code": "6C41.4"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1441674923",
+      "code": "6C41.5",
+      "title": "Cannabis-induced delirium",
+      "entities": [
+        {
+          "id": "1441674923",
+          "label": "Disease",
+          "name": "Cannabis-induced delirium",
+          "properties": {
+            "DSM-5 Code": "6C41.5"
+          }
+        },
+        {
+          "id": "1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "80203879",
+          "label": "Disease",
+          "name": "Delirium due to psychoactive substances including medications",
+          "properties": {
+            "DSM-5 Code": "6D70.1"
+          }
+        },
+        {
+          "id": "897917531",
+          "label": "Disease",
+          "name": "Delirium",
+          "properties": {
+            "DSM-5 Code": "6D70"
+          }
+        },
+        {
+          "id": "235421675",
+          "label": "Disease",
+          "name": "Secondary neurocognitive syndrome",
+          "properties": {
+            "DSM-5 Code": "6E67"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "1913137404",
+          "target": "1441674923",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "80203879",
+          "target": "1441674923",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "897917531",
+          "target": "1441674923",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "235421675",
+          "target": "1441674923",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/816184127",
+      "code": "6C41.6",
+      "title": "Cannabis-induced psychotic disorder",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/816184127",
+          "label": "Disease",
+          "name": "Cannabis-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C41.6"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/816184127",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/597251719",
+      "code": "6C41.7",
+      "title": "Certain specified cannabis-induced mental or behavioural disorders",
+      "entities": [
+        {
+          "id": "597251719",
+          "label": "Disease",
+          "name": "Certain specified cannabis-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C41.7"
+          }
+        },
+        {
+          "id": "1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "1141591590",
+          "label": "Disease",
+          "name": "Cannabis-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "6C41.70"
+          }
+        },
+        {
+          "id": "1978307484",
+          "label": "Disease",
+          "name": "Cannabis-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "6C41.71"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "1913137404",
+          "target": "597251719",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "597251719",
+          "target": "1141591590",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "597251719",
+          "target": "1978307484",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1141591590",
+      "code": "6C41.70",
+      "title": "Cannabis-induced mood disorder",
+      "entities": [
+        {
+          "id": "1141591590",
+          "label": "Disease",
+          "name": "Cannabis-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "6C41.70"
+          }
+        },
+        {
+          "id": "597251719",
+          "label": "Disease",
+          "name": "Certain specified cannabis-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C41.7"
+          }
+        },
+        {
+          "id": "1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        },
+        {
+          "id": "1711844614",
+          "label": "Disease",
+          "name": "Cannabis-induced mood disorder with depressive symptoms",
+          "properties": {}
+        },
+        {
+          "id": "1392318336",
+          "label": "Disease",
+          "name": "Cannabis-induced mood disorder with manic symptoms",
+          "properties": {}
+        },
+        {
+          "id": "213319523",
+          "label": "Disease",
+          "name": "Cannabis-induced mood disorder with mixed depressive and manic symptoms",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "597251719",
+          "target": "1141591590",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1913137404",
+          "target": "597251719",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "1141591590",
+          "target": "1711844614",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms and descendantResolved"
+        },
+        {
+          "source": "1141591590",
+          "target": "1392318336",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms and descendantResolved"
+        },
+        {
+          "source": "1141591590",
+          "target": "213319523",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms and descendantResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1978307484",
+      "code": "6C41.71",
+      "title": "Cannabis-induced anxiety disorder",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1978307484",
+          "label": "Disease",
+          "name": "Cannabis-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "6C41.71"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/597251719",
+          "label": "Disease",
+          "name": "Certain specified cannabis-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C41.7"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/597251719",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1978307484",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/597251719",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404/other",
+      "code": "6C41.Y",
+      "title": "Other specified disorders due to use of cannabis",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Other specified disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41.Y"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404/unspecified",
+      "code": "6C41.Z",
+      "title": "Disorders due to use of cannabis, unspecified",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404/unspecified",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C41.Z"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": "6C41"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1913137404",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1913137404/unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+      "code": "6C42",
+      "title": "Disorders due to use of synthetic cannabinoids",
+      "entities": [
+        {
+          "id": "804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "1913137404",
+          "label": "Disease",
+          "name": "Disorders due to use of cannabis",
+          "properties": {
+            "DSM-5 Code": ""
+          }
+        },
+        {
+          "id": "912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.0"
+          }
+        },
+        {
+          "id": "1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1"
+          }
+        },
+        {
+          "id": "686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        },
+        {
+          "id": "508603587",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid intoxication",
+          "properties": {
+            "DSM-5 Code": "6C42.3"
+          }
+        },
+        {
+          "id": "397276103",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid withdrawal",
+          "properties": {
+            "DSM-5 Code": "6C42.4"
+          }
+        },
+        {
+          "id": "138091123",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced delirium",
+          "properties": {
+            "DSM-5 Code": "6C42.5"
+          }
+        },
+        {
+          "id": "1995589534",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C42.6"
+          }
+        },
+        {
+          "id": "738827515",
+          "label": "Disease",
+          "name": "Certain specified synthetic cannabinoids-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C42.7"
+          }
+        },
+        {
+          "id": "804833492/other",
+          "label": "Disease",
+          "name": "Other specified disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.Y"
+          }
+        },
+        {
+          "id": "804833492/unspecified",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C42.Z"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "804833492",
+          "target": "1913137404",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Exclusions: Disorders due to use of cannabis"
+        },
+        {
+          "source": "804833492",
+          "target": "912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Episode of harmful use of synthetic cannabinoids"
+        },
+        {
+          "source": "804833492",
+          "target": "1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Harmful pattern of use of synthetic cannabinoids"
+        },
+        {
+          "source": "804833492",
+          "target": "686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Synthetic cannabinoid dependence"
+        },
+        {
+          "source": "804833492",
+          "target": "508603587",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Synthetic cannabinoid intoxication"
+        },
+        {
+          "source": "804833492",
+          "target": "397276103",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Synthetic cannabinoid withdrawal"
+        },
+        {
+          "source": "804833492",
+          "target": "138091123",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Synthetic cannabinoid-induced delirium"
+        },
+        {
+          "source": "804833492",
+          "target": "1995589534",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Synthetic cannabinoid-induced psychotic disorder"
+        },
+        {
+          "source": "804833492",
+          "target": "738827515",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Certain specified synthetic cannabinoids-induced mental or behavioural disorders"
+        },
+        {
+          "source": "804833492",
+          "target": "804833492/other",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Other specified disorders due to use of synthetic cannabinoids"
+        },
+        {
+          "source": "804833492",
+          "target": "804833492/unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved: Disorders due to use of synthetic cannabinoids, unspecified"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912934263",
+      "code": "6C42.0",
+      "title": "Episode of harmful use of synthetic cannabinoids",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.0"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": ""
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783",
+      "code": "6C42.1",
+      "title": "Harmful pattern of use of synthetic cannabinoids",
+      "entities": [
+        {
+          "id": "1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1"
+          }
+        },
+        {
+          "id": "804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "329717941",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids, episodic",
+          "properties": {
+            "DSM-5 Code": "6C42.10"
+          }
+        },
+        {
+          "id": "1501431632",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids, continuous",
+          "properties": {
+            "DSM-5 Code": "6C42.11"
+          }
+        },
+        {
+          "id": "1055626783_other",
+          "label": "Disease",
+          "name": "Other specified harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1Y"
+          }
+        },
+        {
+          "id": "1055626783_unspecified",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C42.1Z"
+          }
+        },
+        {
+          "id": "912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "804833492",
+          "target": "1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1055626783",
+          "target": "329717941",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1055626783",
+          "target": "1501431632",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1055626783",
+          "target": "1055626783_other",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1055626783",
+          "target": "1055626783_unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1055626783",
+          "target": "912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1055626783",
+          "target": "686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+      "code": "6C42.10",
+      "title": "Harmful pattern of use of synthetic cannabinoids, episodic",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids, episodic",
+          "properties": {
+            "DSM-5 Code": "6C42.10"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1055626783",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+          "target": "http://id.who.int/icd/entity/912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/329717941",
+          "target": "http://id.who.int/icd/entity/686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+      "code": "6C42.11",
+      "title": "Harmful pattern of use of synthetic cannabinoids, continuous",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids, continuous",
+          "properties": {
+            "DSM-5 Code": "6C42.11"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1055626783",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+          "target": "http://id.who.int/icd/entity/912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1501431632",
+          "target": "http://id.who.int/icd/entity/686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783/other",
+      "code": "6C42.1Y",
+      "title": "Other specified harmful pattern of use of synthetic cannabinoids",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Other specified harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1Y"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1055626783/unspecified",
+      "code": "6C42.1Z",
+      "title": "Harmful pattern of use of synthetic cannabinoids, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C42.1Z"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.1"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved field indicates Harmful pattern of use of synthetic cannabinoids is the parent of Harmful pattern of use of synthetic cannabinoids, unspecified"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+      "code": "6C42.2",
+      "title": "Synthetic cannabinoid dependence",
+      "entities": [
+        {
+          "id": "686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        },
+        {
+          "id": "804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "333795413",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, current use",
+          "properties": {
+            "DSM-5 Code": "6C42.20"
+          }
+        },
+        {
+          "id": "2648920",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C42.21"
+          }
+        },
+        {
+          "id": "1253260365",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, sustained partial remission",
+          "properties": {
+            "DSM-5 Code": "6C42.22"
+          }
+        },
+        {
+          "id": "819411618",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, sustained full remission",
+          "properties": {
+            "DSM-5 Code": "6C42.23"
+          }
+        },
+        {
+          "id": "686500513_other",
+          "label": "Disease",
+          "name": "Other specified synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2Y"
+          }
+        },
+        {
+          "id": "686500513_unspecified",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C42.2Z"
+          }
+        },
+        {
+          "id": "912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "804833492",
+          "target": "686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "333795413",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "2648920",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "1253260365",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "819411618",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "686500513_other",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "686500513_unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "686500513",
+          "target": "912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "686500513",
+          "target": "1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/333795413",
+      "code": "6C42.20",
+      "title": "Synthetic cannabinoid dependence, current use",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/333795413",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, current use",
+          "properties": {
+            "DSM-5 Code": "6C42.20"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/333795413",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/333795413",
+          "target": "http://id.who.int/icd/entity/912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/333795413",
+          "target": "http://id.who.int/icd/entity/1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2648920",
+      "code": "6C42.21",
+      "title": "Synthetic cannabinoid dependence, early full remission",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/2648920",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C42.21"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/2648920",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/2648920",
+          "target": "http://id.who.int/icd/entity/912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/2648920",
+          "target": "http://id.who.int/icd/entity/1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+      "code": "6C42.22",
+      "title": "Synthetic cannabinoid dependence, sustained partial remission",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, sustained partial remission",
+          "properties": {
+            "DSM-5 Code": "6C42.22"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+          "target": "http://id.who.int/icd/entity/912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1253260365",
+          "target": "http://id.who.int/icd/entity/1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/819411618",
+      "code": "6C42.23",
+      "title": "Synthetic cannabinoid dependence, sustained full remission",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/819411618",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, sustained full remission",
+          "properties": {
+            "DSM-5 Code": "6C42.23"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912934263",
+          "label": "Disease",
+          "name": "Episode of harmful use of synthetic cannabinoids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1055626783",
+          "label": "Disease",
+          "name": "Harmful pattern of use of synthetic cannabinoids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/819411618",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/686500513",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/819411618",
+          "target": "http://id.who.int/icd/entity/912934263",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/819411618",
+          "target": "http://id.who.int/icd/entity/1055626783",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/686500513/other",
+      "code": "6C42.2Y",
+      "title": "Other specified synthetic cannabinoid dependence",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Other specified synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2Y"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved field indicates Synthetic cannabinoid dependence is the parent of Other specified synthetic cannabinoid dependence"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/686500513/unspecified",
+      "code": "6C42.2Z",
+      "title": "Synthetic cannabinoid dependence, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C42.2Z"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid dependence",
+          "properties": {
+            "DSM-5 Code": "6C42.2"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/508603587",
+      "code": "6C42.3",
+      "title": "Synthetic cannabinoid intoxication",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid intoxication",
+          "properties": {
+            "DSM-5 Code": "6C42.3"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/397276103",
+      "code": "6C42.4",
+      "title": "Synthetic cannabinoid withdrawal",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid withdrawal",
+          "properties": {
+            "DSM-5 Code": "6C42.4"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/138091123",
+      "code": "6C42.5",
+      "title": "Synthetic cannabinoid-induced delirium",
+      "entities": [
+        {
+          "id": "138091123",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced delirium",
+          "properties": {
+            "DSM-5 Code": "6C42.5"
+          }
+        },
+        {
+          "id": "804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "80203879",
+          "label": "Disease",
+          "name": "Delirium due to psychoactive substances including medications",
+          "properties": {
+            "DSM-5 Code": "6D70.1"
+          }
+        },
+        {
+          "id": "897917531",
+          "label": "Disease",
+          "name": "Delirium",
+          "properties": {
+            "DSM-5 Code": "6D70"
+          }
+        },
+        {
+          "id": "235421675",
+          "label": "Disease",
+          "name": "Secondary neurocognitive syndrome",
+          "properties": {
+            "DSM-5 Code": "6E67"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "804833492",
+          "target": "138091123",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "80203879",
+          "target": "138091123",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "897917531",
+          "target": "138091123",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "235421675",
+          "target": "138091123",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1995589534",
+      "code": "6C42.6",
+      "title": "Synthetic cannabinoid-induced psychotic disorder",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1995589534",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C42.6"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1995589534",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+      "code": "6C42.7",
+      "title": "Certain specified synthetic cannabinoids-induced mental or behavioural disorders",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "label": "Disease",
+          "name": "Certain specified synthetic cannabinoids-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C42.7"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "6C42.70"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "6C42.71"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+      "code": "6C42.70",
+      "title": "Synthetic cannabinoid-induced mood disorder",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "6C42.70"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "label": "Disease",
+          "name": "Certain specified synthetic cannabinoids-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C42.7"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/313110295",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced mood disorder with depressive symptoms",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/849110869",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced mood disorder with manic symptoms",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/576126691",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced mood disorder with mixed depressive and manic symptoms",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "target": "http://id.who.int/icd/entity/313110295",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms and descendantResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "target": "http://id.who.int/icd/entity/849110869",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms and descendantResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/925940030",
+          "target": "http://id.who.int/icd/entity/576126691",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms and descendantResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+      "code": "6C42.71",
+      "title": "Synthetic cannabinoid-induced anxiety disorder",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+          "label": "Disease",
+          "name": "Synthetic cannabinoid-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "6C42.71"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "label": "Disease",
+          "name": "Certain specified synthetic cannabinoids-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C42.7"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/738827515",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/804833492",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/804833492/other",
+      "code": "6C42.Y",
+      "title": "Other specified disorders due to use of synthetic cannabinoids",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Other specified disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42.Y"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/804833492/unspecified",
+      "code": "6C42.Z",
+      "title": "Disorders due to use of synthetic cannabinoids, unspecified",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C42.Z"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of synthetic cannabinoids",
+          "properties": {
+            "DSM-5 Code": "6C42"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/398872858",
+      "code": "6C43.0",
+      "title": "Episode of harmful use of opioids",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/398872858",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43.0"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1120716949",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/398872858",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/398872858",
+          "target": "http://id.who.int/icd/entity/912365674",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/398872858",
+          "target": "http://id.who.int/icd/entity/1120716949",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+      "code": "6C43.1",
+      "title": "Harmful pattern of use of opioids",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43.1"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids, episodic",
+          "properties": {
+            "DSM-5 Code": "6C43.10"
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids, continuous",
+          "properties": {
+            "DSM-5 Code": "6C43.11"
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C43.1Z"
+          }
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+      "code": "6C43",
+      "title": "Disorders due to use of opioids",
+      "error": "Expecting ',' delimiter: line 269 column 6 (char 6536)"
+    }
+  ]
+}

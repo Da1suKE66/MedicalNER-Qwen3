@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/pro_structure_missing_from_373_schema0413.input.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 5,
+    "requested_samples": 1,
+    "max_output_tokens": 8192,
+    "records": 1,
+    "failures": 0,
+    "generation_diagnostics": [
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1023217081",
+        "code": "6C43.21",
+        "prompt_chars": 9255,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3220,
+        "candidates_token_count": 1029,
+        "total_token_count": 5701,
+        "thoughts_token_count": 1452
+      }
+    ]
+  },
+  "records": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1023217081",
+      "code": "6C43.21",
+      "title": "Opioid dependence, early full remission",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1023217081",
+          "label": "Disease",
+          "name": "Opioid dependence, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C43.21"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1120716949",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {
+            "DSM-5 Code": "6C43.2"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/398872858",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1120716949",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1023217081",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1120716949",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1023217081",
+          "target": "http://id.who.int/icd/entity/398872858",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1023217081",
+          "target": "http://id.who.int/icd/entity/912365674",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

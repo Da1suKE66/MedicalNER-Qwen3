@@ -1,0 +1,268 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/mental_disorders_20251125_165535.structure.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 62,
+    "requested_samples": 1,
+    "max_output_tokens": 8192,
+    "records": 1,
+    "failures": 0,
+    "generation_diagnostics": [
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/106339515",
+        "code": "6A21",
+        "prompt_chars": 12696,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4822,
+        "candidates_token_count": 2320,
+        "total_token_count": 9787,
+        "thoughts_token_count": 2645
+      }
+    ]
+  },
+  "records": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/106339515",
+      "code": "6A21",
+      "title": "Schizoaffective disorder",
+      "entities": [
+        {
+          "id": "106339515",
+          "label": "Disease",
+          "name": "Schizoaffective disorder",
+          "properties": {
+            "DSM-5 Code": "6A21"
+          }
+        },
+        {
+          "id": "967849782",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, first episode",
+          "properties": {
+            "DSM-5 Code": "6A21.0"
+          }
+        },
+        {
+          "id": "1034374160",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, first episode, currently symptomatic",
+          "properties": {
+            "DSM-5 Code": "6A21.00"
+          }
+        },
+        {
+          "id": "584318803",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, first episode, in partial remission",
+          "properties": {
+            "DSM-5 Code": "6A21.01"
+          }
+        },
+        {
+          "id": "5254456",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, first episode, in full remission",
+          "properties": {
+            "DSM-5 Code": "6A21.02"
+          }
+        },
+        {
+          "id": "1730029381",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, multiple episodes",
+          "properties": {
+            "DSM-5 Code": "6A21.1"
+          }
+        },
+        {
+          "id": "963384259",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, multiple episodes, currently symptomatic",
+          "properties": {
+            "DSM-5 Code": "6A21.10"
+          }
+        },
+        {
+          "id": "468697510",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, multiple episodes, in partial remission",
+          "properties": {
+            "DSM-5 Code": "6A21.11"
+          }
+        },
+        {
+          "id": "746381528",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, multiple episodes, in full remission",
+          "properties": {
+            "DSM-5 Code": "6A21.12"
+          }
+        },
+        {
+          "id": "725134404",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, continuous",
+          "properties": {
+            "DSM-5 Code": "6A21.2"
+          }
+        },
+        {
+          "id": "2124501487",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, continuous, currently symptomatic",
+          "properties": {
+            "DSM-5 Code": "6A21.20"
+          }
+        },
+        {
+          "id": "566538430",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, continuous, in partial remission",
+          "properties": {
+            "DSM-5 Code": "6A21.21"
+          }
+        },
+        {
+          "id": "439300824",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, continuous, in full remission",
+          "properties": {
+            "DSM-5 Code": "6A21.22"
+          }
+        },
+        {
+          "id": "106339515_other",
+          "label": "Disease",
+          "name": "Other specified schizoaffective disorder",
+          "properties": {
+            "DSM-5 Code": "6A21.Y"
+          }
+        },
+        {
+          "id": "106339515_unspecified",
+          "label": "Disease",
+          "name": "Schizoaffective disorder, unspecified",
+          "properties": {
+            "DSM-5 Code": "6A21.Z"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "106339515",
+          "target": "967849782",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "106339515",
+          "target": "1730029381",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "106339515",
+          "target": "725134404",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "106339515",
+          "target": "106339515_other",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "106339515",
+          "target": "106339515_unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "967849782",
+          "target": "1034374160",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "967849782",
+          "target": "584318803",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "967849782",
+          "target": "5254456",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "1730029381",
+          "target": "963384259",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "1730029381",
+          "target": "468697510",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "1730029381",
+          "target": "746381528",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "725134404",
+          "target": "2124501487",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "725134404",
+          "target": "566538430",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        },
+        {
+          "source": "725134404",
+          "target": "439300824",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "descendantResolved"
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

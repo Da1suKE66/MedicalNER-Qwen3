@@ -1,0 +1,763 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/pro_structure_missing_from_373_schema0413.input.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 56,
+    "requested_samples": 10,
+    "max_output_tokens": 8192,
+    "records": 10,
+    "failures": 0,
+    "generation_diagnostics": [
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+        "code": "6C45.3",
+        "prompt_chars": 9048,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3045,
+        "candidates_token_count": 789,
+        "total_token_count": 5325,
+        "thoughts_token_count": 1491
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/25238782",
+        "code": "6C45.4",
+        "prompt_chars": 7806,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2523,
+        "candidates_token_count": 272,
+        "total_token_count": 3973,
+        "thoughts_token_count": 1178
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1919913834",
+        "code": "6C45.5",
+        "prompt_chars": 10420,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3699,
+        "candidates_token_count": 753,
+        "total_token_count": 6555,
+        "thoughts_token_count": 2103
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+        "code": "6C45.6",
+        "prompt_chars": 11272,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4163,
+        "candidates_token_count": 933,
+        "total_token_count": 6823,
+        "thoughts_token_count": 1727
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1824621163",
+        "code": "6C45.60",
+        "prompt_chars": 9217,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3167,
+        "candidates_token_count": 662,
+        "total_token_count": 5697,
+        "thoughts_token_count": 1868
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1460899805",
+        "code": "6C45.61",
+        "prompt_chars": 9202,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3167,
+        "candidates_token_count": 656,
+        "total_token_count": 4948,
+        "thoughts_token_count": 1125
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1130659925",
+        "code": "6C45.62",
+        "prompt_chars": 9499,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3235,
+        "candidates_token_count": 660,
+        "total_token_count": 5971,
+        "thoughts_token_count": 2076
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/388252416/unspecified",
+        "code": "6C45.6Z",
+        "prompt_chars": 7438,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2251,
+        "candidates_token_count": 289,
+        "total_token_count": 3589,
+        "thoughts_token_count": 1049
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1081029366",
+        "code": "6C45.7",
+        "prompt_chars": 11737,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4406,
+        "candidates_token_count": 928,
+        "total_token_count": 6829,
+        "thoughts_token_count": 1495
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/480277067",
+        "code": "6C45.70",
+        "prompt_chars": 10324,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3645,
+        "candidates_token_count": 790,
+        "total_token_count": 6704,
+        "thoughts_token_count": 2269
+      }
+    ]
+  },
+  "records": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+      "code": "6C45.3",
+      "title": "Cocaine intoxication",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+          "label": "Disease",
+          "name": "Cocaine intoxication",
+          "properties": {
+            "DSM-5 Code": "6C45.3"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1087341350",
+          "label": "Disease",
+          "name": "cocaine poisoning",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1374925579",
+          "label": "Disease",
+          "name": "Possession trance disorder",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+          "target": "http://id.who.int/icd/entity/1087341350",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+          "target": "http://id.who.int/icd/entity/1374925579",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/25238782",
+      "code": "6C45.4",
+      "title": "Cocaine withdrawal",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine withdrawal",
+          "properties": {
+            "DSM-5 Code": "6C45.4"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1919913834",
+      "code": "6C45.5",
+      "title": "Cocaine-induced delirium",
+      "entities": [
+        {
+          "id": "1919913834",
+          "label": "Disease",
+          "name": "Cocaine-induced delirium",
+          "properties": {
+            "DSM-5 Code": "6C45.5"
+          }
+        },
+        {
+          "id": "1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        },
+        {
+          "id": "80203879",
+          "label": "Disease",
+          "name": "Delirium due to psychoactive substances including medications",
+          "properties": {
+            "DSM-5 Code": "6D70.1"
+          }
+        },
+        {
+          "id": "897917531",
+          "label": "Disease",
+          "name": "Delirium",
+          "properties": {
+            "DSM-5 Code": "6D70"
+          }
+        },
+        {
+          "id": "235421675",
+          "label": "Disease",
+          "name": "Secondary neurocognitive syndrome",
+          "properties": {
+            "DSM-5 Code": "6E67"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "1689089786",
+          "target": "1919913834",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "80203879",
+          "target": "1919913834",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "897917531",
+          "target": "1919913834",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "235421675",
+          "target": "1919913834",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+      "code": "6C45.6",
+      "title": "Cocaine-induced psychotic disorder",
+      "entities": [
+        {
+          "id": "388252416",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.6"
+          }
+        },
+        {
+          "id": "1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        },
+        {
+          "id": "1824621163",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with hallucinations",
+          "properties": {
+            "DSM-5 Code": "6C45.60"
+          }
+        },
+        {
+          "id": "1460899805",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with delusions",
+          "properties": {
+            "DSM-5 Code": "6C45.61"
+          }
+        },
+        {
+          "id": "1130659925",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+          "properties": {
+            "DSM-5 Code": "6C45.62"
+          }
+        },
+        {
+          "id": "388252416_unspecified",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C45.6Z"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "1689089786",
+          "target": "388252416",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "388252416",
+          "target": "1824621163",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "388252416",
+          "target": "1460899805",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "388252416",
+          "target": "1130659925",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "388252416",
+          "target": "388252416_unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1824621163",
+      "code": "6C45.60",
+      "title": "Cocaine-induced psychotic disorder with hallucinations",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1824621163",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with hallucinations",
+          "properties": {
+            "DSM-5 Code": "6C45.60"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.6"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1824621163",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1460899805",
+      "code": "6C45.61",
+      "title": "Cocaine-induced psychotic disorder with delusions",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1460899805",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with delusions",
+          "properties": {
+            "DSM-5 Code": "6C45.61"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.6"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1460899805",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1130659925",
+      "code": "6C45.62",
+      "title": "Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1130659925",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+          "properties": {
+            "DSM-5 Code": "6C45.62"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.6"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/1130659925",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1689089786",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/388252416",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/388252416/unspecified",
+      "code": "6C45.6Z",
+      "title": "Cocaine-induced psychotic disorder, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C45.6Z"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.6"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1081029366",
+      "code": "6C45.7",
+      "title": "Certain specified cocaine-induced mental or behavioural disorders",
+      "entities": [
+        {
+          "id": "1081029366",
+          "label": "Disease",
+          "name": "Certain specified cocaine-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C45.7"
+          }
+        },
+        {
+          "id": "1689089786",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        },
+        {
+          "id": "480277067",
+          "label": "Disease",
+          "name": "Cocaine-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.70"
+          }
+        },
+        {
+          "id": "1176625878",
+          "label": "Disease",
+          "name": "Cocaine-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.71"
+          }
+        },
+        {
+          "id": "330885524",
+          "label": "Disease",
+          "name": "Cocaine-induced obsessive-compulsive or related disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.72"
+          }
+        },
+        {
+          "id": "1995290731",
+          "label": "Disease",
+          "name": "Cocaine-induced impulse control disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.73"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "1689089786",
+          "target": "1081029366",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1081029366",
+          "target": "480277067",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1081029366",
+          "target": "1176625878",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1081029366",
+          "target": "330885524",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1081029366",
+          "target": "1995290731",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/480277067",
+      "code": "6C45.70",
+      "title": "Cocaine-induced mood disorder",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cocaine-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "6C45.70"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Certain specified cocaine-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "6C45.7"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Disorders due to use of cocaine",
+          "properties": {
+            "DSM-5 Code": "6C45"
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Cocaine-induced mood disorder with depressive symptoms",
+          "properties": {
+            "DSM-5 Code": ""
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Cocaine-induced mood disorder with manic symptoms",
+          "properties": {
+            "DSM-5 Code": ""
+          }
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Cocaine-induced mood disorder with mixed depressive and manic symptoms",
+          "properties": {
+            "DSM-5 Code": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "D3",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "indexTerms"
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

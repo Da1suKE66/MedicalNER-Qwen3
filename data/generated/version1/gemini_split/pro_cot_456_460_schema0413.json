@@ -1,0 +1,38 @@
+[
+  {
+    "input": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+    "input_used": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+    "cot": "**My Analysis of the \"Stimulant Dependence\" Input**\n\nOkay, let's break this down systematically. First, I need to understand the input text: \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified.\" Right away, I see this is a medical context, likely related to substance abuse or dependence.\n\nNow, I'll identify the key entity. From the text, it's clear the primary concept is \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified\" – which I can classify as a \"Disease.\" I need to be precise, so I'll also grab some key properties associated with it.\n\nNext, I'll map this entity to a predefined schema. I'll represent the identified \"Disease\" with a unique ID (\"E1\") and include its label, name, and properties like the DSM-5 Code (\"unspecified\") and a subtype category covering the specific substances involved (\"amphetamines, methamphetamine or methcathinone\").\n\nGiven that this is a stand-alone phrase, I don't see any immediately obvious relationships to extract. This seems to be a single, complete piece of information.\n\nFinally, I'll construct a clean JSON representation of this. I will carefully format the identified entity within the JSON structure, including the relevant properties and an empty array to represent relations, in case additional contextual information emerges later. I will review the constructed JSON to make sure it is valid and meets the required constraints. This is a pretty straightforward extraction, adhering to my standards.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+          "properties": {
+            "DSM-5 Code": "unspecified",
+            "Subtype": "amphetamines, methamphetamine or methcathinone",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 455,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2016549355/unspecified",
+    "code": "6C46.2Z",
+    "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+    "input_chars": 90,
+    "original_input_chars": 90,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  }
+]

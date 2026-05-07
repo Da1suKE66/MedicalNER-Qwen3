@@ -1,0 +1,100 @@
+{
+  "pro_cot_1_5_schema0413": {
+    "file_name": "pro_cot_1_5_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_006_110_schema0413": {
+    "file_name": "pro_cot_006_110_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_111_210_schema0413": {
+    "file_name": "pro_cot_111_210_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_211_310_schema0413": {
+    "file_name": "pro_cot_211_310_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_311_410_schema0413": {
+    "file_name": "pro_cot_311_410_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_001_471_partial_schema0413": {
+    "file_name": "pro_cot_001_471_partial_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "pro_cot_001_471_partial": {
+    "file_name": "pro_cot_001_471_partial_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  }
+}

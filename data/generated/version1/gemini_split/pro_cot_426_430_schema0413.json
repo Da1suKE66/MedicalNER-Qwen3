@@ -1,0 +1,916 @@
+[
+  {
+    "input": "Cocaine dependence, early full remission\n\nAfter a diagnosis of Cocaine dependence, and often following a treatment episode or other intervention (including self-help intervention), the individual has been abstinent from cocaine during a period lasting between 1 and 12 months.",
+    "input_used": "Cocaine dependence, early full remission\n\nAfter a diagnosis of Cocaine dependence, and often following a treatment episode or other intervention (including self-help intervention), the individual has been abstinent from cocaine during a period lasting between 1 and 12 months.",
+    "cot": "**My Analysis of \"Cocaine Dependence, Early Full Remission\"**\n\nOkay, let's break this down. My initial scan of the text tells me we're dealing with \"Cocaine dependence, early full remission\". It's a clinical description, so my mind immediately goes to identifying the relevant entities and mapping them to their schema.\n\nFirst, I see \"Cocaine dependence, early full remission\" itself. That's a *Disease*, and it's a subtype of \"Cocaine dependence\". The specific defining characteristic here is abstinence, which lasts between one and twelve months. So I'll need to define the course requirements for this condition.\n\nNext, there's just \"Cocaine dependence,\" which I'll also classify as a *Disease*, a broader category. Finally, there's \"abstinent from cocaine during a period lasting between 1 and 12 months.\" That's clearly *Diagnostic Criteria*. This period is the core symptom the text uses to indicate if early full remission is present.\n\nNow, how do these entities relate? \"Cocaine dependence, early full remission\" is a specific *Disease* that falls *under* \"Cocaine dependence\". That's a subsumption relationship, a hierarchy. And the \"abstinence criteria\" is essential for the diagnosis of \"Cocaine dependence, early full remission\". That's the *required_for_diagnosis_of* relation.\n\nUltimately, I will format this into a JSON that precisely represents these entities and relations. I'll meticulously check the labels (Disease, Diagnostic Criteria), relations (subsumes, required_for_diagnosis_of), and properties against the schema to ensure accuracy.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine dependence, early full remission",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine dependence, early full remission",
+          "properties": {
+            "Course Requirements": "abstinent from cocaine during a period lasting between 1 and 12 months"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Cocaine dependence",
+          "properties": {}
+        },
+        {
+          "id": "E3",
+          "label": "Diagnostic Criteria",
+          "name": "abstinent from cocaine during a period lasting between 1 and 12 months",
+          "properties": {
+            "Required Core Symptoms": "abstinent from cocaine"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "After a diagnosis of Cocaine dependence... the individual has been abstinent from cocaine"
+        },
+        {
+          "source": "E3",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "the individual has been abstinent from cocaine during a period lasting between 1 and 12 months."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 425,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1347425045",
+    "code": "6C45.21",
+    "title": "Cocaine dependence, early full remission",
+    "input_chars": 276,
+    "original_input_chars": 276,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine dependence, sustained partial remission\n\nAfter a diagnosis of Cocaine dependence, and often following a treatment episode or other intervention (including self-help intervention), there is a significant reduction in cocaine consumption for more than 12 months, such that even though cocaine use has occurred during this period, the definitional requirements for dependence have not been met.",
+    "input_used": "Cocaine dependence, sustained partial remission\n\nAfter a diagnosis of Cocaine dependence, and often following a treatment episode or other intervention (including self-help intervention), there is a significant reduction in cocaine consumption for more than 12 months, such that even though cocaine use has occurred during this period, the definitional requirements for dependence have not been met.",
+    "cot": "**My Analysis of \"Cocaine Dependence, Sustained Partial Remission\"**\n\nOkay, let's break this down systematically. My initial thought is to recognize this as a specific clinical scenario. The input text clearly describes a case of \"Cocaine dependence, sustained partial remission.\" First, I need to identify the key components. I see a prior diagnosis of \"Cocaine dependence\" itself, which is the baseline. We have the new diagnosis, and it requires a \"significant reduction in cocaine consumption for more than 12 months\" following some intervention. Crucially, the text also mentions that the criteria for full \"dependence\" are *not* currently met.\n\nNow, let's establish the entities involved. I'm seeing \"Cocaine dependence, sustained partial remission\" as a disease subtype, and \"Cocaine dependence\" as the broader disease. The \"significant reduction\" is a necessary diagnostic criterion, specifically a \"required core symptom\", and the lack of \"definitional requirements\" is an exclusionary detail for this subtype of Cocaine Dependence.\n\nThis lets me map this all to a structured schema. \"Cocaine dependence, sustained partial remission\" is the primary disease entity, and this includes a Subtype property set to \"sustained partial remission\", and a Course Requirements property requiring \"more than 12 months\". \"Cocaine dependence\" is the base disease. The diagnostic criteria, specifically the \"significant reduction in cocaine consumption for more than 12 months\", is labeled as a required core symptom. On the other hand, the \"definitional requirements for dependence have not been met\" is exclusionary details.\n\nNext, I need to define the relationships between these entities. Clearly, \"Cocaine dependence\" is the parent and \"Cocaine dependence, sustained partial remission\" is a specific form of it. Therefore, \"Cocaine dependence\" subsumes \"Cocaine dependence, sustained partial remission\". Additionally, the \"significant reduction\" and \"definitional requirements not met\" are *both* required for the diagnosis of \"Cocaine dependence, sustained partial remission\".\n\nSo, let's refine this to make it clean. We have:\n\n*   E1: Disease - \"Cocaine dependence, sustained partial remission\"\n*   E2: Disease - \"Cocaine dependence\"\n*   E3: Diagnostic Criteria - \"significant reduction in cocaine consumption for more than 12 months\"\n*   E4: Diagnostic Criteria - \"definitional requirements for dependence have not been met\"\n\nThe relationships are as follows:\n\n*   R1: E2 subsumes E1 (Disease Hierarchy, with \"subsumes\" for the relationship.)\n*   R2: E3 required_for_diagnosis_of E1 (This is a Diagnostic Criteria-Disease-Symptom Triangle, and this relationship is labeled \"required_for_diagnosis_of\".)\n*   R3: E4 required_for_diagnosis_of E1 (Again, Diagnostic Criteria-Disease-Symptom Triangle, with \"required_for_diagnosis_of\" for this relationship.)\n\nFinally, I'll need to format this for use; I need to ensure strict JSON formatting, accurate labels, and correct properties. That will require extra care.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine dependence, sustained partial remission",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine dependence, sustained partial remission",
+          "properties": {
+            "Subtype": "sustained partial remission",
+            "Course Requirements": "more than 12 months"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Cocaine dependence",
+          "properties": {}
+        },
+        {
+          "id": "E3",
+          "label": "Diagnostic Criteria",
+          "name": "significant reduction in cocaine consumption for more than 12 months",
+          "properties": {
+            "Required Core Symptoms": "significant reduction in cocaine consumption"
+          }
+        },
+        {
+          "id": "E4",
+          "label": "Diagnostic Criteria",
+          "name": "definitional requirements for dependence have not been met",
+          "properties": {
+            "Exclusion Details": "definitional requirements for dependence have not been met"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "Cocaine dependence, sustained partial remission"
+        },
+        {
+          "source": "E3",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "there is a significant reduction in cocaine consumption for more than 12 months"
+        },
+        {
+          "source": "E4",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "even though cocaine use has occurred during this period, the definitional requirements for dependence have not been met"
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 426,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1424852267",
+    "code": "6C45.22",
+    "title": "Cocaine dependence, sustained partial remission",
+    "input_chars": 399,
+    "original_input_chars": 399,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine dependence, sustained full remission\n\nAfter a diagnosis of cocaine dependence, and often following a treatment episode or other intervention (including self-intervention), the person has been abstinent from cocaine for 12 months or longer.",
+    "input_used": "Cocaine dependence, sustained full remission\n\nAfter a diagnosis of cocaine dependence, and often following a treatment episode or other intervention (including self-intervention), the person has been abstinent from cocaine for 12 months or longer.",
+    "cot": "**My Analysis of \"Cocaine Dependence, Sustained Full Remission\"**\n\nOkay, let's break this down systematically. My initial thought is to recognize this as a specific manifestation within the larger context of cocaine dependence. The input text describes a scenario where, after a cocaine dependence diagnosis, and often following some form of treatment or intervention, the individual has remained abstinent from cocaine for a minimum of 12 months.\n\nMy first step is to identify the key entities. I see \"Cocaine dependence, sustained full remission\" as the core concept – a *Disease* in its own right, a subtype of the broader \"Cocaine dependence\". The diagnostic requirement here is clear: being \"abstinent from cocaine for 12 months or longer\".\n\nThe relationships are straightforward. \"Cocaine dependence, sustained full remission\" is clearly a *subsumed* entity, residing within the broader category of \"Cocaine dependence.\" The sustained abstinence of 12 months or more becomes the *diagnostic criteria* - it's a critical, defining element. It's *required for the diagnosis* of this specific remission subtype.\n\nNow, I'm mapping this information to a structure, likely a schema, which would translate into a structured representation, such as a JSON format. This will consist of the following:\n\n*   **Entities:**\n    *   **Disease:** \"Cocaine dependence, sustained full remission\" - defined by a \"Course Requirement\": \"abstinent from cocaine for 12 months or longer.\"\n    *   **Disease:** \"Cocaine dependence\" - the broader category.\n    *   **Diagnostic Criteria:** \"Abstinent from cocaine for 12 months or longer\" - and it's core property is that it is a \"Required Core Symptom\": \"abstinent from cocaine for 12 months or longer.\"\n*   **Relations:**\n    *   \"Cocaine dependence\" subsumes \"Cocaine dependence, sustained full remission.\"\n    *   \"Abstinent from cocaine for 12 months or longer\" is \"required_for_diagnosis_of\" \"Cocaine dependence, sustained full remission.\"\n\nFinally, I would ensure that the entities and relations are correctly formatted into a JSON structure, maintaining strict adherence to JSON standards to guarantee both validity and interoperability with downstream applications. The JSON would thus represent the structured knowledge derived from the original text in a way that is immediately processable.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine dependence, sustained full remission",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine dependence, sustained full remission",
+          "properties": {
+            "Course Requirements": "abstinent from cocaine for 12 months or longer"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Cocaine dependence",
+          "properties": {}
+        },
+        {
+          "id": "E3",
+          "label": "Diagnostic Criteria",
+          "name": "Abstinent from cocaine for 12 months or longer",
+          "properties": {
+            "Required Core Symptoms": "abstinent from cocaine for 12 months or longer"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "After a diagnosis of cocaine dependence... the person has been abstinent from cocaine for 12 months or longer."
+        },
+        {
+          "source": "E3",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "the person has been abstinent from cocaine for 12 months or longer."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 427,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/909638838",
+    "code": "6C45.23",
+    "title": "Cocaine dependence, sustained full remission",
+    "input_chars": 247,
+    "original_input_chars": 247,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine dependence, unspecified",
+    "input_used": "Cocaine dependence, unspecified",
+    "cot": "**My Analysis of a Concise Clinical Description**\n\nOkay, here's the deal. I've been given a very brief snippet: \"Cocaine dependence, unspecified.\" Right away, I see that this is a single, isolated piece of information.\n\nFirst, I identify the obvious: this describes a *Disease*. That's my starting point. The whole phrase, \"Cocaine dependence, unspecified,\" constitutes the name of that disease.\n\nNow, I need to dig deeper, but the text is all I have. I attempt to pull out properties, but there's a limit to what's here. I note the **absence** of key clinical details that I'd typically expect. There's no DSM-5 code provided, which would be crucial for precise classification. I see no mention of any specific subtype, which is often crucial in making a meaningful diagnosis. Course requirements, which would include temporal criteria or disease progression factors, are absent. I don't see anything regarding comorbidity types, nor any indication of prognosis factors.\n\nSince there's only one entity, there are *no* relationships to define. Nothing to link this to.\n\nFinally, I need to make sure I format the output to strict JSON, with the right labels, and most importantly, I can't infer anything that isn't explicitly stated. I'll construct a simple JSON structure reflecting the knowns: the disease, its name. The relationship array is empty. That's it, that's what the data permits.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine dependence, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine dependence, unspecified",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "unspecified",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 428,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1691013484/unspecified",
+    "code": "6C45.2Z",
+    "title": "Cocaine dependence, unspecified",
+    "input_chars": 31,
+    "original_input_chars": 31,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine intoxication\n\nCocaine intoxication is a clinically significant transient condition that develops during or shortly after the consumption of cocaine that is characterised by disturbances in consciousness, cognition, perception, affect, behaviour, or coordination. These disturbances are caused by the known pharmacological effects of cocaine and their intensity is closely related to the amount of cocaine consumed. They are time-limited and abate as cocaine is cleared from the body. Presenting features may include inappropriate euphoria, anxiety, anger, impaired attention, hypervigilance, psychomotor agitation, paranoid ideation (sometimes of delusional intensity), auditory hallucinations, confusion, and changes in sociability. Perspiration or chills, nausea or vomiting, and palpitations and chest pain may be experienced. Physical signs may include tachycardia, elevated blood pressure, and pupillary dilatation. In rare instances, usually in severe intoxication, cocaine use can result in seizures, muscle weakness, dyskinesia, or dystonia.\n\n## Essential (Required) Features:\n\n- Transient and clinically significant disturbances in consciousness, cognition, perception, affect, behaviour, or coordination that develop during or shortly after the consumption or administration of cocaine.\n- The symptoms must be compatible with the known pharmacological effects of cocaine, and their intensity is closely related to the amount of cocaine consumed. \n- Presenting features of Cocaine Intoxication may include inappropriate euphoria, anxiety, anger, impaired attention, hypervigilance, psychomotor agitation, paranoid ideation (sometimes of delusional intensity), auditory hallucinations, confusion, and changes in sociability. Perspiration or chills, nausea or vomiting, and palpitations and chest pain may be experienced. Physical signs may include tachycardia, elevated blood pressure, and pupillary dilatation. \n- The symptoms of intoxication are time-limited and abate as cocaine is cleared from the body.\n- Symptoms are not better accounted for by another medical condition (See below) or another mental disorder, including another Disorder Due to Substance Use (e.g., Withdrawal from a different substance).\n\n\n### Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication\n\n- Head injury (with or without cerebral contusion or intracranial haemorrhage or haematoma)\n- Meningitis and encephalitis\n- Diabetic ketoacidosis or hypoglycaemia\n- Hepatic or other metabolic encephalopathy \n- Wernicke’s encephalopathy\n- Electrolyte disturbance\n- Hypoxia or hypercapnia\n- Systemic infection\n\n## Severity of Intoxication Specifier: \n\nDepending on the specific clinical situation and the information available, Substance Intoxication may be classified according to the level of severity as mild, moderate, or severe. The level of intoxication is usually related to the dose, route of administration, half-life, and duration of action of the substance. Severity of intoxication is also affected by individual variability (e.g., differences in body weight, substance metabolism, or tolerance). Susceptibility to substance intoxication may also be greater in individuals with comorbid medical conditions affecting drug pharmacokinetics (e.g., renal or hepatic insufficiency). \n\nFor some substances, there are specific tests for detecting and determining the concentration of substances in bodily fluids (e.g., blood, urine), which can be important tools for clinical management. However, severity of intoxication should be determined on the basis of clinical assessment, as specified below, and not solely based on the presence and level of the substance in bodily fluids. \n\nThe level of medical attention that may be required in response to substance intoxication varies according to the severity of intoxication and the substance involved, and varies from precautionary observation to urgent intervention to prevent death or permanent harm (e.g., administration of antagonist treatment; intubation).\n\nThe severity of intoxication is classified using the following Extension (X) Codes in addition to the appropriate intoxication category. Extension codes are attached to the category to which they apply using an ampersand (&).\n\n### XS5W Mild\n\nMild substance intoxication is a state in which there are clinically recognizable disturbances in psychophysiological functions and responses (e.g., motor coordination, attention and judgement) that vary by substance, but there is little or no disturbance in the level of consciousness. \n\nThe code for Cocaine Intoxication, mild is 6C45.3&XS5W.\n\n### XS0T Moderate\n\nModerate substance intoxication is a state in which there are marked disturbances in psychophysiological functions and responses (e.g., motor coordination, attention and judgement) that vary by substance, with substantial impairment on tasks that require these functions. There is some disturbance in level of consciousness. \n\nThe code for Cocaine Intoxication, moderate is 6C45.3&XS0T.\n\n### XS25 Severe\n\nSevere substance intoxication is a state in which there are obvious disturbances in psychophysiological functions and responses (e.g., motor coordination, attention and judgement) that vary by substance, with marked disturbance in level of consciousness. There is severe impairment to the extent that the person may not be capable of self-care or self-protection, and may be unable to communicate or cooperate with assessment and intervention.\n\nThe code for Cocaine Intoxication, severe is 6C45.3&XS25.\n\n\n## Additional Clinical Features:\n\n- In rare instances, usually in severe intoxication, cocaine use can result in seizures, muscle weakness, dyskinesia and dystonia, and myocardial infarction or stroke arising from coronary or cerebral artery spasm, respectively.\n- Psychoactive substances, whether of the same or a different pharmacological class, may interact such that they exacerbate or modify the features of intoxication. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the intoxication, it is recommended that the corresponding specific Substance Intoxication categories for each relevant substance be assigned (e.g., 6C40.3 Alcohol Intoxication and 6C45.3 Cocaine Intoxication) rather than 6C4F.3 Intoxication Due to Multiple Specified Psychoactive Substances.\n- Cocaine Intoxication may occur in the presence of medical conditions that cause impairment of levels of consciousness, cognition, perception, affect, behaviour, or coordination, which should be diagnosed separately. Determination of the aetiology of the disturbances in psychophysiological functions or responses may require longitudinal assessment. \n \n\n## Boundary with Normality (Threshold):\n\n- Measurement of the presence or concentration of a substance in breath, blood, saliva, urine or other body fluids may be an important tool in the clinical management of Substance Intoxication. However, detection of a psychoactive substance in body fluids does not constitute a presumptive diagnosis of Substance Intoxication.\n\n## Course Features:\n\n- The onset of Substance Intoxication varies according to the route of administration, the absorption of the substance and other pharmacokinetic factors. Generally, inhalation (smoking) and intravenous injecting routes lead to more rapid onset of intoxication, though oral ingestion may also lead to intoxication within minutes, depending on the substance. \n- Substance Intoxication is a transient condition, with the duration of intoxication depending on multiple factors including: (1) the dose of the substance taken, (2) the half-life and duration of action of the particular substance, and (3) the formulation of the substance taken (e.g., for pharmaceutical preparations, whether a controlled-release drug has been taken). Intoxication may last from a few minutes up to several days following the episode of use. The intensity of intoxication lessens with time after reaching a peak of absorption, and the effects eventually disappear in the absence of further use of the substance. \n\n## Culture-Related Features:\n\n- The degree and characteristics of intoxication displayed for a given amount of a psychoactive substance varies considerably with circumstances, with beliefs and expectations about the effects of the substance, and with the cultural acceptability of displaying these effects. These factors result in cultural differences in the extent and manifestations of intoxication. \n- There are also genetic differences in susceptibility to intoxication with specific psychoactive substances associated with certain ethnic groups. Cultural and ethnically linked genetic factors have been better documented for alcohol than for other substances. \n\n## Developmental Presentations:\n\n- Naïve users including adolescents can show features of intoxication at lower levels of use, reflecting lower physical and learned tolerance. \n- Older adults may have a lower tolerance than younger people to the effects of substances.\n\n## Sex- and/or Gender-Related Features:\n\n- The amount of substance and duration of use necessary to cause intoxication differs by sex, reflecting differences in body weight and composition.\n- Behaviour while intoxicated may vary by gender, reflecting not only physiological differences, but also cultural differences and role expectations. \n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Episode of Harmful Use of Cocaine and Harmful Pattern of Use of Cocaine:*** In Episode of Harmful Use of Cocaine and Harmful Pattern of Use of Cocaine, consumption or administration of cocaine results in damage to the person’s physical or mental health (including a Cocaine-Induced Mental Disorder) or in behaviour leading to harm to the health of others. Recovery from Cocaine Intoxication is generally complete. Complications due to such effects of intoxication such as injury, the effects of prolonged hyperactivity or inactivity, or other tissue damage should be diagnosed as Episode of Harmful Use of Cocaine or Harmful Pattern of Use of Cocaine, as appropriate. If relevant at the time of the clinical encounter (e.g., in emergency settings), Cocaine Intoxication can be given as an associated diagnosis, with Episode of Harmful Use of Cocaine or Harmful Pattern of Use of Cocaine as the primary diagnosis. \n- ***Boundary with Cocaine Dependence:*** Episodic or continuous intoxication with cocaine is a typical feature of Cocaine Dependence. If all diagnostic requirements of both conditions are met for the same episode of care, Cocaine Dependence should be assigned as the primary diagnosis, with an associated diagnosis of Cocaine Intoxication. \n- ***Boundary with Cocaine Withdrawal:*** Cocaine Withdrawal occurs upon cessation or reduction of cocaine in the context of physiological dependence or when cocaine has been taken for a prolonged period or in large amounts. In contrast, the onset of Cocaine Intoxication occurs immediately or shortly after the consumption of cocaine. Moreover the intoxication and withdrawal syndromes for cocaine are typically quite distinct. \n- ***Boundary with Cocaine-Induced Delirium:*** Delirium is characterized by disturbances in attention, orientation, and awareness that develop within a short period of time with symptoms that are transient and may fluctuate depending on the underlying aetiology. Delirium often includes disturbance of behaviour and emotion, and may include impairment in multiple cognitive domains. Disturbance of the sleep-wake cycle may also be present. Delirium can be caused by intoxication or withdrawal from substances. When symptoms of Delirium are attributable to Cocaine Intoxication, an associated diagnosis of Cocaine-Induced Delirium should be assigned in addition to the diagnosis of Cocaine Intoxication. \n- ***Boundary with other Cocaine-Induced Mental Disorders:*** Mental or behavioural symptoms that arise during Cocaine Intoxication should only be used as a basis for diagnosing a Cocaine-Induced Mental Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication and the symptoms are sufficiently severe to warrant specific clinical attention. \n- ***Boundary with other medical conditions:*** A variety of medical conditions may produce symptoms that are similar to those of Cocaine Intoxication. Some of these medical conditions are life-threatening requiring immediate intervention. Evidence of cocaine use (e.g., positive laboratory results) does not rule out the possibility of a comorbid medical condition. These alternative diagnoses must be considered in assessing Cocaine Intoxication. Certain medical conditions may also augment or prolong the duration of intoxication. Symptoms of intoxication that persist after they can no longer be reasonably attributed to the pharmacological effects of cocaine may suggest the presence of another medical condition. If it is determined that Cocaine Intoxication is comorbid with a medical condition, both diagnoses should be assigned. \n- ***Boundary with overdose:*** When consumption or administration of psychoactive substances results in symptoms of overdose (e.g., coma; life-threatening cardiac or respiratory suppression), it is typically more appropriate to apply a diagnosis from the grouping of Harmful Effects of Substances in the chapter on Injury, Poisoning or Certain Other Consequences of External Causes rather than Substance Intoxication.",
+    "input_used": "Cocaine intoxication\n\nCocaine intoxication is a clinically significant transient condition that develops during or shortly after the consumption of cocaine that is characterised by disturbances in consciousness, cognition, perception, affect, behaviour, or coordination. These disturbances are caused by the known pharmacological effects of cocaine and their intensity is closely related to the amount of cocaine consumed. They are time-limited and abate as cocaine is cleared from the body. Presenting features may include inappropriate euphoria, anxiety, anger, impaired attention, hypervigilance, psychomotor agitation, paranoid ideation (sometimes of delusional intensity), auditory hallucinations, confusion, and changes in sociability. Perspiration or chills, nausea or vomiting, and palpitations and chest pain may be experienced. Physical signs may include tachycardia, elevated blood pressure, and pupillary dilatation. In rare instances, usually in severe intoxication, cocaine use can result in seizures, muscle weakness, dyskinesia, or dystonia.\n\n## Essential (Required) Features:\n\n- Transient and clinically significant disturbances in consciousness, cognition, perception, affect, behaviour, or coordination that develop during or shortly after the consumption or administration of cocaine.\n- The symptoms must be compatible with the known pharmacological effects of cocaine, and their intensity is closely related to the amount of cocaine consumed. \n- Presenting features of Cocaine Intoxication may include inappropriate euphoria, anxiety, anger, impaired attention, hypervigilance, psychomotor agitation, paranoid ideation (sometimes of delusional intensity), auditory hallucinations, confusion, and changes in sociability. Perspiration or chills, nausea or vomiting, and palpitations and chest pain may be experienced. Physical signs may include tachycardia, elevated blood pressure, and pupillary dilatation. \n- The symptoms of intoxication are time-limited and abate as cocaine is cleared from the body.\n- Symptoms are not better accounted for by another medical condition (See below) or another mental disorder, including another Disorder Due to Substance Use (e.g., Withdrawal from a different substance).\n\n\n### Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication\n\n- Head injury (with or without cerebral contusion or intracranial haemorrhage or haematoma)\n- Meningitis and encephalitis\n- Diabetic ketoacidosis or hypoglycaemia\n- Hepatic or other metabolic encephalopathy \n- Wernicke’s encephalopathy\n- Electrolyte disturbance\n- Hypoxia or hypercapnia\n- Systemic infection\n\n## Severity of Intoxication Specifier: \n\nDepending on the specific clinical situation and the information available, Substance Intoxication may be classified according to the level of severity as mild, moderate, or severe. The level of intoxication is usually related to the dose, route of administration, half-life, and duration of action of the substance. Severity of intoxication is also affected by individual variability (e.g., differences in body weight, substance metabolism, or tolerance). Susceptibility to substance intoxication may also be greater in individuals with comorbid medical conditions affecting drug pharmacokinetics (e.g., renal or hepatic insufficiency). \n\nFor some substances, there are specific tests for detecting and determining the concentration of substances in bodily fluids (e.g., blood, urine), which can be important tools for clinical management. However, severity of intoxication should be determined on the basis of clinical assessment, as specified below, and not solely based on the presence and level of the substance in bodily fluids. \n\nThe level of medical attention that may be required in response to substance intoxication varies according to the severity of intoxication and the substance involved, and varies from precautionary observation to urgent intervention to prevent death or permanent harm (e.g., administration of antagonist treatment; intubation).\n\nThe severity of intoxication is classified using the following Extension (X) Codes in addition to the appropriate intoxication category. Extension codes are attached to the category to which they apply using an ampersand (&).\n\n### XS5W Mild\n\nMild substance intoxication is a state in which there are clinically recognizable disturbances in psychophysiological functions and responses (e.g., motor coordination, attention and judgement) that vary by substance, but there is little or no disturbance in the level of consciousness. \n\nThe code for Cocaine Intoxication, mild is 6C45.3&XS5W.\n\n### XS0T Moderate\n\nModerate substance intoxication is a state in which there are marked disturbances in psychophysiological functions and responses (e.g., motor coordination, attention and judgement) that vary by substance, with substantial impairment on tasks that require these functions. There is some disturbance in level of consciousness. \n\nThe code for Cocaine Intoxication, moderate is 6C45.3&XS0T.\n\n### XS25 Severe\n\nSevere substance intoxication is a state in which there are obvious disturbances in psychophysiological functions and responses (e.g., motor coordination, attention and judgement) that vary by substance, with marked disturbance in level of consciousness. There is severe impairment to the extent that the person may not be capable of self-care or self-protection, and may be unable to communicate or cooperate with assessment and intervention.\n\nThe code for Cocaine Intoxication, severe is 6C45.3&XS25.\n\n\n## Additional Clinical Features:\n\n- In rare instances, usually in severe intoxication, cocaine use can result in seizures, muscle weakness, dyskinesia and dystonia, and myocardial infarction or stroke arising from coronary or cerebral artery spasm, respectively.\n- Psychoactive substances, whether of the same or a different pharmacological class, may interact such that they exacerbate or modify the features of intoxication. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the intoxication, it is recommended that the corresponding specific Substance Intoxication categories for each relevant substance be assigned (e.g., 6C40.3 Alcohol Intoxication and 6C45.3 Cocaine Intoxication) rather than 6C4F.3 Intoxication Due to Multiple Specified Psychoactive Substances.\n- Cocaine Intoxication may occur in the presence of medical conditions that cause impairment of levels of consciousness, cognition, perception, affect, behaviour, or coordination, which should be diagnosed separately. Determination of the aetiology of the disturbances in psychophysiological functions or responses may require longitudinal assessment. \n \n\n## Boundary with Normality (Threshold):\n\n- Measurement of the presence or concentration of a substance in breath, blood, saliva, urine or other body fluids may be an important tool in the clinical management of Substance Intoxication. However, detection of a psychoactive substance in body fluids does not constitute a presumptive diagnosis of Substance Intoxication.\n\n## Course Features:\n\n- The onset of Substance Intoxication varies according to the route of administration, the absorption of the substance and other pharmacokinetic factors. Generally, inhalation (smoking) and intravenous injecting routes lead to more rapid onset of intoxication, though oral ingestion may also lead to intoxication within minutes, depending on the substance. \n- Substance Intoxication is a transient condition, with the duration of intoxication depending on multiple factors including: (1) the dose of the substance taken, (2) the half-life and duration of action of the particular substance, and (3) the formulation of the substance taken (e.g., for pharmaceutical preparations, whether a controlled-release drug has been taken). Intoxication may last from a few minutes up to several days following the episode of use. The intensity of intoxication lessens with time after reaching a peak of absorption, and the effects eventually disappear in the absence of further use of the substance. \n\n## Culture-Related Features:\n\n- The degree and characteristics of intoxication displayed for a given amount of a psychoactive substance varies considerably with circumstances, with beliefs and expectations about the effects of the substance, and with the cultural acceptability of displaying these effects. These factors result in cultural differences in the extent and manifestations of intoxication. \n- There are also genetic differences in susceptibility to intoxication with specific psychoactive substances associated with certain ethnic groups. Cultural and ethnically linked genetic factors have been better documented for alcohol than for other substances. \n\n## Developmental Presentations:\n\n- Naïve users including adolescents can show features of intoxication at lower levels of use, reflecting lower physical and learned tolerance. \n- Older adults may have a lower tolerance than younger people to the effects of substances.\n\n## Sex- and/or Gender-Related Features:\n\n- The amount of substance and duration of use necessary to cause intoxication differs by sex, reflecting differences in body weight and composition.\n- Behaviour while intoxicated may vary by gender, reflecting not only physiological differences, but also cultural differences and role expectations. \n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Episode of Harmful Use of Cocaine and Harmful Pattern of Use of Cocaine:*** In Episode of Harmful Use of Cocaine and Harmful Pattern of Use of Cocaine, consumption or administration of cocaine results in damage to the person’s physical or mental health (including a Cocaine-Induced Mental Disorder) or in behaviour leading to harm to the health of others. Recovery from Cocaine Intoxication is generally complete. Complications due to such effects of intoxication such as injury, the effects of prolonged hyperactivity or inactivity, or other tissue damage should be diagnosed as Episode of Harmful Use of Cocaine or Harmful Pattern of Use of Cocaine, as appropriate. If relevant at the time of the clinical encounter (e.g., in emergency settings), Cocaine Intoxication can be given as an associated diagnosis, with Episode of Harmful Use of Cocaine or Harmful Pattern of Use of Cocaine as the primary diagnosis. \n- ***Boundary with Cocaine Dependence:*** Episodic or continuous intoxication with cocaine is a typical feature of Cocaine Dependence. If all diagnostic requirements of both conditions are met for the same episode of care, Cocaine Dependence should be assigned as the primary diagnosis, with an associated diagnosis of Cocaine Intoxication. \n- ***Boundary with Cocaine Withdrawal:*** Cocaine Withdrawal occurs upon cessation or reduction of cocaine in the context of physiological dependence or when cocaine has been taken for a prolonged period or in large amounts. In contrast, the onset of Cocaine Intoxication occurs immediately or shortly after the consumption of cocaine. Moreover the intoxication and withdrawal syndromes for cocaine are typically quite distinct. \n- ***Boundary with Cocaine-Induced Delirium:*** Delirium is characterized by disturbances in attention, orientation, and awareness that develop within a short period of time with symptoms that are transient and may fluctuate depending on the underlying aetiology. Delirium often includes disturbance of behaviour and emotion, and may include impairment in multiple cognitive domains. Disturbance of the sleep-wake cycle may also be present. Delirium can be caused by intoxication or withdrawal from substances. When symptoms of Delirium are attributable to Cocaine Intoxication, an associated diagnosis of Cocaine-Induced Delirium should be assigned in addition to the diagnosis of Cocaine Intoxication. \n- ***Boundary with other Cocaine-Induced Mental Disorders:*** Mental or behavioural symptoms that arise during Cocaine Intoxication should only be used as a basis for diagnosing a Cocaine-Induced Mental Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication and the symptoms are sufficiently severe to warrant specific clinical attention. \n- ***Boundary with other medical conditions:*** A variety of medical conditions may produce symptoms that are similar to those of Cocaine Intoxication. Some of these medical conditions are life-threatening requiring immediate intervention. Evidence of cocaine use (e.g., positive laboratory results) does not rule out the possibility of a comorbid medical condition. These alternative diagnoses must be considered in assessing Cocaine Intoxication. Certain medical conditions may also augment or prolong the duration of intoxication. Symptoms of intoxication that persist after they can no longer be reasonably attributed to the pharmacological effects of cocaine may suggest the presence of another medical condition. If it is determined that Cocaine Intoxication is comorbid with a medical condition, both diagnoses should be assigned. \n- ***Boundary with overdose:*** When consumption or administration of psychoactive substances results in symptoms of overdose (e.g., coma; life-threatening cardiac or respiratory suppression), it is typically more appropriate to apply a diagnosis from the grouping of Harmful Effects of Substances in the chapter on Injury, Poisoning or Certain Other Consequences of External Causes rather than Substance Intoxication.",
+    "cot": "**My Extraction Plan for Cocaine Intoxication Information**\n\nOkay, here's what I'm thinking. I need to extract structured information from this text on \"Cocaine intoxication.\" The goal is to produce a strict JSON output. First, I need to identify and tag the specific entities. The main categories are: \"Disease,\" \"Symptoms,\" \"Diagnostic Criteria,\" and \"Patient Information.\" I want to keep this precise, so I'm going to map everything carefully.\n\nFor \"Disease,\" I have the central concept: \"Cocaine intoxication\" (and its DSM-5 code, which is 6C45.3), and its subtypes (\"Mild,\" \"Moderate,\" \"Severe\"). Then there are other related conditions to differentiate from, which look like differential diagnoses, and even other conditions specifically associated with cocaine use.\n\nFor \"Symptoms,\" I'm pulling out a list of individual observable manifestations. These range from behavioral changes to physiological indicators. Some are clearly central (like euphoria), while others seem more severe (like myocardial infarction). I need to think about how to classify the severity of these.\n\n\"Diagnostic Criteria\" will capture the essential features needed for a diagnosis. This seems pretty straightforward, essentially the required features of cocaine intoxication.\n\n\"Patient Information\" covers the specific populations I need to consider - which could affect diagnostic considerations or treatments.\n\nNow, let's get into the specifics of mapping the labels:\n\nI'll define the following:\n\n**Diseases:**\n\n*   **D1:** Cocaine intoxication (Code: 6C45.3)\n*   **D2:** Mild Cocaine Intoxication (Code: 6C45.3&XS5W)\n*   **D3:** Moderate Cocaine Intoxication (Code: 6C45.3&XS0T)\n*   **D4:** Severe Cocaine Intoxication (Code: 6C45.3&XS25)\n*   **D5:** Episode of Harmful Use of Cocaine\n*   **D6:** Harmful Pattern of Use of Cocaine\n*   **D7:** Cocaine Dependence\n*   **D8:** Cocaine Withdrawal\n*   **D9:** Cocaine-Induced Delirium\n*   **D10:** Cocaine-Induced Mental Disorder\n*   **D11:** Head injury\n*   **D12:** Meningitis and encephalitis\n*   **D13:** Diabetic ketoacidosis or hypoglycaemia\n*   **D14:** Hepatic or other metabolic encephalopathy\n*   **D15:** Wernicke’s encephalopathy\n*   **D16:** Electrolyte disturbance\n*   **D17:** Hypoxia or hypercapnia\n*   **D18:** Systemic infection\n*   **D19:** Overdose\n\n**Symptoms:**\n\n*   **S1:** inappropriate euphoria\n*   **S2:** anxiety\n*   **S3:** anger\n*   **S4:** impaired attention\n*   **S5:** hypervigilance\n*   **S6:** psychomotor agitation\n*   **S7:** paranoid ideation\n*   **S8:** auditory hallucinations\n*   **S9:** confusion\n*   **S10:** changes in sociability\n*   **S11:** perspiration or chills\n*   **S12:** nausea or vomiting\n*   **S13:** palpitations\n*   **S14:** chest pain\n*   **S15:** tachycardia\n*   **S16:** elevated blood pressure\n*   **S17:** pupillary dilatation\n*   **S18:** seizures\n*   **S19:** muscle weakness\n*   **S20:** dyskinesia\n*   **S21:** dystonia\n*   **S22:** myocardial infarction\n*   **S23:** stroke\n\n**Diagnostic Criteria:**\n\n*   **DC1:** Essential Features of Cocaine Intoxication\n\n**Patient Information:**\n\n*   **PI1:** Naïve users including adolescents\n*   **PI2:** Older adults\n*   **PI3:** Individuals with comorbid medical conditions affecting drug pharmacokinetics\n\nNow, relations: I see a clear \"Disease Hierarchy\": \"Cocaine intoxication\" subsumes its subtypes. And a \"Differentiates From\" relationship between the core disease and other conditions. There's a symptom-disease relationship. Some symptoms are core, some are associated (more with severe forms, I'll flag that). And the diagnostic criteria are essential for diagnosing the disease. I also see a diagnostic *exclusion* implied. Let's outline the relations:\n\n*   **D1** *subsumes* **D2, D3, D4**\n*   **S1 to S17",
+    "output": {
+      "source_id": "cocaine_intoxication",
+      "code": "6C45.3",
+      "title": "Cocaine intoxication",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cocaine intoxication",
+          "properties": {
+            "DSM-5 Code": "6C45.3",
+            "Course Requirements": "Transient condition that develops during or shortly after the consumption of cocaine; time-limited and abate as cocaine is cleared from the body."
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Mild Cocaine Intoxication",
+          "properties": {
+            "DSM-5 Code": "6C45.3&XS5W",
+            "Subtype": "Mild"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Moderate Cocaine Intoxication",
+          "properties": {
+            "DSM-5 Code": "6C45.3&XS0T",
+            "Subtype": "Moderate"
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Severe Cocaine Intoxication",
+          "properties": {
+            "DSM-5 Code": "6C45.3&XS25",
+            "Subtype": "Severe"
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "inappropriate euphoria",
+          "properties": {}
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "anxiety",
+          "properties": {}
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "anger",
+          "properties": {}
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "impaired attention",
+          "properties": {}
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "hypervigilance",
+          "properties": {}
+        },
+        {
+          "id": "S6",
+          "label": "Symptom",
+          "name": "psychomotor agitation",
+          "properties": {}
+        },
+        {
+          "id": "S7",
+          "label": "Symptom",
+          "name": "paranoid ideation",
+          "properties": {
+            "Severity Description": "sometimes of delusional intensity"
+          }
+        },
+        {
+          "id": "S8",
+          "label": "Symptom",
+          "name": "auditory hallucinations",
+          "properties": {}
+        },
+        {
+          "id": "S9",
+          "label": "Symptom",
+          "name": "confusion",
+          "properties": {}
+        },
+        {
+          "id": "S10",
+          "label": "Symptom",
+          "name": "changes in sociability",
+          "properties": {}
+        },
+        {
+          "id": "S11",
+          "label": "Symptom",
+          "name": "perspiration or chills",
+          "properties": {}
+        },
+        {
+          "id": "S12",
+          "label": "Symptom",
+          "name": "nausea or vomiting",
+          "properties": {}
+        },
+        {
+          "id": "S13",
+          "label": "Symptom",
+          "name": "palpitations",
+          "properties": {}
+        },
+        {
+          "id": "S14",
+          "label": "Symptom",
+          "name": "chest pain",
+          "properties": {}
+        },
+        {
+          "id": "S15",
+          "label": "Symptom",
+          "name": "tachycardia",
+          "properties": {}
+        },
+        {
+          "id": "S16",
+          "label": "Symptom",
+          "name": "elevated blood pressure",
+          "properties": {}
+        },
+        {
+          "id": "S17",
+          "label": "Symptom",
+          "name": "pupillary dilatation",
+          "properties": {}
+        },
+        {
+          "id": "S18",
+          "label": "Symptom",
+          "name": "seizures",
+          "properties": {
+            "Occurrence Frequency": "In rare instances"
+          }
+        },
+        {
+          "id": "S19",
+          "label": "Symptom",
+          "name": "muscle weakness",
+          "properties": {
+            "Occurrence Frequency": "In rare instances"
+          }
+        },
+        {
+          "id": "S20",
+          "label": "Symptom",
+          "name": "dyskinesia",
+          "properties": {
+            "Occurrence Frequency": "In rare instances"
+          }
+        },
+        {
+          "id": "S21",
+          "label": "Symptom",
+          "name": "dystonia",
+          "properties": {
+            "Occurrence Frequency": "In rare instances"
+          }
+        },
+        {
+          "id": "S22",
+          "label": "Symptom",
+          "name": "myocardial infarction",
+          "properties": {
+            "Occurrence Frequency": "In rare instances"
+          }
+        },
+        {
+          "id": "S23",
+          "label": "Symptom",
+          "name": "stroke",
+          "properties": {
+            "Occurrence Frequency": "In rare instances"
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Episode of Harmful Use of Cocaine",
+          "properties": {}
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Harmful Pattern of Use of Cocaine",
+          "properties": {}
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Cocaine Dependence",
+          "properties": {}
+        },
+        {
+          "id": "D8",
+          "label": "Disease",
+          "name": "Cocaine Withdrawal",
+          "properties": {}
+        },
+        {
+          "id": "D9",
+          "label": "Disease",
+          "name": "Cocaine-Induced Delirium",
+          "properties": {}
+        },
+        {
+          "id": "D10",
+          "label": "Disease",
+          "name": "Cocaine-Induced Mental Disorder",
+          "properties": {}
+        },
+        {
+          "id": "D11",
+          "label": "Disease",
+          "name": "Head injury",
+          "properties": {}
+        },
+        {
+          "id": "D12",
+          "label": "Disease",
+          "name": "Meningitis and encephalitis",
+          "properties": {}
+        },
+        {
+          "id": "D13",
+          "label": "Disease",
+          "name": "Diabetic ketoacidosis or hypoglycaemia",
+          "properties": {}
+        },
+        {
+          "id": "D14",
+          "label": "Disease",
+          "name": "Hepatic or other metabolic encephalopathy",
+          "properties": {}
+        },
+        {
+          "id": "D15",
+          "label": "Disease",
+          "name": "Wernicke’s encephalopathy",
+          "properties": {}
+        },
+        {
+          "id": "D16",
+          "label": "Disease",
+          "name": "Electrolyte disturbance",
+          "properties": {}
+        },
+        {
+          "id": "D17",
+          "label": "Disease",
+          "name": "Hypoxia or hypercapnia",
+          "properties": {}
+        },
+        {
+          "id": "D18",
+          "label": "Disease",
+          "name": "Systemic infection",
+          "properties": {}
+        },
+        {
+          "id": "D19",
+          "label": "Disease",
+          "name": "Overdose",
+          "properties": {}
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Essential Features of Cocaine Intoxication",
+          "properties": {
+            "Exclusion Details": "Symptoms are not better accounted for by another medical condition or another mental disorder, including another Disorder Due to Substance Use."
+          }
+        },
+        {
+          "id": "PI1",
+          "label": "Patient Information",
+          "name": "Naïve users including adolescents",
+          "properties": {
+            "Age Group": "adolescents",
+            "Special Conditions": "Naïve users"
+          }
+        },
+        {
+          "id": "PI2",
+          "label": "Patient Information",
+          "name": "Older adults",
+          "properties": {
+            "Age Group": "Older adults"
+          }
+        },
+        {
+          "id": "PI3",
+          "label": "Patient Information",
+          "name": "Individuals with comorbid medical conditions affecting drug pharmacokinetics",
+          "properties": {
+            "Comorbidities": "renal or hepatic insufficiency"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "The code for Cocaine Intoxication, mild is 6C45.3&XS5W."
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "The code for Cocaine Intoxication, moderate is 6C45.3&XS0T."
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "The code for Cocaine Intoxication, severe is 6C45.3&XS25."
+        },
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include inappropriate euphoria"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... anxiety"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... anger"
+        },
+        {
+          "source": "S4",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... impaired attention"
+        },
+        {
+          "source": "S5",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... hypervigilance"
+        },
+        {
+          "source": "S6",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... psychomotor agitation"
+        },
+        {
+          "source": "S7",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... paranoid ideation (sometimes of delusional intensity)"
+        },
+        {
+          "source": "S8",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... auditory hallucinations"
+        },
+        {
+          "source": "S9",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... confusion"
+        },
+        {
+          "source": "S10",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Presenting features may include... changes in sociability"
+        },
+        {
+          "source": "S11",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Perspiration or chills... may be experienced."
+        },
+        {
+          "source": "S12",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "nausea or vomiting... may be experienced."
+        },
+        {
+          "source": "S13",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "palpitations... may be experienced."
+        },
+        {
+          "source": "S14",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "chest pain may be experienced."
+        },
+        {
+          "source": "S15",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Physical signs may include tachycardia"
+        },
+        {
+          "source": "S16",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Physical signs may include... elevated blood pressure"
+        },
+        {
+          "source": "S17",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Physical signs may include... pupillary dilatation."
+        },
+        {
+          "source": "S18",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "In rare instances, usually in severe intoxication, cocaine use can result in seizures"
+        },
+        {
+          "source": "S19",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "In rare instances, usually in severe intoxication, cocaine use can result in... muscle weakness"
+        },
+        {
+          "source": "S20",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "In rare instances, usually in severe intoxication, cocaine use can result in... dyskinesia"
+        },
+        {
+          "source": "S21",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "In rare instances, usually in severe intoxication, cocaine use can result in... dystonia"
+        },
+        {
+          "source": "S22",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "In rare instances, usually in severe intoxication, cocaine use can result in... myocardial infarction"
+        },
+        {
+          "source": "S23",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Associated Symptom Of",
+          "relation": "is_associated_symptom_of",
+          "evidence": "In rare instances, usually in severe intoxication, cocaine use can result in... stroke"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Episode of Harmful Use of Cocaine and Harmful Pattern of Use of Cocaine"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Episode of Harmful Use of Cocaine and Harmful Pattern of Use of Cocaine"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine Dependence"
+        },
+        {
+          "source": "D1",
+          "target": "D8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "D9",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine-Induced Delirium"
+        },
+        {
+          "source": "D1",
+          "target": "D10",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with other Cocaine-Induced Mental Disorders"
+        },
+        {
+          "source": "D1",
+          "target": "D11",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Head injury"
+        },
+        {
+          "source": "D1",
+          "target": "D12",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Meningitis and encephalitis"
+        },
+        {
+          "source": "D1",
+          "target": "D13",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Diabetic ketoacidosis or hypoglycaemia"
+        },
+        {
+          "source": "D1",
+          "target": "D14",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Hepatic or other metabolic encephalopathy"
+        },
+        {
+          "source": "D1",
+          "target": "D15",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Wernicke’s encephalopathy"
+        },
+        {
+          "source": "D1",
+          "target": "D16",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Electrolyte disturbance"
+        },
+        {
+          "source": "D1",
+          "target": "D17",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Hypoxia or hypercapnia"
+        },
+        {
+          "source": "D1",
+          "target": "D18",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Examples of Medical Conditions That May Present with Symptoms Similar to Substance Intoxication: Systemic infection"
+        },
+        {
+          "source": "D1",
+          "target": "D19",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with overdose"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "Essential (Required) Features: Transient and clinically significant disturbances in consciousness, cognition, perception, affect, behaviour, or coordination that develop during or shortly after the consumption or administration of cocaine."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 429,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1965837313",
+    "code": "6C45.3",
+    "title": "Cocaine intoxication",
+    "input_chars": 13588,
+    "original_input_chars": 13588,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": false,
+    "response_had_thought_parts": true
+  }
+]

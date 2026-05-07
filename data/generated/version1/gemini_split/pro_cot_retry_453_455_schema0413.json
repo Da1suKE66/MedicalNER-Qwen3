@@ -1,0 +1,130 @@
+[
+  {
+    "input": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission\n\nAfter a diagnosis of Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones, and often following a treatment episode or other intervention (including self-help intervention), the individual has been abstinent from stimulants during a period lasting between 1 and 12 months.",
+    "input_used": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission\n\nAfter a diagnosis of Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones, and often following a treatment episode or other intervention (including self-help intervention), the individual has been abstinent from stimulants during a period lasting between 1 and 12 months.",
+    "cot": "**My Analysis of Stimulant Dependence and Early Full Remission**\n\nOkay, let's break this down. The text describes a specific clinical scenario: \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission.\" My initial thought is to separate the core diagnosis from the remission subtype. The fundamental diagnosis is \"Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones.\" This needs to be clearly defined as the base.\n\nThe \"early full remission\" piece specifies a subtype. To be in early full remission, a key criteria is that the individual needs to be \"abstinent from stimulants during a period lasting between 1 and 12 months.\" This time-based abstinence is crucial and forms a critical piece of the diagnostic criteria. This abstinence specifically *excludes* caffeine, cocaine and synthetic cathinones.\n\nTherefore, the base diagnosis *subsumes* the remission subtype. The diagnostic criteria, specifically the abstinence requirement, is *required for* the diagnosis of the early full remission subtype. I need to model this as an ontology, with relationships clearly defined.\n\nHere's how I'd conceptualize it:\n\n*   **Disease:** \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission\" (Subtype: early full remission, Course Requirements: abstinent from stimulants during a period lasting between 1 and 12 months)\n*   **Disease:** \"Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones\"\n*   **Diagnostic Criteria:** \"abstinent from stimulants during a period lasting between 1 and 12 months\" (Exclusion Details: excluding caffeine, cocaine and synthetic cathinones)\n\nThe *Disease* \"Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones\" *subsumes* the *Disease* \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission.\"\n\nAnd, the *Diagnostic Criteria* \"abstinent from stimulants during a period lasting between 1 and 12 months\" is *required for diagnosis of* \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission\".\n\nThis needs to be accurately represented in a knowledge graph or a structured format.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission",
+          "properties": {
+            "Subtype": "early full remission",
+            "Course Requirements": "abstinent from stimulants during a period lasting between 1 and 12 months"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones",
+          "properties": {}
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "abstinent from stimulants during a period lasting between 1 and 12 months",
+          "properties": {
+            "Exclusion Details": "excluding caffeine, cocaine and synthetic cathinones"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "After a diagnosis of Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones... the individual has been abstinent from stimulants during a period lasting between 1 and 12 months."
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "the individual has been abstinent from stimulants during a period lasting between 1 and 12 months."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 452,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/113814852",
+    "code": "6C46.21",
+    "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission",
+    "input_chars": 455,
+    "original_input_chars": 455,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission\n\nAfter a diagnosis of Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones, and often following a treatment episode or other intervention (including self-help intervention), there is a significant reduction in amphetamine or other stimulant consumption for more than 12 months, such that even though amphetamine or other stimulant use has occurred during this period, the definitional requirements for dependence have not been met.",
+    "input_used": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission\n\nAfter a diagnosis of Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones, and often following a treatment episode or other intervention (including self-help intervention), there is a significant reduction in amphetamine or other stimulant consumption for more than 12 months, such that even though amphetamine or other stimulant use has occurred during this period, the definitional requirements for dependence have not been met.",
+    "cot": "**My Analysis of the \"Stimulant Dependence\" Text**\n\nOkay, let's break this down systematically. My initial task is to process this text regarding stimulant dependence and map it to a structured format, likely JSON, that reflects its meaning.\n\nFirst, I need to pinpoint the core concepts. The text is all about stimulant dependence. It describes a specific condition: \"Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission,\" which I immediately recognize as a sub-type. This sub-type builds off the broader diagnosis of \"Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones.\" So, the first key relationship is a subsumption; the \"sustained partial remission\" is subsumed by the base condition.\n\nI see that the criteria for this sustained remission are clearly stated: \"significant reduction in amphetamine or other stimulant consumption for more than 12 months.\" Crucially, this significant reduction has an exclusion: the definitional requirements for dependence are *not* met. This aspect is key to the diagnosis of sustained partial remission. The \"reduction\" itself seems like a diagnostic criteria in this case.\n\nNext, I'll need to accurately represent these identified entities and their relationships. I'm going to create a JSON structure where \"Disease\" labels represent the main conditions, with the specific \"sustained partial remission\" as a sub-type. \"Diagnostic Criteria\" label will be applied to the identified reduction criteria. Then, I will link the diagnostic criteria to the \"sustained partial remission\" disease using the relation `required_for_diagnosis_of`, and use `subsumes` relation to indicate the sub-type relationship between the base disease and the sustained remission sub-type.\n\nMy focus now is on creating a strict JSON format that adheres to the established labels and relations and also reflects those core aspects of the diagnosis of sustained remission. No need for markdown fences; just the structured JSON. The structure will have to be reviewed against the instructions to make sure it's accurate and within the constraints.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission",
+          "properties": {
+            "Subtype": "sustained partial remission",
+            "Course Requirements": "significant reduction in amphetamine or other stimulant consumption for more than 12 months"
+          }
+        },
+        {
+          "id": "E2",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones",
+          "properties": {}
+        },
+        {
+          "id": "E3",
+          "label": "Diagnostic Criteria",
+          "name": "significant reduction in amphetamine or other stimulant consumption for more than 12 months",
+          "properties": {
+            "Exclusion Details": "definitional requirements for dependence have not been met"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "E2",
+          "target": "E1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "After a diagnosis of Stimulant dependence including amphetamines, methamphetamine and methcathinone but excluding caffeine, cocaine and synthetic cathinones... Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission"
+        },
+        {
+          "source": "E3",
+          "target": "E1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "there is a significant reduction in amphetamine or other stimulant consumption for more than 12 months, such that even though amphetamine or other stimulant use has occurred during this period, the definitional requirements for dependence have not been met."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 453,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/671215150",
+    "code": "6C46.22",
+    "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission",
+    "input_chars": 621,
+    "original_input_chars": 621,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  }
+]

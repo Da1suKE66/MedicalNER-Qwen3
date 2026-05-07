@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/mental_disorders_20251125_165535.structure.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 62,
+    "requested_samples": 1,
+    "max_output_tokens": 4096,
+    "records": 0,
+    "failures": 1,
+    "generation_diagnostics": []
+  },
+  "records": [],
+  "failures": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/106339515",
+      "code": "6A21",
+      "title": "Schizoaffective disorder",
+      "error": "Expecting ',' delimiter: line 13 column 8 (char 335)"
+    }
+  ]
+}

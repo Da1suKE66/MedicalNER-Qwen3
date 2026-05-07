@@ -1,0 +1,969 @@
+[
+  {
+    "input": "Cocaine-induced psychotic disorder with mixed psychotic symptoms\n\nCocaine-induced psychotic disorder with mixed psychotic symptoms is characterised by the presence of multiple psychotic symptoms, primarily hallucinations and delusions, when these are judged to be the direct consequence of cocaine use. The symptoms do not occur exclusively during hypnogogic or hypnopompic states, are not better accounted for by another mental and behavioural disorder (e.g., Schizophrenia), and are not due to another disorder or disease classified elsewhere (e.g., epilepsies with visual symptoms).",
+    "input_used": "Cocaine-induced psychotic disorder with mixed psychotic symptoms\n\nCocaine-induced psychotic disorder with mixed psychotic symptoms is characterised by the presence of multiple psychotic symptoms, primarily hallucinations and delusions, when these are judged to be the direct consequence of cocaine use. The symptoms do not occur exclusively during hypnogogic or hypnopompic states, are not better accounted for by another mental and behavioural disorder (e.g., Schizophrenia), and are not due to another disorder or disease classified elsewhere (e.g., epilepsies with visual symptoms).",
+    "cot": "**My Analysis of Cocaine-Induced Psychotic Disorder**\n\nOkay, let's break this down systematically. My immediate focus is on extracting the core clinical concepts. The input describes \"Cocaine-induced psychotic disorder with mixed psychotic symptoms\". My first thought is to identify the key entities. I'm seeing a clear *Disease* entity: \"Cocaine-induced psychotic disorder with mixed psychotic symptoms.\" Then there are the *Symptom* entities: \"hallucinations,\" and \"delusions\". Those are the core, positive symptoms, I presume, but there is mention of exclusions, which are: \"hypnogogic or hypnopompic states\", \"Schizophrenia\" and \"epilepsies with visual symptoms\". These need to be flagged as *Diseases* in their own right, as they are differentials. Crucially, the diagnostic criteria seems to revolve around \"direct consequence of cocaine use\" as the etiology, essentially differentiating it.\n\nNext, I need to map these to a structured schema. \"Cocaine-induced psychotic disorder with mixed psychotic symptoms\" is the central *Disease*, obviously. \"Hallucinations\" and \"delusions\" are *Symptoms* associated with that disease. \"Hypnogogic or hypnopompic states\" is another *Symptom* to exclude. \"Schizophrenia\" and \"epilepsies with visual symptoms\" are other, alternate *Diseases* to rule out. The diagnostic criteria, defined by the \"direct consequence of cocaine use\", is the *Diagnostic Criteria*. I'll need to define it further, but it is effectively the necessary condition.\n\nNow, let's define the relationships: \"hallucinations\" and \"delusions\" *are_core_symptom_of* \"Cocaine-induced psychotic disorder with mixed psychotic symptoms\". The disorder *differentiates_from* both \"Schizophrenia\" and \"epilepsies with visual symptoms.\" The criteria are *required_for_diagnosis_of* the \"Cocaine-induced psychotic disorder with mixed psychotic symptoms\". The same criteria *excludes_if_present* \"hypnogogic or hypnopompic states\".\n\nFinally, I will refine the properties. The *Disease* will include a subtype, \"mixed psychotic symptoms,\" and if provided, the DSM-5 code (which is not in this input). I need to ensure all of this will be rendered in a robust JSON format, with clear labeling and the correct relationships. This is all standard practice for me to structure and extract the essential clinical information.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+          "properties": {
+            "Subtype": "mixed psychotic symptoms"
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "hallucinations",
+          "properties": {}
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "delusions",
+          "properties": {}
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "hypnogogic or hypnopompic states",
+          "properties": {}
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Schizophrenia",
+          "properties": {}
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "epilepsies with visual symptoms",
+          "properties": {}
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic Criteria for Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+          "properties": {
+            "Required Core Symptoms": "presence of multiple psychotic symptoms, primarily hallucinations and delusions, when these are judged to be the direct consequence of cocaine use",
+            "Exclusion Details": "do not occur exclusively during hypnogogic or hypnopompic states, are not better accounted for by another mental and behavioural disorder (e.g., Schizophrenia), and are not due to another disorder or disease classified elsewhere (e.g., epilepsies with visual symptoms)"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "characterised by the presence of multiple psychotic symptoms, primarily hallucinations and delusions"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "characterised by the presence of multiple psychotic symptoms, primarily hallucinations and delusions"
+        },
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "are not better accounted for by another mental and behavioural disorder (e.g., Schizophrenia)"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "are not due to another disorder or disease classified elsewhere (e.g., epilepsies with visual symptoms)"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "characterised by the presence of multiple psychotic symptoms, primarily hallucinations and delusions, when these are judged to be the direct consequence of cocaine use. The symptoms do not occur exclusively during hypnogogic or hypnopompic states, are not better accounted for by another mental and behavioural disorder (e.g., Schizophrenia), and are not due to another disorder or disease classified elsewhere (e.g., epilepsies with visual symptoms)."
+        },
+        {
+          "source": "DC1",
+          "target": "S3",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Excludes If Present",
+          "relation": "excludes_if_present",
+          "evidence": "The symptoms do not occur exclusively during hypnogogic or hypnopompic states"
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 435,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1130659925",
+    "code": "6C45.62",
+    "title": "Cocaine-induced psychotic disorder with mixed psychotic symptoms",
+    "input_chars": 585,
+    "original_input_chars": 585,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine-induced psychotic disorder, unspecified",
+    "input_used": "Cocaine-induced psychotic disorder, unspecified",
+    "cot": "**My Analysis of \"Cocaine-induced psychotic disorder, unspecified\"**\n\nOkay, let's break this down. The input text is \"Cocaine-induced psychotic disorder, unspecified.\" My first step is to recognize the core element: this is a Disease. Simple enough.\n\nNext, I need to isolate the key entity, which is straightforward: \"Cocaine-induced psychotic disorder, unspecified.\" Now, I'm looking for properties. In this case, I've got the name of the disorder itself. There's no DSM-5 code mentioned, no specific subtype, no information on the course, nor any details about comorbidities or prognostic factors provided in this input. It's a bit limited, but that's all the data I have.\n\nSince I only have one entity, there are no relations to extract. So, I will proceed to output the result in JSON format, containing this single entity and an empty array for relations, adhering to my constraints: strict JSON, accurate labeling, and no guessing or inferring any additional data. I need to be precise and not extrapolate.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine-induced psychotic disorder, unspecified",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Cocaine-induced psychotic disorder, unspecified",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "unspecified",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 436,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/388252416/unspecified",
+    "code": "6C45.6Z",
+    "title": "Cocaine-induced psychotic disorder, unspecified",
+    "input_chars": 47,
+    "original_input_chars": 47,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Certain specified cocaine-induced mental or behavioural disorders",
+    "input_used": "Certain specified cocaine-induced mental or behavioural disorders",
+    "cot": "**My Analysis of the Input: \"Certain specified cocaine-induced mental or behavioural disorders\"**\n\nOkay, let's break this down. First, the text itself is remarkably concise: \"Certain specified cocaine-induced mental or behavioural disorders\". My initial thought is to recognize this as a potential *Disease* entity. It's incredibly straightforward. There's no complex phrasing, no ambiguity. I'm looking at a direct statement regarding a disease category.\n\nNext, I need to identify the core element. \"Certain specified cocaine-induced mental or behavioural disorders\" is that core element. It’s the entire phrase, actually, so it is the only entity.\n\nNow, I have to consider any implicit information or relations. However, there are no subtype details, course requirements, or DSM-5 codes explicitly mentioned or inferable from this isolated phrase. Context is severely limited here, as there's only one entity. No relationships to other concepts can be deduced.\n\nFinally, the output format is paramount. The directive specifies strict JSON adherence, correct labels, and, critically, *no* inference. This means I'm not going beyond what's stated. The JSON must represent the single entity. The label needs to be appropriate, and I need to avoid making any assumptions about the 'certain specified' nature of the disorders, other than identifying them as diseases. It's a clean, restrained approach.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Certain specified cocaine-induced mental or behavioural disorders",
+      "entities": [
+        {
+          "id": "E1",
+          "label": "Disease",
+          "name": "Certain specified cocaine-induced mental or behavioural disorders",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        }
+      ],
+      "relations": []
+    },
+    "success": true,
+    "global_idx": 437,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1081029366",
+    "code": "6C45.7",
+    "title": "Certain specified cocaine-induced mental or behavioural disorders",
+    "input_chars": 65,
+    "original_input_chars": 65,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine-induced mood disorder\n\nCocaine-induced mood disorder is characterised by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from cocaine. The intensity or duration of the symptoms is substantially in excess of mood disturbances that are characteristic of Cocaine intoxication or Cocaine withdrawal. The amount and duration of cocaine use must be capable of producing mood symptoms. The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder), as might be the case if the mood symptoms preceded the onset of the cocaine use, if the symptoms persist for a substantial period of time after cessation of the cocaine use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with mood symptoms (e.g., a history of prior episodes not associated with cocaine use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from cocaine.\n- The intensity or duration of the mood symptoms is substantially in excess of mood symptoms that are characteristic of Cocaine Intoxication or Cocaine Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder. Evidence supporting a diagnosis of another mental disorder would include mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with mood symptoms (e.g., a history of prior episodes not associated with cocaine use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Cocaine-Induced Mood Disorder, an additional diagnosis indicating the related pattern of cocaine use should also be assigned. These include Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, and Cocaine Dependence. A diagnosis of Cocaine Intoxication or Cocaine Withdrawal may also be assigned if applicable.\n\n## Specifiers for cocaine-induced mood symptoms:\n\null additional specifier can be added to denote the presence of either depressive symptoms in the absence of manic symptoms, manic symptoms in the absence of depressive symptoms, or mixed manic and depressive symptoms. \n\n### 6C45.700 Cocaine-Induced Mood Disorder with depressive symptoms\n\n- All diagnostic requirements for Cocaine-Induced Mood Disorder are met.\n- The presentation is characterized by depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Manic symptoms are not present. \n\n### 6C45.701 Cocaine-Induced Mood Disorder with manic symptoms\n\n- All diagnostic requirements for Cocaine-Induced Mood Disorder are met.\n- The presentation is characterized by manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Depressive symptoms are not present. \n\n### 6C45.702 Cocaine-Induced Mood Disorder with mixed depressive and manic symptoms\n\n- All diagnostic requirements for Cocaine-Induced Mood Disorder are met.\n- The presentation is characterized by both depressive and manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n\n### 6C45.70Z Cocaine-Induced Mood Disorder, unspecified\n\n<br>\n\n## Additional Clinical Features: \n\n- Cocaine-Induced Mood Disorder may present with patterns of symptoms that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development of a Cocaine-Induced Mood Disorder. \n- Symptoms of Cocaine-Induced Mood Disorder usually resolve or improve after sustained cessation of cocaine use. \n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Mood Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Mood Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Mood Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Mood Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Mood Disorder, the corresponding specific Substance-Induced Mood Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Cocaine-Induced Mood Disorders should be differentiated from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Cocaine-Induced Mood Disorders must be in excess of ‘hangover effects’ (e.g., transient low mood following alcohol use) of Cocaine and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Cocaine Intoxication and Cocaine Withdrawal:*** Mental or behavioural symptoms that occur during Cocaine Intoxication or Cocaine Withdrawal should only be used as a basis for diagnosing a Cocaine-Induced Mood Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication or Cocaine Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence:*** The impact of repeated or continuous use of cocaine characteristic of Harmful Pattern of Use of Cocaine and Cocaine Dependence may include Cocaine-Induced Mood Disorder. Cocaine-Induced Mood Disorders can also be associated with a single episode of cocaine use. In such cases, a Cocaine-Induced Mood Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence.\n- ***Boundary with mental disorders not induced by cocaine:*** Cocaine-Induced Mood Disorders are differentiated from mental disorders with similar features that are not induced by cocaine on the basis of their onset, course and clinical features. A diagnosis of Cocaine-Induced Mood Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent cocaine use, intoxication or withdrawal. Most Cocaine-Induced Mental Disorders resolve or improve within several weeks of cessation of cocaine use. Mental disorders not induced by cocaine may precede the onset of cocaine use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of cocaine use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Cocaine-Induced Mood Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, cocaine use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, cocaine use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Cocaine-Induced Mood Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence may still be appropriate.",
+    "input_used": "Cocaine-induced mood disorder\n\nCocaine-induced mood disorder is characterised by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from cocaine. The intensity or duration of the symptoms is substantially in excess of mood disturbances that are characteristic of Cocaine intoxication or Cocaine withdrawal. The amount and duration of cocaine use must be capable of producing mood symptoms. The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder), as might be the case if the mood symptoms preceded the onset of the cocaine use, if the symptoms persist for a substantial period of time after cessation of the cocaine use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with mood symptoms (e.g., a history of prior episodes not associated with cocaine use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from cocaine.\n- The intensity or duration of the mood symptoms is substantially in excess of mood symptoms that are characteristic of Cocaine Intoxication or Cocaine Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder. Evidence supporting a diagnosis of another mental disorder would include mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with mood symptoms (e.g., a history of prior episodes not associated with cocaine use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Cocaine-Induced Mood Disorder, an additional diagnosis indicating the related pattern of cocaine use should also be assigned. These include Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, and Cocaine Dependence. A diagnosis of Cocaine Intoxication or Cocaine Withdrawal may also be assigned if applicable.\n\n## Specifiers for cocaine-induced mood symptoms:\n\null additional specifier can be added to denote the presence of either depressive symptoms in the absence of manic symptoms, manic symptoms in the absence of depressive symptoms, or mixed manic and depressive symptoms. \n\n### 6C45.700 Cocaine-Induced Mood Disorder with depressive symptoms\n\n- All diagnostic requirements for Cocaine-Induced Mood Disorder are met.\n- The presentation is characterized by depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Manic symptoms are not present. \n\n### 6C45.701 Cocaine-Induced Mood Disorder with manic symptoms\n\n- All diagnostic requirements for Cocaine-Induced Mood Disorder are met.\n- The presentation is characterized by manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n- Depressive symptoms are not present. \n\n### 6C45.702 Cocaine-Induced Mood Disorder with mixed depressive and manic symptoms\n\n- All diagnostic requirements for Cocaine-Induced Mood Disorder are met.\n- The presentation is characterized by both depressive and manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication. \n\n### 6C45.70Z Cocaine-Induced Mood Disorder, unspecified\n\n<br>\n\n## Additional Clinical Features: \n\n- Cocaine-Induced Mood Disorder may present with patterns of symptoms that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development of a Cocaine-Induced Mood Disorder. \n- Symptoms of Cocaine-Induced Mood Disorder usually resolve or improve after sustained cessation of cocaine use. \n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Mood Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Mood Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Mood Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Mood Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Mood Disorder, the corresponding specific Substance-Induced Mood Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Cocaine-Induced Mood Disorders should be differentiated from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Cocaine-Induced Mood Disorders must be in excess of ‘hangover effects’ (e.g., transient low mood following alcohol use) of Cocaine and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Cocaine Intoxication and Cocaine Withdrawal:*** Mental or behavioural symptoms that occur during Cocaine Intoxication or Cocaine Withdrawal should only be used as a basis for diagnosing a Cocaine-Induced Mood Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication or Cocaine Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence:*** The impact of repeated or continuous use of cocaine characteristic of Harmful Pattern of Use of Cocaine and Cocaine Dependence may include Cocaine-Induced Mood Disorder. Cocaine-Induced Mood Disorders can also be associated with a single episode of cocaine use. In such cases, a Cocaine-Induced Mood Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence.\n- ***Boundary with mental disorders not induced by cocaine:*** Cocaine-Induced Mood Disorders are differentiated from mental disorders with similar features that are not induced by cocaine on the basis of their onset, course and clinical features. A diagnosis of Cocaine-Induced Mood Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent cocaine use, intoxication or withdrawal. Most Cocaine-Induced Mental Disorders resolve or improve within several weeks of cessation of cocaine use. Mental disorders not induced by cocaine may precede the onset of cocaine use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of cocaine use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Cocaine-Induced Mood Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, cocaine use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, cocaine use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Cocaine-Induced Mood Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence may still be appropriate.",
+    "cot": "**My Analysis of Cocaine-Induced Mood Disorder**\n\nOkay, let's break this down systematically. My initial focus is on the core entity: **Cocaine-Induced Mood Disorder**. Now, to truly understand this, I need to delve into its various facets.\n\nFirst, I need to identify the *specific presentations* of this disorder. I see four key subtypes or specifiers: one with *depressive symptoms*, another with *manic symptoms*, a third with *mixed depressive and manic symptoms*, and finally, an *unspecified* presentation if it doesn't fit neatly into the other categories. This is crucial for accurate diagnosis and tailored treatment. The codes themselves tell a tale here, 6C45.700, .701, .702, and .70Z.\n\nNext, the *symptoms* themselves. We are talking about mood – *depressed or elevated mood*. Beyond just the mood itself, I need to consider things like *decreased engagement in pleasurable activities* and *altered energy levels* (increased or decreased). The specific symptoms, depressive, manic or mixed depressive and manic, all fall under this broader category. These are the building blocks.\n\nNow, for *diagnostic criteria*. This is where the rubber meets the road. It has to *develop during or soon after intoxication or withdrawal* - temporal relationship is key. I'm looking for a *significant excess* of mood symptoms, going beyond what's expected from cocaine use itself. Very important, I must make sure that it's *not better accounted for* by another *mental or medical condition*. And, crucially, this must *cause significant distress or impairment* in daily functioning.\n\nThis brings me to the *differential diagnoses*. I must rule out conditions that present similarly. This includes your primary mood disorders like *Depressive Disorder* and *Bipolar Disorder*, *Schizoaffective Disorder* and *Schizophrenia* , even the *primary substance-use conditions* *Cocaine Intoxication, Cocaine Withdrawal, Episode of Harmful Use, Harmful Pattern of Use and Cocaine Dependence*. The transient aftereffects of intoxication (\"hangover effects\") also can't be missed. It also helps in determining severity and prognosis.\n\nFinally, I need to map the *relationships* between all these elements. The disease subsumes the subtypes. The symptoms are core to the disease. The diagnostic criteria are *required* to diagnose the disease. The disease differentiates from the differential diagnoses. And, the diagnostic criteria *excludes* those differential diagnoses if the patient presents with symptoms specific to those diseases. This hierarchical structure is essential for clear understanding and accurate clinical judgment.",
+    "output": {
+      "source_id": "Cocaine-induced mood disorder",
+      "code": "",
+      "title": "Cocaine-induced mood disorder",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cocaine-induced mood disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "develop during or soon after intoxication with or withdrawal from cocaine; usually resolve or improve after sustained cessation of cocaine use",
+            "Comorbidity Types": "Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, Cocaine Dependence, Cocaine Intoxication, Cocaine Withdrawal",
+            "Prognosis Factors": "Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Cocaine-Induced Mood Disorder with depressive symptoms",
+          "properties": {
+            "DSM-5 Code": "6C45.700",
+            "Subtype": "Specifier",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Cocaine-Induced Mood Disorder with manic symptoms",
+          "properties": {
+            "DSM-5 Code": "6C45.701",
+            "Subtype": "Specifier",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Cocaine-Induced Mood Disorder with mixed depressive and manic symptoms",
+          "properties": {
+            "DSM-5 Code": "6C45.702",
+            "Subtype": "Specifier",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Cocaine-Induced Mood Disorder, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C45.70Z",
+            "Subtype": "Specifier",
+            "Course Requirements": "",
+            "Comorbidity Types": "",
+            "Prognosis Factors": ""
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "depressed or elevated mood",
+          "properties": {
+            "Symptom Description": "depressed or elevated mood",
+            "Occurrence Frequency": "",
+            "Severity Description": "intensity or duration of the symptoms is substantially in excess of mood disturbances that are characteristic of Cocaine intoxication or Cocaine withdrawal"
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "decreased engagement in pleasurable activities",
+          "properties": {
+            "Symptom Description": "decreased engagement in pleasurable activities",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "increased or decreased energy levels",
+          "properties": {
+            "Symptom Description": "increased or decreased energy levels",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "depressive symptoms",
+          "properties": {
+            "Symptom Description": "depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "manic symptoms",
+          "properties": {
+            "Symptom Description": "manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Development during or soon after intoxication or withdrawal",
+          "properties": {
+            "Required Core Symptoms": "mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels)",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "DC2",
+          "label": "Diagnostic Criteria",
+          "name": "Intensity or duration in excess of intoxication or withdrawal",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "DC3",
+          "label": "Diagnostic Criteria",
+          "name": "Not better accounted for by another mental disorder",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": "Evidence supporting a diagnosis of another mental disorder would include mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with mood symptoms"
+          }
+        },
+        {
+          "id": "DC4",
+          "label": "Diagnostic Criteria",
+          "name": "Not a manifestation of another medical condition",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "",
+            "Exclusion Details": "The symptoms are not a manifestation of another medical condition."
+          }
+        },
+        {
+          "id": "DC5",
+          "label": "Diagnostic Criteria",
+          "name": "Significant distress or impairment",
+          "properties": {
+            "Required Core Symptoms": "",
+            "Functional Impairment Requirements": "The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.",
+            "Exclusion Details": ""
+          }
+        },
+        {
+          "id": "DD1",
+          "label": "Disease",
+          "name": "Depressive disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal, or other evidence of a pre-existing primary mental disorder",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "DD2",
+          "label": "Disease",
+          "name": "Bipolar disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal, or other evidence of a pre-existing primary mental disorder",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "DD3",
+          "label": "Disease",
+          "name": "Schizoaffective disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal, or other evidence of a pre-existing primary mental disorder",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "DD4",
+          "label": "Disease",
+          "name": "Schizophrenia or Other Primary Psychotic Disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "mood symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine use or withdrawal, or other evidence of a pre-existing primary mental disorder",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "DD5",
+          "label": "Disease",
+          "name": "Cocaine Intoxication",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "DD6",
+          "label": "Disease",
+          "name": "Cocaine Withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Withdrawal",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "DD7",
+          "label": "Disease",
+          "name": "transient physiological aftereffects of intoxication (‘hangover effect’)",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "The duration or severity of the symptoms in Cocaine-Induced Mood Disorders must be in excess of ‘hangover effects’ and result in significant distress or impairment of functioning.",
+            "Misdiagnosis Risk": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C45.700 Cocaine-Induced Mood Disorder with depressive symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C45.701 Cocaine-Induced Mood Disorder with manic symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C45.702 Cocaine-Induced Mood Disorder with mixed depressive and manic symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "6C45.70Z Cocaine-Induced Mood Disorder, unspecified"
+        },
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Cocaine-induced mood disorder is characterised by mood symptoms (e.g., depressed or elevated mood...)"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Cocaine-induced mood disorder is characterised by mood symptoms (e.g., ... decreased engagement in pleasurable activities...)"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "Cocaine-induced mood disorder is characterised by mood symptoms (e.g., ... increased or decreased energy levels)"
+        },
+        {
+          "source": "S4",
+          "target": "D2",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by depressive symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication."
+        },
+        {
+          "source": "S5",
+          "target": "D3",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by manic symptoms judged to be the direct consequence of the use of or withdrawal from a specified substance or medication."
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The presentation is characterized by mood symptoms (e.g., depressed or elevated mood, decreased engagement in pleasurable activities, increased or decreased energy levels) that develop during or soon after intoxication with or withdrawal from cocaine."
+        },
+        {
+          "source": "DC2",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The intensity or duration of the mood symptoms is substantially in excess of mood symptoms that are characteristic of Cocaine Intoxication or Cocaine Withdrawal."
+        },
+        {
+          "source": "DC3",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder, a Bipolar Disorder, or Schizophrenia or Other Primary Psychotic Disorder."
+        },
+        {
+          "source": "DC4",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The symptoms are not a manifestation of another medical condition."
+        },
+        {
+          "source": "DC5",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning."
+        },
+        {
+          "source": "D1",
+          "target": "DD1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a Depressive Disorder"
+        },
+        {
+          "source": "D1",
+          "target": "DD2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a ... Bipolar Disorder"
+        },
+        {
+          "source": "D1",
+          "target": "DD3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better explained by a primary mental disorder (e.g., a Depressive disorder, a Bipolar disorder, Schizoaffective disorder)"
+        },
+        {
+          "source": "D1",
+          "target": "DD4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as a ... Schizophrenia or Other Primary Psychotic Disorder."
+        },
+        {
+          "source": "D1",
+          "target": "DD5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine Intoxication and Cocaine Withdrawal: Mental or behavioural symptoms that occur during Cocaine Intoxication or Cocaine Withdrawal should only be used as a basis for diagnosing a Cocaine-Induced Mood Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication"
+        },
+        {
+          "source": "D1",
+          "target": "DD6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine Intoxication and Cocaine Withdrawal: Mental or behavioural symptoms that occur during Cocaine Intoxication or Cocaine Withdrawal should only be used as a basis for diagnosing a Cocaine-Induced Mood Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of ... Cocaine Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "DD7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Symptoms of Cocaine-Induced Mood Disorders should be differentiated from transient physiological aftereffects of intoxication (‘hangover effect’)."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 438,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/480277067",
+    "code": "6C45.70",
+    "title": "Cocaine-induced mood disorder",
+    "input_chars": 8711,
+    "original_input_chars": 8711,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  },
+  {
+    "input": "Cocaine-induced anxiety disorder\n\nCocaine-induced anxiety disorder is characterised by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from cocaine. The intensity or duration of the symptoms is substantially in excess of anxiety symptoms that are characteristic of Cocaine intoxication or Cocaine withdrawal. The amount and duration of cocaine use must be capable of producing anxiety symptoms. The symptoms are not better explained by a primary mental disorder (e.g., an Anxiety and fear-related disorder, a Depressive disorder with prominent anxiety symptoms), as might be the case if the anxiety symptoms preceded the onset of the cocaine use, if the symptoms persist for a substantial period of time after cessation of the cocaine use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with cocaine use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from cocaine.\n- The intensity or duration of the anxiety symptoms is substantially in excess of anxiety symptoms that are characteristic of Cocaine Intoxication or Cocaine Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as an Anxiety or Fear-Related Disorder, a Depressive Disorder with prominent anxiety symptoms, or Post-Traumatic Stress Disorder. Evidence supporting a diagnosis of another mental disorder would include anxiety symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with cocaine use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Cocaine-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of cocaine use should also be assigned. These include Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, and Cocaine Dependence. A diagnosis of Cocaine Intoxication or Cocaine Withdrawal may also be assigned if applicable.\n\n## Additional Clinical Features: \n\n- Cocaine-Induced Anxiety Disorder may present with patterns of symptoms that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development of a Cocaine-Induced Anxiety Disorder. \n- Symptoms of Cocaine-Induced Anxiety Disorder usually resolve or improve after sustained cessation of cocaine use. \n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Anxiety Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Anxiety Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Anxiety Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Anxiety Disorder, the corresponding specific Substance-Induced Anxiety Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Cocaine-Induced Anxiety Disorders should be differentiated from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Cocaine-Induced Anxiety Disorders must be in excess of ‘hangover effects’ of Cocaine and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Cocaine Intoxication and Cocaine Withdrawal:*** Mental or behavioural symptoms that occur during Cocaine Intoxication or Cocaine Withdrawal should only be used as a basis for diagnosing a Cocaine-Induced Anxiety Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication or Cocaine Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence:*** The impact of repeated or continuous use of cocaine characteristic of Harmful Pattern of Use of Cocaine and Cocaine Dependence may include Cocaine-Induced Anxiety Disorder. Cocaine-Induced Anxiety Disorders can also be associated with a single episode of cocaine use. In such cases, a Cocaine-Induced Anxiety Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence.\n- ***Boundary with mental disorders not induced by cocaine:*** Cocaine-Induced Anxiety Disorders are differentiated from mental disorders with similar features that are not induced by cocaine on the basis of their onset, course and clinical features. A diagnosis of Cocaine-Induced Anxiety Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent cocaine use, intoxication or withdrawal. Most Cocaine-Induced Mental Disorders resolve or improve within several weeks of cessation of cocaine use. Mental disorders not induced by cocaine may precede the onset of cocaine use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of cocaine use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Cocaine-Induced Anxiety Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, cocaine use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, cocaine use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Cocaine-Induced Anxiety Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence may still be appropriate.",
+    "input_used": "Cocaine-induced anxiety disorder\n\nCocaine-induced anxiety disorder is characterised by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from cocaine. The intensity or duration of the symptoms is substantially in excess of anxiety symptoms that are characteristic of Cocaine intoxication or Cocaine withdrawal. The amount and duration of cocaine use must be capable of producing anxiety symptoms. The symptoms are not better explained by a primary mental disorder (e.g., an Anxiety and fear-related disorder, a Depressive disorder with prominent anxiety symptoms), as might be the case if the anxiety symptoms preceded the onset of the cocaine use, if the symptoms persist for a substantial period of time after cessation of the cocaine use or withdrawal, or if there is other evidence of a pre-existing primary mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with cocaine use).\n\n## Essential (Required) Features:\n\n- The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from cocaine.\n- The intensity or duration of the anxiety symptoms is substantially in excess of anxiety symptoms that are characteristic of Cocaine Intoxication or Cocaine Withdrawal.\n- The symptoms are not better accounted for by another mental disorder such as an Anxiety or Fear-Related Disorder, a Depressive Disorder with prominent anxiety symptoms, or Post-Traumatic Stress Disorder. Evidence supporting a diagnosis of another mental disorder would include anxiety symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with anxiety symptoms (e.g., a history of prior episodes not associated with cocaine use). \n- The symptoms are not a manifestation of another medical condition. \n- The symptoms cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning.\n\nWhen making a diagnosis of Cocaine-Induced Anxiety Disorder, an additional diagnosis indicating the related pattern of cocaine use should also be assigned. These include Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, and Cocaine Dependence. A diagnosis of Cocaine Intoxication or Cocaine Withdrawal may also be assigned if applicable.\n\n## Additional Clinical Features: \n\n- Cocaine-Induced Anxiety Disorder may present with patterns of symptoms that vary according to the characteristics of the user (e.g., genetics, metabolism, personality factors). Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development of a Cocaine-Induced Anxiety Disorder. \n- Symptoms of Cocaine-Induced Anxiety Disorder usually resolve or improve after sustained cessation of cocaine use. \n- The duration of Substance Withdrawal for some substances can be protracted. For substances with more protracted withdrawal periods, the onset of symptoms of Substance-Induced Anxiety Disorder can occur up to several weeks after the cessation of substance use. Substance-Induced Anxiety Disorder symptoms related to substances with more protracted withdrawal periods may also last for correspondingly longer periods of time. \n- In cases in which multiple psychoactive substance are used, it is often challenging to distinguish which substance is the cause of the Substance-Induced Anxiety Disorder. When the specific etiological substance cannot be determined, a diagnosis of Substance-Induced Anxiety Disorder Due to Multiple Specified Psychoactive Substances including Medications may assigned. In cases of multiple psychoactive substance use in which more than one specific substance can be identified as a cause of the Substance-Induced Anxiety Disorder, the corresponding specific Substance-Induced Anxiety Disorder diagnoses should be given instead. \n\n## Boundary with Normality (Threshold): \n\n- Symptoms of Cocaine-Induced Anxiety Disorders should be differentiated from transient physiological aftereffects of intoxication (‘hangover effect’). The duration or severity of the symptoms in Cocaine-Induced Anxiety Disorders must be in excess of ‘hangover effects’ of Cocaine and result in significant distress or impairment of functioning.\n\n## Boundaries with Other Disorders and Conditions (Differential Diagnosis):\n\n- ***Boundary with Cocaine Intoxication and Cocaine Withdrawal:*** Mental or behavioural symptoms that occur during Cocaine Intoxication or Cocaine Withdrawal should only be used as a basis for diagnosing a Cocaine-Induced Anxiety Disorder if the intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication or Cocaine Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention.\n- ***Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence:*** The impact of repeated or continuous use of cocaine characteristic of Harmful Pattern of Use of Cocaine and Cocaine Dependence may include Cocaine-Induced Anxiety Disorder. Cocaine-Induced Anxiety Disorders can also be associated with a single episode of cocaine use. In such cases, a Cocaine-Induced Anxiety Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence.\n- ***Boundary with mental disorders not induced by cocaine:*** Cocaine-Induced Anxiety Disorders are differentiated from mental disorders with similar features that are not induced by cocaine on the basis of their onset, course and clinical features. A diagnosis of Cocaine-Induced Anxiety Disorder requires evidence from history, physical or mental examination, or laboratory findings of recent cocaine use, intoxication or withdrawal. Most Cocaine-Induced Mental Disorders resolve or improve within several weeks of cessation of cocaine use. Mental disorders not induced by cocaine may precede the onset of cocaine use or may continue to be symptomatic during periods of sustained abstinence. The co-occurrence of cocaine use or withdrawal and onset of symptoms of mental disorders should not be taken as evidence for a presumptive diagnosis of a Cocaine-Induced Anxiety Disorder. Some people use substances to suppress symptoms of mental disorders (e.g., Schizophrenia and Other Primary Psychotic Disorders, Mood Disorders, Anxiety and Fear-Related Disorders, Personality Disorders) and full symptomatic presentations only emerge upon cessation or reduction in substance use. Furthermore, cocaine use can exacerbate symptoms or precipitate an episode of a pre-existing mental disorder. Finally, cocaine use may be associated with but not aetiologic for new onset of symptoms of a mental disorder. Although a diagnosis of a Cocaine-Induced Anxiety Disorder should not be assigned under these circumstances, an additional diagnosis of Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence may still be appropriate.",
+    "cot": "**My Analysis of Cocaine-Induced Anxiety Disorder**\n\nOkay, let's break this down systematically. First, the central focus is clearly \"Cocaine-induced anxiety disorder.\" My goal is to capture the essence of this condition.\n\nNext, I need to pinpoint the key clinical manifestations. I see the explicit symptoms are \"apprehension or worry,\" \"fear,\" \"physiological symptoms of excessive autonomic arousal,\" \"avoidance behaviour,\" and \"panic attacks.\" These are, undoubtedly, the core clinical signs.\n\nNow, for diagnosis, I'll identify the required criteria. They should:\n*   Appear during or shortly after cocaine use (intoxication or withdrawal).\n*   Be significantly more severe or prolonged than typical cocaine-related anxiety.\n*   Not be better explained by another mental health disorder.\n*   Not be a result of a separate medical condition.\n*   Cause clinically significant distress or functional impairment. These are non-negotiable for diagnosis.\n\nThe challenge, as always, is differential diagnosis. We need to distinguish it from:\n*   Cocaine Intoxication and Withdrawal, obviously.\n*   Anxiety or Fear-Related Disorders\n*   Depressive disorders with pronounced anxiety\n*   Post-Traumatic Stress Disorder\n*   Harmful Use, Harmful Pattern of Use and Dependence on Cocaine\n*   Other mental health issues unrelated to cocaine.\n\nFinally, let's consider relevant patient factors. Higher doses and prolonged cocaine use increase risk. Genetic predisposition, metabolic differences, and personality traits also play a role. These features are key in individual patient assessments.\n\nMy next step is to structure this information in a standardized JSON format, mapping the extracted entities to the appropriate labels and properties. I'll define relationships, such as which symptoms are core, what's required for diagnosis, and how to differentiate this from other conditions. It's crucial to get the format right.",
+    "output": {
+      "source_id": "",
+      "code": "",
+      "title": "Cocaine-induced anxiety disorder",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Cocaine-induced anxiety disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Subtype": "",
+            "Course Requirements": "develop during or soon after intoxication with or withdrawal from cocaine; usually resolve or improve after sustained cessation of cocaine use",
+            "Comorbidity Types": "Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, Cocaine Dependence, Cocaine Intoxication, Cocaine Withdrawal",
+            "Prognosis Factors": "Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development"
+          }
+        },
+        {
+          "id": "S1",
+          "label": "Symptom",
+          "name": "apprehension or worry",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S2",
+          "label": "Symptom",
+          "name": "fear",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S3",
+          "label": "Symptom",
+          "name": "physiological symptoms of excessive autonomic arousal",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S4",
+          "label": "Symptom",
+          "name": "avoidance behaviour",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "S5",
+          "label": "Symptom",
+          "name": "panic attacks",
+          "properties": {
+            "Symptom Description": "anxiety symptoms",
+            "Occurrence Frequency": "",
+            "Severity Description": ""
+          }
+        },
+        {
+          "id": "DC1",
+          "label": "Diagnostic Criteria",
+          "name": "Diagnostic Criteria for Cocaine-induced anxiety disorder",
+          "properties": {
+            "Required Core Symptoms": "anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour) that develop during or soon after intoxication with or withdrawal from cocaine; intensity or duration substantially in excess of anxiety symptoms characteristic of Cocaine Intoxication or Cocaine Withdrawal",
+            "Functional Impairment Requirements": "cause significant distress or significant impairment in personal, family, social, educational, occupational or other important areas of functioning",
+            "Exclusion Details": "not better accounted for by another mental disorder; not a manifestation of another medical condition; differentiated from transient physiological aftereffects of intoxication ('hangover effect')"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Cocaine Intoxication",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Intoxication and the symptoms are sufficiently severe to warrant specific clinical attention",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Cocaine Withdrawal",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "intensity or duration of the symptoms is substantially in excess of those that are characteristic of Cocaine Withdrawal and the symptoms are sufficiently severe to warrant specific clinical attention",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Anxiety or Fear-Related Disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "anxiety symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine or withdrawal (e.g., 1 month or more), or other evidence of a pre-existing mental disorder with anxiety symptoms",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Depressive Disorder with prominent anxiety symptoms",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "anxiety symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine or withdrawal",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Post-Traumatic Stress Disorder",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "anxiety symptoms preceding the onset of cocaine use, the symptoms persisting for a substantial period of time after cessation of cocaine or withdrawal",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Episode of Harmful Use of Cocaine",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "Cocaine-Induced Anxiety Disorders can also be associated with a single episode of cocaine use. In such cases, a Cocaine-Induced Anxiety Disorder should be diagnosed together with a primary diagnosis of Episode of Harmful Use of Cocaine",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D8",
+          "label": "Disease",
+          "name": "Harmful Pattern of Use of Cocaine",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "The impact of repeated or continuous use of cocaine characteristic of Harmful Pattern of Use of Cocaine may include Cocaine-Induced Anxiety Disorder",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D9",
+          "label": "Disease",
+          "name": "Cocaine Dependence",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "The impact of repeated or continuous use of cocaine characteristic of Cocaine Dependence may include Cocaine-Induced Anxiety Disorder",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "D10",
+          "label": "Disease",
+          "name": "mental disorders not induced by cocaine",
+          "properties": {
+            "DSM-5 Code": "",
+            "Core Features": "",
+            "Key Differentiation Points": "differentiated on the basis of their onset, course and clinical features; mental disorders not induced by cocaine may precede the onset of cocaine use or may continue to be symptomatic during periods of sustained abstinence",
+            "Misdiagnosis Risk": ""
+          }
+        },
+        {
+          "id": "P1",
+          "label": "Patient Information",
+          "name": "Patient characteristics",
+          "properties": {
+            "Age Group": "",
+            "Comorbidities": "",
+            "Special Conditions": "genetics, metabolism, personality factors",
+            "Medication History": ""
+          }
+        },
+        {
+          "id": "R1",
+          "label": "Risk Information",
+          "name": "Cocaine use in higher amounts or over longer periods of time",
+          "properties": {
+            "Risk Type": "Risk Factor",
+            "Alert Keywords": "higher amounts, longer periods of time",
+            "Emergency Intervention Steps": ""
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "S1",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S2",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S3",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S4",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "S5",
+          "target": "D1",
+          "relation_type": "Symptom-Disease",
+          "relation_name": "Core Symptom Of",
+          "relation": "is_core_symptom_of",
+          "evidence": "The presentation is characterized by anxiety symptoms (e.g., apprehension or worry, fear, physiological symptoms of excessive autonomic arousal, panic attacks, avoidance behaviour)"
+        },
+        {
+          "source": "DC1",
+          "target": "D1",
+          "relation_type": "Diagnostic Criteria-Disease-Symptom Triangle",
+          "relation_name": "Required For Diagnosis Of",
+          "relation": "required_for_diagnosis_of",
+          "evidence": "Essential (Required) Features"
+        },
+        {
+          "source": "D1",
+          "target": "D2",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine Intoxication and Cocaine Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "D3",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Cocaine Intoxication and Cocaine Withdrawal"
+        },
+        {
+          "source": "D1",
+          "target": "D4",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as an Anxiety or Fear-Related Disorder"
+        },
+        {
+          "source": "D1",
+          "target": "D5",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as... a Depressive Disorder with prominent anxiety symptoms"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "The symptoms are not better accounted for by another mental disorder such as... Post-Traumatic Stress Disorder"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence"
+        },
+        {
+          "source": "D1",
+          "target": "D8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence"
+        },
+        {
+          "source": "D1",
+          "target": "D9",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with Episode of Harmful Use of Cocaine, Harmful Pattern of Use of Cocaine, or Cocaine Dependence"
+        },
+        {
+          "source": "D1",
+          "target": "D10",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "Boundary with mental disorders not induced by cocaine"
+        },
+        {
+          "source": "R1",
+          "target": "D1",
+          "relation_type": "Risk-Disease-Symptom",
+          "relation_name": "Triggers Alert When",
+          "relation": "triggers_alert_when",
+          "evidence": "Cocaine use in higher amounts or over longer periods of time is more likely to be associated with the development of a Cocaine-Induced Anxiety Disorder."
+        }
+      ]
+    },
+    "success": true,
+    "global_idx": 439,
+    "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1176625878",
+    "code": "6C45.71",
+    "title": "Cocaine-induced anxiety disorder",
+    "input_chars": 7444,
+    "original_input_chars": 7444,
+    "cot_style": "template",
+    "response_had_think_tag": false,
+    "response_had_output_tag": true,
+    "response_had_thought_parts": true
+  }
+]

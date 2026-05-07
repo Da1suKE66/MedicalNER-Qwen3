@@ -28,6 +28,7 @@ data/llamafactory/*.json
 !data/llamafactory/pro_cot_211_310_llamafactory.json
 !data/llamafactory/pro_cot_311_410_llamafactory.json
 !data/llamafactory/pro_cot_001_471_partial_llamafactory.json
+!data/llamafactory/pro_cot_001_858_complete_llamafactory.json
 
 outputs/*
 !outputs/.gitkeep

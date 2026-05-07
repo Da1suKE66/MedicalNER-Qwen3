@@ -1,0 +1,472 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/pro_structure_missing_from_373_schema0413.input.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 0,
+    "requested_samples": 5,
+    "max_output_tokens": 8192,
+    "records": 5,
+    "failures": 0,
+    "generation_diagnostics": [
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/676082180",
+        "code": "6C43.10",
+        "prompt_chars": 9205,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3178,
+        "candidates_token_count": 726,
+        "total_token_count": 5168,
+        "thoughts_token_count": 1264
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/224696144",
+        "code": "6C43.11",
+        "prompt_chars": 9211,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3178,
+        "candidates_token_count": 1027,
+        "total_token_count": 5722,
+        "thoughts_token_count": 1517
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912365674/unspecified",
+        "code": "6C43.1Z",
+        "prompt_chars": 7712,
+        "finish_reason": "STOP",
+        "prompt_token_count": 2419,
+        "candidates_token_count": 434,
+        "total_token_count": 4267,
+        "thoughts_token_count": 1414
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1120716949",
+        "code": "6C43.2",
+        "prompt_chars": 12924,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4944,
+        "candidates_token_count": 1337,
+        "total_token_count": 7856,
+        "thoughts_token_count": 1575
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1229687244",
+        "code": "6C43.20",
+        "prompt_chars": 9228,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3217,
+        "candidates_token_count": 732,
+        "total_token_count": 5175,
+        "thoughts_token_count": 1226
+      }
+    ]
+  },
+  "records": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/676082180",
+      "code": "6C43.10",
+      "title": "Harmful pattern of use of opioids, episodic",
+      "entities": [
+        {
+          "id": "676082180",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids, episodic",
+          "properties": {
+            "DSM-5 Code": "6C43.10"
+          }
+        },
+        {
+          "id": "912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43.1"
+          }
+        },
+        {
+          "id": "111507461",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "398872858",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "1120716949",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "912365674",
+          "target": "676082180",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "111507461",
+          "target": "912365674",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "676082180",
+          "target": "398872858",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "676082180",
+          "target": "1120716949",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/224696144",
+      "code": "6C43.11",
+      "title": "Harmful pattern of use of opioids, continuous",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/224696144",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids, continuous",
+          "properties": {
+            "DSM-5 Code": "6C43.11"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43.1"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/398872858",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1120716949",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/224696144",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/111507461",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/224696144",
+          "target": "http://id.who.int/icd/entity/398872858",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/224696144",
+          "target": "http://id.who.int/icd/entity/1120716949",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912365674/unspecified",
+      "code": "6C43.1Z",
+      "title": "Harmful pattern of use of opioids, unspecified",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/912365674/unspecified",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C43.1Z"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43.1"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/912365674",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/912365674/unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1120716949",
+      "code": "6C43.2",
+      "title": "Opioid dependence",
+      "entities": [
+        {
+          "id": "1120716949",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {
+            "DSM-5 Code": "6C43.2"
+          }
+        },
+        {
+          "id": "111507461",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "1229687244",
+          "label": "Disease",
+          "name": "Opioid dependence, current use",
+          "properties": {
+            "DSM-5 Code": "6C43.20"
+          }
+        },
+        {
+          "id": "1023217081",
+          "label": "Disease",
+          "name": "Opioid dependence, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C43.21"
+          }
+        },
+        {
+          "id": "157120957",
+          "label": "Disease",
+          "name": "Opioid dependence, sustained partial remission",
+          "properties": {
+            "DSM-5 Code": "6C43.22"
+          }
+        },
+        {
+          "id": "36859167",
+          "label": "Disease",
+          "name": "Opioid dependence, sustained full remission",
+          "properties": {
+            "DSM-5 Code": "6C43.23"
+          }
+        },
+        {
+          "id": "1120716949_unspecified",
+          "label": "Disease",
+          "name": "Opioid dependence, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C43.2Z"
+          }
+        },
+        {
+          "id": "398872858",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "111507461",
+          "target": "1120716949",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1120716949",
+          "target": "1229687244",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1120716949",
+          "target": "1023217081",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1120716949",
+          "target": "157120957",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1120716949",
+          "target": "36859167",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1120716949",
+          "target": "1120716949_unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "1120716949",
+          "target": "398872858",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1120716949",
+          "target": "912365674",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1229687244",
+      "code": "6C43.20",
+      "title": "Opioid dependence, current use",
+      "entities": [
+        {
+          "id": "1229687244",
+          "label": "Disease",
+          "name": "Opioid dependence, current use",
+          "properties": {
+            "DSM-5 Code": "6C43.20"
+          }
+        },
+        {
+          "id": "1120716949",
+          "label": "Disease",
+          "name": "Opioid dependence",
+          "properties": {
+            "DSM-5 Code": "6C43.2"
+          }
+        },
+        {
+          "id": "111507461",
+          "label": "Disease",
+          "name": "Disorders due to use of opioids",
+          "properties": {
+            "DSM-5 Code": "6C43"
+          }
+        },
+        {
+          "id": "398872858",
+          "label": "Disease",
+          "name": "Episode of harmful use of opioids",
+          "properties": {}
+        },
+        {
+          "id": "912365674",
+          "label": "Disease",
+          "name": "Harmful pattern of use of opioids",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "1120716949",
+          "target": "1229687244",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "111507461",
+          "target": "1120716949",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "1229687244",
+          "target": "398872858",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1229687244",
+          "target": "912365674",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

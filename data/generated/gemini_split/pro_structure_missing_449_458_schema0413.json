@@ -1,0 +1,945 @@
+{
+  "metadata": {
+    "input": "Mental_KG-main/data/gemini_split/pro_structure_missing_from_373_schema0413.input.json",
+    "mode": "structure",
+    "model": "gemini-3-pro-preview",
+    "offset": 76,
+    "requested_samples": 10,
+    "max_output_tokens": 8192,
+    "records": 10,
+    "failures": 0,
+    "generation_diagnostics": [
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/211765524/unspecified",
+        "code": "6C46.1Z",
+        "prompt_chars": 9751,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3413,
+        "candidates_token_count": 473,
+        "total_token_count": 5335,
+        "thoughts_token_count": 1449
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2016549355",
+        "code": "6C46.2",
+        "prompt_chars": 14624,
+        "finish_reason": "STOP",
+        "prompt_token_count": 5653,
+        "candidates_token_count": 1707,
+        "total_token_count": 9363,
+        "thoughts_token_count": 2003
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/651438062",
+        "code": "6C46.20",
+        "prompt_chars": 11263,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4183,
+        "candidates_token_count": 797,
+        "total_token_count": 6636,
+        "thoughts_token_count": 1656
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/113814852",
+        "code": "6C46.21",
+        "prompt_chars": 11290,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4186,
+        "candidates_token_count": 792,
+        "total_token_count": 7308,
+        "thoughts_token_count": 2330
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/671215150",
+        "code": "6C46.22",
+        "prompt_chars": 11311,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4186,
+        "candidates_token_count": 799,
+        "total_token_count": 6467,
+        "thoughts_token_count": 1482
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912062138",
+        "code": "6C46.23",
+        "prompt_chars": 11302,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4186,
+        "candidates_token_count": 637,
+        "total_token_count": 6731,
+        "thoughts_token_count": 1908
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2016549355/unspecified",
+        "code": "6C46.2Z",
+        "prompt_chars": 9538,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3354,
+        "candidates_token_count": 321,
+        "total_token_count": 4909,
+        "thoughts_token_count": 1234
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1775535234",
+        "code": "6C46.3",
+        "prompt_chars": 12612,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4749,
+        "candidates_token_count": 995,
+        "total_token_count": 7050,
+        "thoughts_token_count": 1306
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+        "code": "6C46.4",
+        "prompt_chars": 10309,
+        "finish_reason": "STOP",
+        "prompt_token_count": 3771,
+        "candidates_token_count": 1011,
+        "total_token_count": 6460,
+        "thoughts_token_count": 1678
+      },
+      {
+        "source_id": "http://id.who.int/icd/release/11/2025-01/mms/951103658",
+        "code": "6C46.5",
+        "prompt_chars": 12645,
+        "finish_reason": "STOP",
+        "prompt_token_count": 4876,
+        "candidates_token_count": 1026,
+        "total_token_count": 7436,
+        "thoughts_token_count": 1534
+      }
+    ]
+  },
+  "records": [
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/211765524/unspecified",
+      "code": "6C46.1Z",
+      "title": "Harmful pattern of use of stimulants including amphetamines, methamphetamine and methcathinone, unspecified",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/211765524/unspecified",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine and methcathinone, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C46.1Z"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/211765524",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.1"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/211765524",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/211765524/unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2016549355",
+      "code": "6C46.2",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+      "entities": [
+        {
+          "id": "2016549355",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.2"
+          }
+        },
+        {
+          "id": "1016273204",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "651438062",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, current use",
+          "properties": {
+            "DSM-5 Code": "6C46.20"
+          }
+        },
+        {
+          "id": "113814852",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C46.21"
+          }
+        },
+        {
+          "id": "671215150",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission",
+          "properties": {
+            "DSM-5 Code": "6C46.22"
+          }
+        },
+        {
+          "id": "912062138",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained full remission",
+          "properties": {
+            "DSM-5 Code": "6C46.23"
+          }
+        },
+        {
+          "id": "2016549355_unspecified",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C46.2Z"
+          }
+        },
+        {
+          "id": "1691013484",
+          "label": "Disease",
+          "name": "Cocaine dependence",
+          "properties": {}
+        },
+        {
+          "id": "2070676103",
+          "label": "Disease",
+          "name": "Synthetic cathinone dependence",
+          "properties": {}
+        },
+        {
+          "id": "1772665991",
+          "label": "Disease",
+          "name": "Episode of harmful use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        },
+        {
+          "id": "211765524",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "1016273204",
+          "target": "2016549355",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "2016549355",
+          "target": "651438062",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "2016549355",
+          "target": "113814852",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "2016549355",
+          "target": "671215150",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "2016549355",
+          "target": "912062138",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "2016549355",
+          "target": "2016549355_unspecified",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "childResolved"
+        },
+        {
+          "source": "2016549355",
+          "target": "1691013484",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "2016549355",
+          "target": "2070676103",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "2016549355",
+          "target": "1772665991",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "2016549355",
+          "target": "211765524",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/651438062",
+      "code": "6C46.20",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, current use",
+      "entities": [
+        {
+          "id": "651438062",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, current use",
+          "properties": {
+            "DSM-5 Code": "6C46.20"
+          }
+        },
+        {
+          "id": "2016549355",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.2"
+          }
+        },
+        {
+          "id": "1016273204",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "211765524",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        },
+        {
+          "id": "1772665991",
+          "label": "Disease",
+          "name": "Episode of harmful use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "2016549355",
+          "target": "651438062",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1016273204",
+          "target": "2016549355",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "651438062",
+          "target": "211765524",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "651438062",
+          "target": "1772665991",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/113814852",
+      "code": "6C46.21",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission",
+      "entities": [
+        {
+          "id": "113814852",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, early full remission",
+          "properties": {
+            "DSM-5 Code": "6C46.21"
+          }
+        },
+        {
+          "id": "2016549355",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.2"
+          }
+        },
+        {
+          "id": "1016273204",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "1772665991",
+          "label": "Disease",
+          "name": "Episode of harmful use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        },
+        {
+          "id": "211765524",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "2016549355",
+          "target": "113814852",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1016273204",
+          "target": "113814852",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "113814852",
+          "target": "1772665991",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "113814852",
+          "target": "211765524",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/671215150",
+      "code": "6C46.22",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission",
+      "entities": [
+        {
+          "id": "671215150",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained partial remission",
+          "properties": {
+            "DSM-5 Code": "6C46.22"
+          }
+        },
+        {
+          "id": "2016549355",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.2"
+          }
+        },
+        {
+          "id": "1016273204",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "1772665991",
+          "label": "Disease",
+          "name": "Episode of harmful use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        },
+        {
+          "id": "211765524",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "2016549355",
+          "target": "671215150",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1016273204",
+          "target": "2016549355",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "671215150",
+          "target": "1772665991",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "671215150",
+          "target": "211765524",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/912062138",
+      "code": "6C46.23",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained full remission",
+      "entities": [
+        {
+          "id": "912062138",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, sustained full remission",
+          "properties": {
+            "DSM-5 Code": "6C46.23"
+          }
+        },
+        {
+          "id": "2016549355",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.2"
+          }
+        },
+        {
+          "id": "1772665991",
+          "label": "Disease",
+          "name": "Episode of harmful use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        },
+        {
+          "id": "211765524",
+          "label": "Disease",
+          "name": "Harmful pattern of use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "2016549355",
+          "target": "912062138",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "912062138",
+          "target": "1772665991",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "912062138",
+          "target": "211765524",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/2016549355/unspecified",
+      "code": "6C46.2Z",
+      "title": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone, unspecified",
+          "properties": {
+            "DSM-5 Code": "6C46.2Z"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Stimulant dependence including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.2"
+          }
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/1775535234",
+      "code": "6C46.3",
+      "title": "Stimulant intoxication including amphetamines, methamphetamine or methcathinone",
+      "entities": [
+        {
+          "id": "1775535234",
+          "label": "Disease",
+          "name": "Stimulant intoxication including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.3"
+          }
+        },
+        {
+          "id": "1016273204",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "117248623",
+          "label": "Disease",
+          "name": "amphetamine poisoning",
+          "properties": {}
+        },
+        {
+          "id": "1648213213",
+          "label": "Disease",
+          "name": "Caffeine intoxication",
+          "properties": {}
+        },
+        {
+          "id": "1965837313",
+          "label": "Disease",
+          "name": "Cocaine intoxication",
+          "properties": {}
+        },
+        {
+          "id": "1599283639",
+          "label": "Disease",
+          "name": "Synthetic cathinone intoxication",
+          "properties": {}
+        },
+        {
+          "id": "1374925579",
+          "label": "Disease",
+          "name": "Possession trance disorder",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "1016273204",
+          "target": "1775535234",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "1775535234",
+          "target": "117248623",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1775535234",
+          "target": "1648213213",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1775535234",
+          "target": "1965837313",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1775535234",
+          "target": "1599283639",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "1775535234",
+          "target": "1374925579",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+      "code": "6C46.4",
+      "title": "Stimulant withdrawal including amphetamines, methamphetamine or methcathinone",
+      "entities": [
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+          "label": "Disease",
+          "name": "Stimulant withdrawal including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.4"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/release/11/2025-01/mms/1016273204",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "http://id.who.int/icd/entity/25238782",
+          "label": "Disease",
+          "name": "Cocaine withdrawal",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1569910443",
+          "label": "Disease",
+          "name": "Caffeine withdrawal",
+          "properties": {}
+        },
+        {
+          "id": "http://id.who.int/icd/entity/1587633989",
+          "label": "Disease",
+          "name": "Synthetic cathinone withdrawal",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/1016273204",
+          "target": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+          "target": "http://id.who.int/icd/entity/25238782",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions: Cocaine withdrawal"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+          "target": "http://id.who.int/icd/entity/1569910443",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions: Caffeine withdrawal"
+        },
+        {
+          "source": "http://id.who.int/icd/release/11/2025-01/mms/494523519",
+          "target": "http://id.who.int/icd/entity/1587633989",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions: Synthetic cathinone withdrawal"
+        }
+      ]
+    },
+    {
+      "source_id": "http://id.who.int/icd/release/11/2025-01/mms/951103658",
+      "code": "6C46.5",
+      "title": "Stimulant-induced delirium including amphetamines, methamphetamine or methcathinone",
+      "entities": [
+        {
+          "id": "D1",
+          "label": "Disease",
+          "name": "Stimulant-induced delirium including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46.5"
+          }
+        },
+        {
+          "id": "D2",
+          "label": "Disease",
+          "name": "Disorders due to use of stimulants including amphetamines, methamphetamine or methcathinone",
+          "properties": {
+            "DSM-5 Code": "6C46"
+          }
+        },
+        {
+          "id": "D3",
+          "label": "Disease",
+          "name": "Delirium due to psychoactive substances including medications",
+          "properties": {
+            "DSM-5 Code": "6D70.1"
+          }
+        },
+        {
+          "id": "D4",
+          "label": "Disease",
+          "name": "Delirium",
+          "properties": {
+            "DSM-5 Code": "6D70"
+          }
+        },
+        {
+          "id": "D5",
+          "label": "Disease",
+          "name": "Secondary neurocognitive syndrome",
+          "properties": {
+            "DSM-5 Code": "6E67"
+          }
+        },
+        {
+          "id": "D6",
+          "label": "Disease",
+          "name": "Cocaine-induced delirium",
+          "properties": {}
+        },
+        {
+          "id": "D7",
+          "label": "Disease",
+          "name": "Synthetic cathinone-induced delirium",
+          "properties": {}
+        },
+        {
+          "id": "D8",
+          "label": "Disease",
+          "name": "Disorders due to use of caffeine",
+          "properties": {}
+        }
+      ],
+      "relations": [
+        {
+          "source": "D2",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "parentResolved"
+        },
+        {
+          "source": "D3",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "D4",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "D5",
+          "target": "D1",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Subsumes",
+          "relation": "subsumes",
+          "evidence": "ancestorResolved"
+        },
+        {
+          "source": "D1",
+          "target": "D6",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "D1",
+          "target": "D7",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        },
+        {
+          "source": "D1",
+          "target": "D8",
+          "relation_type": "Disease Hierarchy",
+          "relation_name": "Differentiates From",
+          "relation": "differentiates_from",
+          "evidence": "exclusions"
+        }
+      ]
+    }
+  ],
+  "failures": []
+}
