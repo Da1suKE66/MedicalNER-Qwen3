@@ -1,6 +1,8 @@
 ### model
-model_name_or_path: /aistor/sjtu/hpc_stor01/home/wangxiran/models/Qwen3-8B
+model_name_or_path: Qwen/Qwen3-8B
 trust_remote_code: true
+quantization_bit: 4
+quantization_method: bitsandbytes
 
 ### method
 stage: sft
@@ -13,7 +15,7 @@ lora_target: all
 dataset_dir: data/llamafactory
 dataset: pro_cot_001_858_complete_schema0413
 template: qwen3
-cutoff_len: 16384
+cutoff_len: 2048
 max_samples: 10
 overwrite_cache: true
 preprocessing_num_workers: 2
@@ -21,7 +23,7 @@ dataloader_num_workers: 0
 val_size: 0.20
 
 ### output
-output_dir: models/adapters/qwen3-8b-cot-pro858-smoke
+output_dir: models/adapters/qwen3-8b-cot-pro858-smoke-cuda
 logging_steps: 1
 save_strategy: "no"
 plot_loss: false
@@ -37,7 +39,7 @@ lr_scheduler_type: cosine
 warmup_ratio: 0.03
 bf16: true
 ddp_timeout: 180000000
-flash_attn: auto
+flash_attn: fa2
 gradient_checkpointing: true
 
 ### eval

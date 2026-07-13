@@ -1,17 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
-cd /hpc_stor03/sjtu_home/xiran.wang/MedicalNER-Qwen3
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PROJECT_DIR="${PROJECT_DIR:-${ROOT_DIR}}"
+
+cd "${PROJECT_DIR}"
 
 export PYTHONNOUSERSITE=1
-export HF_ENDPOINT=https://hf-mirror.com
-export HF_HOME=/hpc_stor03/sjtu_home/xiran.wang/.cache/huggingface
-export HUGGINGFACE_HUB_CACHE=$HF_HOME/hub
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+export HF_ENDPOINT="${HF_ENDPOINT:-https://hf-mirror.com}"
+KG_CACHE_ROOT="${KG_CACHE_ROOT:-${PROJECT_DIR}/.cache}"
+export HF_HOME="${HF_HOME:-${KG_CACHE_ROOT}/huggingface}"
+export HUGGINGFACE_HUB_CACHE="${HUGGINGFACE_HUB_CACHE:-${HF_HOME}/hub}"
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
-YAML=configs/llamafactory/predict_qwen3_8b_cot_pro858_format.yaml
-OUTDIR=models/predict/qwen3-8b-cot-pro858-format-check
-ADAPTER=models/adapters/qwen3-8b-cot-pro858
+YAML="${CONFIG_YAML:-configs/llamafactory/predict_qwen3_8b_cot_pro858_format.yaml}"
+OUTDIR="${OUTDIR:-models/predict/qwen3-8b-cot-pro858-format-check}"
+ADAPTER="${ADAPTER:-models/adapters/qwen3-8b-cot-pro858}"
 
 echo "===== Runtime Info ====="
 hostname
@@ -31,18 +36,15 @@ PY
 which llamafactory-cli
 nvidia-smi || true
 
-echo "===== Base model files ====="
-ls -lh /hpc_stor03/sjtu_home/xiran.wang/models/Qwen3-8B | head -n 30
-
 echo "===== Adapter files ====="
 ls -lh "$ADAPTER" | head -n 50
 
 echo "===== Trainer state / best checkpoint ====="
-python - <<'PY'
-import json
+ADAPTER="${ADAPTER}" python - <<'PY'
+import json, os
 from pathlib import Path
 
-p = Path("models/adapters/qwen3-8b-cot-pro858/trainer_state.json")
+p = Path(os.environ["ADAPTER"]) / "trainer_state.json"
 if p.exists():
     s = json.loads(p.read_text())
     print("best_model_checkpoint:", s.get("best_model_checkpoint"))
@@ -56,7 +58,7 @@ echo "===== YAML ====="
 sed -n '1,240p' "$YAML"
 
 echo "===== Start prediction ====="
-CUDA_VISIBLE_DEVICES=0 llamafactory-cli train "$YAML"
+llamafactory-cli train "$YAML"
 
 echo "===== Prediction finished ====="
 date
@@ -65,11 +67,11 @@ echo "===== Output files ====="
 ls -lh "$OUTDIR" || true
 
 echo "===== Preview generated predictions ====="
-python - <<'PY'
-import json
+OUTDIR="${OUTDIR}" python - <<'PY'
+import json, os
 from pathlib import Path
 
-p = Path("models/predict/qwen3-8b-cot-pro858-format-check/generated_predictions.jsonl")
+p = Path(os.environ["OUTDIR"]) / "generated_predictions.jsonl"
 
 print("prediction file:", p)
 print("exists:", p.exists())
@@ -94,12 +96,13 @@ with p.open(encoding="utf-8") as f:
 PY
 
 echo "===== JSON format quick check ====="
-python - <<'PY'
+OUTDIR="${OUTDIR}" python - <<'PY'
 import json
+import os
 import re
 from pathlib import Path
 
-p = Path("models/predict/qwen3-8b-cot-pro858-format-check/generated_predictions.jsonl")
+p = Path(os.environ["OUTDIR"]) / "generated_predictions.jsonl"
 
 def clean_json_text(text):
     text = text.strip()

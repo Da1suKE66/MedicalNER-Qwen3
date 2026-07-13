@@ -8,7 +8,7 @@ set -euo pipefail
 
 PROJECT_DIR="${PROJECT_DIR:-/aistor/sjtu/hpc_stor01/home/wangxiran/projects/MedicalNER-Qwen3}"
 CONFIG_YAML="${CONFIG_YAML:-configs/llamafactory/predict_qwen3_8b_cot_pro858_npu.yaml}"
-ADAPTER="${ADAPTER:-models/adapters/qwen3-8b-cot-pro858}"
+ADAPTER="${ADAPTER:-models/adapters/qwen3-8b-cot-pro858-npu}"
 OUTDIR="${OUTDIR:-models/predict/qwen3-8b-cot-pro858-kgtest20-npu}"
 
 cd "${PROJECT_DIR}"

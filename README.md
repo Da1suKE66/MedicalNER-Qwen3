@@ -111,6 +111,39 @@ bash scripts/02_convert_to_llamafactory.sh \
 
 ## 5. Fine-Tune LoRA
 
+### Select NVIDIA CUDA or Huawei Ascend NPU
+
+The unified launcher keeps the CUDA and NPU implementations separate and
+selects one with `--backend`. NVIDIA CUDA is the default:
+
+```bash
+# NVIDIA CUDA (default)
+bash scripts/run_medicalner_qwen3.sh --backend cuda --task smoke
+bash scripts/run_medicalner_qwen3.sh --backend cuda --task train
+bash scripts/run_medicalner_qwen3.sh --backend cuda --task predict
+
+# Huawei Ascend NPU
+bash scripts/run_medicalner_qwen3.sh --backend npu --task smoke
+bash scripts/run_medicalner_qwen3.sh --backend npu --task train
+bash scripts/run_medicalner_qwen3.sh --backend npu --task predict
+```
+
+Use `--device 0` (or a comma-separated device list) to select visible devices.
+Use `--config path/to/config.yaml` when the model, adapter, or output paths differ
+from the committed defaults. The CUDA configs default to the portable
+`Qwen/Qwen3-8B` model ID; the NPU configs retain the Ascend environment paths and
+NPU-specific FlashAttention setup. CUDA and NPU training outputs use distinct
+directories so that one backend does not overwrite the other.
+
+The underlying scripts remain available for direct use:
+
+```text
+scripts/run_medicalner_qwen3_pro858.sh              # CUDA training
+scripts/run_medicalner_qwen3_pro858_predict.sh      # CUDA prediction
+scripts/run_medicalner_qwen3_pro858_npu.sh          # Ascend NPU training
+scripts/run_medicalner_qwen3_pro858_predict_npu.sh  # Ascend NPU prediction
+```
+
 On a server with LLaMA-Factory installed, train directly from the committed
 datasets:
 

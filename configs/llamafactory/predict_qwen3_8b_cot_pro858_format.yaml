@@ -1,6 +1,6 @@
 ### model
-model_name_or_path: /hpc_stor03/sjtu_home/xiran.wang/models/Qwen3-8B
-adapter_name_or_path: /hpc_stor03/sjtu_home/xiran.wang/MedicalNER-Qwen3/models/adapters/qwen3-8b-cot-pro858/checkpoint-280
+model_name_or_path: Qwen/Qwen3-8B
+adapter_name_or_path: models/adapters/qwen3-8b-cot-pro858
 trust_remote_code: true
 quantization_bit: 4
 quantization_method: bitsandbytes

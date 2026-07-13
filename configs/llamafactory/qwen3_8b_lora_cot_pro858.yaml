@@ -1,5 +1,5 @@
 ### model
-model_name_or_path: /hpc_stor03/sjtu_home/xiran.wang/models/Qwen3-8B
+model_name_or_path: Qwen/Qwen3-8B
 trust_remote_code: true
 quantization_bit: 4
 quantization_method: bitsandbytes
