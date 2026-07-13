@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract selected LLaMA-Factory records for the curated medical test set."""
+"""Extract selected LLaMA-Factory records for the schema regression set."""
 
 from __future__ import annotations
 
@@ -9,11 +9,11 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_TEST_SET = Path("data/test_set_building/kg_test_set_20_medical_review.json")
+DEFAULT_TEST_SET = Path("data/schema_regression/schema_regression_20.json")
 DEFAULT_SOURCE = Path("data/llamafactory/pro_cot_001_858_complete_llamafactory.json")
-DEFAULT_OUTPUT = Path("data/llamafactory/kg_test_set_20_medical_review_llamafactory.json")
+DEFAULT_OUTPUT = Path("data/llamafactory/schema_regression_20_llamafactory.json")
 DEFAULT_DATASET_INFO = Path("data/llamafactory/dataset_info.json")
-DEFAULT_DATASET_NAME = "kg_test_set_20_medical_review"
+DEFAULT_DATASET_NAME = "schema_regression_20"
 MEDICAL_TEXT_MARKER = "Medical text:\n"
 
 
@@ -76,13 +76,14 @@ def update_dataset_info(path: Path, dataset_name: str, output_path: Path) -> Non
         },
     }
     path.write_text(
-        json.dumps(dataset_info, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(dataset_info, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
+        encoding="utf-8",
     )
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Build a LLaMA-Factory eval dataset from curated test set metadata."
+        description="Build a LLaMA-Factory eval dataset from schema regression metadata."
     )
     parser.add_argument("--test-set", type=Path, default=DEFAULT_TEST_SET)
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
@@ -121,7 +122,8 @@ def main() -> None:
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
-        json.dumps(extracted_records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(extracted_records, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
+        encoding="utf-8",
     )
 
     if not args.no_update_dataset_info:

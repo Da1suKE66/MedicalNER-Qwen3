@@ -1,0 +1,213 @@
+{
+  "schema_version": "2.0.0-draft.1",
+  "status": "draft",
+  "source_release": "2025-01",
+  "coding": {
+    "coding_system": "ICD-11-MMS",
+    "code_property": "icdcode",
+    "release_property": "icd_release",
+    "uri_property": "icd_uri",
+    "main_disease_only": true
+  },
+  "entity_types": {
+    "Disease": {
+      "properties": [
+        "icdcode",
+        "coding_system",
+        "icd_release",
+        "icd_uri",
+        "subtype",
+        "course_requirements",
+        "comorbidity_types",
+        "prognosis_factors",
+        "core_features",
+        "key_differentiation_points",
+        "misdiagnosis_risk"
+      ]
+    },
+    "Symptom": {
+      "properties": [
+        "description",
+        "manifestations",
+        "occurrence_frequency",
+        "severity_description",
+        "diagnostic_value"
+      ]
+    },
+    "Diagnostic Criteria": {
+      "properties": [
+        "required_core_symptoms",
+        "functional_impairment_requirements",
+        "exclusion_details"
+      ]
+    },
+    "Interview Tool": {
+      "properties": [
+        "key_inquiry_directions",
+        "exclusions",
+        "sample_interview_phrases",
+        "follow_up_focus"
+      ]
+    },
+    "Patient Information": {
+      "properties": [
+        "age_group",
+        "comorbidities",
+        "special_conditions",
+        "medication_history"
+      ]
+    },
+    "Medication": {
+      "properties": [
+        "generic_name",
+        "indications",
+        "contraindications",
+        "dosage_for_special_populations",
+        "common_side_effects"
+      ]
+    },
+    "Communication Method": {
+      "properties": [
+        "suitable_patient_type",
+        "empathetic_phrases",
+        "pitfalls_to_avoid"
+      ]
+    },
+    "Risk Information": {
+      "properties": [
+        "risk_type",
+        "alert_keywords",
+        "emergency_intervention_steps"
+      ]
+    }
+  },
+  "property_aliases": {
+    "DSM-5 Code": "icdcode",
+    "ICD Code": "icdcode",
+    "ICD-11 Code": "icdcode",
+    "icd_code": "icdcode",
+    "Subtype": "subtype",
+    "Course Requirements": "course_requirements",
+    "Comorbidity Types": "comorbidity_types",
+    "Prognosis Factors": "prognosis_factors",
+    "Core Features": "core_features",
+    "Key Differentiation Points": "key_differentiation_points",
+    "Misdiagnosis Risk": "misdiagnosis_risk",
+    "Symptom Description": "description",
+    "Occurrence Frequency": "occurrence_frequency",
+    "Severity Description": "severity_description",
+    "Diagnostic Value": "diagnostic_value",
+    "Required Core Symptoms": "required_core_symptoms",
+    "Functional Impairment Requirements": "functional_impairment_requirements",
+    "Exclusion Details": "exclusion_details",
+    "Key Inquiry Directions": "key_inquiry_directions",
+    "Exclusions": "exclusions",
+    "Sample Interview Phrases": "sample_interview_phrases",
+    "Follow-up Focus": "follow_up_focus",
+    "Age Group": "age_group",
+    "Comorbidities": "comorbidities",
+    "Special Conditions": "special_conditions",
+    "Medication History": "medication_history",
+    "Generic Name": "generic_name",
+    "Indications": "indications",
+    "Contraindications": "contraindications",
+    "Dosage for Special Populations": "dosage_for_special_populations",
+    "Common Side Effects": "common_side_effects",
+    "Suitable Patient Type": "suitable_patient_type",
+    "Empathetic Phrases": "empathetic_phrases",
+    "Pitfalls to Avoid": "pitfalls_to_avoid",
+    "Risk Type": "risk_type",
+    "Alert Keywords": "alert_keywords",
+    "Emergency Intervention Steps": "emergency_intervention_steps"
+  },
+  "relation_types": {
+    "subsumes": {
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "differentiates_from": {
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "co_occurs_with_frequency": {
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "associated_with_poor_prognosis_in": {
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "is_core_symptom_of": {
+      "source": ["Symptom"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "is_associated_symptom_of": {
+      "source": ["Symptom"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "required_for_diagnosis_of": {
+      "source": ["Diagnostic Criteria"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "supports_subtyping_of": {
+      "source": ["Diagnostic Criteria"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "first_line_for": {
+      "source": ["Medication"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "informed_by_patient_demographics": {
+      "source": ["Interview Tool"],
+      "target": ["Patient Information"],
+      "status": "active"
+    },
+    "precedes": {"status": "needs_medical_review"},
+    "follows": {"status": "needs_medical_review"},
+    "modulated_by": {"status": "needs_medical_review"},
+    "excludes_if_present": {"status": "needs_medical_review"},
+    "assesses_for": {"status": "needs_medical_review"},
+    "triggers_follow_up_question_on": {"status": "needs_medical_review"},
+    "contraindicated_in": {"status": "needs_medical_review"},
+    "dose_adjusted_for": {"status": "needs_medical_review"},
+    "interacts_with": {"status": "needs_medical_review"},
+    "recommended_for": {"status": "needs_medical_review"},
+    "avoid_with": {"status": "needs_medical_review"},
+    "escalates_to": {"status": "needs_medical_review"},
+    "triggers_alert_when": {"status": "needs_medical_review"},
+    "mediated_by": {"status": "needs_medical_review"}
+  },
+  "text_corrections": {
+    "pregnullcy": "pregnancy",
+    "anullkastic": "anankastic",
+    "predominulltly": "predominantly",
+    "maintenullce": "maintenance",
+    "malignullt": "malignant",
+    "dominullt": "dominant",
+    "non-dominullt": "non-dominant",
+    "anullkastia": "anankastia",
+    "finullces": "finances",
+    "predominullt": "predominant",
+    "finullcial": "financial",
+    "consonullts": "consonants",
+    "consonullt": "consonant",
+    "anullcastic": "anancastic",
+    "dominullce": "dominance",
+    "resonullce": "resonance",
+    "unullticipated": "unanticipated",
+    "predominullce": "predominance",
+    "determinullt": "determinant",
+    "pregnullt": "pregnant",
+    "finullce": "finance",
+    "finullcially": "financially"
+  }
+}

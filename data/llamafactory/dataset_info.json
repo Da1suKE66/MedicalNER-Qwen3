@@ -13,8 +13,8 @@
       "system_tag": "system"
     }
   },
-  "kg_test_set_20_medical_review": {
-    "file_name": "kg_test_set_20_medical_review_llamafactory.json",
+  "schema_regression_20": {
+    "file_name": "schema_regression_20_llamafactory.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages"

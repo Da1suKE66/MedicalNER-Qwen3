@@ -100,7 +100,7 @@ def load_json(path: Path) -> Any:
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2, allow_nan=False)
         f.write("\n")
 
 
@@ -159,7 +159,7 @@ def build_prompt(mode: str, entity: dict[str, Any]) -> str:
     return (
         f"{system_prompt}\n\n"
         "Input JSON:\n"
-        f"{json.dumps(entity, ensure_ascii=False, indent=2)}\n\n"
+        f"{json.dumps(entity, ensure_ascii=False, indent=2, allow_nan=False)}\n\n"
         "Output strict JSON only:"
     )
 

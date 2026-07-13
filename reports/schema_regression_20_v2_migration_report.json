@@ -1,0 +1,33 @@
+{
+  "schema_version": "2.0.0-draft.1",
+  "input": "data/schema_regression/schema_regression_20.json",
+  "input_record_count": 20,
+  "output_record_count": 20,
+  "no_silent_record_loss": true,
+  "idempotent": true,
+  "status_counts": {
+    "repaired": 8,
+    "manual_review": 12
+  },
+  "operation_counts": {
+    "attach_source_identity": 20,
+    "rename_property": 649,
+    "inject_main_disease_coding": 20,
+    "add_relation_evidence_span": 276,
+    "repair_text_tokens": 6,
+    "move_entity_to_manifestation": 3
+  },
+  "validation_summary": {
+    "record_count": 20,
+    "records_with_findings": 9,
+    "error_counts": {},
+    "warning_counts": {
+      "relation_semantics_need_medical_review": 31
+    },
+    "metrics": {
+      "entities": 480,
+      "relations": 425,
+      "relations_with_evidence": 425
+    }
+  }
+}

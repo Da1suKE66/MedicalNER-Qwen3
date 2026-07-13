@@ -76,7 +76,7 @@ def load_json(path: Path):
 def dump_json(path: Path, payload):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2, allow_nan=False)
 
 
 def parse_csv_list(text: str | None):

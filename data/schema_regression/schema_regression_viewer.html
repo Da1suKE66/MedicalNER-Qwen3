@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medical KG Review</title>
+  <title>Medical KG Schema Regression Review</title>
   <style>
     :root {
       color-scheme: light;
@@ -295,7 +295,7 @@
   <div class="app">
     <header class="topbar">
       <div class="brand">
-        <h1>Medical KG Review</h1>
+        <h1>Medical KG Schema Regression Review</h1>
         <span id="datasetSummary"></span>
       </div>
       <div class="top-actions">
@@ -8941,7 +8941,7 @@
       const current = getCurrentRecord();
       if (current) saveCurrentReview(false);
       const merged = records.map(record => ({...record, review: {...(record.review || {}), ...(state.reviews[record.test_id] || {})}}));
-      download('kg_test_set_20_medical_review_scored.json', JSON.stringify(merged, null, 2), 'application/json');
+      download('schema_regression_20_scored.json', strictStringify(merged, 2), 'application/json');
     }
 
     function exportCsv() {
@@ -8959,7 +8959,7 @@
         });
       });
       const csv = [headers, ...rows].map(row => row.map(csvCell).join(',')).join('\n');
-      download('kg_test_set_20_medical_review_scores.csv', csv, 'text/csv;charset=utf-8');
+      download('schema_regression_20_scores.csv', csv, 'text/csv;charset=utf-8');
     }
 
     function download(filename, text, type) {
@@ -8970,6 +8970,15 @@
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
+    function strictStringify(value, indent) {
+      return JSON.stringify(value, (_key, item) => {
+        if (typeof item === 'number' && !Number.isFinite(item)) {
+          throw new TypeError('Cannot serialize NaN or Infinity as strict JSON');
+        }
+        return item;
+      }, indent);
+    }
+
     function csvCell(value) {
       const s = String(value ?? '');
       return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
@@ -8978,7 +8987,7 @@
     function loadReviews() {
       try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
     }
-    function persistReviews() { localStorage.setItem(storageKey, JSON.stringify(state.reviews)); }
+    function persistReviews() { localStorage.setItem(storageKey, strictStringify(state.reviews)); }
     function getCurrentRecord() { return records.find(r => r.test_id === state.currentId) || records[0]; }
     function actualEntities(record) { return record?.gold_output?.entities || []; }
     function actualRelations(record) { return record?.gold_output?.relations || []; }

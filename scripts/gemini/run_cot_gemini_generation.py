@@ -70,7 +70,10 @@ def entity_to_medical_text(entity: dict[str, Any]) -> str:
     if entity.get("diagnosticCriteria"):
         parts.append(entity["diagnosticCriteria"])
     if entity.get("narrowerTerms"):
-        parts.append("Narrower terms: " + json.dumps(entity["narrowerTerms"], ensure_ascii=False))
+        parts.append(
+            "Narrower terms: "
+            + json.dumps(entity["narrowerTerms"], ensure_ascii=False, allow_nan=False)
+        )
     return "\n\n".join(part for part in parts if part)
 
 

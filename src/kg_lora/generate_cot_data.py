@@ -334,7 +334,7 @@ def request_gemini_content(
     }
     if response_mime_type:
         payload["generationConfig"]["responseMimeType"] = response_mime_type
-    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    body = json.dumps(payload, ensure_ascii=False, allow_nan=False).encode("utf-8")
     req = Request(
         endpoint,
         data=body,
@@ -352,11 +352,16 @@ def request_gemini_content(
         raise RuntimeError(f"URLError: {e}") from e
 
     if response_data.get("error"):
-        raise RuntimeError(json.dumps(response_data["error"], ensure_ascii=False))
+        raise RuntimeError(
+            json.dumps(response_data["error"], ensure_ascii=False, allow_nan=False)
+        )
 
     response_text = extract_text_from_response(response_data)
     if not response_text:
-        raise RuntimeError(f"响应中没有可解析文本: {json.dumps(response_data, ensure_ascii=False)[:800]}")
+        serialized_response = json.dumps(
+            response_data, ensure_ascii=False, allow_nan=False
+        )
+        raise RuntimeError(f"响应中没有可解析文本: {serialized_response[:800]}")
     return response_text
 
 
@@ -857,7 +862,7 @@ Source text:
 {text}
 
 Current merged graph draft:
-{json.dumps(sanitized_output, ensure_ascii=False, indent=2)}
+{json.dumps(sanitized_output, ensure_ascii=False, indent=2, allow_nan=False)}
 """
 
     last_error = None
@@ -1131,9 +1136,9 @@ def save_results(generated_data, filtered_data, output_dir=None, file_suffix=Non
     raw_file = output_dir / f"cot_raw_{ts}{suffix}.json"
     filtered_file = output_dir / f"cot_filtered_{ts}{suffix}.json"
     with open(raw_file, "w", encoding="utf-8") as f:
-        json.dump(generated_data, f, ensure_ascii=False, indent=2)
+        json.dump(generated_data, f, ensure_ascii=False, indent=2, allow_nan=False)
     with open(filtered_file, "w", encoding="utf-8") as f:
-        json.dump(filtered_data, f, ensure_ascii=False, indent=2)
+        json.dump(filtered_data, f, ensure_ascii=False, indent=2, allow_nan=False)
     print(f"💾 raw: {raw_file}")
     print(f"💾 filtered: {filtered_file}")
     return raw_file, filtered_file

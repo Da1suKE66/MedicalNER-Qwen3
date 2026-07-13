@@ -1,0 +1,392 @@
+{
+  "schema_version": "2.0.0-draft.1",
+  "record_count": 858,
+  "damaged_token_types": 22,
+  "damaged_occurrences": 305,
+  "damaged_tokens": {
+    "anullcastic": {
+      "count": 2,
+      "restored": "anancastic",
+      "examples": [
+        {
+          "path": "$.entities[747].indexTerms[5].label",
+          "damaged": "anullcastic",
+          "restored": "anancastic"
+        },
+        {
+          "path": "$.entities[747].indexTerms[6].label",
+          "damaged": "anullcastic",
+          "restored": "anancastic"
+        }
+      ]
+    },
+    "anullkastia": {
+      "count": 12,
+      "restored": "anankastia",
+      "examples": [
+        {
+          "path": "$.entities[743].diagnosticCriteria",
+          "damaged": "Anullkastia",
+          "restored": "anankastia"
+        },
+        {
+          "path": "$.entities[743].diagnosticCriteria",
+          "damaged": "Anullkastia",
+          "restored": "anankastia"
+        },
+        {
+          "path": "$.entities[748].diagnosticCriteria",
+          "damaged": "Anullkastia",
+          "restored": "anankastia"
+        }
+      ]
+    },
+    "anullkastic": {
+      "count": 59,
+      "restored": "anankastic",
+      "examples": [
+        {
+          "path": "$.entities[191].synonyms[0].label",
+          "damaged": "anullkastic",
+          "restored": "anankastic"
+        },
+        {
+          "path": "$.entities[191].diagnosticCriteria",
+          "damaged": "anullkastic",
+          "restored": "anankastic"
+        },
+        {
+          "path": "$.entities[191].diagnosticCriteria",
+          "damaged": "anullkastic",
+          "restored": "anankastic"
+        }
+      ]
+    },
+    "consonullt": {
+      "count": 2,
+      "restored": "consonant",
+      "examples": [
+        {
+          "path": "$.entities[8].diagnosticCriteria",
+          "damaged": "consonullt",
+          "restored": "consonant"
+        },
+        {
+          "path": "$.entities[8].diagnosticCriteria",
+          "damaged": "consonullt",
+          "restored": "consonant"
+        }
+      ]
+    },
+    "consonullts": {
+      "count": 3,
+      "restored": "consonants",
+      "examples": [
+        {
+          "path": "$.entities[8].diagnosticCriteria",
+          "damaged": "consonullts",
+          "restored": "consonants"
+        },
+        {
+          "path": "$.entities[8].diagnosticCriteria",
+          "damaged": "consonullts",
+          "restored": "consonants"
+        },
+        {
+          "path": "$.entities[8].diagnosticCriteria",
+          "damaged": "consonullts",
+          "restored": "consonants"
+        }
+      ]
+    },
+    "determinullt": {
+      "count": 1,
+      "restored": "determinant",
+      "examples": [
+        {
+          "path": "$.entities[258].diagnosticCriteria",
+          "damaged": "determinullt",
+          "restored": "determinant"
+        }
+      ]
+    },
+    "dominullce": {
+      "count": 2,
+      "restored": "dominance",
+      "examples": [
+        {
+          "path": "$.entities[798].definition",
+          "damaged": "dominullce",
+          "restored": "dominance"
+        },
+        {
+          "path": "$.entities[798].diagnosticCriteria",
+          "damaged": "dominullce",
+          "restored": "dominance"
+        }
+      ]
+    },
+    "dominullt": {
+      "count": 12,
+      "restored": "dominant",
+      "examples": [
+        {
+          "path": "$.entities[94].diagnosticCriteria",
+          "damaged": "dominullt",
+          "restored": "dominant"
+        },
+        {
+          "path": "$.entities[253].diagnosticCriteria",
+          "damaged": "dominullt",
+          "restored": "dominant"
+        },
+        {
+          "path": "$.entities[254].definition",
+          "damaged": "dominullt",
+          "restored": "dominant"
+        }
+      ]
+    },
+    "finullce": {
+      "count": 1,
+      "restored": "finance",
+      "examples": [
+        {
+          "path": "$.entities[287].diagnosticCriteria",
+          "damaged": "finullce",
+          "restored": "finance"
+        }
+      ]
+    },
+    "finullces": {
+      "count": 10,
+      "restored": "finances",
+      "examples": [
+        {
+          "path": "$.entities[147].diagnosticCriteria",
+          "damaged": "finullces",
+          "restored": "finances"
+        },
+        {
+          "path": "$.entities[158].diagnosticCriteria",
+          "damaged": "finullces",
+          "restored": "finances"
+        },
+        {
+          "path": "$.entities[169].diagnosticCriteria",
+          "damaged": "finullces",
+          "restored": "finances"
+        }
+      ]
+    },
+    "finullcial": {
+      "count": 6,
+      "restored": "financial",
+      "examples": [
+        {
+          "path": "$.entities[182].diagnosticCriteria",
+          "damaged": "finullcial",
+          "restored": "financial"
+        },
+        {
+          "path": "$.entities[705].diagnosticCriteria",
+          "damaged": "finullcial",
+          "restored": "financial"
+        },
+        {
+          "path": "$.entities[705].diagnosticCriteria",
+          "damaged": "finullcial",
+          "restored": "financial"
+        }
+      ]
+    },
+    "finullcially": {
+      "count": 1,
+      "restored": "financially",
+      "examples": [
+        {
+          "path": "$.entities[751].diagnosticCriteria",
+          "damaged": "finullcially",
+          "restored": "financially"
+        }
+      ]
+    },
+    "maintenullce": {
+      "count": 35,
+      "restored": "maintenance",
+      "examples": [
+        {
+          "path": "$.entities[258].diagnosticCriteria",
+          "damaged": "maintenullce",
+          "restored": "maintenance"
+        },
+        {
+          "path": "$.entities[267].definition",
+          "damaged": "maintenullce",
+          "restored": "maintenance"
+        },
+        {
+          "path": "$.entities[301].diagnosticCriteria",
+          "damaged": "maintenullce",
+          "restored": "maintenance"
+        }
+      ]
+    },
+    "malignullt": {
+      "count": 17,
+      "restored": "malignant",
+      "examples": [
+        {
+          "path": "$.entities[108].diagnosticCriteria",
+          "damaged": "Malignullt",
+          "restored": "malignant"
+        },
+        {
+          "path": "$.entities[108].diagnosticCriteria",
+          "damaged": "Malignullt",
+          "restored": "malignant"
+        },
+        {
+          "path": "$.entities[108].diagnosticCriteria",
+          "damaged": "Malignullt",
+          "restored": "malignant"
+        }
+      ]
+    },
+    "non-dominullt": {
+      "count": 12,
+      "restored": "non-dominant",
+      "examples": [
+        {
+          "path": "$.entities[253].diagnosticCriteria",
+          "damaged": "non-dominullt",
+          "restored": "non-dominant"
+        },
+        {
+          "path": "$.entities[253].diagnosticCriteria",
+          "damaged": "non-dominullt",
+          "restored": "non-dominant"
+        },
+        {
+          "path": "$.entities[253].diagnosticCriteria",
+          "damaged": "non-dominullt",
+          "restored": "non-dominant"
+        }
+      ]
+    },
+    "predominullce": {
+      "count": 1,
+      "restored": "predominance",
+      "examples": [
+        {
+          "path": "$.entities[32].diagnosticCriteria",
+          "damaged": "Predominullce",
+          "restored": "predominance"
+        }
+      ]
+    },
+    "predominullt": {
+      "count": 7,
+      "restored": "predominant",
+      "examples": [
+        {
+          "path": "$.entities[32].diagnosticCriteria",
+          "damaged": "predominullt",
+          "restored": "predominant"
+        },
+        {
+          "path": "$.entities[32].diagnosticCriteria",
+          "damaged": "predominullt",
+          "restored": "predominant"
+        },
+        {
+          "path": "$.entities[32].diagnosticCriteria",
+          "damaged": "predominullt",
+          "restored": "predominant"
+        }
+      ]
+    },
+    "predominulltly": {
+      "count": 54,
+      "restored": "predominantly",
+      "examples": [
+        {
+          "path": "$.entities[0].diagnosticCriteria",
+          "damaged": "predominulltly",
+          "restored": "predominantly"
+        },
+        {
+          "path": "$.entities[32].diagnosticCriteria",
+          "damaged": "predominulltly",
+          "restored": "predominantly"
+        },
+        {
+          "path": "$.entities[32].diagnosticCriteria",
+          "damaged": "predominulltly",
+          "restored": "predominantly"
+        }
+      ]
+    },
+    "pregnullcy": {
+      "count": 65,
+      "restored": "pregnancy",
+      "examples": [
+        {
+          "path": "$.entities[111].diagnosticCriteria",
+          "damaged": "pregnullcy",
+          "restored": "pregnancy"
+        },
+        {
+          "path": "$.entities[111].diagnosticCriteria",
+          "damaged": "pregnullcy",
+          "restored": "pregnancy"
+        },
+        {
+          "path": "$.entities[111].diagnosticCriteria",
+          "damaged": "pregnullcy",
+          "restored": "pregnancy"
+        }
+      ]
+    },
+    "pregnullt": {
+      "count": 1,
+      "restored": "pregnant",
+      "examples": [
+        {
+          "path": "$.entities[273].diagnosticCriteria",
+          "damaged": "pregnullt",
+          "restored": "pregnant"
+        }
+      ]
+    },
+    "resonullce": {
+      "count": 1,
+      "restored": "resonance",
+      "examples": [
+        {
+          "path": "$.entities[8].diagnosticCriteria",
+          "damaged": "resonullce",
+          "restored": "resonance"
+        }
+      ]
+    },
+    "unullticipated": {
+      "count": 1,
+      "restored": "unanticipated",
+      "examples": [
+        {
+          "path": "$.entities[17].diagnosticCriteria",
+          "damaged": "unullticipated",
+          "restored": "unanticipated"
+        }
+      ]
+    }
+  },
+  "unexpected_tokens_containing_null": {},
+  "json_null_count": 858,
+  "null_paths": {
+    "$.entities[*].excel_metadata.browser_link": 858
+  },
+  "input": "data/raw/mental_disorders_20251125_165535.json",
+  "input_sha256": "a85657742af50bd24bac501ceeae04ddb1c576e033fa3501773a4e6b4327d086"
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "2.0.0-draft.1",
+  "source_ontology_status": "source.xlsx was not present in the repository at implementation time",
+  "requires_medical_review": [
+    {
+      "id": "differential_diagnosis_type",
+      "decision": "deferred",
+      "question": "Should differential diagnosis remain a Disease role expressed by a relation?",
+      "default_for_draft": "Keep label Disease and express the role through a reviewed relation."
+    },
+    {
+      "id": "medical_condition_type",
+      "decision": "deferred",
+      "question": "How is MedicalCondition made mutually distinguishable from Disease, Patient Information, Medication, mechanism, and finding?",
+      "default_for_draft": "Do not add MedicalCondition as an entity label."
+    },
+    {
+      "id": "exclusion_semantics",
+      "decision": "deferred",
+      "question": "Separate ICD classification exclusions, clinical rule-out diagnoses, and diagnosis-excluding criteria, and confirm their direction."
+    },
+    {
+      "id": "patient_disease_relation",
+      "decision": "deferred",
+      "question": "Choose the canonical Patient Information-Disease relation and domain/range."
+    },
+    {
+      "id": "somatic_etiology_relation",
+      "decision": "deferred",
+      "question": "Choose entity labels and direction for somatic causes without introducing an over-broad type."
+    }
+  ],
+  "proposed_relations_not_yet_active": [
+    "icd_exclusion_reference",
+    "must_be_ruled_out_for",
+    "excludes_diagnosis_of",
+    "affects_diagnosis_of",
+    "causes_or_contributes_to"
+  ]
+}

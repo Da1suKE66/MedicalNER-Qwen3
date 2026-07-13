@@ -202,3 +202,26 @@ The latest existing report is kept in `reports/qwen_compare_analysis_report.md`.
   template.
 - For quick checks, prefer `MAX_SAMPLES=3 WORKERS=1` before launching a full
   generation run.
+
+## Schema v2 data quality workflow
+
+The versioned Schema v2 draft is under `schemas/v2.0.0/`. It deliberately defers
+medically ambiguous entity types and relation semantics to `conflicts.json` instead of
+silently freezing them.
+
+Run the deterministic preparation workflow before any v2 training:
+
+```bash
+python3 scripts/build_data_manifest.py
+python3 scripts/audit_null_corruption.py
+python3 scripts/migrate_schema_v2.py --apply-high-confidence-collapses
+python3 scripts/validate_schema_v2.py
+python3 scripts/build_v2_splits.py \
+  --records data/schema_v2/migrated/pro_cot_schema_v2.json
+```
+
+The existing 20 reviewed records are registered as `schema_regression_20`. They came
+from the original 858-record training source and therefore cannot measure
+generalization. Final v2 metrics must use the hierarchy-grouped held-out split and a
+new adapter trained only on `train_v2.json`; the historical pro858 adapter has already
+seen every record in that pool.

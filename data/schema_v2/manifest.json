@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0.0-draft.1",
+  "source_release": "2025-01",
+  "files": [
+    {
+      "path": "data/raw/mental_disorders_20251125_165535.json",
+      "sha256": "a85657742af50bd24bac501ceeae04ddb1c576e033fa3501773a4e6b4327d086",
+      "size_bytes": 6141340,
+      "record_count": 858,
+      "source_metadata": {
+        "total_count": 858,
+        "crawl_timestamp": "20251125_165535",
+        "source": "ICD-11 MMS via API"
+      }
+    },
+    {
+      "path": "data/generated/gemini_split/pro_cot_001_858_complete_schema0413.json",
+      "sha256": "13fbd3b664d7a93691fc7645c2805a02ab9532a3f6fa51a2620ac95c4591c726",
+      "size_bytes": 14032404,
+      "record_count": 858
+    },
+    {
+      "path": "data/llamafactory/pro_cot_001_858_complete_llamafactory.json",
+      "sha256": "77cefa2725225885efd4c1483a6f4fda405787ac0d4d19d5c58eed6fe4aa7ec5",
+      "size_bytes": 14321994,
+      "record_count": 858
+    },
+    {
+      "path": "data/schema_regression/schema_regression_20.json",
+      "sha256": "7be3d310b7dc6cd1f32e08ea9655d7d7bea6fbbd3e886429ecef9e4c45be73ef",
+      "size_bytes": 467444,
+      "record_count": 20
+    }
+  ]
+}

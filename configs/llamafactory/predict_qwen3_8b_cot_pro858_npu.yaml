@@ -10,7 +10,7 @@ finetuning_type: lora
 
 ### dataset
 dataset_dir: data/llamafactory
-eval_dataset: kg_test_set_20_medical_review
+eval_dataset: schema_regression_20
 template: qwen3
 cutoff_len: 16384
 max_samples: 20
@@ -18,7 +18,7 @@ overwrite_cache: true
 preprocessing_num_workers: 8
 
 ### output
-output_dir: models/predict/qwen3-8b-cot-pro858-kgtest20-npu
+output_dir: models/predict/qwen3-8b-cot-pro858-schema-regression-20-npu
 overwrite_output_dir: true
 report_to: none
 

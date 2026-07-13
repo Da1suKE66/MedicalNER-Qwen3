@@ -87,7 +87,7 @@ def main():
                 "invalid_cases": invalid_cases,
             }
         }
-        print(json.dumps(summary, ensure_ascii=False, indent=2))
+        print(json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False))
         return
 
     summary = {}
@@ -127,7 +127,7 @@ def main():
             "invalid_cases": invalid_cases,
         }
 
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    print(json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":

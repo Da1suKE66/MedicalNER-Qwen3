@@ -83,7 +83,7 @@ def main():
         raise SystemExit("Input JSON must be a list.")
 
     summary = analyze_records(records)
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    print(json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":
