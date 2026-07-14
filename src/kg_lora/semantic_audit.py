@@ -40,6 +40,63 @@ REQUIRED_DIMENSIONS = (
     "data_quality",
 )
 
+SEMANTIC_OPERATION_CONTRACT: dict[str, Any] = {
+    "base_required_fields": [
+        "operation_ref",
+        "op",
+        "evidence",
+        "reason",
+        "confidence",
+    ],
+    "required_fields_by_op": {
+        "add_entity": [
+            "new_entity_ref",
+            "replacement_label",
+            "replacement_name",
+        ],
+        "update_entity": [
+            "entity_key",
+            "at_least_one_of:replacement_label,replacement_name,replacement_properties",
+        ],
+        "remove_entity": ["entity_key"],
+        "collapse_symptom_into_manifestations": [
+            "entity_key",
+            "parent_entity_key",
+            "manifestation_text",
+        ],
+        "add_relation": ["source_ref", "target_ref", "replacement_relation"],
+        "replace_relation": [
+            "relation_key",
+            "source_ref",
+            "target_ref",
+            "replacement_relation",
+        ],
+        "remove_relation": ["relation_key"],
+        "set_relation_evidence": ["relation_key"],
+    },
+    "replace_relation_complete_payload_rule": (
+        "Always copy the final source_ref, target_ref, and replacement_relation, "
+        "including every component that is unchanged. Never return a partial delta."
+    ),
+    "reference_rules": {
+        "existing_entity": "copy an exact entity_inventory.entity_key",
+        "new_entity": "copy an exact new_entity_ref declared by add_entity in this response",
+        "new_entity_ref_pattern": "^new:[A-Za-z0-9_.-]+$",
+    },
+    "forbidden_operation_aliases": [
+        "source_entity_key",
+        "target_entity_key",
+        "source_id",
+        "target_id",
+        "relation",
+        "relation_type",
+        "proposed_source_ref",
+        "proposed_target_ref",
+        "proposed_relation",
+    ],
+    "unused_optional_fields": "include every unused optional operation field as null",
+}
+
 
 class SemanticAuditValidationError(ValueError):
     """Raised when an audit response is incomplete or violates the frozen task."""
@@ -597,6 +654,9 @@ def build_semantic_audit_task(
                 "Never invent or modify an ICD code. Mark needs_who_lookup; WHO API owns linking."
             ),
         },
+        # Keep this near the end of the user JSON so the exact operation field
+        # contract remains salient even for unusually long ICD source records.
+        "operation_contract": SEMANTIC_OPERATION_CONTRACT,
     }
     task["task_sha256"] = sha256_value(task)
     return task
@@ -1899,6 +1959,11 @@ Medical rules:
 - A Symptom node must be independently meaningful. A phrase that only elaborates a
   parent symptom belongs in its manifestations. Never collapse if that loses distinct
   properties or relations.
+- Do not add an entity merely to turn a boundary cue into a relation. Section headings,
+  plural umbrella phrases (for example generic groups of diseases or impairments), and
+  descriptive aetiology phrases are not independent nodes unless the source and schema
+  clearly support the chosen entity type. Otherwise mark the cue not_graph_fact or use
+  unresolved; never manufacture a node to close the cue.
 - subsumes is broader -> narrower. must_be_ruled_out_for is alternative Disease ->
   diagnosis under consideration. excludes_diagnosis_of is exclusionary Criteria or
   Symptom -> diagnosis excluded. somatic_cause_of is somatic Disease -> psychiatric or
@@ -1972,6 +2037,60 @@ Local closure contract (violations reject the response before it is stored):
    "object_keys":["an exact entity_key, relation_key, cue_key, or dimension name"],
    "reason":"why no safe deterministic operation is possible"}.
 
+Required operation payloads use the exact field names below. Every base field and every
+field listed for the selected op must be non-null. Include all unused optional operation
+fields as explicit null. Never omit an unchanged relation endpoint or predicate.
+- base for every operation: operation_ref, op, evidence, reason, confidence.
+- add_entity: new_entity_ref, replacement_label, replacement_name. new_entity_ref is
+  exactly new:<slug>, never new_entity:<slug>.
+- update_entity: entity_key and at least one of replacement_label, replacement_name,
+  replacement_properties.
+- remove_entity: entity_key.
+- collapse_symptom_into_manifestations: entity_key, parent_entity_key,
+  manifestation_text.
+- add_relation: source_ref, target_ref, replacement_relation; relation_key is null.
+- replace_relation: relation_key, source_ref, target_ref, replacement_relation. Copy the
+  complete final endpoints and final predicate even when only one component changes.
+- remove_relation and set_relation_evidence: relation_key.
+source_ref and target_ref are exact entity_inventory.entity_key values or an exact
+new_entity_ref declared by add_entity in this response. Forbidden operation aliases:
+source_entity_key, target_entity_key, source_id, target_id, relation, relation_type,
+proposed_source_ref, proposed_target_ref, proposed_relation. The similarly named fields
+inside relation_assessments do not replace the required operation fields.
+
+These are shape examples only; replace every placeholder with exact keys, active
+relations, and a copied evidence object from the current task. Do not copy placeholders.
+Complete add_entity example (new_entity_ref uses exactly the new: prefix):
+{"operation_ref":"op:add-node","op":"add_entity","entity_key":null,
+ "new_entity_ref":"new:exact_slug","replacement_label":"<EXACT_ALLOWED_LABEL>",
+ "replacement_name":"<EXACT_GROUNDED_NAME>","replacement_properties":null,
+ "parent_entity_key":null,"manifestation_text":null,"relation_key":null,
+ "source_ref":null,"target_ref":null,"replacement_relation":null,
+ "evidence":{"basis":"record.input","text":"<EXACT_TEXT>","start":0,"end":1},
+ "reason":"...","confidence":0.99}
+Complete add_relation example (all unused optional fields are null):
+{"operation_ref":"op:add-edge","op":"add_relation","entity_key":null,
+ "new_entity_ref":null,"replacement_label":null,"replacement_name":null,
+ "replacement_properties":null,"parent_entity_key":null,
+ "manifestation_text":null,"relation_key":null,
+ "source_ref":"<EXACT_ENTITY_KEY>","target_ref":"<EXACT_ENTITY_KEY>",
+ "replacement_relation":"<EXACT_ACTIVE_RELATION>",
+ "evidence":{"basis":"record.input","text":"<EXACT_TEXT>","start":0,"end":1},
+ "reason":"...","confidence":0.99}
+Complete replace_relation example (copy unchanged components too):
+{"operation_ref":"op:replace-edge","op":"replace_relation","entity_key":null,
+ "new_entity_ref":null,"replacement_label":null,"replacement_name":null,
+ "replacement_properties":null,"parent_entity_key":null,
+ "manifestation_text":null,"relation_key":"<EXACT_RELATION_KEY>",
+ "source_ref":"<EXACT_FINAL_ENTITY_KEY>",
+ "target_ref":"<EXACT_FINAL_ENTITY_KEY>",
+ "replacement_relation":"<EXACT_FINAL_ACTIVE_RELATION>",
+ "evidence":{"basis":"record.input","text":"<EXACT_TEXT>","start":0,"end":1},
+ "reason":"...","confidence":0.99}
+Before returning JSON, check every proposed_operations item against the required field
+list in operation_contract at the end of the user task. If any required value cannot be
+copied exactly, remove that operation and use unresolved instead.
+
 Return all fields required by this shape:
 {
   "protocol_version":"deepseek-semantic-audit-v1",
@@ -2005,17 +2124,7 @@ Return all fields required by this shape:
     "linked_entity_keys":[], "linked_relation_keys":[], "linked_cue_keys":[],
     "reason":"..."
   }],
-  "proposed_operations":[{
-    "operation_ref":"op:1",
-    "op":"add_entity|update_entity|remove_entity|collapse_symptom_into_manifestations|add_relation|replace_relation|remove_relation|set_relation_evidence",
-    "entity_key":null, "new_entity_ref":null, "replacement_label":null,
-    "replacement_name":null, "replacement_properties":null,
-    "parent_entity_key":null,
-    "manifestation_text":null, "relation_key":null, "source_ref":null,
-    "target_ref":null, "replacement_relation":null,
-    "evidence":{"basis":"record.input","text":"exact quote","start":0,"end":1},
-    "reason":"...", "confidence":0.0
-  }],
+  "proposed_operations":[],
   "unresolved":[{
     "finding_ref":"finding:1",
     "category":"entity|relation|cue|missing_fact|schema_gap|medical_review",

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import sqlite3
 import sys
@@ -269,10 +270,19 @@ def public_request_config(max_tokens: int) -> dict[str, Any]:
         raise SystemExit("DEEPSEEK_MODEL cannot be empty")
     try:
         timeout_seconds = float(os.getenv("DEEPSEEK_TIMEOUT_SECONDS", "120"))
+        temperature = float(os.getenv("DEEPSEEK_TEMPERATURE", "0"))
     except ValueError as exc:
-        raise SystemExit("DEEPSEEK_TIMEOUT_SECONDS must be numeric") from exc
-    if timeout_seconds <= 0 or max_tokens < 1:
-        raise SystemExit("request timeout and max tokens must be positive")
+        raise SystemExit("DeepSeek timeout and temperature must be numeric") from exc
+    if (
+        not math.isfinite(timeout_seconds)
+        or timeout_seconds <= 0
+        or max_tokens < 1
+        or not math.isfinite(temperature)
+        or not 0.0 <= temperature <= 2.0
+    ):
+        raise SystemExit(
+            "request timeout/max tokens must be positive and temperature must be between 0 and 2"
+        )
     return {
         "base_url": base_url,
         "model": model,
@@ -280,6 +290,7 @@ def public_request_config(max_tokens: int) -> dict[str, Any]:
         "reasoning_effort": effort,
         "max_tokens": max_tokens,
         "timeout_seconds": timeout_seconds,
+        "temperature": temperature,
         "trust_environment_proxy": trust_proxy in {"1", "true", "yes"},
         "response_format": "json_object",
     }

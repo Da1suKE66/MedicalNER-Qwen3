@@ -189,6 +189,7 @@ class DeepSeekRepairTests(unittest.TestCase):
         self.assertEqual(call["json"]["response_format"], {"type": "json_object"})
         self.assertEqual(call["json"]["thinking"], {"type": "disabled"})
         self.assertEqual(call["json"]["reasoning_effort"], "high")
+        self.assertEqual(call["json"]["temperature"], 0.0)
         self.assertFalse(call["json"]["stream"])
         self.assertEqual(
             json.loads(call["json"]["messages"][1]["content"]), task

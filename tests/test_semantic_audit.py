@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from kg_lora.schema_v2 import load_schema, sha256_file, write_json  # noqa: E402
 from kg_lora.semantic_audit import (  # noqa: E402
     REQUIRED_DIMENSIONS,
+    SEMANTIC_AUDIT_SYSTEM_PROMPT,
     CueAssessment,
     DimensionAssessment,
     EntityAssessment,
@@ -73,6 +74,7 @@ class SemanticAuditTests(unittest.TestCase):
             "reasoning_effort": "high",
             "max_tokens": 32768,
             "timeout_seconds": timeout_seconds,
+            "temperature": 0.0,
             "trust_environment_proxy": False,
             "response_format": "json_object",
         }
@@ -268,6 +270,25 @@ class SemanticAuditTests(unittest.TestCase):
         self.assertIn("exclusion", categories)
         self.assertIn("missing_relation_evidence", categories)
         self.assertEqual(task["risk_tier"], "high")
+        operation_contract = task["operation_contract"]
+        self.assertEqual(
+            operation_contract["required_fields_by_op"]["add_relation"],
+            ["source_ref", "target_ref", "replacement_relation"],
+        )
+        self.assertEqual(
+            operation_contract["required_fields_by_op"]["replace_relation"],
+            ["relation_key", "source_ref", "target_ref", "replacement_relation"],
+        )
+        self.assertEqual(
+            operation_contract["reference_rules"]["new_entity_ref_pattern"],
+            "^new:[A-Za-z0-9_.-]+$",
+        )
+        self.assertIn("never new_entity:<slug>", SEMANTIC_AUDIT_SYSTEM_PROMPT)
+        self.assertIn('"new_entity_ref":"new:exact_slug"', SEMANTIC_AUDIT_SYSTEM_PROMPT)
+        self.assertIn(
+            "Never omit an unchanged relation endpoint or predicate",
+            SEMANTIC_AUDIT_SYSTEM_PROMPT,
+        )
 
     def test_local_validation_derives_complete_coverage(self) -> None:
         task = build_semantic_audit_task(
@@ -750,6 +771,7 @@ class SemanticAuditTests(unittest.TestCase):
             )
             self.assertEqual(first.returncode, 0, first.stderr)
             first_report = json.loads(report_path.read_text(encoding="utf-8"))
+            self.assertEqual(first_report["request_config"]["temperature"], 0.0)
             env_path.write_text(
                 "DEEPSEEK_BASE_URL=https://another-provider.example/v1\n"
                 "DEEPSEEK_MODEL=deepseek-v4-flash\n"
@@ -1151,6 +1173,7 @@ class SemanticAuditTests(unittest.TestCase):
                 "reasoning_effort": "high",
                 "max_tokens": 32768,
                 "timeout_seconds": 120.0,
+                "temperature": 0.0,
                 "trust_environment_proxy": False,
                 "response_format": "json_object",
             }

@@ -10,6 +10,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 import os
 import urllib.error
 import urllib.request
@@ -225,6 +226,7 @@ class DeepSeekConfig:
     reasoning_effort: Literal["high", "max"] = "high"
     max_tokens: int = 4096
     timeout_seconds: float = 120.0
+    temperature: float = 0.0
     trust_environment_proxy: bool = False
 
     @classmethod
@@ -247,13 +249,20 @@ class DeepSeekConfig:
         try:
             max_tokens = int(os.getenv("DEEPSEEK_MAX_TOKENS", "4096"))
             timeout_seconds = float(os.getenv("DEEPSEEK_TIMEOUT_SECONDS", "120"))
+            temperature = float(os.getenv("DEEPSEEK_TEMPERATURE", "0"))
         except ValueError as exc:
             raise DeepSeekAPIError(
-                "DEEPSEEK_MAX_TOKENS and DEEPSEEK_TIMEOUT_SECONDS must be numeric"
+                "DeepSeek token, timeout, and temperature settings must be numeric"
             ) from exc
-        if max_tokens < 1 or timeout_seconds <= 0:
+        if (
+            max_tokens < 1
+            or not math.isfinite(timeout_seconds)
+            or timeout_seconds <= 0
+            or not math.isfinite(temperature)
+            or not 0.0 <= temperature <= 2.0
+        ):
             raise DeepSeekAPIError(
-                "DEEPSEEK_MAX_TOKENS and DEEPSEEK_TIMEOUT_SECONDS must be positive"
+                "DeepSeek timeout must be positive and temperature must be between 0 and 2"
             )
         return cls(
             api_key=api_key,
@@ -263,6 +272,7 @@ class DeepSeekConfig:
             reasoning_effort=effort,  # type: ignore[arg-type]
             max_tokens=max_tokens,
             timeout_seconds=timeout_seconds,
+            temperature=temperature,
             trust_environment_proxy=trust_proxy in {"1", "true", "yes"},
         )
 
@@ -395,6 +405,7 @@ class DeepSeekRepairClient:
             "thinking": {"type": self.config.thinking},
             "reasoning_effort": self.config.reasoning_effort,
             "max_tokens": self.config.max_tokens,
+            "temperature": self.config.temperature,
             "stream": False,
         }
         try:
