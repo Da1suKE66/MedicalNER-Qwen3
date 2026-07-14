@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BACKEND="cuda"
 TASK="train"
+DATA_PROFILE="legacy"
 PROJECT_DIR="${PROJECT_DIR:-${ROOT_DIR}}"
 CONFIG_YAML="${CONFIG_YAML:-}"
 DEVICE=""
@@ -18,6 +19,8 @@ Options:
   --backend <cuda|npu>     Hardware backend (default: cuda)
   --task <train|predict|smoke>
                             Operation to run (default: train)
+  --data-profile <legacy|schema-v2>
+                            Training data/config profile (default: legacy)
   --project-dir <path>     Repository root (default: detected automatically)
   --config <path>          Override the selected LLaMA-Factory YAML
   --device <id[,id...]>    CUDA or Ascend visible device list
@@ -28,6 +31,7 @@ Examples:
   bash scripts/run_medicalner_qwen3.sh
   bash scripts/run_medicalner_qwen3.sh --backend cuda --task predict --device 0
   bash scripts/run_medicalner_qwen3.sh --backend npu --task train --device 0
+  bash scripts/run_medicalner_qwen3.sh --backend cuda --task train --data-profile schema-v2
 EOF
 }
 
@@ -49,6 +53,11 @@ while [[ $# -gt 0 ]]; do
     --task)
       require_value "$@"
       TASK="$2"
+      shift 2
+      ;;
+    --data-profile)
+      require_value "$@"
+      DATA_PROFILE="$2"
       shift 2
       ;;
     --project-dir)
@@ -95,6 +104,15 @@ case "${BACKEND}" in
     ;;
 esac
 
+case "${DATA_PROFILE}" in
+  legacy|schema-v2)
+    ;;
+  *)
+    echo "Unsupported data profile: ${DATA_PROFILE}. Expected legacy or schema-v2." >&2
+    exit 2
+    ;;
+esac
+
 case "${TASK}" in
   train)
     if [[ "${BACKEND}" == "cuda" ]]; then
@@ -119,8 +137,26 @@ case "${TASK}" in
     ;;
 esac
 
+if [[ -z "${CONFIG_YAML}" && "${DATA_PROFILE}" == "schema-v2" ]]; then
+  case "${TASK}:${BACKEND}" in
+    train:cuda)
+      CONFIG_YAML="configs/llamafactory/qwen3_8b_lora_schema_v2.yaml"
+      ;;
+    smoke:cuda)
+      CONFIG_YAML="configs/llamafactory/qwen3_8b_lora_schema_v2_smoke.yaml"
+      ;;
+    train:npu)
+      CONFIG_YAML="configs/llamafactory/qwen3_8b_lora_schema_v2_npu.yaml"
+      ;;
+    smoke:npu)
+      CONFIG_YAML="configs/llamafactory/qwen3_8b_lora_schema_v2_smoke_npu.yaml"
+      ;;
+  esac
+fi
+
 export PROJECT_DIR
 export BACKEND
+export DATA_PROFILE
 [[ -z "${CONFIG_YAML}" ]] || export CONFIG_YAML
 
 if [[ -n "${DEVICE}" ]]; then
@@ -134,6 +170,7 @@ fi
 
 echo "backend    : ${BACKEND}"
 echo "task       : ${TASK}"
+echo "data profile: ${DATA_PROFILE}"
 echo "project dir: ${PROJECT_DIR}"
 echo "script     : ${TARGET_SCRIPT}"
 [[ -z "${CONFIG_YAML}" ]] || echo "config     : ${CONFIG_YAML}"

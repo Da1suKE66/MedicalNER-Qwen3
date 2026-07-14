@@ -26,5 +26,47 @@
       "assistant_tag": "assistant",
       "system_tag": "system"
     }
+  },
+  "medicalner_schema_v2_train": {
+    "file_name": "schema_v2_train_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "medicalner_schema_v2_validation": {
+    "file_name": "schema_v2_validation_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "medicalner_schema_v2_heldout": {
+    "file_name": "schema_v2_heldout_llamafactory.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
   }
 }

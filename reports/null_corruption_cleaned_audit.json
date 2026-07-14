@@ -1,0 +1,12 @@
+{
+  "schema_version": "2.0.0-draft.2",
+  "record_count": 858,
+  "damaged_token_types": 0,
+  "damaged_occurrences": 0,
+  "damaged_tokens": {},
+  "unexpected_tokens_containing_null": {},
+  "json_null_count": 0,
+  "null_paths": {},
+  "input": "data/schema_v2/cleaned/pro_cot_schema_v2_train_ready.json",
+  "input_sha256": "5014ba89912a5ce6a9ae9408651b53b04a332b9e8a8e2f497a42152ffcb35547"
+}

@@ -1,37 +1,42 @@
 {
-  "schema_version": "2.0.0-draft.1",
+  "schema_version": "2.0.0-draft.2",
+  "migration_implementation_version": "schema-v2-core.2",
+  "migration_config_fingerprint": "316a3597ea36ef7341491ab45c69b0a612a6329c6f54d4d9c5f4c3e577054215",
+  "force_renormalize": true,
   "input": "data/generated/gemini_split/pro_cot_001_858_complete_schema0413.json",
   "input_record_count": 858,
   "output_record_count": 858,
   "no_silent_record_loss": true,
   "idempotent": true,
   "status_counts": {
-    "manual_review": 293,
-    "repaired": 527,
-    "invalid": 38
+    "manual_review": 240,
+    "repaired": 618
   },
   "operation_counts": {
     "repair_text_tokens": 72,
     "attach_source_identity": 858,
+    "canonicalize_graph_source_identity": 858,
     "rename_property": 16442,
-    "inject_main_disease_coding": 842,
+    "inject_main_disease_coding": 858,
+    "add_grounded_patient_diagnosis_relation": 485,
     "add_relation_evidence_span": 4577,
-    "move_entity_to_manifestation": 3
+    "rewrite_relation": 181,
+    "move_entity_to_manifestation": 3,
+    "repair_known_relation_shape": 5,
+    "inject_canonical_main_disease": 16
   },
   "validation_summary": {
     "record_count": 858,
-    "records_with_findings": 245,
-    "error_counts": {
-      "invalid_relation_domain_range": 68,
-      "main_disease_unresolved": 16
-    },
+    "records_with_findings": 96,
+    "error_counts": {},
     "warning_counts": {
-      "relation_semantics_need_medical_review": 469
+      "relation_semantics_need_medical_review": 182
     },
     "metrics": {
-      "entities": 8664,
-      "relations": 7127,
-      "relations_with_evidence": 7127
+      "entities": 8680,
+      "relations": 7612,
+      "relations_with_retained_evidence_text": 7612,
+      "relations_with_verified_evidence_span": 5062
     }
   }
 }

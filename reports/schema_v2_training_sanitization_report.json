@@ -1,0 +1,20 @@
+{
+  "schema_version": "2.0.0-draft.2",
+  "record_count": 858,
+  "status_counts": {
+    "repaired": 858
+  },
+  "totals": {
+    "dropped_entities": 90,
+    "dropped_relation_reason:relation_has_no_verified_evidence_span": 728,
+    "dropped_relation_reason:relation_requires_medical_review": 182,
+    "dropped_relations": 910,
+    "removed_legacy_fields": 10293,
+    "retained_entities": 8590,
+    "retained_relations": 6702
+  },
+  "records_not_repaired": 0,
+  "findings": [],
+  "input": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/cleaned/pro_cot_schema_v2_icd_validated.json",
+  "output": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/cleaned/pro_cot_schema_v2_train_ready.json"
+}

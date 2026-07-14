@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0-draft.1",
+  "schema_version": "2.0.0-draft.2",
   "status": "draft",
   "source_release": "2025-01",
   "coding": {
@@ -124,6 +124,10 @@
     "subsumes": {
       "source": ["Disease"],
       "target": ["Disease"],
+      "allowed_pairs": [
+        ["Disease", "Disease"],
+        ["Symptom", "Symptom"]
+      ],
       "status": "active"
     },
     "differentiates_from": {
@@ -137,7 +141,7 @@
       "status": "active"
     },
     "associated_with_poor_prognosis_in": {
-      "source": ["Disease"],
+      "source": ["Disease", "Symptom", "Patient Information"],
       "target": ["Disease"],
       "status": "active"
     },
@@ -157,7 +161,7 @@
       "status": "active"
     },
     "supports_subtyping_of": {
-      "source": ["Diagnostic Criteria"],
+      "source": ["Diagnostic Criteria", "Symptom"],
       "target": ["Disease"],
       "status": "active"
     },
@@ -171,21 +175,67 @@
       "target": ["Patient Information"],
       "status": "active"
     },
+    "affects_diagnosis_of": {
+      "source": ["Patient Information"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "must_be_ruled_out_for": {
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "excludes_diagnosis_of": {
+      "source": ["Diagnostic Criteria", "Symptom"],
+      "target": ["Disease"],
+      "status": "active"
+    },
+    "somatic_cause_of": {
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "status": "active"
+    },
     "precedes": {"status": "needs_medical_review"},
     "follows": {"status": "needs_medical_review"},
     "modulated_by": {"status": "needs_medical_review"},
     "excludes_if_present": {"status": "needs_medical_review"},
-    "assesses_for": {"status": "needs_medical_review"},
+    "assesses_for": {
+      "source": ["Interview Tool"],
+      "target": ["Disease", "Symptom"],
+      "status": "active"
+    },
     "triggers_follow_up_question_on": {"status": "needs_medical_review"},
     "contraindicated_in": {"status": "needs_medical_review"},
     "dose_adjusted_for": {"status": "needs_medical_review"},
     "interacts_with": {"status": "needs_medical_review"},
-    "recommended_for": {"status": "needs_medical_review"},
+    "recommended_for": {
+      "source": ["Communication Method"],
+      "target": ["Disease", "Patient Information"],
+      "status": "active"
+    },
     "avoid_with": {"status": "needs_medical_review"},
     "escalates_to": {"status": "needs_medical_review"},
-    "triggers_alert_when": {"status": "needs_medical_review"},
+    "triggers_alert_when": {
+      "source": ["Risk Information"],
+      "target": ["Disease", "Symptom"],
+      "status": "active"
+    },
     "mediated_by": {"status": "needs_medical_review"}
   },
+  "relation_rewrites": [
+    {
+      "from": "excludes_if_present",
+      "source": ["Diagnostic Criteria", "Symptom"],
+      "target": ["Disease"],
+      "to": "excludes_diagnosis_of"
+    },
+    {
+      "from": "excludes_if_present",
+      "source": ["Disease"],
+      "target": ["Disease"],
+      "to": "must_be_ruled_out_for"
+    }
+  ],
   "text_corrections": {
     "pregnullcy": "pregnancy",
     "anullkastic": "anankastic",

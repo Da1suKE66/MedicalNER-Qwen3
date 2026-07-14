@@ -102,11 +102,21 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def display_path(path: Path) -> str:
+    """Return a stable repository-relative path when possible."""
+
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(ROOT.resolve()))
+    except ValueError:
+        return str(resolved)
+
+
 def main() -> None:
     args = parse_args()
     payload = load_json(args.input)
     report = audit_payload(payload, load_schema())
-    report["input"] = str(args.input.relative_to(ROOT))
+    report["input"] = display_path(args.input)
     report["input_sha256"] = sha256_file(args.input)
     write_json(args.output, report)
     print(

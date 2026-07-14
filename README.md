@@ -205,23 +205,122 @@ The latest existing report is kept in `reports/qwen_compare_analysis_report.md`.
 
 ## Schema v2 data quality workflow
 
-The versioned Schema v2 draft is under `schemas/v2.0.0/`. It deliberately defers
-medically ambiguous entity types and relation semantics to `conflicts.json` instead of
-silently freezing them.
+The current contract is `2.0.0-draft.2` under `schemas/v2.0.0/`. The final
+train-ready corpus is produced deterministically from all 858 source records; API
+results and every dropped graph item remain auditable in `reports/`. See
+`docs/schema_v2_implementation.md` for the design and evidence policy.
 
-Run the deterministic preparation workflow before any v2 training:
+### Verified result
+
+| Check | Result |
+| --- | ---: |
+| Source records | 858 |
+| Historical damaged tokens | 22 types / 305 occurrences |
+| Legitimate browser-URL JSON nulls | 858 |
+| WHO-verified canonical main diseases | 858 / 858 |
+| Non-main WHO associations not attached | 72 HTTP 404 / 406 exact-title / 256 title-mismatch |
+| Relations removed before training | 728 without verified spans / 182 requiring review |
+| Train-ready graph | 8,590 entities / 6,702 relations / 858 repaired records |
+| Train / validation / held-out / structural regression | 670 / 84 / 84 / 20 |
+| Direct or shared-parent split leakage | 0 |
+| Strict training-data audit | all gates passed |
+| LLaMAFactory train / validation / held-out | 670 / 84 / 84; no legacy CoT |
+
+The 858 nulls are legitimate source metadata at
+`excel_metadata.browser_link` (called `browserUrl` in the review notes), not
+damaged words or missing graph values. The historical word corruption is repaired
+separately and strict JSON serialization rejects `NaN`.
+
+### DeepSeek and WHO credentials
+
+Copy the template and fill the local file without printing it:
 
 ```bash
-python3 scripts/build_data_manifest.py
-python3 scripts/audit_null_corruption.py
-python3 scripts/migrate_schema_v2.py --apply-high-confidence-collapses
-python3 scripts/validate_schema_v2.py
-python3 scripts/build_v2_splits.py \
-  --records data/schema_v2/migrated/pro_cot_schema_v2.json
+cp .env.example .env
 ```
 
-The existing 20 reviewed records are registered as `schema_regression_20`. They came
-from the original 858-record training source and therefore cannot measure
-generalization. Final v2 metrics must use the hierarchy-grouped held-out split and a
-new adapter trained only on `train_v2.json`; the historical pro858 adapter has already
-seen every record in that pool.
+For DeepSeek targeted repair, fill `DEEPSEEK_API_KEY`; the template already selects
+`DEEPSEEK_BASE_URL=https://api.deepseek.com`,
+`DEEPSEEK_MODEL=deepseek-v4-flash`, thinking disabled for strict JSON,
+`DEEPSEEK_REASONING_EFFORT`, `DEEPSEEK_MAX_TOKENS`, and
+`DEEPSEEK_TIMEOUT_SECONDS`. `GEMINI_API_KEY` is optional legacy compatibility.
+
+For WHO ICD-11 validation, register an API client at the
+[WHO ICD API registration page](https://icd.who.int/icdapi/Account/Register) and
+follow the [WHO authentication documentation](https://icd.who.int/docs/icd-api/API-Authentication/).
+Fill `WHO_ICD_CLIENT_ID` and `WHO_ICD_CLIENT_SECRET`; the template also defines
+`WHO_ICD_BASE_URL`, `WHO_ICD_TOKEN_URL`, `WHO_ICD_API_VERSION`,
+`WHO_ICD_RELEASE`, and `WHO_ICD_LANGUAGE`.
+
+The remaining template fields are `KG_DATA_PATH`, `KG_OUTPUT_ROOT`,
+`KG_CACHE_ROOT`, `ICD_API_CACHE_DIR`, `DEEPSEEK_REPAIR_CACHE_DIR`, `BASE_MODEL`,
+`SPECIFIC_ADAPTER`, and `STANDARD_ADAPTER`. On the configured remote training hosts,
+set `KG_CACHE_ROOT` to a directory under `/cache/liluchen`. Never print, commit, or
+copy `.env` into reports; only `.env.example` is safe to commit.
+
+### Reproduce the final pipeline
+
+Run these commands from the repository root after filling the WHO credentials:
+
+```bash
+# 1. Deterministic Schema v2 migration and structural manifestation collapse.
+python3 scripts/migrate_schema_v2.py \
+  --apply-high-confidence-collapses \
+  --force-renormalize
+
+# 2. Repair exact evidence offsets while retaining unresolved items for audit.
+python3 scripts/repair_evidence_spans.py
+
+# 3. Collect the full WHO report. Do not use --strict here: non-main title
+#    mismatches must be recorded so the application step can discard them safely.
+python3 scripts/validate_icd_codes.py \
+  --input data/schema_v2/cleaned/pro_cot_schema_v2_evidence.json \
+  --input-format schema-v2 \
+  --output reports/icd_api_validation_full_report.json
+
+# 4. Require all canonical main diseases to be WHO verified.
+python3 scripts/apply_icd_validation.py --strict
+
+# 5. Remove unverified-span and review-only graph items with an audit trail.
+python3 scripts/sanitize_schema_v2_for_training.py --strict
+
+# 6. Freeze and materialize hierarchy-grouped splits from the train-ready corpus.
+python3 scripts/build_v2_splits.py \
+  --records data/schema_v2/cleaned/pro_cot_schema_v2_train_ready.json
+
+# 7. Gate the complete corpus and split manifest.
+python3 scripts/audit_schema_v2_training_data.py --strict
+
+# 8a. Convert the training split (the defaults point to train_v2.json).
+python3 scripts/convert_schema_v2_to_llamafactory.py
+
+# 8b. Convert validation and held-out splits explicitly.
+python3 scripts/convert_schema_v2_to_llamafactory.py \
+  --input data/schema_v2/splits/validation_v2.json \
+  --output data/llamafactory/schema_v2_validation_llamafactory.json \
+  --manifest data/llamafactory/schema_v2_validation_manifest.json \
+  --expected-split validation
+python3 scripts/convert_schema_v2_to_llamafactory.py \
+  --input data/schema_v2/splits/test_v2_heldout.json \
+  --output data/llamafactory/schema_v2_heldout_llamafactory.json \
+  --manifest data/llamafactory/schema_v2_heldout_manifest.json \
+  --expected-split test_v2_heldout
+```
+
+The WHO scan intentionally audits non-main code associations but does not attach
+them to graph entities: 72 returned 404, 406 had exact titles, and 256 local
+associations had title mismatches. Only the 858 canonical main diseases are required
+and attached. `somatic_cause_of` is an active Disease-to-Disease relation in the
+schema, but migration does not invent this edge without exact source evidence.
+
+The structural collapse is similarly conservative. In the inattention regression
+case, `S1` remains the Symptom and its three descriptive phrases become
+`properties.manifestations`; the old `S2`-`S4` description nodes and redundant
+relations are removed with source offsets recorded. This rule is not a general
+semantic merge.
+
+`schema_regression_20` is a structural regression set drawn from the same 858-record
+source, so it is never reported as generalization. Train only on `train_v2.json`, use
+`validation_v2.json` for model selection, and reserve `test_v2_heldout.json` for the
+new adapter's final evaluation. The Schema v2 converter emits canonical graph JSON
+only and never copies historical reasoning traces.

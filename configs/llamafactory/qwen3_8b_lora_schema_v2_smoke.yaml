@@ -1,0 +1,47 @@
+### model: NVIDIA CUDA, 4-bit bitsandbytes
+model_name_or_path: Qwen/Qwen3-8B
+trust_remote_code: true
+quantization_bit: 4
+quantization_method: bitsandbytes
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 8
+lora_target: all
+
+### dataset: bounded Schema v2 smoke sample
+dataset_dir: data/llamafactory
+dataset: medicalner_schema_v2_train
+template: qwen3
+cutoff_len: 16384
+max_samples: 10
+overwrite_cache: true
+preprocessing_num_workers: 2
+dataloader_num_workers: 0
+val_size: 0
+
+### output
+output_dir: models/adapters/qwen3-8b-schema-v2-smoke-cuda
+logging_steps: 1
+save_strategy: "no"
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 2
+learning_rate: 1.0e-4
+num_train_epochs: 1.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+bf16: true
+ddp_timeout: 180000000
+flash_attn: fa2
+gradient_checkpointing: true
+
+### eval
+per_device_eval_batch_size: 1
+eval_strategy: "no"

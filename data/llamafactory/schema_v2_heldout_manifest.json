@@ -1,0 +1,3755 @@
+{
+  "schema_version": "2.0.0-draft.2",
+  "format": "llamafactory_messages",
+  "assistant_target": "canonical_schema_v2_graph_json",
+  "legacy_cot_reused": false,
+  "strict_json_allow_nan": false,
+  "gate": {
+    "allowed_migration_statuses": [
+      "approved",
+      "repaired"
+    ],
+    "require_icd_validation_status": "verified",
+    "require_schema_validation_zero_errors": true,
+    "require_schema_validation_zero_warnings": true,
+    "reject_unverified_codes": true,
+    "require_canonical_main_entity": true,
+    "require_non_empty_entity_graph": true,
+    "require_active_relations": true,
+    "require_exact_evidence_span_for_every_relation": true,
+    "require_non_main_entity_grounding": "source_text_exact_or_normalized_whitespace_match_or_verified_relation"
+  },
+  "counts": {
+    "input": 84,
+    "eligible": 84,
+    "excluded": 0
+  },
+  "status_counts": {
+    "repaired": 84
+  },
+  "eligible_reason_counts": {
+    "all_codes_verified": 84,
+    "all_non_main_entities_grounded": 84,
+    "all_relation_evidence_spans_verified": 84,
+    "all_relations_active": 84,
+    "canonical_main_entity_verified": 84,
+    "icd_validation_verified": 84,
+    "schema_validation_zero_errors": 84,
+    "schema_validation_zero_warnings": 84,
+    "status_trainable": 84
+  },
+  "excluded_reason_counts": {},
+  "eligibility_decisions": [
+    {
+      "record_index": 0,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/625636921",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 1,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/692993572",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 2,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/553710121",
+      "relation_count": 4,
+      "verified_evidence_span_count": 4,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 4
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 4,
+          "verified_span_count": 4
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 3,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/476035222",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 4,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/625636921/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 5,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1150025154",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 6,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/777415827",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 7,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/132142084",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 8,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/812873082",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 9,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1150025154/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 10,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/317761311",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 11,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1254806731",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 12,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1589500739",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 13,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/290515784",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 14,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/317761311/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 15,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1683919430/other",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 16,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1683919430/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 17,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/106339515",
+      "relation_count": 20,
+      "verified_evidence_span_count": 20,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 20
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 20,
+          "verified_span_count": 20
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 18,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/967849782",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 19,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1034374160",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 20,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/584318803",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 21,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/5254456",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 22,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/967849782/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 23,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1730029381",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 24,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/963384259",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 25,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/468697510",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 26,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/746381528",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 27,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1730029381/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 28,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/725134404",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 29,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2124501487",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 30,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/566538430",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 31,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/439300824",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 32,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/725134404/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 33,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/106339515/other",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 34,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/106339515/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 35,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/18178000",
+      "relation_count": 15,
+      "verified_evidence_span_count": 15,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 15
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 15,
+          "verified_span_count": 15
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 36,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/284410555",
+      "relation_count": 22,
+      "verified_evidence_span_count": 22,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 22
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 22,
+          "verified_span_count": 22
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 37,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1471861706",
+      "relation_count": 3,
+      "verified_evidence_span_count": 3,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 3
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 3,
+          "verified_span_count": 3
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 38,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1182509390",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 39,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/987681130",
+      "relation_count": 4,
+      "verified_evidence_span_count": 4,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 4
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 4,
+          "verified_span_count": 4
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 40,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1429171137",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 41,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1471861706/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 42,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/679604439",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 43,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/448945092",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 44,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/873142442",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 45,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/710279230",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 46,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/679604439/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 47,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/284410555/other",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 48,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/284410555/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 49,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1974996783",
+      "relation_count": 31,
+      "verified_evidence_span_count": 31,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 31
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 31,
+          "verified_span_count": 31
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 50,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/386634703",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 51,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/841168541",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 52,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/229201285",
+      "relation_count": 2,
+      "verified_evidence_span_count": 2,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 2
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 2,
+          "verified_span_count": 2
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 53,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1974996783/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 54,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1358754380",
+      "relation_count": 6,
+      "verified_evidence_span_count": 6,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D_CANONICAL_SOURCE"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 6
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 6,
+          "verified_span_count": 6
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 55,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/521257551",
+      "relation_count": 17,
+      "verified_evidence_span_count": 17,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D_CANONICAL_SOURCE"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 17
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 17,
+          "verified_span_count": 17
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 56,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1893759206",
+      "relation_count": 10,
+      "verified_evidence_span_count": 10,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D_CANONICAL_SOURCE"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 10
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 10,
+          "verified_span_count": 10
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 57,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/797284789",
+      "relation_count": 4,
+      "verified_evidence_span_count": 4,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 4
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 4,
+          "verified_span_count": 4
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 58,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/342760401",
+      "relation_count": 9,
+      "verified_evidence_span_count": 9,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 9
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 9,
+          "verified_span_count": 9
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 59,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/736393417",
+      "relation_count": 8,
+      "verified_evidence_span_count": 8,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D_CANONICAL_SOURCE"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 8
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 8,
+          "verified_span_count": 8
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 60,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/794423031",
+      "relation_count": 5,
+      "verified_evidence_span_count": 5,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 5
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 5,
+          "verified_span_count": 5
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 61,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/405565289/other",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 62,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/405565289/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 63,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/255980141",
+      "relation_count": 16,
+      "verified_evidence_span_count": 16,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 16
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 16,
+          "verified_span_count": 16
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 64,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/858129053",
+      "relation_count": 6,
+      "verified_evidence_span_count": 6,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 6
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 6,
+          "verified_span_count": 6
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 65,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/255980141/other",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 66,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/255980141/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 67,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/696956921",
+      "relation_count": 13,
+      "verified_evidence_span_count": 13,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 13
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 13,
+          "verified_span_count": 13
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 68,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2018051983",
+      "relation_count": 10,
+      "verified_evidence_span_count": 10,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 10
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 10,
+          "verified_span_count": 10
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 69,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/566524918",
+      "relation_count": 10,
+      "verified_evidence_span_count": 10,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 10
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 10,
+          "verified_span_count": 10
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 70,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/200321643",
+      "relation_count": 10,
+      "verified_evidence_span_count": 10,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 10
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 10,
+          "verified_span_count": 10
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 71,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/216291184",
+      "relation_count": 10,
+      "verified_evidence_span_count": 10,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 10
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 10,
+          "verified_span_count": 10
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 72,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/241382885",
+      "relation_count": 11,
+      "verified_evidence_span_count": 11,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 11
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 11,
+          "verified_span_count": 11
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 73,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/880462195",
+      "relation_count": 9,
+      "verified_evidence_span_count": 9,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 9
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 9,
+          "verified_span_count": 9
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 74,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1899175158",
+      "relation_count": 13,
+      "verified_evidence_span_count": 13,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 13
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 13,
+          "verified_span_count": 13
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 75,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1635245839",
+      "relation_count": 1,
+      "verified_evidence_span_count": 1,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 1
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 1,
+          "verified_span_count": 1
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 76,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2131412196",
+      "relation_count": 17,
+      "verified_evidence_span_count": 17,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 17
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 17,
+          "verified_span_count": 17
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 77,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1126473669",
+      "relation_count": 9,
+      "verified_evidence_span_count": 9,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 9
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 9,
+          "verified_span_count": 9
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 78,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/440469874",
+      "relation_count": 11,
+      "verified_evidence_span_count": 11,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 11
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 11,
+          "verified_span_count": 11
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 79,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1638354338",
+      "relation_count": 13,
+      "verified_evidence_span_count": 13,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 13
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 13,
+          "verified_span_count": 13
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 80,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/235421675",
+      "relation_count": 4,
+      "verified_evidence_span_count": 4,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 4
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 4,
+          "verified_span_count": 4
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 81,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1324394161",
+      "relation_count": 9,
+      "verified_evidence_span_count": 9,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "D1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 9
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 9,
+          "verified_span_count": 9
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 82,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/302122526/other",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    },
+    {
+      "record_index": 83,
+      "eligible": true,
+      "status": "repaired",
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/302122526/unspecified",
+      "relation_count": 0,
+      "verified_evidence_span_count": 0,
+      "eligible_reasons": [
+        {
+          "code": "status_trainable",
+          "actual": "repaired"
+        },
+        {
+          "code": "icd_validation_verified"
+        },
+        {
+          "code": "schema_validation_zero_errors"
+        },
+        {
+          "code": "schema_validation_zero_warnings"
+        },
+        {
+          "code": "canonical_main_entity_verified",
+          "entity_id": "E1"
+        },
+        {
+          "code": "all_codes_verified"
+        },
+        {
+          "code": "all_relations_active",
+          "relation_count": 0
+        },
+        {
+          "code": "all_relation_evidence_spans_verified",
+          "relation_count": 0,
+          "verified_span_count": 0
+        },
+        {
+          "code": "all_non_main_entities_grounded",
+          "by_text_or_verified_relation": true
+        }
+      ],
+      "excluded_reasons": []
+    }
+  ],
+  "input_path": "data/schema_v2/splits/test_v2_heldout.json",
+  "input_sha256": "8009db1aee706de62e0af5a23b83a533e9ecd861c8ec6a645c2d1daf11ba63e3",
+  "split_manifest_path": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/splits/split_manifest.json",
+  "split_manifest_sha256": "fc9a64552a44868199f4a17927b69302c680814dbe658cdd845f685fc455cd5a",
+  "split_integrity": {
+    "passed": true,
+    "expected_split": "test_v2_heldout",
+    "record_count": 84,
+    "direct_cross_split_edge_count": 0,
+    "shared_external_parent_cross_split_count": 0,
+    "source_ids_match_manifest": true
+  },
+  "dry_run": false,
+  "output_path": "data/llamafactory/schema_v2_heldout_llamafactory.json",
+  "output_sha256": "96754bce6ee2b90acdcc3a238dc7f8b625e80e5c7d647dbb34245b5ad01393dc"
+}

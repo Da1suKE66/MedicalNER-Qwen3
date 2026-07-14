@@ -1,116 +1,18 @@
 {
-  "schema_version": "2.0.0-draft.1",
+  "schema_version": "2.0.0-draft.2",
   "record_count": 858,
-  "records_with_findings": 245,
-  "error_counts": {
-    "invalid_relation_domain_range": 68,
-    "main_disease_unresolved": 16
-  },
+  "records_with_findings": 96,
+  "error_counts": {},
   "warning_counts": {
-    "relation_semantics_need_medical_review": 469
+    "relation_semantics_need_medical_review": 182
   },
   "metrics": {
-    "entities": 8664,
-    "relations": 7127,
-    "relations_with_evidence": 7127
+    "entities": 8680,
+    "relations": 7612,
+    "relations_with_retained_evidence_text": 7612,
+    "relations_with_verified_evidence_span": 5062
   },
   "findings": [
-    {
-      "record_index": 0,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/605267007",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 30,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 31,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 32,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 34,
-        "relations": 33,
-        "relations_with_evidence": 33
-      }
-    },
-    {
-      "record_index": 7,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/33269655",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "assesses_for"
-        }
-      ],
-      "metrics": {
-        "entities": 12,
-        "relations": 13,
-        "relations_with_evidence": 13
-      }
-    },
-    {
-      "record_index": 10,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/862918022",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 20,
-        "relations_with_evidence": 20
-      }
-    },
     {
       "record_index": 25,
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2099676649",
@@ -129,139 +31,9 @@
       ],
       "metrics": {
         "entities": 23,
-        "relations": 20,
-        "relations_with_evidence": 20
-      }
-    },
-    {
-      "record_index": 27,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1498766637",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 8,
-        "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 31,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/148247104",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
-        "relations": 25,
-        "relations_with_evidence": 25
-      }
-    },
-    {
-      "record_index": 32,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/821852937",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 24,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 25,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 26,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 27,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 28,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 27,
-        "relations": 29,
-        "relations_with_evidence": 29
-      }
-    },
-    {
-      "record_index": 38,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1111628448",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 7,
-          "relation": "required_for_diagnosis_of",
-          "actual": [
-            "Diagnostic Criteria",
-            "Symptom"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 15,
-        "relations": 14,
-        "relations_with_evidence": 14
+        "relations": 22,
+        "relations_with_retained_evidence_text": 22,
+        "relations_with_verified_evidence_span": 14
       }
     },
     {
@@ -298,51 +70,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 19,
           "relation": "precedes"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "excludes_if_present"
         }
       ],
       "metrics": {
         "entities": 28,
-        "relations": 23,
-        "relations_with_evidence": 23
-      }
-    },
-    {
-      "record_index": 80,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/18178000",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 16,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 81,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/284410555",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
-        "relations": 20,
-        "relations_with_evidence": 20
+        "relations": 27,
+        "relations_with_retained_evidence_text": 27,
+        "relations_with_verified_evidence_span": 19
       }
     },
     {
@@ -373,124 +107,9 @@
       ],
       "metrics": {
         "entities": 34,
-        "relations": 34,
-        "relations_with_evidence": 34
-      }
-    },
-    {
-      "record_index": 99,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1358754380",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 6,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 7,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 100,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/521257551",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 8,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 9,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 10,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 11,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 19,
-        "relations": 17,
-        "relations_with_evidence": 17
-      }
-    },
-    {
-      "record_index": 101,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1893759206",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 15,
-        "relations_with_evidence": 15
+        "relations": 37,
+        "relations_with_retained_evidence_text": 37,
+        "relations_with_verified_evidence_span": 18
       }
     },
     {
@@ -522,7 +141,8 @@
       "metrics": {
         "entities": 11,
         "relations": 9,
-        "relations_with_evidence": 9
+        "relations_with_retained_evidence_text": 9,
+        "relations_with_verified_evidence_span": 8
       }
     },
     {
@@ -539,50 +159,8 @@
       "metrics": {
         "entities": 13,
         "relations": 10,
-        "relations_with_evidence": 10
-      }
-    },
-    {
-      "record_index": 104,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/736393417",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 13,
-        "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 105,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/794423031",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "assesses_for"
-        }
-      ],
-      "metrics": {
-        "entities": 9,
-        "relations": 8,
-        "relations_with_evidence": 8
+        "relations_with_retained_evidence_text": 10,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -599,44 +177,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 10,
           "relation": "precedes"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "triggers_alert_when"
         }
       ],
       "metrics": {
         "entities": 27,
-        "relations": 22,
-        "relations_with_evidence": 22
-      }
-    },
-    {
-      "record_index": 111,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1456478153",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 31,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 32,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 33,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 42,
-        "relations": 34,
-        "relations_with_evidence": 34
+        "relations": 26,
+        "relations_with_retained_evidence_text": 26,
+        "relations_with_verified_evidence_span": 19
       }
     },
     {
@@ -658,7 +205,8 @@
       "metrics": {
         "entities": 19,
         "relations": 17,
-        "relations_with_evidence": 17
+        "relations_with_retained_evidence_text": 17,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -685,7 +233,8 @@
       "metrics": {
         "entities": 14,
         "relations": 13,
-        "relations_with_evidence": 13
+        "relations_with_retained_evidence_text": 13,
+        "relations_with_verified_evidence_span": 12
       }
     },
     {
@@ -702,7 +251,8 @@
       "metrics": {
         "entities": 14,
         "relations": 13,
-        "relations_with_evidence": 13
+        "relations_with_retained_evidence_text": 13,
+        "relations_with_verified_evidence_span": 13
       }
     },
     {
@@ -719,7 +269,8 @@
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 11
       }
     },
     {
@@ -741,7 +292,8 @@
       "metrics": {
         "entities": 19,
         "relations": 16,
-        "relations_with_evidence": 16
+        "relations_with_retained_evidence_text": 16,
+        "relations_with_verified_evidence_span": 16
       }
     },
     {
@@ -763,7 +315,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 5
       }
     },
     {
@@ -780,49 +333,8 @@
       "metrics": {
         "entities": 3,
         "relations": 2,
-        "relations_with_evidence": 2
-      }
-    },
-    {
-      "record_index": 130,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/199053300",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 24,
-          "relation": "associated_with_poor_prognosis_in",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 25,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 26,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 31,
-        "relations": 27,
-        "relations_with_evidence": 27
+        "relations_with_retained_evidence_text": 2,
+        "relations_with_verified_evidence_span": 2
       }
     },
     {
@@ -844,7 +356,8 @@
       "metrics": {
         "entities": 18,
         "relations": 16,
-        "relations_with_evidence": 16
+        "relations_with_retained_evidence_text": 16,
+        "relations_with_verified_evidence_span": 16
       }
     },
     {
@@ -861,7 +374,8 @@
       "metrics": {
         "entities": 14,
         "relations": 12,
-        "relations_with_evidence": 12
+        "relations_with_retained_evidence_text": 12,
+        "relations_with_verified_evidence_span": 12
       }
     },
     {
@@ -883,7 +397,8 @@
       "metrics": {
         "entities": 17,
         "relations": 15,
-        "relations_with_evidence": 15
+        "relations_with_retained_evidence_text": 15,
+        "relations_with_verified_evidence_span": 8
       }
     },
     {
@@ -900,63 +415,8 @@
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 141,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/948425503",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 1,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 3,
-        "relations": 2,
-        "relations_with_evidence": 2
-      }
-    },
-    {
-      "record_index": 144,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1427638883",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 16,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 147,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/578635574",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 33,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 34,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 39,
-        "relations": 35,
-        "relations_with_evidence": 35
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 11
       }
     },
     {
@@ -973,7 +433,8 @@
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 11
       }
     },
     {
@@ -990,7 +451,8 @@
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -1012,34 +474,8 @@
       "metrics": {
         "entities": 15,
         "relations": 13,
-        "relations_with_evidence": 13
-      }
-    },
-    {
-      "record_index": 158,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1194756772",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 30,
-        "relations": 25,
-        "relations_with_evidence": 25
+        "relations_with_retained_evidence_text": 13,
+        "relations_with_verified_evidence_span": 7
       }
     },
     {
@@ -1061,7 +497,8 @@
       "metrics": {
         "entities": 16,
         "relations": 14,
-        "relations_with_evidence": 14
+        "relations_with_retained_evidence_text": 14,
+        "relations_with_verified_evidence_span": 7
       }
     },
     {
@@ -1078,7 +515,8 @@
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 11
       }
     },
     {
@@ -1095,147 +533,8 @@
       "metrics": {
         "entities": 15,
         "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 169,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/810797047",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 45,
-        "relations": 38,
-        "relations_with_evidence": 38
-      }
-    },
-    {
-      "record_index": 170,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/314468192",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 15,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 173,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/496273089",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 11,
-        "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 175,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1383708356",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 8,
-        "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 178,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/822487798",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 3,
-          "relation": "required_for_diagnosis_of",
-          "actual": [
-            "Diagnostic Criteria",
-            "Symptom"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 6,
-        "relations": 5,
-        "relations_with_evidence": 5
-      }
-    },
-    {
-      "record_index": 179,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/567063364",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 9,
-        "relations": 9,
-        "relations_with_evidence": 9
-      }
-    },
-    {
-      "record_index": 183,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/56162827",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 32,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 35,
-        "relations": 33,
-        "relations_with_evidence": 33
+        "relations_with_retained_evidence_text": 12,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -1256,8 +555,9 @@
       ],
       "metrics": {
         "entities": 34,
-        "relations": 33,
-        "relations_with_evidence": 33
+        "relations": 36,
+        "relations_with_retained_evidence_text": 36,
+        "relations_with_verified_evidence_span": 36
       }
     },
     {
@@ -1274,29 +574,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 195,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/731724655",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 25,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 30,
-        "relations": 26,
-        "relations_with_evidence": 26
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -1313,7 +592,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -1330,7 +610,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -1347,7 +628,8 @@
       "metrics": {
         "entities": 6,
         "relations": 5,
-        "relations_with_evidence": 5
+        "relations_with_retained_evidence_text": 5,
+        "relations_with_verified_evidence_span": 5
       }
     },
     {
@@ -1368,8 +650,9 @@
       ],
       "metrics": {
         "entities": 24,
-        "relations": 19,
-        "relations_with_evidence": 19
+        "relations": 23,
+        "relations_with_retained_evidence_text": 23,
+        "relations_with_verified_evidence_span": 17
       }
     },
     {
@@ -1386,7 +669,8 @@
       "metrics": {
         "entities": 8,
         "relations": 7,
-        "relations_with_evidence": 7
+        "relations_with_retained_evidence_text": 7,
+        "relations_with_verified_evidence_span": 2
       }
     },
     {
@@ -1403,253 +687,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 14,
           "relation": "follows"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "triggers_alert_when"
         }
       ],
       "metrics": {
         "entities": 24,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 219,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/585833559",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 20,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 220,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1183832314",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 35,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 36,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 44,
-        "relations": 37,
-        "relations_with_evidence": 37
-      }
-    },
-    {
-      "record_index": 222,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1867081699",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 14,
-        "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 223,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/467941148",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 24,
-        "relations": 22,
-        "relations_with_evidence": 22
-      }
-    },
-    {
-      "record_index": 226,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1069443471",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 38,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 39,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 40,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 41,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 42,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 43,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 47,
-        "relations": 44,
-        "relations_with_evidence": 44
-      }
-    },
-    {
-      "record_index": 241,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/967232108",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 17,
-        "relations_with_evidence": 17
-      }
-    },
-    {
-      "record_index": 244,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/71229925",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 5,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 9,
-        "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 247,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/626975732",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 25,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
-        "relations": 26,
-        "relations_with_evidence": 26
+        "relations": 19,
+        "relations_with_retained_evidence_text": 19,
+        "relations_with_verified_evidence_span": 12
       }
     },
     {
@@ -1666,7 +710,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -1687,8 +732,9 @@
       ],
       "metrics": {
         "entities": 18,
-        "relations": 13,
-        "relations_with_evidence": 13
+        "relations": 15,
+        "relations_with_retained_evidence_text": 15,
+        "relations_with_verified_evidence_span": 7
       }
     },
     {
@@ -1700,122 +746,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 15,
           "relation": "precedes"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
         }
       ],
       "metrics": {
         "entities": 24,
-        "relations": 19,
-        "relations_with_evidence": 19
-      }
-    },
-    {
-      "record_index": 253,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1829103493",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 23,
-        "relations": 18,
-        "relations_with_evidence": 18
-      }
-    },
-    {
-      "record_index": 255,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/253124068",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 26,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 27,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 28,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 29,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 30,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 31,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 32,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 35,
-        "relations": 33,
-        "relations_with_evidence": 33
-      }
-    },
-    {
-      "record_index": 258,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/263852475",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 19,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 20,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 25,
         "relations": 23,
-        "relations_with_evidence": 23
+        "relations_with_retained_evidence_text": 23,
+        "relations_with_verified_evidence_span": 17
       }
     },
     {
@@ -1837,29 +774,8 @@
       "metrics": {
         "entities": 9,
         "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 263,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/647582417",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 6,
-        "relations": 5,
-        "relations_with_evidence": 5
+        "relations_with_retained_evidence_text": 8,
+        "relations_with_verified_evidence_span": 5
       }
     },
     {
@@ -1881,70 +797,8 @@
       "metrics": {
         "entities": 8,
         "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 267,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/38433871",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 1,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 5,
-        "relations": 2,
-        "relations_with_evidence": 2
-      }
-    },
-    {
-      "record_index": 270,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/509381842",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 19,
-          "relation": "co_occurs_with_frequency",
-          "actual": [
-            "Disease",
-            "Symptom"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 20,
-          "relation": "co_occurs_with_frequency",
-          "actual": [
-            "Disease",
-            "Symptom"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 24,
-        "relations": 21,
-        "relations_with_evidence": 21
+        "relations_with_retained_evidence_text": 7,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -1954,66 +808,15 @@
       "warnings": [
         {
           "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
           "relation_index": 11,
           "relation": "mediated_by"
         }
       ],
       "metrics": {
         "entities": 16,
-        "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 282,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/313374467",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 20,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 27,
-        "relations": 22,
-        "relations_with_evidence": 22
+        "relations": 14,
+        "relations_with_retained_evidence_text": 14,
+        "relations_with_verified_evidence_span": 10
       }
     },
     {
@@ -2030,132 +833,8 @@
       "metrics": {
         "entities": 9,
         "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 284,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/541725793",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 9,
-        "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 287,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/767044268",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 22,
-        "relations": 19,
-        "relations_with_evidence": 19
-      }
-    },
-    {
-      "record_index": 292,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/256572629",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 19,
-        "relations": 21,
-        "relations_with_evidence": 21
-      }
-    },
-    {
-      "record_index": 295,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1676588433",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
-        "relations": 25,
-        "relations_with_evidence": 25
-      }
-    },
-    {
-      "record_index": 296,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/766814084",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "recommended_for"
-        }
-      ],
-      "metrics": {
-        "entities": 11,
-        "relations": 10,
-        "relations_with_evidence": 10
+        "relations_with_retained_evidence_text": 8,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -2171,8 +850,9 @@
       ],
       "metrics": {
         "entities": 22,
-        "relations": 18,
-        "relations_with_evidence": 18
+        "relations": 21,
+        "relations_with_retained_evidence_text": 21,
+        "relations_with_verified_evidence_span": 12
       }
     },
     {
@@ -2189,66 +869,20 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 36,
           "relation": "mediated_by"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 37,
-          "relation": "triggers_alert_when"
         }
       ],
       "metrics": {
         "entities": 43,
-        "relations": 38,
-        "relations_with_evidence": 38
+        "relations": 42,
+        "relations_with_retained_evidence_text": 42,
+        "relations_with_verified_evidence_span": 24
       }
     },
     {
       "record_index": 309,
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/998231424",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 24,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 25,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 26,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 27,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
+      "errors": [],
       "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 28,
-          "relation": "triggers_alert_when"
-        },
         {
           "code": "relation_semantics_need_medical_review",
           "relation_index": 29,
@@ -2268,51 +902,8 @@
       "metrics": {
         "entities": 30,
         "relations": 32,
-        "relations_with_evidence": 32
-      }
-    },
-    {
-      "record_index": 310,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/500976312",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 1,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 2,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 4,
-        "relations": 3,
-        "relations_with_evidence": 3
-      }
-    },
-    {
-      "record_index": 311,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/844301129",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 8,
-        "relations": 7,
-        "relations_with_evidence": 7
+        "relations_with_retained_evidence_text": 32,
+        "relations_with_verified_evidence_span": 11
       }
     },
     {
@@ -2329,163 +920,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 313,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/232349777",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 6,
-        "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 315,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1217486356",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 22,
-        "relations": 20,
-        "relations_with_evidence": 20
-      }
-    },
-    {
-      "record_index": 316,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/769299330",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 19,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 20,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 21,
-        "relations_with_evidence": 21
-      }
-    },
-    {
-      "record_index": 323,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2068155409",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 30,
-        "relations": 19,
-        "relations_with_evidence": 19
-      }
-    },
-    {
-      "record_index": 338,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1387132352",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 32,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 33,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 34,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 41,
-        "relations": 35,
-        "relations_with_evidence": 35
-      }
-    },
-    {
-      "record_index": 339,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/637576511",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 20,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 23,
-        "relations": 22,
-        "relations_with_evidence": 22
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -2501,25 +937,9 @@
       ],
       "metrics": {
         "entities": 15,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 344,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1978307484",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 16,
-        "relations_with_evidence": 16
+        "relations": 15,
+        "relations_with_retained_evidence_text": 15,
+        "relations_with_verified_evidence_span": 13
       }
     },
     {
@@ -2546,85 +966,8 @@
       "metrics": {
         "entities": 18,
         "relations": 17,
-        "relations_with_evidence": 17
-      }
-    },
-    {
-      "record_index": 361,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/508603587",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 38,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 43,
-        "relations": 39,
-        "relations_with_evidence": 39
-      }
-    },
-    {
-      "record_index": 363,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/138091123",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 10,
-        "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 364,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1995589534",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 20,
-        "relations": 19,
-        "relations_with_evidence": 19
-      }
-    },
-    {
-      "record_index": 367,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1396644446",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 20,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 23,
-        "relations": 21,
-        "relations_with_evidence": 21
+        "relations_with_retained_evidence_text": 17,
+        "relations_with_verified_evidence_span": 15
       }
     },
     {
@@ -2646,7 +989,8 @@
       "metrics": {
         "entities": 27,
         "relations": 14,
-        "relations_with_evidence": 14
+        "relations_with_retained_evidence_text": 14,
+        "relations_with_verified_evidence_span": 13
       }
     },
     {
@@ -2673,7 +1017,8 @@
       "metrics": {
         "entities": 13,
         "relations": 12,
-        "relations_with_evidence": 12
+        "relations_with_retained_evidence_text": 12,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -2683,107 +1028,15 @@
       "warnings": [
         {
           "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
           "relation_index": 19,
           "relation": "modulated_by"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 20,
-          "relation": "assesses_for"
         }
       ],
       "metrics": {
         "entities": 27,
-        "relations": 22,
-        "relations_with_evidence": 22
-      }
-    },
-    {
-      "record_index": 382,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1395283456",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 28,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 37,
-        "relations": 29,
-        "relations_with_evidence": 29
-      }
-    },
-    {
-      "record_index": 384,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1416205973",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 6,
-        "relations": 5,
-        "relations_with_evidence": 5
-      }
-    },
-    {
-      "record_index": 385,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/824335105",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 15,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 388,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/963759045",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 19,
-        "relations_with_evidence": 19
+        "relations": 26,
+        "relations_with_retained_evidence_text": 26,
+        "relations_with_verified_evidence_span": 20
       }
     },
     {
@@ -2810,7 +1063,8 @@
       "metrics": {
         "entities": 18,
         "relations": 17,
-        "relations_with_evidence": 17
+        "relations_with_retained_evidence_text": 17,
+        "relations_with_verified_evidence_span": 16
       }
     },
     {
@@ -2837,55 +1091,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
-      }
-    },
-    {
-      "record_index": 404,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/989359552",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 24,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 25,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 26,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 30,
-        "relations": 27,
-        "relations_with_evidence": 27
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -2907,7 +1114,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -2929,7 +1137,8 @@
       "metrics": {
         "entities": 9,
         "relations": 8,
-        "relations_with_evidence": 8
+        "relations_with_retained_evidence_text": 8,
+        "relations_with_verified_evidence_span": 8
       }
     },
     {
@@ -2946,114 +1155,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 408,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1087947331",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 7,
-        "relations": 6,
-        "relations_with_evidence": 6
-      }
-    },
-    {
-      "record_index": 411,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/744305598",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 12,
-        "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 413,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/890653406",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 19,
-        "relations_with_evidence": 19
-      }
-    },
-    {
-      "record_index": 430,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/25238782",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 22,
-          "relation": "associated_with_poor_prognosis_in",
-          "actual": [
-            "Patient Information",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "associated_with_poor_prognosis_in",
-          "actual": [
-            "Patient Information",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 25,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 27,
-        "relations": 26,
-        "relations_with_evidence": 26
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -3075,7 +1178,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -3097,7 +1201,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -3114,63 +1219,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
-      }
-    },
-    {
-      "record_index": 439,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1176625878",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 440,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/330885524",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 15,
-        "relations": 13,
-        "relations_with_evidence": 13
-      }
-    },
-    {
-      "record_index": 441,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1995290731",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 18,
-        "relations_with_evidence": 18
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -3187,7 +1237,8 @@
       "metrics": {
         "entities": 24,
         "relations": 18,
-        "relations_with_evidence": 18
+        "relations_with_retained_evidence_text": 18,
+        "relations_with_verified_evidence_span": 14
       }
     },
     {
@@ -3195,11 +1246,6 @@
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1772665991",
       "errors": [],
       "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        },
         {
           "code": "relation_semantics_need_medical_review",
           "relation_index": 22,
@@ -3214,95 +1260,8 @@
       "metrics": {
         "entities": 42,
         "relations": 24,
-        "relations_with_evidence": 24
-      }
-    },
-    {
-      "record_index": 451,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/651438062",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 1,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 2,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 5,
-        "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 456,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1775535234",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 38,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 39,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 45,
-        "relations": 40,
-        "relations_with_evidence": 40
-      }
-    },
-    {
-      "record_index": 459,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/199002751",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 14,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 15,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 16,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 18,
-        "relations": 17,
-        "relations_with_evidence": 17
+        "relations_with_retained_evidence_text": 24,
+        "relations_with_verified_evidence_span": 15
       }
     },
     {
@@ -3329,120 +1288,8 @@
       "metrics": {
         "entities": 8,
         "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 462,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/48956638",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 7,
-        "relations": 6,
-        "relations_with_evidence": 6
-      }
-    },
-    {
-      "record_index": 465,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/724783925",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 20,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 21,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 22,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 24,
-        "relations_with_evidence": 24
-      }
-    },
-    {
-      "record_index": 466,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1627021441",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 19,
-        "relations": 17,
-        "relations_with_evidence": 17
-      }
-    },
-    {
-      "record_index": 467,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1830469239",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 22,
-        "relations": 20,
-        "relations_with_evidence": 20
+        "relations_with_retained_evidence_text": 7,
+        "relations_with_verified_evidence_span": 7
       }
     },
     {
@@ -3458,8 +1305,9 @@
       ],
       "metrics": {
         "entities": 14,
-        "relations": 12,
-        "relations_with_evidence": 12
+        "relations": 13,
+        "relations_with_retained_evidence_text": 13,
+        "relations_with_verified_evidence_span": 10
       }
     },
     {
@@ -3486,57 +1334,8 @@
       "metrics": {
         "entities": 15,
         "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 488,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1005846640",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 20,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 21,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 22,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 23,
-        "relations": 23,
-        "relations_with_evidence": 23
+        "relations_with_retained_evidence_text": 14,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -3558,7 +1357,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -3580,146 +1380,8 @@
       "metrics": {
         "entities": 7,
         "relations": 6,
-        "relations_with_evidence": 6
-      }
-    },
-    {
-      "record_index": 491,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/89854667",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 5,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 10,
-        "relations": 9,
-        "relations_with_evidence": 9
-      }
-    },
-    {
-      "record_index": 495,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1423983191",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 19,
-        "relations_with_evidence": 19
-      }
-    },
-    {
-      "record_index": 496,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/511382862",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 15,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 497,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1259373199",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 12,
-        "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 501,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/207246302",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "recommended_for"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 506,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1648213213",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 30,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 31,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 37,
-        "relations": 32,
-        "relations_with_evidence": 32
-      }
-    },
-    {
-      "record_index": 509,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1115271910",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 19,
-        "relations_with_evidence": 19
+        "relations_with_retained_evidence_text": 6,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
@@ -3736,24 +1398,8 @@
       "metrics": {
         "entities": 18,
         "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 514,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/219736364",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 16,
-        "relations": 12,
-        "relations_with_evidence": 12
+        "relations_with_retained_evidence_text": 12,
+        "relations_with_verified_evidence_span": 2
       }
     },
     {
@@ -3769,25 +1415,9 @@
       ],
       "metrics": {
         "entities": 20,
-        "relations": 15,
-        "relations_with_evidence": 15
-      }
-    },
-    {
-      "record_index": 525,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1863378901",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 9,
-        "relations": 8,
-        "relations_with_evidence": 8
+        "relations": 19,
+        "relations_with_retained_evidence_text": 19,
+        "relations_with_verified_evidence_span": 13
       }
     },
     {
@@ -3803,64 +1433,9 @@
       ],
       "metrics": {
         "entities": 10,
-        "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 528,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/162562386",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 12,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 13,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 14,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 22,
-        "relations": 21,
-        "relations_with_evidence": 21
-      }
-    },
-    {
-      "record_index": 529,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1245150953",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 15,
-        "relations_with_evidence": 15
+        "relations": 9,
+        "relations_with_retained_evidence_text": 9,
+        "relations_with_verified_evidence_span": 5
       }
     },
     {
@@ -3887,73 +1462,8 @@
       "metrics": {
         "entities": 22,
         "relations": 21,
-        "relations_with_evidence": 21
-      }
-    },
-    {
-      "record_index": 549,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/893652479",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 22,
-        "relations": 20,
-        "relations_with_evidence": 20
-      }
-    },
-    {
-      "record_index": 550,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1600451095",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 17,
-        "relations_with_evidence": 17
-      }
-    },
-    {
-      "record_index": 560,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/976174979",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 37,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 38,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 39,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 40,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 46,
-        "relations": 41,
-        "relations_with_evidence": 41
+        "relations_with_retained_evidence_text": 21,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -3969,86 +1479,9 @@
       ],
       "metrics": {
         "entities": 18,
-        "relations": 15,
-        "relations_with_evidence": 15
-      }
-    },
-    {
-      "record_index": 562,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1030552808",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 2,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 7,
-        "relations": 5,
-        "relations_with_evidence": 5
-      }
-    },
-    {
-      "record_index": 563,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1478963582",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 14,
-        "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 565,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/652700225",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 20,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 23,
-        "relations": 22,
-        "relations_with_evidence": 22
-      }
-    },
-    {
-      "record_index": 566,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1918560936",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 15,
-        "relations_with_evidence": 15
+        "relations": 17,
+        "relations_with_retained_evidence_text": 17,
+        "relations_with_verified_evidence_span": 12
       }
     },
     {
@@ -4070,136 +1503,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 13,
           "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "excludes_if_present"
         }
       ],
       "metrics": {
         "entities": 16,
         "relations": 15,
-        "relations_with_evidence": 15
-      }
-    },
-    {
-      "record_index": 575,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/473001402",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "assesses_for"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 18,
-        "relations_with_evidence": 18
-      }
-    },
-    {
-      "record_index": 581,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1574982062",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 30,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 35,
-        "relations": 31,
-        "relations_with_evidence": 31
-      }
-    },
-    {
-      "record_index": 584,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1589999330",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 15,
-        "relations": 13,
-        "relations_with_evidence": 13
-      }
-    },
-    {
-      "record_index": 585,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1157653052",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 2,
-        "relations": 1,
-        "relations_with_evidence": 1
-      }
-    },
-    {
-      "record_index": 586,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/268614690",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 20,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 21,
-        "relations_with_evidence": 21
-      }
-    },
-    {
-      "record_index": 587,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/325981339",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 12,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 15,
-        "relations": 13,
-        "relations_with_evidence": 13
+        "relations_with_retained_evidence_text": 15,
+        "relations_with_verified_evidence_span": 14
       }
     },
     {
@@ -4207,11 +1517,6 @@
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/706633269",
       "errors": [],
       "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
         {
           "code": "relation_semantics_need_medical_review",
           "relation_index": 9,
@@ -4231,80 +1536,8 @@
       "metrics": {
         "entities": 14,
         "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 592,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1418561556",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 14,
-        "relations_with_evidence": 14
-      }
-    },
-    {
-      "record_index": 602,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1192105868",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 35,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 36,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 37,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 38,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 39,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 40,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 41,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 42,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 41,
-        "relations": 43,
-        "relations_with_evidence": 43
+        "relations_with_retained_evidence_text": 12,
+        "relations_with_verified_evidence_span": 8
       }
     },
     {
@@ -4320,84 +1553,9 @@
       ],
       "metrics": {
         "entities": 8,
-        "relations": 6,
-        "relations_with_evidence": 6
-      }
-    },
-    {
-      "record_index": 605,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1379043297",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 3,
-        "relations": 0,
-        "relations_with_evidence": 0
-      }
-    },
-    {
-      "record_index": 606,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1866047295",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 14,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 607,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1552098464",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 611,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1835736371",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 14,
-        "relations": 13,
-        "relations_with_evidence": 13
+        "relations": 7,
+        "relations_with_retained_evidence_text": 7,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -4429,59 +1587,8 @@
       "metrics": {
         "entities": 7,
         "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 623,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2022008391",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 17,
-          "relation": "triggers_alert_when"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 18,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 34,
-        "relations": 38,
-        "relations_with_evidence": 38
+        "relations_with_retained_evidence_text": 7,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -4503,7 +1610,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -4520,7 +1628,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -4537,105 +1646,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 630,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1044767723",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 13,
-        "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 632,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1906889712",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 27,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 28,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 27,
-        "relations": 29,
-        "relations_with_evidence": 29
-      }
-    },
-    {
-      "record_index": 633,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/509176135",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 19,
-        "relations": 17,
-        "relations_with_evidence": 17
-      }
-    },
-    {
-      "record_index": 634,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/69097373",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 19,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 21,
-        "relations": 20,
-        "relations_with_evidence": 20
-      }
-    },
-    {
-      "record_index": 635,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/657890038",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 14,
-        "relations": 12,
-        "relations_with_evidence": 12
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -4657,7 +1669,8 @@
       "metrics": {
         "entities": 16,
         "relations": 16,
-        "relations_with_evidence": 16
+        "relations_with_retained_evidence_text": 16,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -4665,11 +1678,6 @@
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1729466996",
       "errors": [],
       "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        },
         {
           "code": "relation_semantics_need_medical_review",
           "relation_index": 10,
@@ -4699,327 +1707,8 @@
       "metrics": {
         "entities": 16,
         "relations": 15,
-        "relations_with_evidence": 15
-      }
-    },
-    {
-      "record_index": 646,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/487973986",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 1,
-        "relations": 0,
-        "relations_with_evidence": 0
-      }
-    },
-    {
-      "record_index": 647,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2113562155",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 1,
-        "relations": 0,
-        "relations_with_evidence": 0
-      }
-    },
-    {
-      "record_index": 651,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1583329300",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 6,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 7,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 8,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 9,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 25,
-        "relations": 26,
-        "relations_with_evidence": 26
-      }
-    },
-    {
-      "record_index": 659,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1183869990",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 11,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 13,
-        "relations": 12,
-        "relations_with_evidence": 12
-      }
-    },
-    {
-      "record_index": 661,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1733810838",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 25,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 27,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 28,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 26,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
-        "relations": 29,
-        "relations_with_evidence": 29
-      }
-    },
-    {
-      "record_index": 662,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1198710764",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 17,
-        "relations": 15,
-        "relations_with_evidence": 15
-      }
-    },
-    {
-      "record_index": 663,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2039807396",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 22,
-        "relations": 25,
-        "relations_with_evidence": 25
-      }
-    },
-    {
-      "record_index": 664,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/856664761",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 19,
-        "relations": 15,
-        "relations_with_evidence": 15
-      }
-    },
-    {
-      "record_index": 678,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2143971168/unspecified",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 1,
-        "relations": 0,
-        "relations_with_evidence": 0
-      }
-    },
-    {
-      "record_index": 679,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1870346724",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 25,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 30,
-        "relations": 26,
-        "relations_with_evidence": 26
-      }
-    },
-    {
-      "record_index": 680,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/219731531",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 24,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 25,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 26,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 27,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 28,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 29,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 30,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 28,
-        "relations": 31,
-        "relations_with_evidence": 31
+        "relations_with_retained_evidence_text": 15,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -5041,7 +1730,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -5063,7 +1753,8 @@
       "metrics": {
         "entities": 9,
         "relations": 8,
-        "relations_with_evidence": 8
+        "relations_with_retained_evidence_text": 8,
+        "relations_with_verified_evidence_span": 8
       }
     },
     {
@@ -5080,24 +1771,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 687,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1155529213",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 16,
-        "relations": 15,
-        "relations_with_evidence": 15
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -5114,7 +1789,8 @@
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 10
       }
     },
     {
@@ -5131,17 +1807,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 8,
           "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
         }
       ],
       "metrics": {
         "entities": 12,
         "relations": 11,
-        "relations_with_evidence": 11
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 2
       }
     },
     {
@@ -5163,24 +1835,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 705,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1041487064",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
-        "relations": 22,
-        "relations_with_evidence": 22
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -5188,21 +1844,6 @@
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1532500290",
       "errors": [],
       "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "excludes_if_present"
-        },
         {
           "code": "relation_semantics_need_medical_review",
           "relation_index": 24,
@@ -5216,30 +1857,9 @@
       ],
       "metrics": {
         "entities": 27,
-        "relations": 26,
-        "relations_with_evidence": 26
-      }
-    },
-    {
-      "record_index": 717,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1630268048",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 13,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 15,
-        "relations_with_evidence": 15
+        "relations": 30,
+        "relations_with_retained_evidence_text": 30,
+        "relations_with_verified_evidence_span": 23
       }
     },
     {
@@ -5260,65 +1880,9 @@
       ],
       "metrics": {
         "entities": 16,
-        "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 721,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1487528823",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 14,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 15,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 16,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 724,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/317107055",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 1,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 2,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 5,
-        "relations": 4,
-        "relations_with_evidence": 4
+        "relations": 15,
+        "relations_with_retained_evidence_text": 15,
+        "relations_with_verified_evidence_span": 9
       }
     },
     {
@@ -5335,7 +1899,8 @@
       "metrics": {
         "entities": 5,
         "relations": 4,
-        "relations_with_evidence": 4
+        "relations_with_retained_evidence_text": 4,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -5362,89 +1927,8 @@
       "metrics": {
         "entities": 6,
         "relations": 5,
-        "relations_with_evidence": 5
-      }
-    },
-    {
-      "record_index": 731,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/719572464",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 21,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 22,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 23,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 24,
-          "relation": "supports_subtyping_of",
-          "actual": [
-            "Symptom",
-            "Disease"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 24,
-        "relations": 25,
-        "relations_with_evidence": 25
-      }
-    },
-    {
-      "record_index": 732,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/192666265",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 8,
-        "relations": 7,
-        "relations_with_evidence": 7
-      }
-    },
-    {
-      "record_index": 734,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1196205490",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 1,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 3,
-        "relations": 2,
-        "relations_with_evidence": 2
+        "relations_with_retained_evidence_text": 5,
+        "relations_with_verified_evidence_span": 5
       }
     },
     {
@@ -5461,22 +1945,8 @@
       "metrics": {
         "entities": 4,
         "relations": 3,
-        "relations_with_evidence": 3
-      }
-    },
-    {
-      "record_index": 748,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1128733473",
-      "errors": [
-        {
-          "code": "main_disease_unresolved"
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 10,
-        "relations": 9,
-        "relations_with_evidence": 9
+        "relations_with_retained_evidence_text": 3,
+        "relations_with_verified_evidence_span": 3
       }
     },
     {
@@ -5512,8 +1982,9 @@
       ],
       "metrics": {
         "entities": 10,
-        "relations": 11,
-        "relations_with_evidence": 11
+        "relations": 13,
+        "relations_with_retained_evidence_text": 13,
+        "relations_with_verified_evidence_span": 8
       }
     },
     {
@@ -5529,29 +2000,9 @@
       ],
       "metrics": {
         "entities": 14,
-        "relations": 10,
-        "relations_with_evidence": 10
-      }
-    },
-    {
-      "record_index": 759,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1580013387",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 3,
-          "relation": "required_for_diagnosis_of",
-          "actual": [
-            "Diagnostic Criteria",
-            "Symptom"
-          ]
-        }
-      ],
-      "warnings": [],
-      "metrics": {
-        "entities": 12,
-        "relations": 9,
-        "relations_with_evidence": 9
+        "relations": 13,
+        "relations_with_retained_evidence_text": 13,
+        "relations_with_verified_evidence_span": 11
       }
     },
     {
@@ -5572,133 +2023,9 @@
       ],
       "metrics": {
         "entities": 24,
-        "relations": 18,
-        "relations_with_evidence": 18
-      }
-    },
-    {
-      "record_index": 766,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/897917531",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 26,
         "relations": 23,
-        "relations_with_evidence": 23
-      }
-    },
-    {
-      "record_index": 767,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1015017717",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 2,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 14,
-        "relations": 4,
-        "relations_with_evidence": 4
-      }
-    },
-    {
-      "record_index": 773,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/386330688",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 21,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 22,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 23,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 24,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 25,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 24,
-        "relations": 26,
-        "relations_with_evidence": 26
-      }
-    },
-    {
-      "record_index": 774,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/862469859",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 9,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 10,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 34,
-        "relations": 33,
-        "relations_with_evidence": 33
-      }
-    },
-    {
-      "record_index": 786,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1072662343",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 9,
-        "relations": 7,
-        "relations_with_evidence": 7
+        "relations_with_retained_evidence_text": 23,
+        "relations_with_verified_evidence_span": 14
       }
     },
     {
@@ -5720,24 +2047,8 @@
       "metrics": {
         "entities": 15,
         "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 792,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1619582852",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 8,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 10,
-        "relations": 9,
-        "relations_with_evidence": 9
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 9
       }
     },
     {
@@ -5754,32 +2065,14 @@
       "metrics": {
         "entities": 12,
         "relations": 10,
-        "relations_with_evidence": 10
+        "relations_with_retained_evidence_text": 10,
+        "relations_with_verified_evidence_span": 6
       }
     },
     {
       "record_index": 798,
       "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1397836700",
-      "errors": [
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 4,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        },
-        {
-          "code": "invalid_relation_domain_range",
-          "relation_index": 5,
-          "relation": "subsumes",
-          "actual": [
-            "Symptom",
-            "Symptom"
-          ]
-        }
-      ],
+      "errors": [],
       "warnings": [
         {
           "code": "relation_semantics_need_medical_review",
@@ -5789,8 +2082,9 @@
       ],
       "metrics": {
         "entities": 11,
-        "relations": 9,
-        "relations_with_evidence": 9
+        "relations": 10,
+        "relations_with_retained_evidence_text": 10,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -5807,24 +2101,8 @@
       "metrics": {
         "entities": 15,
         "relations": 11,
-        "relations_with_evidence": 11
-      }
-    },
-    {
-      "record_index": 815,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/2043528053",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 2,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 5,
-        "relations": 3,
-        "relations_with_evidence": 3
+        "relations_with_retained_evidence_text": 11,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -5836,83 +2114,13 @@
           "code": "relation_semantics_need_medical_review",
           "relation_index": 4,
           "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 6,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 7,
-          "relation": "excludes_if_present"
         }
       ],
       "metrics": {
         "entities": 10,
         "relations": 8,
-        "relations_with_evidence": 8
-      }
-    },
-    {
-      "record_index": 823,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/380591392",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "triggers_alert_when"
-        }
-      ],
-      "metrics": {
-        "entities": 18,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 827,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/700487590",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 4,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 7,
-        "relations": 5,
-        "relations_with_evidence": 5
-      }
-    },
-    {
-      "record_index": 833,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/255980141",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 14,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 15,
-          "relation": "excludes_if_present"
-        },
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 16,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 35,
-        "relations": 17,
-        "relations_with_evidence": 17
+        "relations_with_retained_evidence_text": 8,
+        "relations_with_verified_evidence_span": 4
       }
     },
     {
@@ -5958,25 +2166,9 @@
       ],
       "metrics": {
         "entities": 20,
-        "relations": 16,
-        "relations_with_evidence": 16
-      }
-    },
-    {
-      "record_index": 851,
-      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/235421675",
-      "errors": [],
-      "warnings": [
-        {
-          "code": "relation_semantics_need_medical_review",
-          "relation_index": 3,
-          "relation": "excludes_if_present"
-        }
-      ],
-      "metrics": {
-        "entities": 6,
-        "relations": 4,
-        "relations_with_evidence": 4
+        "relations": 17,
+        "relations_with_retained_evidence_text": 17,
+        "relations_with_verified_evidence_span": 7
       }
     }
   ]

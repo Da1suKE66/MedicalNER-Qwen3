@@ -14,10 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from kg_lora.schema_v2 import (  # noqa: E402
+    MIGRATION_IMPLEMENTATION_VERSION,
     build_raw_indexes,
     load_json,
     load_schema,
     migrate_record,
+    migration_config_fingerprint,
     record_list,
     validate_dataset,
     write_json,
@@ -60,6 +62,11 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--limit", type=int)
     parser.add_argument("--apply-high-confidence-collapses", action="store_true")
+    parser.add_argument(
+        "--force-renormalize",
+        action="store_true",
+        help="rerun normalization even when implementation/config markers match",
+    )
     return parser.parse_args()
 
 
@@ -81,6 +88,7 @@ def main() -> None:
             raw_indexes,
             schema,
             apply_high_confidence_collapses=args.apply_high_confidence_collapses,
+            force_renormalize=args.force_renormalize,
         )
         migrated_records.append(migrated)
         migration_results.append(result)
@@ -104,6 +112,12 @@ def main() -> None:
     validation = validate_dataset(migrated_records, schema)
     report = {
         "schema_version": schema["schema_version"],
+        "migration_implementation_version": MIGRATION_IMPLEMENTATION_VERSION,
+        "migration_config_fingerprint": migration_config_fingerprint(
+            schema,
+            apply_high_confidence_collapses=args.apply_high_confidence_collapses,
+        ),
+        "force_renormalize": args.force_renormalize,
         "input": display_path(args.input),
         "input_record_count": len(records),
         "output_record_count": len(migrated_records),

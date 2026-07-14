@@ -1,0 +1,143 @@
+{
+  "schema_version": "2.0.0-draft.2",
+  "model": "deepseek-v4-flash",
+  "input": "data/schema_v2/cleaned/pro_cot_schema_v2_evidence.json",
+  "candidate_count": 4,
+  "apply": false,
+  "result_counts": {
+    "rejected_context": 3,
+    "valid_proposal": 1
+  },
+  "validation_summary": {
+    "record_count": 858,
+    "records_with_findings": 100,
+    "error_counts": {
+      "invalid_relation_domain_range": 5
+    },
+    "warning_counts": {
+      "relation_semantics_need_medical_review": 182
+    },
+    "metrics": {
+      "entities": 8680,
+      "relations": 7127,
+      "relations_with_retained_evidence_text": 7127,
+      "relations_with_verified_evidence_span": 6393
+    }
+  },
+  "results": [
+    {
+      "record_index": 38,
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1111628448",
+      "source_code": "6A06",
+      "status_before": "invalid",
+      "cache": "miss",
+      "model": "deepseek-v4-flash",
+      "usage": {
+        "prompt_tokens": 7473,
+        "completion_tokens": 330,
+        "total_tokens": 7803,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 7473
+      },
+      "operation_count": 1,
+      "operations": [
+        "replace_relation"
+      ],
+      "needs_human_review": true,
+      "review_reason": "Relation 7: required_for_diagnosis_of from Diagnostic Criteria to Symptom is invalid. Changed to excludes_diagnosis_of, but correct relation should be determined by a human.",
+      "context_errors": [
+        "operation[0] replace_relation: confidence below 0.9",
+        "operation[0] replace_relation: relation domain/range mismatch actual=('Diagnostic Criteria', 'Symptom') expected=(['Diagnostic Criteria', 'Symptom'],['Disease'])"
+      ],
+      "result": "rejected_context"
+    },
+    {
+      "record_index": 178,
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/822487798",
+      "source_code": "6A80.4",
+      "status_before": "invalid",
+      "cache": "miss",
+      "model": "deepseek-v4-flash",
+      "usage": {
+        "prompt_tokens": 3898,
+        "completion_tokens": 527,
+        "total_tokens": 4425,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 3898
+      },
+      "operation_count": 1,
+      "operations": [
+        "remove_relation"
+      ],
+      "needs_human_review": false,
+      "review_reason": null,
+      "context_errors": [],
+      "result": "valid_proposal"
+    },
+    {
+      "record_index": 270,
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/509381842",
+      "source_code": "6B81",
+      "status_before": "invalid",
+      "cache": "miss",
+      "model": "deepseek-v4-flash",
+      "usage": {
+        "prompt_tokens": 7702,
+        "completion_tokens": 872,
+        "total_tokens": 8574,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 7190
+      },
+      "operation_count": 4,
+      "operations": [
+        "remove_relation",
+        "remove_relation",
+        "add_relation",
+        "add_relation"
+      ],
+      "needs_human_review": false,
+      "review_reason": null,
+      "context_errors": [
+        "operation[2] add_relation: relation domain/range mismatch actual=('Disease', 'Symptom') expected=(['Symptom'],['Disease'])"
+      ],
+      "result": "rejected_context"
+    },
+    {
+      "record_index": 759,
+      "source_record_id": "http://id.who.int/icd/release/11/2025-01/mms/1580013387",
+      "source_code": "6D34",
+      "status_before": "invalid",
+      "cache": "miss",
+      "model": "deepseek-v4-flash",
+      "usage": {
+        "prompt_tokens": 5592,
+        "completion_tokens": 331,
+        "total_tokens": 5923,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 5080
+      },
+      "operation_count": 1,
+      "operations": [
+        "remove_relation"
+      ],
+      "needs_human_review": false,
+      "review_reason": null,
+      "context_errors": [
+        "remove_relation: evidence offsets do not match quote"
+      ],
+      "result": "rejected_context"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "2.0.0-draft.2",
+  "record_count": 858,
+  "relation_count": 6702,
+  "expected_split": "all",
+  "passed": true,
+  "failed_gates": [],
+  "gates": {
+    "strict_json": {
+      "passed": true,
+      "finding_count": 0,
+      "findings": []
+    },
+    "schema_validation": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "canonical_main_identity": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "icd_verification": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "active_relation_schema": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "exact_evidence_spans": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "known_word_corruption": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "training_eligibility": {
+      "passed": true,
+      "records_checked": 858,
+      "failed_records": 0,
+      "finding_count": 0
+    },
+    "split_integrity": {
+      "passed": true,
+      "finding_count": 0,
+      "findings": [],
+      "details": {
+        "passed": true,
+        "expected_split": "all",
+        "record_count": 858,
+        "direct_cross_split_edge_count": 0,
+        "shared_external_parent_cross_split_count": 0,
+        "source_ids_match_manifest": true
+      }
+    }
+  },
+  "records_with_findings": 0,
+  "record_findings": [],
+  "input": {
+    "path": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/cleaned/pro_cot_schema_v2_train_ready.json",
+    "sha256": "5014ba89912a5ce6a9ae9408651b53b04a332b9e8a8e2f497a42152ffcb35547"
+  },
+  "split_manifest": {
+    "path": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/splits/split_manifest.json",
+    "sha256": "fc9a64552a44868199f4a17927b69302c680814dbe658cdd845f685fc455cd5a"
+  },
+  "strict": true
+}

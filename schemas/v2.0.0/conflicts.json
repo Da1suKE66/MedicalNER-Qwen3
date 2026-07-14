@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0-draft.1",
+  "schema_version": "2.0.0-draft.2",
   "source_ontology_status": "source.xlsx was not present in the repository at implementation time",
   "requires_medical_review": [
     {
@@ -16,25 +16,22 @@
     },
     {
       "id": "exclusion_semantics",
-      "decision": "deferred",
-      "question": "Separate ICD classification exclusions, clinical rule-out diagnoses, and diagnosis-excluding criteria, and confirm their direction."
+      "decision": "partially_resolved",
+      "question": "ICD classification exclusions remain distinct; clinical Disease-to-Disease rule-out uses must_be_ruled_out_for, and criterion/symptom-to-Disease exclusion uses excludes_diagnosis_of. Other endpoint signatures remain under review."
     },
     {
       "id": "patient_disease_relation",
-      "decision": "deferred",
-      "question": "Choose the canonical Patient Information-Disease relation and domain/range."
+      "decision": "resolved_for_draft_2",
+      "question": "Patient Information affects_diagnosis_of Disease."
     },
     {
       "id": "somatic_etiology_relation",
-      "decision": "deferred",
-      "question": "Choose entity labels and direction for somatic causes without introducing an over-broad type."
+      "decision": "resolved_for_draft_2",
+      "question": "A somatic Disease somatic_cause_of the target Disease; no broad MedicalCondition label is introduced."
     }
   ],
   "proposed_relations_not_yet_active": [
     "icd_exclusion_reference",
-    "must_be_ruled_out_for",
-    "excludes_diagnosis_of",
-    "affects_diagnosis_of",
     "causes_or_contributes_to"
   ]
 }

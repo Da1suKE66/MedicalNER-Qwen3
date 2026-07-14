@@ -1,0 +1,29 @@
+{
+  "schema_version": "2.0.0-draft.2",
+  "who": {
+    "release": "2025-01",
+    "language": "en",
+    "api_version": "v2",
+    "base_url": "https://id.who.int"
+  },
+  "record_count": 858,
+  "strict_ready": true,
+  "status_counts": {
+    "manual_review": 96,
+    "repaired": 762
+  },
+  "totals": {
+    "canonical_verified": 858,
+    "non_main_definitively_invalid_and_discarded": 72,
+    "non_main_exact_title_match": 406,
+    "non_main_title_mismatch_and_discarded": 256,
+    "non_main_validated_and_discarded": 406
+  },
+  "records_with_icd_findings": 0,
+  "records_with_schema_warnings": 96,
+  "findings": [],
+  "input": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/cleaned/pro_cot_schema_v2_evidence.json",
+  "who_report": "/Users/doc66/Desktop/Code/NewMedicalNER/reports/icd_api_validation_full_report.json",
+  "output": "/Users/doc66/Desktop/Code/NewMedicalNER/data/schema_v2/cleaned/pro_cot_schema_v2_icd_validated.json",
+  "output_written": true
+}

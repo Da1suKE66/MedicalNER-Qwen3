@@ -1,0 +1,43 @@
+{
+  "errors": [],
+  "generated_at": "2026-07-13T19:58:19.296113+00:00",
+  "input_format": "smoke",
+  "mode": "smoke",
+  "report_version": 1,
+  "results": [
+    {
+      "all_expected_titles_match": true,
+      "canonical_code": "6A05.0",
+      "codeinfo_endpoint": "https://id.who.int/icd/release/11/2025-01/mms/codeinfo/6A05.0",
+      "codeinfo_summary": {
+        "code": "6A05.0",
+        "stemCode": null,
+        "stemId": "http://id.who.int/icd/release/11/2025-01/mms/294762853"
+      },
+      "entity_endpoint": "https://id.who.int/icd/release/11/2025-01/mms/294762853",
+      "entity_uri": "http://id.who.int/icd/release/11/2025-01/mms/294762853",
+      "expected_titles": [],
+      "language": "en",
+      "references": [],
+      "release": "2025-01",
+      "requested_code": "6A05.0",
+      "stem_code": "6A05.0",
+      "title": "Attention deficit hyperactivity disorder, predominantly inattentive presentation",
+      "title_comparisons": [],
+      "valid": true
+    }
+  ],
+  "source": "command-line smoke code",
+  "summary": {
+    "api_errors": 0,
+    "codes_with_title_mismatch": 0,
+    "distinct_codes": 1,
+    "valid_codes": 1
+  },
+  "who": {
+    "api_version": "v2",
+    "base_url": "https://id.who.int",
+    "language": "en",
+    "release": "2025-01"
+  }
+}

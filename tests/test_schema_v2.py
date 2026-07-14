@@ -60,7 +60,10 @@ class SchemaV2IntegrationTests(unittest.TestCase):
         self.assertTrue(report["no_silent_record_loss"])
         self.assertTrue(report["idempotent"])
         migrated_again, _ = migrate_record(
-            self.migrated[0], self.raw_indexes, self.schema
+            self.migrated[0],
+            self.raw_indexes,
+            self.schema,
+            apply_high_confidence_collapses=True,
         )
         self.assertEqual(migrated_again, self.migrated[0])
 
@@ -83,7 +86,7 @@ class SchemaV2IntegrationTests(unittest.TestCase):
             self.assertEqual(properties["coding_system"], "ICD-11-MMS")
             self.assertEqual(properties["icd_release"], "2025-01")
             self.assertEqual(properties["icd_uri"], record["source_record_id"])
-        self.assertEqual(resolved, 842)
+        self.assertEqual(resolved, 858)
 
     def test_inattention_description_children_are_collapsed(self) -> None:
         record = next(item for item in self.regression if item["test_id"] == "KGTEST_003")

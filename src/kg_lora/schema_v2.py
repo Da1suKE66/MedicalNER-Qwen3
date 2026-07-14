@@ -9,6 +9,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 import re
 from collections import Counter
 from pathlib import Path
@@ -18,10 +19,35 @@ from typing import Any, Iterable
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SCHEMA_POINTER = REPO_ROOT / "schemas/current.json"
 TOKEN_RE = re.compile(r"[A-Za-z]+(?:-[A-Za-z]+)*")
+MIGRATION_IMPLEMENTATION_VERSION = "schema-v2-core.2"
+GRAPH_SOURCE_FIELDS = {
+    "source_id": "id",
+    "code": "code",
+    "title": "title",
+}
+
+
+def _reject_nonfinite_constant(value: str) -> None:
+    raise ValueError(f"non-finite JSON number is not allowed: {value}")
 
 
 def load_json(path: Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
+    payload = json.loads(
+        path.read_text(encoding="utf-8"), parse_constant=_reject_nonfinite_constant
+    )
+
+    def reject_nonfinite_values(value: Any, location: str = "$") -> None:
+        if isinstance(value, float) and not math.isfinite(value):
+            raise ValueError(f"non-finite JSON number is not allowed at {location}")
+        if isinstance(value, dict):
+            for key, child in value.items():
+                reject_nonfinite_values(child, f"{location}.{key}")
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                reject_nonfinite_values(child, f"{location}[{index}]")
+
+    reject_nonfinite_values(payload)
+    return payload
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -38,6 +64,28 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def migration_config_fingerprint(
+    schema: dict[str, Any], *, apply_high_confidence_collapses: bool
+) -> str:
+    """Return a stable fingerprint for every option that changes migration output."""
+
+    public_schema = {
+        key: value for key, value in schema.items() if not str(key).startswith("_")
+    }
+    payload = {
+        "schema": public_schema,
+        "apply_high_confidence_collapses": apply_high_confidence_collapses,
+    }
+    serialized = json.dumps(
+        payload,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+        allow_nan=False,
+    )
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
 def load_schema(pointer_path: Path = DEFAULT_SCHEMA_POINTER) -> dict[str, Any]:
@@ -153,14 +201,88 @@ def graph_from_record(record: dict[str, Any]) -> dict[str, Any] | None:
 
 
 def _main_disease_id(graph: dict[str, Any], source_title: str) -> str | None:
+    raw_entities = graph.get("entities", [])
+    if not isinstance(raw_entities, list):
+        return None
     matches = [
         str(entity.get("id"))
-        for entity in graph.get("entities", [])
+        for entity in raw_entities
         if isinstance(entity, dict)
         and entity.get("label") == "Disease"
         and normalize_text(entity.get("name")) == normalize_text(source_title)
     ]
     return matches[0] if len(matches) == 1 else None
+
+
+def _ensure_canonical_main_disease(
+    graph: dict[str, Any],
+    source_record: dict[str, Any],
+    changes: list[dict[str, Any]],
+    errors: list[dict[str, Any]],
+) -> str | None:
+    """Inject a provenance-only main Disease when no exact canonical node exists.
+
+    Existing near matches are deliberately left untouched: choosing or renaming one
+    would require semantic inference. Multiple exact matches are also rejected rather
+    than silently selecting one.
+    """
+
+    entities = graph.get("entities")
+    if not isinstance(entities, list):
+        return None
+    canonical_title = str(source_record.get("title", ""))
+    exact_matches = [
+        entity
+        for entity in entities
+        if isinstance(entity, dict)
+        and entity.get("label") == "Disease"
+        and normalize_text(entity.get("name")) == normalize_text(canonical_title)
+    ]
+    if len(exact_matches) == 1:
+        return str(exact_matches[0].get("id"))
+    if len(exact_matches) > 1:
+        errors.append(
+            {
+                "code": "main_disease_ambiguous",
+                "canonical_title": canonical_title,
+                "entity_ids": [str(entity.get("id", "")) for entity in exact_matches],
+            }
+        )
+        return None
+    if not canonical_title:
+        errors.append({"code": "canonical_source_title_missing"})
+        return None
+
+    existing_ids = {
+        str(entity.get("id"))
+        for entity in entities
+        if isinstance(entity, dict) and entity.get("id")
+    }
+    base_id = "D_CANONICAL_SOURCE"
+    entity_id = base_id
+    suffix = 2
+    while entity_id in existing_ids:
+        entity_id = f"{base_id}_{suffix}"
+        suffix += 1
+    entities.append(
+        {
+            "id": entity_id,
+            "label": "Disease",
+            "name": canonical_title,
+            "properties": {},
+        }
+    )
+    changes.append(
+        {
+            "op": "inject_canonical_main_disease",
+            "entity_id": entity_id,
+            "source_record_id": source_record.get("id"),
+            "source_code": source_record.get("code"),
+            "source_title": canonical_title,
+            "basis": "canonical_source_metadata",
+        }
+    )
+    return entity_id
 
 
 def _merge_property(existing: Any, incoming: Any) -> Any:
@@ -191,7 +313,10 @@ def _canonicalize_properties(
     aliases = schema["property_aliases"]
     code_aliases = {key for key, value in aliases.items() if value == "icdcode"}
 
-    for entity in graph.get("entities", []):
+    raw_entities = graph.get("entities", [])
+    if not isinstance(raw_entities, list):
+        return
+    for index, entity in enumerate(raw_entities):
         if not isinstance(entity, dict):
             continue
         entity_id = str(entity.get("id", ""))
@@ -247,16 +372,273 @@ def _canonicalize_properties(
         entity["properties"] = canonical
 
 
+def _canonicalize_graph_source_identity(
+    graph: dict[str, Any],
+    source_record: dict[str, Any],
+    changes: list[dict[str, Any]],
+) -> None:
+    before = {field: graph.get(field) for field in GRAPH_SOURCE_FIELDS}
+    expected = {
+        field: source_record.get(source_field)
+        for field, source_field in GRAPH_SOURCE_FIELDS.items()
+    }
+    for field, value in expected.items():
+        graph[field] = value
+    if before != expected:
+        changes.append(
+            {
+                "op": "canonicalize_graph_source_identity",
+                "from": before,
+                "to": expected,
+            }
+        )
+
+
+def _graph_structure_errors(graph: dict[str, Any]) -> list[dict[str, Any]]:
+    errors: list[dict[str, Any]] = []
+    entities = graph.get("entities")
+    if not isinstance(entities, list):
+        errors.append(
+            {
+                "code": "entities_not_list",
+                "actual_type": type(entities).__name__,
+            }
+        )
+    else:
+        for index, entity in enumerate(entities):
+            if not isinstance(entity, dict):
+                errors.append(
+                    {
+                        "code": "entity_not_object",
+                        "entity_index": index,
+                        "actual_type": type(entity).__name__,
+                    }
+                )
+                continue
+            for field in ("id", "label", "name"):
+                if entity.get(field) in (None, ""):
+                    errors.append(
+                        {
+                            "code": "missing_entity_field",
+                            "entity_index": index,
+                            "field": field,
+                        }
+                    )
+            properties = entity.get("properties")
+            if not isinstance(properties, dict):
+                errors.append(
+                    {
+                        "code": "entity_properties_not_object",
+                        "entity_index": index,
+                        "entity_id": str(entity.get("id", "")),
+                        "actual_type": type(properties).__name__,
+                    }
+                )
+
+    relations = graph.get("relations")
+    if not isinstance(relations, list):
+        errors.append(
+            {
+                "code": "relations_not_list",
+                "actual_type": type(relations).__name__,
+            }
+        )
+    else:
+        for index, relation in enumerate(relations):
+            if not isinstance(relation, dict):
+                errors.append(
+                    {
+                        "code": "relation_not_object",
+                        "relation_index": index,
+                        "actual_type": type(relation).__name__,
+                    }
+                )
+                continue
+            for field in ("source", "target", "relation"):
+                if relation.get(field) in (None, ""):
+                    errors.append(
+                        {
+                            "code": "missing_relation_field",
+                            "relation_index": index,
+                            "field": field,
+                        }
+                    )
+    return errors
+
+
 def _labels_by_id(graph: dict[str, Any]) -> dict[str, str]:
+    raw_entities = graph.get("entities", [])
+    if not isinstance(raw_entities, list):
+        return {}
     return {
         str(entity.get("id")): str(entity.get("label"))
-        for entity in graph.get("entities", [])
+        for entity in raw_entities
         if isinstance(entity, dict) and entity.get("id")
     }
 
 
 def _matches_direction(spec: dict[str, Any], source_label: str, target_label: str) -> bool:
+    allowed_pairs = spec.get("allowed_pairs")
+    if isinstance(allowed_pairs, list):
+        return [source_label, target_label] in allowed_pairs
     return source_label in spec.get("source", []) and target_label in spec.get("target", [])
+
+
+def _rewrite_relation(
+    relation_name: str,
+    source_label: str,
+    target_label: str,
+    schema: dict[str, Any],
+) -> str:
+    """Apply only schema-declared, endpoint-specific legacy relation rewrites."""
+
+    for rewrite in schema.get("relation_rewrites", []):
+        if not isinstance(rewrite, dict) or rewrite.get("from") != relation_name:
+            continue
+        if source_label not in rewrite.get("source", []):
+            continue
+        if target_label not in rewrite.get("target", []):
+            continue
+        replacement = rewrite.get("to")
+        if isinstance(replacement, str) and replacement:
+            return replacement
+    return relation_name
+
+
+def _repair_known_relation_shapes(
+    graph: dict[str, Any],
+    main_disease_id: str | None,
+    changes: list[dict[str, Any]],
+) -> None:
+    """Repair endpoint patterns whose predicate semantics determine one outcome."""
+
+    if not main_disease_id:
+        return
+    labels = _labels_by_id(graph)
+    relations = graph.get("relations")
+    if not isinstance(relations, list):
+        return
+    for index, relation in enumerate(relations):
+        if not isinstance(relation, dict):
+            continue
+        source = str(relation.get("source", ""))
+        target = str(relation.get("target", ""))
+        relation_name = str(relation.get("relation", ""))
+        before = {
+            "source": source,
+            "target": target,
+            "relation": relation_name,
+        }
+        reason = ""
+        if (
+            relation_name == "required_for_diagnosis_of"
+            and labels.get(source) == "Diagnostic Criteria"
+            and labels.get(target) == "Symptom"
+        ):
+            relation["target"] = main_disease_id
+            reason = "diagnosis predicate must target the canonical main Disease"
+        elif (
+            relation_name == "co_occurs_with_frequency"
+            and source == main_disease_id
+            and labels.get(source) == "Disease"
+            and labels.get(target) == "Symptom"
+        ):
+            relation["source"] = target
+            relation["target"] = main_disease_id
+            relation["relation"] = "is_associated_symptom_of"
+            reason = "symptom co-occurrence is represented as Symptom-to-Disease association"
+        if reason:
+            changes.append(
+                {
+                    "op": "repair_known_relation_shape",
+                    "relation_index": index,
+                    "reason": reason,
+                    "from": before,
+                    "to": {
+                        "source": relation.get("source"),
+                        "target": relation.get("target"),
+                        "relation": relation.get("relation"),
+                    },
+                }
+            )
+
+
+def _iter_grounding_candidates(entity: dict[str, Any]) -> Iterable[str]:
+    name = entity.get("name")
+    if isinstance(name, str) and name.strip():
+        yield name.strip()
+
+    def visit(value: Any) -> Iterable[str]:
+        if isinstance(value, str) and value.strip():
+            yield value.strip()
+        elif isinstance(value, list):
+            for item in value:
+                yield from visit(item)
+        elif isinstance(value, dict):
+            for item in value.values():
+                yield from visit(item)
+
+    yield from visit(entity.get("properties") or {})
+
+
+def _add_grounded_patient_diagnosis_relations(
+    graph: dict[str, Any],
+    source_text: str,
+    main_disease_id: str | None,
+    changes: list[dict[str, Any]],
+) -> None:
+    if not main_disease_id:
+        return
+    entities = graph.get("entities")
+    relations = graph.get("relations")
+    if not isinstance(entities, list) or not isinstance(relations, list):
+        return
+    existing = {
+        (str(relation.get("source")), str(relation.get("target")), relation.get("relation"))
+        for relation in relations
+        if isinstance(relation, dict)
+    }
+    lowered = source_text.lower()
+    for entity in entities:
+        if not isinstance(entity, dict) or entity.get("label") != "Patient Information":
+            continue
+        entity_id = str(entity.get("id") or "")
+        relation_key = (entity_id, main_disease_id, "affects_diagnosis_of")
+        if not entity_id or relation_key in existing:
+            continue
+        located: tuple[int, str] | None = None
+        for candidate in _iter_grounding_candidates(entity):
+            if len(candidate) < 4:
+                continue
+            start = lowered.find(candidate.lower())
+            if start >= 0:
+                located = (start, source_text[start : start + len(candidate)])
+                break
+        if located is None:
+            continue
+        start, evidence_text = located
+        relation = {
+            "source": entity_id,
+            "target": main_disease_id,
+            "relation": "affects_diagnosis_of",
+            "evidence": evidence_text,
+            "evidence_span": {
+                "basis": "record.input",
+                "text": evidence_text,
+                "start": start,
+                "end": start + len(evidence_text),
+            },
+        }
+        relations.append(relation)
+        existing.add(relation_key)
+        changes.append(
+            {
+                "op": "add_grounded_patient_diagnosis_relation",
+                "entity_id": entity_id,
+                "main_disease_id": main_disease_id,
+                "evidence": relation["evidence_span"],
+            }
+        )
 
 
 def _normalize_relations(
@@ -271,9 +653,11 @@ def _normalize_relations(
     relation_specs = schema["relation_types"]
     lowered_text = source_text.lower()
 
-    for index, relation in enumerate(graph.get("relations", [])):
+    raw_relations = graph.get("relations", [])
+    if not isinstance(raw_relations, list):
+        return
+    for index, relation in enumerate(raw_relations):
         if not isinstance(relation, dict):
-            errors.append({"code": "relation_not_object", "relation_index": index})
             continue
         source = str(relation.get("source", ""))
         target = str(relation.get("target", ""))
@@ -289,6 +673,22 @@ def _normalize_relations(
             continue
 
         relation_name = str(relation.get("relation", ""))
+        rewritten_name = _rewrite_relation(
+            relation_name, labels[source], labels[target], schema
+        )
+        if rewritten_name != relation_name:
+            relation["relation"] = rewritten_name
+            changes.append(
+                {
+                    "op": "rewrite_relation",
+                    "relation_index": index,
+                    "from": relation_name,
+                    "to": rewritten_name,
+                    "source_label": labels[source],
+                    "target_label": labels[target],
+                }
+            )
+            relation_name = rewritten_name
         spec = relation_specs.get(relation_name)
         if spec is None:
             errors.append(
@@ -374,8 +774,12 @@ def _definition_contains_child(source_text: str, parent_name: str, child_name: s
 def _collapse_description_children(
     graph: dict[str, Any], source_text: str, changes: list[dict[str, Any]]
 ) -> None:
-    entities = [entity for entity in graph.get("entities", []) if isinstance(entity, dict)]
-    relations = [relation for relation in graph.get("relations", []) if isinstance(relation, dict)]
+    raw_entities = graph.get("entities", [])
+    raw_relations = graph.get("relations", [])
+    if not isinstance(raw_entities, list) or not isinstance(raw_relations, list):
+        return
+    entities = [entity for entity in raw_entities if isinstance(entity, dict)]
+    relations = [relation for relation in raw_relations if isinstance(relation, dict)]
     removed_ids: set[str] = set()
 
     for parent in entities:
@@ -446,13 +850,19 @@ def _collapse_description_children(
 
     if removed_ids:
         graph["entities"] = [
-            entity for entity in entities if str(entity.get("id")) not in removed_ids
+            entity
+            for entity in raw_entities
+            if not isinstance(entity, dict)
+            or str(entity.get("id")) not in removed_ids
         ]
         graph["relations"] = [
             relation
-            for relation in relations
-            if str(relation.get("source")) not in removed_ids
-            and str(relation.get("target")) not in removed_ids
+            for relation in raw_relations
+            if not isinstance(relation, dict)
+            or (
+                str(relation.get("source")) not in removed_ids
+                and str(relation.get("target")) not in removed_ids
+            )
         ]
 
 
@@ -462,13 +872,31 @@ def migrate_record(
     schema: dict[str, Any],
     *,
     apply_high_confidence_collapses: bool = False,
+    force_renormalize: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     version = schema["schema_version"]
-    if record.get("schema_version") == version:
+    config_fingerprint = migration_config_fingerprint(
+        schema,
+        apply_high_confidence_collapses=apply_high_confidence_collapses,
+    )
+    existing_migration = record.get("migration")
+    migration_is_current = (
+        isinstance(existing_migration, dict)
+        and existing_migration.get("target_schema_version") == version
+        and existing_migration.get("implementation_version")
+        == MIGRATION_IMPLEMENTATION_VERSION
+        and existing_migration.get("config_fingerprint") == config_fingerprint
+    )
+    if (
+        not force_renormalize
+        and record.get("schema_version") == version
+        and migration_is_current
+    ):
         existing = copy.deepcopy(record)
         return existing, copy.deepcopy(existing.get("migration", {}))
 
     migrated, text_fixes = correct_text_tree(record, schema["text_corrections"])
+    migrated["schema_version"] = version
     source_record, source_match = resolve_source_record(migrated, raw_indexes)
     changes: list[dict[str, Any]] = []
     warnings: list[dict[str, Any]] = []
@@ -496,8 +924,13 @@ def migrate_record(
     graph = graph_from_record(migrated)
     if graph is None:
         errors.append({"code": "graph_missing"})
-    elif source_record is not None:
-        main_id = _main_disease_id(graph, str(source_record.get("title", "")))
+    else:
+        errors.extend(_graph_structure_errors(graph))
+    if graph is not None and source_record is not None:
+        _canonicalize_graph_source_identity(graph, source_record, changes)
+        main_id = _ensure_canonical_main_disease(
+            graph, source_record, changes, errors
+        )
         if main_id is None:
             errors.append({"code": "main_disease_unresolved"})
         _canonicalize_properties(
@@ -509,6 +942,10 @@ def migrate_record(
             warnings,
             unverified_codes,
         )
+        _repair_known_relation_shapes(graph, main_id, changes)
+        _add_grounded_patient_diagnosis_relations(
+            graph, str(migrated.get("input", "")), main_id, changes
+        )
         if apply_high_confidence_collapses:
             _collapse_description_children(graph, str(migrated.get("input", "")), changes)
         _normalize_relations(
@@ -519,10 +956,21 @@ def migrate_record(
             warnings,
             errors,
         )
+        raw_relations = graph.get("relations", [])
+        if isinstance(raw_relations, list):
+            for index, relation in enumerate(raw_relations):
+                if not isinstance(relation, dict):
+                    continue
+                evidence_errors, _, _ = _validate_relation_evidence(
+                    relation, index, str(migrated.get("input", ""))
+                )
+                errors.extend(evidence_errors)
 
     status = "invalid" if errors else "manual_review" if warnings else "repaired"
     migration = {
         "target_schema_version": version,
+        "implementation_version": MIGRATION_IMPLEMENTATION_VERSION,
+        "config_fingerprint": config_fingerprint,
         "status": status,
         "source_match": source_match,
         "changes": changes,
@@ -534,10 +982,127 @@ def migrate_record(
     return migrated, migration
 
 
+def _validate_relation_evidence(
+    relation: dict[str, Any], relation_index: int, source_text: str
+) -> tuple[list[dict[str, Any]], bool, bool]:
+    errors: list[dict[str, Any]] = []
+    evidence = relation.get("evidence")
+    has_retained_text = False
+    if "evidence" in relation:
+        if not isinstance(evidence, str):
+            errors.append(
+                {
+                    "code": "relation_evidence_not_string",
+                    "relation_index": relation_index,
+                    "actual_type": type(evidence).__name__,
+                }
+            )
+        else:
+            has_retained_text = bool(evidence.strip())
+
+    if "evidence_span" not in relation:
+        return errors, has_retained_text, False
+
+    span_errors: list[dict[str, Any]] = []
+    span = relation.get("evidence_span")
+    if not isinstance(span, dict):
+        span_errors.append(
+            {
+                "code": "evidence_span_not_object",
+                "relation_index": relation_index,
+                "actual_type": type(span).__name__,
+            }
+        )
+        errors.extend(span_errors)
+        return errors, has_retained_text, False
+
+    for field in ("basis", "text", "start", "end"):
+        if field not in span:
+            span_errors.append(
+                {
+                    "code": "evidence_span_missing_field",
+                    "relation_index": relation_index,
+                    "field": field,
+                }
+            )
+    if span.get("basis") != "record.input":
+        span_errors.append(
+            {
+                "code": "evidence_span_invalid_basis",
+                "relation_index": relation_index,
+                "actual": span.get("basis"),
+                "expected": "record.input",
+            }
+        )
+
+    span_text = span.get("text")
+    if not isinstance(span_text, str) or not span_text:
+        span_errors.append(
+            {
+                "code": "evidence_span_invalid_text",
+                "relation_index": relation_index,
+            }
+        )
+
+    start = span.get("start")
+    end = span.get("end")
+    valid_integer_bounds = (
+        isinstance(start, int)
+        and not isinstance(start, bool)
+        and isinstance(end, int)
+        and not isinstance(end, bool)
+    )
+    if not valid_integer_bounds:
+        span_errors.append(
+            {
+                "code": "evidence_span_invalid_bound_type",
+                "relation_index": relation_index,
+            }
+        )
+    elif not (0 <= start < end <= len(source_text)):
+        span_errors.append(
+            {
+                "code": "evidence_span_out_of_bounds",
+                "relation_index": relation_index,
+                "start": start,
+                "end": end,
+                "input_length": len(source_text),
+            }
+        )
+    elif isinstance(span_text, str) and source_text[start:end] != span_text:
+        span_errors.append(
+            {
+                "code": "evidence_span_text_mismatch",
+                "relation_index": relation_index,
+                "actual": span_text,
+                "expected": source_text[start:end],
+            }
+        )
+
+    if (
+        has_retained_text
+        and isinstance(span_text, str)
+        and evidence.strip() != span_text
+    ):
+        span_errors.append(
+            {
+                "code": "evidence_span_retained_text_mismatch",
+                "relation_index": relation_index,
+            }
+        )
+    errors.extend(span_errors)
+    return errors, has_retained_text, not span_errors
+
+
 def validate_record(record: dict[str, Any], schema: dict[str, Any]) -> dict[str, Any]:
     errors: list[dict[str, Any]] = []
     warnings: list[dict[str, Any]] = []
-    metrics = {"entities": 0, "relations": 0, "relations_with_evidence": 0}
+    metrics = {
+        "entities": 0,
+        "relations": 0,
+        "relations_with_retained_evidence_text": 0,
+        "relations_with_verified_evidence_span": 0,
+    }
 
     for field in (
         "schema_version",
@@ -562,10 +1127,37 @@ def validate_record(record: dict[str, Any], schema: dict[str, Any]) -> dict[str,
         errors.append({"code": "graph_missing"})
         return {"errors": errors, "warnings": warnings, "metrics": metrics}
 
-    entities = [entity for entity in graph.get("entities", []) if isinstance(entity, dict)]
-    relations = [relation for relation in graph.get("relations", []) if isinstance(relation, dict)]
+    errors.extend(_graph_structure_errors(graph))
+    raw_entities = graph.get("entities", [])
+    raw_relations = graph.get("relations", [])
+    entities = (
+        [entity for entity in raw_entities if isinstance(entity, dict)]
+        if isinstance(raw_entities, list)
+        else []
+    )
+    relations = (
+        [relation for relation in raw_relations if isinstance(relation, dict)]
+        if isinstance(raw_relations, list)
+        else []
+    )
     metrics["entities"] = len(entities)
     metrics["relations"] = len(relations)
+
+    expected_graph_identity = {
+        "source_id": record.get("source_record_id"),
+        "code": record.get("source_code"),
+        "title": record.get("source_title"),
+    }
+    for field, expected in expected_graph_identity.items():
+        if graph.get(field) != expected:
+            errors.append(
+                {
+                    "code": "graph_source_identity_mismatch",
+                    "field": field,
+                    "actual": graph.get(field),
+                    "expected": expected,
+                }
+            )
 
     labels: dict[str, str] = {}
     for entity in entities:
@@ -583,8 +1175,11 @@ def validate_record(record: dict[str, Any], schema: dict[str, Any]) -> dict[str,
                 {"code": "undefined_entity_label", "entity_id": entity_id, "label": label}
             )
             continue
+        properties = entity.get("properties")
+        if not isinstance(properties, dict):
+            continue
         allowed = set(spec["properties"])
-        for key in (entity.get("properties") or {}):
+        for key in properties:
             if key not in allowed:
                 errors.append(
                     {
@@ -600,7 +1195,9 @@ def validate_record(record: dict[str, Any], schema: dict[str, Any]) -> dict[str,
         errors.append({"code": "main_disease_unresolved"})
     else:
         main = next(entity for entity in entities if str(entity.get("id")) == main_id)
-        props = main.get("properties") or {}
+        props = main.get("properties")
+        if not isinstance(props, dict):
+            props = {}
         expected = {
             "icdcode": record.get("source_code"),
             "coding_system": schema["coding"]["coding_system"],
@@ -621,6 +1218,14 @@ def validate_record(record: dict[str, Any], schema: dict[str, Any]) -> dict[str,
 
     relation_specs = schema["relation_types"]
     for index, relation in enumerate(relations):
+        evidence_errors, retained_text, verified_span = _validate_relation_evidence(
+            relation, index, str(record.get("input", ""))
+        )
+        errors.extend(evidence_errors)
+        if retained_text:
+            metrics["relations_with_retained_evidence_text"] += 1
+        if verified_span:
+            metrics["relations_with_verified_evidence_span"] += 1
         source = str(relation.get("source", ""))
         target = str(relation.get("target", ""))
         relation_name = str(relation.get("relation", ""))
@@ -660,9 +1265,6 @@ def validate_record(record: dict[str, Any], schema: dict[str, Any]) -> dict[str,
                     "actual": [labels[source], labels[target]],
                 }
             )
-        if relation.get("evidence") or relation.get("evidence_span"):
-            metrics["relations_with_evidence"] += 1
-
     return {"errors": errors, "warnings": warnings, "metrics": metrics}
 
 
