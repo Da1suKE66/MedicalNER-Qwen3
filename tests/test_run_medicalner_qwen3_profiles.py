@@ -144,7 +144,7 @@ class MedicalNERRunnerProfileTests(unittest.TestCase):
         for config in (cuda_full, cuda_smoke):
             self.assertEqual(config["quantization_bit"], "4")
             self.assertEqual(config["quantization_method"], "bitsandbytes")
-            self.assertEqual(config["flash_attn"], "fa2")
+            self.assertEqual(config["flash_attn"], "auto")
 
         for config in (npu_full, npu_smoke):
             self.assertNotIn("quantization_bit", config)

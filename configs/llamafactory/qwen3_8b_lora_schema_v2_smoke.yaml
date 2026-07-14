@@ -39,7 +39,8 @@ lr_scheduler_type: cosine
 warmup_ratio: 0.03
 bf16: true
 ddp_timeout: 180000000
-flash_attn: fa2
+# Keep the smoke path runnable even when the optional flash-attn wheel is absent.
+flash_attn: auto
 gradient_checkpointing: true
 
 ### eval
