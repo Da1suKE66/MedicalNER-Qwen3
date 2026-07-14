@@ -219,6 +219,33 @@ class DeepSeekRepairTests(unittest.TestCase):
         self.assertNotIn(key, str(caught.exception))
         self.assertIn("<redacted>", str(caught.exception))
 
+    def test_invalid_structured_response_preserves_safe_provider_usage(self) -> None:
+        response = FakeResponse(
+            payload={
+                "model": "deepseek-v4-flash",
+                "choices": [
+                    {
+                        "message": {"content": "not valid JSON"},
+                        "finish_reason": "stop",
+                    }
+                ],
+                "usage": {
+                    "prompt_tokens": 13,
+                    "completion_tokens": 4,
+                    "total_tokens": 17,
+                },
+            }
+        )
+        client = DeepSeekRepairClient(
+            DeepSeekConfig(api_key="secret-test-key"),
+            session=FakeSession(response=response),
+        )
+        with self.assertRaises(DeepSeekAPIError) as caught:
+            client.propose_patch({"record_sha256": "abc"})
+        self.assertEqual(caught.exception.meta["model"], "deepseek-v4-flash")
+        self.assertEqual(caught.exception.meta["finish_reason"], "stop")
+        self.assertEqual(caught.exception.meta["usage"]["total_tokens"], 17)
+
     def test_record_hash_is_canonical_and_context_hash_is_enforced(self) -> None:
         record = self.make_record()
         reordered = {key: record[key] for key in reversed(record)}

@@ -15,7 +15,7 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Literal, Protocol
+from typing import Any, Literal, Protocol, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -30,10 +30,17 @@ from .schema_v2 import (
 
 _JSON = json
 REPAIR_PROTOCOL_VERSION = "deepseek-repair-patch-v2"
+TModel = TypeVar("TModel", bound=BaseModel)
 
 
 class DeepSeekAPIError(RuntimeError):
     """A safe-to-display API error which never contains credentials."""
+
+    def __init__(self, message: str, *, meta: dict[str, Any] | None = None) -> None:
+        super().__init__(message)
+        # Only provider metadata that is already safe to persist belongs here.
+        # In particular, never attach request messages, response content, or keys.
+        self.meta = dict(meta or {})
 
 
 class PatchValidationError(ValueError):
@@ -365,12 +372,20 @@ class DeepSeekRepairClient:
             trust_environment_proxy=config.trust_environment_proxy
         )
 
-    def propose_patch(self, task: dict[str, Any]) -> tuple[RepairPatch, dict[str, Any]]:
+    def propose_model(
+        self,
+        task: dict[str, Any],
+        *,
+        system_prompt: str,
+        response_model: type[TModel],
+    ) -> tuple[TModel, dict[str, Any]]:
+        """Request one strict JSON model and return only redacted metadata."""
+
         endpoint = f"{self.config.base_url}/chat/completions"
         body: dict[str, Any] = {
             "model": self.config.model,
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": system_prompt},
                 {
                     "role": "user",
                     "content": json.dumps(task, ensure_ascii=False, allow_nan=False),
@@ -407,24 +422,48 @@ class DeepSeekRepairClient:
                 f"status={response.status_code}: {summary}"
             )
         content: Any = ""
+        envelope: Any = {}
         try:
             envelope = response.json()
             content = envelope["choices"][0]["message"]["content"]
-            patch = RepairPatch.model_validate_json(content)
+            parsed = response_model.model_validate_json(content)
         except (KeyError, IndexError, TypeError, ValueError) as exc:
             safe_error = _redact(exc, self.config.api_key)
             safe_content = _redact(repr(content)[:1000], self.config.api_key)
+            error_meta: dict[str, Any] = {}
+            if isinstance(envelope, dict):
+                error_meta = {
+                    "model": envelope.get("model"),
+                    "usage": envelope.get("usage"),
+                    "finish_reason": envelope.get("choices", [{}])[0].get(
+                        "finish_reason"
+                    )
+                    if isinstance(envelope.get("choices"), list)
+                    and envelope.get("choices")
+                    and isinstance(envelope["choices"][0], dict)
+                    else None,
+                }
             raise DeepSeekAPIError(
-                "DeepSeek returned an invalid repair response: "
-                f"{type(exc).__name__}: {safe_error}; response={safe_content}"
+                "DeepSeek returned an invalid structured response: "
+                f"{type(exc).__name__}: {safe_error}; response={safe_content}",
+                meta=error_meta,
             ) from exc
         safe_meta = {
             "model": envelope.get("model"),
             "usage": envelope.get("usage"),
             "finish_reason": envelope.get("choices", [{}])[0].get("finish_reason"),
-            "patch": patch.model_dump(mode="json"),
+            "response": parsed.model_dump(mode="json"),
         }
-        return patch, safe_meta
+        return parsed, safe_meta
+
+    def propose_patch(self, task: dict[str, Any]) -> tuple[RepairPatch, dict[str, Any]]:
+        patch, meta = self.propose_model(
+            task,
+            system_prompt=SYSTEM_PROMPT,
+            response_model=RepairPatch,
+        )
+        meta["patch"] = meta.pop("response")
+        return patch, meta
 
 
 def _evidence_matches(operation: RepairOperation, source_text: str) -> None:

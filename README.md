@@ -205,12 +205,21 @@ The latest existing report is kept in `reports/qwen_compare_analysis_report.md`.
 
 ## Schema v2 data quality workflow
 
-The current contract is `2.0.0-draft.2` under `schemas/v2.0.0/`. The final
-train-ready corpus is produced deterministically from all 858 source records; API
-results and every dropped graph item remain auditable in `reports/`. See
-`docs/schema_v2_implementation.md` for the design and evidence policy.
+The current contract is `2.0.0-draft.2` under `schemas/v2.0.0/`. Deterministic
+migration and structural validation are documented in
+`docs/schema_v2_implementation.md`. The local DeepSeek audit is one mandatory stage
+of the full semantic-cleaning gate and is described in `docs/semantic_cleaning.md`.
 
-### Verified result
+It can be run locally without a GPU or the training dependency stack:
+
+```bash
+python3 -m pip install -r requirements-cleaning.txt
+cp .env.example .env
+# Edit .env and fill DEEPSEEK_API_KEY before the real audit.
+bash scripts/run_semantic_audit_local.sh
+```
+
+### Previous deterministic result (not semantic completion)
 
 | Check | Result |
 | --- | ---: |
@@ -223,8 +232,16 @@ results and every dropped graph item remain auditable in `reports/`. See
 | Train-ready graph | 8,590 entities / 6,702 relations / 858 repaired records |
 | Train / validation / held-out / structural regression | 670 / 84 / 84 / 20 |
 | Direct or shared-parent split leakage | 0 |
-| Strict training-data audit | all gates passed |
+| Structural training-data audit | all implemented structural gates passed |
 | LLaMAFactory train / validation / held-out | 670 / 84 / 84; no legacy CoT |
+
+These checks did **not** prove that all Disease/Symptom labels, relation semantics,
+directions, Patient Information links, exclusions, somatic causes, or description
+fragments were correct. In particular, the sanitizer removed 910 relations instead
+of semantically resolving them. Training therefore remains frozen until the full
+858-record primary audit and independent blind review reach complete coverage, all
+consensus patches are applied, WHO and exact-evidence checks pass, and the downstream
+artifacts are rebuilt.
 
 The 858 nulls are legitimate source metadata at
 `excel_metadata.browser_link` (called `browserUrl` in the review notes), not

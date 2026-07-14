@@ -3,11 +3,13 @@ from __future__ import annotations
 import base64
 import json
 import ssl
+import stat
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qs, urlparse
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +21,8 @@ from kg_lora.icd_api import (  # noqa: E402
     ICDAPIConfigurationError,
     ICDCodeResult,
     ICDAPIError,
+    ICDSearchCandidate,
+    ICDSearchResult,
     WHOICDClient,
     _UrllibSession,
     _clear_process_token_cache_for_tests,
@@ -189,6 +193,9 @@ class WHOICDClientTests(unittest.TestCase):
 
         cache_files = sorted(self.cache_dir.glob("*.json"))
         self.assertEqual(len(cache_files), 2)
+        self.assertTrue(
+            all(stat.S_IMODE(path.stat().st_mode) == 0o600 for path in cache_files)
+        )
         cache_text = "\n".join(path.read_text(encoding="utf-8") for path in cache_files)
         self.assertNotIn("unit-client-secret", cache_text)
         self.assertNotIn("test-access-token", cache_text)
@@ -349,6 +356,39 @@ class WHOICDClientTests(unittest.TestCase):
                 token_url="http://auth.example/token",
             )
 
+    def test_from_env_expands_nested_cache_path_references(self) -> None:
+        config = ICDAPIConfig.from_env(
+            {
+                "WHO_ICD_CLIENT_ID": "id",
+                "WHO_ICD_CLIENT_SECRET": "secret",
+                "WHO_ICD_RELEASE": "2025-01",
+                "WHO_ICD_LANGUAGE": "en",
+                "KG_CACHE_ROOT": "/cache/unit-test",
+                "ICD_API_CACHE_DIR": (
+                    "${KG_CACHE_ROOT}/icd-api/${WHO_ICD_RELEASE}/"
+                    "${WHO_ICD_LANGUAGE}"
+                ),
+            }
+        )
+
+        self.assertEqual(
+            config.cache_dir,
+            Path("/cache/unit-test/icd-api/2025-01/en"),
+        )
+
+    def test_from_env_rejects_unresolved_cache_path_reference(self) -> None:
+        with self.assertRaisesRegex(
+            ICDAPIConfigurationError,
+            "undefined environment variable MISSING_CACHE_ROOT",
+        ):
+            ICDAPIConfig.from_env(
+                {
+                    "WHO_ICD_CLIENT_ID": "id",
+                    "WHO_ICD_CLIENT_SECRET": "secret",
+                    "ICD_API_CACHE_DIR": "${MISSING_CACHE_ROOT}/icd-api",
+                }
+            )
+
     def test_codeinfo_without_stem_id_is_reported_with_http_status(self) -> None:
         session = FakeSession(
             [token_response(), FakeResponse(200, {"code": "6A05.0"})]
@@ -360,6 +400,285 @@ class WHOICDClientTests(unittest.TestCase):
         self.assertEqual(raised.exception.status, 200)
         self.assertIn("codeinfo", raised.exception.endpoint)
         self.assertIn("stemId", str(raised.exception))
+
+    def test_search_uses_regular_then_flex_and_caches_without_raw_query(self) -> None:
+        query = "rare diagnostic phrase"
+        regular = FakeResponse(
+            200,
+            {
+                "error": False,
+                "words": ["rare", "diagnostic", "phrase"],
+                "destinationEntities": [],
+            },
+        )
+        flex = FakeResponse(
+            200,
+            {
+                "error": False,
+                "destinationEntities": [
+                    {
+                        "id": (
+                            "http://id.who.int/icd/release/11/2025-01/"
+                            "mms/123456789"
+                        ),
+                        "title": "Rare diagnostic disorder",
+                        "theCode": "6E8Y",
+                        "score": 0.72,
+                    }
+                ],
+            },
+        )
+        session = FakeSession([token_response(), regular, flex])
+        client = WHOICDClient(
+            self.config, session=session, sleep=lambda _delay: None
+        )
+
+        first = client.search_mms(query)
+        second = client.search_mms(query)
+
+        self.assertIsInstance(first, ICDSearchResult)
+        self.assertTrue(first.used_flexisearch)
+        self.assertEqual(second.candidates, first.candidates)
+        self.assertEqual(len(first.attempted_endpoints), 2)
+        self.assertEqual(len(first.candidates), 1)
+        candidate = first.candidates[0]
+        self.assertIsInstance(candidate, ICDSearchCandidate)
+        self.assertEqual(candidate.code, "6E8Y")
+        self.assertFalse(candidate.exact_title_match)
+        self.assertTrue(candidate.requires_code_validation)
+
+        self.assertEqual(len(session.calls), 3, "second search should use disk cache")
+        regular_call, flex_call = session.calls[1:]
+        regular_query = parse_qs(urlparse(regular_call["url"]).query)
+        flex_query = parse_qs(urlparse(flex_call["url"]).query)
+        self.assertEqual(regular_query["q"], [query])
+        self.assertEqual(regular_query["useFlexisearch"], ["false"])
+        self.assertEqual(flex_query["useFlexisearch"], ["true"])
+        self.assertEqual(regular_query["flatResults"], ["true"])
+        self.assertEqual(regular_query["highlightingEnabled"], ["false"])
+        self.assertEqual(regular_query["medicalCodingMode"], ["true"])
+
+        cache_files = sorted(self.cache_dir.glob("*.json"))
+        self.assertEqual(len(cache_files), 2)
+        cache_text = "\n".join(
+            path.read_text(encoding="utf-8") for path in cache_files
+        )
+        self.assertNotIn(query, cache_text)
+        self.assertNotIn("unit-client-secret", cache_text)
+        self.assertNotIn("test-access-token", cache_text)
+        self.assertIn("q_sha256", cache_text)
+        self.assertIn('"words": "[REDACTED]"', cache_text)
+
+    def test_flex_result_is_never_labeled_as_an_exact_title_candidate(self) -> None:
+        query = "Exact example disorder"
+        regular = FakeResponse(
+            200,
+            {"error": False, "destinationEntities": []},
+        )
+        flex = FakeResponse(
+            200,
+            {
+                "error": False,
+                "destinationEntities": [
+                    {
+                        "id": (
+                            "http://id.who.int/icd/release/11/2025-01/"
+                            "mms/123456789"
+                        ),
+                        "title": query,
+                        "theCode": "6E8Y",
+                    }
+                ],
+            },
+        )
+        session = FakeSession([token_response(), regular, flex])
+
+        result = WHOICDClient(
+            self.config,
+            session=session,
+            sleep=lambda _delay: None,
+        ).search_mms(query)
+
+        self.assertTrue(result.used_flexisearch)
+        self.assertTrue(result.candidates[0].used_flexisearch)
+        self.assertFalse(result.candidates[0].exact_title_match)
+        self.assertEqual(result.exact_title_candidates, ())
+
+    def test_success_status_error_payload_is_rejected_before_cache_write(self) -> None:
+        query = "private diagnostic phrase"
+        session = FakeSession(
+            [
+                token_response(),
+                FakeResponse(
+                    200,
+                    {
+                        "error": True,
+                        "errorMessage": f"invalid query: {query}",
+                    },
+                ),
+            ]
+        )
+
+        with self.assertRaises(ICDAPIError) as raised:
+            WHOICDClient(
+                self.config,
+                session=session,
+                sleep=lambda _delay: None,
+            ).search_mms(query)
+
+        self.assertNotIn(query, str(raised.exception))
+        self.assertEqual(list(self.cache_dir.glob("*.json")), [])
+
+    def test_discovery_inputs_and_encoded_get_urls_are_bounded(self) -> None:
+        session = FakeSession([])
+        client = WHOICDClient(self.config, session=session)
+
+        with self.assertRaisesRegex(ICDAPIError, "invalid search query"):
+            client.search_mms("x" * 513)
+        with self.assertRaisesRegex(ICDAPIError, "invalid autocode text"):
+            client.autocode_mms("x" * 1_001)
+        with self.assertRaisesRegex(ICDAPIError, "too long for a GET request"):
+            client.search_mms("病" * 250)
+        with self.assertRaisesRegex(ICDAPIError, "too long for a GET request"):
+            client.autocode_mms("病" * 250)
+
+        self.assertEqual(session.calls, [])
+
+    def test_search_stops_after_regular_results_and_marks_exact_title_only(self) -> None:
+        query = "  attention   DEFICIT hyperactivity disorder  "
+        response = FakeResponse(
+            200,
+            {
+                "error": False,
+                "destinationEntities": [
+                    {
+                        "id": (
+                            "http://id.who.int/icd/release/11/2025-01/"
+                            "mms/821852937"
+                        ),
+                        "title": (
+                            "Attention deficit hyperactivity disorder"
+                        ),
+                        "theCode": "6A05.0",
+                    },
+                    {
+                        "id": "https://untrusted.example/entity/1",
+                        "title": "Attention deficit disorder",
+                        "theCode": "not a valid code!",
+                    },
+                ],
+            },
+        )
+        session = FakeSession([token_response(), response])
+        result = WHOICDClient(
+            self.config, session=session, sleep=lambda _delay: None
+        ).search_mms(query)
+
+        self.assertFalse(result.used_flexisearch)
+        self.assertEqual(len(session.calls), 2)
+        self.assertEqual(len(result.candidates), 1)
+        self.assertEqual(len(result.exact_title_candidates), 1)
+        candidate = result.exact_title_candidates[0]
+        self.assertEqual(candidate.code, "6A05.0")
+        self.assertTrue(candidate.exact_title_match)
+        serialized = candidate.as_dict()
+        self.assertTrue(serialized["requires_code_validation"])
+        self.assertNotIn("accepted", serialized)
+        self.assertIn("q=%5BREDACTED%5D", candidate.endpoint)
+
+    def test_autocode_returns_unverified_candidate_and_hides_input_in_cache(self) -> None:
+        text = "Patient with cerebrovascular accident"
+        response = FakeResponse(
+            200,
+            {
+                "searchText": text,
+                "matchingText": "Cerebrovascular accident",
+                "theCode": "8B20",
+                "foundationURI": "http://id.who.int/icd/entity/123456",
+                "linearizationURI": (
+                    "http://id.who.int/icd/release/11/2025-01/mms/123456"
+                ),
+                "matchScore": 0.98,
+                "isTitle": True,
+            },
+        )
+        session = FakeSession([token_response(), response])
+        result = WHOICDClient(
+            self.config, session=session, sleep=lambda _delay: None
+        ).autocode_mms(text)
+
+        self.assertEqual(result.retrieval_method, "autocode")
+        self.assertFalse(result.used_flexisearch)
+        self.assertEqual(len(result.candidates), 1)
+        candidate = result.candidates[0]
+        self.assertEqual(candidate.code, "8B20")
+        self.assertEqual(candidate.match_score, 0.98)
+        self.assertFalse(candidate.exact_title_match)
+        self.assertTrue(candidate.requires_code_validation)
+        self.assertNotIn("accepted", result.as_dict()["candidates"][0])
+
+        autocode_call = session.calls[1]
+        parsed = urlparse(autocode_call["url"])
+        self.assertTrue(parsed.path.endswith("/mms/autocode"))
+        self.assertEqual(parse_qs(parsed.query)["searchText"], [text])
+        self.assertIn("searchText=%5BREDACTED%5D", result.attempted_endpoints[0])
+
+        cache_text = "\n".join(
+            path.read_text(encoding="utf-8")
+            for path in self.cache_dir.glob("*.json")
+        )
+        self.assertNotIn(text, cache_text)
+        self.assertIn("searchText_sha256", cache_text)
+        self.assertIn('"searchText": "[REDACTED]"', cache_text)
+
+    def test_autocode_synonym_match_is_not_labeled_exact_title(self) -> None:
+        text = "heart attack"
+        response = FakeResponse(
+            200,
+            {
+                "searchText": text,
+                "matchingText": text,
+                "theCode": "BA41.Z",
+                "linearizationURI": (
+                    "http://id.who.int/icd/release/11/2025-01/mms/987654"
+                ),
+                "isTitle": False,
+            },
+        )
+        session = FakeSession([token_response(), response])
+        result = WHOICDClient(
+            self.config, session=session, sleep=lambda _delay: None
+        ).autocode_mms(text)
+
+        self.assertEqual(result.candidates[0].title, text)
+        self.assertFalse(result.candidates[0].exact_title_match)
+        self.assertEqual(result.exact_title_candidates, ())
+
+    def test_discovery_error_redacts_query_from_endpoint_and_response(self) -> None:
+        query = "private diagnostic text"
+        session = FakeSession(
+            [
+                token_response(),
+                FakeResponse(
+                    400,
+                    {"error": "invalid query", "query": query},
+                ),
+            ]
+        )
+        with self.assertRaises(ICDAPIError) as raised:
+            WHOICDClient(
+                self.config, session=session, sleep=lambda _delay: None
+            ).search_mms(query)
+        message = str(raised.exception)
+        self.assertNotIn(query, message)
+        self.assertIn("q=%5BREDACTED%5D", message)
+
+    def test_discovery_rejects_blank_and_non_whitespace_control_text(self) -> None:
+        client = WHOICDClient(self.config, session=FakeSession([]))
+        with self.assertRaises(ICDAPIError):
+            client.search_mms("   ")
+        with self.assertRaises(ICDAPIError):
+            client.autocode_mms("diagnosis\x00hidden")
 
 
 class CodeExtractionTests(unittest.TestCase):

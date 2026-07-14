@@ -7,6 +7,15 @@ __pycache__/
 .cache/
 .venv/
 venv/
+.venv-cleaning/
+
+# Reproducible local semantic-audit intermediates and API state.
+data/schema_v2/cleaned/pro_cot_schema_v2_evidence.json
+data/schema_v2/cleaned/pro_cot_schema_v2_icd_validated.json
+data/schema_v2/cleaned/pro_cot_schema_v2_semantic_clean.json
+data/schema_v2/semantic_audit/
+reports/semantic_audit_progress.json
+reports/semantic_clean_application_report.json
 
 data/raw/*
 !data/raw/.gitkeep
