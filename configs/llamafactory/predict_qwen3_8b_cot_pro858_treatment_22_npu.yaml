@@ -1,6 +1,6 @@
 ### model
 model_name_or_path: /aistor/sjtu/hpc_stor01/home/wangxiran/models/Qwen3-8B
-adapter_name_or_path: models/adapters/qwen3-8b-cot-pro858-npu
+adapter_name_or_path: models/adapters/qwen3-8b-cot-pro858
 trust_remote_code: true
 
 ### method
