@@ -1,0 +1,30 @@
+{
+  "input": "/mnt/g/Projects/MedicalNER-Qwen3/data/treatment_related_articles/treatment_related_articles_predict_22_llamafactory.json",
+  "manifest": "/mnt/g/Projects/MedicalNER-Qwen3/data/treatment_related_articles/treatment_related_articles_predict_22_manifest.json",
+  "model": "gemini-3.1-pro-preview",
+  "api_base": "https://api-2.xi-ai.cn/v1",
+  "automatic_retries": 0,
+  "selected_indices": [
+    15
+  ],
+  "selected_samples": 1,
+  "completed_selected_samples": 1,
+  "records": 22,
+  "failures": 0,
+  "generation_diagnostics": [
+    {
+      "global_idx": 15,
+      "response_id": "chatcmpl-124f1dde0f714f8590125cccef5634cb",
+      "response_model": "gemini-3.1-pro-preview",
+      "finish_reason": "stop",
+      "entity_count": 7,
+      "relation_count": 4,
+      "prompt_tokens": 1655,
+      "completion_tokens": 2401,
+      "total_tokens": 4056
+    }
+  ],
+  "failures_detail": [],
+  "generated_output": "/mnt/g/Projects/MedicalNER-Qwen3/data/treatment_related_articles/treatment_related_articles_gemini_generated_22.json",
+  "completed_llamafactory_output": "/mnt/g/Projects/MedicalNER-Qwen3/data/treatment_related_articles/treatment_related_articles_predict_22_gemini_completed_llamafactory.json"
+}
