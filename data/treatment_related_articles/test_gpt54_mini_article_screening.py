@@ -33,7 +33,9 @@ SOURCE_PATH = (
 )
 MANIFEST_PATH = SCRIPT_DIR / "treatment_related_articles_predict_22_manifest.json"
 SYSTEM_PROMPT_PATH = REPO_ROOT / "schemas" / "treatment_article_kg_screening_prompt.md"
-OUTPUT_PATH = SCRIPT_DIR / "treatment_related_articles_screening_gpt_5_4_mini_22.json"
+OUTPUT_PATH = (
+    SCRIPT_DIR / "treatment_related_articles_screening_gpt_5_4_mini_22_v2.json"
+)
 
 MEDICAL_TEXT_MARKER = "Medical text:\n"
 
@@ -97,6 +99,7 @@ REASON_CODES = {
     "REVIEW_AMBIGUOUS_RELATION",
     "REVIEW_AMBIGUOUS_ENTITY_TYPE",
     "REVIEW_UNCLEAR_ASSERTION_STATUS",
+    "REVIEW_CONTRADICTORY_EVIDENCE",
     "REVIEW_INCOMPLETE_OR_CORRUPTED_TEXT",
     "DROP_NO_ACTIVE_RELATION",
     "DROP_ENTITY_ONLY",
