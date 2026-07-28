@@ -22,7 +22,7 @@ api_key = "sk-SCP0FiLRcsRfCwUX0b4aB1B512E94075913c8f0d2d273b38"
 api_base = "https://api-2.xi-ai.cn/v1"
 
 
-MODEL_NAME = "gpt-5.4-mini"
+MODEL_NAME = "gpt-5.6-sol"
 AUTOMATIC_RETRIES = 0
 
 SCRIPT_DIR = Path(__file__).resolve().parent

@@ -1,0 +1,580 @@
+{
+  "artifact_schema_version": "treatment-article-manual-screening-v1",
+  "reviewer": "Codex",
+  "review_policy": "KEEP and REVIEW proceed downstream; only DROP is filtered out",
+  "schema_version": "2.0.0-draft.2",
+  "source_sample": "random_articles_50.json",
+  "summary": {
+    "total_records": 50,
+    "decision_counts": {
+      "KEEP": 16,
+      "REVIEW": 5,
+      "DROP": 29
+    }
+  },
+  "records": [
+    {
+      "sample_index": 0,
+      "decision": "DROP",
+      "reason_code": "DROP_NO_ACTIVE_RELATION",
+      "reason": "The article evaluates a family-school intervention, but no active schema relation is asserted.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 1,
+      "decision": "DROP",
+      "reason_code": "DROP_NONASSERTED_PLAN_ONLY",
+      "reason": "This healthy-volunteer psilocybin study describes development aims without an asserted active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 2,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The reported effect of counseling on risky opioid use is a treatment-effect relation absent from the schema.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 3,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The drug-associated risk of biliary disease is an adverse-effect relation absent from the active schema.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 4,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Positive and negative psychiatric symptoms are explicitly used to characterize patients with acute schizophrenia.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "predominant positive symptoms",
+          "source_type": "Symptom",
+          "target_text": "acute schizophrenia",
+          "target_type": "Disease",
+          "evidence_quote": "Association between treatment response and dose of blonanserin transdermal patch in patients with acute schizophrenia: A post hoc cluster analysis based on baseline psychiatric symptoms"
+        }
+      ]
+    },
+    {
+      "sample_index": 5,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Emotional distress is explicitly described as occurring after a cancer diagnosis.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "emotional distress",
+          "source_type": "Symptom",
+          "target_text": "cancer",
+          "target_type": "Disease",
+          "evidence_quote": "Upon receiving a cancer diagnosis, life irrevocably changes and complex experiences of emotional distress often occur."
+        }
+      ]
+    },
+    {
+      "sample_index": 6,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Cannabinoid-associated biomarker changes do not map to an active entity-relation pair.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 7,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Named clinical scales are explicitly used to assess suicidal ideation and hopelessness.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "Scale for Suicide Ideation (SSI)",
+          "source_type": "Interview Tool",
+          "target_text": "suicidal ideation",
+          "target_type": "Symptom",
+          "evidence_quote": "all patients were also assessed with the Scale for Suicide Ideation (SSI) and the Beck Hopelessness Scale (BHS)."
+        }
+      ]
+    },
+    {
+      "sample_index": 8,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The article reports conditions that increase disease incidence, not an active prognosis or diagnostic relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 9,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Folic-acid level and treatment-effect associations are outside the active relation set.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 10,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Positive symptoms are explicitly reported in the context of psychotic disorders.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "positive symptoms",
+          "source_type": "Symptom",
+          "target_text": "psychotic disorders",
+          "target_type": "Disease",
+          "evidence_quote": "Studies have consistently found an elevated allostatic load index in patients with psychotic disorders. Additionally, the elevated AL index is correlated with positive symptoms, symptom severity, worse treatment outcome, and an overall lower general and cognitive functioning."
+        }
+      ]
+    },
+    {
+      "sample_index": 11,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Ropinirole-associated hallucinations are a medication adverse effect, which is not an active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 12,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "The abstract explicitly describes executive-function and emotion-regulation difficulties in autistic children and names tools used to assess them.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "difficulties in managing emotions and executive functions",
+          "source_type": "Symptom",
+          "target_text": "autism spectrum disorder (ASD)",
+          "target_type": "Disease",
+          "evidence_quote": "Autistic children may encounter difficulties in managing emotions and executive functions (EFs), which can contribute to mental and health challenges."
+        },
+        {
+          "relation": "assesses_for",
+          "source_text": "Emotion Regulation Checklist",
+          "source_type": "Interview Tool",
+          "target_text": "ER skills",
+          "target_type": "Symptom",
+          "evidence_quote": "the parents of the children completed the Emotion Regulation Checklist to evaluate their ER skills."
+        }
+      ]
+    },
+    {
+      "sample_index": 13,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Fetal alcohol spectrum disorder is explicitly described as a set of neurodevelopmental impairments.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "neurodevelopmental impairments",
+          "source_type": "Symptom",
+          "target_text": "fetal alcohol spectrum disorder (FASD)",
+          "target_type": "Disease",
+          "evidence_quote": "fetal alcohol spectrum disorder (FASD), a common set of neurodevelopmental impairments"
+        }
+      ]
+    },
+    {
+      "sample_index": 14,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The person-centered decision program and its outcomes do not directly assert an active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 15,
+      "decision": "REVIEW",
+      "reason_code": "REVIEW_AMBIGUOUS_RELATION",
+      "reason": "Guidelines recommend oral iron for maternal iron-deficiency anemia, but the text does not explicitly call it first-line treatment.",
+      "candidate_relations": [
+        {
+          "relation": "first_line_for",
+          "source_text": "oral iron therapy",
+          "source_type": "Medication",
+          "target_text": "Maternal iron deficiency anemia (IDA)",
+          "target_type": "Disease",
+          "evidence_quote": "Most national and international guidelines recommend treating IDA with oral iron therapy."
+        }
+      ]
+    },
+    {
+      "sample_index": 16,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The probiotic intervention and postoperative outcomes do not form an active relation with a valid target disease.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 17,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Behavioral scores are treatment outcomes and do not establish that the measured problems are symptoms of nephrotic syndrome.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 18,
+      "decision": "DROP",
+      "reason_code": "DROP_NO_ACTIVE_RELATION",
+      "reason": "The cord-clamping trial reports intervention outcomes without an active schema relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 19,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Clozapine effectiveness and access for treatment-resistant schizophrenia do not establish a listed active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 20,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "CBT-I is psychotherapy rather than Medication, so its first-line statement does not match first_line_for.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 21,
+      "decision": "REVIEW",
+      "reason_code": "REVIEW_AMBIGUOUS_RELATION",
+      "reason": "Alexithymia is linked to worse outcomes in physical disease, but the target disease is not identified precisely enough.",
+      "candidate_relations": [
+        {
+          "relation": "associated_with_poor_prognosis_in",
+          "source_text": "alexithymia",
+          "source_type": "Symptom",
+          "target_text": "physical disease",
+          "target_type": "Disease",
+          "evidence_quote": "In patients with physical disease, alexithymia's prevalence reaches up to 63%. Additionally, alexithymia is associated with worse outcomes and heightened psychosocial comorbidities."
+        }
+      ]
+    },
+    {
+      "sample_index": 22,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Named neuropsychological tests are used to assess visual and auditory attention.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "TMT-A",
+          "source_type": "Interview Tool",
+          "target_text": "visual attention and speed of visuomotor tracking",
+          "target_type": "Symptom",
+          "evidence_quote": "The dependent variables were the scores on TMT-A, Digit span forward and Longest digit span forward (WAIS-IV)."
+        }
+      ]
+    },
+    {
+      "sample_index": 23,
+      "decision": "DROP",
+      "reason_code": "DROP_NO_ACTIVE_RELATION",
+      "reason": "Clinician subjective experience and diagnostic reasoning do not form a listed source-target relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 24,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Working memory impairment is explicitly linked to Alzheimer disease, and fluency tasks are discussed as diagnostic assessments.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "working memory",
+          "source_type": "Symptom",
+          "target_text": "Alzheimer's disease (AD)",
+          "target_type": "Disease",
+          "evidence_quote": "PF is less reported, it is related to working memory, which is also impaired in probable and diagnosed AD."
+        }
+      ]
+    },
+    {
+      "sample_index": 25,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Multiple named neuropsychological assessments are explicitly administered to patients with Alzheimer disease.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "Alzheimer’s disease assessment scale-cognition (ADAS-Cog)",
+          "source_type": "Interview Tool",
+          "target_text": "Alzheimer’s disease (AD)",
+          "target_type": "Disease",
+          "evidence_quote": "Patients with AD were enrolled and assigned to the GBE group (n = 50), the donepezil group (n = 50), or the combined group (n = 50). Neuropsychological assessments, including minimum mental state examination (MMSE), Alzheimer’s disease assessment scale-cognition (ADAS-Cog), instrumental activity of daily living (IADL), geriatric depression scale (GDS), neuropsychiatric inventory (NPI), and quality of life in Alzheimer’s disease (QOL-AD), were conducted at baseline, 1 month, 3 months, and 6 months."
+        }
+      ]
+    },
+    {
+      "sample_index": 26,
+      "decision": "DROP",
+      "reason_code": "DROP_NONASSERTED_PLAN_ONLY",
+      "reason": "This pilot protocol contains anticipated intervention outcomes but no asserted active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 27,
+      "decision": "REVIEW",
+      "reason_code": "REVIEW_AMBIGUOUS_RELATION",
+      "reason": "Sleep disorders are frequent in treated prostate-cancer cohorts, but the abstract frames them mainly as treatment side effects.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "sleep disorders",
+          "source_type": "Symptom",
+          "target_text": "Prostate cancer (PCa)",
+          "target_type": "Disease",
+          "evidence_quote": "Development of sleep disorders or changes in sleep quality were reported in 14 out of 16 trials included."
+        }
+      ]
+    },
+    {
+      "sample_index": 28,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Post-surgical warning signs and risk factors do not map to an active relation with a valid disease target.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 29,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "The Insomnia Severity Index and PHQ-9 are explicitly used to measure insomnia and depression severity.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "Insomnia Severity Index (ISI)",
+          "source_type": "Interview Tool",
+          "target_text": "insomnia severity",
+          "target_type": "Symptom",
+          "evidence_quote": "the ICBT-I group had significantly lower ISI (Cohen’s d = 1.37) and PHQ-9 (Cohen’s d = 0.71) scores than did the IMBSR group."
+        }
+      ]
+    },
+    {
+      "sample_index": 30,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The article reports psychotherapy efficacy and intervention components, which are outside the active relation set.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 31,
+      "decision": "DROP",
+      "reason_code": "DROP_NO_ACTIVE_RELATION",
+      "reason": "Population prevalence of illicit drug use does not form a listed relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 32,
+      "decision": "REVIEW",
+      "reason_code": "REVIEW_AMBIGUOUS_ENTITY_TYPE",
+      "reason": "Elastography explicitly assesses liver fibrosis, but it is unclear whether an imaging modality belongs to Interview Tool.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "shear wave elastography (SWE)",
+          "source_type": "Interview Tool",
+          "target_text": "liver fibrosis",
+          "target_type": "Disease",
+          "evidence_quote": "To compare the diagnostic test accuracy (DTA) of shear wave elastography (SWE) to that of transient elastography (TE) for liver fibrosis grade assessment in nonalcoholic fatty liver disease adults."
+        }
+      ]
+    },
+    {
+      "sample_index": 33,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Comparative treatment efficacy and tolerability for depression are not active relations.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 34,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The reported mediation and association among loneliness and paranoia are symptom-symptom relations not present in the active schema.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 35,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Pain, sleep disturbances, cognitive changes, and sexual dysfunction are explicitly associated with fibromyalgia.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "pain",
+          "source_type": "Symptom",
+          "target_text": "Fibromyalgia syndrome (FMS)",
+          "target_type": "Disease",
+          "evidence_quote": "Fibromyalgia syndrome (FMS) is a chronic condition that associates pain, sleep disturbances, and cognitive changes."
+        },
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "sexual dysfunction",
+          "source_type": "Symptom",
+          "target_text": "fibromyalgia",
+          "target_type": "Disease",
+          "evidence_quote": "Recent evidence shows that sexual dysfunction is also associated with fibromyalgia, further affecting patients' quality of life."
+        }
+      ]
+    },
+    {
+      "sample_index": 36,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Cognitive outcomes of prenatal exposure do not form an allowed relation with a target disease.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 37,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The article compares cognitive-training treatments without asserting an active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 38,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "The virtual community intervention and behavioral outcomes do not map to an active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 39,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Hypothetical purchase tasks explicitly assess heroin and cocaine consumption behavior.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "hypothetical purchase tasks (HPT)",
+          "source_type": "Interview Tool",
+          "target_text": "heroin and cocaine consumption",
+          "target_type": "Symptom",
+          "evidence_quote": "Heroin and cocaine demand curves were generated via hypothetical purchase tasks (HPT) that assessed consumption at 9 or 17 levels of prices from $0 to $500."
+        }
+      ]
+    },
+    {
+      "sample_index": 40,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Language-intervention efficacy in children with hearing loss is not an active relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 41,
+      "decision": "DROP",
+      "reason_code": "DROP_NO_ACTIVE_RELATION",
+      "reason": "The review discusses generic machine-learning diagnostic applications without a specific allowed source-target relation.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 42,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Stigmatizing language affecting provider attitudes is outside the active relation set.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 43,
+      "decision": "REVIEW",
+      "reason_code": "REVIEW_AMBIGUOUS_ENTITY_TYPE",
+      "reason": "Contrast-enhanced MRI detects brain metastases, but an imaging modality may not qualify as Interview Tool.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "Gadopiclenol-enhanced MRI",
+          "source_type": "Interview Tool",
+          "target_text": "brain metastases",
+          "target_type": "Disease",
+          "evidence_quote": "Gadopiclenol-enhanced MRI improved BM detection and characterization, with a direct impact on radiotherapy treatment decision between WBRT and SRS."
+        }
+      ]
+    },
+    {
+      "sample_index": 44,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Depression is explicitly described as very common in people with age-related eye disease.",
+      "candidate_relations": [
+        {
+          "relation": "co_occurs_with_frequency",
+          "source_text": "Depression",
+          "source_type": "Disease",
+          "target_text": "age-related eye disease",
+          "target_type": "Disease",
+          "evidence_quote": "Depression is very common in people with age-related eye disease."
+        }
+      ]
+    },
+    {
+      "sample_index": 45,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "Behavioral and psychological symptoms are explicitly frequent in vascular dementia and associated with worse outcomes.",
+      "candidate_relations": [
+        {
+          "relation": "is_associated_symptom_of",
+          "source_text": "behavioral and psychological symptoms of dementia (BPSD)",
+          "source_type": "Symptom",
+          "target_text": "Vascular dementia (VaD)",
+          "target_type": "Disease",
+          "evidence_quote": "Vascular dementia (VaD) is the second leading cause of major neurocognitive disorder and is frequently associated with behavioral and psychological symptoms of dementia (BPSD), which worsen clinical outcomes and increase caregiver burden."
+        },
+        {
+          "relation": "associated_with_poor_prognosis_in",
+          "source_text": "behavioral and psychological symptoms of dementia (BPSD)",
+          "source_type": "Symptom",
+          "target_text": "Vascular dementia (VaD)",
+          "target_type": "Disease",
+          "evidence_quote": "Vascular dementia (VaD) is the second leading cause of major neurocognitive disorder and is frequently associated with behavioral and psychological symptoms of dementia (BPSD), which worsen clinical outcomes and increase caregiver burden."
+        }
+      ]
+    },
+    {
+      "sample_index": 46,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Inflammatory biomarkers correlated with postoperative cognitive disorders do not use an allowed source entity type.",
+      "candidate_relations": []
+    },
+    {
+      "sample_index": 47,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "The neutrophil-count threshold defining benign ethnic neutropenia is explicitly stated.",
+      "candidate_relations": [
+        {
+          "relation": "required_for_diagnosis_of",
+          "source_text": "a neutrophil count of <1.5×109 cells/L in healthy individuals",
+          "source_type": "Diagnostic Criteria",
+          "target_text": "Benign ethnic neutropenia (BEN)",
+          "target_type": "Disease",
+          "evidence_quote": "Benign ethnic neutropenia (BEN) is defined as a neutrophil count of <1.5×109 cells/L in healthy individuals"
+        }
+      ]
+    },
+    {
+      "sample_index": 48,
+      "decision": "KEEP",
+      "reason_code": "KEEP_SUPPORTED_ACTIVE_RELATION",
+      "reason": "A named remote system and PHQ-8 are used for repeated symptom assessment in participants with major depressive disorder.",
+      "candidate_relations": [
+        {
+          "relation": "assesses_for",
+          "source_text": "RADAR-base system",
+          "source_type": "Interview Tool",
+          "target_text": "major depressive disorder (MDD)",
+          "target_type": "Disease",
+          "evidence_quote": "Participants in both arms used the RADAR-base system, comprising a smartphone app for weekly symptom assessments and a wearable Fitbit device for continuous passive tracking."
+        }
+      ]
+    },
+    {
+      "sample_index": 49,
+      "decision": "DROP",
+      "reason_code": "DROP_UNSUPPORTED_RELATION_TYPE",
+      "reason": "Food insecurity associated with psychological distress does not match an allowed Patient Information-to-Symptom relation.",
+      "candidate_relations": []
+    }
+  ]
+}

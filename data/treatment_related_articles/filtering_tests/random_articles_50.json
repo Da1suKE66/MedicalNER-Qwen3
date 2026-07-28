@@ -1,0 +1,768 @@
+{
+  "artifact_schema_version": "treatment-article-random-sample-v1",
+  "created_at": "2026-07-28T07:25:52.890793+00:00",
+  "sampling_method": "uniform reservoir sampling without replacement",
+  "random_seed": 20260728,
+  "sample_size": 50,
+  "source_file": "/mnt/g/projects/medicalner-qwen3/data/treatment_related_articles/articles.json",
+  "excluded_previous_test_file": "/mnt/g/projects/medicalner-qwen3/data/treatment_related_articles/treatment_related_articles_screening_gpt_5_4_mini_22_v2.json",
+  "population_records_scanned": 252502,
+  "eligible_records": 252479,
+  "excluded_previous_abstract_matches": 23,
+  "sample_source_counts": {
+    "Embase": 29,
+    "cochrane": 1,
+    "pubmed": 20
+  },
+  "records": [
+    {
+      "source_record_index": 597,
+      "source": "cochrane",
+      "disease_codes": [
+        "F81"
+      ],
+      "doi": "10.1002/14651858.cd012760.pub2",
+      "title": "Families and Schools Together (FAST) for improving outcomes for children and their families",
+      "abstract": "Background Parents and carers have a major influence on children's learning and development from birth, through the school years, and into adulthood. Parental contributions to education include providing a secure environment in which to learn, providing intellectual stimulation, transmitting social norms and values, shaping the child’s resilience through fostering literacy and problem‐solving, and encouraging personal and social aspiration. Increasingly, providers of formalised education are recognising the primary role of parents, carers, and the wider family, as well as peers and the environment, in shaping children's education, health, and life experiences. Objectives To assess the effectiveness of the Families and Schools Together (FAST) programme in improving outcomes among children and their families. Search methods Between October 2018 and December 2018, we searched CENTRAL, MEDLINE, Embase, PsycINFO, 11 additional databases, and three trial registers. We handsearched the reference lists of included studies and relevant reports and reviews, contacted the programme developer and independent researchers, and searched relevant websites to identify other eligible studies. Selection criteria We included randomised controlled trials (RCTs) and quasi‐RCTs examining the effects of FAST, relative to waiting list, usual or alternative services, or no intervention, on outcomes for children (aged from birth to completion of compulsory education) and their families. Data collection and analysis At least two review authors independently evaluated the records retrieved from the search for relevance. One review author (JV) extracted data from eligible studies with a second independent review author (AF, DK, or SL). Review authors consulted with one another to resolve disagreements. We used a fixed‐effect model for meta‐analysis. We presented results as standardised mean differences (SMDs) because all outcomes were continuously scaled, and we accompanied these with 95% confidence intervals (CIs). We used the GRADE approach to assess the certainty of evidence for each outcome. Main results We identified 10 completed RCTs, most of which were relatively recent (2007 or later) and were conducted with at least some involvement from the intervention developer or the FAST organisation. Nine of the 10 trials were from the USA; the other was from the UK. Children were young (five to nine years old; mean age approximately six years), and therefore, whilst not so named in the reports, evaluations consisted of what is sometimes referred to as 'Kids FAST' and sometimes 'Elementary Level FAST'). Among the USA‐based studies, at least 62% of participants were members of a racial/ethnic minority group (most commonly, African American or Latino). FAST was usually delivered in schools after the school day. Trials lasted about eight weeks and usually examined the effects of FAST relative to no additional intervention. Most studies were funded by agencies in the US federal government. We judged the certainty of evidence in the included studies to be moderate or low for the main review outcomes. Failure to include all families in outcome analyses (attrition) and possible bias in recruitment of families into the trials were the main limitations in the evidence. We included over 9000 children and their families in at least one meta‐analysis. The follow results relate to meta‐analyses of data at long‐term follow‐up. Primary outcomes Four studies (approximately 6276 children) assessed child school performance at long‐term follow‐up. The effect size was very small, and the CI did not include effects that, if real, suggest possibly important positive or negative effects if viewed from an individual perspective (SMD ‐0.02, 95% CI ‐0.11 to 0.08). We assessed the certainty of evidence for this outcome as moderate. No studies assessed child adverse events, parental substance use, or parental stress. Secondary outcomes Parent reports of child internalising behaviour (SMD ‐0.03, 95% CI ‐0.11 to 0.17; 4 RCTs, approximately 908 children; low‐certainty evidence) and family relationships (SMD 0.08, 95% CI ‐0.03 to 0.19; 4 RCTs, approximately 2569 children; moderate‐certainty evidence) also yielded CIs that did not include effects that, if real, suggest possibly important positive or negative effects. The CI for parent reports of child externalising behaviour, however, did include effects that, if real, were possibly large enough to be important (SMD ‐0.19, 95% CI ‐0.32 to ‐0.05; 4 RCTs, approximately 754 children; low‐certainty evidence). Authors' conclusions Given these results, it is hard to support the assertion that assignment to FAST is associated with important positive outcomes for children and their parents. Plain language summary Families and Schools Together Background Children who do well at school have carers who are interested in their learning and who encourage them to read and solve problems and do the best they can. Carers who live in supportive communities often find it easier to provide this kind of parenting than those who are more isolated. Families and Schools Together ‐ known as FAST ‐ is a programme that is designed to help parents help their children to do well at school. It aims to address the problems that prevent parents from giving their children the support they need, by improving relationships between families and schools, enhancing support for families, and tackling problems such as poverty, mental illness, and substance misuse. Five different versions of FAST have been developed for families of children at different ages. Review question Does the Families and Schools Together (FAST) programme improve outcomes for children and their families? Study characteristics We found 10 randomised controlled studies (studies where schools were assigned to receive FAST or to continue as usual, by a procedure similar to tossing a coin), with a total of more than 9000 children and their families. Nine of the studies took place in the USA and were funded by agencies in the US federal government. One study took place in the UK. Children's ages ranged from five to nine years, and most of the USA‐based children were members of a racial or ethnic minority group. Boys and girls were represented at approximately equal rates. In most studies, FAST was delivered at children's schools after the end of the school day, although in some studies it was delivered outside of school (e.g. at a community centre). The trials lasted about eight weeks and usually examined the effects of FAST compared to no additional intervention. The evidence is current as of December 2018. Results A meta‐analysis is a statistical method of combining data from several studies to reach a single, more robust conclusion. We were able to use data from nine studies in a meta‐analysis measuring the impact of FAST for children aged between five and eight years. Although individual studies reported some positive findings, there was little evidence to suggest that being involved in a FAST programme results in important improvements in the primary outcomes of child school performance, parental substance abuse, or parental stress. No study measured child adverse outcomes. Furthermore, there was little evidence to suggest that FAST leads to important improvements in child behaviour or family relations. Study quality We judged the certainty of evidence in the included studies for the main review outcomes to be moderate or low risk. Failure to include all families in outcome analyses (attrition) and possible bias in recruitment of families into the trials were the main limitations in the evidence. Authors' conclusions Evidence on the effectiveness of being assigned to FAST is of moderate to low certainty and does not suggest that being assigned to FAST confers important benefits for students and their families.",
+      "title_chars": 91,
+      "abstract_chars": 7880,
+      "abstract_sha256": "82ccff399ade659374be8fa7743eb379d8a341de63ebbf4f7605fa8b9c9ada88",
+      "sample_index": 0
+    },
+    {
+      "source_record_index": 1951,
+      "source": "Embase",
+      "disease_codes": [
+        "41",
+        "42"
+      ],
+      "doi": "",
+      "title": "A Phase 1 Translational Study to Assess Brain Activity Using Functional Magnetic Resonance Imaging (fMRI) and to Evaluate the Safety, Tolerability, and Pharmacokinetics of Multiple Doses of MLS101 (Psilocybin) in Healthy Volunteers",
+      "abstract": "Brief SummaryMLS101 is being developed as a low dose psilocybin, that can be administered to treat neurological and psychiatric conditions. The purpose of this trial is to investigate brain activity, safety, tolerability, and PK of multiple doses of MLS101 in healthy participants.Detailed DescriptionIn recent years, high-dose psilocybin has gained attention for it potential therapeutic benefit in many psychiatric conditions, however existing clinical data for low psilocybin doses are limited. The multiple-dose regimen proposed in this study is designed to optimize the pharmacology of MLS101 and elucidate whether it provides a longer period of positive effects, which could be used in future studies in chronic indications such as PMDD, obsessive compulsive disorder and opioid use disorder. Translational functional magnetic resonance imaging (fMRI) imaging will confirm the central nervous system (CNS) activity of priming and repeat low-dose psilocybin, which will serve as a computational evaluation of efficacy and complement the cognitive and perceptual scales and questionnaires.",
+      "title_chars": 231,
+      "abstract_chars": 1093,
+      "abstract_sha256": "7428582e2ffcf86635a6b0217c406b05ff898c5dd3dfe1d44c574288adfb5920",
+      "sample_index": 1
+    },
+    {
+      "source_record_index": 9259,
+      "source": "Embase",
+      "disease_codes": [
+        "11"
+      ],
+      "doi": "",
+      "title": "ED-based Counseling Sessions Reduce Risky Opioid Use Among Certain Patients",
+      "abstract": "Investigators at the University of Michigan have shown promising results from an ED-based intervention designed to curb risky opioid use among patients who have reported opioid misuse within the previous three months. The intervention includes a 30-minute counseling session with a therapist who utilizes motivational interviewing techniques to strengthen their desire to move away from opioid use behaviors. The randomized clinical trial included 204 emergency patients, divided between patients receiving printed educational materials and patients receiving printed materials as well as counseling sessions. Researchers followed up with all patients after six months, finding that those who received the counseling intervention demonstrated a substantially higher reduction in behaviors that heighten the risk of an overdose than patients who received only printed materials. Investigators are working now to adapt the counseling intervention so that it can be delivered by more cost-efficient,means, such as via interactive voice response messages or computer.",
+      "title_chars": 75,
+      "abstract_chars": 1063,
+      "abstract_sha256": "01557ecaac9227c114b4dabdc3c77272015cc45b0e3b1b060dca83b8bba161ee",
+      "sample_index": 2
+    },
+    {
+      "source_record_index": 27785,
+      "source": "Embase",
+      "disease_codes": [
+        "20"
+      ],
+      "doi": "10.1001/jamainternmed.2022.0338",
+      "title": "Association of Glucagon-Like Peptide-1 Receptor Agonist Use with Risk of Gallbladder and Biliary Diseases: A Systematic Review and Meta-analysis of Randomized Clinical Trials",
+      "abstract": "Importance: Glucagon-like peptide-1 receptor agonists (GLP-1 RAs) have been widely recommended for glucose control and cardiovascular risk reduction in patients with type 2 diabetes, and more recently, for weight loss. However, the associations of GLP-1 RAs with gallbladder or biliary diseases are controversial. Objective: To evaluate the association of GLP-1 RA treatment with gallbladder and biliary diseases and to explore risk factors for these associations. Data Sources: MEDLINE/PubMed, EMBASE, Web of Science, and Cochrane Library (inception to June 30, 2021), websites of clinical trial registries (July 10, 2021), and reference lists. There were no language restrictions. Study Selection: Randomized clinical trials (RCTs) comparing the use of GLP-1 RA drugs with placebo or with non-GLP-1 RA drugs in adults. Data Extraction and Synthesis: Two reviewers independently extracted data according to the PRISMA recommendations and assessed the quality of each study with the Cochrane Collaboration risk-of-bias tool. Pooled relative risks (RRs) were calculated using random or fixed-effects models, as appropriate. The quality of evidence for each outcome was assessed using the GRADE (Grading of Recommendations Assessment, Development, and Evaluation) framework. Main Outcomes and Measures: The primary outcome was the composite of gallbladder or biliary diseases. Secondary outcomes were biliary diseases, biliary cancer, cholecystectomy, cholecystitis, and cholelithiasis. Data analyses were performed from August 5, 2021, to September 3, 2021. Results: A total of 76 RCTs involving 103371 patients (mean [SD] age, 57.8 (6.2) years; 41868 [40.5%] women) were included. Among all included trials, randomization to GLP-1 RA treatment was associated with increased risks of gallbladder or biliary diseases (RR, 1.37; 95% CI, 1.23-1.52); specifically, cholelithiasis (RR, 1.27; 95% CI, 1.10-1.47), cholecystitis (RR, 1.36; 95% CI, 1.14-1.62), and biliary disease (RR, 1.55; 95% CI, 1.08-2.22). Use of GLP-1 RAs was also associated with increased risk of gallbladder or biliary diseases in trials for weight loss (n = 13; RR, 2.29; 95% CI, 1.64-3.18) and for type 2 diabetes or other diseases (n = 63; RR, 1.27; 95% CI, 1.14-1.43; P <.001 for interaction). Among all included trials, GLP-1 RA use was associated with higher risks of gallbladder or biliary diseases at higher doses (RR, 1.56; 95% CI, 1.36-1.78) compared with lower doses (RR, 0.99; 95% CI, 0.73-1.33; P =.006 for interaction) and with longer duration of use (RR, 1.40; 95% CI, 1.26-1.56) compared with shorter duration (RR, 0.79; 95% CI, 0.48-1.31; P =.03 for interaction). Conclusions and Relevance: This systematic review and meta-analysis of RCTs found that use of GLP-1 RAs was associated with increased risk of gallbladder or biliary diseases, especially when used at higher doses, for longer durations, and for weight loss. Trial Registration: PROSPERO Identifier: CRD42021271599.",
+      "title_chars": 174,
+      "abstract_chars": 2959,
+      "abstract_sha256": "38bcb10ebb66a77a8b9f310d8c93847236e8f7d16bd9fd13c896399b4248b1f6",
+      "sample_index": 3
+    },
+    {
+      "source_record_index": 34341,
+      "source": "Embase",
+      "disease_codes": [
+        "20"
+      ],
+      "doi": "10.1002/npr2.12490",
+      "title": "Association between treatment response and dose of blonanserin transdermal patch in patients with acute schizophrenia: A post hoc cluster analysis based on baseline psychiatric symptoms",
+      "abstract": "Aim: To explore the optimal dose of blonanserin transdermal patch (BNS-P) based on baseline psychiatric symptomatic characteristics during acute schizophrenia. Methods: A post hoc cluster analysis was conducted using data from a 6-week randomized, double-blind, placebo-controlled study of BNS-P (40 or 80 mg/day) in acute schizophrenia. We classified patients into three clusters based on baseline psychiatric symptoms. Efficacy was assessed using the change from baseline to week 6 in the PANSS total score. Safety was assessed by the incidence of adverse events. Results: Among 577 patients, three clusters were identified, characterized by severe psychiatric (Cluster-S; n = 122), predominant negative (Cluster-N; n = 191), and predominant positive (Cluster-P; n = 264) symptoms. In Cluster-P, both BNS-P 40 and 80 mg/day reduced PANSS total score significantly more than placebo (p = 0.036, effect size = 0.342; p < 0.001, effect size = 0.687, respectively). In Cluster-S and -N, only BNS-P 80 mg/day reduced PANSS total score significantly more than placebo (p = 0.045, effect size = 0.497; p = 0.034, effect size = 0.393, respectively). The effect size was greater at 80 mg/day than at 40 mg/day across all clusters. The most common treatment-emergent adverse events were akathisia and skin-related adverse events in all clusters. Conclusion: BNS-P exhibited a dose-dependent antipsychotic effect in all clusters, particularly highlighting its efficacy in patients with predominant positive symptoms, even at lower doses. These findings provide novel and valuable insights for determining BNS-P dose tailoring to individual symptomatic characteristics in real-world practice.",
+      "title_chars": 185,
+      "abstract_chars": 1682,
+      "abstract_sha256": "a7d69a265d39dfa9f2786ce87fa0d4cfeb8e7fd3d61ef6a6d77c0fbfbdfcfb87",
+      "sample_index": 4
+    },
+    {
+      "source_record_index": 35011,
+      "source": "Embase",
+      "disease_codes": [
+        "41"
+      ],
+      "doi": "10.1002/pon.5560",
+      "title": "Mindfulness-based arts interventions for cancer care: A systematic review of the effects on wellbeing and fatigue",
+      "abstract": "Objective: Upon receiving a cancer diagnosis, life irrevocably changes and complex experiences of emotional distress often occur. There is a growing interest in mindfulness-based arts interventions (MBAIs) to ameliorate the distress many patients experience. Our review objective was to synthesize the evidence on the effectiveness of MBAIs on psychological wellbeing and fatigue. Method: Relevant quantitative articles were identified through a systematic search of the grey literature and online databases including MEDLINE, CINAHL, Cochrane CENTRAL, Art Full Text, ART bibliographies Modern, PsycINFO, Scopus, and EMBASE. Two independent reviewers screened titles/abstracts against predetermined inclusion criteria, read full-text articles for eligibility, conducted quality appraisals of included articles, and extracted pertinent data with a standardized data extraction form. The heterogeneity of the included studies precluded a meta-analysis and a narrative synthesis of study outcomes was conducted. Results: Our systematic search retrieved 4241 titles/abstracts, and 13 studies met our inclusion criteria (eight randomized controlled trials and five quasi-experiments). Most of the studies focused on patients with cancer (92.3%). There is a growing interest in MBAIs over time and significant heterogeneity in the types of interventions. A significant effect was found on several outcomes that are important in psychosocial oncology: quality of life, psychological state, spiritual wellbeing, and mindfulness. The effect on fatigue was equivocal. Conclusions: This novel intervention demonstrates promise for the psychosocial care of patients with cancer. These findings are an essential antecedent to the continued implementation, development, and evaluation of MBAIs in oncology.",
+      "title_chars": 113,
+      "abstract_chars": 1792,
+      "abstract_sha256": "c9e5ec56954f60d9e22c98ecca7f1e73a60f14b3d0416504547585b946397444",
+      "sample_index": 5
+    },
+    {
+      "source_record_index": 44754,
+      "source": "Embase",
+      "disease_codes": [
+        "10",
+        "20",
+        "30",
+        "31",
+        "41",
+        "43"
+      ],
+      "doi": "10.1016/j.bbi.2026.106517",
+      "title": "Regular cannabinoid use and inflammatory biomarkers: Systematic review and hierarchical meta-analysis",
+      "abstract": "Background Cannabis use is rising, with both therapeutic and harmful uses that might involve inflammation. Preclinical studies and findings in humans are inconsistent. It remains unclear whether cannabinoids affect inflammation in healthy populations or individuals with psychiatric disorders. We examined the association between cannabinoid use and peripheral inflammatory biomarkers. Methods We systematically searched multiple databases from inception to October 2025. Eligible studies compared inflammatory biomarkers between cannabinoid users and non-users. Bayesian multilevel cross-classified meta -analyses were used to pool effect sizes, accounting for clustering within studies and biomarkers. Results We included 46 studies (54,382 participants); 190 effect sizes from 40 studies were pooled in three meta - analyses (n = 178 effects from cross-sectional and case-control studies, n = 2 prospective studies, n = 10 RCTs). In observational studies, cannabis use was associated with higher levels of anti-inflammatory (Standardized Mean Difference (SMD) = 0.298; 95% CrI, 0.052, 0.536, PD = 99%) and pro-inflammatory biomarkers (SMD = 0.166; 95% CrI, 0.122, 0.209, PD = 100%), with credible differences by demographic factors, study design, synthetic cannabinoids and recency of use. RCTs of cannabidiol suggested small increase of pro-inflammatory markers (SMD 0.15; 95% CrI, −0.07 to 0.36; PD 90.9%). No consistent effects were observed in prospective studies. There was no evidence of major publication bias. Conclusions Cannabinoid use is associated with concurrent pro- and anti-inflammatory modulation in non-medical populations, consistent with immunomodulatory effects rather than a uniform pro- or anti-inflammatory shift. Understanding the immunological impact of cannabinoids remains critical to anticipate long-term health consequences and guide therapeutic development.",
+      "title_chars": 101,
+      "abstract_chars": 1891,
+      "abstract_sha256": "7913d231c499fe15dd23ad140df3b375edea2d644a439b903a8a57cb7e928887",
+      "sample_index": 6
+    },
+    {
+      "source_record_index": 46134,
+      "source": "Embase",
+      "disease_codes": [
+        "32",
+        "33"
+      ],
+      "doi": "10.1016/j.brs.2017.01.077",
+      "title": "Brain influences of accelerated rTMS in major depression",
+      "abstract": "Introduction: Accelerated repetitive transcranial magnetic stimulation paradigms have been shown to result in fast decreases in depressive symptoms and suicidal ideation. However, our knowledge how such intensified non-invasive stimulation protocols may affect neuronal processing on such short time-period is not well understood. With respect to functional connectivity, glucose metabolism and neural integrity, the subgenual anterior cingulate cortex (sgACC) has been put forward as a possible biological marker, not only to predict clinical response but also to evaluate the effects of neurostimulation treatment. Methods: In a registered randomized sham-controlled crossover accelerated intermittent theta burst (aiTBS) treatment study, 44 treatment resistant depression (TRD) patients received 20 iTBS sessions applied to the left dorsolateral prefrontal cortex (5 daily sessions spread over 4 days). Besides resting-state functional MRI scans, all patients were also assessed with the Scale for Suicide Ideation (SSI) and the Beck Hopelessness Scale (BHS). Results: A positive sgACC FC correlation with the medial orbitofrontal cortex at baseline distinguished aiTBS clinical responders from non-responders. Clinical improvement strengthened this sgACC - medial orbitofrontal cortex FC pattern and was associated with a decrease in feelings of hopelessness. Discussion: These findings may provide a neurobiological explanation why accelerated rTMS paradigms may result also in prompt attenuation of negative thinking. Implications for the treatment of depression and suicide will be discussed.",
+      "title_chars": 56,
+      "abstract_chars": 1599,
+      "abstract_sha256": "dd09929a90b7b294a2368ee296cbf9402d0fd1f74a15d3c8f42d4b830008c70d",
+      "sample_index": 7
+    },
+    {
+      "source_record_index": 49551,
+      "source": "Embase",
+      "disease_codes": [
+        "70",
+        "71",
+        "72",
+        "73"
+      ],
+      "doi": "10.1016/j.eclinm.2025.103522",
+      "title": "Risk conditions for invasive pneumococcal disease in adults: a systematic review and meta-analysis",
+      "abstract": "Background: The burden of invasive pneumococcal disease (IPD) in adults remains high despite vaccination programs. Age is currently the prime criterion used to define target groups for prevention. To support effective intervention programs, we investigated the relative importance of risk conditions associated with adult IPD. Methods: We conducted a systematic search in PubMed and Embase and included all original studies published before March 24th 2025 that reported risk estimates for adult IPD in individuals with risk conditions, compared to the general population (PROSPERO ID 417980). Risk estimates were extracted and meta-analyses were performed for conditions supported by more than one study. Pooled incidence rate ratios with 95% confidence intervals (IRRs (95% CIs)) were calculated as the primary outcome using random-effects models. The risk of bias and the certainty of the evidence were assessed using the ROBINS-E tool and GRADE system respectively. Findings: Of the 2983 reports screened, 58 were included in the systematic review, and 46 supported the meta-analyses. More than 50 different risk conditions for adult IPD were identified, which we synthesized in 22 risk domains for meta-analyses. The highest IRRs (95% CIs) for adult IPD were reported in immunocompromising conditions: transplant recipients 30.75 (17.64–53.60), asplenia 24.29 (18.63–31.65), people living with human immunodeficiency virus (PLWH) 21.87 (15.72–30.43), and haematological malignancy 19.63 (11.10–34.71). Increasing age itself mediated minor risk sizes. At lower age the risk conditions conferred relatively higher risk ratios. Chronic kidney disease in adults <65 years old posed an IRR (95% CI) of 18.40 (11.38–29.74), compared to 5.12 (2.08–12.63) among those over 65. IRRs >10 were also observed for compromised cerebrospinal fluid barrier and Down syndrome. The overall quality of evidence was very low, mainly due to high risk of bias and considerable between-study heterogeneity. Several studies suggested cumulative risk in individuals with multimorbidity, although data on interactions between conditions were limited. Interpretation: This systematic review and meta-analysis quantify the relative importance of risk conditions for adult IPD. Understanding how these risk conditions interact in cases of multimorbidity remains an important area for future research. Funding: Radboudumc Community for Infectious Diseases encouragement Grant.",
+      "title_chars": 98,
+      "abstract_chars": 2451,
+      "abstract_sha256": "6067f878dcd81c4932ea646f68c816d5eb4076e30d812b445d3cacf6d2a5b1cf",
+      "sample_index": 8
+    },
+    {
+      "source_record_index": 50151,
+      "source": "Embase",
+      "disease_codes": [
+        "52",
+        "66"
+      ],
+      "doi": "10.1016/j.esxm.2021.100356",
+      "title": "Serum Folic Acid and Erectile Dysfunction: A Systematic Review and Meta-Analysis",
+      "abstract": "Introduction: The association between folic acid (FA) and erectile dysfunction (ED) was contradictory in the published original articles, and no meta-analysis was conducted to pool these data. Aim: To verify the role of FA in the pathology of ED and explore the treatment efficacy of FA for ED patients. Methods: An extensive search was performed on PubMed, Cochrane Library, and Web of Science to obtain all relevant studies published up to October 31, 2020. Studies comparing the serum FA level between ED patients and healthy controls, or comparing the score of the IIEF-5, or IIEF before and after folic acid therapy alone or combination in ED patient were eligible for our meta-analysis. The Newcastle-Ottawa Scales (NOS) was used to qualify included studies. Main Outcome Measures: The standardized mean differences (SMD) and their corresponding 95% confidence intervals (95% CIs) were calculated to pool our data. Results: Nine studies were eligible for our meta-analysis to verify the association between FA and ED, and to explore the treatment efficacy of FA for ED patients. The pooled SMD of the FA level difference between ED patients and healthy subjects was -0.94 (95% CI: -1.59, -0.30, P =.004). Moreover, the level of folic acid in healthy subjects, Mild ED patients, Moderate ED patients and Severe ED patients was 11.847 (95%CI = 9.671, 14.022), 9.496 (95%CI = 8.425, 10.567), 6.597 (95%CI = 5.187, 8.007) and 5.623 (95%CI = 3.535, 7.711) respectively. The SMD of changes in score of IIEF-5 was 1.89 with 95%CI (1.60, 2.17) after FA administration in ED patients. Our analysis also showed that combination therapy of FA plus tadalafil changed the score of IIEF with 0.90 (95%CI = 0.44, 1.36) comparing to combination of placebo plus tadalafil. Conclusion: This novel meta-analysis demonstrated that FA was an independent risk factor for ED and FA supplement may have potentially positive effects in the treatment of ED patients. Zhang Y, Zhang W, Dai Y, et al. Serum Folic Acid and Erectile Dysfunction: A Systematic Review and Meta-Analysis. Sex Med 2021;xxx:xxx–xxx.",
+      "title_chars": 80,
+      "abstract_chars": 2086,
+      "abstract_sha256": "73416be022e2d494337ec3b3be65ec755c1fc62c587656df35fda7871f730e06",
+      "sample_index": 9
+    },
+    {
+      "source_record_index": 63036,
+      "source": "Embase",
+      "disease_codes": [
+        "20",
+        "32",
+        "33"
+      ],
+      "doi": "10.1016/j.psyneuen.2021.105555",
+      "title": "Allostatic load in psychiatry - Systematic review and meta-analysis",
+      "abstract": "Introduction: Stress exposure leads to the activation of multiple biological systems to maintain a dynamic equilibrium that has been termed “allostasis”. Prolonged and chronic activation of the allostatic systems exert a multi-system dysregulation termed the allostatic load (AL), the wear and tear on the body. The AL index is a measure of multisystem - cardiovascular, immune, neuroendocrine, and metabolic - biomarkers associated with toxic stress exposure. Methods: A systematic search strategy was conducted following the PRISMA guidelines. Twenty-two studies met our inclusion criteria and were included in this review, which all clearly described a mental health disorder (either psychotic or mood disorder) and used reliable and established measures to calculate the allostatic load index. Results: Studies have consistently found an elevated allostatic load index in patients with psychotic disorders. Additionally, the elevated AL index is correlated with positive symptoms, symptom severity, worse treatment outcome, and an overall lower general and cognitive functioning. Conclusion: Our systematic review and meta-analysis have revealed that the AL index is increased in psychotic disorders but not in major depression.",
+      "title_chars": 67,
+      "abstract_chars": 1232,
+      "abstract_sha256": "56c85411bae57c0f239215e96b66ba4772cbcb82223cd857fa8b9e5c3d4a8b55",
+      "sample_index": 10
+    },
+    {
+      "source_record_index": 68020,
+      "source": "Embase",
+      "disease_codes": [
+        "51"
+      ],
+      "doi": "10.1017/s1041610220002409",
+      "title": "Visual hallucinations secondary to ropinirole: Case report",
+      "abstract": "Objectives: Using as a starting point a clinical case, the authors performed a literature review to clarify the relationship between visual hallucinations and treatment with ropinirole. Methods: Analysis of the patient's clinical process and brief review of the latest available literature on the subject, published in PubMed/Medline databases. Results: Female patient, 89 years old, without psychiatric illness, brought to the emergency room by visual hallucinations, in the past 3 days 'I see red, blue and green spots and roses on your sweater and a lot of flowers on that lady's blouse'sic. She recognised them as unreal (pseudo hallucinations) 'no, nothing is there. It's from my eyes. I am fine of the head'sic. She has a personal history of glaucoma for decades, and restless legs syndrome for about 1 year, medicated with ropinirole. Adherence to therapeutic has been explored and it was found that she has been increasing, progressively and by its own initiative, the dose of ropinirole. She claims to be currently taking two pills of 8 mg twice daily (the recommended daily dose is 24 mg). Conclusions: Studies indicate that the incidence of hallucinations during the treatment of RLS with ropinirole is less than 1%, which can be justified by its high affinity for D3 receivers compared to D2 receivers. However, it is also known that the over-stimulation of dopamine receptors (by overdose or rapid titration) can cause hallucinations, which may have been the cause of the patient's clinical condition. This clinical case also allows to alert for the importance of excluding organic causes in the diagnosis of visual hallucinations.",
+      "title_chars": 58,
+      "abstract_chars": 1644,
+      "abstract_sha256": "15995d4a54fe3ec778d8220d2f7b3dd8e535bc90d1dd18e179d95beef93756e0",
+      "sample_index": 11
+    },
+    {
+      "source_record_index": 76054,
+      "source": "Embase",
+      "disease_codes": [
+        "84"
+      ],
+      "doi": "10.1089/g4h.2023.0240",
+      "title": "The Impact of Virtual Reality Intervention on Emotion Regulation and Executive Functions in Autistic Children",
+      "abstract": "Introduction: Autistic children may encounter difficulties in managing emotions and executive functions (EFs), which can contribute to mental and health challenges. Recognizing physical activities as a potential strategy for enhancing emotion regulation (ER), this study aims to investigate the efficacy of a virtual reality (VR)-based physical exercise program in improving ER and EFs among children with autism spectrum disorder (ASD). Materials and Methods: Forty boys diagnosed with ASD, aged 7 to 10 years, were randomly assigned to two groups: a VR intervention group (n = 20) and a control group (n = 20). The intervention group participated in a VR program, while the control group solely concentrated on engaging in sedentary and inactive video gaming. EFs were evaluated through the utilization of both the flanker task and the Wisconsin card sorting task, both administered initially at baseline and subsequently after an 8-week interval. In addition, the parents of the children completed the Emotion Regulation Checklist to evaluate their ER skills. Results: According to the results, a significant difference was observed between the two groups in terms of EFs and the ability to regulate emotion (P < 0.05). The intervention group demonstrated a notable improvement in ER skills and exhibited superior executive functioning abilities compared with the control group. Conclusion: It appears that VR exercises can serve as a preliminary trial to enhance EFs and ER in children with autism. In addition, they may prove effective as complementary interventions to traditional educational strategies in preventing future challenges associated with ASD.",
+      "title_chars": 109,
+      "abstract_chars": 1662,
+      "abstract_sha256": "1007b141c4e6e9df3d20e0c4929093d3a4f9f2861b26106b24b211114791da15",
+      "sample_index": 12
+    },
+    {
+      "source_record_index": 76512,
+      "source": "Embase",
+      "disease_codes": [
+        "10",
+        "70",
+        "71",
+        "72",
+        "73"
+      ],
+      "doi": "10.1093/ajcn/nqab081",
+      "title": "Polymorphisms in SLC44A1 are associated with cognitive improvement in children diagnosed with fetal alcohol spectrum disorder: an exploratory study of oral choline supplementation",
+      "abstract": "Background: The essential nutrient choline provides one-carbon units for metabolite synthesis and epigenetic regulation in tissues including brain. Dietary choline intake is often inadequate, and higher intakes are associated with improved cognitive function. Objective: Choline supplements confer cognitive improvement for those diagnosed with fetal alcohol spectrum disorder (FASD), a common set of neurodevelopmental impairments; however, the effect sizes have been modest. In this retrospective analysis, we report that genetic polymorphisms affecting choline utilization are associated with cognitive improvement following choline intervention. Methods: Fifty-two children from the upper midwestern United States and diagnosed with FASD, ages 2-5 y, were randomly assigned to receive choline (500 mg/d; n = 26) or placebo (n = 26) for 9 mo, and were genotyped for 384 choline-related single nucleotide polymorphisms (SNPs). Memory and cognition were assessed at enrollment, study terminus, and at 4-y follow-up for a subset. Results: When stratified by intervention (choline vs. placebo), 14-16 SNPs within the cellular choline transporter gene solute carrier family 44 member 1 (SLC44A1) were significantly associated with performance in an elicited imitation sequential memory task, wherein the effect alleles were associated with the greatest pre-/postintervention improvement. Of these, rs3199966 is a structural variant (S644A) and rs2771040 is a single-nucleotide variant within the 3′ untranslated region of the plasma membrane isoform. An additive genetic model best explained the genotype associations. Lesser associations were observed for cognitive outcome and polymorphisms in flavin monooxygenase-3 (FMO3), methylenetetrahydrofolate dehydrogenase-1 (MTHFD1), fatty acid desaturase-2 (FADS2), and adiponectin receptor 1 (ADIPOR1). Conclusions: These SLC44A1 variants were previously associated with greater vulnerability to choline deficiency. Our data potentially support the use of choline supplements to improve cognitive function in individuals diagnosed with FASD who carry these effect alleles. Although these findings require replication in both retrospective and prospective confirmatory trials, they emphasize the need to incorporate similar genetic analyses of choline-related polymorphisms in other FASD-choline trials, and to test for similar associations within the general FASD population. This trial was registered at www.clinicaltrials.gov as NCT01149538.",
+      "title_chars": 179,
+      "abstract_chars": 2488,
+      "abstract_sha256": "b7496cfe260402d0ff6c99cf73e6154e2a062613f66a322c5aedd9d120914eae",
+      "sample_index": 13
+    },
+    {
+      "source_record_index": 80051,
+      "source": "Embase",
+      "disease_codes": [
+        "51"
+      ],
+      "doi": "10.1093/sleep/zsz067.979",
+      "title": "Decide2Rest: A program for promoting personcentered obstructive sleep apnea (OSA) treatment",
+      "abstract": "Introduction: Person-centered care is a collaborative approach that is respectful of, and responsive to an individual's priorities, goals, needs, and values. For obstructive sleep apnea (OSA), this includes informing patients of their treatment options and actively engaging them in treatment decisions so that the treatment plan reflects what matters most to them. This approach is particularly relevant to care of patients with multimorbidity, which increases in prevalence with advanced age. We developed and evaluated a program that promotes person-centered OSA care for older adults. Methods: Patients with newly-diagnosed OSA were recruited from a Department of Affairs (VA) or university clinic and randomized to the Decide2Rest (D2R) program versus an attention control condition. D2R, a web-based program administered prior to a clinic appointment, provides information about OSA and treatment options, including the risks and benefits of each option. In an accompanying D2R paper workbook, participants list the treatment features that matter most to them, rate their overall health goals, and identify their preferred treatment. The program encourages patients to discuss their preferred treatment with their provider. Outcomes assessed post-intervention included the Decisional Conflict Scale (DCS; 0 [good] to 100 [bad]), which measures perceptions of uncertainty, whether decisions reflect what matters most to patients, and whether patients feel supported in decision making, and the Preparation for Decision Making (PDM; 0 [bad] to 100 [good]) scale. We used fixed-effects models to examine the relationship between D2R and study outcomes (DCS, PDM). Results: 73 patients (mean age 69 years [range: 60-89]; 71% male; N=37 VA, N=36 university site) were randomized to the D2R program (N=36) versus control condition (N= 37). Results from the fixed-effects models, controlling for study site, indicated that the D2R program showed a significantly lower Decisional Conflict Scale scores in treatment versus control (p=.014) and more favorable scores on the Preparation for Decision Making Scale (p<.001). Conclusion: The D2R Program promotes person-centered OSA decision-making for older adults with newly-diagnosed OSA. Future studies are needed to optimize implementation of the program.",
+      "title_chars": 91,
+      "abstract_chars": 2302,
+      "abstract_sha256": "311644b9e77b4a4065300999b646fa3b824a42181a66bb038ca46576ca88f243",
+      "sample_index": 14
+    },
+    {
+      "source_record_index": 80376,
+      "source": "Embase",
+      "disease_codes": [
+        "53"
+      ],
+      "doi": "10.1097/01.ogx.0001181220.71721.bf",
+      "title": "Single-dose Intravenous Iron Versus Oral Iron for Treatment of Maternal Iron Deficiency Anemia: A Randomized Clinical Trial",
+      "abstract": "Maternal iron deficiency anemia (IDA) in pregnancy is a global concern because of its association with postpartum hemorrhage, low birth weight (LBW), preterm birth, and long-term childhood development. In 2025, the United Nations established a goal to reduce the prevalence of anemia by 50% in reproductive age women by 2025. However, strategies to address iron deficiency have been inadequate with hardly any change in the rate of anemia in pregnant women from 52% in 2000 to 48% in 2019. Most national and international guidelines recommend treating IDA with oral iron therapy. Yet, intravenous (IV) iron formulations have been shown to be more effective in improving hemoglobin (Hb) and iron stores with greater tolerability and adherence than oral iron. Evidence comparing IV and oral iron on perinatal outcomes have been limited. The aims of the current study were to assess whether single-dose IV iron administered in the second trimester was superior to oral iron and to evaluate IV iron and oral iron on the maternal outcome of nonanemic state (NAS). This was a 3-arm, semi-blinded, superiority randomized controlled trial conducted at 19 community and primary health care centers in 4 cities across India from March 15, 2021 to May 12, 2023. Included were women between the ages of 18 and 40 years, with singleton pregnancies who were diagnosed with moderate IDA (Hb: 7.0ro 9.9 g/dL) at 14 to 17 weeks of gestation. Excluded were those with any fetal anomaly, history of cardiovascular disease, known hemoglobinopathy, or any disease or condition contraindicated by the treatment. Participants were randomly assigned 1:1:1 to treatment with twice daily oral iron (60 mg), a single dose of IV ferric carboxymaltose (20 mg/kg body weight), or single dose of IV ferric derisomaltose (20 mg/kg body weight). The primary outcomes were LBW (<2500 g) assessed within 72 hours of delivery or NAS attainment (Hb: ≥11 g/DL) at 30 to 34 weeks’ or at delivery. The analysis included 1450 participants in the oral iron arm, 1462 in the ferric carboxymaltose arm, and 1456 in the ferric derisomaltose arm. The incidence of LBW was lowest in participants who received IV ferric carboxymaltose (25.2%) compared with oral iron (29.3%) and IV ferric derisomaltose (29.1%). The number needed to treat to prevent one case of LBW was 24.7 (97.55% CI, 12.6-529.5). The incidences of NAS achievement were 69.7% in the oral iron arm, 73.0% in the IV ferric carboxymaltose arm, and 73.1% in the IV ferric derisomaltose arm. The incidences of nonresponse to therapy, need for rescue therapy, use of predelivery transfusion, and use of supplemental, non-study iron were lower in both IV arms versus oral iron arm. Mean Hb values were higher in the IV arms than oral iron arm at follow-up visits between 20 and 34 weeks, but the difference was no longer present at delivery and 6 weeks postpartum. In conclusion, there were fewer cases of LBW without an increase in safety concerns with single-dose IV ferric carboxymaltose compared with oral iron. In addition, the rates of attaining NAS were similar, but the IV arms had reduced need for rescue therapy or predelivery transfusion. (Abstracted from Am J Obstet Gynecol. 2025;233:120.e1-18)",
+      "title_chars": 123,
+      "abstract_chars": 3221,
+      "abstract_sha256": "9bb12f562360b5e46df8a77522d0ccaa29d2309c8fb14153b4d1b706a9a6b649",
+      "sample_index": 15
+    },
+    {
+      "source_record_index": 80392,
+      "source": "Embase",
+      "disease_codes": [
+        "45"
+      ],
+      "doi": "10.1097/01.tp.0001067096.23073.81",
+      "title": "Probiotic intervention to reduce postoperative inflammation in liver transplantation",
+      "abstract": "Introduction: End-stage liver failure as an indication for liver transplantation (LT) and the associated changes in the microbiome can lead to the entry of potentially pathogenic pathogens and their metabolites from the intestine into the bloodstream and thus to pathologically increased inflammation, which can be critical in the context of major surgical procedures such as LT. Associated postoperative infections lead to increased morbidity and mortality, which are also associated with high treatment costs. Prophylactic perioperative pro- and synbiotics are intended to influence the postoperative inflammatory reactions in LT patients. A meta-analysis of studies on the administration of pro-/synbiotics in LT [1] showed a reduction in postoperative clinical infections with a treatment duration of >10 weeks preoperatively to 14 days postoperatively with a pooled relative risk of 0.24, 95% CI: 0.12- 0.24, and improved postoperative liver function in one of 3 studies. Method: We performed a randomized, controlled, clinical pilot study including cirrhotic patients listed for LT. 5 patients were randomized in the intervention group with multispecies probiotic for at least 2 months before liver transplantation, 5 patients in the control group without probiotic therapy. Endotoxin concentration and inflammatory markers in peripheral and portal venous blood were measured pre-, peri- and postoperatively, as well as parameters of the intestinal barrier and liver function, clinical outcome, and additional assessment of QoL was performed. Results: There was no significant difference regarding intestinal translocation based on the measured surrogate parameters cluster of differentiation 14 (CD14) and lipopolysaccharide-binding protein (LBP), as well as the inflammatory and liver function parameters after LT and zonulin as a marker for intestinal barrier function between the two groups. Surgical site infection (SSI) rate was 40% in the control and 20% in the intervention group, duration of antimicrobial therapy after LT was 10 (0-109) days in the intervention group and 20 (0-39) days in the control group. Brief symptom inventory (BSI-18) showed significantly less somatization in the intervention group as compared with the control group. Conclusion: These results provide important insights for the planning of future clinical trials to investigate the influence of probiotic intervention on the outcome after LT.",
+      "title_chars": 84,
+      "abstract_chars": 2434,
+      "abstract_sha256": "87063aef8646f8a00b6a507de0fcb7cfab0fd05403051d576144f533c7f71afe",
+      "sample_index": 16
+    },
+    {
+      "source_record_index": 82704,
+      "source": "Embase",
+      "disease_codes": [
+        "81",
+        "91"
+      ],
+      "doi": "10.1097/md.0000000000034601",
+      "title": "Effects of family centered nursing model on children with primary nephrotic syndrome: A systematic review and meta-analysis",
+      "abstract": "Background: Family-centered nursing model has been widely used in the care of children patients, but there is still a lack of research on the care of children with primary nephrotic syndrome (PNS). Therefore, the aim of this study was to comprehensively evaluate the effects of family-centered nursing on children with PNS. Methods: The electronic databases included China National Knowledge Internet, Wanfang Data Knowledge Service Platform, VIP, PubMed, Web of Science, Cochrane Library, and Embase, were searched to collect randomized controlled trials on family-centered nursing model in the treatment of children with PNS. Fixed effect models or fixed effect models were used to analyze the outcomes. The primary outcomes were length of hospital stay and nursing satisfaction, and the second outcomes were quality of life (QoL) and behavioral problems. Results: A total of 12 studies involving 996 pediatric patients were included, of which 500 children received family centered care and 496 children received routine care. The results showed that family centered nursing model could significantly improve the QoL of children with PNS (P <.05), increase the nursing satisfaction of family members (P <.0001, SMD = 7.37, 95%CI = 4.15-13.08), reduce the time of hospitalization (P <.0001, standard mean difference [SMD] = -2.30, 95%CI = -2.57 to -2.03), and decrease the scores of psychosomatic disorders and impulsivity hyperactivity in children with PNS (P <.0001, SMD = -3.13, 95%CI = -4.12 to -2.15; P <.0001, SMD = -3.29, 95%CI = -4.29 to -2.28). However, there was no significant statistical difference in the impact on the scores of conduct problems, learning problems, anxiety, and hyperactivity (P >.05). Conclusion: Family-centered nursing model can improve the QoL of children with PNS, increase the nursing satisfaction of family members and reduce the length of hospital stay, but further research need to verify its impact on behavioral problems.",
+      "title_chars": 123,
+      "abstract_chars": 1963,
+      "abstract_sha256": "ed273b0bf37e43bff04d10d7ba0126b74fde2489f870f2e5571db64b19ca4f61",
+      "sample_index": 17
+    },
+    {
+      "source_record_index": 89973,
+      "source": "Embase",
+      "disease_codes": [
+        "53"
+      ],
+      "doi": "10.1111/jpc.15945",
+      "title": "PHYSIOLOGICALLY-BASED CORD CLAMPING FOR INFANTS ≥32+0 WEEKS GESTATION - A RANDOMISED CLINICAL TRIAL AND REFERENCE PERCENTILES FOR HEART RATE AND OXYGEN SATURATION",
+      "abstract": "Objective: Resuscitation with an intact umbilical cord may improve outcomes for newborn infants. We hypothesised that clamping the umbilical cord after breathing has commenced (physiologically-based cord clamping, PBCC) would result in higher heart rate (HR) in infants needing resuscitation. Methods: This was a 2-centre RCT enrolling infants born at ≥32+0 weeks' gestation with a paediatrician in attendance (ACTRN12618000621213). Following initial stimulation, infants requiring further resuscitation were randomised within 60 s of birth using a smartphone-accessible weblink. The intervention (PBCC) was to establish pulmonary ventilation, either via positive pressure ventilation or effective spontaneous breathing, prior to umbilical cord clamping. The comparator was early cord clamping (ECC) prior to resuscitation. The primary outcome was mean HR between 60-120 s after birth, extracted from video recordings blind to group allocation. Non-randomised infants who were vigorous after birth had deferred cord clamping and contributed normative physiological data. Results: Among 508 at-risk infants enrolled, 123 were randomised (PBCC = 63, ECC = 60). Five infants (4%) had missing primary outcome data. Cord clamping occurred at a median (IQR) of 136 s (126-150) in PBCC and 37 s (27-51) in ECC. Mean HR between 60-120 s after birth was 154 bpm for PBCC vs 158 bpm for ECC, adjusted mean difference -6 bpm, 95% CI -17 - 5 bpm, p = 0.29). Oxygen saturation was similar between groups. Post-partum haemorrhage ≥500 ml occurred in 34% and 32% of mothers in PBCC and ECC, respectively. Conclusion: PBCC resulted in similar HR and oxygen saturation compared to infants receiving ECC. Reference percentile charts are provided for vigorous infants receiving deferred cord clamping.",
+      "title_chars": 162,
+      "abstract_chars": 1782,
+      "abstract_sha256": "2b67b94b491a611ea3cc73581f09251053398d877aef9bc4a221fba360ae0457",
+      "sample_index": 18
+    },
+    {
+      "source_record_index": 92062,
+      "source": "Embase",
+      "disease_codes": [
+        "20"
+      ],
+      "doi": "10.1136/bmjinnov-2025-001437",
+      "title": "Improving access to clozapine: a virtual ward model for community-based initiation",
+      "abstract": "Treatment-resistant schizophrenia (TRS) poses significant challenges. Clozapine, the most effective antipsychotic for TRS, is underused due to its side effect profile and intensive monitoring requirements during initiation. This article describes a collaborative virtual ward model in Peterborough, UK, for community-based clozapine initiation. Integrating wearable technology for real-time health tracking with video consultations, the service provides hospital-equivalent care at home. A partnership between Cambridgeshire and Peterborough NHS Foundation Trust and North West Anglia NHS Foundation Trust merges mental health expertise with acute care infrastructure. Early experiences suggest higher patient engagement, increased clinician confidence and reduced inpatient burden. This initiative has the potential to transform clozapine access, bridge physical and mental health services and offer a blueprint for patient-centred TRS care.",
+      "title_chars": 82,
+      "abstract_chars": 942,
+      "abstract_sha256": "7d0166a5e26aa65ab1a791ca50cceead4cffe12b62b4609eaa5cf26c1ed228fb",
+      "sample_index": 19
+    },
+    {
+      "source_record_index": 93335,
+      "source": "Embase",
+      "disease_codes": [
+        "51"
+      ],
+      "doi": "10.1136/bmjopen-2024-094602",
+      "title": "Reasonable access to brief behavioural insomnia treatment among medical and psychiatric outpatients (RABBIT): A multicentre randomised controlled trial protocol",
+      "abstract": "Introduction Insomnia is a significant global health issue associated with substantial economic costs. International guidelines recommend cognitive behavioural therapy for insomnia (CBT-I) as the first-line treatment for chronic insomnia; however, pharmacotherapy remains more common in clinical practice. Maintaining the effectiveness while reducing the time and frequency of CBT-I is essential for its implementation. We conducted a randomised controlled trial (RCT) to evaluate the effectiveness of a brief behavioural treatment for insomnia (BBTI) that focuses on sleep restriction and stimulus control (SC) - both established as effective standalone interventions. This article presents the study protocol to examine whether adding BBTI to treatment as usual improves outcomes in patients with chronic insomnia. Methods and analysis We will conduct a multicentre RCT. We will randomly assign patients with chronic insomnia to two groups (BBTI vs sleep hygiene) in a 1:1 ratio. The BBTI consists of three 15 min sessions over 4 weeks delivered by healthcare professionals following a detailed manual. The primary outcome is the Insomnia Severity Index at 8 weeks. Secondary outcomes include sleep latency, wake after sleep onset, total sleep time, sleep efficiency, Generalized Anxiety Disorder-7, Patient Health Questionnaire-9 and EuroQol-5D-5L. We will conduct the assessment at weeks 0 (baseline), 4 (end of intervention), 8 (post-intervention, primary endpoint) and 12 (follow-up). We will assess each sleep variable from the sleep diary at weeks 0 and 8. The analysis will be performed on an intention-to-treat basis. Ethics and dissemination This study has been approved by the Ethics Committee for Clinical and Epidemiological Research of Toyama University (approval no. R2023152).",
+      "title_chars": 160,
+      "abstract_chars": 1793,
+      "abstract_sha256": "7eb6fb5e2cc5968c61ee67703a955f4488441a2d11ec159c7a8c97a902e10d75",
+      "sample_index": 20
+    },
+    {
+      "source_record_index": 95639,
+      "source": "Embase",
+      "disease_codes": [
+        "63"
+      ],
+      "doi": "10.1159/000524736",
+      "title": "Alexithymia and Cutaneous Disease Morbidity: A Systematic Review",
+      "abstract": "Background: Alexithymia is a psychological construct that describes one's difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal. In the general population, alexithymia's prevalence is approximately 10%. Alexithymia may act as a triggering factor for many medical and psychiatric disorders. In patients with physical disease, alexithymia's prevalence reaches up to 63%. Additionally, alexithymia is associated with worse outcomes and heightened psychosocial comorbidities. Objective: This review continues where an earlier review (Willemsen, 2008) left off to (1) clarify alexithymia's prevalence in dermatology patients and (2) further investigate alexithymia's impact on disease burden, psychosocial comorbidities, and treatment. Methods: Systematic searches on alexithymia and dermatologic conditions were conducted using PubMed, Embase, PsycInfo, and Web of Science databases from March 8, 2021, to March 12, 2021. Data from eligible publications, which were full-text, clinical studies published after September 1, 2008, and available in English, were extracted by two medical students and summarized. Results: Despite a small number of publications (n = 37), data showed a markedly greater prevalence and severity of alexithymia in patients with alopecia, vitiligo, psoriasis, hidradenitis suppurativa, atopic dermatitis, chronic idiopathic urticaria, and primary focal hyperhidrosis compared to healthy controls. Further, data consistently demonstrate a complex interplay between alexithymia, disease burden, and psychosocial comorbidity. Conclusions: Identifying and addressing alexithymia in dermatology patients may improve treatment outcomes, associated comorbidities, and health-related quality of life.",
+      "title_chars": 64,
+      "abstract_chars": 1789,
+      "abstract_sha256": "9a37ded98089f9976f4630da91748a1cd5cae574b1af34f9d241a4e8674599fb",
+      "sample_index": 21
+    },
+    {
+      "source_record_index": 106721,
+      "source": "Embase",
+      "disease_codes": [
+        "41"
+      ],
+      "doi": "10.1192/j.eurpsy.2020.6",
+      "title": "On attentional function. Acceptance and commitment therapy versus a mindfulness-based emotional regulation intervention in anxiety disorders. A randomized controlled trial: The rem-act study",
+      "abstract": "Introduction: There are controversial findings about the relationship between mindfulness and the attentional function. This is the first study to compare two mindfulness-based interventions on two domains of attention. Objectives: To compare the effectiveness of Acceptance and Commitment Therapy (ACT) versus a Mindfulness-based Emotional Regulation (MER) intervention on auditive and visual attention. Methods: This study was carried out in a Mental Health Unit (Colmenar Viejo, Madrid). Firstly, 52 adult patients with anxiety disorders were randomized according to the score on the Acceptance and Action Questionnaire-II (blocking factor), of whom, 39 patients decided to participate. Each intervention was weekly, during 8 weeks, guided by two Clinical Psychology residents. A 2x2 mixed ANOVA (pre-post change x intervention type) was conducted, with Sidak-correction post hoc tests. The dependent variables were the scores on TMT-A, Digit span forward and Longest digit span forward (WAIS-IV). Results: Normality and homoscedasticity assumptions were met in TMT-A, except for normality in the remaining two outcomes. No statistically significant interaction effect was observed. A main effect pre-post change was statistically significant for TMT-A [F(1, 33) = 24.64, p = 0.00, partial eta-squared = 0.43, statistical power observed = 99.8%]. Wilcoxon signed ranks tests showed no statistically significant change in Digit span forward (p = 0.60) or in Longest digit span forward (p = 0.07). Conclusions: These results show both mindfulness-based interventions improved similarly visual attention and speed of visuomotor tracking, but not auditive attention. The ceiling effect of the Digit test may explain the lack of sensitivity to change.",
+      "title_chars": 190,
+      "abstract_chars": 1749,
+      "abstract_sha256": "f9d156f8ce72692fbafdf5604e9803c14fcf0f32105091451b8e990d87d5a279",
+      "sample_index": 22
+    },
+    {
+      "source_record_index": 115760,
+      "source": "Embase",
+      "disease_codes": [
+        "20",
+        "30",
+        "31",
+        "32",
+        "33",
+        "60",
+        "61",
+        "62"
+      ],
+      "doi": "10.23736/s2724-6612.23.02466-1",
+      "title": "Intersubjectivity and psychiatric diagnosis",
+      "abstract": "INTRODUCTION: Classical psychopathology underlined the significance of the clinician’s feelings, empathy, and intuition in the diagnostic reasoning process. Recently, there has been a resurgence of attention to this topic and a renewed research interest in the investigation of the intersubjective dimension in clinical psychiatric settings. This review, informed by PRISMA guidelines for systematic reviews, aimed at critically evaluating these studies and discussing the clinical relevance of their findings. EVIDENCE ACQUISITION: We searched the PubMed database for scientific papers written in English that were performed on mental health clinicians seeing a patient for the first time and included a standardized assessment of the clinician’s subjective experience during patient evaluation. EVIDENCE SYNTHESIS: Nine studies were identified. Two pioneer studies focused on the diagnostic value of the putative schizophrenia-specific ineffable intuition named “praecox feeling” and reported mixed results. The other identified studies used a recently developed and validated measure named Assessment of Clinician’s Subjective Experience (ACSE). These studies reported significant and theoretically consistent relationships between the clinician’s subjective experience during the first visit and both categorial diagnosis and the main psychopathological dimensions. Also, they found several associations between the clinician’s subjective experience and clinician and patient gender. No association was found between cultural diversity and the clinician’s subjective experience. In a study on patients treated with short-term psychodynamic psychotherapy, the clinician’s subjective experience of the first interaction displayed many significant correlations with the early therapeutic alliance. CONCLUSIONS: The findings suggest that the clinician’s subjective experience during the interaction with the patient can be reliably measured and has clinical value. The time seems ripe for reintroducing the concept of intersubjectivity at the core of the diagnostic process.",
+      "title_chars": 43,
+      "abstract_chars": 2074,
+      "abstract_sha256": "c792f651a917989f0f687f77aebf3434373d048204d95fd7264af7690e90cd2c",
+      "sample_index": 23
+    },
+    {
+      "source_record_index": 117033,
+      "source": "Embase",
+      "disease_codes": [
+        "00",
+        "02"
+      ],
+      "doi": "10.3233/jad-221272",
+      "title": "Phonological and Semantic Fluency in Alzheimer's Disease: A Systematic Review and Meta-Analysis",
+      "abstract": "Background: Semantic and Phonological fluency (SF and PF) are routinely evaluated in patients with Alzheimer's disease (AD). There are disagreements in the literature regarding which fluency task is more affected while developing AD. Most studies focus on SF assessment, given its connection with the temporoparietal amnesic system. PF is less reported, it is related to working memory, which is also impaired in probable and diagnosed AD. Differentiating between performance on these tasks might be informative in early AD diagnosis, providing an accurate linguistic profile. Objective: Compare SF and PF performance in healthy volunteers, volunteers with probable AD, and patients with AD diagnosis, considering the heterogeneity of age, gender, and educational level variables. Methods: A total of 8 studies were included for meta-analysis, reaching a sample size of 1,270 individuals (568 patients diagnosed with AD, 340 with probable AD diagnosis, and 362 healthy volunteers). Results: The three groups consistently performed better on SF than PF. When progressing to a diagnosis of AD, we observed a significant difference in SF and PF performance across our 3 groups of interest (p = 0.04). The age variable explained a proportion of this difference in task performance across the groups, and as age increases, both tasks equally worsen. Conclusion: The performance of SF and PF might play a differential role in early AD diagnosis. These tasks rely on partially different neural bases of language processing. They are thus worth exploring independently in diagnosing normal aging and its transition to pathological stages, including probable and diagnosed AD.",
+      "title_chars": 95,
+      "abstract_chars": 1667,
+      "abstract_sha256": "4ec51c559978e51986547ba41a4a0b4fcab9b5de9f80696782a6ec3a036a589c",
+      "sample_index": 24
+    },
+    {
+      "source_record_index": 119323,
+      "source": "Embase",
+      "disease_codes": [
+        "00",
+        "02"
+      ],
+      "doi": "10.3389/fphar.2021.721216",
+      "title": "Ginkgo Biloba Extract Is Comparable With Donepezil in Improving Functional Recovery in Alzheimer’s Disease: Results From a Multilevel Characterized Study Based on Clinical Features and Resting-State Functional Magnetic Resonance Imaging",
+      "abstract": "Background: Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD). Nonetheless, how these drugs impact spontaneous brain activities and how they consequently improve functional recovery are currently unclear. Objectives: This study was to explore the efficacy of GBE vs. donepezil and their add-on efficacy on functional recovery and the adaption of spontaneous brain activities following pharmacologic treatment in patients with AD. Methods: Patients with AD were enrolled and assigned to the GBE group (n = 50), the donepezil group (n = 50), or the combined group (n = 50). Neuropsychological assessments, including minimum mental state examination (MMSE), Alzheimer’s disease assessment scale-cognition (ADAS-Cog), instrumental activity of daily living (IADL), geriatric depression scale (GDS), neuropsychiatric inventory (NPI), and quality of life in Alzheimer’s disease (QOL-AD), were conducted at baseline, 1 month, 3 months, and 6 months. Resting-state functional magnetic resonance imaging (rs-fMRI) was collected to compare the amplitude of low-frequency fluctuation (ALFF), percent amplitude of fluctuation (PerAF), regional homogeneity (ReHo), and degree centrality (DC) at baseline and 6 months. Results: No major significant differences were detected in all comparisons between groups across all follow-up time points. For intragroup comparison, MMSE and ADAS-Cog scores differed significantly across all follow-ups in three groups. The combined group showed significant improvement of GDS scores between baseline and 6 months (p = 0.007). The GBE group (p = 0.044) and donepezil group (p = 0.012) demonstrated significant improvement of NPI scores between baseline and 6 months. Significant correlations were observed between IADL and ALFF in the right gyrus rectus (p = 0.03) and in the left superior cerebellum gyrus (p = 0.01), between GDS and ALFF in the right middle temporal gyrus (p = 0.01), between NPI and PerAF in the left fusiform gyrus (p = 0.03), and between MMSE and ReHo in right superior frontal gyrus (p = 0.04). Conclusion: GBE was comparable with donepezil in the improvement of functional recovery in patients with AD while the combined application of GBE and donepezil seems unnecessary. GBE-mediated improvement of functional recovery was characterized by decreased ALFF values in the right gyrus rectus and decreased PerAF values in the left fusiform gyrus. These featured variations of imaging metrics in specific brain regions may serve as biomarkers in the monitoring of the therapeutic efficacy of GBE.",
+      "title_chars": 236,
+      "abstract_chars": 2608,
+      "abstract_sha256": "8f3d7d7da0dd11eb6ecd2c173ed8d4b25bf93c95b55cf1ffc7a6530f6a07f036",
+      "sample_index": 25
+    },
+    {
+      "source_record_index": 120860,
+      "source": "Embase",
+      "disease_codes": [
+        "70",
+        "71",
+        "72",
+        "73"
+      ],
+      "doi": "10.3389/fpubh.2025.1604241",
+      "title": "Shared book reading to promote mental well-being among young people with and without Down syndrome: a pilot dyadic randomized controlled trial",
+      "abstract": "Background: With societal progress and a deepening understanding of Down syndrome (DS), research focus has shifted toward improving the quality of life and education for youth with DS. This study aims to determine the feasibility and estimate the preliminary effectiveness of a dyadic shared book reading program on the health-related quality of life of youth with DS (primary outcome), the mental wellbeing of university students (secondary outcome), and actor-partner outcomes to inform a future definitive trial. Methods: This study is an 8-week pilot dyadic randomized controlled trial (RCT) comparing a shared book reading intervention to a minimal activity control. The study will then continue for 12 months as a single-arm cohort study. Young people with DS and university students will be recruited, formed into dyads, and then randomized to either the intervention or control group. The intervention involves pairing a young person with DS with a university student for a weekly, 1-h shared book reading session. The control group will be provided with three books to read at their leisure over the 8 weeks. The primary outcome is the health-related quality of life of young people with DS, measured using the Pediatric Quality of Life Inventory (PedsQL 4.0). Secondary outcomes include the Engagement, Perseverance, Optimism, Connectedness, and Happiness (EPOCH) scale for measuring wellbeing. The Friendship Quality Questionnaire (FQQ) will be used to measure the dyad's level of friendship in the intervention group at 8 weeks. Measurements will be taken at baseline (T0) and at 8 weeks (T1). After 8 weeks, all participants will be offered the opportunity to continue in the study, joining the weekly shared book reading intervention; outcome measures will then be assessed at 6-month (T2) and 12-month (T3) follow-ups. Mixed linear regression models will be used to compare the intervention and control groups at 8 weeks. For the 6-month and 12-month follow-ups, change scores from baseline will be analyzed to test for potential long-term effect. Discussion: This study focuses on the mental wellbeing of young people with DS and university students by promoting psychological health through shared book reading activities. Anticipated results: It is expected that the shared book reading activities will improve the mental wellbeing of both young people with DS and university students; however, due to the pilot study's sample size, this trial may not detect effectiveness at a level of statistical significance. Clinical Trial Registration: Clinicaltrials.gov, identifier NCT06813625.",
+      "title_chars": 142,
+      "abstract_chars": 2603,
+      "abstract_sha256": "8385db7616284cdc9f24ca7e9d2aae06412a52c2ea69941319d03fdc517ab3c9",
+      "sample_index": 26
+    },
+    {
+      "source_record_index": 121442,
+      "source": "Embase",
+      "disease_codes": [
+        "05",
+        "51"
+      ],
+      "doi": "10.3390/cancers14071784",
+      "title": "Prostate Cancer and Sleep Disorders: A Systematic Review",
+      "abstract": "Prostate cancer (PCa) treatment involves multiple strategies depending on the disease’s stage. Androgen deprivation therapy (ADT) remains the gold standard for advanced and metastatic stages. Sleep quality has been suggested as being additionally influenced also by local radiotherapy, prostatectomy and androgen-receptor (AR)-targeted agents. We performed a systematic review exploring the landscape of studies published between 1 January 1990 and 31 July 2021, investigating sleep disturbances in PCa patients receiving active treatments, including the influence of hormonal therapy on sleep quality as a factor affecting their quality of life. Out of 45 articles identified, 16 studies were selected, which recruited patients with PCa, undergoing active treatment in either a prospective longitudinal or cross-sectional study. Development of sleep disorders or changes in sleep quality were reported in 14 out of 16 trials included. Only five trials included objective measurements such as actigraphy, mostly at one time point and without a baseline assessment. Limitations to be addressed are the small number of existing trials, lack of randomized trials and heterogeneity of methodologies used. This systematic review outlines the lack of prospective trials investigating sleep disorders, with a rigorous methodology, in homogeneous cohorts of PCa patients. Future trials are needed to clarify the prevalence and impact of this side effect of PCa treatments.",
+      "title_chars": 56,
+      "abstract_chars": 1464,
+      "abstract_sha256": "3a989bce19d814d32642ac6f3aa91b142dd8f966450170c8139832e46e6573ea",
+      "sample_index": 27
+    },
+    {
+      "source_record_index": 126967,
+      "source": "Embase",
+      "disease_codes": [
+        "50"
+      ],
+      "doi": "10.53555/jptcp.v31i3.5028",
+      "title": "COMPARATIVE ANALYSIS OF BARIATRIC SURGERY TECHNIQUES: A SYSTEMATIC REVIEW",
+      "abstract": "Background: Bariatric surgery is a surgical intervention aimed at aiding patients in weight loss, primarily recommended for individuals with severe obesity who have failed to lose weight through conventional methods such as diet and exercise. While bariatric surgery is generally considered safe and effective, it is a complex treatment involving significant dietary and lifestyle modifications. However, there is a potential for adverse effects post-surgery, necessitating a thorough understanding of warning signs and risk factors. Objective: The objective of this study was to systematically review the literature to identify warning signs and risk factors associated with adverse outcomes following bariatric surgery. Methods: A systematic review was conducted using the Medical Literature Analysis and Retrieval System Online (Medline) and the Latin American and Caribbean Literature in Health Sciences (Lilacs) database. Qualitative analysis of the retrieved data was performed to identify risk variables and warning signs. Results: The review identified several risk variables associated with adverse outcomes following bariatric surgery, including genetics, anxiety, excessive intake of sweets, psychological factors influencing eating behavior, disordered eating patterns, lack of control/disinhibition in eating, and postoperative stomach volume changes. Notably, rapid weight loss following surgery raised concerns regarding the potential development of biliary issues, which could lead to morbidity, readmission, reoperation, or other complications. Conclusion: This systematic review highlights the importance of recognizing warning signs and risk factors for adverse outcomes following bariatric surgery. Healthcare professionals should be vigilant in monitoring patients postoperatively and implementing appropriate interventions to mitigate potential risks and optimize patient outcomes.",
+      "title_chars": 73,
+      "abstract_chars": 1903,
+      "abstract_sha256": "17c83b2ed014b3afb1d21e94e35b189e48f869ccf16b9040602924691e2c4659",
+      "sample_index": 28
+    },
+    {
+      "source_record_index": 128478,
+      "source": "Embase",
+      "disease_codes": [
+        "51"
+      ],
+      "doi": "10.7717/peerj.17491",
+      "title": "Cognitive-behavioral treatment for insomnia and mindfulness-based stress reduction in nurses with insomnia: a non-inferiority internet delivered randomized controlled trial",
+      "abstract": "Background. Insomnia is a highly prevalent sleep disorder frequently comorbid with mental health conditions in nurses. Despite the effectiveness of evidence-based cognitive behavioral therapy for insomnia (CBT-I), there is a critical need for alternative approaches. This study investigated whether internet-delivered mindfulness-based stress reduction (IMBSR) for insomnia could be an alternative to internet-delivered CBT-I (ICBT-I). Objective. The hypothesis was that the IMBSR would be noninferior to the ICBT-I in reducing the severity of insomnia among nurses with insomnia. Additionally, it was expected that ICBT-I would produce a greater reduction in the severity of insomnia and depression than IMBSR. Method. Among 240 screened nurses, 134 with insomnia were randomly allocated (IMBSR, n = 67; ICBT-I, n = 67). The assessment protocol comprised clinical interviews and self-reported outcome measures, including the Insomnia Severity Index (ISI), Patient Health Questionnaire-9 (PHQ-9), the 15-item Five Facet Mindfulness Questionnaire (FFMQ), and the Client Satisfaction Questionnaire (CSQ-I). Results. The retention rate was 55% with 77.6% (n = 104) of participants completing the study. At post-intervention, the noninferiority analysis of the ISI score showed that the upper limit of the 95% confidence interval was 4.88 (P = 0.46), surpassing the pre-specified noninferiority margin of 4 points. Analysis of covariance revealed that the ICBT-I group had significantly lower ISI (Cohen’s d = 1.37) and PHQ-9 (Cohen’s d = 0.71) scores than did the IMBSR group. In contrast, the IMBSR group showed a statistically significant increase in the FFMQ-15 score (Cohen’s d = 0.67). Within-group differences showed that both the IMBSR and ICBT-I were effective at reducing insomnia severity and depression severity and improving mindfulness. Conclusion. Overall, nurses demonstrated high levels of satisfaction and adherence to both interventions. The IMBSR significantly reduced insomnia severity and depression, but the findings of this study do not provide strong evidence that the IMBSR is at least as effective as the ICBT-I in reducing insomnia symptoms among nurses with insomnia. The ICBT-I was found to be significantly superior to the IMBSR in reducing insomnia severity, making it a recommended treatment option for nurses with insomnia.",
+      "title_chars": 172,
+      "abstract_chars": 2353,
+      "abstract_sha256": "b39d99a05f95542f4630a23ee260af254d39a2fd60d64789e1f6d953d8a9c58e",
+      "sample_index": 29
+    },
+    {
+      "source_record_index": 135079,
+      "source": "pubmed",
+      "disease_codes": [
+        "F41"
+      ],
+      "doi": "10.1002/da.22860",
+      "title": "Internet- and mobile-based interventions for anxiety disorders: A meta-analytic review of intervention components",
+      "abstract": "BACKGROUND: Although the efficacy of Internet- and mobile-based interventions (IMIs) for anxiety is established, little is known about the intervention components responsible for therapeutic change. We conducted the first comprehensive meta-analytic review of intervention components of IMIs for adult anxiety disorders. METHODS: Randomized controlled trials (RCTs) comparing IMIs for anxiety disorders to active online control groups, or IMIs to dismantled variations of the same intervention (± specific components) were identified by a systematic literature search in six databases. Outcomes were validated observer-rated or self-report measures for anxiety symptom severity and treatment adherence (number of completed modules and completer rate). This meta-analytic review is registered with PROSPERO (CRD42017068268). RESULTS: We extracted the data of 34 RCTs (with 3,724 participants) and rated the risk of bias independently by two reviewers. Random-effects meta-analyses were performed on 19 comparisons of intervention components (i.a., different psychotherapeutic orientations, disorder-specific vs. transdiagnostic approaches, guidance factors). IMIs had a large effect when compared to active online controls on symptom severity (standardized mean difference [SMD] of -1.67 [95% CI: -2.93, -0.42]; P = 0.009). Thereby, guided IMIs were superior to unguided interventions on symptom severity (SMD of -0.39 [95% CI: -0.59, -0.18]; P = 0.0002) and adherence (SMD of 0.38 [95% CI: 0.10, 0.66]; P = 0.007). CONCLUSIONS: Overall, the results of this meta-analysis lend further support to the efficacy of IMIs for anxiety, pointing to their potential to augment service supplies. Still, future research is needed to determine which ingredients are essential, as this meta-analytic review found no evidence for incremental effects of several single intervention components apart from guidance.",
+      "title_chars": 113,
+      "abstract_chars": 1898,
+      "abstract_sha256": "7bd42d082eaa95f8f8991d817039f154035719f8165776d46fcb16b8e96cbbda",
+      "sample_index": 30
+    },
+    {
+      "source_record_index": 139124,
+      "source": "pubmed",
+      "disease_codes": [
+        "F14"
+      ],
+      "doi": "10.1007/s00038-017-1030-1",
+      "title": "Can routine data from prisoners' files be used to estimate prevalence rates of illicit drug use among prisoners?",
+      "abstract": "OBJECTIVES: The paper examines whether routine data from prisoners' files is a useful basis to estimate prevalence rates of illicit drug use among prisoners. METHODS: Medico-legal files of 190 younger (20-49 years) and 190 older (50-75 years) male prisoners from 13 prisons in Switzerland were analysed. Indications of illicit drug use were extracted based on recorded legal measures, notes from health care professionals, diagnoses related to the use of illicit substances, prescribed medications, other treatment indicators, and results from mandatory drug tests in prison. RESULTS: Estimated lifetime prevalence of illicit drug use based on those indicators is 50.0% for younger and 24.2% for older prisoners. Current cannabis use is an estimated 10.0% and current cocaine, opioids, or other drug use 4.7% for younger prisoners. Among older prisoners, prevalence of current cannabis use is an estimated 3.2% and of other drug use 0.5%. CONCLUSIONS: The paper concludes that analysing routine data is a reasonable alternative to surveys if prisoners' files are kept more complete and concise and if data is collected for no other purpose than to benefit prisoners' health.",
+      "title_chars": 112,
+      "abstract_chars": 1174,
+      "abstract_sha256": "a5b08c47d00ecaf71761fff64e752bd39660467cb27d60412b0eb84c11311a2d",
+      "sample_index": 31
+    },
+    {
+      "source_record_index": 140247,
+      "source": "pubmed",
+      "disease_codes": [
+        "F10"
+      ],
+      "doi": "10.1007/s00261-024-04546-8",
+      "title": "Comparison of the diagnostic accuracy of shear wave elastography with transient elastography in adult nonalcoholic fatty liver disease: a systematic review and network meta-analysis of diagnostic test accuracy",
+      "abstract": "PURPOSE: To compare the diagnostic test accuracy (DTA) of shear wave elastography (SWE) to that of transient elastography (TE) for liver fibrosis grade assessment in nonalcoholic fatty liver disease adults. METHODS: MEDLINE, The Cochrane Library, and Web of Science were searched. Inclusion criteria were primary studies examining DTA of TE, point SWE (pSWE), two-dimensional SWE (2D-SWE), or magnetic resonance elastography (MRE) with liver biopsy. Network meta-analysis was conducted using a Bayesian bivariate mixed-effects model. RESULTS: For fibrosis grade 2 or higher, 15 studies with 25 observations (16 observations for TE, 1 for MRE, 4 for pSWE and 2D-SWE; 2,066 patients) were included; the pooled sensitivity and specificity were 0.79 (95% credible interval (CrI) 0.70-0.86; 95% prediction interval (PI) 0.36-0.96) and 0.73 (95% CrI 0.62-0.82; 95% PI 0.23-0.96) for TE, 0.68 (95% CrI 0.48-0.83; 95% PI 0.23-0.94) and 0.75 (95% CrI 0.53-0.88; 95% PI 0.24-0.97) for pSWE, 0.85 (95% CrI 0.70-0.93; 95% PI 0.40-0.98) and 0.72 (95% CrI 0.49-0.86; 95% PI 0.20-0.96) for 2D-SWE, respectively. The proportion of studies classified as unclear in QUADAS-2 was high, and the results were heterogeneous. CONCLUSION: 2D-SWE could be recommended as TE is for liver fibrosis assessment. The protocol of this systematic review and network meta-analysis has been registered in PROSPERO (CRD42022327249). All included primary papers have already been published and the information and data can be used freely.",
+      "title_chars": 209,
+      "abstract_chars": 1502,
+      "abstract_sha256": "f80c613c834aac295c1ab0e6a1d5f7e57f2dec59f4d477c3ddb7159702293888",
+      "sample_index": 32
+    },
+    {
+      "source_record_index": 151839,
+      "source": "pubmed",
+      "disease_codes": [
+        "F32",
+        "F33",
+        "F34"
+      ],
+      "doi": "10.1016/j.bbr.2016.11.028",
+      "title": "Comparative efficacy and acceptability of electroconvulsive therapy versus repetitive transcranial magnetic stimulation for major depression: A systematic review and multiple-treatments meta-analysis",
+      "abstract": "BACKGROUNDS: The effects of electroconvulsive therapy (ECT) and bilateral, left prefrontal, and right prefrontal repetitive transcranial magnetic stimulation (rTMS) on major depressive disorder (MDD) have not been adequately addressed by previous studies. Here, a multiple-treatments meta-analysis, which incorporates evidence from direct and indirect comparisons from a network of trials, was performed to assess the efficacy and acceptability of these four treatment modalities on MDD. METHOD: The literature was searched for randomized controlled trials (RCTs) on ECT, bilateral rTMS, and unilateral rTMS for treating MDD up to May 2016. The main outcome measures were response and drop-out rates. RESULTS: Data were obtained from 25 studies consisting of 1288 individuals with MDD. ECT was non-significantly more efficacious than B-rTMS, R-rTMS, and L-rTMS. Left prefrontal rTMS was non -significantly less efficacious than all other treatment modalities. In terms of acceptability, R-rTMS was non-significantly better tolerated than ECT, B-rTMS, and L-rTMS. ECT was the most efficacious treatment with the cumulative probabilities of being the most efficacious treatment being: ECT (65%), B-rTMS (25%), R-rTMS (8%), and L-rTMS (2%). R-rTMS was the best-tolerated treatment with the cumulative probabilities of being the best-tolerated treatment being: R-rTMS (52%), B-rTMS (17%), L-rTMS (16%), and ECT (14%). Coherence analysis detected no statistically significant incoherence in any comparisons of direct with indirect evidence for the response rate and drop-out rate. CONCLUSIONS: ECT was the most efficacious, but least tolerated, treatment, while R-rTMS was the best tolerated treatment for MDD. B-rTMS appears to have the most favorable balance between efficacy and acceptability.",
+      "title_chars": 199,
+      "abstract_chars": 1791,
+      "abstract_sha256": "4e5180a1b615b0b6c9a0a2cc0a26eab1d0cb0a90c8e32d27dfd582ef7e58979c",
+      "sample_index": 33
+    },
+    {
+      "source_record_index": 154956,
+      "source": "pubmed",
+      "disease_codes": [
+        "F22"
+      ],
+      "doi": "10.1016/j.comppsych.2016.12.007",
+      "title": "The lonely road to paranoia. A path-analytic investigation of loneliness and paranoia",
+      "abstract": "Loneliness and paranoia are related, but the mechanisms that link them to each other remain unclear. Systematic reviews on loneliness propose a social-cognitive model in which loneliness leads to negative evaluations of other persons and a lack of interpersonal trust. However, the data discussed in these reviews are based on healthy individuals. Building on this model, the present study investigated 1) whether negative interpersonal schemata mediate the association between loneliness and paranoia and 2) whether a low level of perceived social support and less frequent social contact are related to loneliness. Using a cross-sectional design, sixty-five participants with a diagnosis of schizophrenia were recruited online and completed questionnaire-based measures of loneliness, paranoia, negative interpersonal schemata, perceived social support and frequency of social contact. Data were analyzed taking a path-analytic approach. The association between loneliness and paranoia was significantly and fully mediated by negative schemata of others. Moreover, a low level of perceived social support was significantly associated with loneliness, whereas self-reported frequency of social contact was not. The present results highlight the potential role of interpersonal negative schemata in the formation and maintenance of paranoia and elucidate the crucial role of loneliness in the way individuals construe themselves within a social environment.",
+      "title_chars": 85,
+      "abstract_chars": 1457,
+      "abstract_sha256": "a055823cbbf7127e91962252071db0fe882c0e578ba2d62f30455da82ed482ad",
+      "sample_index": 34
+    },
+    {
+      "source_record_index": 157566,
+      "source": "pubmed",
+      "disease_codes": [
+        "F51",
+        "F52"
+      ],
+      "doi": "10.1016/j.ejogrb.2024.10.050",
+      "title": "Fibromyalgia and sexual dysfunction in women: A systematic review and meta-analysis",
+      "abstract": "INTRODUCTION: Fibromyalgia syndrome (FMS) is a chronic condition that associates pain, sleep disturbances, and cognitive changes. Recent evidence shows that sexual dysfunction is also associated with fibromyalgia, further affecting patients' quality of life. OBJECTIVE: Our aim was to explore the association between FMS and sexual dysfunction (SD) in women. METHODS: A comprehensive search strategy was carried out, using the keywords \"fibromyalgia\" and \"sexual dysfunction\" and their synonyms. The databases used were MEDLINE, EMBASE, Scopus, Biomed Central, Web of Science, CINAHL, IBECS, LILACS, Congress Abstracts, and gray literature sources like Google Scholar. Studies published from January 1990 to August 2023 were considered, without imposing any language restrictions. The inclusion criteria involved studies that investigated individuals diagnosed with FMS and who suffered from sexual dysfunction, while studies that did not meet these criteria were excluded. The methodological quality of the included studies was assessed using the New Castle Ottawa tool. The results were presented in tables and forest graphs generated by the RevMan 5.4 software. RESULTS: 27 studies were included, 10 of which were case-control and 17 were cross-sectional. These studies were published between 2005 and 2023, with participants aged between 18 and 81 years. Patients with FMS performed markedly worse than healthy controls in all domains of sexual dysfunction assessed. The methodological quality of the included studies was classified as moderate to high. CONCLUSION: Compared to healthy women, the findings indicate a negative correlation between sexual dysfunction and fibromyalgia. These results underscore the significance of addressing sexual disturbances as a source of distress in the context of fibromyalgia syndrome. It becomes evident that incorporating psychological therapies that encompass emotional, physical, and sexual health could be a pivotal component in the comprehensive treatment of fibromyalgia syndrome.",
+      "title_chars": 83,
+      "abstract_chars": 2029,
+      "abstract_sha256": "71f40d8cf514772bc19ba9980e232ba26e24a226c92996ff7256fc57e9902f2a",
+      "sample_index": 35
+    },
+    {
+      "source_record_index": 170353,
+      "source": "pubmed",
+      "disease_codes": [
+        "F14"
+      ],
+      "doi": "10.1016/j.ntt.2023.107151",
+      "title": "Cognitive and functional outcomes at age 21 after prenatal cocaine/polydrug exposure and foster/adoptive care",
+      "abstract": "OBJECTIVE: Prenatal cocaine exposure (PCE) has been linked to specific cognitive deficits and behavioral outcomes through early adolescence but there is little information on adult outcomes nor on the relationship of environmental interventions, such as foster/adoptive care, to outcomes. METHODS: At 21 years, data were available on 325 young adults, [163 PCE and 162 non-exposed (NCE)], primarily African-American, with low SES, who were followed from birth in a prospective longitudinal cohort study. Participants were administered the Wechsler Abbreviated Scale of Intelligence (WASI-II) and surveyed regarding high school completion, problematic substance use, and incarceration/probation history. In the PCE group, 32 remained in non-kinship foster/adoptive care (PCE/FA) from early in life (< 4 years) to 17 years. Group differences were examined through t-tests, MANOVA/ MANCOVA with post-hoc analyses, comparing outcomes and environmental correlates of young adults with PCE vs. NCE, as well as outcomes of PCE young adults in non-kinship foster/adoptive care (PCE/ FA) vs. PCE in birth/kinship care and NCE young adults. RESULTS: At 21 years, young adults with PCE had lower mean Full Scale (83.7 ± 10.4 vs. 87.3 ± 12.5, p < .01) and Perceptual Reasoning IQs (87.3 ± 11.5 vs. 91.4 ± 13.9, (p < .02), lower high school completion rates (75% vs. 86%, p < .02), and were marginally more likely to have been on probation than NCE young adults, but did not differ in Verbal IQ, self-report of problematic substance use or incarceration. Young adults with PCE in F/A had similar lower IQ scores but had better verbal skills and high school graduation rates that did not differ from NCE young adults (80.6 vs 86.2%, p > .05). They had higher drug exposure at birth and more experiences of maltreatment (p's < 0.05) but their home environment quality was better and lead levels lower (p's < 0.05) than those of young adults with PCE in birth/kinship care. CONCLUSIONS: Young adults with PCE had lower Perceptual Reasoning and Full-Scale IQ scores, independent of caregiving placement, compared to non-exposed young adults. Young adults with PCE placed in non-kinship foster/adoptive care had lower lead levels, more stimulating home environments, better vocabulary skills and were more likely to graduate from high school than those in birth/kinship care,but were not different in their self-report of problematic substance use, or experiences of incarceration or probation. Our data suggest that some cognitive deficits observed in young adults with PCE may be biologically based, but that some functional outcomes can be modified through environmental interventions. Our data also reflect the complexity of disentangling the effects of teratologic exposures on long term outcomes across a variety of domains and the need for studies of children in the foster care system.",
+      "title_chars": 109,
+      "abstract_chars": 2875,
+      "abstract_sha256": "6a998ed7bdc899cecbce8c25bef926fc1b2ba613fd70ec31fff8a9c4aa0e6a40",
+      "sample_index": 36
+    },
+    {
+      "source_record_index": 176041,
+      "source": "pubmed",
+      "disease_codes": [
+        "F80"
+      ],
+      "doi": "10.1016/j.tjpad.2025.100207",
+      "title": "Comparative efficacy of cognitive training modalities in cognitive impairment: A systematic review and network meta-analysis",
+      "abstract": "BACKGROUND: Cognitive training is a widely utilized non-pharmacological intervention to enhance cognitive performance in individuals with cognitive impairment. Despite its potential, significant ambiguity remains regarding its definition, optimal modalities, and design parameters. It remains unclear which types of cognitive training are relatively optimal for different levels of cognitive impairment or how intervention designs can maximize therapeutic benefits. OBJECTIVES: This systematic review and network meta-analysis aimed to compare the effects of various cognitive training modalities on cognitive, psychological, and quality-of-life outcomes in individuals with cognitive impairment. Additionally, it sought to identify optimal intervention approaches, clarify key design parameters, and examine critical factors influencing treatment efficacy. METHODS: A comprehensive search was conducted across 12 databases from the establishment of the database until October 24, 2024, to identify eligible randomized controlled trials (RCTs) evaluating cognitive training interventions. Data were analyzed using pairwise meta-analysis and network meta-analysis in Review Manager 5.4 and Stata 18. RESULTS: Totally 43 RCTs were included. Pairwise meta-analysis revealed that cognitive strategy training demonstrated superior to active control (AC) or passive control (PC) in improving language function, immediate memory, depressive symptoms and quality of life. However, no significant effects were detected regarding cognitive impairment severity, delivery format, interventionist expertise level, training duration, or control type. Network meta-analysis further identified reminiscence therapy as the most pronounced effective intervention for improving global cognition across all stages of cognitive impairment. CONCLUSIONS: Reminiscence therapy has been demonstrated as a relatively optimal cognitive training modality for enhancing cognitive function in individuals with varying levels of cognitive impairment. Future studies should prioritize longitudinal investigations to validate the durability of therapeutic benefits and incorporate neuroimaging and biomarker analyses to elucidate underlying mechanisms. High-quality RCTs remain imperative to strengthen the evidence base and evaluate the consistency of effects across diverse cognitive training interventions.",
+      "title_chars": 124,
+      "abstract_chars": 2376,
+      "abstract_sha256": "8f22211c40c9d02e84c84cc772cf3439ba6c9e7d58756cd01fe067b93fb0a18b",
+      "sample_index": 37
+    },
+    {
+      "source_record_index": 180395,
+      "source": "pubmed",
+      "disease_codes": [
+        "F09",
+        "F81"
+      ],
+      "doi": "10.1037/hea0001439",
+      "title": "A virtual community of practice to empower patients with recent ischemic heart disease: A randomized controlled trial",
+      "abstract": "OBJECTIVE: To evaluate the effectiveness of a virtual community of practice (vCoP) in improving the activation of individuals with ischemic heart disease (IHD). METHOD: We conducted a randomized controlled trial. A total of 282 patients with IHD from Madrid, Catalonia, and the Canary Islands were randomly allocated to an intervention or a control group. Patients were anonymized and the statistician was blinded to group allocation. The intervention was a multicomponent-tailored vCoP built on the Web 2.0 concept and focused on skills toward patient empowerment. The primary outcome was the Patient Activation Measure score. Secondary outcomes were self-efficacy to manage the disease, adherence to the Mediterranean diet, level of physical activity, depression, anxiety, medication adherence, and health-related quality of life. A linear regression model of mixed effects was carried out to estimate the effect of participating in the vCoP. RESULTS: Significant differences in adherence to the Mediterranean diet were found favoring the intervention at 6, 12, and 18 months, B = 0.86, 95% confidence interval (CI) [0.36, 1.35]. No significant changes among data collection points were found for the other variables. CONCLUSION: Our results suggest that vCoPs can be helpful for improving adherence to the Mediterranean diet in individuals with IHD, but not for improving their activation or quality of life. However, considerable uncertainty remains due to participants' high dropout rate. Further research is needed to identify the behavioral change mechanisms of such an intervention. (PsycInfo Database Record (c) 2025 APA, all rights reserved).",
+      "title_chars": 117,
+      "abstract_chars": 1652,
+      "abstract_sha256": "82ae88af3d10e149e395a53e5d8764c4b64736df639e771a3f827ab6e15c0736",
+      "sample_index": 38
+    },
+    {
+      "source_record_index": 180611,
+      "source": "pubmed",
+      "disease_codes": [
+        "F14"
+      ],
+      "doi": "10.1037/pha0000594",
+      "title": "Latent factor structure of behavioral economic heroin and cocaine demand curves",
+      "abstract": "Research has shown that behavioral economic demand curve indices can be characterized by a two-factor latent structure and that these factors can predict dimensions of substance use. No study to date has examined the latent factor structure of heroin and cocaine demand curves. The objective of this study was to use exploratory factor analysis to examine the underlying factor structure of the facets of heroin and cocaine reinforcement derived from heroin and cocaine demand curves. Participants were 143 patients from two samples that met the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5; American Psychiatric Association [APA], 2013) criteria for opioid dependance and were undergoing medication-assisted treatment (methadone or buprenorphine). Heroin and cocaine demand curves were generated via hypothetical purchase tasks (HPT) that assessed consumption at 9 or 17 levels of prices from $0 to $500. Five facets of demand were generated from the tasks (Q0, 1/α, Pmax, Omax, and break point). Principal components analysis was used to examine the latent structure among the variables. The results revealed a two-factor solution for both heroin and cocaine demand. These factors were interpreted as persistence, consisting of 1/α, Pmax, Omax, and break point, and amplitude, consisting of Q₀ and Omax, and in one case, 1/α. Heroin factors had some predictive power for future substance use, but cocaine factors did not. These findings suggest that heroin and cocaine demand indices can be reduced to two factors indicating sensitivity and volume of consumption, and that these factors may be able to predict substance use for heroin. (PsycInfo Database Record (c) 2023 APA, all rights reserved).",
+      "title_chars": 79,
+      "abstract_chars": 1730,
+      "abstract_sha256": "156721479518cc9bf436311a9be43c18679db2a2726003820db46bfb253147d6",
+      "sample_index": 39
+    },
+    {
+      "source_record_index": 184718,
+      "source": "pubmed",
+      "disease_codes": [
+        "F80"
+      ],
+      "doi": "10.1044/2025_jslhr-24-00456",
+      "title": "Language Interventions for School-Aged Children Who Are d/Deaf and Hard of Hearing: A Systematic Review and Meta-Analysis",
+      "abstract": "PURPOSE: The main aim of the systematic review and meta-analysis was to evaluate the effectiveness of language interventions for school-aged children who are d/Deaf and hard of hearing (DHH). We focused on studies targeting meaning-based aspects of language, such as vocabulary, grammar, and narrative skills. We included randomized controlled trials and quasi-experiments with a control group and a pre-post design. A secondary aim was to describe the characteristics of effective interventions identified in the systematic review. METHOD: The review was preregistered in PROSPERO (ID CRD42021236085). We searched 10 academic databases for peer-reviewed journal articles reporting language interventions for children who are DHH aged 6-12 years. We assessed the quality of included studies using Critical Appraisal Skills Programme checklists. A meta-analysis was conducted on the overall effect of interventions. In addition, we calculated separate effect sizes for vocabulary and morphosyntactic knowledge. RESULTS: We identified 14 studies totaling 794 children. Quality assessment revealed concerns of risk of bias in most studies because study characteristics were not comprehensively reported. The meta-analyses of language interventions revealed a large main effect of g = 0.79. Subdomain analyses revealed similar effects for morphosyntactic knowledge g = 0.81 and vocabulary g = 0.71. CONCLUSIONS: Few high-quality studies examine the effects of language interventions for children who are DHH. However, the studies that exist reveal robust effects, especially for morphosyntactic abilities. Intervention approaches were diverse, and the largest intervention effects were found in studies with a randomized controlled design and near-transfer outcome measures closely aligned with the intervention content. Future studies should adhere to established guidelines for reporting results from controlled experimental study designs.",
+      "title_chars": 121,
+      "abstract_chars": 1937,
+      "abstract_sha256": "9c3ff8db2dd79c1c4b8ad71c5aa6b80cab98e2d2c1937df562ef8dc8383c7767",
+      "sample_index": 40
+    },
+    {
+      "source_record_index": 185214,
+      "source": "pubmed",
+      "disease_codes": [
+        "F81"
+      ],
+      "doi": "10.1055/s-0042-1749119",
+      "title": "Diversity in Machine Learning: A Systematic Review of Text-Based Diagnostic Applications",
+      "abstract": "OBJECTIVE: As the storage of clinical data has transitioned into electronic formats, medical informatics has become increasingly relevant in providing diagnostic aid. The purpose of this review is to evaluate machine learning models that use text data for diagnosis and to assess the diversity of the included study populations. METHODS: We conducted a systematic literature review on three public databases. Two authors reviewed every abstract for inclusion. Articles were included if they used or developed machine learning algorithms to aid in diagnosis. Articles focusing on imaging informatics were excluded. RESULTS: From 2,260 identified papers, we included 78. Of the machine learning models used, neural networks were relied upon most frequently (44.9%). Studies had a median population of 661.5 patients, and diseases and disorders of 10 different body systems were studied. Of the 35.9% (N = 28) of papers that included race data, 57.1% (N = 16) of study populations were majority White, 14.3% were majority Asian, and 7.1% were majority Black. In 75% (N = 21) of papers, White was the largest racial group represented. Of the papers included, 43.6% (N = 34) included the sex ratio of the patient population. DISCUSSION: With the power to build robust algorithms supported by massive quantities of clinical data, machine learning is shaping the future of diagnostics. Limitations of the underlying data create potential biases, especially if patient demographics are unknown or not included in the training. CONCLUSION: As the movement toward clinical reliance on machine learning accelerates, both recording demographic information and using diverse training sets should be emphasized. Extrapolating algorithms to demographics beyond the original study population leaves large gaps for potential biases.",
+      "title_chars": 88,
+      "abstract_chars": 1815,
+      "abstract_sha256": "6751f60030a264d771ad3c7aa482c46acc02af6f4cf552726b36f2c692dcf8f6",
+      "sample_index": 41
+    },
+    {
+      "source_record_index": 199657,
+      "source": "pubmed",
+      "disease_codes": [
+        "F80"
+      ],
+      "doi": "10.1097/phm.0000000000002186",
+      "title": "Transmission of Bias in the Medical Record Among Physical Medicine and Rehabilitation Trainees",
+      "abstract": "Stigmatizing language can negatively influence providers' attitudes and care toward patients, but this has not been studied among physiatrists. An online survey was created to assess whether stigmatizing language can impact physical medicine and rehabilitation trainees' attitudes toward patients. We hypothesized stigmatizing language would negatively impact trainees' attitudes. Participants were randomized to a stigmatizing or neutral language vignette describing the same hypothetical spinal cord injury patient. Questions were asked about attitudes and assumptions toward the patient, pain management based on the vignette, and general views regarding individuals with disabilities. Between August 2021 and January 2022, 75 US physical medicine and rehabilitation residency trainees participated. Thirty-seven (49.3%) identified as women; 52 (69.3%) were White, and half (50.6%) received the stigmatized vignette. Participants exposed to stigmatizing language scored 4.8 points lower ( P < 0.01) on the provider attitude toward patient scale compared with those exposed to neutral language. There were no significant differences in the disability attitude scores between the two groups ( P = 0.81). These findings may indicate that stigmatizing language in the medical record may negatively affect physical medicine and rehabilitation trainees' attitudes toward patients. Further exploration is needed to identify the best way to educate trainees and reduce the propagation of bias in the medical record.",
+      "title_chars": 94,
+      "abstract_chars": 1510,
+      "abstract_sha256": "27a89aeed55cad9b5b655d095a86c6cf3428f1115ce25624ca78bf158f458c0d",
+      "sample_index": 42
+    },
+    {
+      "source_record_index": 200073,
+      "source": "pubmed",
+      "disease_codes": [
+        "F09",
+        "F10",
+        "F60",
+        "F61",
+        "F62"
+      ],
+      "doi": "10.1097/rli.0000000000001115",
+      "title": "Impact of the Novel MRI Contrast Agent Gadopiclenol on Radiotherapy Decision Making in Patients With Brain Metastases",
+      "abstract": "PURPOSE: The aim of this study was to assess the effect of gadopiclenol versus gadobenate dimeglumine contrast-enhanced magnetic resonance imaging (MRI) on decision-making between whole-brain radiotherapy (WBRT) and stereotactic radiosurgery (SRS) for treatment of brain metastases (BMs). METHODS: Patients with BMs underwent 2 separate MRI examinations in a double-blind crossover phase IIb comparative study between the MRI contrast agents gadopiclenol and gadobenate dimeglumine, both administered at 0.1 mmol/kg. The imaging data of a single site using identical MRI scanners and protocols were included in this post hoc analysis. Patients with 1 or more BMs in any of both MRIs were subjected to target volume delineation for treatment planning. Two radiation oncologists contoured all visible lesions and decided upon SRS or WBRT, according to the number of metastases. For each patient, SRS or WBRT treatment plans were calculated for both MRIs, considering the gross target volume (GTV) as the contrast-enhancing aspects of the tumor. Mean GTVs and volume of healthy brain exposed to 12 Gy (V 12 ), as well as Dice similarity coefficient scores, were obtained. The Spearman rank (ρ) correlation was additionally calculated for assessing linear differences. Three different expert radiation oncologists blindly rated the contrast enhancement for contouring purposes. RESULTS: Thirteen adult patients were included. Gadopiclenol depicted additional BM as compared with gadobenate dimeglumine in 7 patients (54%). Of a total of 63 identified metastatic lesions in both MRI sets, 3 subgroups could be defined: A, 48 (24 pairs) detected equal GTVs visible in both modalities; B, 13 GTVs only visible in the gadopiclenol set (mean ± SD, 0.16 ± 0.37 cm 3 ); and C, 2 GTVs only visible in the gadobenate dimeglumine set (mean ± SD, 0.01 ± 0.01). Treatment indication was changed for 2 (15%) patients, 1 from no treatment to SRS and for 1 from SRS to WBRT. The mean GTVs and brain V 12 were comparable between both agents ( P = 0.694, P = 0.974). The mean Dice similarity coefficient was 0.70 ± 0.14 (ρ = 0.82). According to the readers, target volume definition was improved in 63.9% of cases (23 of 36 evaluations) with gadopiclenol and 22.2% with gadobenate dimeglumine (8 of 36), whereas equivalence was obtained in 13.9% (5 of 36). CONCLUSIONS: Gadopiclenol-enhanced MRI improved BM detection and characterization, with a direct impact on radiotherapy treatment decision between WBRT and SRS. Additionally, a more exact target delineation and planning could be performed with gadopiclenol. A prospective evaluation in a larger cohort of patients is required to confirm these findings.",
+      "title_chars": 117,
+      "abstract_chars": 2688,
+      "abstract_sha256": "ada3de645e0128cebb9c54dae766bb429bac66a8e875eece9e912518182f3547",
+      "sample_index": 43
+    },
+    {
+      "source_record_index": 203734,
+      "source": "pubmed",
+      "disease_codes": [
+        "F32",
+        "F33",
+        "F34"
+      ],
+      "doi": "10.1111/ceo.12890",
+      "title": "Self-care tools to treat depressive symptoms in patients with age-related eye disease: a randomized controlled clinical trial",
+      "abstract": "BACKGROUND: Depression is very common in people with age-related eye disease. Our goal was to determine if self-care tools plus limited telephone support could reduce depressive symptoms in patients with age-related macular degeneration or diabetic retinopathy. DESIGN: A single-blind randomized controlled clinical trial was conducted at Maisonneuve-Rosemont Hospital in Montreal, Canada. PARTICIPANTS: Eighty participants were recruited. METHODS: To be eligible, participants must have had either late stage age-related macular degeneration or diabetic retinopathy, at least mild depressive symptoms, and visual acuity better than 20/200. Half were randomized to the intervention arm and half to delayed intervention/usual care. The intervention consisted of large print written and audio tools incorporating cognitive-behavioral principles plus three 10-minute telephone calls from a lay coach. Eight-week follow-up data were collected by telephone. MAIN OUTCOME MEASURES: The primary outcome was the 8-week change in depressive symptoms as measured by the Patient Health Questionnaire-9. Secondary outcomes included anxiety, life space and self-efficacy. RESULTS: The baseline mean logMAR visual acuity was 0.37 (SD = 0.20), and the baseline mean Patient Health Questionnaire-9 score was 9.5 (SD = 3.9) indicating moderate depressive symptoms. After adjusting for baseline imbalances in visual acuity, the intervention reduced depressive symptoms by 2.1 points more than usual care (P = 0.040). The intervention was not associated with the secondary outcomes (P > 0.05). CONCLUSIONS: Self-care tools plus telephone coaching led to a modest improvement in depressive symptoms in patients with age-related eye disease. Additional research on how to maximize their effect is necessary.",
+      "title_chars": 125,
+      "abstract_chars": 1786,
+      "abstract_sha256": "0b4d94c96bb1a417d6086023a37ab78bd3e91972e6da88022f2f1600fda4c7c4",
+      "sample_index": 44
+    },
+    {
+      "source_record_index": 215728,
+      "source": "pubmed",
+      "disease_codes": [
+        "F01",
+        "F02",
+        "F09",
+        "F20",
+        "F60",
+        "F61",
+        "F62"
+      ],
+      "doi": "10.1177/02698811251390974",
+      "title": "Effects of cannabidiol on behavioral and psychological symptoms of vascular dementia: A randomized, double-blind, placebo-controlled clinical trial",
+      "abstract": "INTRODUCTION: Vascular dementia (VaD) is the second leading cause of major neurocognitive disorder and is frequently associated with behavioral and psychological symptoms of dementia (BPSD), which worsen clinical outcomes and increase caregiver burden. Despite their relevance, effective pharmacological treatments for BPSD in VaD are limited. Cannabidiol (CBD), a non-psychoactive phytocannabinoid, exhibits anxiolytic, antipsychotic, and neuroprotective properties. OBJECTIVE: To evaluate the efficacy, tolerability, and safety of CBD in reducing BPSD in older adults with VaD. METHODS: This randomized, double-blind, placebo-controlled trial included 30 participants with VaD and clinically significant BPSD, who received either CBD (300 mg/day) or placebo for 4 weeks. Primary outcomes were changes in the Neuropsychiatric Inventory (NPI) and the Brief Psychiatric Rating Scale (BPRS) scores. Secondary outcomes included cognitive (Mini-Mental State Examination, Informant Questionnaire on Cognitive Decline in the Elderly) and functional (Katz Index, Lawton Scale) measures, along with adverse effects (Udvalg for Kliniske Undersøgelser scale). A mixed-design repeated measures analysis of variance with post hoc Sidak tests was used. RESULTS: CBD significantly reduced NPI scores (interaction: F(1.58, 44.31) = 3.61, p = 0.05, partial eta squared (ηp2) = 0.11) and BPRS scores (interaction: F(2.12, 59.43) = 4.02, p < 0.05, ηp2 = 0.13) compared to placebo. No significant differences were observed in cognitive or functional outcomes. Adverse events were mild and similar between groups. CONCLUSION: CBD was well tolerated and effectively reduced BPSD in VaD without cognitive or functional impairment. These findings warrant further trials with larger samples, extended durations, and dose-optimization strategies to confirm its therapeutic potential. This study was registered at the Brazilian Clinical Trials Registry (ReBEC; ID: RBR-686kmpz, available at https://ensaiosclinicos.gov.br/rg/RBR-686kmpz).",
+      "title_chars": 147,
+      "abstract_chars": 2012,
+      "abstract_sha256": "3d73cbc2cdfff1036bcf2b2395530032d01ed6c86099388870b8afef3a6f2eb5",
+      "sample_index": 45
+    },
+    {
+      "source_record_index": 229831,
+      "source": "pubmed",
+      "disease_codes": [
+        "F05"
+      ],
+      "doi": "10.1371/journal.pone.0195659",
+      "title": "Inflammatory markers in postoperative delirium (POD) and cognitive dysfunction (POCD): A meta-analysis of observational studies",
+      "abstract": "BACKGROUND: The aim of this study was to summarize and discuss the similarities and differences in inflammatory biomarkers in postoperative delirium (POD) and cognitive dysfunction (POCD). METHODS: A systematic retrieval of literature up to June 2017 in PubMed, Embase, the Cochrane Library, the China National Knowledge Infrastructure database, and the Wanfang database was conducted. Extracted data were analyzed with STATA (version 14). The standardized mean difference (SMD) and the 95% confidence interval (95% CI) of each indicator were calculated using a random effect model. We also performed tests of heterogeneity, sensitivity analysis, assessments of bias, and meta-regression in this meta-analysis. RESULTS: A total of 54 observational studies were included. By meta-analysis we found significantly increased C-reactive protein (CRP) (9 studies, SMD 0.883, 95% CI 0.130 to 1.637, P = 0.022 in POD; 10 studies, SMD -0.133, 95% CI -0.512 to 0.246, P = 0.429 in POCD) and interleukin (IL)-6 (7 studies, SMD 0.386, 95% CI 0.054 to 0.717, P = 0.022 in POD; 16 studies, SMD 0.089, 95% CI -0.133 to 0.311, P = 0.433 in POCD) concentrations in both POD and POCD patients. We also found that the SMDs of CRP and IL-6 from POCD patients were positively correlated with surgery type in the meta-regression (CRP: Coefficient = 1.555365, P = 0.001, 10 studies; IL-6: Coefficient = -0.6455521, P = 0.086, 16 studies). CONCLUSION: Available evidence from medium-to-high quality observational studies suggests that POD and POCD are indeed correlated with the concentration of peripheral inflammatory markers. Some of these markers, such as CRP and IL-6, play roles in both POD and POCD, while others are specific to either one of them.",
+      "title_chars": 127,
+      "abstract_chars": 1731,
+      "abstract_sha256": "7bbe68c882ac934445c738bc53285054da57572c9a72d526260705bec033daf2",
+      "sample_index": 46
+    },
+    {
+      "source_record_index": 230192,
+      "source": "pubmed",
+      "disease_codes": [
+        "F43"
+      ],
+      "doi": "10.1371/journal.pone.0241708",
+      "title": "Benign ethnic neutropenia in a South African population, and its association with HIV acquisition and adverse event reporting in an HIV vaccine clinical trial",
+      "abstract": "Benign ethnic neutropenia (BEN) is defined as a neutrophil count of <1.5×109 cells/L in healthy individuals and is more common in populations of certain ethnicities, e.g. African or Middle Eastern ethnicity. Neutrophil values are commonly included in eligibility criteria for research participation, but little is known about the relationship between BEN, HIV acquisition, and the occurrence of adverse events during clinical trials. We investigated these relationships using data from an HIV vaccine efficacy trial of healthy adults from 5 South African sites. We analysed data from the double-blind, placebo-controlled, randomized trial HVTN 503, and its follow-on study HVTN 503-S to assess the prevalence of BEN, its association with HIV infection, and adverse event reporting. These data were then compared with a time- and age-matched, non-pregnant cohort from the National Health and Nutrition Examination Survey (NHANES) conducted between 2007-2008 in the United States (US). The 739 South African participants had a median age of 22.0 years (interquartile range = 20-26) and 56% (n = 412) were male. Amongst the US cohort of 845 participants, the median age was 26 (IQR: 21-30) and the majority (54%, 457/745) were also male. BEN was present at enrolment in 7.0% (n = 52) of South African participants (6% in the placebo group versus 8% in the vaccine group); 81% (n = 42) of those with BEN were male. Pretoria North had the highest prevalence of BEN (11.6%, 5/43), while Cape Town had the lowest (0.7%, 1/152). Participants with BEN had a lower median neutrophil count (1.3 vs. 3.2x109 cells/L; p<0.001) and BMI (20.8 vs. 22.3 kg/m2; p<0.001) when compared to those without BEN. A greater proportion of Black South Africans had neutrophil counts <1.5×109 cells/L compared to US non-Hispanic Whites from the NHANES cohort (7% [52/739] vs. 0.6% [3/540]; p<0.001). BEN did not increase the odds for HIV infection (adjusted odds ratio [aOR]: 1.364, 95% confidence interval [95% CI]: 0.625-2.976; p = 0.4351). However, female gender (aOR: 1.947, 95% CI: 1.265-2.996; p = 0.0025) and cannabis use (aOR: 2.192, 95% CI: 1.126-4.266; p = 0.0209) increased the odds of HIV acquisition. The incidence rates of adverse events were similar between participants in the placebo group with BEN, and those without: 12.1 (95% CI: 7.3-20.1) vs. 16.5 (95% CI: 14.6-18.7; p = 0.06) events per 100 person-years (py) were noted in the infections and infestations system organ class, respectively. The vaccine group had an event incidence rate of 19.7 (95% CI: 13.3-29.2) vs. 14.8 (95% CI: 13.0-16.8; p = 0.07) events per 100py in the group with, and without BEN, respectively. BEN is more prevalent in Black South Africans compared to US Non-Hispanic Whites. Our data do not support excluding populations from HIV vaccine trials because of BEN. BEN was not associated with increased risk for HIV infection or Adverse events on a vaccine trial. Predictors of HIV infection risk were females and cannabis use, underlying the continued importance of prevention programmes in focusing on these populations.",
+      "title_chars": 158,
+      "abstract_chars": 3089,
+      "abstract_sha256": "f41a6f345a680b13ad361138c9ebf3856de7ffeb5f5d2fd9321450a3d9c666ad",
+      "sample_index": 47
+    },
+    {
+      "source_record_index": 235641,
+      "source": "pubmed",
+      "disease_codes": [
+        "F32",
+        "F33",
+        "F34"
+      ],
+      "doi": "10.2196/44214",
+      "title": "Engagement With a Remote Symptom-Tracking Platform Among Participants With Major Depressive Disorder: Randomized Controlled Trial",
+      "abstract": "BACKGROUND: Multiparametric remote measurement technologies (RMTs), which comprise smartphones and wearable devices, have the potential to revolutionize understanding of the etiology and trajectory of major depressive disorder (MDD). Engagement with RMTs in MDD research is of the utmost importance for the validity of predictive analytical methods and long-term use and can be conceptualized as both objective engagement (data availability) and subjective engagement (system usability and experiential factors). Positioning the design of user interfaces within the theoretical framework of the Behavior Change Wheel can help maximize effectiveness. In-app components containing information from credible sources, visual feedback, and access to support provide an opportunity to promote engagement with RMTs while minimizing team resources. Randomized controlled trials are the gold standard in quantifying the effects of in-app components on engagement with RMTs in patients with MDD. OBJECTIVE: This study aims to evaluate whether a multiparametric RMT system with theoretically informed notifications, visual progress tracking, and access to research team contact details could promote engagement with remote symptom tracking over and above the system as usual. We hypothesized that participants using the adapted app (intervention group) would have higher engagement in symptom monitoring, as measured by objective and subjective engagement. METHODS: A 2-arm, parallel-group randomized controlled trial (participant-blinded) with 1:1 randomization was conducted with 100 participants with MDD over 12 weeks. Participants in both arms used the RADAR-base system, comprising a smartphone app for weekly symptom assessments and a wearable Fitbit device for continuous passive tracking. Participants in the intervention arm (n=50, 50%) also had access to additional in-app components. The primary outcome was objective engagement, measured as the percentage of weekly questionnaires completed during follow-up. The secondary outcomes measured subjective engagement (system engagement, system usability, and emotional self-awareness). RESULTS: The levels of completion of the Patient Health Questionnaire-8 (PHQ-8) were similar between the control (67/97, 69%) and intervention (66/97, 68%) arms (P value for the difference between the arms=.83, 95% CI -9.32 to 11.65). The intervention group participants reported slightly higher user engagement (1.93, 95% CI -1.91 to 5.78), emotional self-awareness (1.13, 95% CI -2.93 to 5.19), and system usability (2.29, 95% CI -5.93 to 10.52) scores than the control group participants at follow-up; however, all CIs were wide and included 0. Process evaluation suggested that participants saw the in-app components as helpful in increasing task completion. CONCLUSIONS: The adapted system did not increase objective or subjective engagement in remote symptom tracking in our research cohort. This study provides an important foundation for understanding engagement with RMTs for research and the methodologies by which this work can be replicated in both community and clinical settings. TRIAL REGISTRATION: ClinicalTrials.gov NCT04972474; https://clinicaltrials.gov/ct2/show/NCT04972474. INTERNATIONAL REGISTERED REPORT IDENTIFIER (IRRID): RR2-10.2196/32653.",
+      "title_chars": 129,
+      "abstract_chars": 3299,
+      "abstract_sha256": "f3c09a509bef21e54d7538c4b796fcfd49914e09fadc4783e010064faff46758",
+      "sample_index": 48
+    },
+    {
+      "source_record_index": 244153,
+      "source": "pubmed",
+      "disease_codes": [
+        "F70-79"
+      ],
+      "doi": "10.3390/bs11110146",
+      "title": "The Mental Health Outcomes of Food Insecurity and Insufficiency in West Africa: A Systematic Narrative Review",
+      "abstract": "(1) Background: Food insufficiency is a global pandemic affecting many people, especially those residing in developing countries. African countries have been affected by food insufficiency, which is mostly caused by drought or wars. Famine or food insufficiency has been reported to have an impact on the psychological health and quality of life of people affected. This review assessed the mental health outcomes of famine and food insufficiency in West Africa. (2) Methods: A search of the published literature was conducted using PubMed, PsycExtra, Medline, and PsycINFO databases. The search was limited to papers published in English between the years 2010 and 2020. Two reviewers independently screened the titles and abstracts of the retrieved papers using pre-defined inclusion and exclusion criteria and a third reviewer resolved conflicts. Data were extracted and appraised using a data extraction form and an appraisal checklist. (3) Results: A total of 81 papers were identified through the journal databases search. Out of the seven papers that met the inclusion criteria, six papers used cross-sectional designs and one paper used an experimental design. The six papers used quantitative approach for data collection, while the one paper used a qualitative technique. The evidence synthesized from this review indicated that exposure to food insecurity or insufficiency is associated with increased psychological distress including anxiety, sleeplessness, intellectual disability, general mental, and emotional instability. (4) Conclusions: This review strongly highlights the need for further research across the sub-region. It further suggests that famine and food insufficiency are associated with significant mental health problems in adults and impacts the cognitive and intellectual development of children. Although there is paucity of literature about famine and its impact on mental health in West Africa, these findings are important for developing social policy initiatives for increasing food supply and mental health interventions for all ages.",
+      "title_chars": 109,
+      "abstract_chars": 2071,
+      "abstract_sha256": "5a1cd35cf0e7d35c22146133c60ed18b2019656a45b70b6938b5a456ba3d5f54",
+      "sample_index": 49
+    }
+  ]
+}
