@@ -1,39 +1,39 @@
 {
   "artifact_schema_version": "treatment-article-screening-run-v2",
-  "created_at": "2026-08-03T02:54:29.677612+00:00",
-  "updated_at": "2026-08-03T03:06:13.321926+00:00",
+  "created_at": "2026-08-03T03:38:27.975606+00:00",
+  "updated_at": "2026-08-03T03:51:57.562062+00:00",
   "model": "gpt-5.6-luna",
   "api_base": "https://api-2.xi-ai.cn/v1",
   "automatic_retries": 0,
   "sample_file": "/mnt/g/Projects/MedicalNER-Qwen3/data/treatment_related_articles/filtering_tests/random_articles_50.json",
   "manual_review_file": "/mnt/g/Projects/MedicalNER-Qwen3/data/treatment_related_articles/filtering_tests/manual_review_50.json",
   "system_prompt_file": "/mnt/g/Projects/MedicalNER-Qwen3/schemas/treatment_article_kg_screening_prompt.md",
-  "system_prompt_sha256": "c105f229f549aceda4673d317f37aa39132afb4fe936de1a227be51dfd685e9b",
+  "system_prompt_sha256": "746c334836c0591eaf6a6e578fd6adeb829ff9c55c4ed1c85656d0f9ca8d58ba",
   "kg_schema_file": "/mnt/g/Projects/MedicalNER-Qwen3/schemas/v2.0.0/schema.json",
   "kg_schema_sha256": "e153e4ef2919ff30c644662d8883160e4c62e9259359b2df59bd876fb0096b77",
   "summary": {
     "total_records": 50,
     "attempted_records": 50,
     "pending_records": 0,
-    "valid_outputs": 43,
-    "invalid_or_failed_outputs": 7,
+    "valid_outputs": 47,
+    "invalid_or_failed_outputs": 3,
     "status_counts": {
-      "completed": 43,
-      "completed_with_validation_errors": 7
+      "completed": 47,
+      "completed_with_validation_errors": 3
     },
     "decision_counts": {
-      "KEEP": 34,
-      "REVIEW": 2,
-      "DROP": 14
+      "KEEP": 22,
+      "REVIEW": 0,
+      "DROP": 28
     },
     "candidate_counts": {
-      "relations": 5,
-      "properties": 37
+      "relations": 9,
+      "properties": 17
     },
     "usage": {
-      "prompt_tokens": 110103,
-      "completion_tokens": 8688,
-      "total_tokens": 118791
+      "prompt_tokens": 110975,
+      "completion_tokens": 8177,
+      "total_tokens": 119152
     }
   },
   "records": [
@@ -53,36 +53,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:54:30.536326+00:00",
-      "attempt_finished_at": "2026-08-03T02:54:46.769287+00:00",
+      "attempt_started_at": "2026-08-03T03:38:28.718705+00:00",
+      "attempt_finished_at": "2026-08-03T03:38:36.646852+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-cec2hAXjqNgKyhj9pbz2pKVXKwRrT",
+      "response_id": "chatcmpl-90789FQbcse1TFhphTts1hiwTflMS",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly states the age group of the participating children.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract describes evaluation methods, participant characteristics, and FAST intervention outcomes without asserting an allowed active relation or reusable standalone entity property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "Children",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "five to nine years old",
-            "evidence_quote": "Children were young (five to nine years old; mean age approximately six years)"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states the age group of the participating children.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Children\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"five to nine years old\",\n      \"evidence_quote\": \"Children were young (five to nine years old; mean age approximately six years)\"\n    }\n  ]\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract describes evaluation methods, participant characteristics, and FAST intervention outcomes without asserting an allowed active relation or reusable standalone entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 3257,
-        "completion_tokens": 155,
-        "total_tokens": 3412
+        "prompt_tokens": 3274,
+        "completion_tokens": 78,
+        "total_tokens": 3352
       }
     },
     {
@@ -102,10 +94,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:54:47.792661+00:00",
-      "attempt_finished_at": "2026-08-03T02:55:09.850955+00:00",
+      "attempt_started_at": "2026-08-03T03:38:37.663322+00:00",
+      "attempt_finished_at": "2026-08-03T03:38:52.213081+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89CNTtPIa0Td6FmbAijYXb4JV4K1k",
+      "response_id": "chatcmpl-89CN9sQBYc5hUVt6NsanDwXGUYuQ8",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -113,7 +105,7 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The text explicitly maps the medication MLS101 to the generic name Psilocybin.",
+        "reason": "The text explicitly maps MLS101 to the generic name psilocybin.",
         "candidate_relations": [],
         "candidate_properties": [
           {
@@ -126,12 +118,12 @@
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The text explicitly maps the medication MLS101 to the generic name Psilocybin.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"MLS101\",\"entity_type\":\"Medication\",\"property\":\"generic_name\",\"value_text\":\"Psilocybin\",\"evidence_quote\":\"MLS101 (Psilocybin)\"}]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The text explicitly maps MLS101 to the generic name psilocybin.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"MLS101\",\"entity_type\":\"Medication\",\"property\":\"generic_name\",\"value_text\":\"Psilocybin\",\"evidence_quote\":\"MLS101 (Psilocybin)\"}]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 1957,
-        "completion_tokens": 103,
-        "total_tokens": 2060
+        "prompt_tokens": 1974,
+        "completion_tokens": 100,
+        "total_tokens": 2074
       }
     },
     {
@@ -150,36 +142,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:55:10.885106+00:00",
-      "attempt_finished_at": "2026-08-03T02:55:19.194778+00:00",
+      "attempt_started_at": "2026-08-03T03:38:53.237432+00:00",
+      "attempt_finished_at": "2026-08-03T03:39:04.786917+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026bML6TqH5LDtoJr38HuWzC7sjn",
+      "response_id": "chatcmpl-ff36Fv8NYmFN46rUh43SgW5Wa3IOt",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract identifies a patient special condition of reported opioid misuse within the previous three months.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports an intervention outcome and planned delivery adaptations but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "patients who have reported opioid misuse within the previous three months",
-            "entity_type": "Patient Information",
-            "property": "special_conditions",
-            "value_text": "reported opioid misuse within the previous three months",
-            "evidence_quote": "patients who have reported opioid misuse within the previous three months"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract identifies a patient special condition of reported opioid misuse within the previous three months.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"patients who have reported opioid misuse within the previous three months\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"special_conditions\",\n      \"value_text\": \"reported opioid misuse within the previous three months\",\n      \"evidence_quote\": \"patients who have reported opioid misuse within the previous three months\"\n    }\n  ]\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports an intervention outcome and planned delivery adaptations but does not directly assert an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2168,
-        "completion_tokens": 417,
-        "total_tokens": 2585
+        "prompt_tokens": 1891,
+        "completion_tokens": 77,
+        "total_tokens": 1968
       }
     },
     {
@@ -198,10 +182,10 @@
       "status": "completed_with_validation_errors",
       "success": true,
       "valid_output": false,
-      "attempt_started_at": "2026-08-03T02:55:20.223842+00:00",
-      "attempt_finished_at": "2026-08-03T02:55:28.601505+00:00",
+      "attempt_started_at": "2026-08-03T03:39:05.805900+00:00",
+      "attempt_finished_at": "2026-08-03T03:39:20.780044+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-3faakyNCxSmlR0preIV0N85Wh0AJk",
+      "response_id": "chatcmpl-2026TIodKUifCAgStC5jKVU350HTY",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -209,27 +193,27 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly states recommended indications for GLP-1 receptor agonists.",
+        "reason": "The abstract explicitly states clinical indications for GLP-1 receptor agonists.",
         "candidate_relations": [],
         "candidate_properties": [
           {
             "entity_text": "Glucagon-like peptide-1 receptor agonists (GLP-1 RAs)",
             "entity_type": "Medication",
             "property": "indications",
-            "value_text": "glucose control and cardiovascular risk reduction in patients with type 2 diabetes, and more recently, for weight loss",
-            "evidence_quote": "GLP-1 RAs have been widely recommended for glucose control and cardiovascular risk reduction in patients with type 2 diabetes, and more recently, for weight loss."
+            "value_text": "glucose control and cardiovascular risk reduction in patients with type 2 diabetes",
+            "evidence_quote": "GLP-1 RAs have been widely recommended for glucose control and cardiovascular risk reduction in patients with type 2 diabetes"
           }
         ]
       },
       "validation_errors": [
         "candidate_properties[0].evidence_quote is not an exact input span"
       ],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states recommended indications for GLP-1 receptor agonists.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Glucagon-like peptide-1 receptor agonists (GLP-1 RAs)\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"glucose control and cardiovascular risk reduction in patients with type 2 diabetes, and more recently, for weight loss\",\n      \"evidence_quote\": \"GLP-1 RAs have been widely recommended for glucose control and cardiovascular risk reduction in patients with type 2 diabetes, and more recently, for weight loss.\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states clinical indications for GLP-1 receptor agonists.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Glucagon-like peptide-1 receptor agonists (GLP-1 RAs)\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"glucose control and cardiovascular risk reduction in patients with type 2 diabetes\",\n      \"evidence_quote\": \"GLP-1 RAs have been widely recommended for glucose control and cardiovascular risk reduction in patients with type 2 diabetes\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2865,
-        "completion_tokens": 428,
-        "total_tokens": 3293
+        "prompt_tokens": 2593,
+        "completion_tokens": 185,
+        "total_tokens": 2778
       }
     },
     {
@@ -248,10 +232,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:55:29.625143+00:00",
-      "attempt_finished_at": "2026-08-03T02:55:43.976880+00:00",
+      "attempt_started_at": "2026-08-03T03:39:21.797365+00:00",
+      "attempt_finished_at": "2026-08-03T03:39:39.113634+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026VoIo9gmd6wcBxGdjtwQ8MpT7R",
+      "response_id": "chatcmpl-251fiVncbnPjOng7SEvZCnrgThiKd",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -259,32 +243,25 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies BNS-P as blonanserin transdermal patch and reports its most common treatment-emergent adverse events.",
+        "reason": "The abstract identifies akathisia and skin-related adverse events as the most common treatment-emergent adverse events for BNS-P.",
         "candidate_relations": [],
         "candidate_properties": [
           {
             "entity_text": "BNS-P",
             "entity_type": "Medication",
-            "property": "generic_name",
-            "value_text": "blonanserin transdermal patch",
-            "evidence_quote": "blonanserin transdermal patch (BNS-P)"
-          },
-          {
-            "entity_text": "BNS-P",
-            "entity_type": "Medication",
             "property": "common_side_effects",
             "value_text": "akathisia and skin-related adverse events",
-            "evidence_quote": "The most common treatment-emergent adverse events were akathisia and skin-related adverse events"
+            "evidence_quote": "The most common treatment-emergent adverse events were akathisia and skin-related adverse events in all clusters."
           }
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly identifies BNS-P as blonanserin transdermal patch and reports its most common treatment-emergent adverse events.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"BNS-P\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"generic_name\",\n      \"value_text\": \"blonanserin transdermal patch\",\n      \"evidence_quote\": \"blonanserin transdermal patch (BNS-P)\"\n    },\n    {\n      \"entity_text\": \"BNS-P\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"common_side_effects\",\n      \"value_text\": \"akathisia and skin-related adverse events\",\n      \"evidence_quote\": \"The most common treatment-emergent adverse events were akathisia and skin-related adverse events\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract identifies akathisia and skin-related adverse events as the most common treatment-emergent adverse events for BNS-P.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"BNS-P\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"common_side_effects\",\n      \"value_text\": \"akathisia and skin-related adverse events\",\n      \"evidence_quote\": \"The most common treatment-emergent adverse events were akathisia and skin-related adverse events in all clusters.\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2108,
-        "completion_tokens": 234,
-        "total_tokens": 2342
+        "prompt_tokens": 2125,
+        "completion_tokens": 175,
+        "total_tokens": 2300
       }
     },
     {
@@ -303,10 +280,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:55:45.010638+00:00",
-      "attempt_finished_at": "2026-08-03T02:55:49.927853+00:00",
+      "attempt_started_at": "2026-08-03T03:39:40.131551+00:00",
+      "attempt_finished_at": "2026-08-03T03:39:47.366924+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026AMNcRjpNGpVly2lv6cNurWW6h",
+      "response_id": "chatcmpl-202631bZKq3Xthwqg0ClullA76INY",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -314,17 +291,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports effects of mindfulness-based arts interventions on wellbeing and fatigue but does not directly assert an allowed relation or entity property.",
+        "reason": "The abstract reports effects of mindfulness-based arts interventions on psychosocial outcomes but supports no allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports effects of mindfulness-based arts interventions on wellbeing and fatigue but does not directly assert an allowed relation or entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports effects of mindfulness-based arts interventions on psychosocial outcomes but supports no allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2049,
-        "completion_tokens": 80,
-        "total_tokens": 2129
+        "prompt_tokens": 2066,
+        "completion_tokens": 76,
+        "total_tokens": 2142
       }
     },
     {
@@ -348,28 +325,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:55:50.946133+00:00",
-      "attempt_finished_at": "2026-08-03T02:55:54.769966+00:00",
+      "attempt_started_at": "2026-08-03T03:39:48.381962+00:00",
+      "attempt_finished_at": "2026-08-03T03:39:55.332486+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026Pg8ZuAcz96BerpF9a7j9oRehb",
+      "response_id": "chatcmpl-2026hiqTmTZv1Kt8c1thM8xQgf90i",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
-        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports associations between cannabinoid use and inflammatory biomarkers, which do not directly support an allowed relation or entity property.",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports associations between cannabinoid use and inflammatory biomarkers but does not directly assert an allowed relation or reusable standalone entity property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports associations between cannabinoid use and inflammatory biomarkers, which do not directly support an allowed relation or entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_NO_SCHEMA_FACT\",\"reason\":\"The abstract reports associations between cannabinoid use and inflammatory biomarkers but does not directly assert an allowed relation or reusable standalone entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2107,
-        "completion_tokens": 76,
-        "total_tokens": 2183
+        "prompt_tokens": 2124,
+        "completion_tokens": 79,
+        "total_tokens": 2203
       }
     },
     {
@@ -389,28 +366,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:55:55.786898+00:00",
-      "attempt_finished_at": "2026-08-03T02:56:06.712596+00:00",
+      "attempt_started_at": "2026-08-03T03:39:56.349772+00:00",
+      "attempt_finished_at": "2026-08-03T03:40:04.159010+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-f7b0GZ6bdoJeCxVoUqVvgc5l7vSb2",
+      "response_id": "chatcmpl-5999J7dOzsH0vetP8kc4RU7FbuwZx",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
-        "reason_code": "DROP_NO_SCHEMA_FACT",
-        "reason": "The abstract reports treatment effects, biomarkers, and assessment methods but does not directly assert an allowed relation or entity property.",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports neuroimaging correlations and treatment-related clinical changes without asserting an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_NO_SCHEMA_FACT\",\"reason\":\"The abstract reports treatment effects, biomarkers, and assessment methods but does not directly assert an allowed relation or entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports neuroimaging correlations and treatment-related clinical changes without asserting an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2003,
-        "completion_tokens": 75,
-        "total_tokens": 2078
+        "prompt_tokens": 2020,
+        "completion_tokens": 73,
+        "total_tokens": 2093
       }
     },
     {
@@ -432,10 +409,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:56:07.731118+00:00",
-      "attempt_finished_at": "2026-08-03T02:56:20.480361+00:00",
+      "attempt_started_at": "2026-08-03T03:40:05.177842+00:00",
+      "attempt_finished_at": "2026-08-03T03:40:14.698734+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-ee83Gh7gHhlOPrg5fdm04wR46YOK3",
+      "response_id": "chatcmpl-6418HIK3VihfnPr0iFcZNV9hDd9wx",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -443,17 +420,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports risk conditions and incidence ratios for adult invasive pneumococcal disease, but does not directly assert an allowed relation or property.",
+        "reason": "The abstract reports risk conditions and incidence risk for developing adult invasive pneumococcal disease, which do not map to an allowed active relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports risk conditions and incidence ratios for adult invasive pneumococcal disease, but does not directly assert an allowed relation or property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports risk conditions and incidence risk for developing adult invasive pneumococcal disease, which do not map to an allowed active relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2252,
-        "completion_tokens": 90,
-        "total_tokens": 2342
+        "prompt_tokens": 2559,
+        "completion_tokens": 241,
+        "total_tokens": 2800
       }
     },
     {
@@ -473,10 +450,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:56:21.499056+00:00",
-      "attempt_finished_at": "2026-08-03T02:56:30.347723+00:00",
+      "attempt_started_at": "2026-08-03T03:40:15.716007+00:00",
+      "attempt_finished_at": "2026-08-03T03:40:30.931731+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89CKTTEzEecXPqOkf9RF3mwaSmfLO",
+      "response_id": "chatcmpl-cb77qVDeTsFcwPtjOW3ELQL7UMfNK",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -484,25 +461,25 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly describes folic acid as being used to treat erectile dysfunction patients.",
+        "reason": "The abstract explicitly describes folic acid as having potential treatment effects for erectile dysfunction patients.",
         "candidate_relations": [],
         "candidate_properties": [
           {
-            "entity_text": "FA",
+            "entity_text": "folic acid",
             "entity_type": "Medication",
             "property": "indications",
-            "value_text": "ED patients",
-            "evidence_quote": "explore the treatment efficacy of FA for ED patients"
+            "value_text": "treatment of ED patients",
+            "evidence_quote": "FA supplement may have potentially positive effects in the treatment of ED patients"
           }
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract explicitly describes folic acid as being used to treat erectile dysfunction patients.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"FA\",\"entity_type\":\"Medication\",\"property\":\"indications\",\"value_text\":\"ED patients\",\"evidence_quote\":\"explore the treatment efficacy of FA for ED patients\"}]}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly describes folic acid as having potential treatment effects for erectile dysfunction patients.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"folic acid\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"treatment of ED patients\",\n      \"evidence_quote\": \"FA supplement may have potentially positive effects in the treatment of ED patients\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2243,
-        "completion_tokens": 110,
-        "total_tokens": 2353
+        "prompt_tokens": 2260,
+        "completion_tokens": 156,
+        "total_tokens": 2416
       }
     },
     {
@@ -523,10 +500,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:56:31.366732+00:00",
-      "attempt_finished_at": "2026-08-03T02:56:41.496465+00:00",
+      "attempt_started_at": "2026-08-03T03:40:31.949364+00:00",
+      "attempt_finished_at": "2026-08-03T03:41:15.424647+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89CK5AYBlUnvtfahkkjUFojbmfnKO",
+      "response_id": "chatcmpl-672aRJhXCRFf4KYTJH74K3e7laues",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -534,26 +511,25 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract reports that positive symptoms are correlated with psychotic disorders.",
-        "candidate_relations": [
+        "reason": "The abstract reports that an elevated allostatic load index is correlated with worse treatment outcome in psychotic disorders, supporting a prognosis factor.",
+        "candidate_relations": [],
+        "candidate_properties": [
           {
-            "relation": "is_associated_symptom_of",
-            "source_text": "positive symptoms",
-            "source_type": "Symptom",
-            "target_text": "psychotic disorders",
-            "target_type": "Disease",
-            "evidence_quote": "the elevated AL index is correlated with positive symptoms"
+            "entity_text": "psychotic disorders",
+            "entity_type": "Disease",
+            "property": "prognosis_factors",
+            "value_text": "elevated allostatic load index",
+            "evidence_quote": "the elevated AL index is correlated with positive symptoms, symptom severity, worse treatment outcome"
           }
-        ],
-        "candidate_properties": []
+        ]
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract reports that positive symptoms are correlated with psychotic disorders.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"is_associated_symptom_of\",\n      \"source_text\": \"positive symptoms\",\n      \"source_type\": \"Symptom\",\n      \"target_text\": \"psychotic disorders\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"the elevated AL index is correlated with positive symptoms\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract reports that an elevated allostatic load index is correlated with worse treatment outcome in psychotic disorders, supporting a prognosis factor.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"psychotic disorders\",\"entity_type\":\"Disease\",\"property\":\"prognosis_factors\",\"value_text\":\"elevated allostatic load index\",\"evidence_quote\":\"the elevated AL index is correlated with positive symptoms, symptom severity, worse treatment outcome\"}]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 1929,
-        "completion_tokens": 155,
-        "total_tokens": 2084
+        "prompt_tokens": 1946,
+        "completion_tokens": 136,
+        "total_tokens": 2082
       }
     },
     {
@@ -572,43 +548,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:56:42.514334+00:00",
-      "attempt_finished_at": "2026-08-03T02:57:00.533845+00:00",
+      "attempt_started_at": "2026-08-03T03:41:16.440236+00:00",
+      "attempt_finished_at": "2026-08-03T03:41:28.774686+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026u6pTXN2mlVMr6rQ0Djz6P4nv5",
+      "response_id": "chatcmpl-5b81H3GhsBG0966Dyf4KmtSHF5SrX",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies ropinirole as medication used for restless legs syndrome and reports the patient's age.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports hallucinations associated with ropinirole treatment but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "ropinirole",
-            "entity_type": "Medication",
-            "property": "indications",
-            "value_text": "restless legs syndrome",
-            "evidence_quote": "restless legs syndrome for about 1 year, medicated with ropinirole"
-          },
-          {
-            "entity_text": "Female patient",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "89 years old",
-            "evidence_quote": "Female patient, 89 years old"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly identifies ropinirole as medication used for restless legs syndrome and reports the patient's age.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"ropinirole\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"restless legs syndrome\",\n      \"evidence_quote\": \"restless legs syndrome for about 1 year, medicated with ropinirole\"\n    },\n    {\n      \"entity_text\": \"Female patient\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"89 years old\",\n      \"evidence_quote\": \"Female patient, 89 years old\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports hallucinations associated with ropinirole treatment but does not directly assert an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2049,
-        "completion_tokens": 221,
-        "total_tokens": 2270
+        "prompt_tokens": 2360,
+        "completion_tokens": 452,
+        "total_tokens": 2812
       }
     },
     {
@@ -627,10 +588,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:57:01.552987+00:00",
-      "attempt_finished_at": "2026-08-03T02:57:11.067645+00:00",
+      "attempt_started_at": "2026-08-03T03:41:29.791377+00:00",
+      "attempt_finished_at": "2026-08-03T03:41:54.579713+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026YszJ2DHRmHqPwWJtnVT5MWLnr",
+      "response_id": "chatcmpl-c312I6AmgVSY7Hld2kWSWrgmJN8sl",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -638,25 +599,26 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The study explicitly reports that the participants were aged 7 to 10 years.",
-        "candidate_relations": [],
-        "candidate_properties": [
+        "reason": "The abstract directly associates difficulty managing emotions with autism spectrum disorder in children.",
+        "candidate_relations": [
           {
-            "entity_text": "Forty boys diagnosed with ASD",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "7 to 10 years",
-            "evidence_quote": "Forty boys diagnosed with ASD, aged 7 to 10 years"
+            "relation": "is_associated_symptom_of",
+            "source_text": "difficulties in managing emotions",
+            "source_type": "Symptom",
+            "target_text": "autism spectrum disorder (ASD)",
+            "target_type": "Disease",
+            "evidence_quote": "Autistic children may encounter difficulties in managing emotions and executive functions (EFs)"
           }
-        ]
+        ],
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The study explicitly reports that the participants were aged 7 to 10 years.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"Forty boys diagnosed with ASD\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"7 to 10 years\",\"evidence_quote\":\"Forty boys diagnosed with ASD, aged 7 to 10 years\"}]}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract directly associates difficulty managing emotions with autism spectrum disorder in children.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"is_associated_symptom_of\",\n      \"source_text\": \"difficulties in managing emotions\",\n      \"source_type\": \"Symptom\",\n      \"target_text\": \"autism spectrum disorder (ASD)\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"Autistic children may encounter difficulties in managing emotions and executive functions (EFs)\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2017,
-        "completion_tokens": 125,
-        "total_tokens": 2142
+        "prompt_tokens": 2034,
+        "completion_tokens": 170,
+        "total_tokens": 2204
       }
     },
     {
@@ -679,10 +641,10 @@
       "status": "completed_with_validation_errors",
       "success": true,
       "valid_output": false,
-      "attempt_started_at": "2026-08-03T02:57:12.095607+00:00",
-      "attempt_finished_at": "2026-08-03T02:57:26.695242+00:00",
+      "attempt_started_at": "2026-08-03T03:41:55.595604+00:00",
+      "attempt_finished_at": "2026-08-03T03:42:10.040927+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-97bbPWL5M5yQDohPHBqdPGNYh34Nr",
+      "response_id": "chatcmpl-c4d5Qsb6Y24Xwvdr5Xke5YkR45Cs0",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -690,7 +652,7 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract directly describes FASD as involving neurodevelopmental impairments and specifies that the studied children were ages 2-5 years.",
+        "reason": "FASD is explicitly characterized as involving neurodevelopmental impairments.",
         "candidate_relations": [],
         "candidate_properties": [
           {
@@ -699,26 +661,18 @@
             "property": "core_features",
             "value_text": "neurodevelopmental impairments",
             "evidence_quote": "FASD, a common set of neurodevelopmental impairments"
-          },
-          {
-            "entity_text": "children",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "ages 2-5 y",
-            "evidence_quote": "Fifty-two children ... ages 2-5 y"
           }
         ]
       },
       "validation_errors": [
-        "candidate_properties[0].evidence_quote is not an exact input span",
-        "candidate_properties[1].evidence_quote is not an exact input span"
+        "candidate_properties[0].evidence_quote is not an exact input span"
       ],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract directly describes FASD as involving neurodevelopmental impairments and specifies that the studied children were ages 2-5 years.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"fetal alcohol spectrum disorder (FASD)\",\n      \"entity_type\": \"Disease\",\n      \"property\": \"core_features\",\n      \"value_text\": \"neurodevelopmental impairments\",\n      \"evidence_quote\": \"FASD, a common set of neurodevelopmental impairments\"\n    },\n    {\n      \"entity_text\": \"children\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"ages 2-5 y\",\n      \"evidence_quote\": \"Fifty-two children ... ages 2-5 y\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"FASD is explicitly characterized as involving neurodevelopmental impairments.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"fetal alcohol spectrum disorder (FASD)\",\n      \"entity_type\": \"Disease\",\n      \"property\": \"core_features\",\n      \"value_text\": \"neurodevelopmental impairments\",\n      \"evidence_quote\": \"FASD, a common set of neurodevelopmental impairments\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2257,
-        "completion_tokens": 232,
-        "total_tokens": 2489
+        "prompt_tokens": 2274,
+        "completion_tokens": 141,
+        "total_tokens": 2415
       }
     },
     {
@@ -737,10 +691,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:57:27.715449+00:00",
-      "attempt_finished_at": "2026-08-03T02:57:47.175192+00:00",
+      "attempt_started_at": "2026-08-03T03:42:11.058756+00:00",
+      "attempt_finished_at": "2026-08-03T03:42:29.674885+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-a278e21etU5Ia1foLz1u8HbMBAcSI",
+      "response_id": "chatcmpl-8bc6HQiV70BmL3XFqs3Xhrrmb47ve",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -748,25 +702,26 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract directly reports the age distribution of patients with newly-diagnosed OSA.",
-        "candidate_relations": [],
-        "candidate_properties": [
+        "reason": "The abstract states that person-centered care is particularly relevant for patients with multimorbidity.",
+        "candidate_relations": [
           {
-            "entity_text": "Patients with newly-diagnosed OSA",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "mean age 69 years [range: 60-89]",
-            "evidence_quote": "73 patients (mean age 69 years [range: 60-89]; 71% male"
+            "relation": "recommended_for",
+            "source_text": "Person-centered care",
+            "source_type": "Communication Method",
+            "target_text": "patients with multimorbidity",
+            "target_type": "Patient Information",
+            "evidence_quote": "This approach is particularly relevant to care of patients with multimorbidity"
           }
-        ]
+        ],
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract directly reports the age distribution of patients with newly-diagnosed OSA.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"Patients with newly-diagnosed OSA\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"mean age 69 years [range: 60-89]\",\"evidence_quote\":\"73 patients (mean age 69 years [range: 60-89]; 71% male\"}]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract states that person-centered care is particularly relevant for patients with multimorbidity.\",\"candidate_relations\":[{\"relation\":\"recommended_for\",\"source_text\":\"Person-centered care\",\"source_type\":\"Communication Method\",\"target_text\":\"patients with multimorbidity\",\"target_type\":\"Patient Information\",\"evidence_quote\":\"This approach is particularly relevant to care of patients with multimorbidity\"}],\"candidate_properties\":[] }",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2187,
-        "completion_tokens": 138,
-        "total_tokens": 2325
+        "prompt_tokens": 2204,
+        "completion_tokens": 129,
+        "total_tokens": 2333
       }
     },
     {
@@ -785,10 +740,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:57:48.194708+00:00",
-      "attempt_finished_at": "2026-08-03T02:58:07.692043+00:00",
+      "attempt_started_at": "2026-08-03T03:42:30.692632+00:00",
+      "attempt_finished_at": "2026-08-03T03:42:46.844448+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-0bc2PmyKvYZmAHMMBnYbTyopIq0Z1",
+      "response_id": "chatcmpl-8bc6qvrmQETJoP2JHivEXdBK5LZdW",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -796,25 +751,26 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly states that oral iron therapy is recommended for treating maternal iron deficiency anemia.",
-        "candidate_relations": [],
-        "candidate_properties": [
+        "reason": "Guidelines recommend oral iron therapy for treating maternal iron deficiency anemia.",
+        "candidate_relations": [
           {
-            "entity_text": "oral iron therapy",
-            "entity_type": "Medication",
-            "property": "indications",
-            "value_text": "treating IDA",
+            "relation": "first_line_for",
+            "source_text": "oral iron therapy",
+            "source_type": "Medication",
+            "target_text": "IDA",
+            "target_type": "Disease",
             "evidence_quote": "Most national and international guidelines recommend treating IDA with oral iron therapy."
           }
-        ]
+        ],
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states that oral iron therapy is recommended for treating maternal iron deficiency anemia.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"oral iron therapy\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"treating IDA\",\n      \"evidence_quote\": \"Most national and international guidelines recommend treating IDA with oral iron therapy.\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"Guidelines recommend oral iron therapy for treating maternal iron deficiency anemia.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"first_line_for\",\n      \"source_text\": \"oral iron therapy\",\n      \"source_type\": \"Medication\",\n      \"target_text\": \"IDA\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"Most national and international guidelines recommend treating IDA with oral iron therapy.\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2526,
-        "completion_tokens": 155,
-        "total_tokens": 2681
+        "prompt_tokens": 2543,
+        "completion_tokens": 159,
+        "total_tokens": 2702
       }
     },
     {
@@ -833,10 +789,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:58:08.712387+00:00",
-      "attempt_finished_at": "2026-08-03T02:58:16.843212+00:00",
+      "attempt_started_at": "2026-08-03T03:42:47.872016+00:00",
+      "attempt_finished_at": "2026-08-03T03:42:55.128052+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-75ceFB6ZFHYGKVePZIN55lYLEjoYr",
+      "response_id": "chatcmpl-da9aV2RKodD4myqo6AXnbdnQI2PuE",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -844,17 +800,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_NO_SCHEMA_FACT",
-        "reason": "The abstract reports study design and outcomes but does not directly assert an allowed relation or entity property.",
+        "reason": "The abstract reports a probiotic intervention study and postoperative outcomes but does not directly assert an allowed active relation or reusable standalone entity property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract reports study design and outcomes but does not directly assert an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_NO_SCHEMA_FACT\",\"reason\":\"The abstract reports a probiotic intervention study and postoperative outcomes but does not directly assert an allowed active relation or reusable standalone entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2189,
-        "completion_tokens": 83,
-        "total_tokens": 2272
+        "prompt_tokens": 2206,
+        "completion_tokens": 80,
+        "total_tokens": 2286
       }
     },
     {
@@ -874,36 +830,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:58:17.868488+00:00",
-      "attempt_finished_at": "2026-08-03T02:59:29.699494+00:00",
+      "attempt_started_at": "2026-08-03T03:42:56.157661+00:00",
+      "attempt_finished_at": "2026-08-03T03:43:01.489413+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-4202dm6T6DJ2F5DeBtdYupgeZWvgZ",
+      "response_id": "chatcmpl-89CwQx487eIjNHSnb2XfBZ60qfcht",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract directly identifies children as the patient age group for primary nephrotic syndrome.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports effects of a nursing intervention and study outcomes, without asserting an allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "children",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "children",
-            "evidence_quote": "children with primary nephrotic syndrome"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract directly identifies children as the patient age group for primary nephrotic syndrome.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"children\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"children\",\"evidence_quote\":\"children with primary nephrotic syndrome\"}]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports effects of a nursing intervention and study outcomes, without asserting an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2171,
-        "completion_tokens": 106,
-        "total_tokens": 2277
+        "prompt_tokens": 2188,
+        "completion_tokens": 75,
+        "total_tokens": 2263
       }
     },
     {
@@ -922,36 +870,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:59:30.719771+00:00",
-      "attempt_finished_at": "2026-08-03T02:59:38.438737+00:00",
+      "attempt_started_at": "2026-08-03T03:43:02.508828+00:00",
+      "attempt_finished_at": "2026-08-03T03:45:12.977239+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-42028vFkt5FlCrfQemVobxKj2m34U",
+      "response_id": "chatcmpl-2026yVmNYXzHcJFE0jKmS9XRqVUL1",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract identifies an infant age group defined by gestational age.",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports a cord-clamping intervention and physiological outcomes but asserts no allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "infants",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "≥32+0 weeks' gestation",
-            "evidence_quote": "enrolling infants born at ≥32+0 weeks' gestation"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract identifies an infant age group defined by gestational age.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"infants\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"≥32+0 weeks' gestation\",\n      \"evidence_quote\": \"enrolling infants born at ≥32+0 weeks' gestation\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract reports a cord-clamping intervention and physiological outcomes but asserts no allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2159,
-        "completion_tokens": 152,
-        "total_tokens": 2311
+        "prompt_tokens": 2176,
+        "completion_tokens": 84,
+        "total_tokens": 2260
       }
     },
     {
@@ -970,10 +910,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:59:39.456532+00:00",
-      "attempt_finished_at": "2026-08-03T02:59:53.292017+00:00",
+      "attempt_started_at": "2026-08-03T03:45:13.996175+00:00",
+      "attempt_finished_at": "2026-08-03T03:45:27.560212+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89C10dcF9iN5tgTWGqb2nGVCLhZ6p",
+      "response_id": "chatcmpl-d3d8tyJSmKDSqvF5MKyk6IPB9AQ0M",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -981,25 +921,25 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies clozapine as an antipsychotic used for treatment-resistant schizophrenia.",
+        "reason": "Clozapine is explicitly described as an antipsychotic for treatment-resistant schizophrenia.",
         "candidate_relations": [],
         "candidate_properties": [
           {
             "entity_text": "Clozapine",
             "entity_type": "Medication",
             "property": "indications",
-            "value_text": "TRS",
+            "value_text": "Treatment-resistant schizophrenia (TRS)",
             "evidence_quote": "Clozapine, the most effective antipsychotic for TRS"
           }
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly identifies clozapine as an antipsychotic used for treatment-resistant schizophrenia.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Clozapine\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"TRS\",\n      \"evidence_quote\": \"Clozapine, the most effective antipsychotic for TRS\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"Clozapine is explicitly described as an antipsychotic for treatment-resistant schizophrenia.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Clozapine\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"Treatment-resistant schizophrenia (TRS)\",\n      \"evidence_quote\": \"Clozapine, the most effective antipsychotic for TRS\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 1875,
-        "completion_tokens": 139,
-        "total_tokens": 2014
+        "prompt_tokens": 1892,
+        "completion_tokens": 141,
+        "total_tokens": 2033
       }
     },
     {
@@ -1018,28 +958,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T02:59:54.312627+00:00",
-      "attempt_finished_at": "2026-08-03T03:00:01.020592+00:00",
+      "attempt_started_at": "2026-08-03T03:45:28.584190+00:00",
+      "attempt_finished_at": "2026-08-03T03:45:38.202548+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89C12ksVfMkYDeZSHQvpF8awdQNiD",
+      "response_id": "chatcmpl-d3d81pTiCupRQ3guyHnXbjE9ir0D8",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
-        "reason_code": "DROP_NO_SCHEMA_FACT",
-        "reason": "The abstract describes a trial protocol and treatment recommendations but does not directly assert an allowed relation or entity property.",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract mentions CBT-I as first-line treatment for chronic insomnia, but CBT-I is not a Medication and no allowed relation or reusable standalone property applies.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract describes a trial protocol and treatment recommendations but does not directly assert an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract mentions CBT-I as first-line treatment for chronic insomnia, but CBT-I is not a Medication and no allowed relation or reusable standalone property applies.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2076,
+        "prompt_tokens": 2093,
         "completion_tokens": 86,
-        "total_tokens": 2162
+        "total_tokens": 2179
       }
     },
     {
@@ -1055,13 +995,13 @@
       "title_chars": 64,
       "abstract_chars": 1789,
       "abstract_sha256": "9a37ded98089f9976f4630da91748a1cd5cae574b1af34f9d241a4e8674599fb",
-      "status": "completed_with_validation_errors",
+      "status": "completed",
       "success": true,
-      "valid_output": false,
-      "attempt_started_at": "2026-08-03T03:00:02.046807+00:00",
-      "attempt_finished_at": "2026-08-03T03:00:25.335029+00:00",
+      "valid_output": true,
+      "attempt_started_at": "2026-08-03T03:45:39.224865+00:00",
+      "attempt_finished_at": "2026-08-03T03:45:56.503867+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-20265T5j6YGms5kdQrdZ08a55Vtrh",
+      "response_id": "chatcmpl-2026sLjCfkkHdgUIg0dxjzpagbfsj",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1069,27 +1009,25 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly describes alexithymia's defining emotional-processing difficulties.",
+        "reason": "The abstract directly describes alexithymia as difficulty understanding and describing emotions and differentiating feelings from bodily arousal signals.",
         "candidate_relations": [],
         "candidate_properties": [
           {
-            "entity_text": "alexithymia",
-            "entity_type": "Disease",
-            "property": "core_features",
+            "entity_text": "Alexithymia",
+            "entity_type": "Symptom",
+            "property": "description",
             "value_text": "difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal",
-            "evidence_quote": "alexithymia is a psychological construct that describes one's difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal"
+            "evidence_quote": "Alexithymia is a psychological construct that describes one's difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal."
           }
         ]
       },
-      "validation_errors": [
-        "candidate_properties[0].evidence_quote is not an exact input span"
-      ],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly describes alexithymia's defining emotional-processing difficulties.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"alexithymia\",\n      \"entity_type\": \"Disease\",\n      \"property\": \"core_features\",\n      \"value_text\": \"difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal\",\n      \"evidence_quote\": \"alexithymia is a psychological construct that describes one's difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal\"\n    }\n  ]\n}",
+      "validation_errors": [],
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract directly describes alexithymia as difficulty understanding and describing emotions and differentiating feelings from bodily arousal signals.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Alexithymia\",\n      \"entity_type\": \"Symptom\",\n      \"property\": \"description\",\n      \"value_text\": \"difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal\",\n      \"evidence_quote\": \"Alexithymia is a psychological construct that describes one's difficulty in understanding and describing their own emotions as well as differentiating feelings from bodily signals of arousal.\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2096,
-        "completion_tokens": 189,
-        "total_tokens": 2285
+        "prompt_tokens": 2113,
+        "completion_tokens": 199,
+        "total_tokens": 2312
       }
     },
     {
@@ -1108,36 +1046,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:00:26.354877+00:00",
-      "attempt_finished_at": "2026-08-03T03:00:35.484889+00:00",
+      "attempt_started_at": "2026-08-03T03:45:57.605882+00:00",
+      "attempt_finished_at": "2026-08-03T03:46:02.230846+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026GdW3UCIKPXXb2WZ8umXTbxmKJ",
+      "response_id": "chatcmpl-2026QftRcCBJoneV8Dewh79jlKyU1",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract identifies the study population as adults with anxiety disorders.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports a treatment comparison and attention outcomes but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "adult patients with anxiety disorders",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "adult",
-            "evidence_quote": "52 adult patients with anxiety disorders"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract identifies the study population as adults with anxiety disorders.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"adult patients with anxiety disorders\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"adult\",\n      \"evidence_quote\": \"52 adult patients with anxiety disorders\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports a treatment comparison and attention outcomes but does not directly assert an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2100,
-        "completion_tokens": 143,
-        "total_tokens": 2243
+        "prompt_tokens": 2117,
+        "completion_tokens": 87,
+        "total_tokens": 2204
       }
     },
     {
@@ -1163,28 +1093,36 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:00:36.504758+00:00",
-      "attempt_finished_at": "2026-08-03T03:00:48.377819+00:00",
+      "attempt_started_at": "2026-08-03T03:46:03.249292+00:00",
+      "attempt_finished_at": "2026-08-03T03:46:22.544723+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89Clu2EhIRORjpnOipPpSv1C8TsuM",
+      "response_id": "chatcmpl-1fa2hn7ZospQ2AdqrRkJ5S1wH1cg4",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "REVIEW",
-        "reason_code": "REVIEW_AMBIGUOUS_ENTITY_TYPE",
-        "reason": "The abstract explicitly discusses the diagnostic value of “praecox feeling,” but its entity type is unclear because it is a clinician experience rather than a patient symptom or defined diagnostic criterion.",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The Assessment of Clinician’s Subjective Experience (ACSE) is explicitly identified as a validated measure assessing the clinician’s subjective experience during patient evaluation.",
         "candidate_relations": [],
-        "candidate_properties": []
+        "candidate_properties": [
+          {
+            "entity_text": "Assessment of Clinician’s Subjective Experience (ACSE)",
+            "entity_type": "Interview Tool",
+            "property": "key_inquiry_directions",
+            "value_text": "the clinician’s subjective experience during patient evaluation",
+            "evidence_quote": "included a standardized assessment of the clinician’s subjective experience during patient evaluation"
+          }
+        ]
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"REVIEW\",\n  \"reason_code\": \"REVIEW_AMBIGUOUS_ENTITY_TYPE\",\n  \"reason\": \"The abstract explicitly discusses the diagnostic value of “praecox feeling,” but its entity type is unclear because it is a clinician experience rather than a patient symptom or defined diagnostic criterion.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The Assessment of Clinician’s Subjective Experience (ACSE) is explicitly identified as a validated measure assessing the clinician’s subjective experience during patient evaluation.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Assessment of Clinician’s Subjective Experience (ACSE)\",\n      \"entity_type\": \"Interview Tool\",\n      \"property\": \"key_inquiry_directions\",\n      \"value_text\": \"the clinician’s subjective experience during patient evaluation\",\n      \"evidence_quote\": \"included a standardized assessment of the clinician’s subjective experience during patient evaluation\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2057,
-        "completion_tokens": 103,
-        "total_tokens": 2160
+        "prompt_tokens": 2074,
+        "completion_tokens": 187,
+        "total_tokens": 2261
       }
     },
     {
@@ -1204,10 +1142,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:00:49.396457+00:00",
-      "attempt_finished_at": "2026-08-03T03:01:05.524609+00:00",
+      "attempt_started_at": "2026-08-03T03:46:23.565860+00:00",
+      "attempt_finished_at": "2026-08-03T03:46:36.559653+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-621bLI2T4WPjW9hGC7elGvmnJ67JT",
+      "response_id": "chatcmpl-1fa2Gdfbb9xx0a9FDTzmJbVBUFdGI",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1221,19 +1159,19 @@
             "relation": "is_associated_symptom_of",
             "source_text": "working memory",
             "source_type": "Symptom",
-            "target_text": "probable and diagnosed AD",
+            "target_text": "AD",
             "target_type": "Disease",
-            "evidence_quote": "PF is less reported, it is related to working memory, which is also impaired in probable and diagnosed AD."
+            "evidence_quote": "working memory, which is also impaired in probable and diagnosed AD"
           }
         ],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states that working memory is impaired in probable and diagnosed Alzheimer's disease.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"is_associated_symptom_of\",\n      \"source_text\": \"working memory\",\n      \"source_type\": \"Symptom\",\n      \"target_text\": \"probable and diagnosed AD\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"PF is less reported, it is related to working memory, which is also impaired in probable and diagnosed AD.\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states that working memory is impaired in probable and diagnosed Alzheimer's disease.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"is_associated_symptom_of\",\n      \"source_text\": \"working memory\",\n      \"source_type\": \"Symptom\",\n      \"target_text\": \"AD\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"working memory, which is also impaired in probable and diagnosed AD\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2030,
-        "completion_tokens": 181,
+        "prompt_tokens": 2047,
+        "completion_tokens": 164,
         "total_tokens": 2211
       }
     },
@@ -1254,10 +1192,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:01:06.545618+00:00",
-      "attempt_finished_at": "2026-08-03T03:01:20.191771+00:00",
+      "attempt_started_at": "2026-08-03T03:46:37.577333+00:00",
+      "attempt_finished_at": "2026-08-03T03:46:53.719999+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026kASGoWkouN32Vhru9AcwrvJCr",
+      "response_id": "chatcmpl-9988GNxCYfZhCtVDuhesXlEWz7ijO",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1265,32 +1203,32 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly states that Ginkgo biloba extract and donepezil are effective in patients with Alzheimer’s disease.",
+        "reason": "The abstract explicitly reports Ginkgo biloba extract and donepezil as effective in patients with Alzheimer’s disease, supporting their treatment indications.",
         "candidate_relations": [],
         "candidate_properties": [
           {
-            "entity_text": "Ginkgo biloba extract (GBE)",
+            "entity_text": "Ginkgo biloba extract",
             "entity_type": "Medication",
             "property": "indications",
-            "value_text": "Alzheimer’s disease (AD)",
+            "value_text": "Alzheimer’s disease",
             "evidence_quote": "Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD)."
           },
           {
             "entity_text": "donepezil",
             "entity_type": "Medication",
             "property": "indications",
-            "value_text": "Alzheimer’s disease (AD)",
+            "value_text": "Alzheimer’s disease",
             "evidence_quote": "Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD)."
           }
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states that Ginkgo biloba extract and donepezil are effective in patients with Alzheimer’s disease.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Ginkgo biloba extract (GBE)\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"Alzheimer’s disease (AD)\",\n      \"evidence_quote\": \"Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD).\"\n    },\n    {\n      \"entity_text\": \"donepezil\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"indications\",\n      \"value_text\": \"Alzheimer’s disease (AD)\",\n      \"evidence_quote\": \"Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD).\"\n    }\n  ]\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract explicitly reports Ginkgo biloba extract and donepezil as effective in patients with Alzheimer’s disease, supporting their treatment indications.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"Ginkgo biloba extract\",\"entity_type\":\"Medication\",\"property\":\"indications\",\"value_text\":\"Alzheimer’s disease\",\"evidence_quote\":\"Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD).\"},{\"entity_text\":\"donepezil\",\"entity_type\":\"Medication\",\"property\":\"indications\",\"value_text\":\"Alzheimer’s disease\",\"evidence_quote\":\"Ginkgo biloba extract (GBE) and donepezil have been reported to be effective in patients with Alzheimer’s disease (AD).\"}]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2326,
-        "completion_tokens": 261,
-        "total_tokens": 2587
+        "prompt_tokens": 2343,
+        "completion_tokens": 204,
+        "total_tokens": 2547
       }
     },
     {
@@ -1312,36 +1250,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:01:21.214485+00:00",
-      "attempt_finished_at": "2026-08-03T03:01:35.924663+00:00",
+      "attempt_started_at": "2026-08-03T03:46:54.743664+00:00",
+      "attempt_finished_at": "2026-08-03T03:47:04.064357+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-20261O6hjPa60UAMBJbarXg7UVqjz",
+      "response_id": "chatcmpl-2026KCmKP4NdPLqyHII0EXVt1WFxu",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract identifies young people with DS as the study population and explicitly describes them as young people.",
+        "decision": "DROP",
+        "reason_code": "DROP_NONASSERTED_PLAN_ONLY",
+        "reason": "The abstract describes a planned pilot intervention and outcome measurements without asserting an allowed clinical relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "young people with DS",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "young people",
-            "evidence_quote": "Young people with DS and university students will be recruited"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract identifies young people with DS as the study population and explicitly describes them as young people.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"young people with DS\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"young people\",\"evidence_quote\":\"Young people with DS and university students will be recruited\"}]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_NONASSERTED_PLAN_ONLY\",\"reason\":\"The abstract describes a planned pilot intervention and outcome measurements without asserting an allowed clinical relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2231,
-        "completion_tokens": 125,
-        "total_tokens": 2356
+        "prompt_tokens": 2248,
+        "completion_tokens": 75,
+        "total_tokens": 2323
       }
     },
     {
@@ -1361,36 +1291,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:01:36.947852+00:00",
-      "attempt_finished_at": "2026-08-03T03:01:49.744302+00:00",
+      "attempt_started_at": "2026-08-03T03:47:05.082969+00:00",
+      "attempt_finished_at": "2026-08-03T03:47:14.787482+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89CeFukL9zL1OQH9Sn1RuqnRTvuWM",
+      "response_id": "chatcmpl-88bfQkN8HRNb03rwAWGlHCACLMCgl",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract reports the occurrence frequency of sleep disorders across the included trials.",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports sleep disturbances as treatment-related outcomes in prostate cancer but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "sleep disorders",
-            "entity_type": "Symptom",
-            "property": "occurrence_frequency",
-            "value_text": "14 out of 16 trials included",
-            "evidence_quote": "Development of sleep disorders or changes in sleep quality were reported in 14 out of 16 trials included."
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract reports the occurrence frequency of sleep disorders across the included trials.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"sleep disorders\",\n      \"entity_type\": \"Symptom\",\n      \"property\": \"occurrence_frequency\",\n      \"value_text\": \"14 out of 16 trials included\",\n      \"evidence_quote\": \"Development of sleep disorders or changes in sleep quality were reported in 14 out of 16 trials included.\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract reports sleep disturbances as treatment-related outcomes in prostate cancer but does not directly assert an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2262,
-        "completion_tokens": 665,
-        "total_tokens": 2927
+        "prompt_tokens": 2282,
+        "completion_tokens": 497,
+        "total_tokens": 2779
       }
     },
     {
@@ -1409,36 +1331,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:01:50.764370+00:00",
-      "attempt_finished_at": "2026-08-03T03:02:06.951607+00:00",
+      "attempt_started_at": "2026-08-03T03:47:15.806255+00:00",
+      "attempt_finished_at": "2026-08-03T03:47:27.394611+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-f0b2Bp5OizTf7BGxGnB6WgzgT7lxt",
+      "response_id": "chatcmpl-88bf6XPPAlIJc7NmrqF9riVlRwJDT",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "Rapid weight loss following bariatric surgery is identified as a warning condition concerning the potential development of biliary issues.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract discusses bariatric surgery, risk variables, and adverse postoperative outcomes without asserting an allowed relation or reusable standalone entity property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "rapid weight loss following surgery",
-            "entity_type": "Risk Information",
-            "property": "risk_type",
-            "value_text": "potential development of biliary issues",
-            "evidence_quote": "rapid weight loss following surgery raised concerns regarding the potential development of biliary issues"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"Rapid weight loss following bariatric surgery is identified as a warning condition concerning the potential development of biliary issues.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"rapid weight loss following surgery\",\"entity_type\":\"Risk Information\",\"property\":\"risk_type\",\"value_text\":\"potential development of biliary issues\",\"evidence_quote\":\"rapid weight loss following surgery raised concerns regarding the potential development of biliary issues\"}]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract discusses bariatric surgery, risk variables, and adverse postoperative outcomes without asserting an allowed relation or reusable standalone entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2031,
-        "completion_tokens": 138,
-        "total_tokens": 2169
+        "prompt_tokens": 2048,
+        "completion_tokens": 77,
+        "total_tokens": 2125
       }
     },
     {
@@ -1457,10 +1371,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:02:07.973138+00:00",
-      "attempt_finished_at": "2026-08-03T03:02:16.929714+00:00",
+      "attempt_started_at": "2026-08-03T03:47:28.416181+00:00",
+      "attempt_finished_at": "2026-08-03T03:47:43.811016+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-96f2Bc0YP0KahV8JUViqTLY2qm7UZ",
+      "response_id": "chatcmpl-2026dz42rrNaHgXaKNdnUbdgTiGTV",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1468,25 +1382,26 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly states that insomnia is frequently comorbid with mental health conditions in nurses.",
-        "candidate_relations": [],
-        "candidate_properties": [
+        "reason": "The Insomnia Severity Index is explicitly identified as a self-reported outcome measure in an assessment protocol for insomnia.",
+        "candidate_relations": [
           {
-            "entity_text": "Insomnia",
-            "entity_type": "Disease",
-            "property": "comorbidity_types",
-            "value_text": "mental health conditions",
-            "evidence_quote": "Insomnia is a highly prevalent sleep disorder frequently comorbid with mental health conditions in nurses."
+            "relation": "assesses_for",
+            "source_text": "Insomnia Severity Index (ISI)",
+            "source_type": "Interview Tool",
+            "target_text": "insomnia",
+            "target_type": "Disease",
+            "evidence_quote": "self-reported outcome measures, including the Insomnia Severity Index (ISI)"
           }
-        ]
+        ],
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states that insomnia is frequently comorbid with mental health conditions in nurses.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Insomnia\",\n      \"entity_type\": \"Disease\",\n      \"property\": \"comorbidity_types\",\n      \"value_text\": \"mental health conditions\",\n      \"evidence_quote\": \"Insomnia is a highly prevalent sleep disorder frequently comorbid with mental health conditions in nurses.\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The Insomnia Severity Index is explicitly identified as a self-reported outcome measure in an assessment protocol for insomnia.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"assesses_for\",\n      \"source_text\": \"Insomnia Severity Index (ISI)\",\n      \"source_type\": \"Interview Tool\",\n      \"target_text\": \"insomnia\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"self-reported outcome measures, including the Insomnia Severity Index (ISI)\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2249,
-        "completion_tokens": 158,
-        "total_tokens": 2407
+        "prompt_tokens": 2266,
+        "completion_tokens": 170,
+        "total_tokens": 2436
       }
     },
     {
@@ -1505,36 +1420,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:02:17.976873+00:00",
-      "attempt_finished_at": "2026-08-03T03:02:26.238685+00:00",
+      "attempt_started_at": "2026-08-03T03:47:44.831045+00:00",
+      "attempt_finished_at": "2026-08-03T03:47:55.905992+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026KlzmCjU03aVfpZe8hjMF42wFo",
+      "response_id": "chatcmpl-2026hdCgVKQyedNpbyYpc7JP6KK6F",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies the studied population as adults with anxiety disorders.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports intervention efficacy and component comparisons, which do not directly support any allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "adult",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "adult",
-            "evidence_quote": "IMIs for adult anxiety disorders"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly identifies the studied population as adults with anxiety disorders.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"adult\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"adult\",\n      \"evidence_quote\": \"IMIs for adult anxiety disorders\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports intervention efficacy and component comparisons, which do not directly support any allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2130,
-        "completion_tokens": 137,
-        "total_tokens": 2267
+        "prompt_tokens": 2147,
+        "completion_tokens": 86,
+        "total_tokens": 2233
       }
     },
     {
@@ -1550,49 +1457,31 @@
       "title_chars": 112,
       "abstract_chars": 1174,
       "abstract_sha256": "a5b08c47d00ecaf71761fff64e752bd39660467cb27d60412b0eb84c11311a2d",
-      "status": "completed_with_validation_errors",
+      "status": "completed",
       "success": true,
-      "valid_output": false,
-      "attempt_started_at": "2026-08-03T03:02:27.268442+00:00",
-      "attempt_finished_at": "2026-08-03T03:02:35.470345+00:00",
+      "valid_output": true,
+      "attempt_started_at": "2026-08-03T03:47:56.928204+00:00",
+      "attempt_finished_at": "2026-08-03T03:48:01.732485+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-20264JyWVfPiMxpxOAYBsDAD81yjE",
+      "response_id": "chatcmpl-2026c9JGBXvzEvD1XZxX7GeNjxq8M",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly reports age groups for younger and older male prisoners.",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports prevalence estimates and study-cohort characteristics but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "younger ... male prisoners",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "20-49 years",
-            "evidence_quote": "190 younger (20-49 years) and 190 older (50-75 years) male prisoners"
-          },
-          {
-            "entity_text": "older ... male prisoners",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "50-75 years",
-            "evidence_quote": "190 younger (20-49 years) and 190 older (50-75 years) male prisoners"
-          }
-        ]
+        "candidate_properties": []
       },
-      "validation_errors": [
-        "candidate_properties[0].entity_text is not an exact input span",
-        "candidate_properties[1].entity_text is not an exact input span"
-      ],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract explicitly reports age groups for younger and older male prisoners.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"younger ... male prisoners\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"20-49 years\",\"evidence_quote\":\"190 younger (20-49 years) and 190 older (50-75 years) male prisoners\"},{\"entity_text\":\"older ... male prisoners\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"50-75 years\",\"evidence_quote\":\"190 younger (20-49 years) and 190 older (50-75 years) male prisoners\"}]}",
+      "validation_errors": [],
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract reports prevalence estimates and study-cohort characteristics but does not directly assert an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 1959,
-        "completion_tokens": 193,
-        "total_tokens": 2152
+        "prompt_tokens": 1976,
+        "completion_tokens": 87,
+        "total_tokens": 2063
       }
     },
     {
@@ -1611,10 +1500,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:02:36.487628+00:00",
-      "attempt_finished_at": "2026-08-03T03:02:44.089200+00:00",
+      "attempt_started_at": "2026-08-03T03:48:02.751065+00:00",
+      "attempt_finished_at": "2026-08-03T03:48:14.211046+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-6b66gNY6OE0ypGuN23SuatshTa5JK",
+      "response_id": "chatcmpl-fa346Jxn1WPK2vftDYa7xdBTG2ZG6",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1622,17 +1511,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports diagnostic accuracy and comparative recommendations for elastography devices, which do not map to an allowed relation or entity property.",
+        "reason": "The abstract reports diagnostic accuracy comparisons for elastography modalities, which are not represented by an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports diagnostic accuracy and comparative recommendations for elastography devices, which do not map to an allowed relation or entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports diagnostic accuracy comparisons for elastography modalities, which are not represented by an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2208,
-        "completion_tokens": 78,
-        "total_tokens": 2286
+        "prompt_tokens": 2225,
+        "completion_tokens": 76,
+        "total_tokens": 2301
       }
     },
     {
@@ -1653,10 +1542,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:02:45.119485+00:00",
-      "attempt_finished_at": "2026-08-03T03:02:52.158403+00:00",
+      "attempt_started_at": "2026-08-03T03:48:15.231494+00:00",
+      "attempt_finished_at": "2026-08-03T03:48:23.397798+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-6b667nPLdtLB6pzBmFr2ASGKzNh2b",
+      "response_id": "chatcmpl-340f01fH5fm37KMKbLg0PBnTCil5O",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1664,17 +1553,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports comparative efficacy and acceptability of procedures and interventions, which do not directly support an allowed schema relation or entity property.",
+        "reason": "The abstract reports comparative efficacy and tolerability of treatment modalities for major depressive disorder, which does not support an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports comparative efficacy and acceptability of procedures and interventions, which do not directly support an allowed schema relation or entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports comparative efficacy and tolerability of treatment modalities for major depressive disorder, which does not support an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2152,
-        "completion_tokens": 79,
-        "total_tokens": 2231
+        "prompt_tokens": 2169,
+        "completion_tokens": 93,
+        "total_tokens": 2262
       }
     },
     {
@@ -1693,10 +1582,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:02:53.191986+00:00",
-      "attempt_finished_at": "2026-08-03T03:03:06.629356+00:00",
+      "attempt_started_at": "2026-08-03T03:48:24.415632+00:00",
+      "attempt_finished_at": "2026-08-03T03:48:38.130154+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89CSehhNvvBwjJ5T7cFYXueFQ5K0E",
+      "response_id": "chatcmpl-340fJVJRtQKCUXcNCEaiTWXYZ7mYY",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1704,17 +1593,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports associations and mediation among loneliness, paranoia, and interpersonal schemata, but does not directly assert an allowed relation or entity property.",
+        "reason": "The abstract reports associations and mediation among loneliness, paranoia, and social variables without asserting an allowed schema relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports associations and mediation among loneliness, paranoia, and interpersonal schemata, but does not directly assert an allowed relation or entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports associations and mediation among loneliness, paranoia, and social variables without asserting an allowed schema relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 1954,
-        "completion_tokens": 80,
-        "total_tokens": 2034
+        "prompt_tokens": 1971,
+        "completion_tokens": 78,
+        "total_tokens": 2049
       }
     },
     {
@@ -1734,10 +1623,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:03:07.649395+00:00",
-      "attempt_finished_at": "2026-08-03T03:03:30.947803+00:00",
+      "attempt_started_at": "2026-08-03T03:48:39.148975+00:00",
+      "attempt_finished_at": "2026-08-03T03:48:46.511859+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-ba03RiQTME7PJ2XSP3vtStFiMQLZM",
+      "response_id": "chatcmpl-2026a3uXixmk85u8mYmGiO6se606s",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1762,9 +1651,9 @@
       "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly states that sexual dysfunction is associated with fibromyalgia.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"is_associated_symptom_of\",\n      \"source_text\": \"sexual dysfunction\",\n      \"source_type\": \"Symptom\",\n      \"target_text\": \"fibromyalgia\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"sexual dysfunction is also associated with fibromyalgia\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2105,
+        "prompt_tokens": 2122,
         "completion_tokens": 151,
-        "total_tokens": 2256
+        "total_tokens": 2273
       }
     },
     {
@@ -1780,48 +1669,31 @@
       "title_chars": 109,
       "abstract_chars": 2875,
       "abstract_sha256": "6a998ed7bdc899cecbce8c25bef926fc1b2ba613fd70ec31fff8a9c4aa0e6a40",
-      "status": "completed_with_validation_errors",
+      "status": "completed",
       "success": true,
-      "valid_output": false,
-      "attempt_started_at": "2026-08-03T03:03:32.061692+00:00",
-      "attempt_finished_at": "2026-08-03T03:03:45.393874+00:00",
+      "valid_output": true,
+      "attempt_started_at": "2026-08-03T03:48:47.534069+00:00",
+      "attempt_finished_at": "2026-08-03T03:48:55.213849+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-ba03Ttc1sdVgbwppxprp9QmH4qmSh",
+      "response_id": "chatcmpl-fe9ealt3spYqBqlzmGGhAlPFItymS",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies the participants as young adults assessed at 21 years and describes prenatal cocaine exposure as a special condition.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports cohort-specific associations between prenatal cocaine exposure and later outcomes but does not assert an allowed relation or reusable standalone entity property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "young adults",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "21 years",
-            "evidence_quote": "At 21 years, young adults with PCE had lower mean Full Scale"
-          },
-          {
-            "entity_text": "young adults with PCE",
-            "entity_type": "Patient Information",
-            "property": "special_conditions",
-            "value_text": "PCE",
-            "evidence_quote": "young adults with PCE had lower Perceptual Reasoning and Full-Scale IQ scores"
-          }
-        ]
+        "candidate_properties": []
       },
-      "validation_errors": [
-        "candidate_properties[1].evidence_quote is not an exact input span"
-      ],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly identifies the participants as young adults assessed at 21 years and describes prenatal cocaine exposure as a special condition.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"young adults\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"21 years\",\n      \"evidence_quote\": \"At 21 years, young adults with PCE had lower mean Full Scale\"\n    },\n    {\n      \"entity_text\": \"young adults with PCE\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"special_conditions\",\n      \"value_text\": \"PCE\",\n      \"evidence_quote\": \"young adults with PCE had lower Perceptual Reasoning and Full-Scale IQ scores\"\n    }\n  ]\n}",
+      "validation_errors": [],
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports cohort-specific associations between prenatal cocaine exposure and later outcomes but does not assert an allowed relation or reusable standalone entity property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2382,
-        "completion_tokens": 244,
-        "total_tokens": 2626
+        "prompt_tokens": 2399,
+        "completion_tokens": 82,
+        "total_tokens": 2481
       }
     },
     {
@@ -1840,10 +1712,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:03:46.471339+00:00",
-      "attempt_finished_at": "2026-08-03T03:03:56.853218+00:00",
+      "attempt_started_at": "2026-08-03T03:48:56.234576+00:00",
+      "attempt_finished_at": "2026-08-03T03:49:02.054995+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-ba0325nBU4tbg6fhEAv4osZ0Y23vY",
+      "response_id": "chatcmpl-89CCFYvPZwFtb6Aj9rRF7F3u2DPq2",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1851,17 +1723,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports comparative intervention effects and study aims but does not directly assert an allowed relation or entity property.",
+        "reason": "The abstract reports comparative intervention efficacy and study aims without asserting an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports comparative intervention effects and study aims but does not directly assert an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports comparative intervention efficacy and study aims without asserting an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2095,
-        "completion_tokens": 86,
-        "total_tokens": 2181
+        "prompt_tokens": 2112,
+        "completion_tokens": 83,
+        "total_tokens": 2195
       }
     },
     {
@@ -1881,28 +1753,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:03:57.875592+00:00",
-      "attempt_finished_at": "2026-08-03T03:04:04.189976+00:00",
+      "attempt_started_at": "2026-08-03T03:49:03.075752+00:00",
+      "attempt_finished_at": "2026-08-03T03:49:13.925588+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89Cwda9BswobmpUvUwgxZfysnm5ZL",
+      "response_id": "chatcmpl-89CC2O6aLlA7HOhSx2EERVmaCz3Au",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
-        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports effects of a virtual community intervention on adherence and other outcomes, but does not directly assert an allowed relation or entity property.",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract mentions ischemic heart disease and a virtual community intervention but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports effects of a virtual community intervention on adherence and other outcomes, but does not directly assert an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_NO_SCHEMA_FACT\",\"reason\":\"The abstract mentions ischemic heart disease and a virtual community intervention but does not directly assert an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2049,
-        "completion_tokens": 93,
-        "total_tokens": 2142
+        "prompt_tokens": 2066,
+        "completion_tokens": 79,
+        "total_tokens": 2145
       }
     },
     {
@@ -1918,13 +1790,13 @@
       "title_chars": 79,
       "abstract_chars": 1730,
       "abstract_sha256": "156721479518cc9bf436311a9be43c18679db2a2726003820db46bfb253147d6",
-      "status": "completed_with_validation_errors",
+      "status": "completed",
       "success": true,
-      "valid_output": false,
-      "attempt_started_at": "2026-08-03T03:04:05.318093+00:00",
-      "attempt_finished_at": "2026-08-03T03:04:17.816943+00:00",
+      "valid_output": true,
+      "attempt_started_at": "2026-08-03T03:49:14.947528+00:00",
+      "attempt_finished_at": "2026-08-03T03:49:25.668489+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-6a70Tg0DKCyfQmedaUwkrxlWPeWau",
+      "response_id": "chatcmpl-beb5aOoSSEXxT8tdAngZaYRHgOKGP",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -1932,27 +1804,25 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract states that the patients were undergoing medication-assisted treatment with methadone or buprenorphine.",
+        "reason": "The hypothetical purchase tasks are an assessment tool with explicitly described inquiry directions for assessing consumption across prices.",
         "candidate_relations": [],
         "candidate_properties": [
           {
-            "entity_text": "patients",
-            "entity_type": "Patient Information",
-            "property": "medication_history",
-            "value_text": "methadone or buprenorphine",
-            "evidence_quote": "patients ... were undergoing medication-assisted treatment (methadone or buprenorphine)"
+            "entity_text": "hypothetical purchase tasks (HPT)",
+            "entity_type": "Interview Tool",
+            "property": "key_inquiry_directions",
+            "value_text": "assessed consumption at 9 or 17 levels of prices from $0 to $500",
+            "evidence_quote": "hypothetical purchase tasks (HPT) that assessed consumption at 9 or 17 levels of prices from $0 to $500"
           }
         ]
       },
-      "validation_errors": [
-        "candidate_properties[0].evidence_quote is not an exact input span"
-      ],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract states that the patients were undergoing medication-assisted treatment with methadone or buprenorphine.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"patients\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"medication_history\",\n      \"value_text\": \"methadone or buprenorphine\",\n      \"evidence_quote\": \"patients ... were undergoing medication-assisted treatment (methadone or buprenorphine)\"\n    }\n  ]\n}",
+      "validation_errors": [],
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The hypothetical purchase tasks are an assessment tool with explicitly described inquiry directions for assessing consumption across prices.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"hypothetical purchase tasks (HPT)\",\n      \"entity_type\": \"Interview Tool\",\n      \"property\": \"key_inquiry_directions\",\n      \"value_text\": \"assessed consumption at 9 or 17 levels of prices from $0 to $500\",\n      \"evidence_quote\": \"hypothetical purchase tasks (HPT) that assessed consumption at 9 or 17 levels of prices from $0 to $500\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2057,
-        "completion_tokens": 152,
-        "total_tokens": 2209
+        "prompt_tokens": 2074,
+        "completion_tokens": 195,
+        "total_tokens": 2269
       }
     },
     {
@@ -1971,36 +1841,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:04:18.898117+00:00",
-      "attempt_finished_at": "2026-08-03T03:04:29.871654+00:00",
+      "attempt_started_at": "2026-08-03T03:49:26.685813+00:00",
+      "attempt_finished_at": "2026-08-03T03:49:33.433374+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2dce3NoPRC89APYddDlRBdVmTWV3A",
+      "response_id": "chatcmpl-beb521vUKujFNi6JAtwKfc7rVnfVi",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies the patient age group as children aged 6-12 years.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports intervention effectiveness and study characteristics without asserting an allowed relation or reusable standalone entity property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "children who are DHH",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "aged 6-12 years",
-            "evidence_quote": "language interventions for children who are DHH aged 6-12 years"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract explicitly identifies the patient age group as children aged 6-12 years.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"children who are DHH\",\"entity_type\":\"Patient Information\",\"property\":\"age_group\",\"value_text\":\"aged 6-12 years\",\"evidence_quote\":\"language interventions for children who are DHH aged 6-12 years\"}]}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports intervention effectiveness and study characteristics without asserting an allowed relation or reusable standalone entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2372,
-        "completion_tokens": 378,
-        "total_tokens": 2750
+        "prompt_tokens": 2100,
+        "completion_tokens": 83,
+        "total_tokens": 2183
       }
     },
     {
@@ -2019,10 +1881,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:04:30.970352+00:00",
-      "attempt_finished_at": "2026-08-03T03:04:36.939930+00:00",
+      "attempt_started_at": "2026-08-03T03:49:34.456426+00:00",
+      "attempt_finished_at": "2026-08-03T03:49:38.811720+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2dceTQcmOLX8ShpyBOvbE9geWKJqX",
+      "response_id": "chatcmpl-beb5hKV9ohqXN2ReYAfZhvMiJyG4d",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2030,17 +1892,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_NO_SCHEMA_FACT",
-        "reason": "The abstract discusses machine-learning diagnostics and study demographics but does not directly assert an allowed relation or entity property.",
+        "reason": "The abstract discusses machine-learning diagnostic applications and study-population demographics without asserting an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract discusses machine-learning diagnostics and study demographics but does not directly assert an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_NO_SCHEMA_FACT\",\n  \"reason\": \"The abstract discusses machine-learning diagnostic applications and study-population demographics without asserting an allowed relation or reusable standalone property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2363,
-        "completion_tokens": 202,
-        "total_tokens": 2565
+        "prompt_tokens": 2383,
+        "completion_tokens": 136,
+        "total_tokens": 2519
       }
     },
     {
@@ -2059,18 +1921,18 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:04:38.057189+00:00",
-      "attempt_finished_at": "2026-08-03T03:04:50.117977+00:00",
+      "attempt_started_at": "2026-08-03T03:49:43.219101+00:00",
+      "attempt_finished_at": "2026-08-03T03:49:52.966781+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-1eb3MtLLzXfmySHz4usLvYhwKZAtX",
+      "response_id": "chatcmpl-65c8t6Wfl5ZxEzeM2yiALk5hCr2WR",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "REVIEW",
-        "reason_code": "REVIEW_AMBIGUOUS_SCHEMA_FACT",
-        "reason": "The abstract directly characterizes stigmatizing language as harmful, but its mapping to the Communication Method pitfalls_to_avoid property is not explicitly framed as guidance.",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly identifies stigmatizing language as a communication pitfall that can negatively affect providers' attitudes and care toward patients.",
         "candidate_relations": [],
         "candidate_properties": [
           {
@@ -2083,12 +1945,12 @@
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"REVIEW\",\"reason_code\":\"REVIEW_AMBIGUOUS_SCHEMA_FACT\",\"reason\":\"The abstract directly characterizes stigmatizing language as harmful, but its mapping to the Communication Method pitfalls_to_avoid property is not explicitly framed as guidance.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"Stigmatizing language\",\"entity_type\":\"Communication Method\",\"property\":\"pitfalls_to_avoid\",\"value_text\":\"can negatively influence providers' attitudes and care toward patients\",\"evidence_quote\":\"Stigmatizing language can negatively influence providers' attitudes and care toward patients\"}]}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract directly identifies stigmatizing language as a communication pitfall that can negatively affect providers' attitudes and care toward patients.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"Stigmatizing language\",\"entity_type\":\"Communication Method\",\"property\":\"pitfalls_to_avoid\",\"value_text\":\"can negatively influence providers' attitudes and care toward patients\",\"evidence_quote\":\"Stigmatizing language can negatively influence providers' attitudes and care toward patients\"}]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 1994,
-        "completion_tokens": 146,
-        "total_tokens": 2140
+        "prompt_tokens": 2302,
+        "completion_tokens": 523,
+        "total_tokens": 2825
       }
     },
     {
@@ -2108,13 +1970,13 @@
       "title_chars": 117,
       "abstract_chars": 2688,
       "abstract_sha256": "ada3de645e0128cebb9c54dae766bb429bac66a8e875eece9e912518182f3547",
-      "status": "completed",
+      "status": "completed_with_validation_errors",
       "success": true,
-      "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:04:51.232911+00:00",
-      "attempt_finished_at": "2026-08-03T03:05:02.637515+00:00",
+      "valid_output": false,
+      "attempt_started_at": "2026-08-03T03:49:53.986035+00:00",
+      "attempt_finished_at": "2026-08-03T03:50:06.686033+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-89CcNuube9PVMWJyS1TBqwAzJh2nb",
+      "response_id": "chatcmpl-6fa3aQ49oBT1zIkLWy3ZN0CYhf7yZ",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2122,25 +1984,34 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly identifies the study population as adult patients.",
+        "reason": "The abstract explicitly identifies gadopiclenol and gadobenate dimeglumine as MRI contrast-agent medications.",
         "candidate_relations": [],
         "candidate_properties": [
           {
-            "entity_text": "adult patients",
-            "entity_type": "Patient Information",
-            "property": "age_group",
-            "value_text": "adult",
-            "evidence_quote": "Thirteen adult patients were included."
+            "entity_text": "gadopiclenol",
+            "entity_type": "Medication",
+            "property": "generic_name",
+            "value_text": "gadopiclenol",
+            "evidence_quote": "the novel MRI contrast agent gadopiclenol"
+          },
+          {
+            "entity_text": "gadobenate dimeglumine",
+            "entity_type": "Medication",
+            "property": "generic_name",
+            "value_text": "gadobenate dimeglumine",
+            "evidence_quote": "between the MRI contrast agents gadopiclenol and gadobenate dimeglumine"
           }
         ]
       },
-      "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly identifies the study population as adult patients.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"adult patients\",\n      \"entity_type\": \"Patient Information\",\n      \"property\": \"age_group\",\n      \"value_text\": \"adult\",\n      \"evidence_quote\": \"Thirteen adult patients were included.\"\n    }\n  ]\n}",
+      "validation_errors": [
+        "candidate_properties[0].evidence_quote is not an exact input span"
+      ],
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract explicitly identifies gadopiclenol and gadobenate dimeglumine as MRI contrast-agent medications.\",\"candidate_relations\":[],\"candidate_properties\":[{\"entity_text\":\"gadopiclenol\",\"entity_type\":\"Medication\",\"property\":\"generic_name\",\"value_text\":\"gadopiclenol\",\"evidence_quote\":\"the novel MRI contrast agent gadopiclenol\"},{\"entity_text\":\"gadobenate dimeglumine\",\"entity_type\":\"Medication\",\"property\":\"generic_name\",\"value_text\":\"gadobenate dimeglumine\",\"evidence_quote\":\"between the MRI contrast agents gadopiclenol and gadobenate dimeglumine\"}]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2366,
-        "completion_tokens": 136,
-        "total_tokens": 2502
+        "prompt_tokens": 2677,
+        "completion_tokens": 642,
+        "total_tokens": 3319
       }
     },
     {
@@ -2161,10 +2032,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:05:03.739999+00:00",
-      "attempt_finished_at": "2026-08-03T03:05:11.159693+00:00",
+      "attempt_started_at": "2026-08-03T03:50:07.705029+00:00",
+      "attempt_finished_at": "2026-08-03T03:50:22.685385+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-8b9fHUrUnNWbWM5usqy8BqvuyxOl3",
+      "response_id": "chatcmpl-8b78lNFsSaMHRZz3umnsrl4CrvjHv",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2172,8 +2043,16 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The Patient Health Questionnaire-9 is explicitly used to measure depressive symptoms.",
+        "reason": "The abstract explicitly reports frequent co-occurrence of depression with age-related eye disease and states that the Patient Health Questionnaire-9 measures depressive symptoms.",
         "candidate_relations": [
+          {
+            "relation": "co_occurs_with_frequency",
+            "source_text": "Depression",
+            "source_type": "Disease",
+            "target_text": "age-related eye disease",
+            "target_type": "Disease",
+            "evidence_quote": "Depression is very common in people with age-related eye disease"
+          },
           {
             "relation": "assesses_for",
             "source_text": "Patient Health Questionnaire-9",
@@ -2186,12 +2065,12 @@
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The Patient Health Questionnaire-9 is explicitly used to measure depressive symptoms.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"assesses_for\",\n      \"source_text\": \"Patient Health Questionnaire-9\",\n      \"source_type\": \"Interview Tool\",\n      \"target_text\": \"depressive symptoms\",\n      \"target_type\": \"Symptom\",\n      \"evidence_quote\": \"depressive symptoms as measured by the Patient Health Questionnaire-9\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly reports frequent co-occurrence of depression with age-related eye disease and states that the Patient Health Questionnaire-9 measures depressive symptoms.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"co_occurs_with_frequency\",\n      \"source_text\": \"Depression\",\n      \"source_type\": \"Disease\",\n      \"target_text\": \"age-related eye disease\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"Depression is very common in people with age-related eye disease\"\n    },\n    {\n      \"relation\": \"assesses_for\",\n      \"source_text\": \"Patient Health Questionnaire-9\",\n      \"source_type\": \"Interview Tool\",\n      \"target_text\": \"depressive symptoms\",\n      \"target_type\": \"Symptom\",\n      \"evidence_quote\": \"depressive symptoms as measured by the Patient Health Questionnaire-9\"\n    }\n  ],\n  \"candidate_properties\": []\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2076,
-        "completion_tokens": 161,
-        "total_tokens": 2237
+        "prompt_tokens": 2093,
+        "completion_tokens": 266,
+        "total_tokens": 2359
       }
     },
     {
@@ -2213,13 +2092,13 @@
       "title_chars": 147,
       "abstract_chars": 2012,
       "abstract_sha256": "3d73cbc2cdfff1036bcf2b2395530032d01ed6c86099388870b8afef3a6f2eb5",
-      "status": "completed_with_validation_errors",
+      "status": "completed",
       "success": true,
-      "valid_output": false,
-      "attempt_started_at": "2026-08-03T03:05:12.208419+00:00",
-      "attempt_finished_at": "2026-08-03T03:05:25.004398+00:00",
+      "valid_output": true,
+      "attempt_started_at": "2026-08-03T03:50:23.704519+00:00",
+      "attempt_finished_at": "2026-08-03T03:51:17.124039+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-2026jtrdv3c7nzecmuRzkBUe6PfD0",
+      "response_id": "chatcmpl-c85bhGXMojRp07Ta50dnhYatIXsnL",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2227,7 +2106,7 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract identifies cannabidiol as CBD and explicitly associates BPSD with vascular dementia.",
+        "reason": "The abstract explicitly associates behavioral and psychological symptoms of dementia with vascular dementia and maps cannabidiol to the abbreviation CBD.",
         "candidate_relations": [
           {
             "relation": "is_associated_symptom_of",
@@ -2235,28 +2114,26 @@
             "source_type": "Symptom",
             "target_text": "Vascular dementia (VaD)",
             "target_type": "Disease",
-            "evidence_quote": "Vascular dementia (VaD) is ... frequently associated with behavioral and psychological symptoms of dementia (BPSD)"
+            "evidence_quote": "Vascular dementia (VaD) is the second leading cause of major neurocognitive disorder and is frequently associated with behavioral and psychological symptoms of dementia (BPSD)"
           }
         ],
         "candidate_properties": [
           {
-            "entity_text": "CBD",
+            "entity_text": "Cannabidiol (CBD)",
             "entity_type": "Medication",
             "property": "generic_name",
-            "value_text": "Cannabidiol",
+            "value_text": "CBD",
             "evidence_quote": "Cannabidiol (CBD), a non-psychoactive phytocannabinoid"
           }
         ]
       },
-      "validation_errors": [
-        "candidate_relations[0].evidence_quote is not an exact input span"
-      ],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract identifies cannabidiol as CBD and explicitly associates BPSD with vascular dementia.\",\n  \"candidate_relations\": [\n    {\n      \"relation\": \"is_associated_symptom_of\",\n      \"source_text\": \"behavioral and psychological symptoms of dementia (BPSD)\",\n      \"source_type\": \"Symptom\",\n      \"target_text\": \"Vascular dementia (VaD)\",\n      \"target_type\": \"Disease\",\n      \"evidence_quote\": \"Vascular dementia (VaD) is ... frequently associated with behavioral and psychological symptoms of dementia (BPSD)\"\n    }\n  ],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"CBD\",\n      \"entity_type\": \"Medication\",\n      \"property\": \"generic_name\",\n      \"value_text\": \"Cannabidiol\",\n      \"evidence_quote\": \"Cannabidiol (CBD), a non-psychoactive phytocannabinoid\"\n    }\n  ]\n}",
+      "validation_errors": [],
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"KEEP\",\"reason_code\":\"KEEP_SUPPORTED_SCHEMA_FACT\",\"reason\":\"The abstract explicitly associates behavioral and psychological symptoms of dementia with vascular dementia and maps cannabidiol to the abbreviation CBD.\",\"candidate_relations\":[{\"relation\":\"is_associated_symptom_of\",\"source_text\":\"behavioral and psychological symptoms of dementia (BPSD)\",\"source_type\":\"Symptom\",\"target_text\":\"Vascular dementia (VaD)\",\"target_type\":\"Disease\",\"evidence_quote\":\"Vascular dementia (VaD) is the second leading cause of major neurocognitive disorder and is frequently associated with behavioral and psychological symptoms of dementia (BPSD)\"}],\"candidate_properties\":[{\"entity_text\":\"Cannabidiol (CBD)\",\"entity_type\":\"Medication\",\"property\":\"generic_name\",\"value_text\":\"CBD\",\"evidence_quote\":\"Cannabidiol (CBD), a non-psychoactive phytocannabinoid\"}]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2196,
-        "completion_tokens": 243,
-        "total_tokens": 2439
+        "prompt_tokens": 2213,
+        "completion_tokens": 208,
+        "total_tokens": 2421
       }
     },
     {
@@ -2275,10 +2152,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:05:26.044609+00:00",
-      "attempt_finished_at": "2026-08-03T03:05:31.134555+00:00",
+      "attempt_started_at": "2026-08-03T03:51:18.144265+00:00",
+      "attempt_finished_at": "2026-08-03T03:51:25.667657+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-314dcqONEQrwFGPY3SXSMZKUEOIoa",
+      "response_id": "chatcmpl-23f7ct1zvQZ06UgL1sVoSaqUYyEt9",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2286,17 +2163,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
-        "reason": "The abstract reports associations between postoperative conditions and inflammatory biomarkers, but these findings do not directly support an allowed relation or entity property.",
+        "reason": "The abstract reports correlations between postoperative conditions and inflammatory biomarker concentrations, which do not map to an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_UNSUPPORTED_FACT_TYPE\",\n  \"reason\": \"The abstract reports associations between postoperative conditions and inflammatory biomarkers, but these findings do not directly support an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports correlations between postoperative conditions and inflammatory biomarker concentrations, which do not map to an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2480,
-        "completion_tokens": 227,
-        "total_tokens": 2707
+        "prompt_tokens": 2207,
+        "completion_tokens": 79,
+        "total_tokens": 2286
       }
     },
     {
@@ -2315,10 +2192,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:05:32.167106+00:00",
-      "attempt_finished_at": "2026-08-03T03:05:47.480045+00:00",
+      "attempt_started_at": "2026-08-03T03:51:30.128866+00:00",
+      "attempt_finished_at": "2026-08-03T03:51:40.498819+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-6a70LLTynkQaXgAjfFk8OSIlfNrCg",
+      "response_id": "chatcmpl-2026N2gu2zA66XVSqKCaQQzbXcTUB",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2326,7 +2203,7 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "KEEP",
         "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The abstract explicitly defines benign ethnic neutropenia by a neutrophil count threshold in healthy individuals.",
+        "reason": "The abstract directly defines benign ethnic neutropenia by a reusable neutrophil-count feature.",
         "candidate_relations": [],
         "candidate_properties": [
           {
@@ -2339,12 +2216,12 @@
         ]
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract explicitly defines benign ethnic neutropenia by a neutrophil count threshold in healthy individuals.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Benign ethnic neutropenia (BEN)\",\n      \"entity_type\": \"Disease\",\n      \"property\": \"core_features\",\n      \"value_text\": \"a neutrophil count of <1.5×109 cells/L in healthy individuals\",\n      \"evidence_quote\": \"Benign ethnic neutropenia (BEN) is defined as a neutrophil count of <1.5×109 cells/L in healthy individuals\"\n    }\n  ]\n}",
+      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The abstract directly defines benign ethnic neutropenia by a reusable neutrophil-count feature.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"Benign ethnic neutropenia (BEN)\",\n      \"entity_type\": \"Disease\",\n      \"property\": \"core_features\",\n      \"value_text\": \"a neutrophil count of <1.5×109 cells/L in healthy individuals\",\n      \"evidence_quote\": \"Benign ethnic neutropenia (BEN) is defined as a neutrophil count of <1.5×109 cells/L in healthy individuals\"\n    }\n  ]\n}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2581,
-        "completion_tokens": 191,
-        "total_tokens": 2772
+        "prompt_tokens": 2891,
+        "completion_tokens": 521,
+        "total_tokens": 3412
       }
     },
     {
@@ -2365,10 +2242,10 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:05:48.619532+00:00",
-      "attempt_finished_at": "2026-08-03T03:05:53.910702+00:00",
+      "attempt_started_at": "2026-08-03T03:51:41.519188+00:00",
+      "attempt_finished_at": "2026-08-03T03:51:47.622951+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-6a70zasK0aZbJYmKKJe4MpW19s4j9",
+      "response_id": "chatcmpl-2026QGGChOKnk7SoHlsRpHGekAioh",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
@@ -2376,17 +2253,17 @@
         "schema_version": "2.0.0-draft.2",
         "decision": "DROP",
         "reason_code": "DROP_ENTITY_ONLY",
-        "reason": "The abstract mentions major depressive disorder and symptom-tracking tools but does not directly assert an allowed relation or entity property.",
+        "reason": "The abstract mentions major depressive disorder and the PHQ-8 but does not directly assert an allowed relation or reusable standalone property.",
         "candidate_relations": [],
         "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"DROP\",\n  \"reason_code\": \"DROP_ENTITY_ONLY\",\n  \"reason\": \"The abstract mentions major depressive disorder and symptom-tracking tools but does not directly assert an allowed relation or entity property.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": []\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_ENTITY_ONLY\",\"reason\":\"The abstract mentions major depressive disorder and the PHQ-8 but does not directly assert an allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2669,
-        "completion_tokens": 229,
-        "total_tokens": 2898
+        "prompt_tokens": 2402,
+        "completion_tokens": 77,
+        "total_tokens": 2479
       }
     },
     {
@@ -2405,36 +2282,28 @@
       "status": "completed",
       "success": true,
       "valid_output": true,
-      "attempt_started_at": "2026-08-03T03:05:54.964794+00:00",
-      "attempt_finished_at": "2026-08-03T03:06:13.270039+00:00",
+      "attempt_started_at": "2026-08-03T03:51:48.645520+00:00",
+      "attempt_finished_at": "2026-08-03T03:51:57.542642+00:00",
       "model": "gpt-5.6-luna",
-      "response_id": "chatcmpl-6a70eN75qN3nqnf2CoFfbP3cRVnLk",
+      "response_id": "chatcmpl-a4e9eVxKCugpXC7vkblVDpVtSdoiX",
       "response_model": "gpt-5.6-luna",
       "finish_reason": "stop",
       "strict_json_response": true,
       "output": {
         "schema_version": "2.0.0-draft.2",
-        "decision": "KEEP",
-        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
-        "reason": "The review directly lists manifestations included under increased psychological distress.",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports associations between food insecurity and mental health outcomes, but does not directly assert any allowed relation or reusable standalone property.",
         "candidate_relations": [],
-        "candidate_properties": [
-          {
-            "entity_text": "psychological distress",
-            "entity_type": "Symptom",
-            "property": "manifestations",
-            "value_text": "anxiety, sleeplessness, intellectual disability, general mental, and emotional instability",
-            "evidence_quote": "increased psychological distress including anxiety, sleeplessness, intellectual disability, general mental, and emotional instability"
-          }
-        ]
+        "candidate_properties": []
       },
       "validation_errors": [],
-      "raw_response": "{\n  \"schema_version\": \"2.0.0-draft.2\",\n  \"decision\": \"KEEP\",\n  \"reason_code\": \"KEEP_SUPPORTED_SCHEMA_FACT\",\n  \"reason\": \"The review directly lists manifestations included under increased psychological distress.\",\n  \"candidate_relations\": [],\n  \"candidate_properties\": [\n    {\n      \"entity_text\": \"psychological distress\",\n      \"entity_type\": \"Symptom\",\n      \"property\": \"manifestations\",\n      \"value_text\": \"anxiety, sleeplessness, intellectual disability, general mental, and emotional instability\",\n      \"evidence_quote\": \"increased psychological distress including anxiety, sleeplessness, intellectual disability, general mental, and emotional instability\"\n    }\n  ]\n}",
+      "raw_response": "{\"schema_version\":\"2.0.0-draft.2\",\"decision\":\"DROP\",\"reason_code\":\"DROP_UNSUPPORTED_FACT_TYPE\",\"reason\":\"The abstract reports associations between food insecurity and mental health outcomes, but does not directly assert any allowed relation or reusable standalone property.\",\"candidate_relations\":[],\"candidate_properties\":[]}",
       "reasoning_content": "",
       "usage": {
-        "prompt_tokens": 2089,
-        "completion_tokens": 159,
-        "total_tokens": 2248
+        "prompt_tokens": 2106,
+        "completion_tokens": 79,
+        "total_tokens": 2185
       }
     }
   ]
