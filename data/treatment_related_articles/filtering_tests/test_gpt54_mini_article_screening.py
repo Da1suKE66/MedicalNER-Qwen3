@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Screen the 22 treatment abstracts with gpt-5.4-mini.
+"""Screen the 22 treatment abstracts for schema facts with gpt-5.6-luna.
 
 The script sends at most one request per pending sample, never retries
 automatically, and atomically checkpoints a single complete JSON artifact after
@@ -22,93 +22,42 @@ api_key = "sk-SCP0FiLRcsRfCwUX0b4aB1B512E94075913c8f0d2d273b38"
 api_base = "https://api-2.xi-ai.cn/v1"
 
 
-MODEL_NAME = "gpt-5.6-sol"
+MODEL_NAME = "gpt-5.6-luna"
 AUTOMATIC_RETRIES = 0
+ARTIFACT_SCHEMA_VERSION = "treatment-article-screening-run-v2"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parents[1]
+ARTICLE_DIR = SCRIPT_DIR.parent
+REPO_ROOT = SCRIPT_DIR.parents[2]
 SOURCE_PATH = (
-    SCRIPT_DIR
+    ARTICLE_DIR
     / "treatment_related_articles_predict_22_gemini_completed_llamafactory.json"
 )
-MANIFEST_PATH = SCRIPT_DIR / "treatment_related_articles_predict_22_manifest.json"
+MANIFEST_PATH = ARTICLE_DIR / "treatment_related_articles_predict_22_manifest.json"
 SYSTEM_PROMPT_PATH = REPO_ROOT / "schemas" / "treatment_article_kg_screening_prompt.md"
+KG_SCHEMA_PATH = REPO_ROOT / "schemas" / "v2.0.0" / "schema.json"
 OUTPUT_PATH = (
-    SCRIPT_DIR / "treatment_related_articles_screening_gpt_5_4_mini_22_v2.json"
+    SCRIPT_DIR
+    / "treatment_related_articles_screening_gpt_5_6_luna_22_schema_facts.json"
 )
 
 MEDICAL_TEXT_MARKER = "Medical text:\n"
 
-ENTITY_TYPES = {
-    "Disease",
-    "Symptom",
-    "Diagnostic Criteria",
-    "Interview Tool",
-    "Patient Information",
-    "Medication",
-    "Communication Method",
-    "Risk Information",
-}
-
-RELATION_PAIRS = {
-    "subsumes": {
-        ("Disease", "Disease"),
-        ("Symptom", "Symptom"),
-    },
-    "differentiates_from": {("Disease", "Disease")},
-    "co_occurs_with_frequency": {("Disease", "Disease")},
-    "associated_with_poor_prognosis_in": {
-        ("Disease", "Disease"),
-        ("Symptom", "Disease"),
-        ("Patient Information", "Disease"),
-    },
-    "is_core_symptom_of": {("Symptom", "Disease")},
-    "is_associated_symptom_of": {("Symptom", "Disease")},
-    "required_for_diagnosis_of": {("Diagnostic Criteria", "Disease")},
-    "supports_subtyping_of": {
-        ("Diagnostic Criteria", "Disease"),
-        ("Symptom", "Disease"),
-    },
-    "first_line_for": {("Medication", "Disease")},
-    "informed_by_patient_demographics": {
-        ("Interview Tool", "Patient Information")
-    },
-    "affects_diagnosis_of": {("Patient Information", "Disease")},
-    "must_be_ruled_out_for": {("Disease", "Disease")},
-    "excludes_diagnosis_of": {
-        ("Diagnostic Criteria", "Disease"),
-        ("Symptom", "Disease"),
-    },
-    "somatic_cause_of": {("Disease", "Disease")},
-    "assesses_for": {
-        ("Interview Tool", "Disease"),
-        ("Interview Tool", "Symptom"),
-    },
-    "recommended_for": {
-        ("Communication Method", "Disease"),
-        ("Communication Method", "Patient Information"),
-    },
-    "triggers_alert_when": {
-        ("Risk Information", "Disease"),
-        ("Risk Information", "Symptom"),
-    },
-}
-
 REASON_CODES = {
-    "KEEP_SUPPORTED_ACTIVE_RELATION",
-    "REVIEW_AMBIGUOUS_RELATION",
+    "KEEP_SUPPORTED_SCHEMA_FACT",
+    "REVIEW_AMBIGUOUS_SCHEMA_FACT",
     "REVIEW_AMBIGUOUS_ENTITY_TYPE",
     "REVIEW_UNCLEAR_ASSERTION_STATUS",
     "REVIEW_CONTRADICTORY_EVIDENCE",
     "REVIEW_INCOMPLETE_OR_CORRUPTED_TEXT",
-    "DROP_NO_ACTIVE_RELATION",
+    "DROP_NO_SCHEMA_FACT",
     "DROP_ENTITY_ONLY",
-    "DROP_UNSUPPORTED_RELATION_TYPE",
+    "DROP_UNSUPPORTED_FACT_TYPE",
     "DROP_NONASSERTED_PLAN_ONLY",
     "DROP_OFF_TOPIC_OR_INSUFFICIENT_TEXT",
 }
 
-CANDIDATE_KEYS = {
+RELATION_CANDIDATE_KEYS = {
     "relation",
     "source_text",
     "source_type",
@@ -116,6 +65,67 @@ CANDIDATE_KEYS = {
     "target_type",
     "evidence_quote",
 }
+
+PROPERTY_CANDIDATE_KEYS = {
+    "entity_text",
+    "entity_type",
+    "property",
+    "value_text",
+    "evidence_quote",
+}
+
+
+def load_schema_contract(
+    path: Path,
+) -> tuple[str, dict[str, set[str]], dict[str, set[tuple[str, str]]]]:
+    schema = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(schema, dict) or not isinstance(schema.get("schema_version"), str):
+        raise ValueError(f"Invalid KG schema: {path}")
+
+    entity_specs = schema.get("entity_types")
+    if not isinstance(entity_specs, dict) or not entity_specs:
+        raise ValueError(f"KG schema has no entity_types object: {path}")
+    entity_properties: dict[str, set[str]] = {}
+    for entity_type, spec in entity_specs.items():
+        properties = spec.get("properties") if isinstance(spec, dict) else None
+        if (
+            not isinstance(entity_type, str)
+            or not isinstance(properties, list)
+            or not all(isinstance(item, str) for item in properties)
+        ):
+            raise ValueError(f"Invalid entity property contract for {entity_type!r}")
+        entity_properties[entity_type] = set(properties)
+
+    relation_specs = schema.get("relation_types")
+    if not isinstance(relation_specs, dict):
+        raise ValueError(f"KG schema has no relation_types object: {path}")
+    relation_pairs: dict[str, set[tuple[str, str]]] = {}
+    for relation, spec in relation_specs.items():
+        if not isinstance(spec, dict) or spec.get("status") != "active":
+            continue
+        raw_pairs = spec.get("allowed_pairs")
+        if raw_pairs is None:
+            sources = spec.get("source")
+            targets = spec.get("target")
+            if not isinstance(sources, list) or not isinstance(targets, list):
+                raise ValueError(f"Active relation {relation!r} has no type contract")
+            raw_pairs = [[source, target] for source in sources for target in targets]
+        pairs = {
+            (pair[0], pair[1])
+            for pair in raw_pairs
+            if isinstance(pair, list)
+            and len(pair) == 2
+            and all(isinstance(item, str) for item in pair)
+        }
+        if not pairs or len(pairs) != len(raw_pairs):
+            raise ValueError(f"Invalid allowed pairs for active relation {relation!r}")
+        relation_pairs[relation] = pairs
+
+    return schema["schema_version"], entity_properties, relation_pairs
+
+
+SCHEMA_VERSION, ENTITY_PROPERTIES, RELATION_PAIRS = load_schema_contract(KG_SCHEMA_PATH)
+ENTITY_TYPES = set(ENTITY_PROPERTIES)
 
 
 def utc_now() -> str:
@@ -265,6 +275,7 @@ def validate_output(
         "reason_code",
         "reason",
         "candidate_relations",
+        "candidate_properties",
     }
     missing_keys = sorted(required_keys - set(output))
     extra_keys = sorted(set(output) - required_keys)
@@ -273,13 +284,13 @@ def validate_output(
     if extra_keys:
         errors.append(f"unexpected top-level keys: {extra_keys}")
 
-    if output.get("schema_version") != "2.0.0-draft.2":
-        errors.append("schema_version must be '2.0.0-draft.2'")
+    if output.get("schema_version") != SCHEMA_VERSION:
+        errors.append(f"schema_version must be {SCHEMA_VERSION!r}")
     decision = output.get("decision")
-    if decision not in {"KEEP", "REVIEW", "DROP"}:
+    if not isinstance(decision, str) or decision not in {"KEEP", "REVIEW", "DROP"}:
         errors.append("decision must be KEEP, REVIEW, or DROP")
     reason_code = output.get("reason_code")
-    if reason_code not in REASON_CODES:
+    if not isinstance(reason_code, str) or reason_code not in REASON_CODES:
         errors.append("reason_code is not allowed")
     if isinstance(decision, str) and isinstance(reason_code, str):
         if not reason_code.startswith(decision + "_"):
@@ -287,25 +298,33 @@ def validate_output(
     if not isinstance(output.get("reason"), str) or not output.get("reason", "").strip():
         errors.append("reason must be a non-empty string")
 
-    candidates = output.get("candidate_relations")
-    if not isinstance(candidates, list):
+    relation_candidates = output.get("candidate_relations")
+    property_candidates = output.get("candidate_properties")
+    relations_are_list = isinstance(relation_candidates, list)
+    properties_are_list = isinstance(property_candidates, list)
+    if not relations_are_list:
         errors.append("candidate_relations must be a list")
-        return errors
-    if len(candidates) > 3:
-        errors.append("candidate_relations contains more than three items")
-    if decision == "KEEP" and not 1 <= len(candidates) <= 3:
-        errors.append("KEEP must contain one to three candidate relations")
-    if decision == "DROP" and candidates:
-        errors.append("DROP must contain an empty candidate_relations list")
+        relation_candidates = []
+    if not properties_are_list:
+        errors.append("candidate_properties must be a list")
+        property_candidates = []
+
+    candidate_count = len(relation_candidates) + len(property_candidates)
+    if candidate_count > 3:
+        errors.append("candidate arrays contain more than three total items")
+    if decision == "KEEP" and not 1 <= candidate_count <= 3:
+        errors.append("KEEP must contain one to three total candidates")
+    if decision == "DROP" and candidate_count:
+        errors.append("DROP must contain two empty candidate arrays")
 
     evidence_source = title + "\n" + abstract
-    for position, candidate in enumerate(candidates):
+    for position, candidate in enumerate(relation_candidates):
         prefix = f"candidate_relations[{position}]"
         if not isinstance(candidate, dict):
             errors.append(f"{prefix} must be an object")
             continue
-        missing = sorted(CANDIDATE_KEYS - set(candidate))
-        extra = sorted(set(candidate) - CANDIDATE_KEYS)
+        missing = sorted(RELATION_CANDIDATE_KEYS - set(candidate))
+        extra = sorted(set(candidate) - RELATION_CANDIDATE_KEYS)
         if missing:
             errors.append(f"{prefix} missing keys: {missing}")
         if extra:
@@ -313,21 +332,54 @@ def validate_output(
         relation = candidate.get("relation")
         source_type = candidate.get("source_type")
         target_type = candidate.get("target_type")
-        if relation not in RELATION_PAIRS:
+        if not isinstance(relation, str) or relation not in RELATION_PAIRS:
             errors.append(f"{prefix}.relation is not allowed")
-        if source_type not in ENTITY_TYPES:
+        if not isinstance(source_type, str) or source_type not in ENTITY_TYPES:
             errors.append(f"{prefix}.source_type is not allowed")
-        if target_type not in ENTITY_TYPES:
+        if not isinstance(target_type, str) or target_type not in ENTITY_TYPES:
             errors.append(f"{prefix}.target_type is not allowed")
-        if relation in RELATION_PAIRS and (source_type, target_type) not in RELATION_PAIRS[relation]:
+        if (
+            isinstance(relation, str)
+            and relation in RELATION_PAIRS
+            and isinstance(source_type, str)
+            and isinstance(target_type, str)
+            and (source_type, target_type) not in RELATION_PAIRS[relation]
+        ):
             errors.append(f"{prefix} has an invalid source/target type pair")
         for field in ("source_text", "target_text", "evidence_quote"):
             value = candidate.get(field)
             if not isinstance(value, str) or not value.strip():
                 errors.append(f"{prefix}.{field} must be a non-empty string")
-        evidence = candidate.get("evidence_quote")
-        if isinstance(evidence, str) and evidence not in evidence_source:
-            errors.append(f"{prefix}.evidence_quote is not an exact input quote")
+            elif value not in evidence_source:
+                errors.append(f"{prefix}.{field} is not an exact input span")
+
+    for position, candidate in enumerate(property_candidates):
+        prefix = f"candidate_properties[{position}]"
+        if not isinstance(candidate, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+        missing = sorted(PROPERTY_CANDIDATE_KEYS - set(candidate))
+        extra = sorted(set(candidate) - PROPERTY_CANDIDATE_KEYS)
+        if missing:
+            errors.append(f"{prefix} missing keys: {missing}")
+        if extra:
+            errors.append(f"{prefix} has unexpected keys: {extra}")
+
+        entity_type = candidate.get("entity_type")
+        property_name = candidate.get("property")
+        if not isinstance(entity_type, str) or entity_type not in ENTITY_TYPES:
+            errors.append(f"{prefix}.entity_type is not allowed")
+        elif (
+            not isinstance(property_name, str)
+            or property_name not in ENTITY_PROPERTIES[entity_type]
+        ):
+            errors.append(f"{prefix}.property is not allowed for {entity_type}")
+        for field in ("entity_text", "value_text", "evidence_quote"):
+            value = candidate.get(field)
+            if not isinstance(value, str) or not value.strip():
+                errors.append(f"{prefix}.{field} must be a non-empty string")
+            elif value not in evidence_source:
+                errors.append(f"{prefix}.{field} is not an exact input span")
     return errors
 
 
@@ -348,6 +400,7 @@ def build_artifact(
 ) -> dict[str, Any]:
     status_counts: dict[str, int] = {}
     decision_counts = {"KEEP": 0, "REVIEW": 0, "DROP": 0}
+    candidate_counts = {"relations": 0, "properties": 0}
     usage_totals = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
     for record in records:
         status = str(record.get("status") or "unknown")
@@ -355,6 +408,13 @@ def build_artifact(
         output = record.get("output")
         if isinstance(output, dict) and output.get("decision") in decision_counts:
             decision_counts[output["decision"]] += 1
+        if isinstance(output, dict):
+            relations = output.get("candidate_relations")
+            properties = output.get("candidate_properties")
+            if isinstance(relations, list):
+                candidate_counts["relations"] += len(relations)
+            if isinstance(properties, list):
+                candidate_counts["properties"] += len(properties)
         usage = record.get("usage")
         if isinstance(usage, dict):
             for field in usage_totals:
@@ -365,7 +425,7 @@ def build_artifact(
     attempted = sum(record.get("status") != "pending" for record in records)
     valid = sum(record.get("valid_output") is True for record in records)
     return {
-        "artifact_schema_version": "treatment-article-screening-run-v1",
+        "artifact_schema_version": ARTIFACT_SCHEMA_VERSION,
         "created_at": created_at,
         "updated_at": utc_now(),
         "model": MODEL_NAME,
@@ -375,6 +435,8 @@ def build_artifact(
         "manifest_file": str(MANIFEST_PATH),
         "system_prompt_file": str(SYSTEM_PROMPT_PATH),
         "system_prompt_sha256": sha256_text(system_prompt),
+        "kg_schema_file": str(KG_SCHEMA_PATH),
+        "kg_schema_sha256": sha256_text(KG_SCHEMA_PATH.read_text(encoding="utf-8")),
         "summary": {
             "total_records": len(records),
             "attempted_records": attempted,
@@ -383,6 +445,7 @@ def build_artifact(
             "invalid_or_failed_outputs": attempted - valid,
             "status_counts": status_counts,
             "decision_counts": decision_counts,
+            "candidate_counts": candidate_counts,
             "usage": usage_totals,
         },
         "records": records,
@@ -401,10 +464,15 @@ def load_checkpoint(
     artifact = load_json(OUTPUT_PATH)
     if not isinstance(artifact, dict):
         raise ValueError(f"Existing output is not an object: {OUTPUT_PATH}")
+    if artifact.get("artifact_schema_version") != ARTIFACT_SCHEMA_VERSION:
+        raise ValueError("Existing output artifact schema does not match this run.")
     if artifact.get("model") != MODEL_NAME:
         raise ValueError("Existing output model does not match this run.")
     if artifact.get("system_prompt_sha256") != sha256_text(system_prompt):
         raise ValueError("System prompt changed since the existing checkpoint.")
+    schema_text = KG_SCHEMA_PATH.read_text(encoding="utf-8")
+    if artifact.get("kg_schema_sha256") != sha256_text(schema_text):
+        raise ValueError("KG schema changed since the existing checkpoint.")
     existing_records = artifact.get("records")
     if not isinstance(existing_records, list) or len(existing_records) != len(fresh_records):
         raise ValueError("Existing checkpoint does not contain 22 aligned records.")
@@ -419,7 +487,7 @@ def load_checkpoint(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Screen 22 treatment-related abstracts with gpt-5.4-mini."
+        description="Screen 22 treatment-related abstracts for schema facts with gpt-5.6-luna."
     )
     parser.add_argument(
         "--start-index",
@@ -523,7 +591,12 @@ def main() -> None:
             "python -m pip install openai"
         ) from exc
 
-    client = OpenAI(api_key=resolved_api_key, base_url=api_base, timeout=600.0)
+    client = OpenAI(
+        api_key=resolved_api_key,
+        base_url=api_base,
+        timeout=600.0,
+        max_retries=AUTOMATIC_RETRIES,
+    )
     for progress, index in enumerate(pending_indices, start=1):
         record = records[index]
         print(

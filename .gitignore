@@ -49,3 +49,4 @@ kernel_meta/
 data/Embase
 data/pubmed
 data/cochrane
+data/treatment_related_articles/articles.json

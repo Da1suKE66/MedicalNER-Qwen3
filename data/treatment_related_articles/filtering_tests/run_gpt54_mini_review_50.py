@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Screen the reproducible 50-article sample with gpt-5.4-mini.
+"""Screen the reproducible 50-article sample for schema facts with gpt-5.6-luna.
 
 Each pending record receives at most one paid request. The complete artifact is
 atomically checkpointed after every attempt, and failures are never retried
@@ -25,7 +25,9 @@ REPO_ROOT = ARTICLE_DIR.parents[1]
 sys.path.insert(0, str(ARTICLE_DIR))
 
 from test_gpt54_mini_article_screening import (  # noqa: E402
+    ARTIFACT_SCHEMA_VERSION,
     AUTOMATIC_RETRIES,
+    KG_SCHEMA_PATH,
     MODEL_NAME,
     api_base,
     api_key,
@@ -41,7 +43,7 @@ from test_gpt54_mini_article_screening import (  # noqa: E402
 SAMPLE_PATH = SCRIPT_DIR / "random_articles_50.json"
 MANUAL_REVIEW_PATH = SCRIPT_DIR / "manual_review_50.json"
 SYSTEM_PROMPT_PATH = REPO_ROOT / "schemas" / "treatment_article_kg_screening_prompt.md"
-OUTPUT_PATH = SCRIPT_DIR / "gpt56_sol_review_50.json"
+OUTPUT_PATH = SCRIPT_DIR / "gpt56_luna_schema_facts_review_50.json"
 
 
 def utc_now() -> str:
@@ -106,6 +108,7 @@ def build_artifact(
 ) -> dict[str, Any]:
     statuses = Counter(str(record.get("status") or "unknown") for record in records)
     decisions = Counter()
+    candidate_counts = {"relations": 0, "properties": 0}
     usage_totals = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
     for record in records:
         output = record.get("output")
@@ -115,6 +118,13 @@ def build_artifact(
             "DROP",
         }:
             decisions[output["decision"]] += 1
+        if isinstance(output, dict):
+            relations = output.get("candidate_relations")
+            properties = output.get("candidate_properties")
+            if isinstance(relations, list):
+                candidate_counts["relations"] += len(relations)
+            if isinstance(properties, list):
+                candidate_counts["properties"] += len(properties)
         usage = record.get("usage")
         if isinstance(usage, dict):
             for field in usage_totals:
@@ -124,7 +134,7 @@ def build_artifact(
     attempted = sum(record.get("status") != "pending" for record in records)
     valid = sum(record.get("valid_output") is True for record in records)
     return {
-        "artifact_schema_version": "treatment-article-screening-run-v1",
+        "artifact_schema_version": ARTIFACT_SCHEMA_VERSION,
         "created_at": created_at,
         "updated_at": utc_now(),
         "model": MODEL_NAME,
@@ -134,6 +144,8 @@ def build_artifact(
         "manual_review_file": str(MANUAL_REVIEW_PATH),
         "system_prompt_file": str(SYSTEM_PROMPT_PATH),
         "system_prompt_sha256": sha256_text(system_prompt),
+        "kg_schema_file": str(KG_SCHEMA_PATH),
+        "kg_schema_sha256": sha256_text(KG_SCHEMA_PATH.read_text(encoding="utf-8")),
         "summary": {
             "total_records": len(records),
             "attempted_records": attempted,
@@ -145,6 +157,7 @@ def build_artifact(
                 decision: decisions.get(decision, 0)
                 for decision in ("KEEP", "REVIEW", "DROP")
             },
+            "candidate_counts": candidate_counts,
             "usage": usage_totals,
         },
         "records": records,
@@ -163,10 +176,15 @@ def load_checkpoint(
     artifact = load_json(OUTPUT_PATH)
     if not isinstance(artifact, dict):
         raise ValueError("Existing checkpoint must be an object")
+    if artifact.get("artifact_schema_version") != ARTIFACT_SCHEMA_VERSION:
+        raise ValueError("Existing checkpoint artifact schema mismatch")
     if artifact.get("model") != MODEL_NAME:
         raise ValueError("Existing checkpoint model mismatch")
     if artifact.get("system_prompt_sha256") != sha256_text(system_prompt):
         raise ValueError("System prompt changed since the existing checkpoint")
+    schema_text = KG_SCHEMA_PATH.read_text(encoding="utf-8")
+    if artifact.get("kg_schema_sha256") != sha256_text(schema_text):
+        raise ValueError("KG schema changed since the existing checkpoint")
     existing = artifact.get("records")
     if not isinstance(existing, list) or len(existing) != len(fresh_records):
         raise ValueError("Existing checkpoint is not aligned to 50 samples")
@@ -180,7 +198,7 @@ def load_checkpoint(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Screen random_articles_50.json with gpt-5.4-mini"
+        description="Screen random_articles_50.json for schema facts with gpt-5.6-luna"
     )
     parser.add_argument("--start-index", type=int, default=0)
     parser.add_argument("--max-samples", type=int)
@@ -241,7 +259,12 @@ def main() -> None:
         from openai import OpenAI
     except ImportError as exc:
         raise SystemExit("Missing dependency: openai") from exc
-    client = OpenAI(api_key=resolved_api_key, base_url=api_base, timeout=600.0)
+    client = OpenAI(
+        api_key=resolved_api_key,
+        base_url=api_base,
+        timeout=600.0,
+        max_retries=AUTOMATIC_RETRIES,
+    )
 
     for progress, index in enumerate(pending, start=1):
         record = records[index]
