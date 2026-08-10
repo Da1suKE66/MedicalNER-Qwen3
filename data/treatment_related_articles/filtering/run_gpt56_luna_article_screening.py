@@ -44,6 +44,7 @@ DEFAULT_OUTPUT_PATH = SCRIPT_DIR / "gpt56_luna_article_screening.json"
 
 RECORDS_START_RE = re.compile(rb'^\s*"records"\s*:\s*\[\s*$')
 RECORDS_END_RE = re.compile(rb"^\s*\]\s*,?\s*$")
+RECORD_INDEX_PREFIX_RE = re.compile(rb'^\s*\{\s*"index"\s*:\s*(\d+)\s*,')
 STOP = object()
 
 REASON_CODES = {
@@ -140,54 +141,154 @@ def load_schema_contract(path: Path) -> SchemaContract:
     return SchemaContract(schema["schema_version"], entity_properties, relation_pairs)
 
 
-def iter_articles(path: Path) -> Iterator[dict[str, Any]]:
-    found_records = False
-    in_records = False
-    finished_records = False
-    expected_index = 0
+def parse_article_record(
+    logical_line: bytes, location: str, expected_index: int
+) -> dict[str, Any]:
+    stripped = logical_line.strip()
+    if stripped.endswith(b","):
+        stripped = stripped[:-1].rstrip()
+    try:
+        record = json.loads(stripped)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"{location} is not a complete JSON object") from exc
+    if not isinstance(record, dict):
+        raise ValueError(f"{location} is not an object")
+    index = record.get("index")
+    if type(index) is not int or index != expected_index:
+        raise ValueError(
+            f"Record position {expected_index} has invalid index {index!r}; "
+            "run add_article_indices.py first"
+        )
+    for field in ("title", "abstract"):
+        value = record.get(field)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"Record {index} has no non-empty {field}")
+    return record
+
+
+def reverse_lines(
+    handle: Any, lower_bound: int = 0, chunk_size: int = 1024 * 1024
+) -> Iterator[bytes]:
+    handle.seek(0, os.SEEK_END)
+    position = handle.tell()
+    remainder = b""
+    while position > lower_bound:
+        read_size = min(chunk_size, position - lower_bound)
+        position -= read_size
+        handle.seek(position)
+        block = handle.read(read_size) + remainder
+        lines = block.split(b"\n")
+        remainder = lines[0]
+        for line in reversed(lines[1:]):
+            yield line.rstrip(b"\r")
+    if remainder:
+        yield remainder.rstrip(b"\r")
+
+
+def find_records_start(handle: Any, path: Path) -> int:
+    handle.seek(0)
+    for line in handle:
+        if RECORDS_START_RE.fullmatch(line.rstrip(b"\r\n")):
+            return handle.tell()
+    raise ValueError(f'{path} has no top-level "records" array')
+
+
+def article_record_count(path: Path) -> int:
     with path.open("rb") as handle:
-        for line_number, line in enumerate(handle, start=1):
-            logical_line = line.rstrip(b"\r\n")
-            if not in_records:
-                if not found_records and RECORDS_START_RE.fullmatch(logical_line):
-                    found_records = True
-                    in_records = True
+        records_start = find_records_start(handle, path)
+        for first_line in handle:
+            if not first_line.strip():
                 continue
-            if RECORDS_END_RE.fullmatch(logical_line):
-                finished_records = True
-                in_records = False
+            if RECORDS_END_RE.fullmatch(first_line.rstrip(b"\r\n")):
+                raise ValueError(f'{path} has an empty "records" array')
+            parse_article_record(first_line.rstrip(b"\r\n"), "First article record", 0)
+            break
+        for line in reverse_lines(handle, records_start):
+            match = RECORD_INDEX_PREFIX_RE.match(line)
+            if match is None:
+                continue
+            last_index = int(match.group(1))
+            parse_article_record(line, "Last article record", last_index)
+            return last_index + 1
+    raise ValueError(f'{path} has an empty "records" array')
+
+
+def find_article_offset(
+    handle: Any, path: Path, records_start: int, target_index: int
+) -> int:
+    if target_index == 0:
+        return records_start
+    handle.seek(0, os.SEEK_END)
+    low = records_start
+    high = handle.tell()
+    while low < high:
+        midpoint = (low + high) // 2
+        if midpoint > records_start:
+            handle.seek(midpoint - 1)
+            starts_line = handle.read(1) == b"\n"
+        else:
+            starts_line = True
+        if starts_line:
+            handle.seek(midpoint)
+        else:
+            handle.seek(midpoint)
+            handle.readline()
+        line_start = handle.tell()
+        if line_start >= high:
+            high = midpoint
+            continue
+        line = handle.readline().rstrip(b"\r\n")
+        match = RECORD_INDEX_PREFIX_RE.match(line)
+        if match is None:
+            if not line.strip() or RECORDS_END_RE.fullmatch(line):
+                high = line_start
+                continue
+            raise ValueError(
+                f"Article data near byte offset {line_start} does not begin with "
+                'an "index" field'
+            )
+        index = int(match.group(1))
+        if index < target_index:
+            low = handle.tell()
+        else:
+            high = line_start
+
+    handle.seek(low)
+    line = handle.readline().rstrip(b"\r\n")
+    match = RECORD_INDEX_PREFIX_RE.match(line)
+    if match is None or int(match.group(1)) != target_index:
+        actual = None if match is None else int(match.group(1))
+        raise ValueError(
+            f"Could not locate article index {target_index}; found {actual!r} "
+            f"near byte offset {low} in {path}"
+        )
+    return low
+
+
+def iter_article_range(
+    path: Path, start_index: int, end_index: int
+) -> Iterator[dict[str, Any]]:
+    if end_index <= start_index:
+        return
+    with path.open("rb") as handle:
+        records_start = find_records_start(handle, path)
+        offset = find_article_offset(handle, path, records_start, start_index)
+        handle.seek(offset)
+        expected_index = start_index
+        while expected_index < end_index:
+            logical_line = handle.readline().rstrip(b"\r\n")
+            if not logical_line or RECORDS_END_RE.fullmatch(logical_line):
                 break
-            stripped = logical_line.strip()
-            if not stripped:
-                continue
-            if stripped.endswith(b","):
-                stripped = stripped[:-1].rstrip()
-            try:
-                record = json.loads(stripped)
-            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-                raise ValueError(
-                    f"Record line {line_number} is not a complete JSON object"
-                ) from exc
-            if not isinstance(record, dict):
-                raise ValueError(f"Record line {line_number} is not an object")
-            index = record.get("index")
-            if type(index) is not int or index != expected_index:
-                raise ValueError(
-                    f"Record position {expected_index} has invalid index {index!r}; "
-                    "run add_article_indices.py first"
-                )
-            for field in ("title", "abstract"):
-                value = record.get(field)
-                if not isinstance(value, str) or not value.strip():
-                    raise ValueError(f"Record {index} has no non-empty {field}")
-            yield record
+            yield parse_article_record(
+                logical_line, f"Record at byte offset {offset}", expected_index
+            )
             expected_index += 1
-    if not found_records:
-        raise ValueError(f'{path} has no top-level "records" array')
-    if not finished_records:
-        raise ValueError(f'{path} has an unterminated "records" array')
-    if expected_index == 0:
-        raise ValueError(f'{path} has an empty "records" array')
+            offset = handle.tell()
+    if expected_index < end_index:
+        raise ValueError(
+            f'{path} ended after {expected_index} records; '
+            f"requested through index {end_index - 1}"
+        )
 
 
 def request_messages(system_prompt: str, record: dict[str, Any]) -> list[dict[str, str]]:
@@ -599,12 +700,8 @@ def producer_loop(
     dispatched = 0
     error: str | None = None
     try:
-        for record in iter_articles(articles_path):
+        for record in iter_article_range(articles_path, start_index, end_index):
             index = record["index"]
-            if index < start_index:
-                continue
-            if index >= end_index:
-                break
             if not should_request(index, states, retry_failed):
                 continue
             worker_id = index % len(task_queues)
@@ -620,8 +717,8 @@ def producer_loop(
         )
 
 
-def scan_request_plan(
-    articles_path: Path,
+def build_request_plan(
+    total_records: int,
     states: dict[int, AttemptState],
     retry_failed: bool,
     start_index: int,
@@ -629,37 +726,24 @@ def scan_request_plan(
     max_samples: int | None,
     workers: int,
 ) -> dict[str, Any]:
-    total_records = 0
-    selected_records = 0
-    pending_requests = 0
-    partition_counts = [0] * workers
+    if start_index >= total_records:
+        raise ValueError(f"--start-index must be between 0 and {total_records - 1}")
+    if end_index is not None and end_index >= total_records:
+        raise ValueError(f"--end-index must be between {start_index} and {total_records - 1}")
     if end_index is not None:
         requested_end_exclusive = end_index + 1
     elif max_samples is not None:
         requested_end_exclusive = start_index + max_samples
     else:
-        requested_end_exclusive = None
-    for record in iter_articles(articles_path):
-        index = record["index"]
-        total_records += 1
-        if index < start_index or (
-            requested_end_exclusive is not None
-            and index >= requested_end_exclusive
-        ):
-            continue
-        selected_records += 1
+        requested_end_exclusive = total_records
+    end_index_exclusive = min(total_records, requested_end_exclusive)
+    selected_records = end_index_exclusive - start_index
+    pending_requests = 0
+    partition_counts = [0] * workers
+    for index in range(start_index, end_index_exclusive):
         if should_request(index, states, retry_failed):
             pending_requests += 1
             partition_counts[index % workers] += 1
-    if start_index >= total_records:
-        raise ValueError(f"--start-index must be between 0 and {total_records - 1}")
-    if end_index is not None and end_index >= total_records:
-        raise ValueError(f"--end-index must be between {start_index} and {total_records - 1}")
-    end_index_exclusive = (
-        total_records
-        if requested_end_exclusive is None
-        else min(total_records, requested_end_exclusive)
-    )
     return {
         "total_records": total_records,
         "selected_records": selected_records,
@@ -817,7 +901,7 @@ def run(
         raise ValueError(f"System prompt is empty: {system_prompt_path}")
     contract = load_schema_contract(kg_schema_path)
 
-    preliminary_total = sum(1 for _ in iter_articles(articles_path))
+    preliminary_total = article_record_count(articles_path)
     metadata_for_new_checkpoint = checkpoint_metadata(
         articles_path,
         preliminary_total,
@@ -825,8 +909,8 @@ def run(
         kg_schema_path,
     )
     states, metadata = load_checkpoint(checkpoint_path, preliminary_total)
-    plan = scan_request_plan(
-        articles_path,
+    plan = build_request_plan(
+        preliminary_total,
         states,
         args.retry_failed,
         args.start_index,
