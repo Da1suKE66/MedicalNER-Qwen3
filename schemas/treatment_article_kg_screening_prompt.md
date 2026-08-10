@@ -4,74 +4,105 @@ Goal: find at least one directly supported active relation or reusable standalon
 
 ENTITY TYPES AND PROPERTIES
 
-- Disease: disease, disorder, syndrome, or diagnostic condition. Properties: icdcode, coding_system, icd_release, icd_uri, subtype, course_requirements, comorbidity_types, prognosis_factors, core_features, key_differentiation_points, misdiagnosis_risk.
-- Symptom: sign, symptom, manifestation, deficit, or functional impairment. Properties: description, manifestations, occurrence_frequency, severity_description, diagnostic_value.
-- Diagnostic Criteria: diagnostic, exclusion, or subtyping criterion. Properties: required_core_symptoms, functional_impairment_requirements, exclusion_details.
-- Interview Tool: interview, questionnaire, scale, or assessment tool. Properties: key_inquiry_directions, exclusions, sample_interview_phrases, follow_up_focus.
-- Patient Information: demographic, age group, comorbidity, special condition, or medication history. Properties: age_group, comorbidities, special_conditions, medication_history.
-- Medication: drug or pharmacological substance; never psychotherapy, CBT, counselling, workshop, device, surgery, or lifestyle intervention. Properties: generic_name, indications, contraindications, dosage_for_special_populations, common_side_effects.
-- Communication Method: communication, interviewing, counselling, or dialogue strategy. Properties: suitable_patient_type, empathetic_phrases, pitfalls_to_avoid.
-- Risk Information: warning sign or alert condition requiring clinical attention. Properties: risk_type, alert_keywords, emergency_intervention_steps.
+- Disease: diagnosed disease, disorder, syndrome, or condition. Properties: icdcode, coding_system, icd_release, icd_uri, dsm_5_mapping, definition, subtype, specifier, severity, course, epidemiology, prognosis, parent_disease.
+- Symptom: sign, symptom, manifestation, deficit, or impairment. Properties: name, description, category, parent_symptom, severity, duration, frequency, sensitivity, specificity.
+- Diagnostic Criterion: diagnostic criterion or rule. Properties: source, criterion_id, description, required, logic, threshold.
+- Assessment: interview, question, or assessment action; not a standardized scale. Properties: assessment_type, question, trigger, follow_up_question, purpose.
+- Patient: patient or clinically relevant patient profile. Properties: age, sex, occupation, education, marriage, family_history, psychiatric_history, trauma, substance_use, special_population.
+- Medication: drug or pharmacological substance. Properties: generic_name, atc_code, mechanism, dose, indication, contraindication, side_effects, drug_interaction, metabolism, pregnancy, lactation.
+- Treatment: therapeutic intervention or modality distinct from a medication entity. Properties: treatment_type, description, mechanism, indication, contraindication, duration, frequency, evidence_level.
+- Treatment Plan: structured treatment plan or regimen. Properties: plan_name, applicable_disease, disease_stage, severity, target_population, recommendation_level, description.
+- Examination: laboratory, imaging, physical, or other diagnostic test. Properties: test_type, description, purpose, interpretation.
+- Assessment Scale: named standardized scale or score. Properties: scale_name, cutoff, score_range, interpretation, target_disease.
+- Etiology: causal or contributory etiological factor. Properties: etiology_type, description, evidence.
+- Risk: clinical risk, warning, or alert condition. Properties: risk_type, risk_level, description, evidence_level.
+- Communication Strategy: clinical communication or dialogue strategy, not a treatment. Properties: strategy, scenario, target_population, contraindication, applicable_stage, requires_family_support.
+- Guideline: identifiable clinical guideline. Properties: guideline_name, organization, version, publication_year.
+- Evidence: identifiable study or publication evidence. Properties: pmid, doi, study_type, journal, grade, publication_year.
 
-A standalone property needs an identifiable entity owner, a substantive value, exact evidence, and reusable clinical meaning beyond this study's sample. A bare entity mention is not enough. Coding fields and generic_name qualify only when the text explicitly provides an identifier or naming mapping.
+A standalone property needs an identifiable owner, a substantive value, exact evidence, and reusable clinical meaning beyond this study's sample. A bare entity mention is insufficient. Identifier and name-like fields qualify only when the text explicitly supplies an identifier or naming mapping.
 
 ACTIVE RELATIONS
 
-Only these 17 relations are allowed. Format: relation: source -> target; meaning.
+Only these 54 relations and exact source -> target pairs are allowed:
 
-1. subsumes: Disease -> Disease or Symptom -> Symptom; source is broader than target.
-2. differentiates_from: Disease -> Disease; explicitly distinguished for differential diagnosis.
-3. co_occurs_with_frequency: Disease -> Disease; explicit co-occurrence with numeric or qualitative frequency.
-4. associated_with_poor_prognosis_in: Disease | Symptom | Patient Information -> Disease; explicitly associated with poor prognosis in target disease.
-5. is_core_symptom_of: Symptom -> Disease; explicitly core, defining, or essential.
-6. is_associated_symptom_of: Symptom -> Disease; explicitly associated with or characteristic of disease.
-7. required_for_diagnosis_of: Diagnostic Criteria -> Disease; required for diagnosis.
-8. supports_subtyping_of: Diagnostic Criteria | Symptom -> Disease; supports disease subtyping.
-9. first_line_for: Medication -> Disease; explicitly first-line or preferred initial pharmacological treatment.
-10. informed_by_patient_demographics: Interview Tool -> Patient Information; tool use or interpretation is informed by patient characteristics.
-11. affects_diagnosis_of: Patient Information -> Disease; patient characteristics explicitly affect diagnosis.
-12. must_be_ruled_out_for: Disease -> Disease; source must be ruled out when diagnosing target.
-13. excludes_diagnosis_of: Diagnostic Criteria | Symptom -> Disease; criterion or symptom excludes diagnosis.
-14. somatic_cause_of: Disease -> Disease; source somatic disease explicitly causes target psychiatric disease.
-15. assesses_for: Interview Tool -> Disease | Symptom; tool explicitly assesses target.
-16. recommended_for: Communication Method -> Disease | Patient Information; communication method is recommended for target, never a treatment intervention.
-17. triggers_alert_when: Risk Information -> Disease | Symptom; warning information calls for an alert or urgent response when target is present.
+- Disease -> Disease: belongs_to, subtype_of, differentiates_from, co_occurs_with, progresses_to, relapses_to, associated_with_poor_prognosis_in, rules_out.
+- Disease -> Diagnostic Criterion: has_diagnostic_criterion.
+- Disease -> Assessment: recommended_assessment.
+- Disease -> Examination: recommended_examination.
+- Disease -> Treatment Plan: recommended_treatment_plan.
+- Disease -> Risk: associated_with_risk.
+- Disease -> Guideline: managed_by_guideline.
+- Diagnostic Criterion -> Disease: required_for_diagnosis_of.
+- Symptom -> Disease: is_core_symptom_of, is_associated_symptom_of, supports_diagnosis_of, suggests, argues_against.
+- Symptom -> Diagnostic Criterion: supports_diagnostic_criterion.
+- Symptom -> Medication | Treatment: relieved_by.
+- Examination -> Disease: supports_diagnosis_of, differentiates, confirms.
+- Assessment -> Disease | Symptom | Risk: assesses_for.
+- Assessment -> Symptom: asks_about.
+- Assessment -> Assessment Scale: triggers_scale.
+- Assessment -> Examination: triggers_test.
+- Assessment -> Patient: informed_by_patient.
+- Patient -> Symptom: presents_with.
+- Patient -> Risk: has_risk.
+- Patient -> Treatment Plan: receives_treatment_plan.
+- Medication -> Disease: first_line_for, second_line_for, recommended_for.
+- Communication Strategy -> Disease | Patient: recommended_for.
+- Medication -> Disease | Patient: contraindicated_in.
+- Medication -> Medication: interacts_with.
+- Medication -> Symptom: causes_side_effect.
+- Treatment -> Treatment | Medication: combined_with.
+- Treatment -> Evidence: supported_by_evidence.
+- Treatment Plan -> Medication: consists_of_medication.
+- Treatment Plan -> Treatment: consists_of_treatment.
+- Treatment Plan -> Disease: applicable_to.
+- Treatment Plan | Evidence -> Guideline: recommended_by.
+- Assessment Scale -> Disease: evaluates.
+- Assessment Scale -> Assessment: triggered_by.
+- Assessment Scale -> Symptom: measures.
+- Etiology -> Disease: causes, contributes_to.
+- Risk -> Disease | Symptom: triggers_alert_when.
+- Risk -> Patient: applies_to_patient.
+- Guideline -> Evidence: based_on_evidence.
+- Guideline -> Guideline: updated_from.
+- Evidence -> Evidence: cites.
+
+Use each relation literally and preserve its listed direction. Relations with any other status are not allowed.
 
 DECISION
 
 First scan every sentence in the title and abstract for active relations, including background statements. Do not stop after finding a property. Then check for reusable standalone properties.
 
-KEEP: at least one active relation or reusable standalone property is directly asserted. Its entity type, owner or arguments, direction when applicable, and exact evidence are identifiable.
+KEEP: at least one active relation or reusable standalone property is directly asserted. Its type, owner or arguments, direction when applicable, and exact evidence are identifiable.
 
-REVIEW: a schema fact is genuinely plausible, but entity type, property owner, relation direction, assertion status, contradiction, truncation, or missing context makes KEEP unsafe. When uncertain between REVIEW and DROP, choose REVIEW.
+REVIEW: an allowed schema fact is genuinely plausible, but entity type, property owner, relation direction, assertion status, contradiction, truncation, or missing context makes KEEP unsafe. When uncertain between REVIEW and DROP, choose REVIEW.
 
 DROP: after checking every sentence, no active relation or reusable standalone property is supported or plausibly present. Mere medical relevance, entity mention, co-mention, methods, aims, hypotheses, mechanisms, risk factors, treatment comparison, or temporal order are insufficient.
 
 BOUNDARIES
 
-- Use only the supplied text; do not add medical knowledge or infer from co-mention.
-- Do not convert correlation to causation, treatment efficacy to first_line_for, comparison to differential diagnosis, an outcome measure to a symptom, or an aim to a finding.
-- General efficacy does not establish Medication.indications without an explicit indication or established treatment-use claim.
-- Study aims, intervention arms, outcomes, and treatment comparisons do not by themselves establish an indication or other property.
-- An isolated or merely temporally associated adverse event does not establish Medication.common_side_effects; the text must characterize it as common or recognized.
-- An incidence risk factor is not Disease.prognosis_factors unless it is explicitly tied to prognosis or outcome after disease is present.
-- Study-cohort metadata alone does not qualify: sample age, demographics, eligibility conditions, baseline comorbidities, special conditions, or medication history reported only to describe participants.
-- Patient Information.age_group never triggers KEEP by itself. Other Patient Information properties trigger KEEP alone only when they express a reusable clinical profile, not a study cohort or individual case history. Patient Information may still participate in an active relation.
+- Use only the supplied text; do not add medical knowledge or infer a fact from co-mention.
 - Preserve negation, uncertainty, population limits, and conflicting claims.
-- Evidence and entity/value mentions must be contiguous exact spans copied from the input; never use ellipses or omit intervening words.
+- Do not convert correlation to causation, co-occurrence to progression, treatment efficacy to recommendation or indication, comparison to differential diagnosis, an outcome measure to a symptom, or an aim to a finding.
+- First-line, second-line, recommendation, contraindication, diagnosis, causality, and direction must be explicit. General efficacy does not establish Medication.indication, Treatment.indication, or recommended_for.
+- An isolated or temporally associated adverse event does not establish Medication.side_effects or causes_side_effect; attribution or recognized association must be explicit.
+- Study-cohort metadata alone does not qualify: participant demographics, eligibility, baseline history, intervention arms, outcomes, and study design reported only to describe this study. Patient.age never triggers KEEP by itself.
+- A relation with non-active status cannot be emitted; route a genuinely plausible but ambiguous active relation to REVIEW.
+- Entity/value mentions and evidence must be contiguous exact spans copied from the input; never rewrite, use ellipses, or omit intervening words.
 
 Examples:
 
-- "Nausea is a common side effect of Drug X" -> KEEP property, Medication.common_side_effects.
+- "Drug X is recommended as first-line treatment for disease Y" -> KEEP relation, first_line_for.
+- "Nausea is a recognized side effect of Drug X" -> KEEP property, Medication.side_effects.
 - "Participants were aged 7 to 10 years" -> not KEEP by itself; study-cohort age is metadata.
-- "Drug X improved disease Y" -> neither first_line_for nor indications by itself.
+- "Drug X improved disease Y" -> neither recommended_for nor Medication.indication by itself.
 
 OUTPUT
 
 Return exactly one strict JSON object with these six fields:
 
 {
-  "schema_version": "2.0.0-draft.2",
+  "schema_version": "3.0.0-draft.1",
   "decision": "KEEP",
   "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
   "reason": "One short text-grounded sentence.",

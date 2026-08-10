@@ -10,7 +10,6 @@ all records have valid outputs, a compact index/output JSON file is assembled.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import queue
@@ -39,7 +38,7 @@ DEFAULT_ARTICLES_PATH = ARTICLE_DIR / "articles.json"
 DEFAULT_SYSTEM_PROMPT_PATH = (
     REPO_ROOT / "schemas" / "treatment_article_kg_screening_prompt.md"
 )
-DEFAULT_KG_SCHEMA_PATH = REPO_ROOT / "schemas" / "v2.0.0" / "schema.json"
+DEFAULT_KG_SCHEMA_PATH = REPO_ROOT / "schemas" / "v3.0.0" / "schema.json"
 DEFAULT_CHECKPOINT_PATH = SCRIPT_DIR / "gpt56_luna_article_screening_checkpoint.jsonl"
 DEFAULT_OUTPUT_PATH = SCRIPT_DIR / "gpt56_luna_article_screening.json"
 
@@ -93,22 +92,6 @@ class AttemptState:
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
-
-
-def sha256_text(text: str) -> str:
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        while chunk := handle.read(8 * 1024 * 1024):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
-def article_input_sha256(record: dict[str, Any]) -> str:
-    return sha256_text(record["title"] + "\0" + record["abstract"])
 
 
 def load_schema_contract(path: Path) -> SchemaContract:
@@ -375,14 +358,11 @@ def usage_dict(completion: Any) -> dict[str, Any]:
     return result
 
 
-def checkpoint_identity(
+def checkpoint_metadata(
     articles_path: Path,
-    articles_sha256: str,
     total_records: int,
     system_prompt_path: Path,
-    system_prompt: str,
     kg_schema_path: Path,
-    kg_schema_text: str,
 ) -> dict[str, Any]:
     return {
         "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
@@ -391,17 +371,14 @@ def checkpoint_identity(
         "api_base": api_base,
         "automatic_retries": AUTOMATIC_RETRIES,
         "articles_file": str(articles_path),
-        "articles_sha256": articles_sha256,
         "total_records": total_records,
         "system_prompt_file": str(system_prompt_path),
-        "system_prompt_sha256": sha256_text(system_prompt),
         "kg_schema_file": str(kg_schema_path),
-        "kg_schema_sha256": sha256_text(kg_schema_text),
     }
 
 
 def load_checkpoint(
-    path: Path, expected_identity: dict[str, Any]
+    path: Path, total_records: int
 ) -> tuple[dict[int, AttemptState], dict[str, Any] | None]:
     if not path.exists():
         return {}, None
@@ -416,12 +393,17 @@ def load_checkpoint(
             raise ValueError(f"Checkpoint metadata is invalid: {path}") from exc
         if not isinstance(metadata, dict):
             raise ValueError("Checkpoint metadata must be a JSON object")
-        for key, expected in expected_identity.items():
-            if metadata.get(key) != expected:
-                raise ValueError(
-                    f"Checkpoint identity mismatch for {key}: "
-                    f"{metadata.get(key)!r} != {expected!r}"
-                )
+        if metadata.get("record_type") != "run_metadata":
+            raise ValueError("Checkpoint metadata has an invalid record_type")
+        if metadata.get("checkpoint_schema_version") != CHECKPOINT_SCHEMA_VERSION:
+            raise ValueError("Checkpoint metadata has an unsupported format version")
+        if metadata.get("total_records") != total_records:
+            raise ValueError(
+                "Checkpoint total_records does not match the current articles file"
+            )
+
+        # Prompt, KG schema, and content hashes are intentionally not checked.
+        # Existing indices remain completed when the screening schema is revised.
 
         line_number = 1
         while True:
@@ -442,7 +424,7 @@ def load_checkpoint(
             if not isinstance(attempt, dict) or attempt.get("record_type") != "attempt":
                 raise ValueError(f"Invalid checkpoint record at line {line_number}")
             index = attempt.get("index")
-            if type(index) is not int or not 0 <= index < expected_identity["total_records"]:
+            if type(index) is not int or not 0 <= index < total_records:
                 raise ValueError(f"Invalid checkpoint index at line {line_number}")
             status = attempt.get("status")
             if status not in {
@@ -460,9 +442,9 @@ def load_checkpoint(
     return states, metadata
 
 
-def create_checkpoint(path: Path, identity: dict[str, Any]) -> None:
+def create_checkpoint(path: Path, run_metadata: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    metadata = {**identity, "created_at": utc_now()}
+    metadata = {**run_metadata, "created_at": utc_now()}
     with path.open("x", encoding="utf-8") as handle:
         handle.write(json.dumps(metadata, ensure_ascii=False, separators=(",", ":")))
         handle.write("\n")
@@ -499,7 +481,6 @@ def request_article(
     common = {
         "record_type": "attempt",
         "index": index,
-        "input_sha256": article_input_sha256(record),
         "attempt_started_at": started_at,
         "model": MODEL_NAME,
     }
@@ -834,21 +815,16 @@ def run(
     system_prompt = system_prompt_path.read_text(encoding="utf-8").strip()
     if not system_prompt:
         raise ValueError(f"System prompt is empty: {system_prompt_path}")
-    kg_schema_text = kg_schema_path.read_text(encoding="utf-8")
     contract = load_schema_contract(kg_schema_path)
-    articles_sha256 = sha256_file(articles_path)
 
     preliminary_total = sum(1 for _ in iter_articles(articles_path))
-    identity = checkpoint_identity(
+    metadata_for_new_checkpoint = checkpoint_metadata(
         articles_path,
-        articles_sha256,
         preliminary_total,
         system_prompt_path,
-        system_prompt,
         kg_schema_path,
-        kg_schema_text,
     )
-    states, metadata = load_checkpoint(checkpoint_path, identity)
+    states, metadata = load_checkpoint(checkpoint_path, preliminary_total)
     plan = scan_request_plan(
         articles_path,
         states,
@@ -883,7 +859,7 @@ def run(
         factory = client_factory or default_client_factory
         clients = [factory(worker_id, resolved_api_key) for worker_id in range(args.workers)]
         if metadata is None:
-            create_checkpoint(checkpoint_path, identity)
+            create_checkpoint(checkpoint_path, metadata_for_new_checkpoint)
 
         task_queues = [queue.Queue(maxsize=2) for _ in range(args.workers)]
         result_queue: queue.Queue[tuple[str, Any]] = queue.Queue()
@@ -955,7 +931,7 @@ def run(
             )
 
     if checkpoint_path.exists():
-        states, _ = load_checkpoint(checkpoint_path, identity)
+        states, _ = load_checkpoint(checkpoint_path, preliminary_total)
     summary = summarize_states(preliminary_total, states)
     if summary["valid_outputs"] == preliminary_total:
         build_final_output(checkpoint_path, output_path, states, preliminary_total)
