@@ -7,15 +7,15 @@ ENTITY TYPES AND PROPERTIES
 - Disease: diagnosed disease, disorder, syndrome, or condition. Properties: icdcode, coding_system, icd_release, icd_uri, dsm_5_mapping, definition, subtype, specifier, severity, course, epidemiology, prognosis, parent_disease.
 - Symptom: sign, symptom, manifestation, deficit, or impairment. Properties: name, description, category, parent_symptom, severity, duration, frequency, sensitivity, specificity.
 - Diagnostic Criterion: diagnostic criterion or rule. Properties: source, criterion_id, description, required, logic, threshold.
-- Assessment: interview, question, or assessment action; not a standardized scale. Properties: assessment_type, question, trigger, follow_up_question, purpose.
+- Assessment: clinical interview, question, questionnaire item, or mental-status assessment; not a named standardized scale. Properties: assessment_type, question, trigger, follow_up_question, purpose.
 - Patient: patient or clinically relevant patient profile. Properties: age, sex, occupation, education, marriage, family_history, psychiatric_history, trauma, substance_use, special_population.
 - Medication: drug or pharmacological substance. Properties: generic_name, atc_code, mechanism, dose, indication, contraindication, side_effects, drug_interaction, metabolism, pregnancy, lactation.
 - Treatment: therapeutic intervention or modality distinct from a medication entity. Properties: treatment_type, description, mechanism, indication, contraindication, duration, frequency, evidence_level.
 - Treatment Plan: structured treatment plan or regimen. Properties: plan_name, applicable_disease, disease_stage, severity, target_population, recommendation_level, description.
 - Examination: laboratory, imaging, physical, or other diagnostic test. Properties: test_type, description, purpose, interpretation.
-- Assessment Scale: named standardized scale or score. Properties: scale_name, cutoff, score_range, interpretation, target_disease.
-- Etiology: causal or contributory etiological factor. Properties: etiology_type, description, evidence.
-- Risk: clinical risk, warning, or alert condition. Properties: risk_type, risk_level, description, evidence_level.
+- Assessment Scale: named clinical scale, questionnaire, or score; never a research quality or risk-of-bias tool. Properties: scale_name, cutoff, score_range, interpretation, target_disease.
+- Etiology: cause or risk factor that causes disease or increases its occurrence probability. Properties: etiology_type, description, evidence.
+- Risk: adverse clinical risk or warning outcome, such as suicide, self-harm, or an emergency alert; never an environmental exposure or disease risk factor. Properties: risk_type, risk_level, description, evidence_level.
 - Communication Strategy: clinical communication or dialogue strategy, not a treatment. Properties: strategy, scenario, target_population, contraindication, applicable_stage, requires_family_support.
 - Guideline: identifiable clinical guideline. Properties: guideline_name, organization, version, publication_year.
 - Evidence: identifiable study or publication evidence. Properties: pmid, doi, study_type, journal, grade, publication_year.
@@ -46,7 +46,8 @@ Only these 54 relations and exact source -> target pairs are allowed:
 - Patient -> Symptom: presents_with.
 - Patient -> Risk: has_risk.
 - Patient -> Treatment Plan: receives_treatment_plan.
-- Medication -> Disease: first_line_for, second_line_for, recommended_for.
+- Medication -> Disease: first_line_for, second_line_for.
+- Medication -> Disease | Patient: recommended_for.
 - Communication Strategy -> Disease | Patient: recommended_for.
 - Medication -> Disease | Patient: contraindicated_in.
 - Medication -> Medication: interacts_with.
@@ -69,6 +70,10 @@ Only these 54 relations and exact source -> target pairs are allowed:
 
 Use each relation literally and preserve its listed direction. Relations with any other status are not allowed.
 
+Tool rule: Assessment assesses_for Disease, Symptom, or Risk; a named clinical Assessment Scale evaluates Disease or measures Symptom. If the text explicitly links a tool to its target, retain that fact even when the tool is an eligibility measure or RCT outcome.
+
+Risk-factor rule: environmental exposures and other disease risk factors are Etiology, not Risk. Use Etiology contributes_to Disease for an explicit increase or association in disease occurrence; use causes only for explicit causation and never reverse the direction.
+
 DECISION
 
 First scan every sentence in the title and abstract for active relations, including background statements. Do not stop after finding a property. Then check for reusable standalone properties.
@@ -77,16 +82,16 @@ KEEP: at least one active relation or reusable standalone property is directly a
 
 REVIEW: an allowed schema fact is genuinely plausible, but entity type, property owner, relation direction, assertion status, contradiction, truncation, or missing context makes KEEP unsafe. When uncertain between REVIEW and DROP, choose REVIEW.
 
-DROP: after checking every sentence, no active relation or reusable standalone property is supported or plausibly present. Mere medical relevance, entity mention, co-mention, methods, aims, hypotheses, mechanisms, risk factors, treatment comparison, or temporal order are insufficient.
+DROP: after checking every sentence, no active relation or reusable standalone property is supported or plausibly present. Mere medical relevance, entity mention, co-mention, methods, aims, hypotheses, mechanisms, unsupported risk-factor speculation, treatment comparison, or temporal order are insufficient.
 
 BOUNDARIES
 
 - Use only the supplied text; do not add medical knowledge or infer a fact from co-mention.
 - Preserve negation, uncertainty, population limits, and conflicting claims.
-- Do not convert correlation to causation, co-occurrence to progression, treatment efficacy to recommendation or indication, comparison to differential diagnosis, an outcome measure to a symptom, or an aim to a finding.
+- Do not convert correlation to causation, co-occurrence to progression, treatment efficacy to recommendation or indication, comparison to differential diagnosis, the measurement tool itself to a symptom, or an aim to a finding.
 - First-line, second-line, recommendation, contraindication, diagnosis, causality, and direction must be explicit. General efficacy does not establish Medication.indication, Treatment.indication, or recommended_for.
 - An isolated or temporally associated adverse event does not establish Medication.side_effects or causes_side_effect; attribution or recognized association must be explicit.
-- Study-cohort metadata alone does not qualify: participant demographics, eligibility, baseline history, intervention arms, outcomes, and study design reported only to describe this study. Patient.age never triggers KEEP by itself.
+- Study-cohort metadata alone does not qualify: participant demographics, eligibility, baseline history, intervention arms, outcome findings, and study design reported only to describe this study. Patient.age never triggers KEEP by itself.
 - A relation with non-active status cannot be emitted; route a genuinely plausible but ambiguous active relation to REVIEW.
 - Entity/value mentions and evidence must be contiguous exact spans copied from the input; never rewrite, use ellipses, or omit intervening words.
 
