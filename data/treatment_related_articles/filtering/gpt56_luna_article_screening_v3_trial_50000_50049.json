@@ -1,0 +1,1412 @@
+{
+  "model": "gpt-5.6-luna",
+  "schema_version": "3.0.0-draft.1",
+  "start_index": 50000,
+  "end_index": 50049,
+  "summary": {
+    "total": 50,
+    "valid_outputs": 45,
+    "status_counts": {
+      "completed": 45,
+      "completed_with_validation_errors": 5
+    },
+    "decision_counts": {
+      "DROP": 9,
+      "KEEP": 33,
+      "REVIEW": 8
+    }
+  },
+  "records": [
+    {
+      "index": 50000,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies restrictive and purging forms as subtypes of anorexia nervosa.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "anorexia nervosa (AN)",
+            "entity_type": "Disease",
+            "property": "subtype",
+            "value_text": "restrictive type AN (R-AN)",
+            "evidence_quote": "mostly women with restrictive type AN (R-AN)"
+          },
+          {
+            "entity_text": "anorexia nervosa (AN)",
+            "entity_type": "Disease",
+            "property": "subtype",
+            "value_text": "purging-type forms",
+            "evidence_quote": "focused on purging-type forms"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 3222,
+        "completion_tokens": 216,
+        "total_tokens": 3438
+      }
+    },
+    {
+      "index": 50001,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The review explicitly reports that no serious side effects were described for psychedelics.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "psychédéliques",
+            "entity_type": "Medication",
+            "property": "side_effects",
+            "value_text": "Aucun effet secondaire grave",
+            "evidence_quote": "Aucun effet secondaire grave n'a été décrit."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2608,
+        "completion_tokens": 112,
+        "total_tokens": 2720
+      }
+    },
+    {
+      "index": 50002,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly describes Mindfulness-based relapse prevention as integrating mindfulness-based interventions with cognitive-behavioral relapse prevention approaches.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Mindfulness-based relapse prevention (MBRP)",
+            "entity_type": "Treatment",
+            "property": "description",
+            "value_text": "integrates practices from mindfulness-based interventions and cognitive-behavioral relapse prevention (RP) approaches",
+            "evidence_quote": "Mindfulness-based relapse prevention (MBRP) integrates practices from mindfulness-based interventions and cognitive-behavioral relapse prevention (RP) approaches."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2492,
+        "completion_tokens": 155,
+        "total_tokens": 2647
+      }
+    },
+    {
+      "index": 50003,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_AMBIGUOUS_ENTITY_TYPE",
+        "reason": "The text explicitly states that the StopSmoking Therapy combines a subcutaneous NicoSan injection and hyperhydration, but the protocol and its components have ambiguous schema entity types.",
+        "candidate_relations": [
+          {
+            "relation": "consists_of_medication",
+            "source_text": "The StopSmoking Therapy",
+            "source_type": "Treatment Plan",
+            "target_text": "NicoSan®",
+            "target_type": "Medication",
+            "evidence_quote": "The StopSmoking Therapy, combins a motivational interview, a subcutaneous injection of NicoSan® and a hyperhydration protocol."
+          },
+          {
+            "relation": "consists_of_treatment",
+            "source_text": "The StopSmoking Therapy",
+            "source_type": "Treatment Plan",
+            "target_text": "hyperhydration protocol",
+            "target_type": "Treatment",
+            "evidence_quote": "The StopSmoking Therapy, combins a motivational interview, a subcutaneous injection of NicoSan® and a hyperhydration protocol."
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2634,
+        "completion_tokens": 284,
+        "total_tokens": 2918
+      }
+    },
+    {
+      "index": 50004,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly maps “Somatic Symptom and Related Disorders” to the DSM-5.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "“Somatic Symptom and Related Disorders”",
+            "entity_type": "Disease",
+            "property": "dsm_5_mapping",
+            "value_text": "DSM-5 (Diagnostic and Statistical Manual – 5th Edition)",
+            "evidence_quote": "“Somatic Symptom and Related Disorders” according to the DSM-5 (Diagnostic and Statistical Manual – 5th Edition)"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2897,
+        "completion_tokens": 181,
+        "total_tokens": 3078
+      }
+    },
+    {
+      "index": 50005,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract states that cannabis use disorder is the most commonly reported illegal substance use disorder.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Cannabis use disorder",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "the most commonly reported illegal substance use disorder",
+            "evidence_quote": "Cannabis use disorder is the most commonly reported illegal substance use disorder"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2696,
+        "completion_tokens": 163,
+        "total_tokens": 2859
+      }
+    },
+    {
+      "index": 50006,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies headache and daytime drowsiness as the most frequent side effects of PRM.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "PRM",
+            "entity_type": "Medication",
+            "property": "side_effects",
+            "value_text": "headache and daytime drowsiness",
+            "evidence_quote": "PRM was well tolerated, the most frequent side effects being headache and daytime drowsiness at the same level with PRM or placebo."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 3361,
+        "completion_tokens": 137,
+        "total_tokens": 3498
+      }
+    },
+    {
+      "index": 50007,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly recommends polysomnography for suspected rapid eye movement sleep behavior disorder and indicates cognitive-behavioral therapy for insomnia for chronic insomnia in neurocognitive disorders.",
+        "candidate_relations": [
+          {
+            "relation": "recommended_examination",
+            "source_text": "rapid eye movement sleep behavior disorder",
+            "source_type": "Disease",
+            "target_text": "Polysomnography",
+            "target_type": "Examination",
+            "evidence_quote": "Polysomnography is recommended if a rapid eye movement sleep behavior disorder"
+          }
+        ],
+        "candidate_properties": [
+          {
+            "entity_text": "Cognitive-behavioral therapy for insomnia",
+            "entity_type": "Treatment",
+            "property": "indication",
+            "value_text": "chronic insomnia in neurocognitive disorders",
+            "evidence_quote": "Cognitive-behavioral therapy for insomnia is indicated to treat chronic insomnia in neurocognitive disorders"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 3176,
+        "completion_tokens": 266,
+        "total_tokens": 3442
+      }
+    },
+    {
+      "index": 50008,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly recommends intranasal esketamine for resistant depression and states its effective dose range.",
+        "candidate_relations": [
+          {
+            "relation": "recommended_for",
+            "source_text": "intranasal esketamine",
+            "source_type": "Medication",
+            "target_text": "resistant depression",
+            "target_type": "Disease",
+            "evidence_quote": "intranasal esketamine should be proposed as a second level of treatment after an unsuccessful trial of two antidepressants"
+          }
+        ],
+        "candidate_properties": [
+          {
+            "entity_text": "intranasal esketamine",
+            "entity_type": "Medication",
+            "property": "dose",
+            "value_text": "between 28 mg and 84 mg",
+            "evidence_quote": "It has been shown to be effective for a population aged between 18 and 74 years at doses between 28 mg and 84 mg."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2909,
+        "completion_tokens": 271,
+        "total_tokens": 3180
+      }
+    },
+    {
+      "index": 50009,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract defines nightmares and directly reports that lucid dreaming therapy reduces nightmare frequency.",
+        "candidate_relations": [
+          {
+            "relation": "relieved_by",
+            "source_text": "nightmares",
+            "source_type": "Symptom",
+            "target_text": "Lucid dreaming therapy (LDT)",
+            "target_type": "Treatment",
+            "evidence_quote": "Most of the included studies found LDT effective in reducing nightmare frequency"
+          }
+        ],
+        "candidate_properties": [
+          {
+            "entity_text": "Nightmares",
+            "entity_type": "Symptom",
+            "property": "description",
+            "value_text": "an unpleasant dream with anxiety and oppression",
+            "evidence_quote": "Nightmares can be defined as “an unpleasant dream with anxiety and oppression”"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2507,
+        "completion_tokens": 243,
+        "total_tokens": 2750
+      }
+    },
+    {
+      "index": 50010,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly reports impaired humor understanding in people with Autism Spectrum Disorder.",
+        "candidate_relations": [
+          {
+            "relation": "is_associated_symptom_of",
+            "source_text": "Understanding humor",
+            "source_type": "Symptom",
+            "target_text": "Autism Spectrum Disorder (ASD)",
+            "target_type": "Disease",
+            "evidence_quote": "Understanding humor was impaired in writing and when using pure auditory stimuli and non-verbal cartoons."
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2531,
+        "completion_tokens": 172,
+        "total_tokens": 2703
+      }
+    },
+    {
+      "index": 50011,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly states that anorexia nervosa is associated with cognitive difficulties.",
+        "candidate_relations": [
+          {
+            "relation": "is_associated_symptom_of",
+            "source_text": "cognitive difficulties",
+            "source_type": "Symptom",
+            "target_text": "anorexia nervosa",
+            "target_type": "Disease",
+            "evidence_quote": "anorexia nervosa is associated with several cognitive difficulties"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2512,
+        "completion_tokens": 118,
+        "total_tokens": 2630
+      }
+    },
+    {
+      "index": 50012,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_AMBIGUOUS_SCHEMA_FACT",
+        "reason": "The mobile app is plausibly an Assessment collecting information about sleep disorders and addictive behaviours, but the abstract does not clearly assert an allowed assessment relation.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2651,
+        "completion_tokens": 84,
+        "total_tokens": 2735
+      }
+    },
+    {
+      "index": 50013,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The review reports that borderline personality disorder negatively affects acute response or early relapse risk in major depressed individuals treated with ECT.",
+        "candidate_relations": [
+          {
+            "relation": "associated_with_poor_prognosis_in",
+            "source_text": "BPD",
+            "source_type": "Disease",
+            "target_text": "major depressive disorder",
+            "target_type": "Disease",
+            "evidence_quote": "the four studies diagnosing BPD by systematic psychiatric interview demonstrated a negative impact of this personality disorder on the acute response or the risk of early relapse in major depressed individuals treated with ECT"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2804,
+        "completion_tokens": 209,
+        "total_tokens": 3013
+      }
+    },
+    {
+      "index": 50014,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The review directly reports prevalence estimates for multiple psychiatric disorders in French prisons.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "anxiety disorders",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "29.4–44.4%",
+            "evidence_quote": "29.4–44.4% for anxiety disorders"
+          },
+          {
+            "entity_text": "PTSD",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "5–14.2%",
+            "evidence_quote": "5–14.2% for PTSD"
+          },
+          {
+            "entity_text": "mood disorders",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "28–31.2%",
+            "evidence_quote": "28–31.2% for mood disorders"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 3050,
+        "completion_tokens": 210,
+        "total_tokens": 3260
+      }
+    },
+    {
+      "index": 50015,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The review reports reduced dissociative symptoms associated with a variety of psychotherapeutic interventions.",
+        "candidate_relations": [
+          {
+            "relation": "relieved_by",
+            "source_text": "dissociative symptoms",
+            "source_type": "Symptom",
+            "target_text": "a variety of psychotherapeutic interventions",
+            "target_type": "Treatment",
+            "evidence_quote": "a reduction in dissociative symptoms associated with a variety of psychotherapeutic interventions"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2524,
+        "completion_tokens": 127,
+        "total_tokens": 2651
+      }
+    },
+    {
+      "index": 50016,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports mixed therapy outcomes and study methods but does not directly assert an allowed clinical relation or reusable standalone property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2510,
+        "completion_tokens": 89,
+        "total_tokens": 2599
+      }
+    },
+    {
+      "index": 50017,
+      "status": "completed_with_validation_errors",
+      "valid_output": false,
+      "validation_errors": [
+        "candidate_properties[0].evidence_quote is not an exact input span"
+      ],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly identifies alexithymia as a comorbidity of posttraumatic stress disorder and defines PTSD as a condition resulting from traumatic events.",
+        "candidate_relations": [
+          {
+            "relation": "co_occurs_with",
+            "source_text": "Posttraumatic stress disorder (PTSD)",
+            "source_type": "Disease",
+            "target_text": "Alexithymia",
+            "target_type": "Disease",
+            "evidence_quote": "Alexithymia, the difficulty in identifying and describing internal emotions, is a significant comorbidity"
+          }
+        ],
+        "candidate_properties": [
+          {
+            "entity_text": "Posttraumatic stress disorder (PTSD)",
+            "entity_type": "Disease",
+            "property": "definition",
+            "value_text": "a psychiatric condition resulting from one or more traumatic events, characterized by behavioural and emotional disturbances",
+            "evidence_quote": "PTSD is a psychiatric condition resulting from one or more traumatic events, characterized by behavioural and emotional disturbances"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2603,
+        "completion_tokens": 225,
+        "total_tokens": 2828
+      }
+    },
+    {
+      "index": 50018,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract states that posttraumatic stress disorder is common in the French population, supporting an epidemiology property.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Posttraumatic stress disorder",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "a common diagnosis in the French population",
+            "evidence_quote": "Posttraumatic stress disorder is a common diagnosis in the French population."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2490,
+        "completion_tokens": 162,
+        "total_tokens": 2652
+      }
+    },
+    {
+      "index": 50019,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies trauma-related nightmares as core features of post-traumatic stress disorder and describes doxazosin's pharmacological mechanism.",
+        "candidate_relations": [
+          {
+            "relation": "is_core_symptom_of",
+            "source_text": "Trauma-related nightmares (TRNs)",
+            "source_type": "Symptom",
+            "target_text": "post-traumatic stress disorder (PTSD)",
+            "target_type": "Disease",
+            "evidence_quote": "Trauma-related nightmares (TRNs), core features of post-traumatic stress disorder (PTSD)"
+          }
+        ],
+        "candidate_properties": [
+          {
+            "entity_text": "doxazosin",
+            "entity_type": "Medication",
+            "property": "mechanism",
+            "value_text": "a selective α(1)-adrenergic receptor antagonist",
+            "evidence_quote": "doxazosin, a selective α(1)-adrenergic receptor antagonist"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2609,
+        "completion_tokens": 260,
+        "total_tokens": 2869
+      }
+    },
+    {
+      "index": 50020,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly describes Compassion-Focused Therapy's proposed mechanisms of action.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "CFT",
+            "entity_type": "Treatment",
+            "property": "mechanism",
+            "value_text": "promoting a more compassionate and accepting relationship with oneself and others, reducing self-criticism, and improving emotional regulation",
+            "evidence_quote": "These results suggest that CFT may exert its effects by promoting a more compassionate and accepting relationship with oneself and others, reducing self-criticism, and improving emotional regulation."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 3072,
+        "completion_tokens": 194,
+        "total_tokens": 3266
+      }
+    },
+    {
+      "index": 50021,
+      "status": "completed_with_validation_errors",
+      "valid_output": false,
+      "validation_errors": [
+        "candidate_relations[2].evidence_quote is not an exact input span"
+      ],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly reports symptoms associated with Mauriac syndrome and diagnostic examinations used to establish its diagnosis.",
+        "candidate_relations": [
+          {
+            "relation": "is_associated_symptom_of",
+            "source_text": "hepatomegaly",
+            "source_type": "Symptom",
+            "target_text": "Mauriac syndrome",
+            "target_type": "Disease",
+            "evidence_quote": "The main signs and symptoms reported were hepatomegaly (88%)"
+          },
+          {
+            "relation": "is_associated_symptom_of",
+            "source_text": "short stature",
+            "source_type": "Symptom",
+            "target_text": "Mauriac syndrome",
+            "target_type": "Disease",
+            "evidence_quote": "short stature (52%)"
+          },
+          {
+            "relation": "supports_diagnosis_of",
+            "source_text": "abdominal ultrasound (US)",
+            "source_type": "Examination",
+            "target_text": "Mauriac syndrome",
+            "target_type": "Disease",
+            "evidence_quote": "Some studies used abdominal ultrasound (US) ... to make the diagnosis"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2612,
+        "completion_tokens": 327,
+        "total_tokens": 2939
+      }
+    },
+    {
+      "index": 50022,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies two named assessment scales used to evaluate life skills and work productivity.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "the Indonesian version of the life skill profile (LSP) questionnaire",
+            "entity_type": "Assessment Scale",
+            "property": "scale_name",
+            "value_text": "life skill profile (LSP) questionnaire",
+            "evidence_quote": "the Indonesian version of the life skill profile (LSP) questionnaire"
+          },
+          {
+            "entity_text": "the work productivity and activity impairment scale (WPAI)",
+            "entity_type": "Assessment Scale",
+            "property": "scale_name",
+            "value_text": "work productivity and activity impairment scale (WPAI)",
+            "evidence_quote": "the work productivity and activity impairment scale (WPAI)"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2669,
+        "completion_tokens": 258,
+        "total_tokens": 2927
+      }
+    },
+    {
+      "index": 50023,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports study methods and network/tau-retention correlations without asserting an allowed clinical relation or reusable standalone property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2608,
+        "completion_tokens": 75,
+        "total_tokens": 2683
+      }
+    },
+    {
+      "index": 50024,
+      "status": "completed_with_validation_errors",
+      "valid_output": false,
+      "validation_errors": [
+        "candidate_relations[0].evidence_quote is not an exact input span"
+      ],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly reports an increased risk of infection in patients with dementia.",
+        "candidate_relations": [
+          {
+            "relation": "associated_with_risk",
+            "source_text": "dementia",
+            "source_type": "Disease",
+            "target_text": "increased risk of infection",
+            "target_type": "Risk",
+            "evidence_quote": "reported an increased risk of infection ... in dementia patients"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2535,
+        "completion_tokens": 160,
+        "total_tokens": 2695
+      }
+    },
+    {
+      "index": 50025,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_AMBIGUOUS_SCHEMA_FACT",
+        "reason": "The abstract reports associations between pesticide exposure and neurological outcomes, but the schema does not allow a direct exposure-association relation and causality cannot be inferred.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2826,
+        "completion_tokens": 84,
+        "total_tokens": 2910
+      }
+    },
+    {
+      "index": 50026,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies hyperactivity as a key diagnostic criterion of ADHD.",
+        "candidate_relations": [
+          {
+            "relation": "is_core_symptom_of",
+            "source_text": "hyperactivity",
+            "source_type": "Symptom",
+            "target_text": "ADHD",
+            "target_type": "Disease",
+            "evidence_quote": "hyperactivity, a key diagnostic criterion of ADHD"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2885,
+        "completion_tokens": 152,
+        "total_tokens": 3037
+      }
+    },
+    {
+      "index": 50027,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NONASSERTED_PLAN_ONLY",
+        "reason": "The abstract describes planned systematic reviews and eligibility criteria without directly asserting an allowed clinical relation or reusable standalone property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2976,
+        "completion_tokens": 86,
+        "total_tokens": 3062
+      }
+    },
+    {
+      "index": 50028,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports epidemiological associations between phthalate exposure and neurodevelopmental outcomes, but no allowed active relation or reusable standalone property is directly asserted.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2700,
+        "completion_tokens": 79,
+        "total_tokens": 2779
+      }
+    },
+    {
+      "index": 50029,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_CONTRADICTORY_EVIDENCE",
+        "reason": "The abstract states that long working hours may cause alcohol use disorder, but also reports no eligible studies evaluating that outcome.",
+        "candidate_relations": [
+          {
+            "relation": "causes",
+            "source_text": "exposure to long working hours",
+            "source_type": "Etiology",
+            "target_text": "alcohol use disorder",
+            "target_type": "Disease",
+            "evidence_quote": "exposure to long working hours may increase alcohol consumption and cause alcohol use disorder"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 3648,
+        "completion_tokens": 178,
+        "total_tokens": 3826
+      }
+    },
+    {
+      "index": 50030,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The Social Responsiveness Scale (SRS-2) is explicitly administered to assess autistic traits in children.",
+        "candidate_relations": [
+          {
+            "relation": "measures",
+            "source_text": "Social Responsiveness Scale (SRS-2)",
+            "source_type": "Assessment Scale",
+            "target_text": "autistic traits",
+            "target_type": "Symptom",
+            "evidence_quote": "We administered the Social Responsiveness Scale (SRS-2) to caregivers"
+          }
+        ],
+        "candidate_properties": [
+          {
+            "entity_text": "Social Responsiveness Scale (SRS-2)",
+            "entity_type": "Assessment Scale",
+            "property": "scale_name",
+            "value_text": "Social Responsiveness Scale (SRS-2)",
+            "evidence_quote": "the Social Responsiveness Scale (SRS-2)"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2773,
+        "completion_tokens": 248,
+        "total_tokens": 3021
+      }
+    },
+    {
+      "index": 50031,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The title explicitly identifies the publication as a systematic review and meta-analysis.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Effects of ambient temperature on mental and neurological conditions in older adults: A systematic review and meta-analysis",
+            "entity_type": "Evidence",
+            "property": "study_type",
+            "value_text": "systematic review and meta-analysis",
+            "evidence_quote": "A systematic review and meta-analysis"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2916,
+        "completion_tokens": 170,
+        "total_tokens": 3086
+      }
+    },
+    {
+      "index": 50032,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract states that ozone induces Alzheimer-like pathology and contributes to Alzheimer's disease pathology.",
+        "candidate_relations": [
+          {
+            "relation": "contributes_to",
+            "source_text": "ozone",
+            "source_type": "Etiology",
+            "target_text": "Alzheimer's Disease",
+            "target_type": "Disease",
+            "evidence_quote": "ozone is a criteria pollutant to be focused on in mitigating Alzheimer's Disease pathology"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2574,
+        "completion_tokens": 168,
+        "total_tokens": 2742
+      }
+    },
+    {
+      "index": 50033,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract directly reports an epidemiological association between prenatal PCB exposure and increased autism spectrum disorder risk.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "autism spectrum disorders (ASD)",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "positive association between prenatal exposure to PCB-138, PCB-153 and PCB-170 and an increased risk of ASD",
+            "evidence_quote": "Meta-analytical effect estimates indicated a positive association between prenatal exposure to PCB-138, PCB-153 and PCB-170 and an increased risk of ASD"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2766,
+        "completion_tokens": 171,
+        "total_tokens": 2937
+      }
+    },
+    {
+      "index": 50034,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports associations between nature exposure and mental health outcomes, but this exposure-outcome association is not represented by an allowed active relation.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2827,
+        "completion_tokens": 81,
+        "total_tokens": 2908
+      }
+    },
+    {
+      "index": 50035,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_AMBIGUOUS_SCHEMA_FACT",
+        "reason": "The review reports a connection between phthalate exposure and ASD, but the evidence is observational and does not clearly establish an allowed etiological relation.",
+        "candidate_relations": [
+          {
+            "relation": "contributes_to",
+            "source_text": "exposure to phthalates",
+            "source_type": "Etiology",
+            "target_text": "ASD",
+            "target_type": "Disease",
+            "evidence_quote": "evidence showing a connection between exposure to phthalates and ASD"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2688,
+        "completion_tokens": 173,
+        "total_tokens": 2861
+      }
+    },
+    {
+      "index": 50036,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_UNCLEAR_ASSERTION_STATUS",
+        "reason": "The abstract discusses potentially harmful effects and associations between ambient ozone exposure and several mental health disorders, but explicitly states that the evidence is inconclusive.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2573,
+        "completion_tokens": 82,
+        "total_tokens": 2655
+      }
+    },
+    {
+      "index": 50037,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports experimental RF-EMF exposure effects and study outcomes without asserting an allowed clinical relation or reusable standalone property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2781,
+        "completion_tokens": 76,
+        "total_tokens": 2857
+      }
+    },
+    {
+      "index": 50038,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_UNSUPPORTED_FACT_TYPE",
+        "reason": "The abstract reports associations and study findings but does not directly assert an allowed relation or reusable standalone entity property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2580,
+        "completion_tokens": 86,
+        "total_tokens": 2666
+      }
+    },
+    {
+      "index": 50039,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports epidemiologic associations and effect modification between air pollution, susceptibility factors, and ASD, but does not directly assert an allowed active relation or reusable standalone property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2665,
+        "completion_tokens": 98,
+        "total_tokens": 2763
+      }
+    },
+    {
+      "index": 50040,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "Experimental studies provided evidence that walking or being in a green space improves state anxiety immediately following the intervention.",
+        "candidate_relations": [
+          {
+            "relation": "relieved_by",
+            "source_text": "state anxiety",
+            "source_type": "Symptom",
+            "target_text": "walking or being in a green space",
+            "target_type": "Treatment",
+            "evidence_quote": "walking or being in a green space improves mood and state anxiety immediately following the intervention"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2641,
+        "completion_tokens": 145,
+        "total_tokens": 2786
+      }
+    },
+    {
+      "index": 50041,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "DROP",
+        "reason_code": "DROP_NO_SCHEMA_FACT",
+        "reason": "The abstract reports epidemiological associations between indoor plants and mental-health outcomes, but does not directly assert an allowed active relation or reusable standalone property.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2689,
+        "completion_tokens": 82,
+        "total_tokens": 2771
+      }
+    },
+    {
+      "index": 50042,
+      "status": "completed_with_validation_errors",
+      "valid_output": false,
+      "validation_errors": [
+        "candidate_properties[1].evidence_quote is not an exact input span"
+      ],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The meta-analysis reports quantified epidemiological associations between green space exposure and depression and anxiety risk.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "depression",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "a 10% increase in the proportion of green space was linked to a lower risk of depression (merged OR (95% CI) = 0.963 (0.948, 0.979))",
+            "evidence_quote": "a 10% increase in the proportion of green space was linked to a lower risk of depression"
+          },
+          {
+            "entity_text": "anxiety",
+            "entity_type": "Disease",
+            "property": "epidemiology",
+            "value_text": "a 10% increase in the proportion of green space was linked to a lower risk of depression (merged OR (95% CI) = 0.963 (0.948, 0.979)) and anxiety (merged OR (95% CI) = 0.938 (0.858, 1.025))",
+            "evidence_quote": "a 10% increase in the proportion of green space was linked to a lower risk of ... anxiety"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2660,
+        "completion_tokens": 360,
+        "total_tokens": 3020
+      }
+    },
+    {
+      "index": 50043,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The publication is explicitly identified as a systematic literature review.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Recent advances in nanobiosensors for sustainable healthcare applications: A systematic literature review",
+            "entity_type": "Evidence",
+            "property": "study_type",
+            "value_text": "systematic literature review",
+            "evidence_quote": "this work, 2218 articles are drawn and screened from six digital databases out of which 17 were shortlisted for this review"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2560,
+        "completion_tokens": 177,
+        "total_tokens": 2737
+      }
+    },
+    {
+      "index": 50044,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies the Newcastle-Ottawa Scale (NOS) as a quality appraisal checklist.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Newcastle-Ottawa Scale (NOS)",
+            "entity_type": "Assessment Scale",
+            "property": "scale_name",
+            "value_text": "Newcastle-Ottawa Scale (NOS)",
+            "evidence_quote": "using the Newcastle-Ottawa Scale (NOS) quality appraisal checklist"
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2689,
+        "completion_tokens": 157,
+        "total_tokens": 2846
+      }
+    },
+    {
+      "index": 50045,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly defines nature-based interventions as a therapeutic intervention involving activities, strategies, or programs in natural settings.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Nature-based interventions (NBIs)",
+            "entity_type": "Treatment",
+            "property": "description",
+            "value_text": "activities, strategies, or programs taking place in natural settings, such as exercising in greenspaces, to improve the health and well-being of people by integrating the benefits of nature exposure with healthy behaviours",
+            "evidence_quote": "Nature-based interventions (NBIs) are activities, strategies, or programs taking place in natural settings, such as exercising in greenspaces, to improve the health and well-being of people by integrating the benefits of nature exposure with healthy behaviours."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2744,
+        "completion_tokens": 248,
+        "total_tokens": 2992
+      }
+    },
+    {
+      "index": 50046,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly identifies the Newcastle-Ottawa Scale as the tool used for quality assessments.",
+        "candidate_relations": [],
+        "candidate_properties": [
+          {
+            "entity_text": "Newcastle-Ottawa Scale (NOS)",
+            "entity_type": "Assessment Scale",
+            "property": "scale_name",
+            "value_text": "Newcastle-Ottawa Scale (NOS)",
+            "evidence_quote": "Quality assessments were conducted with the Newcastle-Ottawa Scale (NOS)."
+          }
+        ]
+      },
+      "usage": {
+        "prompt_tokens": 2623,
+        "completion_tokens": 160,
+        "total_tokens": 2783
+      }
+    },
+    {
+      "index": 50047,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_AMBIGUOUS_SCHEMA_FACT",
+        "reason": "Radon exposure is explicitly associated with hypertension and adverse pregnancy outcomes, but the schema lacks a direct association relation for an etiological exposure and disease targets are incompletely specified.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2557,
+        "completion_tokens": 88,
+        "total_tokens": 2645
+      }
+    },
+    {
+      "index": 50048,
+      "status": "completed",
+      "valid_output": true,
+      "validation_errors": [],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "REVIEW",
+        "reason_code": "REVIEW_AMBIGUOUS_ENTITY_TYPE",
+        "reason": "Housing adaptations are reported to improve heat-health outcomes, but their mapping to the Treatment entity type and the required clinical target are unclear.",
+        "candidate_relations": [],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2520,
+        "completion_tokens": 81,
+        "total_tokens": 2601
+      }
+    },
+    {
+      "index": 50049,
+      "status": "completed_with_validation_errors",
+      "valid_output": false,
+      "validation_errors": [
+        "candidate_relations[0].evidence_quote is not an exact input span",
+        "candidate_relations[1].evidence_quote is not an exact input span"
+      ],
+      "output": {
+        "schema_version": "3.0.0-draft.1",
+        "decision": "KEEP",
+        "reason_code": "KEEP_SUPPORTED_SCHEMA_FACT",
+        "reason": "The abstract explicitly reports environmental risk factors associated with higher risks of all-cause dementia, Alzheimer's disease dementia, and vascular dementia.",
+        "candidate_relations": [
+          {
+            "relation": "associated_with_risk",
+            "source_text": "all-cause dementia",
+            "source_type": "Disease",
+            "target_text": "fine particulate matter",
+            "target_type": "Risk",
+            "evidence_quote": "fine particulate matter ... was associated with higher risks of all-cause dementia"
+          },
+          {
+            "relation": "associated_with_risk",
+            "source_text": "Alzheimer's disease dementia",
+            "source_type": "Disease",
+            "target_text": "fine particulate matter",
+            "target_type": "Risk",
+            "evidence_quote": "fine particulate matter ... were related to Alzheimer's disease dementia"
+          },
+          {
+            "relation": "associated_with_risk",
+            "source_text": "vascular dementia",
+            "source_type": "Disease",
+            "target_text": "chronic noise",
+            "target_type": "Risk",
+            "evidence_quote": "chronic noise were related to vascular dementia"
+          }
+        ],
+        "candidate_properties": []
+      },
+      "usage": {
+        "prompt_tokens": 2705,
+        "completion_tokens": 345,
+        "total_tokens": 3050
+      }
+    }
+  ]
+}

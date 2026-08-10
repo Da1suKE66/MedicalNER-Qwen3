@@ -1,0 +1,1049 @@
+{
+  "schema_version": "3.0.0-draft.1",
+  "status": "draft",
+  "source_release": "2026-08",
+  "coding": {
+    "coding_system": "ICD-11-MMS",
+    "code_property": "icdcode",
+    "release_property": "icd_release",
+    "uri_property": "icd_uri",
+    "main_disease_only": true
+  },
+  "entity_types": {
+    "Disease": {
+      "properties": [
+        "icdcode",
+        "coding_system",
+        "icd_release",
+        "icd_uri",
+        "dsm_5_mapping",
+        "definition",
+        "subtype",
+        "specifier",
+        "severity",
+        "course",
+        "epidemiology",
+        "prognosis",
+        "parent_disease"
+      ]
+    },
+    "Symptom": {
+      "properties": [
+        "name",
+        "description",
+        "category",
+        "parent_symptom",
+        "severity",
+        "duration",
+        "frequency",
+        "sensitivity",
+        "specificity"
+      ]
+    },
+    "Diagnostic Criterion": {
+      "properties": [
+        "source",
+        "criterion_id",
+        "description",
+        "required",
+        "logic",
+        "threshold"
+      ]
+    },
+    "Assessment": {
+      "properties": [
+        "assessment_type",
+        "question",
+        "trigger",
+        "follow_up_question",
+        "purpose"
+      ]
+    },
+    "Patient": {
+      "properties": [
+        "age",
+        "sex",
+        "occupation",
+        "education",
+        "marriage",
+        "family_history",
+        "psychiatric_history",
+        "trauma",
+        "substance_use",
+        "special_population"
+      ]
+    },
+    "Medication": {
+      "properties": [
+        "generic_name",
+        "atc_code",
+        "mechanism",
+        "dose",
+        "indication",
+        "contraindication",
+        "side_effects",
+        "drug_interaction",
+        "metabolism",
+        "pregnancy",
+        "lactation"
+      ]
+    },
+    "Treatment": {
+      "properties": [
+        "treatment_type",
+        "description",
+        "mechanism",
+        "indication",
+        "contraindication",
+        "duration",
+        "frequency",
+        "evidence_level"
+      ]
+    },
+    "Treatment Plan": {
+      "properties": [
+        "plan_name",
+        "applicable_disease",
+        "disease_stage",
+        "severity",
+        "target_population",
+        "recommendation_level",
+        "description"
+      ]
+    },
+    "Examination": {
+      "properties": [
+        "test_type",
+        "description",
+        "purpose",
+        "interpretation"
+      ]
+    },
+    "Assessment Scale": {
+      "properties": [
+        "scale_name",
+        "cutoff",
+        "score_range",
+        "interpretation",
+        "target_disease"
+      ]
+    },
+    "Etiology": {
+      "properties": [
+        "etiology_type",
+        "description",
+        "evidence"
+      ]
+    },
+    "Risk": {
+      "properties": [
+        "risk_type",
+        "risk_level",
+        "description",
+        "evidence_level"
+      ]
+    },
+    "Communication Strategy": {
+      "properties": [
+        "strategy",
+        "scenario",
+        "target_population",
+        "contraindication",
+        "applicable_stage",
+        "requires_family_support"
+      ]
+    },
+    "Guideline": {
+      "properties": [
+        "guideline_name",
+        "organization",
+        "version",
+        "publication_year"
+      ]
+    },
+    "Evidence": {
+      "properties": [
+        "pmid",
+        "doi",
+        "study_type",
+        "journal",
+        "grade",
+        "publication_year"
+      ]
+    }
+  },
+  "property_aliases": {
+    "ICD-11 Code": "icdcode",
+    "DSM-5 Mapping": "dsm_5_mapping",
+    "Definition": "definition",
+    "Subtype": "subtype",
+    "Specifier": "specifier",
+    "Severity": "severity",
+    "Course": "course",
+    "Epidemiology": "epidemiology",
+    "Prognosis": "prognosis",
+    "Parent Disease": "parent_disease",
+    "Name": "name",
+    "Description": "description",
+    "Category": "category",
+    "Parent Symptom": "parent_symptom",
+    "Duration": "duration",
+    "Frequency": "frequency",
+    "Sensitivity": "sensitivity",
+    "Specificity": "specificity",
+    "Source": "source",
+    "Criterion ID": "criterion_id",
+    "Required": "required",
+    "Logic": "logic",
+    "Threshold": "threshold",
+    "Assessment Type": "assessment_type",
+    "Question": "question",
+    "Trigger": "trigger",
+    "Follow-up Question": "follow_up_question",
+    "Purpose": "purpose",
+    "Age": "age",
+    "Sex": "sex",
+    "Occupation": "occupation",
+    "Education": "education",
+    "Marriage": "marriage",
+    "Family History": "family_history",
+    "Psychiatric History": "psychiatric_history",
+    "Trauma": "trauma",
+    "Substance Use": "substance_use",
+    "Special Population": "special_population",
+    "Generic Name": "generic_name",
+    "ATC Code": "atc_code",
+    "Mechanism": "mechanism",
+    "Dose": "dose",
+    "Indication": "indication",
+    "Contraindication": "contraindication",
+    "Side Effects": "side_effects",
+    "Drug Interaction": "drug_interaction",
+    "Metabolism": "metabolism",
+    "Pregnancy": "pregnancy",
+    "Lactation": "lactation",
+    "Treatment Type": "treatment_type",
+    "Evidence Level": "evidence_level",
+    "Plan Name": "plan_name",
+    "Applicable Disease": "applicable_disease",
+    "Disease Stage": "disease_stage",
+    "Target Population": "target_population",
+    "Recommendation Level": "recommendation_level",
+    "Test Type": "test_type",
+    "Interpretation": "interpretation",
+    "Scale Name": "scale_name",
+    "Cutoff": "cutoff",
+    "Score Range": "score_range",
+    "Target Disease": "target_disease",
+    "Etiology Type": "etiology_type",
+    "Evidence": "evidence",
+    "Risk Type": "risk_type",
+    "Risk Level": "risk_level",
+    "Strategy": "strategy",
+    "Scenario": "scenario",
+    "Guideline Name": "guideline_name",
+    "Organization": "organization",
+    "Version": "version",
+    "Publication Year": "publication_year",
+    "PMID": "pmid",
+    "DOI": "doi",
+    "Study Type": "study_type",
+    "Journal": "journal",
+    "GRADE": "grade",
+    "ICD Code": "icdcode",
+    "icd_code": "icdcode",
+    "Coding System": "coding_system",
+    "ICD Release": "icd_release",
+    "ICD URI": "icd_uri",
+    "Applicable Stage": "applicable_stage",
+    "Requires Family Support": "requires_family_support"
+  },
+  "relation_types": {
+    "belongs_to": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "subtype_of": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "differentiates_from": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "co_occurs_with": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "predisposes_to": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "needs_medical_review"
+    },
+    "causes_disease": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "needs_medical_review"
+    },
+    "progresses_to": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "relapses_to": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "associated_with_poor_prognosis_in": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "has_diagnostic_criterion": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Diagnostic Criterion"
+      ],
+      "status": "active"
+    },
+    "recommended_assessment": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Assessment"
+      ],
+      "status": "active"
+    },
+    "recommended_examination": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Examination"
+      ],
+      "status": "active"
+    },
+    "recommended_treatment_plan": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Treatment Plan"
+      ],
+      "status": "active"
+    },
+    "associated_with_risk": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Risk"
+      ],
+      "status": "active"
+    },
+    "commonly_affects": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Patient"
+      ],
+      "status": "needs_medical_review"
+    },
+    "rules_out": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "managed_by_guideline": {
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Guideline"
+      ],
+      "status": "active"
+    },
+    "required_for_diagnosis_of": {
+      "source": [
+        "Diagnostic Criterion"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "is_core_symptom_of": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "is_associated_symptom_of": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "supports_diagnosis_of": {
+      "source": [
+        "Symptom",
+        "Examination"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active",
+      "allowed_pairs": [
+        [
+          "Symptom",
+          "Disease"
+        ],
+        [
+          "Examination",
+          "Disease"
+        ]
+      ]
+    },
+    "supports_diagnostic_criterion": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Diagnostic Criterion"
+      ],
+      "status": "active"
+    },
+    "suggests": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "argues_against": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "precedes": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "needs_medical_review"
+    },
+    "follows": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "needs_medical_review"
+    },
+    "worsens": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "needs_medical_review"
+    },
+    "relieved_by": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Medication",
+        "Treatment"
+      ],
+      "status": "active"
+    },
+    "modulated_by": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Etiology",
+        "Medication",
+        "Treatment"
+      ],
+      "status": "needs_medical_review"
+    },
+    "part_of": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "needs_medical_review"
+    },
+    "has_manifestation": {
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "needs_medical_review"
+    },
+    "assesses_for": {
+      "source": [
+        "Assessment"
+      ],
+      "target": [
+        "Disease",
+        "Symptom",
+        "Risk"
+      ],
+      "status": "active"
+    },
+    "asks_about": {
+      "source": [
+        "Assessment"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "active"
+    },
+    "triggers_follow_up_question": {
+      "source": [
+        "Assessment"
+      ],
+      "target": [
+        "Assessment"
+      ],
+      "status": "needs_medical_review"
+    },
+    "triggers_scale": {
+      "source": [
+        "Assessment"
+      ],
+      "target": [
+        "Assessment Scale"
+      ],
+      "status": "active"
+    },
+    "triggers_test": {
+      "source": [
+        "Assessment"
+      ],
+      "target": [
+        "Examination"
+      ],
+      "status": "active"
+    },
+    "informed_by_patient": {
+      "source": [
+        "Assessment"
+      ],
+      "target": [
+        "Patient"
+      ],
+      "status": "active"
+    },
+    "presents_with": {
+      "source": [
+        "Patient"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "active"
+    },
+    "has_risk": {
+      "source": [
+        "Patient"
+      ],
+      "target": [
+        "Risk"
+      ],
+      "status": "active"
+    },
+    "receives_treatment_plan": {
+      "source": [
+        "Patient"
+      ],
+      "target": [
+        "Treatment Plan"
+      ],
+      "status": "active"
+    },
+    "contraindicated_for": {
+      "source": [
+        "Patient"
+      ],
+      "target": [
+        "Medication",
+        "Treatment"
+      ],
+      "status": "needs_medical_review"
+    },
+    "first_line_for": {
+      "source": [
+        "Medication"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "second_line_for": {
+      "source": [
+        "Medication"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "recommended_for": {
+      "source": [
+        "Medication",
+        "Communication Strategy"
+      ],
+      "target": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "active",
+      "allowed_pairs": [
+        [
+          "Medication",
+          "Disease"
+        ],
+        [
+          "Communication Strategy",
+          "Disease"
+        ],
+        [
+          "Communication Strategy",
+          "Patient"
+        ]
+      ]
+    },
+    "contraindicated_in": {
+      "source": [
+        "Medication"
+      ],
+      "target": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "active"
+    },
+    "interacts_with": {
+      "source": [
+        "Medication"
+      ],
+      "target": [
+        "Medication"
+      ],
+      "status": "active"
+    },
+    "causes_side_effect": {
+      "source": [
+        "Medication"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "active"
+    },
+    "monitor_for": {
+      "source": [
+        "Medication"
+      ],
+      "target": [
+        "Examination",
+        "Symptom",
+        "Risk"
+      ],
+      "status": "needs_medical_review"
+    },
+    "combined_with": {
+      "source": [
+        "Treatment"
+      ],
+      "target": [
+        "Treatment",
+        "Medication"
+      ],
+      "status": "active"
+    },
+    "supported_by_evidence": {
+      "source": [
+        "Treatment"
+      ],
+      "target": [
+        "Evidence"
+      ],
+      "status": "active"
+    },
+    "consists_of_medication": {
+      "source": [
+        "Treatment Plan"
+      ],
+      "target": [
+        "Medication"
+      ],
+      "status": "active"
+    },
+    "consists_of_treatment": {
+      "source": [
+        "Treatment Plan"
+      ],
+      "target": [
+        "Treatment"
+      ],
+      "status": "active"
+    },
+    "applicable_to": {
+      "source": [
+        "Treatment Plan"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "recommended_by": {
+      "source": [
+        "Treatment Plan",
+        "Evidence"
+      ],
+      "target": [
+        "Guideline"
+      ],
+      "status": "active",
+      "allowed_pairs": [
+        [
+          "Treatment Plan",
+          "Guideline"
+        ],
+        [
+          "Evidence",
+          "Guideline"
+        ]
+      ]
+    },
+    "differentiates": {
+      "source": [
+        "Examination"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "confirms": {
+      "source": [
+        "Examination"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "evaluates": {
+      "source": [
+        "Assessment Scale"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "triggered_by": {
+      "source": [
+        "Assessment Scale"
+      ],
+      "target": [
+        "Assessment"
+      ],
+      "status": "active"
+    },
+    "measures": {
+      "source": [
+        "Assessment Scale"
+      ],
+      "target": [
+        "Symptom"
+      ],
+      "status": "active"
+    },
+    "causes": {
+      "source": [
+        "Etiology"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "contributes_to": {
+      "source": [
+        "Etiology"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "status": "active"
+    },
+    "increases_risk_of": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Risk"
+      ],
+      "status": "needs_medical_review"
+    },
+    "protective_against": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Risk"
+      ],
+      "status": "needs_medical_review"
+    },
+    "triggers_alert_when": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Disease",
+        "Symptom"
+      ],
+      "status": "active"
+    },
+    "requires_emergency_action": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Treatment Plan"
+      ],
+      "status": "needs_medical_review"
+    },
+    "requires_escalated_management": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Treatment Plan"
+      ],
+      "status": "needs_medical_review"
+    },
+    "mediated_by": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Etiology",
+        "Symptom",
+        "Disease"
+      ],
+      "status": "needs_medical_review"
+    },
+    "applies_to_patient": {
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Patient"
+      ],
+      "status": "active"
+    },
+    "avoid_with": {
+      "source": [
+        "Communication Strategy"
+      ],
+      "target": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "needs_medical_review"
+    },
+    "recommends": {
+      "source": [
+        "Guideline"
+      ],
+      "target": [
+        "Medication",
+        "Treatment",
+        "Treatment Plan",
+        "Assessment",
+        "Examination",
+        "Assessment Scale",
+        "Communication Strategy"
+      ],
+      "status": "needs_medical_review"
+    },
+    "based_on_evidence": {
+      "source": [
+        "Guideline"
+      ],
+      "target": [
+        "Evidence"
+      ],
+      "status": "active"
+    },
+    "updated_from": {
+      "source": [
+        "Guideline"
+      ],
+      "target": [
+        "Guideline"
+      ],
+      "status": "active"
+    },
+    "supported_by": {
+      "source": [
+        "Evidence"
+      ],
+      "target": [
+        "Evidence"
+      ],
+      "status": "needs_medical_review"
+    },
+    "derived_from": {
+      "source": [
+        "Evidence"
+      ],
+      "target": [
+        "Evidence"
+      ],
+      "status": "needs_medical_review"
+    },
+    "cites": {
+      "source": [
+        "Evidence"
+      ],
+      "target": [
+        "Evidence"
+      ],
+      "status": "active"
+    }
+  },
+  "relation_rewrites": [
+    {
+      "from": "associated_with_poor_prognosis",
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "to": "associated_with_poor_prognosis_in"
+    },
+    {
+      "from": "required_for",
+      "source": [
+        "Diagnostic Criterion"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "to": "required_for_diagnosis_of"
+    },
+    {
+      "from": "supports_Diagnostic Criterion_of",
+      "source": [
+        "Symptom"
+      ],
+      "target": [
+        "Diagnostic Criterion"
+      ],
+      "to": "supports_diagnostic_criterion"
+    },
+    {
+      "from": "causes",
+      "source": [
+        "Disease"
+      ],
+      "target": [
+        "Disease"
+      ],
+      "to": "causes_disease"
+    },
+    {
+      "from": "escalates_to",
+      "source": [
+        "Risk"
+      ],
+      "target": [
+        "Treatment Plan"
+      ],
+      "to": "requires_escalated_management"
+    }
+  ],
+  "text_corrections": {}
+}

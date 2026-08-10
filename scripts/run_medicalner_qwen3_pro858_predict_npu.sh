@@ -2,14 +2,16 @@
 # 在 NPU 容器内部运行的 predict 入口（被 scripts/submit_medicalner_qwen3_pro858_predict_npu.sh
 # 提交的 vc 任务调用，也可在调试机的容器里直接 bash 这一行手动跑）。
 #
-# 加载训练好的 LoRA adapter，在 eval 数据集上跑生成，落 generated_predictions.jsonl
+# 加载训练好的 LoRA adapter，在 treatment predict 集上跑生成
+# （Cochrane 6 条、Embase 8 条、PubMed 8 条），
+# 落 generated_predictions.jsonl
 # 并做一个粗略的 JSON 合法率统计，方便肉眼检查输出格式。
 set -euo pipefail
 
 PROJECT_DIR="${PROJECT_DIR:-/aistor/sjtu/hpc_stor01/home/wangxiran/projects/MedicalNER-Qwen3}"
-CONFIG_YAML="${CONFIG_YAML:-configs/llamafactory/predict_qwen3_8b_cot_pro858_npu.yaml}"
-ADAPTER="${ADAPTER:-models/adapters/qwen3-8b-cot-pro858-npu}"
-OUTDIR="${OUTDIR:-models/predict/qwen3-8b-cot-pro858-schema-regression-20-npu}"
+CONFIG_YAML="${CONFIG_YAML:-configs/llamafactory/predict_qwen3_8b_cot_pro858_treatment_22_npu.yaml}"
+ADAPTER="${ADAPTER:-models/adapters/qwen3-8b-cot-pro858}"
+OUTDIR="${OUTDIR:-models/predict/qwen3-8b-cot-pro858-treatment-22-npu}"
 
 cd "${PROJECT_DIR}"
 
