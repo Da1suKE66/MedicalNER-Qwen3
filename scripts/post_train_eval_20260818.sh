@@ -39,9 +39,7 @@ cp -a "${OUT}/." "${RUN_ROOT}/artifacts/final_output/" 2>/dev/null || true
 printf '0\n' > "${RUN_ROOT}/metadata/exit_code.txt"
 rm -f "${RUN_ROOT}/running"
 
-ADAPTER="${OUT}"
-if [[ ! -f "${ADAPTER}/adapter_model.safetensors" ]]; then
-  ADAPTER="$(${PYTHON} - <<'PY'
+ADAPTER="$(${PYTHON} - <<'PY'
 import json
 from pathlib import Path
 root = Path("/cache/liluchen/medicalner_output_objectives/output/lora_output_only_groupdisjoint_20260818")
@@ -51,14 +49,15 @@ if state.exists():
     best = json.loads(state.read_text()).get("best_model_checkpoint")
 if best and (Path(best) / "adapter_model.safetensors").exists():
     print(best)
+elif (root / "adapter_model.safetensors").exists():
+    print(root)
 else:
     checkpoints = sorted(root.glob("checkpoint-*/adapter_model.safetensors"), key=lambda p: int(p.parent.name.split("-")[-1]))
     if not checkpoints:
         raise SystemExit("no adapter checkpoint found")
     print(checkpoints[-1].parent)
 PY
-  )"
-fi
+)"
 
 mkdir -p "$(dirname "${RESULT}")" "$(dirname "${REPORT}")"
 export SNAPSHOT_ROOT="${EVAL_RUN}"

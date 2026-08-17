@@ -34,11 +34,11 @@ def pick_three(ids: list[int]) -> list[int]:
     return [ids[0], ids[len(ids) // 2], ids[-1]]
 
 
-def make_prompt(tokenizer, system: str, user: str) -> str:
+def make_prompt(tokenizer, system: str, user: str, enable_thinking: bool = False) -> str:
     messages = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     try:
         return tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True, enable_thinking=False
+            messages, tokenize=False, add_generation_prompt=True, enable_thinking=enable_thinking
         )
     except TypeError:
         return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
@@ -80,8 +80,15 @@ def load_bundle(base_model: str, adapter: str | None, quantize: bool = True):
     return tokenizer, model
 
 
-def generate(tokenizer, model, system: str, user: str, max_new_tokens: int) -> tuple[str, int, int]:
-    prompt = make_prompt(tokenizer, system, user)
+def generate(
+    tokenizer,
+    model,
+    system: str,
+    user: str,
+    max_new_tokens: int,
+    enable_thinking: bool = False,
+) -> tuple[str, int, int]:
+    prompt = make_prompt(tokenizer, system, user, enable_thinking=enable_thinking)
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda:0")
     with torch.inference_mode():
         ids = model.generate(
@@ -105,9 +112,13 @@ def generate_batch(
     model,
     cases: list[dict],
     max_new_tokens: int,
+    enable_thinking: bool = False,
 ) -> list[tuple[str, int, int]]:
     """Generate a small left-padded batch without changing greedy semantics."""
-    prompts = [make_prompt(tokenizer, case["system"], case["user"]) for case in cases]
+    prompts = [
+        make_prompt(tokenizer, case["system"], case["user"], enable_thinking=enable_thinking)
+        for case in cases
+    ]
     inputs = tokenizer(prompts, return_tensors="pt", padding=True, truncation=False).to("cuda:0")
     input_width = inputs["input_ids"].shape[1]
     with torch.inference_mode():
@@ -136,6 +147,11 @@ def main() -> None:
     ap.add_argument("--output-only-adapter", required=True)
     ap.add_argument("--output", required=True)
     ap.add_argument("--max-new-tokens", type=int, default=4096)
+    ap.add_argument(
+        "--enable-thinking",
+        action="store_true",
+        help="enable Qwen3 thinking mode in the generation prompt (use for the priority objective)",
+    )
     ap.add_argument("--batch-size", type=int, default=1)
     ap.add_argument(
         "--no-quantization",
@@ -255,9 +271,18 @@ def main() -> None:
             for start in range(0, len(cases), batch_size):
                 batch = cases[start : start + batch_size]
                 generations = (
-                    generate_batch(tokenizer, model, batch, args.max_new_tokens)
+                    generate_batch(tokenizer, model, batch, args.max_new_tokens, args.enable_thinking)
                     if len(batch) > 1
-                    else [generate(tokenizer, model, batch[0]["system"], batch[0]["user"], args.max_new_tokens)]
+                    else [
+                        generate(
+                            tokenizer,
+                            model,
+                            batch[0]["system"],
+                            batch[0]["user"],
+                            args.max_new_tokens,
+                            args.enable_thinking,
+                        )
+                    ]
                 )
                 for case, (raw, generated_tokens, prompt_tokens) in zip(batch, generations):
                     case[name] = parse_target(raw)
