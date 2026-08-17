@@ -143,7 +143,17 @@ def main() -> None:
     split = split.train_test_split(test_size=0.1, seed=args.seed)
     train_ids = sorted(split["train"]["idx"])
     eval_ids = sorted(split["test"]["idx"])
-    if args.selection == "six":
+    if args.indices:
+        # Explicit indices are authoritative. The previous implementation
+        # filtered the default six probes first, silently dropping requested
+        # cases that were not among those six.
+        wanted = {int(value.strip()) for value in args.indices.split(",") if value.strip()}
+        selected = [
+            ("train" if i in set(train_ids) else "heldout_eval", i)
+            for i in sorted(wanted)
+            if 0 <= i < len(records)
+        ]
+    elif args.selection == "six":
         selected = [("train", i) for i in pick_three(train_ids)] + [
             ("heldout_eval", i) for i in pick_three(eval_ids)
         ]
@@ -151,10 +161,6 @@ def main() -> None:
         selected = [("heldout_eval", i) for i in eval_ids]
     if args.limit is not None:
         selected = selected[: max(0, args.limit)]
-    if args.indices:
-        wanted = {int(value.strip()) for value in args.indices.split(",") if value.strip()}
-        selected = [item for item in selected if item[1] in wanted]
-
     cases = []
     for split_name, idx in selected:
         messages = records[idx]["messages"]
