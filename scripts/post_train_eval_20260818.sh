@@ -13,6 +13,7 @@ DATA="${ROOT}/data/llamafactory/deepseek_watermark_20260804_182312_output_only_f
 MANIFEST="${ROOT}/data/llamafactory/groupdisjoint/groupdisjoint_split_manifest.json"
 CHUNKS="${ROOT}/data/snapshots/deepseek_watermark_20260804_182312/chunks.json"
 PYTHON="/cache/liluchen/envs/medicalner/bin/python"
+TRAIN_PATTERN="/cache/liluchen/envs/medicalner/bin/llamafactory-cli train configs/llamafactory/qwen3_8b_lora_deepseek_output_only_groupdisjoint_20260818.yaml"
 
 # 25 deterministic probes: length quantiles from both splits plus previously
 # observed long/truncation/semantic-error records.
@@ -24,9 +25,12 @@ export PYTHONNOUSERSITE=1
 export HF_HOME=/cache/liluchen/hf_home
 export HUGGINGFACE_HUB_CACHE=/cache/liluchen/model_cache
 
-while pgrep -f "llamafactory-cli train configs/llamafactory/qwen3_8b_lora_deepseek_output_only_groupdisjoint_20260818.yaml" >/dev/null 2>&1; do
+# Match the actual trainer executable, not the old snapshot wrapper's command
+# line.  The old wrapper can remain asleep briefly after Python exits.
+while pgrep -f "${TRAIN_PATTERN}" >/dev/null 2>&1; do
   sleep 30
 done
+sleep 30
 
 # The original training wrapper may still be waiting on its old snapshot sleep.
 # The trainer output is already immutable at this point; preserve it explicitly.
