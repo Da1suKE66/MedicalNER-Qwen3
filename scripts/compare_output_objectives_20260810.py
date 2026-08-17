@@ -44,23 +44,28 @@ def make_prompt(tokenizer, system: str, user: str) -> str:
         return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
 
-def load_bundle(base_model: str, adapter: str | None):
+def load_bundle(base_model: str, adapter: str | None, quantize: bool = True):
     torch.backends.cuda.matmul.allow_tf32 = True
     tokenizer = AutoTokenizer.from_pretrained(base_model, trust_remote_code=True)
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "left"
-    bnb = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.bfloat16,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_use_double_quant=True,
-    )
     model_kwargs = {
         "trust_remote_code": True,
         "device_map": "cuda:0",
-        "quantization_config": bnb,
     }
+    if quantize:
+        model_kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_use_double_quant=True,
+        )
+    else:
+        # Full bf16 inference fits comfortably on A100 80GB and avoids the
+        # bitsandbytes torch.compile path that makes long generations spend
+        # minutes in inductor compilation.
+        model_kwargs["torch_dtype"] = torch.bfloat16
     try:
         model = AutoModelForCausalLM.from_pretrained(
             base_model, attn_implementation="flash_attention_2", **model_kwargs
@@ -84,6 +89,7 @@ def generate(tokenizer, model, system: str, user: str, max_new_tokens: int) -> s
             max_new_tokens=max_new_tokens,
             do_sample=False,
             use_cache=True,
+            disable_compile=True,
             pad_token_id=tokenizer.pad_token_id,
         )
     new_ids = ids[0, inputs["input_ids"].shape[1] :]
@@ -106,6 +112,7 @@ def generate_batch(
             max_new_tokens=max_new_tokens,
             do_sample=False,
             use_cache=True,
+            disable_compile=True,
             pad_token_id=tokenizer.pad_token_id,
         )
     new_ids = ids[:, input_width:]
@@ -121,6 +128,11 @@ def main() -> None:
     ap.add_argument("--output", required=True)
     ap.add_argument("--max-new-tokens", type=int, default=4096)
     ap.add_argument("--batch-size", type=int, default=1)
+    ap.add_argument(
+        "--no-quantization",
+        action="store_true",
+        help="load the base in bf16 for faster long-generation diagnostics",
+    )
     ap.add_argument("--limit", type=int, default=None, help="limit selected cases for a canary")
     ap.add_argument("--indices", default=None, help="comma-separated positional record indices to select")
     ap.add_argument(
@@ -213,7 +225,7 @@ def main() -> None:
 
     for name, adapter in model_specs:
         print(f"Loading {name}...", flush=True)
-        tokenizer, model = load_bundle(args.base_model, adapter)
+        tokenizer, model = load_bundle(args.base_model, adapter, quantize=not args.no_quantization)
         try:
             batch_size = max(1, args.batch_size)
             for start in range(0, len(cases), batch_size):
