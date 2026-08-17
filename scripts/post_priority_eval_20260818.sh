@@ -79,4 +79,40 @@ scripts/run_with_snapshots.sh post_eval_output_priority_groupdisjoint_20260818 \
 
 "${PYTHON}" scripts/analyze_comparison_20260811.py "${RESULT}" \
   --source-chunks "${CHUNKS}" --output "${REPORT}"
+
+# Repeat only probes that actually consumed the full 8192-token budget.  This
+# separates a real output cap from a model that naturally emits a long but
+# complete graph.
+EXT_INDICES="$(${PYTHON} - "${RESULT}" <<'PY'
+import json
+import sys
+payload = json.load(open(sys.argv[1], encoding="utf-8"))
+ids = []
+for case in payload.get("cases", []):
+    meta = (case.get("generation_meta") or {}).get("output_priority") or {}
+    if meta.get("hit_max_new_tokens"):
+        ids.append(str(case.get("id")))
+print(",".join(ids))
+PY
+)"
+if [[ -n "${EXT_INDICES}" ]]; then
+  EXT_RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_output_priority_groupdisjoint_20260818_max16384_retry.json"
+  EXT_REPORT="/cache/liluchen/medicalner_output_objectives/reports/post_train_output_priority_groupdisjoint_20260818_max16384_retry.json"
+  scripts/run_with_snapshots.sh post_eval_output_priority_groupdisjoint_20260818_max16384_retry \
+    "${PYTHON}" scripts/compare_output_objectives_20260810.py \
+    --data "${DATA}" \
+    --base-model /cache/liluchen/model_cache/Qwen3-8B \
+    --priority-adapter "${ADAPTER}" \
+    --output-only-adapter "${ADAPTER}" \
+    --output "${EXT_RESULT}" \
+    --max-new-tokens 16384 \
+    --batch-size 1 \
+    --no-quantization \
+    --enable-thinking \
+    --only-model output_priority \
+    --split-manifest "${MANIFEST}" \
+    --indices "${EXT_INDICES}"
+  "${PYTHON}" scripts/analyze_comparison_20260811.py "${EXT_RESULT}" \
+    --source-chunks "${CHUNKS}" --output "${EXT_REPORT}"
+fi
 printf '%s\n' "${RESULT}" "${REPORT}"
