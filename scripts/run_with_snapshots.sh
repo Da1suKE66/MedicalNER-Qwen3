@@ -12,6 +12,7 @@ WORKSPACE="${WORKSPACE:-$(pwd)}"
 SNAPSHOT_ROOT="${SNAPSHOT_ROOT:-/temp/liluchen}"
 SNAPSHOT_INTERVAL_SEC="${SNAPSHOT_INTERVAL_SEC:-600}"
 SNAPSHOT_PATHS="${SNAPSHOT_PATHS:-scripts:configs:data/llamafactory:reports}"
+SNAPSHOT_ABSOLUTE_PATHS="${SNAPSHOT_ABSOLUTE_PATHS:-}"
 RUN_ROOT="${SNAPSHOT_ROOT}/${RUN_ID}"
 CODE_ROOT="${RUN_ROOT}/code"
 ARTIFACT_ROOT="${RUN_ROOT}/artifacts"
@@ -36,6 +37,13 @@ snapshot_once() {
     if [[ -e "${WORKSPACE}/${path}" ]]; then
       mkdir -p "${tmp}/artifacts/$(dirname "${path}")"
       cp -a "${WORKSPACE}/${path}" "${tmp}/artifacts/$(dirname "${path}")/" 2>/dev/null || true
+    fi
+  done
+  for path in ${SNAPSHOT_ABSOLUTE_PATHS//:/ }; do
+    if [[ -e "${path}" ]]; then
+      local absolute_dest="${tmp}/artifacts/absolute${path}"
+      mkdir -p "$(dirname "${absolute_dest}")"
+      cp -a "${path}" "${absolute_dest}" 2>/dev/null || true
     fi
   done
   printf '%s\n' "$(date -Is)" > "${tmp}/metadata/snapshot_time.txt"

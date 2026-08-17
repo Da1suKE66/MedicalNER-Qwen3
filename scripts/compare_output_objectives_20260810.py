@@ -187,6 +187,30 @@ def main() -> None:
     ]
     if args.only_model:
         model_specs = [item for item in model_specs if item[0] == args.only_model]
+    out = Path(args.output)
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    def save_current() -> None:
+        selection_label = "three evenly spaced ids from each deterministic LLaMA-Factory split"
+        if args.indices:
+            selection_label = "explicit positional record indices"
+        elif args.selection == "all_heldout":
+            selection_label = "all records from the deterministic LLaMA-Factory held-out split"
+        payload = {
+            "metadata": {
+                "data_records": len(records),
+                "split_seed": args.seed,
+                "train_records": len(train_ids),
+                "heldout_eval_records": len(eval_ids),
+                "selection": selection_label,
+                "generation": "greedy, enable_thinking=false, max_new_tokens=%d, batch_size=%d"
+                % (args.max_new_tokens, max(1, args.batch_size)),
+                "model_only": args.only_model,
+            },
+            "cases": cases,
+        }
+        out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
     for name, adapter in model_specs:
         print(f"Loading {name}...", flush=True)
         tokenizer, model = load_bundle(args.base_model, adapter)
@@ -202,29 +226,15 @@ def main() -> None:
                 for case, raw in zip(batch, raws):
                     case[name] = parse_target(raw)
                     print(f"{name} case={case['split']}:{case['id']} chars={len(raw)}", flush=True)
+                    # Keep a valid partial result so a dropped remote session
+                    # does not erase already generated cases.
+                    save_current()
         finally:
             del model, tokenizer
             gc.collect()
             torch.cuda.empty_cache()
 
-    payload = {
-        "metadata": {
-            "data_records": len(records),
-            "split_seed": args.seed,
-            "train_records": len(train_ids),
-            "heldout_eval_records": len(eval_ids),
-            "selection": "three evenly spaced ids from each deterministic LLaMA-Factory split",
-            "generation": "greedy, enable_thinking=false, max_new_tokens=%d, batch_size=%d"
-            % (args.max_new_tokens, max(1, args.batch_size)),
-            "model_only": args.only_model,
-        },
-        "cases": cases,
-    }
-    if args.selection == "all_heldout":
-        payload["metadata"]["selection"] = "all records from the deterministic LLaMA-Factory held-out split"
-    out = Path(args.output)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    save_current()
     print(f"Saved {out}", flush=True)
 
 
