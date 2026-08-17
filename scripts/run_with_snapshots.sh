@@ -46,7 +46,7 @@ snapshot_once() {
       cp -a "${path}" "${absolute_dest}" 2>/dev/null || true
     fi
   done
-  printf '%s\n' "$(date -Is)" > "${tmp}/metadata/snapshot_time.txt"
+  printf '%s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" > "${tmp}/metadata/snapshot_time.txt"
   printf '%s\n' "$*" > "${tmp}/metadata/command.txt"
   # /temp on ModelArts does not allow directory rename, so copy into the
   # stable locations instead of relying on an atomic mv of directories.
@@ -68,14 +68,26 @@ touch "${RUN_ROOT}/running"
 ) &
 SNAPSHOT_PID=$!
 
+stop_snapshotter() {
+  rm -f "${RUN_ROOT}/running"
+  if [[ -n "${SNAPSHOT_PID:-}" ]]; then
+    # The loop's sleep is a child of the background subshell.  Killing only
+    # the subshell can leave that sleep alive and make the wrapper hang at
+    # normal completion, so terminate both levels before waiting.
+    kill "${SNAPSHOT_PID}" 2>/dev/null || true
+    pkill -TERM -P "${SNAPSHOT_PID}" 2>/dev/null || true
+    wait "${SNAPSHOT_PID}" 2>/dev/null || true
+  fi
+}
+
+trap stop_snapshotter EXIT INT TERM
+
 snapshot_once "$@"
 set +e
-"$@" > >(tee -a "${LOG_FILE}") 2>&1
-EXIT_CODE=$?
+"$@" 2>&1 | tee -a "${LOG_FILE}"
+EXIT_CODE=${PIPESTATUS[0]}
 set -e
-rm -f "${RUN_ROOT}/running"
-kill "${SNAPSHOT_PID}" 2>/dev/null || true
-wait "${SNAPSHOT_PID}" 2>/dev/null || true
+stop_snapshotter
 snapshot_once "$@"
 printf '%s\n' "${EXIT_CODE}" > "${META_ROOT}/exit_code.txt"
 exit "${EXIT_CODE}"
