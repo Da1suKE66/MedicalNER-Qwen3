@@ -80,7 +80,7 @@ def load_bundle(base_model: str, adapter: str | None, quantize: bool = True):
     return tokenizer, model
 
 
-def generate(tokenizer, model, system: str, user: str, max_new_tokens: int) -> str:
+def generate(tokenizer, model, system: str, user: str, max_new_tokens: int) -> tuple[str, int, int]:
     prompt = make_prompt(tokenizer, system, user)
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda:0")
     with torch.inference_mode():
@@ -93,7 +93,11 @@ def generate(tokenizer, model, system: str, user: str, max_new_tokens: int) -> s
             pad_token_id=tokenizer.pad_token_id,
         )
     new_ids = ids[0, inputs["input_ids"].shape[1] :]
-    return tokenizer.decode(new_ids, skip_special_tokens=False).strip()
+    return (
+        tokenizer.decode(new_ids, skip_special_tokens=False).strip(),
+        int(new_ids.shape[-1]),
+        int(inputs["attention_mask"].sum().item()),
+    )
 
 
 def generate_batch(
@@ -101,7 +105,7 @@ def generate_batch(
     model,
     cases: list[dict],
     max_new_tokens: int,
-) -> list[str]:
+) -> list[tuple[str, int, int]]:
     """Generate a small left-padded batch without changing greedy semantics."""
     prompts = [make_prompt(tokenizer, case["system"], case["user"]) for case in cases]
     inputs = tokenizer(prompts, return_tensors="pt", padding=True, truncation=False).to("cuda:0")
@@ -116,7 +120,12 @@ def generate_batch(
             pad_token_id=tokenizer.pad_token_id,
         )
     new_ids = ids[:, input_width:]
-    return [tokenizer.decode(row, skip_special_tokens=False).strip() for row in new_ids]
+    prompt_lengths = inputs["attention_mask"].sum(dim=1).tolist()
+    generated_tokens = int(new_ids.shape[-1])
+    return [
+        (tokenizer.decode(row, skip_special_tokens=False).strip(), generated_tokens, int(prompt_tokens))
+        for row, prompt_tokens in zip(new_ids, prompt_lengths)
+    ]
 
 
 def main() -> None:
@@ -245,13 +254,19 @@ def main() -> None:
             batch_size = max(1, args.batch_size)
             for start in range(0, len(cases), batch_size):
                 batch = cases[start : start + batch_size]
-                raws = (
+                generations = (
                     generate_batch(tokenizer, model, batch, args.max_new_tokens)
                     if len(batch) > 1
                     else [generate(tokenizer, model, batch[0]["system"], batch[0]["user"], args.max_new_tokens)]
                 )
-                for case, raw in zip(batch, raws):
+                for case, (raw, generated_tokens, prompt_tokens) in zip(batch, generations):
                     case[name] = parse_target(raw)
+                    case.setdefault("generation_meta", {})[name] = {
+                        "prompt_tokens": prompt_tokens,
+                        "generated_tokens": generated_tokens,
+                        "max_new_tokens": args.max_new_tokens,
+                        "hit_max_new_tokens": generated_tokens >= args.max_new_tokens,
+                    }
                     print(f"{name} case={case['split']}:{case['id']} chars={len(raw)}", flush=True)
                     # Keep a valid partial result so a dropped remote session
                     # does not erase already generated cases.

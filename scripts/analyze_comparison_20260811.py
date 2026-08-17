@@ -236,6 +236,8 @@ def main() -> None:
         field_stats: dict[str, Counter] = defaultdict(Counter)
         field_relation_counts: dict[str, Counter] = defaultdict(Counter)
         grounding_kind_counts = Counter()
+        generated_token_counts: list[int] = []
+        prompt_token_counts: list[int] = []
         for case in cases:
             case_id = int(case.get("id", -1))
             source_chunk = source_chunks.get(case_id)
@@ -246,6 +248,14 @@ def main() -> None:
             stats[f"target_parse_{target_status}"] += 1
             stats[f"pred_parse_{pred_status}"] += 1
             stats[f"generation_{generation_completion_status(case.get(model))}"] += 1
+            generation_meta = case.get("generation_meta", {}).get(model, {})
+            if isinstance(generation_meta, dict):
+                if generation_meta.get("hit_max_new_tokens"):
+                    stats["generation_hit_max_new_tokens"] += 1
+                if isinstance(generation_meta.get("generated_tokens"), int):
+                    generated_token_counts.append(generation_meta["generated_tokens"])
+                if isinstance(generation_meta.get("prompt_tokens"), int):
+                    prompt_token_counts.append(generation_meta["prompt_tokens"])
             stats["content_exact"] += graph_content_canonical(target) == graph_content_canonical(pred)
             target_entities, target_relations = graph_sets(target)
             pred_entities, pred_relations = graph_sets(pred)
@@ -326,6 +336,17 @@ def main() -> None:
             "prediction_schema_violation_count": stats["schema_violations"],
             "content_exact_cases": stats["content_exact"],
             "generation_completion": {k.removeprefix("generation_"): v for k, v in stats.items() if k.startswith("generation_")},
+            "token_usage": {
+                "observed_cases": len(generated_token_counts),
+                "prompt_tokens_min": min(prompt_token_counts) if prompt_token_counts else None,
+                "prompt_tokens_max": max(prompt_token_counts) if prompt_token_counts else None,
+                "generated_tokens_min": min(generated_token_counts) if generated_token_counts else None,
+                "generated_tokens_max": max(generated_token_counts) if generated_token_counts else None,
+                "generated_tokens_mean": sum(generated_token_counts) / len(generated_token_counts)
+                if generated_token_counts
+                else None,
+                "hit_max_new_tokens_cases": stats["generation_hit_max_new_tokens"],
+            },
             "entity": metric_block("entity", stats),
             "relation": metric_block("relation", stats),
             "grounding": {"items": stats["grounding_items"], "violations": stats["grounding_violations"], "violation_rate": stats["grounding_violations"] / stats["grounding_items"] if stats["grounding_items"] else 0.0, "violations_by_kind": dict(grounding_kind_counts)},
