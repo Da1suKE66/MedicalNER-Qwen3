@@ -143,6 +143,11 @@ def main() -> None:
     )
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument(
+        "--split-manifest",
+        default=None,
+        help="optional groupdisjoint_split_manifest.json; use its train_indices/dev_indices instead of a random split",
+    )
+    ap.add_argument(
         "--selection",
         choices=("six", "all_heldout"),
         default="six",
@@ -151,10 +156,19 @@ def main() -> None:
     args = ap.parse_args()
 
     records = json.loads(Path(args.data).read_text(encoding="utf-8"))
-    split = Dataset.from_dict({"idx": list(range(len(records)))})
-    split = split.train_test_split(test_size=0.1, seed=args.seed)
-    train_ids = sorted(split["train"]["idx"])
-    eval_ids = sorted(split["test"]["idx"])
+    if args.split_manifest:
+        manifest = json.loads(Path(args.split_manifest).read_text(encoding="utf-8"))
+        train_ids = sorted(int(i) for i in manifest["train_indices"])
+        eval_ids = sorted(int(i) for i in manifest["dev_indices"])
+        if set(train_ids) | set(eval_ids) != set(range(len(records))):
+            raise ValueError("split manifest does not cover every record exactly")
+        if set(train_ids) & set(eval_ids):
+            raise ValueError("split manifest train/dev indices overlap")
+    else:
+        split = Dataset.from_dict({"idx": list(range(len(records)))})
+        split = split.train_test_split(test_size=0.1, seed=args.seed)
+        train_ids = sorted(split["train"]["idx"])
+        eval_ids = sorted(split["test"]["idx"])
     if args.indices:
         # Explicit indices are authoritative. The previous implementation
         # filtered the default six probes first, silently dropping requested
@@ -214,6 +228,7 @@ def main() -> None:
                 "split_seed": args.seed,
                 "train_records": len(train_ids),
                 "heldout_eval_records": len(eval_ids),
+                "split_manifest": args.split_manifest,
                 "selection": selection_label,
                 "generation": "greedy, enable_thinking=false, max_new_tokens=%d, batch_size=%d"
                 % (args.max_new_tokens, max(1, args.batch_size)),
