@@ -98,11 +98,15 @@ scripts/run_with_snapshots.sh post_eval_output_priority_groupdisjoint_20260818 \
 # report.  The output-only artifact was produced on the equivalent converted
 # targets; priority supplies the raw teacher target with its think span.
 OUTONLY_RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_output_only_groupdisjoint_20260818_max8192.json"
+BASE_RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_base_qwen_groupdisjoint_20260818_max8192.json"
 MERGED_RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_objectives_groupdisjoint_20260818_merged.json"
 MERGED_REPORT="/cache/liluchen/medicalner_output_objectives/reports/post_train_objectives_groupdisjoint_20260818_merged.json"
 if [[ -s "${OUTONLY_RESULT}" ]]; then
-  "${PYTHON}" scripts/merge_objective_eval_results_20260818.py \
-    --output-only "${OUTONLY_RESULT}" --priority "${RESULT}" --output "${MERGED_RESULT}"
+  MERGE_ARGS=(--output-only "${OUTONLY_RESULT}" --priority "${RESULT}" --output "${MERGED_RESULT}")
+  if [[ -s "${BASE_RESULT}" ]]; then
+    MERGE_ARGS+=(--base "${BASE_RESULT}")
+  fi
+  "${PYTHON}" scripts/merge_objective_eval_results_20260818.py "${MERGE_ARGS[@]}"
   "${PYTHON}" scripts/analyze_comparison_20260811.py "${MERGED_RESULT}" \
     --source-chunks "${CHUNKS}" --output "${MERGED_REPORT}"
 fi

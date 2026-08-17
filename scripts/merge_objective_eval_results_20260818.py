@@ -18,15 +18,24 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--output-only", type=Path, required=True)
     ap.add_argument("--priority", type=Path, required=True)
+    ap.add_argument("--base", type=Path)
     ap.add_argument("--output", type=Path, required=True)
     args = ap.parse_args()
 
     output_payload, output_cases = load_cases(args.output_only)
     priority_payload, priority_cases = load_cases(args.priority)
+    base_payload, base_cases = (None, {})
+    if args.base:
+        base_payload, base_cases = load_cases(args.base)
     if set(output_cases) != set(priority_cases):
         raise SystemExit(
             "probe id mismatch: output-only=%s priority=%s"
             % (sorted(output_cases), sorted(priority_cases))
+        )
+    if args.base and set(base_cases) != set(output_cases):
+        raise SystemExit(
+            "probe id mismatch: output-only=%s base=%s"
+            % (sorted(output_cases), sorted(base_cases))
         )
 
     merged_cases = []
@@ -42,7 +51,11 @@ def main() -> None:
             # variants; keep the priority raw target so the original think
             # span remains available for audit.
             "deepseek_original": priority.get("deepseek_original", only.get("deepseek_original")),
-            "base_qwen": priority.get("base_qwen") or only.get("base_qwen"),
+            "base_qwen": (
+                base_cases[case_id].get("base_qwen")
+                if args.base
+                else priority.get("base_qwen") or only.get("base_qwen")
+            ),
             "output_priority": priority.get("output_priority"),
             "output_only": only.get("output_only"),
             "generation_meta": {
@@ -56,6 +69,7 @@ def main() -> None:
         "merged_from": {
             "output_only": str(args.output_only),
             "priority": str(args.priority),
+            "base": str(args.base) if args.base else None,
         },
         "selection": "same explicit probe ids from both objective evaluations",
         "generation": {

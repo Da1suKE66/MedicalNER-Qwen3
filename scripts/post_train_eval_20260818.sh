@@ -9,6 +9,8 @@ RUN_ROOT="/temp/liluchen/train_output_only_groupdisjoint_20260818"
 EVAL_RUN="/temp/liluchen/post_eval_output_only_groupdisjoint_20260818"
 RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_output_only_groupdisjoint_20260818_max8192.json"
 REPORT="/cache/liluchen/medicalner_output_objectives/reports/post_train_output_only_groupdisjoint_20260818_max8192.json"
+BASE_RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_base_qwen_groupdisjoint_20260818_max8192.json"
+BASE_REPORT="/cache/liluchen/medicalner_output_objectives/reports/post_train_base_qwen_groupdisjoint_20260818_max8192.json"
 DATA="${ROOT}/data/llamafactory/deepseek_watermark_20260804_182312_output_only_full.json"
 MANIFEST="${ROOT}/data/llamafactory/groupdisjoint/groupdisjoint_split_manifest.json"
 CHUNKS="${ROOT}/data/snapshots/deepseek_watermark_20260804_182312/chunks.json"
@@ -92,9 +94,6 @@ scripts/run_with_snapshots.sh post_eval_output_only_groupdisjoint_20260818 \
   --split-manifest "${MANIFEST}" \
   --indices "${INDICES}"
 
-"${PYTHON}" scripts/analyze_comparison_20260811.py "${RESULT}" \
-  --source-chunks "${CHUNKS}" --output "${REPORT}"
-
 # If a probe actually consumed the full generation budget, rerun only those
 # cases with a 16k budget before releasing the priority-training supervisor.
 EXT_INDICES="$(${PYTHON} - "${RESULT}" <<'PY'
@@ -128,4 +127,60 @@ if [[ -n "${EXT_INDICES}" ]]; then
   "${PYTHON}" scripts/analyze_comparison_20260811.py "${EXT_RESULT}" \
     --source-chunks "${CHUNKS}" --output "${EXT_REPORT}"
 fi
-printf '%s\n' "${RESULT}" "${REPORT}"
+
+# Run the untouched base Qwen on the same explicit probes before releasing the
+# priority-training supervisor, so the final merged artifact contains all
+# three outputs (base, output-only, and priority).
+scripts/run_with_snapshots.sh post_eval_base_qwen_groupdisjoint_20260818 \
+  "${PYTHON}" scripts/compare_output_objectives_20260810.py \
+  --data "${DATA}" \
+  --base-model /cache/liluchen/model_cache/Qwen3-8B \
+  --priority-adapter "${ADAPTER}" \
+  --output-only-adapter "${ADAPTER}" \
+  --output "${BASE_RESULT}" \
+  --max-new-tokens 8192 \
+  --batch-size 1 \
+  --no-quantization \
+  --only-model base_qwen \
+  --split-manifest "${MANIFEST}" \
+  --indices "${INDICES}"
+
+BASE_EXT_INDICES="$(${PYTHON} - "${BASE_RESULT}" <<'PY'
+import json
+import sys
+payload = json.load(open(sys.argv[1], encoding="utf-8"))
+ids = []
+for case in payload.get("cases", []):
+    meta = (case.get("generation_meta") or {}).get("base_qwen") or {}
+    if meta.get("hit_max_new_tokens"):
+        ids.append(str(case.get("id")))
+print(",".join(ids))
+PY
+)"
+if [[ -n "${BASE_EXT_INDICES}" ]]; then
+  BASE_EXT_RESULT="/cache/liluchen/medicalner_output_objectives/outputs/post_train_base_qwen_groupdisjoint_20260818_max16384_retry.json"
+  BASE_EXT_REPORT="/cache/liluchen/medicalner_output_objectives/reports/post_train_base_qwen_groupdisjoint_20260818_max16384_retry.json"
+  scripts/run_with_snapshots.sh post_eval_base_qwen_groupdisjoint_20260818_max16384_retry \
+    "${PYTHON}" scripts/compare_output_objectives_20260810.py \
+    --data "${DATA}" \
+    --base-model /cache/liluchen/model_cache/Qwen3-8B \
+    --priority-adapter "${ADAPTER}" \
+    --output-only-adapter "${ADAPTER}" \
+    --output "${BASE_EXT_RESULT}" \
+    --max-new-tokens 16384 \
+    --batch-size 1 \
+    --no-quantization \
+    --only-model base_qwen \
+    --split-manifest "${MANIFEST}" \
+    --indices "${BASE_EXT_INDICES}"
+  "${PYTHON}" scripts/analyze_comparison_20260811.py "${BASE_EXT_RESULT}" \
+    --source-chunks "${CHUNKS}" --output "${BASE_EXT_REPORT}"
+fi
+
+# This is intentionally the final write before the priority supervisor is
+# released; its existence is the completion marker for the first objective.
+"${PYTHON}" scripts/analyze_comparison_20260811.py "${RESULT}" \
+  --source-chunks "${CHUNKS}" --output "${REPORT}"
+"${PYTHON}" scripts/analyze_comparison_20260811.py "${BASE_RESULT}" \
+  --source-chunks "${CHUNKS}" --output "${BASE_REPORT}"
+printf '%s\n' "${RESULT}" "${REPORT}" "${BASE_RESULT}" "${BASE_REPORT}"
