@@ -68,5 +68,299 @@
       "assistant_tag": "assistant",
       "system_tag": "system"
     }
+  },
+  "deepseek_partial_20260804_164336": {
+    "file_name": "deepseek_partial_20260804_164336.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_partial_20260804_164336_train128": {
+    "file_name": "deepseek_partial_20260804_164336_train128.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_partial_20260804_164336_eval32": {
+    "file_name": "deepseek_partial_20260804_164336_eval32.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_partial_20260804_165220": {
+    "file_name": "deepseek_partial_20260804_165220.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_partial_20260804_165220_train": {
+    "file_name": "deepseek_partial_20260804_165220_train.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_partial_20260804_165220_eval64": {
+    "file_name": "deepseek_partial_20260804_165220_eval64.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312": {
+    "file_name": "deepseek_watermark_20260804_182312.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_train700": {
+    "file_name": "deepseek_watermark_20260804_182312_train700.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_dev64": {
+    "file_name": "deepseek_watermark_20260804_182312_dev64.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_priority_train700": {
+    "file_name": "deepseek_watermark_20260804_182312_output_priority_train700.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_priority_dev64": {
+    "file_name": "deepseek_watermark_20260804_182312_output_priority_dev64.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_train700": {
+    "file_name": "deepseek_watermark_20260804_182312_output_only_train700.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_dev64": {
+    "file_name": "deepseek_watermark_20260804_182312_output_only_dev64.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_priority_full": {
+    "file_name": "deepseek_watermark_20260804_182312_output_priority_full.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_full": {
+    "file_name": "deepseek_watermark_20260804_182312_output_only_full.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_full_groupdisjoint_train": {
+    "file_name": "groupdisjoint/deepseek_watermark_20260804_182312_output_only_full_groupdisjoint_train.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_full_groupdisjoint_dev": {
+    "file_name": "groupdisjoint/deepseek_watermark_20260804_182312_output_only_full_groupdisjoint_dev.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_priority_full_groupdisjoint_train": {
+    "file_name": "groupdisjoint/deepseek_watermark_20260804_182312_output_priority_full_groupdisjoint_train.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_priority_full_groupdisjoint_dev": {
+    "file_name": "groupdisjoint/deepseek_watermark_20260804_182312_output_priority_full_groupdisjoint_dev.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_overfit20_train": {
+    "file_name": "deepseek_watermark_20260804_182312_output_only_overfit20_train.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "deepseek_watermark_20260804_182312_output_only_overfit20_dev": {
+    "file_name": "deepseek_watermark_20260804_182312_output_only_overfit20_dev.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
   }
 }
