@@ -47,9 +47,23 @@ if state.exists():
     best = json.loads(state.read_text()).get("best_model_checkpoint")
 if best and (Path(best) / "adapter_model.safetensors").exists():
     print(best)
-elif (root / "adapter_model.safetensors").exists():
-    print(root)
 else:
+    candidates = []
+    for state_path in root.glob("checkpoint-*/trainer_state.json"):
+        try:
+            item = json.loads(state_path.read_text())
+            candidate = item.get("best_model_checkpoint") or str(state_path.parent)
+            metric = item.get("best_metric")
+            if metric is not None and (Path(candidate) / "adapter_model.safetensors").exists():
+                candidates.append((float(metric), Path(candidate)))
+        except (OSError, ValueError, TypeError, json.JSONDecodeError):
+            continue
+    if candidates:
+        print(min(candidates, key=lambda item: item[0])[1])
+        raise SystemExit(0)
+    if (root / "adapter_model.safetensors").exists():
+        print(root)
+        raise SystemExit(0)
     checkpoints = sorted(root.glob("checkpoint-*/adapter_model.safetensors"), key=lambda p: int(p.parent.name.split("-")[-1]))
     if not checkpoints:
         raise SystemExit("no priority adapter checkpoint found")
