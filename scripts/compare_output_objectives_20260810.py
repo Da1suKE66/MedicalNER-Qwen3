@@ -10,7 +10,62 @@ from pathlib import Path
 import torch
 from datasets import Dataset
 from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    BitsAndBytesConfig,
+    StoppingCriteria,
+    StoppingCriteriaList,
+)
+
+
+class StructuredCompletionStoppingCriteria(StoppingCriteria):
+    """Stop once a complete output object or output wrapper is emitted.
+
+    Some checkpoints continue producing repeated JSON-like text after the
+    first complete object and never emit EOS.  This diagnostic stopper is
+    opt-in so the ordinary comparison remains an untouched greedy baseline.
+    It decodes only on likely closing-token steps, then uses the same target
+    parser boundary as evaluation (``</output>`` or a complete JSON value).
+    """
+
+    def __init__(self, tokenizer, prompt_offsets, enable_thinking=False):
+        self.tokenizer = tokenizer
+        # ``input_ids`` is left-padded for batches, so the slice must start at
+        # the common padded width rather than each row's unpadded length.
+        self.prompt_offsets = list(prompt_offsets)
+        self.enable_thinking = enable_thinking
+        self.trigger_ids = set()
+        for text in ("}", ">", "<", "]"):
+            ids = tokenizer.encode(text, add_special_tokens=False)
+            if ids:
+                self.trigger_ids.add(ids[-1])
+
+    def __call__(self, input_ids, scores, **kwargs):
+        for row, prompt_offset in zip(input_ids, self.prompt_offsets):
+            if row.shape[0] <= prompt_offset:
+                continue
+            if int(row[-1]) not in self.trigger_ids:
+                continue
+            generated = self.tokenizer.decode(
+                row[prompt_offset:], skip_special_tokens=False
+            )
+            if "<output>" in generated:
+                output_part = generated.split("<output>", 1)[1]
+                if "</output>" in output_part:
+                    return True
+                candidate = output_part.lstrip()
+            else:
+                candidate = generated.lstrip()
+            if not candidate.startswith("{"):
+                continue
+            try:
+                _, end = json.JSONDecoder().raw_decode(candidate)
+            except json.JSONDecodeError:
+                continue
+            if end > 0:
+                return True
+        return False
 
 
 def parse_target(text: str) -> dict[str, str | None]:
@@ -87,9 +142,21 @@ def generate(
     user: str,
     max_new_tokens: int,
     enable_thinking: bool = False,
+    stop_on_structured_complete: bool = False,
 ) -> tuple[str, int, int]:
     prompt = make_prompt(tokenizer, system, user, enable_thinking=enable_thinking)
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda:0")
+    stopping = None
+    if stop_on_structured_complete:
+        stopping = StoppingCriteriaList(
+            [
+                StructuredCompletionStoppingCriteria(
+                    tokenizer,
+                    [int(inputs["input_ids"].shape[1])],
+                    enable_thinking=enable_thinking,
+                )
+            ]
+        )
     with torch.inference_mode():
         ids = model.generate(
             **inputs,
@@ -98,6 +165,7 @@ def generate(
             use_cache=True,
             disable_compile=True,
             pad_token_id=tokenizer.pad_token_id,
+            stopping_criteria=stopping,
         )
     new_ids = ids[0, inputs["input_ids"].shape[1] :]
     return (
@@ -113,6 +181,7 @@ def generate_batch(
     cases: list[dict],
     max_new_tokens: int,
     enable_thinking: bool = False,
+    stop_on_structured_complete: bool = False,
 ) -> list[tuple[str, int, int]]:
     """Generate a small left-padded batch without changing greedy semantics."""
     prompts = [
@@ -121,6 +190,17 @@ def generate_batch(
     ]
     inputs = tokenizer(prompts, return_tensors="pt", padding=True, truncation=False).to("cuda:0")
     input_width = inputs["input_ids"].shape[1]
+    stopping = None
+    if stop_on_structured_complete:
+        stopping = StoppingCriteriaList(
+            [
+                StructuredCompletionStoppingCriteria(
+                    tokenizer,
+                    [int(inputs["input_ids"].shape[1])] * inputs["input_ids"].shape[0],
+                    enable_thinking=enable_thinking,
+                )
+            ]
+        )
     with torch.inference_mode():
         ids = model.generate(
             **inputs,
@@ -129,6 +209,7 @@ def generate_batch(
             use_cache=True,
             disable_compile=True,
             pad_token_id=tokenizer.pad_token_id,
+            stopping_criteria=stopping,
         )
     new_ids = ids[:, input_width:]
     prompt_lengths = inputs["attention_mask"].sum(dim=1).tolist()
@@ -147,6 +228,11 @@ def main() -> None:
     ap.add_argument("--output-only-adapter", required=True)
     ap.add_argument("--output", required=True)
     ap.add_argument("--max-new-tokens", type=int, default=4096)
+    ap.add_argument(
+        "--stop-on-structured-complete",
+        action="store_true",
+        help="diagnostic: stop after </output> or the first complete JSON object",
+    )
     ap.add_argument(
         "--enable-thinking",
         action="store_true",
@@ -255,8 +341,13 @@ def main() -> None:
                 "heldout_eval_records": len(eval_ids),
                 "split_manifest": args.split_manifest,
                 "selection": selection_label,
-                "generation": "greedy, enable_thinking=false, max_new_tokens=%d, batch_size=%d"
-                % (args.max_new_tokens, max(1, args.batch_size)),
+                "generation": "greedy, enable_thinking=%s, max_new_tokens=%d, batch_size=%d, stop_on_structured_complete=%s"
+                % (
+                    args.enable_thinking,
+                    args.max_new_tokens,
+                    max(1, args.batch_size),
+                    args.stop_on_structured_complete,
+                ),
                 "model_only": args.only_model,
             },
             "cases": cases,
@@ -271,7 +362,14 @@ def main() -> None:
             for start in range(0, len(cases), batch_size):
                 batch = cases[start : start + batch_size]
                 generations = (
-                    generate_batch(tokenizer, model, batch, args.max_new_tokens, args.enable_thinking)
+                    generate_batch(
+                        tokenizer,
+                        model,
+                        batch,
+                        args.max_new_tokens,
+                        args.enable_thinking,
+                        args.stop_on_structured_complete,
+                    )
                     if len(batch) > 1
                     else [
                         generate(
@@ -281,6 +379,7 @@ def main() -> None:
                             batch[0]["user"],
                             args.max_new_tokens,
                             args.enable_thinking,
+                            args.stop_on_structured_complete,
                         )
                     ]
                 )
