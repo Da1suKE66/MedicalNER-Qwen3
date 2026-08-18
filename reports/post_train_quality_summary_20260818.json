@@ -1,0 +1,124 @@
+{
+  "experiment": "groupdisjoint_post_train_long_output_20260818",
+  "remote": {
+    "host": "lsh-temp32570",
+    "workspace": "/home/ma-user/workspace/liluchen/MedicalNER-Qwen3",
+    "cache": "/cache/liluchen",
+    "snapshot_root": "/temp/liluchen"
+  },
+  "data_and_cutoff": {
+    "records": 1493,
+    "train_records": 1345,
+    "heldout_records": 148,
+    "group_overlap": 0,
+    "formal_cutoff_len": 16384,
+    "token_audit_output_only_over_cutoff": 0,
+    "token_audit_output_priority_over_cutoff": 0,
+    "token_audit_original_cot_over_cutoff": 109,
+    "token_audit_original_cot_near_cutoff": 141,
+    "conclusion": "16384 is sufficient for converted output-only/output-priority samples; original long CoT still needs cleanup or a larger cutoff."
+  },
+  "training": {
+    "objective": "output_only_then_output_priority",
+    "epochs": 3,
+    "optimization_steps": 507,
+    "output_only_best_checkpoint": "checkpoint-500",
+    "output_only_best_eval_loss": 0.022997599095106125,
+    "output_priority_best_checkpoint": "checkpoint-500",
+    "output_priority_best_eval_loss": 0.31037622690200806,
+    "output_priority_eval_loss_step400": 0.3120560050010681,
+    "output_priority_eval_loss_step450": 0.31085658073425293,
+    "oom_or_interruption": false
+  },
+  "full_25_probe_max8192": {
+    "selection": [0, 1, 4, 6, 11, 80, 86, 125, 235, 255, 270, 304, 320, 609, 741, 809, 858, 959, 1155, 1199, 1205, 1281, 1449, 1491, 1492],
+    "output_only": {
+      "cases": 25,
+      "content_exact": 6,
+      "schema_valid": 23,
+      "parse_invalid_json": 2,
+      "hit_max_new_tokens": 2,
+      "generated_tokens_mean": 1747.16,
+      "generated_tokens_max": 8192,
+      "entity_f1_teacher_relative": 0.520618556701031,
+      "relation_f1_teacher_relative": 0.15081967213114753,
+      "entity_hallucination_rate": 0.5324074074074074,
+      "relation_hallucination_rate": 0.8571428571428571,
+      "entity_under_extraction_rate": 0.4127906976744186,
+      "relation_under_extraction_rate": 0.8402777777777778,
+      "grounding_violation_rate": 0.06088560885608856
+    },
+    "base_qwen": {
+      "cases": 25,
+      "content_exact": 1,
+      "schema_valid": 13,
+      "parse_invalid_json": 11,
+      "hit_max_new_tokens": 2,
+      "generated_tokens_mean": 1652.04,
+      "generated_tokens_max": 8192,
+      "entity_f1_teacher_relative": 0.1941747572815534,
+      "relation_f1_teacher_relative": 0.0,
+      "entity_hallucination_rate": 0.781021897810219,
+      "relation_hallucination_rate": 1.0,
+      "entity_under_extraction_rate": 0.8255813953488372,
+      "relation_under_extraction_rate": 1.0,
+      "grounding_violation_rate": 0.29961089494163423
+    }
+  },
+  "priority_partial_6_probe_max8192": {
+    "selection": [0, 1, 4, 6, 11, 80],
+    "completed_cases": 6,
+    "hit_max_new_tokens": 2,
+    "generated_tokens_mean": 4762.166666666667,
+    "generated_tokens_max": 8192,
+    "schema_valid": 4,
+    "parse_invalid_json": 2,
+    "entity_f1_teacher_relative": 0.052631578947368425,
+    "relation_f1_teacher_relative": 0.023809523809523808,
+    "entity_hallucination_rate": 0.961038961038961,
+    "relation_hallucination_rate": 0.9836065573770492,
+    "entity_under_extraction_rate": 0.918918918918919,
+    "relation_under_extraction_rate": 0.9565217391304348,
+    "grounding_violation_rate": 0.04672897196261682,
+    "status": "partial_by_design_after_single_sample_timeout; do not compare as a full-25 priority benchmark"
+  },
+  "max16384_retry": {
+    "output_only": {
+      "cases": 2,
+      "ids": [4, 320],
+      "hit_max_new_tokens": 2,
+      "parse_invalid_json": 2,
+      "generated_tokens": 16384,
+      "balanced_json": false
+    },
+    "base_qwen": {
+      "cases": 2,
+      "ids": [4, 320],
+      "hit_max_new_tokens": 2,
+      "parse_invalid_json": 2,
+      "generated_tokens": 16384,
+      "balanced_json": false
+    }
+  },
+  "structured_stop_diagnostic": {
+    "stop_rule": "stop at </output> or first complete JSON object",
+    "priority": {
+      "ids_completed": [4, 11],
+      "id4": {"generated_tokens": 8192, "hit_max_new_tokens": true, "open_braces": 179, "close_braces": 176, "has_output_end": false},
+      "id11": {"generated_tokens": 7874, "hit_max_new_tokens": false, "open_braces": 141, "close_braces": 141, "has_output_end": true},
+      "conclusion": "The stopper cannot repair ID4; its output never reaches a complete object. ID11 terminates with the output wrapper after a very long generation."
+    },
+    "output_only": {
+      "ids": [4, 320],
+      "id4": {"generated_tokens": 8192, "hit_max_new_tokens": true, "open_braces": 271, "close_braces": 268, "has_output_end": false},
+      "id320": {"generated_tokens": 8192, "hit_max_new_tokens": true, "open_braces": 357, "close_braces": 354, "has_output_end": false},
+      "conclusion": "Neither known cap case produces a balanced JSON object before 8192; increasing the cap alone is not a fix."
+    }
+  },
+  "decision": {
+    "problem_solved": false,
+    "main_problem": "Teacher/output objective still produces runaway or non-closing structured generations on long diagnosticCriteria samples; priority thinking is also too slow and has very high relation hallucination in the completed partial probe.",
+    "not_simple_underfitting": "The 20-example overfit canary reached train loss 0.0254289 and eval loss 0.075863, so capacity is present.",
+    "next_training_change": "Do not select a checkpoint by loss alone. Clean/shorten teacher thinking, keep output-only as the main line, and add explicit JSON-completion/stop supervision or constrained decoding before another full run."
+  }
+}
