@@ -1,0 +1,2036 @@
+{
+  "source_csv": "/Users/doc66/Downloads/relations.csv",
+  "active_prefixes": [
+    "可加入",
+    "需修正 Source 后加入",
+    "需修正 Source 并复核"
+  ],
+  "legacy_relation_map": {
+    "has_manifestation": "has_subsymptom",
+    "supports_Diagnostic Criterion_of": "supports_diagnostic_criterion",
+    "required_for": "required_for_diagnosis_of",
+    "increases_risk_of": null,
+    "worsens": null,
+    "has_specifier": null
+  },
+  "all_rows": [
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "belongs_to",
+      "canonical_relation": "belongs_to",
+      "chinese": "属于疾病分类",
+      "target_labels": [],
+      "status": "需医学复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病分类/父类仍属于 Disease；但与 subtype_of 及 Disease.Parent Disease 属性语义重叠，冻结前需明确三者是否并存。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "subtype_of",
+      "canonical_relation": "subtype_of",
+      "chinese": "亚型",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "标准疾病层级关系。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "has_specifier",
+      "canonical_relation": "has_specifier",
+      "chinese": "Specifier",
+      "target_labels": [],
+      "status": "直接删除/不建边",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "最终处置为直接删除；Disease.Core Properties 已包含 Specifier，无需新增属性或关系。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "differentiates_from",
+      "canonical_relation": "differentiates_from",
+      "chinese": "鉴别诊断",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病与疾病之间的鉴别诊断关系；旧版同名关系已明确为 Disease→Disease。"
+    },
+    {
+      "module": "Diagnostic Criterion",
+      "source_label": "Disease",
+      "relation": "co_occurs_with",
+      "canonical_relation": "co_occurs_with",
+      "chinese": "共病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Disease",
+      "rename_suggestion": "",
+      "notes": "“共病”语义应为 Disease→Disease；旧版 co_occurs_with_frequency 明确为 Disease→Disease，因此当前 Source 很可能误填。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "predisposes_to",
+      "canonical_relation": "predisposes_to",
+      "chinese": "增加...的易感性",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "按当前节点集合可解释为某疾病增加另一疾病易感性；若实际语料表达危险因素，更适合 Etiology/Risk→Disease。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "causes",
+      "canonical_relation": "causes_disease",
+      "chinese": "导致",
+      "target_labels": [],
+      "status": "需医学复核（建议重命名）",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "causes_disease",
+      "notes": "Disease→Disease 的因果关系已确定；为避免与 Etiology→Disease 的 causes 冲突，建议使用独立名称 causes_disease。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "progresses_to",
+      "canonical_relation": "progresses_to",
+      "chinese": "进展为",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病进展到另一疾病/明确疾病状态。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "relapses_to",
+      "canonical_relation": "relapses_to",
+      "chinese": "复发为",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病复发到某疾病状态，Target 为 Disease。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "associated_with_poor_prognosis",
+      "canonical_relation": "associated_with_poor_prognosis_in",
+      "chinese": "不良预后",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入（建议重命名）",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "associated_with_poor_prognosis_in",
+      "notes": "旧版 active 关系 associated_with_poor_prognosis_in 的 Target 为 Disease，语义是“某因素与某疾病的不良预后相关”；不是单纯的 Prognosis 属性。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "has_diagnostic_criterion",
+      "canonical_relation": "has_diagnostic_criterion",
+      "chinese": "具有诊断标准",
+      "target_labels": [
+        "Diagnostic Criterion"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病具有诊断标准节点。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "recommended_assessment",
+      "canonical_relation": "recommended_assessment",
+      "chinese": "推荐评估",
+      "target_labels": [
+        "Assessment"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病推荐某临床评估。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "recommended_examination",
+      "canonical_relation": "recommended_examination",
+      "chinese": "推荐检查",
+      "target_labels": [
+        "Examination"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病推荐某检查。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "recommended_treatment_plan",
+      "canonical_relation": "recommended_treatment_plan",
+      "chinese": "推荐治疗方案",
+      "target_labels": [
+        "Treatment Plan"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病推荐综合治疗方案。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "associated_with_risk",
+      "canonical_relation": "associated_with_risk",
+      "chinese": "相关风险",
+      "target_labels": [
+        "Risk"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病与自杀、自伤等风险节点相关。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "commonly_affects",
+      "canonical_relation": "commonly_affects",
+      "chinese": "指向特定patient节点",
+      "target_labels": [
+        "Patient"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "中文说明指向特定 Patient 节点；若 Patient 表示具体个体而非人群类型，则 Disease→Patient 的类型级关系需谨慎。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "rules_out",
+      "canonical_relation": "rules_out",
+      "chinese": "疾病排除疾病，与症状排除疾病做补充",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病排除/鉴别另一疾病，与 Symptom→Disease 的排除关系形成补充。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "managed_by_guideline",
+      "canonical_relation": "managed_by_guideline",
+      "chinese": "指南管理",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病由某临床指南覆盖/管理。"
+    },
+    {
+      "module": "Diagnostic Criterion",
+      "source_label": "Diagnostic Criterion",
+      "relation": "required_for",
+      "canonical_relation": "required_for_diagnosis_of",
+      "chinese": "诊断标准",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "required_for_diagnosis_of",
+      "notes": "与旧版 required_for_diagnosis_of 的语义一致：诊断标准用于某疾病诊断。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "is_core_symptom_of",
+      "canonical_relation": "is_core_symptom_of",
+      "chinese": "核心症状",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 同名关系明确为 Symptom→Disease。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "is_associated_symptom_of",
+      "canonical_relation": "is_associated_symptom_of",
+      "chinese": "伴随症状",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 同名关系明确为 Symptom→Disease。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "supports_diagnosis_of",
+      "canonical_relation": "supports_diagnosis_of",
+      "chinese": "支持诊断",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "症状支持疾病诊断。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "supports_Diagnostic Criterion_of",
+      "canonical_relation": "supports_diagnostic_criterion",
+      "chinese": "支持诊断标准",
+      "target_labels": [
+        "Diagnostic Criterion"
+      ],
+      "status": "可加入（建议规范命名）",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "supports_diagnostic_criterion",
+      "notes": "症状支持某条诊断标准；Target 为 Diagnostic Criterion。建议统一 relation 命名风格与大小写。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "suggests",
+      "canonical_relation": "suggests",
+      "chinese": "提示",
+      "target_labels": [],
+      "status": "可加入",
+      "confidence": "中高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床症状可提示某疾病；语义清晰，但与 supports_diagnosis_of 有一定重叠。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "argues_against",
+      "canonical_relation": "argues_against",
+      "chinese": "排除",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "与旧版 Symptom→excludes_diagnosis_of→Disease 的设计一致，表示降低/排除某诊断可能性。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "precedes",
+      "canonical_relation": "precedes",
+      "chinese": "先于",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版同名关系标记 needs_medical_review；按新版关系分组最自然解释为症状间时序。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "follows",
+      "canonical_relation": "follows",
+      "chinese": "继发于",
+      "target_labels": [],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版同名关系标记 needs_medical_review；按新版关系分组最自然解释为症状间时序。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "aggravated_by",
+      "canonical_relation": "aggravated_by",
+      "chinese": "加重",
+      "target_labels": [],
+      "status": "改为节点属性/不建边",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "按最终标记不保留关系，转换为 Symptom.risk_factor；当前 nodes.csv 尚未列出该属性，更新节点定义时需同步补充。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "relieved_by",
+      "canonical_relation": "relieved_by",
+      "chinese": "缓解",
+      "target_labels": [
+        "Medication",
+        "Treatment",
+        "Treatment Plan"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "症状可被药物或非药物治疗缓解。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "modulated_by",
+      "canonical_relation": "modulated_by",
+      "chinese": "调节",
+      "target_labels": [],
+      "status": "暂缓加入",
+      "confidence": "低",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版同名关系已标记 needs_medical_review；“调节”可指诱因、药物或治疗，语义过宽，建议拆分为 worsened_by / relieved_by 等更具体关系。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "part_of",
+      "canonical_relation": "part_of",
+      "chinese": "属于",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "可表示症状层级，但新版 Symptom 已有 Parent Symptom 属性，可能重复。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "has_subsymptom",
+      "canonical_relation": "has_subsymptom",
+      "chinese": "表现为",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "可解释为上位/复合症状表现为更具体症状，但需与 Symptom.description/manifestation 类属性边界保持一致。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "assesses_for",
+      "canonical_relation": "assesses_for",
+      "chinese": "用于评估",
+      "target_labels": [
+        "Disease",
+        "Symptom",
+        "Risk"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 的 assesses_for 为 Interview Tool→Disease/Symptom；新版新增 Risk 节点后，风险评估也合理纳入 Target。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "asks_about",
+      "canonical_relation": "asks_about",
+      "chinese": "询问症状",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床评估问题询问症状。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "triggers_follow_up_question",
+      "canonical_relation": "triggers_follow_up_question",
+      "chinese": "触发追问",
+      "target_labels": [
+        "Assessment"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版相关关系 triggers_follow_up_question_on 标记 needs_medical_review。只有当追问问题也建成独立 Assessment 节点时 Target=Assessment；否则更适合作为 Follow-up Question 属性。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "triggers_scale",
+      "canonical_relation": "triggers_scale",
+      "chinese": "触发量表",
+      "target_labels": [
+        "Assessment Scale"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床评估触发量表。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "triggers_test",
+      "canonical_relation": "triggers_test",
+      "chinese": "触发检查",
+      "target_labels": [
+        "Examination"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床评估触发检查。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "informed_by_patient",
+      "canonical_relation": "informed_by_patient",
+      "chinese": "受患者影响",
+      "target_labels": [
+        "Patient"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 的 informed_by_patient_demographics 为 Interview Tool→Patient Information；新版可映射为 Assessment→Patient。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "presents_with",
+      "canonical_relation": "presents_with",
+      "chinese": "出现症状",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者出现症状。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "has_risk",
+      "canonical_relation": "has_risk",
+      "chinese": "存在风险",
+      "target_labels": [
+        "Risk"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者存在某风险。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "receives_treatment_plan",
+      "canonical_relation": "receives_treatment_plan",
+      "chinese": "接受治疗方案",
+      "target_labels": [
+        "Treatment Plan"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者接受某治疗方案。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "contraindicated_for",
+      "canonical_relation": "contraindicated_for",
+      "chinese": "治疗禁忌",
+      "target_labels": [
+        "Medication",
+        "Treatment",
+        "Treatment Plan"
+      ],
+      "status": "需医学复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者/特定人群可对药物、非药物治疗或整体治疗方案存在禁忌；Target 已按最终标记保留三类节点。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "first_line_for",
+      "canonical_relation": "first_line_for",
+      "chinese": "一线药物",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 同名关系明确为 Medication→Disease。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "second_line_for",
+      "canonical_relation": "second_line_for",
+      "chinese": "二线药物",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "二线药物对应疾病。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "recommended_for",
+      "canonical_relation": "recommended_for",
+      "chinese": "推荐用于",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "药物推荐用于某疾病。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "contraindicated_in",
+      "canonical_relation": "contraindicated_in",
+      "chinese": "禁忌",
+      "target_labels": [
+        "Disease",
+        "Symptom"
+      ],
+      "status": "需医学复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "Target 已确定为 Disease、Patient、Symptom；但三类禁忌对象的语义粒度不同，保留为 needs_medical_review。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "interacts_with",
+      "canonical_relation": "interacts_with",
+      "chinese": "药物相互作用",
+      "target_labels": [
+        "Medication"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "虽然旧版曾标记 needs_medical_review，但在当前节点集合中药物相互作用的 Target=Medication 很明确。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "causes_side_effect",
+      "canonical_relation": "causes_side_effect",
+      "chinese": "导致副作用",
+      "target_labels": [
+        "Symptom",
+        "Disease"
+      ],
+      "status": "需医学复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "Target 已确定为 Symptom、Disease；由于副作用也可能仅记录在 Medication.Side Effects 属性中，建边边界仍需医学复核。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "monitor_for",
+      "canonical_relation": "monitor_for",
+      "chinese": "监测",
+      "target_labels": [
+        "Examination",
+        "Symptom",
+        "Risk"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "“监测”可能指实验室/检查指标、症状性不良反应或风险，Target 较宽，建议后续按语料拆分。"
+    },
+    {
+      "module": "Treatment",
+      "source_label": "Treatment",
+      "relation": "combined_with",
+      "canonical_relation": "combined_with",
+      "chinese": "联合治疗",
+      "target_labels": [
+        "Treatment",
+        "Medication"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "非药物治疗可与另一非药物治疗或药物联合。"
+    },
+    {
+      "module": "Treatment",
+      "source_label": "Treatment",
+      "relation": "supported_by_evidence",
+      "canonical_relation": "supported_by_evidence",
+      "chinese": "证据支持",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "治疗由文献证据支持。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "consists_of_medication",
+      "canonical_relation": "consists_of_medication",
+      "chinese": "包含药物",
+      "target_labels": [
+        "Medication"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "Target 清晰；新版节点 Label 为 Treatment Plan，而关系表写作 TreatmentPlan，应统一。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "consists_of_treatment",
+      "canonical_relation": "consists_of_treatment",
+      "chinese": "包含非药物",
+      "target_labels": [
+        "Treatment"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "Target 清晰；新版节点 Label 为 Treatment Plan，而关系表写作 TreatmentPlan，应统一。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "applicable_to",
+      "canonical_relation": "applicable_to",
+      "chinese": "适用于疾病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "治疗方案适用于疾病；同时应将 Source 统一为 Treatment Plan。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "recommended_by",
+      "canonical_relation": "recommended_by",
+      "chinese": "被指南推荐",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "治疗方案由指南推荐；同时应将 Source 统一为 Treatment Plan。"
+    },
+    {
+      "module": "Examination",
+      "source_label": "Examination",
+      "relation": "supports_diagnosis_of",
+      "canonical_relation": "supports_diagnosis_of",
+      "chinese": "支持诊断",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "检查支持疾病诊断。"
+    },
+    {
+      "module": "Examination",
+      "source_label": "Examination",
+      "relation": "differentiates",
+      "canonical_relation": "differentiates",
+      "chinese": "鉴别",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "检查用于鉴别疾病。"
+    },
+    {
+      "module": "Examination",
+      "source_label": "Examination",
+      "relation": "confirms",
+      "canonical_relation": "confirms",
+      "chinese": "确诊",
+      "target_labels": [],
+      "status": "需医学复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "Target 为 Disease 明确，但单项检查通常仅支持诊断；使用 confirms 的强因果/确诊语义前需医学复核。"
+    },
+    {
+      "module": "Assessment Scale",
+      "source_label": "Assessment Scale",
+      "relation": "evaluates",
+      "canonical_relation": "evaluates",
+      "chinese": "评估疾病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "量表评估疾病/严重程度。"
+    },
+    {
+      "module": "Assessment Scale",
+      "source_label": "Assessment Scale",
+      "relation": "triggered_by",
+      "canonical_relation": "triggered_by",
+      "chinese": "被Assessment触发",
+      "target_labels": [
+        "Assessment"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "量表由临床评估触发。"
+    },
+    {
+      "module": "Assessment Scale",
+      "source_label": "Assessment Scale",
+      "relation": "measures",
+      "canonical_relation": "measures",
+      "chinese": "测量症状",
+      "target_labels": [
+        "Symptom",
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "量表可测量具体症状，也可测量疾病相关严重度或维度；Target 按最终标记保留 Symptom、Disease。"
+    },
+    {
+      "module": "Etiology",
+      "source_label": "Etiology",
+      "relation": "causes",
+      "canonical_relation": "causes",
+      "chinese": "导致疾病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "病因导致疾病。"
+    },
+    {
+      "module": "Etiology",
+      "source_label": "Etiology",
+      "relation": "contributes_to",
+      "canonical_relation": "contributes_to",
+      "chinese": "增加发生概率",
+      "target_labels": [
+        "Disease",
+        "Risk",
+        "Symptom"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "病因可促成疾病、风险状态或症状出现；Target 按最终标记保留 Disease、Risk、Symptom。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "increased_b",
+      "canonical_relation": "increased_b",
+      "chinese": "增加风险",
+      "target_labels": [],
+      "status": "改为节点属性/不建边",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "按最终标记不保留关系，转换为 Risk.risk_increase_factors；当前 nodes.csv 尚未列出该属性，更新节点定义时需同步补充。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "reduced_by",
+      "canonical_relation": "reduced_by",
+      "chinese": "保护作用",
+      "target_labels": [],
+      "status": "改为节点属性/不建边",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "按最终标记不保留关系，转换为 Risk.protective_factors；当前 nodes.csv 尚未列出该属性，更新节点定义时需同步补充。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "triggers_alert_when",
+      "canonical_relation": "triggers_alert_when",
+      "chinese": "触发预警",
+      "target_labels": [],
+      "status": "改为节点属性/不建边",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "按最终标记不再建立 Risk→Disease/Symptom 关系，转换为 Risk.alert_trigger_condition；当前 nodes.csv 尚未列出该属性，更新节点定义时需同步补充。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "requires_emergency_action",
+      "canonical_relation": "requires_emergency_action",
+      "chinese": "需要紧急处理",
+      "target_labels": [
+        "Treatment Plan",
+        "Treatment",
+        "Medication"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "当前无 Emergency Action 独立节点，只能将紧急处置映射到 Treatment Plan；若后续需要细粒度动作建议新增 Action/Intervention 节点。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "escalates_to",
+      "canonical_relation": "requires_escalated_management",
+      "chinese": "升级处理",
+      "target_labels": [
+        "Treatment Plan",
+        "Treatment",
+        "Medication"
+      ],
+      "status": "需医学复核（建议重命名）",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "requires_escalated_management",
+      "notes": "Target 已确定为 Treatment Plan、Treatment、Medication；建议重命名为 requires_escalated_management 后保留为 needs_medical_review。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "mediated_by",
+      "canonical_relation": "mediated_by",
+      "chinese": "经由",
+      "target_labels": [],
+      "status": "暂缓加入",
+      "confidence": "低",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版同名关系标记 needs_medical_review；“经由”语义过宽，可能由病因、症状或疾病介导，暂不宜作为稳定 relation。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "applies_to_patient",
+      "canonical_relation": "applies_to_patient",
+      "chinese": "适用于患者",
+      "target_labels": [
+        "Patient"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "风险适用于/关联某患者或患者类型。"
+    },
+    {
+      "module": "Communication",
+      "source_label": "Communication Strategy",
+      "relation": "recommended_for",
+      "canonical_relation": "recommended_for",
+      "chinese": "推荐用于",
+      "target_labels": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Communication Strategy",
+      "rename_suggestion": "",
+      "notes": "旧版 active 的 Communication Method→recommended_for→Disease/Patient Information 提供了直接依据；新版对应 Communication Strategy→Disease/Patient。"
+    },
+    {
+      "module": "Communication",
+      "source_label": "Communication Strategy",
+      "relation": "avoid_with",
+      "canonical_relation": "avoid_with",
+      "chinese": "避免用于",
+      "target_labels": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "需修正 Source 并复核",
+      "confidence": "中",
+      "source_correction": "Communication Strategy",
+      "rename_suggestion": "",
+      "notes": "旧版 avoid_with 标记 needs_medical_review；与 recommended_for 对称时，Disease/Patient 是较合理 Target，但仍需语料验证。"
+    },
+    {
+      "module": "Communication",
+      "source_label": "Communication Strategy",
+      "relation": "applies_to_stage",
+      "canonical_relation": "applies_to_stage",
+      "chinese": "适用于阶段",
+      "target_labels": [],
+      "status": "改为节点属性/不建边",
+      "confidence": "高",
+      "source_correction": "Communication Strategy",
+      "rename_suggestion": "",
+      "notes": "按最终标记不保留关系，转换为 Communication Strategy.applicable_stage；当前 nodes.csv 尚未列出该属性，更新节点定义时需同步补充。"
+    },
+    {
+      "module": "Communication",
+      "source_label": "Communication Strategy",
+      "relation": "requires_family_support",
+      "canonical_relation": "requires_family_support",
+      "chinese": "需要家属参与",
+      "target_labels": [],
+      "status": "改为节点属性/不建边",
+      "confidence": "高",
+      "source_correction": "Communication Strategy",
+      "rename_suggestion": "",
+      "notes": "按最终标记不保留关系，转换为 Communication Strategy.requires_family_support；当前 nodes.csv 尚未列出该属性，更新节点定义时需同步补充。"
+    },
+    {
+      "module": "Guideline",
+      "source_label": "Guideline",
+      "relation": "recommends",
+      "canonical_relation": "recommends",
+      "chinese": "推荐",
+      "target_labels": [
+        "Medication",
+        "Treatment",
+        "Treatment Plan",
+        "Assessment",
+        "Examination",
+        "Assessment Scale",
+        "Communication Strategy"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "这是泛型推荐关系，Target 过宽；可暂保留，但生产 schema 更建议拆成 recommends_medication / recommends_treatment 等。"
+    },
+    {
+      "module": "Guideline",
+      "source_label": "Guideline",
+      "relation": "based_on_evidence",
+      "canonical_relation": "based_on_evidence",
+      "chinese": "基于证据",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "指南基于文献证据。"
+    },
+    {
+      "module": "Guideline",
+      "source_label": "Guideline",
+      "relation": "updated_from",
+      "canonical_relation": "updated_from",
+      "chinese": "更新自",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "指南版本更新自另一指南版本。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "recommended_by",
+      "canonical_relation": "recommended_by",
+      "chinese": "被指南引用",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "可加入（与 Treatment Plan 同名关系合并）",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "Target=Guideline 明确；按已确认方案保留 recommended_by，并通过 allowed_pairs 仅允许 Treatment Plan/Evidence→Guideline。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "supported_by",
+      "canonical_relation": "supported_by",
+      "chinese": "被证据支持",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "可表示研究/证据之间相互支持或复核；但关系语义较泛，需明确什么情况下建立此边。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "derived_from",
+      "canonical_relation": "derived_from",
+      "chinese": "来源于",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "需复核",
+      "confidence": "中",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "当前无 Study 节点，只能将来源研究也建成 Evidence；若后续新增 Study，Target 应改为 Study。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "cites",
+      "canonical_relation": "cites",
+      "chinese": "引用",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "文献证据引用另一文献证据。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "evidence_level",
+      "canonical_relation": "evidence_level",
+      "chinese": "证据等级",
+      "target_labels": [],
+      "status": "直接删除/不建边",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "最终处置为直接删除；Evidence.Core Properties 已包含 GRADE，无需新增属性或关系。"
+    }
+  ],
+  "active_rows": [
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "subtype_of",
+      "canonical_relation": "subtype_of",
+      "chinese": "亚型",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "标准疾病层级关系。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "differentiates_from",
+      "canonical_relation": "differentiates_from",
+      "chinese": "鉴别诊断",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病与疾病之间的鉴别诊断关系；旧版同名关系已明确为 Disease→Disease。"
+    },
+    {
+      "module": "Diagnostic Criterion",
+      "source_label": "Disease",
+      "relation": "co_occurs_with",
+      "canonical_relation": "co_occurs_with",
+      "chinese": "共病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Disease",
+      "rename_suggestion": "",
+      "notes": "“共病”语义应为 Disease→Disease；旧版 co_occurs_with_frequency 明确为 Disease→Disease，因此当前 Source 很可能误填。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "progresses_to",
+      "canonical_relation": "progresses_to",
+      "chinese": "进展为",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病进展到另一疾病/明确疾病状态。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "relapses_to",
+      "canonical_relation": "relapses_to",
+      "chinese": "复发为",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病复发到某疾病状态，Target 为 Disease。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "associated_with_poor_prognosis",
+      "canonical_relation": "associated_with_poor_prognosis_in",
+      "chinese": "不良预后",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入（建议重命名）",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "associated_with_poor_prognosis_in",
+      "notes": "旧版 active 关系 associated_with_poor_prognosis_in 的 Target 为 Disease，语义是“某因素与某疾病的不良预后相关”；不是单纯的 Prognosis 属性。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "has_diagnostic_criterion",
+      "canonical_relation": "has_diagnostic_criterion",
+      "chinese": "具有诊断标准",
+      "target_labels": [
+        "Diagnostic Criterion"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病具有诊断标准节点。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "recommended_assessment",
+      "canonical_relation": "recommended_assessment",
+      "chinese": "推荐评估",
+      "target_labels": [
+        "Assessment"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病推荐某临床评估。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "recommended_examination",
+      "canonical_relation": "recommended_examination",
+      "chinese": "推荐检查",
+      "target_labels": [
+        "Examination"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病推荐某检查。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "recommended_treatment_plan",
+      "canonical_relation": "recommended_treatment_plan",
+      "chinese": "推荐治疗方案",
+      "target_labels": [
+        "Treatment Plan"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病推荐综合治疗方案。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "associated_with_risk",
+      "canonical_relation": "associated_with_risk",
+      "chinese": "相关风险",
+      "target_labels": [
+        "Risk"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病与自杀、自伤等风险节点相关。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "rules_out",
+      "canonical_relation": "rules_out",
+      "chinese": "疾病排除疾病，与症状排除疾病做补充",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病排除/鉴别另一疾病，与 Symptom→Disease 的排除关系形成补充。"
+    },
+    {
+      "module": "Disease",
+      "source_label": "Disease",
+      "relation": "managed_by_guideline",
+      "canonical_relation": "managed_by_guideline",
+      "chinese": "指南管理",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "疾病由某临床指南覆盖/管理。"
+    },
+    {
+      "module": "Diagnostic Criterion",
+      "source_label": "Diagnostic Criterion",
+      "relation": "required_for",
+      "canonical_relation": "required_for_diagnosis_of",
+      "chinese": "诊断标准",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "required_for_diagnosis_of",
+      "notes": "与旧版 required_for_diagnosis_of 的语义一致：诊断标准用于某疾病诊断。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "is_core_symptom_of",
+      "canonical_relation": "is_core_symptom_of",
+      "chinese": "核心症状",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 同名关系明确为 Symptom→Disease。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "is_associated_symptom_of",
+      "canonical_relation": "is_associated_symptom_of",
+      "chinese": "伴随症状",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 同名关系明确为 Symptom→Disease。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "supports_diagnosis_of",
+      "canonical_relation": "supports_diagnosis_of",
+      "chinese": "支持诊断",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "症状支持疾病诊断。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "supports_Diagnostic Criterion_of",
+      "canonical_relation": "supports_diagnostic_criterion",
+      "chinese": "支持诊断标准",
+      "target_labels": [
+        "Diagnostic Criterion"
+      ],
+      "status": "可加入（建议规范命名）",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "supports_diagnostic_criterion",
+      "notes": "症状支持某条诊断标准；Target 为 Diagnostic Criterion。建议统一 relation 命名风格与大小写。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "argues_against",
+      "canonical_relation": "argues_against",
+      "chinese": "排除",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "与旧版 Symptom→excludes_diagnosis_of→Disease 的设计一致，表示降低/排除某诊断可能性。"
+    },
+    {
+      "module": "Symptom",
+      "source_label": "Symptom",
+      "relation": "relieved_by",
+      "canonical_relation": "relieved_by",
+      "chinese": "缓解",
+      "target_labels": [
+        "Medication",
+        "Treatment",
+        "Treatment Plan"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "症状可被药物或非药物治疗缓解。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "assesses_for",
+      "canonical_relation": "assesses_for",
+      "chinese": "用于评估",
+      "target_labels": [
+        "Disease",
+        "Symptom",
+        "Risk"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 的 assesses_for 为 Interview Tool→Disease/Symptom；新版新增 Risk 节点后，风险评估也合理纳入 Target。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "asks_about",
+      "canonical_relation": "asks_about",
+      "chinese": "询问症状",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床评估问题询问症状。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "triggers_scale",
+      "canonical_relation": "triggers_scale",
+      "chinese": "触发量表",
+      "target_labels": [
+        "Assessment Scale"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床评估触发量表。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "triggers_test",
+      "canonical_relation": "triggers_test",
+      "chinese": "触发检查",
+      "target_labels": [
+        "Examination"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "临床评估触发检查。"
+    },
+    {
+      "module": "Assessment",
+      "source_label": "Assessment",
+      "relation": "informed_by_patient",
+      "canonical_relation": "informed_by_patient",
+      "chinese": "受患者影响",
+      "target_labels": [
+        "Patient"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 的 informed_by_patient_demographics 为 Interview Tool→Patient Information；新版可映射为 Assessment→Patient。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "presents_with",
+      "canonical_relation": "presents_with",
+      "chinese": "出现症状",
+      "target_labels": [
+        "Symptom"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者出现症状。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "has_risk",
+      "canonical_relation": "has_risk",
+      "chinese": "存在风险",
+      "target_labels": [
+        "Risk"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者存在某风险。"
+    },
+    {
+      "module": "Patient",
+      "source_label": "Patient",
+      "relation": "receives_treatment_plan",
+      "canonical_relation": "receives_treatment_plan",
+      "chinese": "接受治疗方案",
+      "target_labels": [
+        "Treatment Plan"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "患者接受某治疗方案。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "first_line_for",
+      "canonical_relation": "first_line_for",
+      "chinese": "一线药物",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "旧版 active 同名关系明确为 Medication→Disease。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "second_line_for",
+      "canonical_relation": "second_line_for",
+      "chinese": "二线药物",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "二线药物对应疾病。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "recommended_for",
+      "canonical_relation": "recommended_for",
+      "chinese": "推荐用于",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "药物推荐用于某疾病。"
+    },
+    {
+      "module": "Medication",
+      "source_label": "Medication",
+      "relation": "interacts_with",
+      "canonical_relation": "interacts_with",
+      "chinese": "药物相互作用",
+      "target_labels": [
+        "Medication"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "虽然旧版曾标记 needs_medical_review，但在当前节点集合中药物相互作用的 Target=Medication 很明确。"
+    },
+    {
+      "module": "Treatment",
+      "source_label": "Treatment",
+      "relation": "combined_with",
+      "canonical_relation": "combined_with",
+      "chinese": "联合治疗",
+      "target_labels": [
+        "Treatment",
+        "Medication"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "非药物治疗可与另一非药物治疗或药物联合。"
+    },
+    {
+      "module": "Treatment",
+      "source_label": "Treatment",
+      "relation": "supported_by_evidence",
+      "canonical_relation": "supported_by_evidence",
+      "chinese": "证据支持",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "治疗由文献证据支持。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "consists_of_medication",
+      "canonical_relation": "consists_of_medication",
+      "chinese": "包含药物",
+      "target_labels": [
+        "Medication"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "Target 清晰；新版节点 Label 为 Treatment Plan，而关系表写作 TreatmentPlan，应统一。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "consists_of_treatment",
+      "canonical_relation": "consists_of_treatment",
+      "chinese": "包含非药物",
+      "target_labels": [
+        "Treatment"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "Target 清晰；新版节点 Label 为 Treatment Plan，而关系表写作 TreatmentPlan，应统一。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "applicable_to",
+      "canonical_relation": "applicable_to",
+      "chinese": "适用于疾病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "治疗方案适用于疾病；同时应将 Source 统一为 Treatment Plan。"
+    },
+    {
+      "module": "TreatmentPlan",
+      "source_label": "Treatment Plan",
+      "relation": "recommended_by",
+      "canonical_relation": "recommended_by",
+      "chinese": "被指南推荐",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Treatment Plan",
+      "rename_suggestion": "",
+      "notes": "治疗方案由指南推荐；同时应将 Source 统一为 Treatment Plan。"
+    },
+    {
+      "module": "Examination",
+      "source_label": "Examination",
+      "relation": "supports_diagnosis_of",
+      "canonical_relation": "supports_diagnosis_of",
+      "chinese": "支持诊断",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "检查支持疾病诊断。"
+    },
+    {
+      "module": "Examination",
+      "source_label": "Examination",
+      "relation": "differentiates",
+      "canonical_relation": "differentiates",
+      "chinese": "鉴别",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "检查用于鉴别疾病。"
+    },
+    {
+      "module": "Assessment Scale",
+      "source_label": "Assessment Scale",
+      "relation": "evaluates",
+      "canonical_relation": "evaluates",
+      "chinese": "评估疾病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "量表评估疾病/严重程度。"
+    },
+    {
+      "module": "Assessment Scale",
+      "source_label": "Assessment Scale",
+      "relation": "triggered_by",
+      "canonical_relation": "triggered_by",
+      "chinese": "被Assessment触发",
+      "target_labels": [
+        "Assessment"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "量表由临床评估触发。"
+    },
+    {
+      "module": "Assessment Scale",
+      "source_label": "Assessment Scale",
+      "relation": "measures",
+      "canonical_relation": "measures",
+      "chinese": "测量症状",
+      "target_labels": [
+        "Symptom",
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "量表可测量具体症状，也可测量疾病相关严重度或维度；Target 按最终标记保留 Symptom、Disease。"
+    },
+    {
+      "module": "Etiology",
+      "source_label": "Etiology",
+      "relation": "causes",
+      "canonical_relation": "causes",
+      "chinese": "导致疾病",
+      "target_labels": [
+        "Disease"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "病因导致疾病。"
+    },
+    {
+      "module": "Etiology",
+      "source_label": "Etiology",
+      "relation": "contributes_to",
+      "canonical_relation": "contributes_to",
+      "chinese": "增加发生概率",
+      "target_labels": [
+        "Disease",
+        "Risk",
+        "Symptom"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "病因可促成疾病、风险状态或症状出现；Target 按最终标记保留 Disease、Risk、Symptom。"
+    },
+    {
+      "module": "Risk",
+      "source_label": "Risk",
+      "relation": "applies_to_patient",
+      "canonical_relation": "applies_to_patient",
+      "chinese": "适用于患者",
+      "target_labels": [
+        "Patient"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "风险适用于/关联某患者或患者类型。"
+    },
+    {
+      "module": "Communication",
+      "source_label": "Communication Strategy",
+      "relation": "recommended_for",
+      "canonical_relation": "recommended_for",
+      "chinese": "推荐用于",
+      "target_labels": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "需修正 Source 后加入",
+      "confidence": "高",
+      "source_correction": "Communication Strategy",
+      "rename_suggestion": "",
+      "notes": "旧版 active 的 Communication Method→recommended_for→Disease/Patient Information 提供了直接依据；新版对应 Communication Strategy→Disease/Patient。"
+    },
+    {
+      "module": "Communication",
+      "source_label": "Communication Strategy",
+      "relation": "avoid_with",
+      "canonical_relation": "avoid_with",
+      "chinese": "避免用于",
+      "target_labels": [
+        "Disease",
+        "Patient"
+      ],
+      "status": "需修正 Source 并复核",
+      "confidence": "中",
+      "source_correction": "Communication Strategy",
+      "rename_suggestion": "",
+      "notes": "旧版 avoid_with 标记 needs_medical_review；与 recommended_for 对称时，Disease/Patient 是较合理 Target，但仍需语料验证。"
+    },
+    {
+      "module": "Guideline",
+      "source_label": "Guideline",
+      "relation": "based_on_evidence",
+      "canonical_relation": "based_on_evidence",
+      "chinese": "基于证据",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "指南基于文献证据。"
+    },
+    {
+      "module": "Guideline",
+      "source_label": "Guideline",
+      "relation": "updated_from",
+      "canonical_relation": "updated_from",
+      "chinese": "更新自",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "指南版本更新自另一指南版本。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "recommended_by",
+      "canonical_relation": "recommended_by",
+      "chinese": "被指南引用",
+      "target_labels": [
+        "Guideline"
+      ],
+      "status": "可加入（与 Treatment Plan 同名关系合并）",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "Target=Guideline 明确；按已确认方案保留 recommended_by，并通过 allowed_pairs 仅允许 Treatment Plan/Evidence→Guideline。"
+    },
+    {
+      "module": "Evidence",
+      "source_label": "Evidence",
+      "relation": "cites",
+      "canonical_relation": "cites",
+      "chinese": "引用",
+      "target_labels": [
+        "Evidence"
+      ],
+      "status": "可加入",
+      "confidence": "高",
+      "source_correction": "",
+      "rename_suggestion": "",
+      "notes": "文献证据引用另一文献证据。"
+    }
+  ]
+}
