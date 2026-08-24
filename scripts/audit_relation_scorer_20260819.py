@@ -35,6 +35,18 @@ CASE_FIELDS = {
     1434: "definition",
 }
 
+
+def source_field_for_case(case: dict[str, Any]) -> str:
+    """Resolve a human-readable field without requiring historical probe IDs."""
+    raw_id = case.get("id")
+    try:
+        case_id = int(raw_id)
+    except (TypeError, ValueError):
+        case_id = None
+    if case_id in CASE_FIELDS:
+        return CASE_FIELDS[case_id]
+    return str(case.get("source_field") or case.get("field") or "unknown")
+
 # The active v3.1.1 workbook-derived table does not define inverse relations.
 # This single pair is therefore an explicit *audit-policy candidate*, not an
 # assertion that the source workbook specifies target types or directions.
@@ -466,7 +478,7 @@ def raw_export_row(case: dict[str, Any], model_field: str) -> dict[str, Any]:
     return {
         "id": case.get("id"),
         "split": case.get("split"),
-        "source_field": CASE_FIELDS[int(case["id"])],
+        "source_field": source_field_for_case(case),
         "target": {
             "raw": target.get("raw"),
             "output": target.get("output"),
@@ -509,7 +521,7 @@ def audit_case(
     return {
         "id": int(case["id"]),
         "split": case.get("split"),
-        "source_field": CASE_FIELDS[int(case["id"])],
+        "source_field": source_field_for_case(case),
         "parse_status": {"target": target_status, "prediction": pred_status},
         "entity_counts": {
             "target": len(target_graph.get("entities", [])) if target_graph else 0,
@@ -556,6 +568,16 @@ def main() -> None:
         action="store_true",
         help="disable the explicit audit-only required_for inverse candidate",
     )
+    parser.add_argument(
+        "--all-cases",
+        action="store_true",
+        help="audit every case in the comparison artifact instead of the eight historical probes",
+    )
+    parser.add_argument(
+        "--case-ids",
+        default=None,
+        help="comma-separated positional case IDs to audit; overrides the historical probe set",
+    )
     args = parser.parse_args()
 
     payload = json.loads(args.artifact.read_text(encoding="utf-8"))
@@ -568,14 +590,20 @@ def main() -> None:
         for case in cases
         if isinstance(case, dict) and str(case.get("id", "")).isdigit()
     }
-    missing = sorted(set(CASE_FIELDS) - set(by_id))
+    if args.all_cases:
+        case_ids = sorted(by_id)
+    elif args.case_ids:
+        case_ids = [int(value.strip()) for value in args.case_ids.split(",") if value.strip()]
+    else:
+        case_ids = list(CASE_FIELDS)
+    missing = sorted(set(case_ids) - set(by_id))
     if missing:
         raise SystemExit(f"artifact is missing requested cases: {missing}")
 
     inverse_rules = (
         {} if args.no_audit_inverse_candidates else AUDIT_INVERSE_CANDIDATES
     )
-    ordered_cases = [by_id[case_id] for case_id in CASE_FIELDS]
+    ordered_cases = [by_id[case_id] for case_id in case_ids]
     audited = [audit_case(case, args.model_field, inverse_rules) for case in ordered_cases]
 
     groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -587,7 +615,7 @@ def main() -> None:
         "metadata": {
             "artifact": str(args.artifact),
             "model_field": args.model_field,
-            "case_ids": list(CASE_FIELDS),
+            "case_ids": case_ids,
             "teacher_reference_warning": (
                 "DeepSeek target is a noisy teacher-relative reference, not medically "
                 "reviewed gold. Scores measure agreement, not clinical correctness."
@@ -633,7 +661,7 @@ def main() -> None:
         "metadata": {
             "artifact": str(args.artifact),
             "model_field": args.model_field,
-            "case_ids": list(CASE_FIELDS),
+            "case_ids": case_ids,
             "note": "raw strings are copied unchanged from the generation artifact",
         },
         "cases": [raw_export_row(case, args.model_field) for case in ordered_cases],
