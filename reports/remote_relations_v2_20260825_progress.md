@@ -13,6 +13,8 @@ This is an engineering progress record for the run on `lsh-temp31030`.
 - Step-50 metrics: `eval_loss=0.09095559269189835`; training loss near the checkpoint was 0.0482--0.1283
 - Step-100 checkpoint: `checkpoint-100/adapter_model.safetensors` (83 MiB), local recovery copy in `reports/remote_relations_v2_20260825/checkpoint-100/`
 - Step-100 metric: `eval_loss=0.059865765273571014`
+- Step-150 checkpoint: `checkpoint-150/adapter_model.safetensors` (83 MiB), local recovery copy in `reports/remote_relations_v2_20260825/checkpoint-150/`
+- Step-150 metric: `eval_loss=0.04945255443453789`
 - Automatic post-train probe: `scripts/post_train_relations_v2_eval_remote.sh`; it uses `max_new_tokens=16384`, structured JSON stopping, closure audit, raw-output export, and the five-view relation scorer.
 
 This is not a semantic-quality conclusion.  The relation metrics are intentionally deferred until the post-training free-generation audit.
