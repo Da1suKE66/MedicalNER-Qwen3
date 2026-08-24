@@ -1,10 +1,9 @@
 ### Output-only SFT with the frozen relations.csv active schema.
 ### The dataset builder compacts JSON, removes property/deleted relations, and
 ### duplicates relation-bearing training rows once to counter token imbalance.
-model_name_or_path: /cache/liluchen/model_cache/Qwen3-8B
+# ModelScope snapshot path on the pinned lsh-temp31030 node.
+model_name_or_path: /cache/liluchen/model_cache/models/Qwen--Qwen3-8B/snapshots/master
 trust_remote_code: true
-quantization_bit: 4
-quantization_method: bnb
 
 stage: sft
 do_train: true
