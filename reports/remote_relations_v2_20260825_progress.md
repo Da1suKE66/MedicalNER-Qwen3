@@ -15,6 +15,11 @@ This is an engineering progress record for the run on `lsh-temp31030`.
 - Step-100 metric: `eval_loss=0.059865765273571014`
 - Step-150 checkpoint: `checkpoint-150/adapter_model.safetensors` (83 MiB), local recovery copy in `reports/remote_relations_v2_20260825/checkpoint-150/`
 - Step-150 metric: `eval_loss=0.04945255443453789`
+- Step-200 checkpoint: `checkpoint-200/adapter_model.safetensors` (83 MiB), local recovery copy in `reports/remote_relations_v2_20260825/checkpoint-200/`; the same checkpoint was copied to both `snapshots/latest/output/checkpoint-200/` and `snapshots/periodic/checkpoint-200_manual/`.
+- Step-200 metric: `eval_loss=0.04599086940288544`
+- Step-201 observation: training remains active, GPU utilization 100%, memory about 68.9 GiB; no OOM, NaN, or interruption observed.
+- Step-250 checkpoint: `checkpoint-250/adapter_model.safetensors` (83 MiB), copied to local recovery and to both `snapshots/latest/output/checkpoint-250/` and `snapshots/periodic/checkpoint-250_manual/`.
+- Step-250 metric: `eval_loss=0.04204870015382767`
 - Automatic post-train probe: `scripts/post_train_relations_v2_eval_remote.sh`; it uses `max_new_tokens=16384`, structured JSON stopping, closure audit, raw-output export, and the five-view relation scorer.
 
 This is not a semantic-quality conclusion.  The relation metrics are intentionally deferred until the post-training free-generation audit.
