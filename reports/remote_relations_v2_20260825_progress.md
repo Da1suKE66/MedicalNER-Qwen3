@@ -38,6 +38,8 @@ This is an engineering progress record for the run on `lsh-temp31030`.
 - Step-650 metric: `eval_loss=0.035780396312475204`; step-600 remains best.
 - Step-700 checkpoint: `checkpoint-700/adapter_model.safetensors` (83 MiB), copied to local recovery and both `/temp` snapshot tiers.
 - Step-700 metric: `eval_loss=0.034858740866184235`; this is the current best validation checkpoint.
+- Step-750 checkpoint: `checkpoint-750/adapter_model.safetensors` (83 MiB), copied to local recovery and both `/temp` snapshot tiers.
+- Step-750 metric: `eval_loss=0.03482325002551079`; this is the current best validation checkpoint before final evaluation.
 - Automatic post-train probe: `scripts/post_train_relations_v2_eval_remote.sh`; it uses `max_new_tokens=16384`, structured JSON stopping, closure audit, raw-output export, and the five-view relation scorer.
 
 This is not a semantic-quality conclusion.  The relation metrics are intentionally deferred until the post-training free-generation audit.
