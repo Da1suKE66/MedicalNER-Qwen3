@@ -17,11 +17,10 @@ mkdir -p "$SNAP_ROOT/latest" "$SNAP_ROOT/periodic" "$LOG_DIR"
 copy_tree() {
     local source="$1" destination="$2"
     mkdir -p "$destination"
-    if command -v rsync >/dev/null 2>&1; then
-        rsync -a "$source/" "$destination/"
-    else
-        cp -a "$source/." "$destination/"
-    fi
+    # The /temp shared filesystem rejects rsync's atomic rename while
+    # trainer_log.jsonl is open.  Direct recursive copy is deliberately used
+    # here; a later snapshot replaces any partially copied file.
+    cp -a "$source/." "$destination/"
 }
 
 snapshot() {
