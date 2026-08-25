@@ -91,6 +91,10 @@ def parse_graph(item: Any) -> tuple[dict[str, Any] | None, str]:
     match = OUTPUT_RE.search(text)
     if match:
         text = match.group(1).strip()
+    elif re.search(r"<output>", text, flags=re.I):
+        # Preserve a separate wrapper diagnostic, but score the JSON body when
+        # the model omitted only the closing </output> marker.
+        text = re.split(r"<output>", text, maxsplit=1, flags=re.I)[1].strip()
     text = FENCE_RE.sub("", text)
     text = SPECIAL_TOKEN_RE.sub("", text).strip()
     try:

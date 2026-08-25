@@ -35,12 +35,58 @@ class StructuredCompletionStoppingCriteria(StoppingCriteria):
         # the common padded width rather than each row's unpadded length.
         self.prompt_offsets = list(prompt_offsets)
         self.enable_thinking = enable_thinking
-        self.trigger_ids = set()
-        for text in ("}", ">", "<", "]"):
-            ids = tokenizer.encode(text, add_special_tokens=False)
-            if ids:
-                self.trigger_ids.add(ids[-1])
         self.finished = [False] * len(self.prompt_offsets)
+        self.seen_lengths = list(self.prompt_offsets)
+        self.buffers = ["" for _ in self.prompt_offsets]
+        self.started = [False] * len(self.prompt_offsets)
+        self.depth = [0] * len(self.prompt_offsets)
+        self.in_string = [False] * len(self.prompt_offsets)
+        self.escaped = [False] * len(self.prompt_offsets)
+
+    def _consume(self, index: int, piece: str) -> None:
+        """Update a cheap incremental JSON state machine for one token piece."""
+        if not piece:
+            return
+        self.buffers[index] += piece
+        buffer = self.buffers[index]
+        for char in piece:
+            if not self.started[index]:
+                if char == "{":
+                    self.started[index] = True
+                    self.depth[index] = 1
+                continue
+            if self.in_string[index]:
+                if self.escaped[index]:
+                    self.escaped[index] = False
+                elif char == "\\":
+                    self.escaped[index] = True
+                elif char == '"':
+                    self.in_string[index] = False
+                continue
+            if char == '"':
+                self.in_string[index] = True
+            elif char in "{[":
+                self.depth[index] += 1
+            elif char in "}]":
+                self.depth[index] -= 1
+
+        # A wrapper has an explicit close marker.  This branch is intentionally
+        # independent from the brace counter because the wrapper may contain
+        # escaped or non-JSON reasoning text.
+        if "<output>" in buffer:
+            output_part = buffer.split("<output>", 1)[1]
+            if "</output>" in output_part:
+                self.finished[index] = True
+                return
+
+        if self.started[index] and self.depth[index] == 0:
+            candidate = buffer[buffer.find("{") :]
+            try:
+                _, end = json.JSONDecoder().raw_decode(candidate)
+            except json.JSONDecodeError:
+                return
+            if end > 0:
+                self.finished[index] = True
 
     def __call__(self, input_ids, scores, **kwargs):
         # A scalar stopping result applies to the whole batch.  Track every
@@ -50,29 +96,14 @@ class StructuredCompletionStoppingCriteria(StoppingCriteria):
         for index, (row, prompt_offset) in enumerate(zip(input_ids, self.prompt_offsets)):
             if self.finished[index]:
                 continue
-            if row.shape[0] <= prompt_offset:
+            previous_length = self.seen_lengths[index]
+            if row.shape[0] <= previous_length:
                 continue
-            if int(row[-1]) not in self.trigger_ids:
-                continue
-            generated = self.tokenizer.decode(
-                row[prompt_offset:], skip_special_tokens=False
+            piece = self.tokenizer.decode(
+                row[previous_length:], skip_special_tokens=False
             )
-            if "<output>" in generated:
-                output_part = generated.split("<output>", 1)[1]
-                if "</output>" in output_part:
-                    self.finished[index] = True
-                    continue
-                candidate = output_part.lstrip()
-            else:
-                candidate = generated.lstrip()
-            if not candidate.startswith("{"):
-                continue
-            try:
-                _, end = json.JSONDecoder().raw_decode(candidate)
-            except json.JSONDecodeError:
-                continue
-            if end > 0:
-                self.finished[index] = True
+            self.seen_lengths[index] = row.shape[0]
+            self._consume(index, piece)
         return bool(self.finished) and all(self.finished)
 
 
@@ -80,8 +111,14 @@ def parse_target(text: str) -> dict[str, str | None]:
     think = re.search(r"<think>(.*?)</think>", text, flags=re.S)
     output = re.search(r"<output>(.*?)</output>", text, flags=re.S)
     if output is None and think is None:
-        # With enable_thinking=false Qwen emits the final JSON directly.
-        final_output = text.strip()
+        # With enable_thinking=false Qwen normally emits final JSON directly,
+        # but some checkpoints emit an opening <output> marker without the
+        # closing marker.  Preserve raw while exposing the JSON body to the
+        # structural scorer so wrapper damage is not mistaken for JSON damage.
+        opening = re.search(r"<output>", text, flags=re.I)
+        final_output = (
+            text[opening.end() :].strip() if opening is not None else text.strip()
+        )
     else:
         final_output = output.group(1).strip() if output else None
     return {
@@ -134,9 +171,15 @@ def load_bundle(base_model: str, adapter: str | None, quantize: bool = True):
             base_model, attn_implementation="flash_attention_2", **model_kwargs
         )
     except (ImportError, ValueError, RuntimeError):
-        # Keep the comparison runnable on nodes without flash-attn; the remote
-        # stable node has flash-attn 2.8.3 and takes this fast path.
-        model = AutoModelForCausalLM.from_pretrained(base_model, **model_kwargs)
+        # SDPA is substantially faster than the eager fallback for the long
+        # diagnosticCriteria probes on nodes without flash-attn, while keeping
+        # the same greedy decoding semantics and 16k-token cutoff audit.
+        try:
+            model = AutoModelForCausalLM.from_pretrained(
+                base_model, attn_implementation="sdpa", **model_kwargs
+            )
+        except (ImportError, ValueError, RuntimeError):
+            model = AutoModelForCausalLM.from_pretrained(base_model, **model_kwargs)
     if adapter:
         model = PeftModel.from_pretrained(model, adapter)
     model.eval()

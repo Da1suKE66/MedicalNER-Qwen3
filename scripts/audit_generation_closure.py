@@ -24,6 +24,12 @@ def parse_output(value: Any) -> tuple[dict[str, Any] | None, str, dict[str, int]
     match = OUTPUT_RE.search(text)
     if match:
         text = match.group(1).strip()
+    elif re.search(r"<output>", text, flags=re.I):
+        # Qwen3 occasionally emits the opening wrapper but omits only the
+        # closing marker.  Strip the wrapper so a valid JSON body is not
+        # misclassified as invalid JSON; the raw wrapper defect remains in
+        # the report through the original string and brace/token metadata.
+        text = re.split(r"<output>", text, maxsplit=1, flags=re.I)[1].strip()
     text = SPECIAL_RE.sub("", FENCE_RE.sub("", text)).strip()
     braces = {"open_braces": text.count("{"), "close_braces": text.count("}")}
     try:

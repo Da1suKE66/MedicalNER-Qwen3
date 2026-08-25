@@ -40,6 +40,12 @@ This is an engineering progress record for the run on `lsh-temp31030`.
 - Step-700 metric: `eval_loss=0.034858740866184235`; this is the current best validation checkpoint.
 - Step-750 checkpoint: `checkpoint-750/adapter_model.safetensors` (83 MiB), copied to local recovery and both `/temp` snapshot tiers.
 - Step-750 metric: `eval_loss=0.03482325002551079`; this is the current best validation checkpoint before final evaluation.
+- Final training: `global_step=819/819`, `train_loss=0.034307218758305204`, `train_runtime=12353.8306s`, `train_exit_code=0`; `trainer_state.json` selected `checkpoint-750` as the best model and the root adapter hash matches `checkpoint-750`.
+- Final native artifacts: `training_loss.png`, `training_eval_loss.png`, `trainer_log.jsonl`, `trainer_state.json`, `train_results.json`, and `eval_results.json` are in the remote output directory and local `reports/remote_relations_v2_20260825/final/`; final output was also copied to `/temp/liluchen/medicalner_relations_v2/snapshots/final/output/`.
+- Final 16384-token closure audit: dev probe `8` cases, output-only `6 ok`, `2 invalid_json` with `hit_max_new_tokens=2` and brace mismatches `1016/1014` and `986/984`; train probe `6/6 ok`, `hit_max_new_tokens=0`, max generated length `2844`.
+- The output wrapper parser was corrected to score valid JSON when Qwen emits `<output>` without `</output>`; the raw wrapper defect remains visible in comparison artifacts. After this correction, dev relation core-triple F1 was `0.0612245` (target 68/prediction 30), while train probe core-triple F1 was `0.5793103` (target 54/prediction 91). Dev/train source endpoint F1: `0.0612245/0.5793103`; target endpoint F1: `0.2040816/0.6482759`; relation type F1: `0.3061224/0.6206897`.
+- The scorer’s raw-ID strict dev/train F1 was `0.2244898/0.5655172`, but entity-aligned strict was `0.0612245/0.1379310`; core-triple is the less ID-cascade-prone comparison. No inverse-normalized rescue occurred in these probes.
+- Interpretation boundary: this engineering probe is not a medical gold benchmark; the train-vs-dev gap is evidence of relation binding generalization failure, and the two dev 16384-token hits are a remaining long-input generation defect.
 - Automatic post-train probe: `scripts/post_train_relations_v2_eval_remote.sh`; it uses `max_new_tokens=16384`, structured JSON stopping, closure audit, raw-output export, and the five-view relation scorer.
 
 This is not a semantic-quality conclusion.  The relation metrics are intentionally deferred until the post-training free-generation audit.
