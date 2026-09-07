@@ -192,12 +192,12 @@ class SentenceSpanSplitter:
             return current
 
         raw_spans: list[Span] = []
-        for match in self.sentence_re.finditer(text):
-            raw = match.group(0)
+        for sentence_start, sentence_end in self.sentence_ranges(text):
+            raw = text[sentence_start:sentence_end]
             leading = len(raw) - len(raw.lstrip())
             trailing = len(raw.rstrip())
-            start = match.start() + leading
-            end = match.start() + trailing
+            start = sentence_start + leading
+            end = sentence_start + trailing
             if end <= start:
                 continue
             value = text[start:end]
@@ -249,6 +249,24 @@ class SentenceSpanSplitter:
         return spans
 
     @staticmethod
+    def sentence_ranges(text: str):
+        """Keep decimals and common abbreviations intact; preserve every offset."""
+        for line in re.finditer(r"[^\n]+", text):
+            start = line.start()
+            for mark in re.finditer(r"[.!?。！？]+", line.group()):
+                end = line.start() + mark.end()
+                if mark.group() == ".":
+                    if end < line.end() and not text[end].isspace():
+                        continue
+                    prefix = text[start:end]
+                    if re.search(r"(?:\b(?:e\.g|i\.e|Dr|Mr|Mrs|Ms|Prof|vs|etc)|\b[A-Z])\.$", prefix, re.I):
+                        continue
+                yield start, end
+                start = end
+            if start < line.end():
+                yield start, line.end()
+
+    @staticmethod
     def _looks_like_heading(value: str) -> bool:
         if not value or len(value) > 90:
             return False
@@ -283,7 +301,7 @@ def resolve_span_ref(document: SourceDocument, reference: str) -> Span | None:
     direct = document.span_map().get(reference)
     if direct is not None:
         return direct
-    match = re.fullmatch(r"(?P<base>SENT_\d{3}):(?P<start>\d+)-(?P<end>\d+)", reference.strip())
+    match = re.fullmatch(r"(?P<base>SENT_\d{3,}):(?P<start>\d+)-(?P<end>\d+)", reference.strip())
     if not match:
         return None
     base = document.span_map().get(match.group("base"))

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Convert full-graph teacher records into stage-specific SFT JSONL.
+"""Legacy full-graph to generative SFT converter, retained for audit reproduction.
 
 Input is the existing list of records with ``messages`` containing system,
 user, and assistant messages.  The script intentionally drops samples whose
 gold concepts cannot be grounded to source spans instead of teaching the
-model to hallucinate them.
+model to hallucinate them. Historical relation construction nevertheless has
+known gold-dependent inputs and unsafe evidence fallback. New relation training
+MUST use build_pair_data.py. The CLI requires explicit legacy opt-in.
 """
 
 from __future__ import annotations
@@ -392,6 +394,7 @@ def make_records(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True, help="Existing list-of-records JSON")
+    parser.add_argument("--allow-legacy-relations", action="store_true", help="Reproduce legacy SFT targets with known audit defects; NOT recommended for new training")
     parser.add_argument("--entity-output", required=True)
     parser.add_argument("--relation-output", required=True)
     parser.add_argument("--report", required=True)
@@ -401,6 +404,8 @@ def main() -> None:
     parser.add_argument("--relation-negative-ratio", type=int, default=1)
     parser.add_argument("--relation-negative-floor", type=int, default=8)
     args = parser.parse_args()
+    if not args.allow_legacy_relations:
+        parser.error('Legacy relation conversion is retired. Use build_pair_data.py; --allow-legacy-relations is for historical reproduction only.')
 
     records = json.loads(Path(args.input).read_text(encoding="utf-8"))
     entity_records: list[dict[str, Any]] = []

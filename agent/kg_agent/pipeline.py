@@ -33,6 +33,11 @@ class LLMBackend(Protocol):
         ...
 
 
+class RelationClassifierBackend(Protocol):
+    def classify(self, entities: list[Entity], document: SourceDocument) -> tuple[list[Relation], dict[str, Any]]:
+        ...
+
+
 @dataclass(frozen=True)
 class PipelineConfig:
     max_entity_candidates: int = 64
@@ -130,10 +135,11 @@ def _filter_valid_relations(graph: Graph, document: SourceDocument, trace: dict[
 class TwoStageKGAgent:
     """Orchestrate the fixed workflow; the backend only makes semantic calls."""
 
-    def __init__(self, entity_backend: LLMBackend, relation_backend: LLMBackend | None = None, config: PipelineConfig | None = None):
+    def __init__(self, entity_backend: LLMBackend, relation_backend: LLMBackend | None = None, config: PipelineConfig | None = None, *, relation_classifier: RelationClassifierBackend | None = None):
         self.entity_backend = entity_backend
         self.relation_backend = relation_backend or entity_backend
         self.config = config or PipelineConfig()
+        self.relation_classifier = relation_classifier
         self.router = SourceRouter()
 
     def run(self, raw: Any, *, metadata: dict[str, Any] | None = None) -> PipelineResult:
@@ -181,7 +187,12 @@ class TwoStageKGAgent:
         id_to_entity = {entity.id: entity for entity in entities}
         relations: list[Relation] = []
 
-        for chunk_index, chunk in enumerate(chunks):
+        if self.relation_classifier is not None:
+            # Same entity stage and assembler; only the relation decision module changes.
+            # Classifier failures are raised, never hidden as confident NONE decisions.
+            relations, trace["relation_classifier"] = self.relation_classifier.classify(entities, document)
+
+        for chunk_index, chunk in enumerate(chunks if self.relation_classifier is None else []):
             active_span_ids = {span.id for span in chunk}
             pairs = _candidate_pairs(entities, active_span_ids, self.config.max_pairs_per_chunk)
             if not pairs:
@@ -254,7 +265,7 @@ class TwoStageKGAgent:
                         existing.evidence_text.append(evidence_text)
         graph = _filter_valid_relations(Graph(entities, list(unique.values())), document, trace)
         validation = validate_graph(graph, document)
-        trace["mode"] = "two_stage_llm_pipeline"
+        trace["mode"] = "entity_llm_relation_classifier" if self.relation_classifier is not None else "two_stage_llm_pipeline"
         trace["coverage"] = {
             "entities": len(graph.entities),
             "relations": len(graph.relations),

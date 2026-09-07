@@ -52,14 +52,15 @@ def _relation_set(graph: dict[str, Any]) -> set[tuple[tuple[str, str], str, tupl
         if isinstance(node, dict) and node.get("id") is not None
     }
     result: set[tuple[tuple[str, str], str, tuple[str, str]]] = set()
-    for relation in graph["relations"]:
+    for index, relation in enumerate(graph["relations"]):
         if not isinstance(relation, dict):
+            result.add((('__INVALID_ENDPOINT__', str(index)), '__INVALID_RELATION__', ('__INVALID_ENDPOINT__', repr(relation))))
             continue
         source = by_id.get(str(relation.get("source")))
         target = by_id.get(str(relation.get("target")))
         name = str(relation.get("relation") or relation.get("type") or "").strip()
-        if source and target and name:
-            result.add((source, name, target))
+        # Malformed edges are false positives, never silently discarded.
+        result.add((source or ('__INVALID_ENDPOINT__', str(relation.get('source'))), name or '__INVALID_RELATION__', target or ('__INVALID_ENDPOINT__', str(relation.get('target')))))
     return result
 
 
@@ -67,8 +68,8 @@ def _prf(predicted: set[Any], gold: set[Any]) -> dict[str, float | int]:
     tp = len(predicted & gold)
     fp = len(predicted - gold)
     fn = len(gold - predicted)
-    precision = tp / (tp + fp) if tp + fp else 1.0
-    recall = tp / (tp + fn) if tp + fn else 1.0
+    precision = tp / (tp + fp) if tp + fp else 0.0
+    recall = tp / (tp + fn) if tp + fn else 0.0
     f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
     return {"tp": tp, "fp": fp, "fn": fn, "precision": precision, "recall": recall, "f1": f1}
 
@@ -120,11 +121,14 @@ def main() -> None:
     for index, record in enumerate(gold_records):
         messages = record.get("messages", [])
         gold_text = next((message.get("content", "") for message in messages if message.get("role") == "assistant"), "")
-        gold = _graph(gold_text) or {"entities": [], "relations": []}
+        gold = _graph(gold_text)
         predicted = _graph(predictions[index]) if index < len(predictions) else None
+        if gold is None:
+            raise ValueError(f'Invalid gold at index {index}')
         if predicted is None:
-            continue
-        totals["json_valid"] += 1
+            predicted = {"entities": [], "relations": []}
+        else:
+            totals["json_valid"] += 1
         entity_metrics = _prf(_entity_set(predicted), _entity_set(gold))
         relation_metrics = _prf(_relation_set(predicted), _relation_set(gold))
         for key in ("tp", "fp", "fn"):
@@ -160,13 +164,14 @@ def main() -> None:
 
     def summarize(counter: dict[str, int]) -> dict[str, float | int]:
         tp, fp, fn = counter["tp"], counter["fp"], counter["fn"]
-        precision = tp / (tp + fp) if tp + fp else 1.0
-        recall = tp / (tp + fn) if tp + fn else 1.0
+        precision = tp / (tp + fp) if tp + fp else 0.0
+        recall = tp / (tp + fn) if tp + fn else 0.0
         f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
         return {**counter, "precision": precision, "recall": recall, "f1": f1}
 
     result = {
         "samples": totals["samples"],
+        "invalid_predictions": totals["samples"] - totals["json_valid"],
         "json_closure_rate": totals["json_valid"] / totals["samples"] if totals["samples"] else 0.0,
         "entity": summarize(totals["entity"]),
         "relation": summarize(totals["relation"]),

@@ -36,9 +36,9 @@ def _find_mention(source: str, mention: str) -> tuple[int, int] | None:
     direct = source.find(mention)
     if direct >= 0:
         return direct, direct + len(mention)
-    insensitive = source.casefold().find(mention.casefold())
-    if insensitive >= 0:
-        return insensitive, insensitive + len(mention)
+    insensitive = re.search(re.escape(mention), source, flags=re.IGNORECASE)
+    if insensitive is not None:
+        return insensitive.start(), insensitive.end()
 
     # Permit harmless whitespace differences while still requiring the same
     # token sequence. This is useful when a model copies a line break as a
@@ -201,6 +201,8 @@ def normalize_candidates(
         label, name_key = key
         if key in entity_key_to_id:
             entity_id = entity_key_to_id[key]
+            existing = next(entity for entity in entities if entity.id == entity_id)
+            existing.span_ids = list(dict.fromkeys([*existing.span_ids, *group["span_ids"]]))
         else:
             entity_id = next_id(label)
             if label == "Disease" and not any(item.id == "D1" for item in entities):

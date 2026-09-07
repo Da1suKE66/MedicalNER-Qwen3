@@ -9,6 +9,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Any, Iterable
+import json
+from pathlib import Path
 
 
 LABEL_ALIASES = {
@@ -128,13 +130,26 @@ RELATION_SIGNATURES: dict[tuple[str, str], tuple[str, ...]] = {
 }
 
 
+ONTOLOGY = json.loads(Path(__file__).with_name("ontology.json").read_text(encoding="utf-8"))
+SCHEMA_LABELS = tuple(ONTOLOGY["node_labels"])
+LABEL_PREFIXES.update({"Patient": "PT", "Treatment Plan": "TP", "Communication Strategy": "CS", "Guideline": "G", "Evidence": "EV"})
+LABEL_PREFIXES = {label: LABEL_PREFIXES[label] for label in SCHEMA_LABELS}
+LABEL_ALIASES = {alias: label for alias, label in LABEL_ALIASES.items() if label in SCHEMA_LABELS}
+LABEL_ALIASES.update({label.casefold(): label for label in SCHEMA_LABELS})
+# The original ontology constrains source modules, not target types.
+RELATION_SIGNATURES = {
+    (source, target): tuple(dict.fromkeys(r["relation"] for r in ONTOLOGY["source_relations"] if r["source_label"] == source))
+    for source in SCHEMA_LABELS for target in SCHEMA_LABELS
+}
+
+
 def normalize_label(value: Any) -> str | None:
     """Return the canonical label or ``None`` for an unknown label."""
 
     if value is None:
         return None
     raw = " ".join(str(value).strip().casefold().replace("-", " ").split())
-    return LABEL_ALIASES.get(raw, str(value).strip() if raw else None)
+    return LABEL_ALIASES.get(raw)
 
 
 def allowed_relations(source_label: str, target_label: str) -> tuple[str, ...]:

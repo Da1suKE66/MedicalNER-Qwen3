@@ -6,7 +6,7 @@ import json
 import re
 from typing import Any
 
-from .contracts import EntityCandidate, normalize_importance, normalize_label
+from .contracts import EntityCandidate, SCHEMA_LABELS, normalize_importance, normalize_label
 
 
 def build_entity_prompt(
@@ -25,16 +25,16 @@ def build_entity_prompt(
         selection_rules = """For each selected concept, copy its exact surface form into `mention`.
 Do not generate character offsets. The program will ground `mention` inside `span_id`.
 The mention must be a contiguous substring of the cited source span, including its original spelling."""
-        output_shape = '{{"entity_candidates":[{{"span_id":"SENT_001","mention":"exact source phrase","label":"Symptom","importance":"core"}}]}}'
+        output_shape = '{"entity_candidates":[{"span_id":"SENT_001","mention":"exact source phrase","label":"Symptom","importance":"core"}]}'
     else:
         selection_rules = """For a phrase inside a sentence, return a sentence-local reference such as SENT_003:14-62; use the full SENT_003 only when the whole sentence is the concept."""
-        output_shape = '{{"entity_candidates":[{{"span_id":"SENT_001","label":"Symptom","importance":"core"}}]}}'
+        output_shape = '{"entity_candidates":[{"span_id":"SENT_001","label":"Symptom","importance":"core"}]}'
     return f"""You are the entity-span selector in a medical knowledge-graph pipeline.
 {target_line}
 Select only distinct, explicitly stated clinical concepts from the numbered source spans.
 {selection_rules}
 Return at most {max_candidates} candidates. Do not invent text, IDs, names, codes, or evidence.
-Use exactly one label from: Disease, Symptom, Diagnostic Criterion, Etiology, Risk Factor, Treatment, Prognostic Factor, Functional Impact, Test, Medication, Procedure, Anatomy, Phenotype.
+Use exactly one label from: {', '.join(SCHEMA_LABELS)}.
 Use importance from: required, core, differential, treatment, risk, associated, incidental, alias.
 Aliases and ordinary background words should be omitted unless they are clinically meaningful.
 Output JSON only with this exact shape:

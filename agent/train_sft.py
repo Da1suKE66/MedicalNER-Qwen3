@@ -35,8 +35,8 @@ class JsonlSFTDataset:
             completion_ids = tokenizer(completion, add_special_tokens=False, truncation=False)["input_ids"]
             if tokenizer.eos_token_id is not None:
                 completion_ids = completion_ids + [tokenizer.eos_token_id]
-            keep_prompt = max(1, max_seq_length - len(completion_ids))
-            prompt_ids = prompt_ids[-keep_prompt:]
+            if len(prompt_ids) + len(completion_ids) > max_seq_length:
+                raise ValueError(f"Record {row.get('id')} exceeds max_seq_length: {len(prompt_ids)} input + {len(completion_ids)} target tokens. Rechunk the source; silently removing the entity table is forbidden.")
             input_ids = prompt_ids + completion_ids
             input_ids = input_ids[:max_seq_length]
             prompt_length = min(len(prompt_ids), len(input_ids))

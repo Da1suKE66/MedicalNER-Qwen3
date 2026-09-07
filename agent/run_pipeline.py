@@ -24,6 +24,8 @@ def main() -> None:
     parser.add_argument("--base-model")
     parser.add_argument("--entity-adapter")
     parser.add_argument("--relation-adapter")
+    parser.add_argument("--relation-classifier-selection", help="Opt-in relation classifier selection.json; replaces relation generation only")
+    parser.add_argument("--relation-rules", action="store_true", help="Enable optional narrow, audited postprocessing rules")
     parser.add_argument("--load-in-4bit", action="store_true")
     parser.add_argument("--max-new-tokens-entities", type=int, default=1024)
     parser.add_argument("--max-new-tokens-relations", type=int, default=768)
@@ -43,6 +45,8 @@ def main() -> None:
     )
     parser.add_argument("--relation-batch-size", type=int, default=128)
     args = parser.parse_args()
+    if args.relation_classifier_selection and (not args.base_model or args.relation_adapter):
+        parser.error('Classifier needs --base-model and cannot be combined with --relation-adapter')
 
     backend = None
     if args.base_model:
@@ -74,7 +78,11 @@ def main() -> None:
             relation_emit_none=args.relation_emit_none,
             relation_batch_size=args.relation_batch_size,
         )
-        agent = TwoStageKGAgent(backend, relation_backend, config=config)
+        classifier = None
+        if args.relation_classifier_selection:
+            from kg_agent.relation_classifier import QwenRelationClassifier
+            classifier = QwenRelationClassifier(args.base_model, args.relation_classifier_selection, rules=args.relation_rules)
+        agent = TwoStageKGAgent(backend, relation_backend, config=config, relation_classifier=classifier)
     else:
         # This keeps the CLI useful for an ICD-only smoke test. Free-text rows
         # will be traced as isolated LLM backend errors rather than crashing

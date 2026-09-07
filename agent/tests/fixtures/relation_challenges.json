@@ -1,0 +1,10 @@
+[
+  {"id":"explicit_core", "text":"Fatigue is a core symptom of Condition A.", "source":{"label":"Symptom","name":"Fatigue"}, "target":{"label":"Disease","name":"Condition A"}, "labels":["is_core_symptom_of"]},
+  {"id":"wrong_target", "text":"Fatigue is a core symptom of Condition A. Condition B is unrelated to this symptom.", "source":{"label":"Symptom","name":"Fatigue"}, "target":{"label":"Disease","name":"Condition B"}, "labels":[]},
+  {"id":"negated_relation", "text":"Fatigue is not a symptom of Condition A.", "source":{"label":"Symptom","name":"Fatigue"}, "target":{"label":"Disease","name":"Condition A"}, "labels":[]},
+  {"id":"enumerated_siblings", "text":"Problem behaviours such as aggression, self-injury, and overactivity are frequent in Condition A.", "source":{"label":"Symptom","name":"aggression"}, "target":{"label":"Symptom","name":"self-injury"}, "labels":[]},
+  {"id":"parent_child", "text":"Problem behaviours have manifestations including aggression.", "source":{"label":"Symptom","name":"Problem behaviours"}, "target":{"label":"Symptom","name":"aggression"}, "labels":["has_manifestation"]},
+  {"id":"multiple_relations", "text":"Fatigue is a core symptom of Condition A and also supports the diagnosis of Condition A.", "source":{"label":"Symptom","name":"Fatigue"}, "target":{"label":"Disease","name":"Condition A"}, "labels":["is_core_symptom_of","supports_diagnosis_of"]},
+  {"id":"reverse_subtype", "text":"Condition A is a subtype of Condition B.", "source":{"label":"Disease","name":"Condition B"}, "target":{"label":"Disease","name":"Condition A"}, "labels":[]},
+  {"id":"forward_subtype", "text":"Condition A is a subtype of Condition B.", "source":{"label":"Disease","name":"Condition A"}, "target":{"label":"Disease","name":"Condition B"}, "labels":["subtype_of"]}
+]

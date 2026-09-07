@@ -1,0 +1,8 @@
+# Reproduced CUDA training stack. Install in an isolated environment; do not
+# replace an existing server's CUDA stack just to run deterministic tests.
+torch==2.8.0
+transformers==4.56.2
+peft==0.17.1
+# Optional CPU testing/reporting dependencies:
+pytest==8.4.2
+matplotlib==3.10.6
