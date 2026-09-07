@@ -37,11 +37,20 @@ def audit_raw(records):
     labels = collections.Counter()
     relations = collections.Counter()
     skipped = collections.Counter()
+    corruptions = collections.Counter()
     examples = []
     for i, record in enumerate(records):
         doc = SourceRouter().route(_message(record, "user"))
         c["records"] += 1
         c[doc.source_type] += 1
+        suspect = [
+            word.casefold()
+            for word in re.findall(r"\b[A-Za-z]+null[A-Za-z]*\b", doc.raw)
+            if word.casefold()
+            not in {"annul", "annuls", "annulled", "annulling", "annulment"}
+        ]
+        corruptions.update(suspect)
+        c["records_with_suspected_null_word_corruption"] += bool(suspect)
         if doc.source_type == "structured_icd":
             continue
         gold = _graph_from_teacher(_message(record, "assistant"))
@@ -121,6 +130,7 @@ def audit_raw(records):
         "relation_labels": dict(relations),
         "skipped_signatures": dict(skipped),
         "fallback_examples": examples,
+        "suspected_null_word_corruption": dict(corruptions),
     }
 
 

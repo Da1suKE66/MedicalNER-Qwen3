@@ -11,6 +11,7 @@ def main():
     p.add_argument("--baseline", required=True)
     p.add_argument("--new", required=True)
     p.add_argument("--oracle", required=True)
+    p.add_argument("--labelwise", required=True)
     p.add_argument("--output-dir", required=True)
     args = p.parse_args()
     import matplotlib
@@ -23,6 +24,7 @@ def main():
     baseline = json.loads(Path(args.baseline).read_text())
     model = json.loads(Path(args.new).read_text())
     oracle = json.loads(Path(args.oracle).read_text())
+    labelwise = json.loads(Path(args.labelwise).read_text())
     out = Path(args.output_dir)
     out.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update(
@@ -80,8 +82,8 @@ def main():
     )
     axs[1].legend(frameon=False, fontsize=9, loc="upper left")
     axs[1].grid(axis="y", alpha=0.15)
-    reports = [baseline, model, oracle]
-    x = np.arange(3)
+    reports = [baseline, model, labelwise, oracle]
+    x = np.arange(4)
     for offset, key, color in [
         (-width, "precision", "#196c98"),
         (0, "recall", "#dc8f34"),
@@ -98,9 +100,10 @@ def main():
     axs[2].set(
         xticks=x,
         xticklabels=[
-            "v4 generator\n512-token cap",
-            "New classifier\nsame v4 entities",
-            "Classifier +\ngold entities",
+            "v4 generator\n(512 tokens)",
+            "Classifier\n(global)",
+            "Classifier\n(per-type)",
+            "Oracle\n(gold nodes)",
         ],
         ylim=(0, 1.1),
         title="81 free-text records: regression",
@@ -126,7 +129,8 @@ def main():
         ax.annotate(
             f"t={s['threshold']:.2f}",
             (s["recall"], s["precision"]),
-            xytext=(7, 7),
+            xytext=(-55, 16) if r["epoch"] == 1 else (12, -25),
+            color=color,
             textcoords="offset points",
         )
     ax.set(

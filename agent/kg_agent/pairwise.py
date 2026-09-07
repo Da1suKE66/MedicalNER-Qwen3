@@ -196,6 +196,14 @@ def relation_rejection(relation, nodes):
     target = by_id.get(str(relation.get("target")))
     if not source or not target:
         return "missing_endpoint"
+    # Explicit, optional semantic guard, not a target constraint claimed to be
+    # written in the source-only ontology. All 2,689 corresponding train edges
+    # use Symptom -> Disease. It also catches a disease surface mistyped Symptom.
+    if relation.get("relation") in {
+        "is_core_symptom_of",
+        "is_associated_symptom_of",
+    } and (source["label"] != "Symptom" or target["label"] != "Disease"):
+        return "symptom_disease_type_mismatch"
     ev = relation.get("evidence", "")
     if isinstance(ev, list):
         ev = "\n".join(ev)

@@ -3,7 +3,9 @@
 The existing ICD parser, Qwen entity adapter and deterministic JSON assembly
 remain. An opt-in, non-generative relation head replaces long relation-JSON
 generation. Read [the audit](reports/20260907/AUDIT.md) and
-[the experiment plan](PLAN.md) before treating scores as production accuracy.
+[the experiment plan](PLAN.md) and [measured results](reports/20260907/RESULTS.md)
+before treating scores as production accuracy. The relation head improves the
+regression baseline, but end-to-end quality remains insufficient for deployment.
 
 ## What is trained
 
@@ -96,3 +98,18 @@ main-disease references and distant evidence require more targeted reviewed
 data. Local candidate retrieval intentionally trades coverage for shorter
 inputs; its recall ceiling must be reported. Never describe `1-precision` as a
 human-verified hallucination rate.
+
+### Optional per-type thresholds
+
+`calibrate_relation_thresholds.py` fits a second policy from the selected epoch's
+saved tuning sweep only. `rethreshold_predictions.py` compares it on cached
+scores without rerunning the model. The resulting `selection_labelwise.json`
+can be passed to the same live pipeline. It abstains on two unreliable
+diagnostic-relation types; inspect the report before enabling it. An optional
+type guard added after regression inspection is separately marked post-hoc.
+
+`evaluate_identity_diagnostic.py` only quantifies spelling/punctuation effects.
+It does not change primary scoring, model selection or production identities.
+The audit also reports source-word corruption: the frozen experiment corpus
+still contains known bad words, so a future training run must first connect the
+existing reviewed correction dictionary to this data path.

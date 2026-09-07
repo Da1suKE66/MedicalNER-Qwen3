@@ -26,6 +26,60 @@ from kg_agent.relation_classifier import materialize_pair
 
 
 class ReliabilityTests(unittest.TestCase):
+    def test_symptom_disease_type_guard(self):
+        nodes = [
+            {"id": "s", "label": "Symptom", "name": "fatigue"},
+            {"id": "d", "label": "Symptom", "name": "Condition A"},
+        ]
+        self.assertEqual(
+            relation_rejection(
+                {
+                    "source": "s",
+                    "target": "d",
+                    "relation": "is_core_symptom_of",
+                    "evidence": "fatigue in Condition A",
+                },
+                nodes,
+            ),
+            "symptom_disease_type_mismatch",
+        )
+
+    def test_type_threshold_abstains_without_relabeling(self):
+        labels = ["is_core_symptom_of", "supports_diagnosis_of"]
+        doc = SourceRouter().route("Fatigue supports Condition A.")
+        edges = materialize_pair(
+            {"span_ids": ["SENT_001"], "allowed": labels},
+            [0.9, 0.9],
+            labels,
+            0.5,
+            doc,
+            "S1",
+            "D1",
+            label_thresholds={"supports_diagnosis_of": 1.01},
+        )
+        self.assertEqual([e["relation"] for e in edges], ["is_core_symptom_of"])
+        m = score_pairs(
+            [{"labels": labels, "allowed": labels}],
+            [[0.9, 0.9]],
+            labels,
+            0.5,
+            label_thresholds={"supports_diagnosis_of": 1.01},
+        )
+        self.assertEqual((m["tp"], m["fn"]), (1, 1))
+
+    def test_invalid_teacher_never_becomes_none_supervision(self):
+        with self.assertRaises(ValueError):
+            convert(
+                {
+                    "messages": [
+                        {"role": "user", "content": "Condition A has fatigue."},
+                        {"role": "assistant", "content": '{"entities": ['},
+                    ]
+                },
+                0,
+                0,
+            )
+
     def test_decimals_abbreviations_and_offsets(self):
         text = "Score is 2.3 (e.g., measured in adults). Onset is early, i.e., before age 10. See Table 6.1."
         spans = SentenceSpanSplitter().split(text)

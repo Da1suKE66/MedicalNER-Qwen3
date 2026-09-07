@@ -11,7 +11,17 @@ from .contracts import Relation
 from .pairwise import ground_nodes, pair_inputs, relation_rejection
 
 
-def materialize_pair(pair, probabilities, labels, threshold, document, source, target):
+def materialize_pair(
+    pair,
+    probabilities,
+    labels,
+    threshold,
+    document,
+    source,
+    target,
+    *,
+    label_thresholds=None,
+):
     """Bind decisions and exact retrieved text deterministically; do not generate IDs.
 
     Evidence is the retrieved source range, not a learned entailment guarantee.
@@ -22,7 +32,8 @@ def materialize_pair(pair, probabilities, labels, threshold, document, source, t
     return [
         {"source": source, "target": target, "relation": label, "evidence": evidence}
         for label, probability in zip(labels, probabilities)
-        if label in pair["allowed"] and probability >= threshold
+        if label in pair["allowed"]
+        and probability >= (label_thresholds or {}).get(label, threshold)
     ]
 
 
@@ -78,6 +89,7 @@ class QwenRelationClassifier:
         trace = {
             "checkpoint": self.selection["checkpoint"],
             "threshold": self.selection["threshold"],
+            "label_thresholds": self.selection.get("label_thresholds", {}),
             "candidate_pairs": len(pairs),
             "ungrounded_entities": missing,
             "rules": self.rules,
@@ -105,6 +117,7 @@ class QwenRelationClassifier:
                 document,
                 reverse[pair["source"]],
                 reverse[pair["target"]],
+                label_thresholds=self.selection.get("label_thresholds"),
             )
             for edge in decisions:
                 reason = relation_rejection(edge, nodes) if self.rules else None

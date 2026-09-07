@@ -105,7 +105,14 @@ def main():
     raw_records = []
     for pair, ps, (sample, source, target) in zip(pairs, probs, ids):
         for edge in materialize_pair(
-            pair, ps, labels, threshold, docs[sample], source, target
+            pair,
+            ps,
+            labels,
+            threshold,
+            docs[sample],
+            source,
+            target,
+            label_thresholds=selection.get("label_thresholds"),
         ):
             reason = (
                 relation_rejection(edge, graphs[sample]["entities"])

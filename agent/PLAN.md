@@ -25,3 +25,19 @@ Scope: retain SourceRouter → entity selection → normalization → relation d
 ## Git and artifacts
 
 Work on `codex/relation-audit-20260907` in MedicalNER-Qwen3 (default pending user preference). Commit source, tests, aggregate metrics and this log. Full corpora, model weights, raw generations and local connection settings remain in ignored/private artifact directories. Record exact run commands, seed, software versions, input hashes and checkpoint paths. Do not replace production weights automatically.
+
+## Completed experiment and next priorities
+
+Two epochs completed; epoch 2 selected on tuning. Full cached-entity regression,
+oracle diagnosis, same-entity 16k failure reproduction, threshold comparison,
+synthetic probes and real pipeline smoke tests are complete. See
+`reports/20260907/RESULTS.md` for all results, including failures.
+
+The type-specific threshold policy was fitted from tuning sweeps before reading
+the new regression scores. The later narrow target-type guard and orthography
+diagnostic were added after inspecting regression failures and are marked post-hoc.
+They do not replace the strict primary comparison.
+
+Next work must prioritize source corruption repair, a canonical entity/alias and
+span-granularity contract, independently reviewed evaluation, and training relation
+on out-of-fold predicted entities. The current prototype is not deployment-ready.

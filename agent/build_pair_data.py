@@ -9,7 +9,8 @@ import json
 from pathlib import Path
 import random
 
-from build_stage_data import _graph_from_teacher, _message
+from build_stage_data import _message
+from evaluate import _graph
 from kg_agent.normalize import normalize_text
 from kg_agent.pairwise import evidence_spans, ground_nodes, pair_inputs
 from kg_agent.source import SourceRouter
@@ -33,7 +34,11 @@ def convert(record, index, group, *, sampled=False, seed=42, negative_ratio=2):
     doc = SourceRouter().route(_message(record, "user"))
     if doc.source_type == "structured_icd":
         return [], {"structured_icd": 1}
-    gold = _graph_from_teacher(_message(record, "assistant"))
+    gold = _graph(_message(record, "assistant"))
+    if gold is None:
+        raise ValueError(
+            f"Invalid teacher graph at sample {index}; do not create negative supervision from a parse failure"
+        )
     entities, mapping, missing = ground_nodes(gold["entities"], doc)
     pairs = pair_inputs(entities, doc)
     specs = defaultdict(list)

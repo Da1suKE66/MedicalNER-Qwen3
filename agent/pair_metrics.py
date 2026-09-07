@@ -22,7 +22,7 @@ def counts_metric(tp, fp, fn, beta=1):
     }
 
 
-def score_pairs(rows, probabilities, labels, threshold):
+def score_pairs(rows, probabilities, labels, threshold, *, label_thresholds=None):
     if len(rows) != len(probabilities) or any(
         len(p) != len(labels) for p in probabilities
     ):
@@ -36,7 +36,8 @@ def score_pairs(rows, probabilities, labels, threshold):
         pred = {
             label
             for label, p in zip(labels, probs)
-            if p >= threshold and label in row["allowed"]
+            if p >= (label_thresholds or {}).get(label, threshold)
+            and label in row["allowed"]
         }
         gold = set(row["labels"])
         exact += pred == gold

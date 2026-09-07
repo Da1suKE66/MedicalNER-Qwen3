@@ -54,14 +54,20 @@ def main():
         8,
     )
     metrics = score_pairs(
-        rows, probabilities, selection["labels"], selection["threshold"]
+        rows,
+        probabilities,
+        selection["labels"],
+        selection["threshold"],
+        label_thresholds=selection.get("label_thresholds"),
     )
     result = []
     for case, row, probs in zip(cases, rows, probabilities):
         predicted = [
             label
             for label, p in zip(selection["labels"], probs)
-            if label in row["allowed"] and p >= selection["threshold"]
+            if label in row["allowed"]
+            and p
+            >= selection.get("label_thresholds", {}).get(label, selection["threshold"])
         ]
         result.append(
             {
