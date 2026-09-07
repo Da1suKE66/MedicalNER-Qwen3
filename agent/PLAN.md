@@ -1,5 +1,11 @@
 # Relation accuracy audit and controlled improvement — 2026-09-07
 
+**2026-09-08 superseding request:** The user does not want the classification-head
+route. New work returns to causal relation generation and compares data, length,
+order, multiple relations, rules, DPO and online GRPO. See
+[the new preregistered study](generative/README.md). The completed classifier
+experiment below remains historical evidence, not the selected new architecture.
+
 Scope: retain SourceRouter → entity selection → normalization → relation decisions → validation → deterministic assembly. Keep the historical 2026-09-01 outputs immutable. Published baseline import: `20ccab3` (same tree as original local `75e660c`).
 
 ## Audit findings verified before editing

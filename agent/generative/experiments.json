@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "training": {"epochs": 3, "learning_rate": 0.00005, "lora_r": 16, "lora_alpha": 32, "effective_batch_size": 16, "max_length": 6144, "max_new_tokens": 16000, "seed": 42},
+  "defaults": {"repair": false, "strict_evidence": false, "pairs_per_batch": 16, "order": "hash", "context": "full", "multilabel": true, "rebalance": false, "negative_ratio": 3},
+  "variants": {
+    "G0": {},
+    "G1_data": {"repair": true, "strict_evidence": true},
+    "G2_short_batch": {"repair": true, "strict_evidence": true, "pairs_per_batch": 4},
+    "G3_order": {"repair": true, "strict_evidence": true, "order": "source"},
+    "G4_multi": {"repair": true, "strict_evidence": true, "rebalance": true},
+    "G5_local": {"repair": true, "strict_evidence": true, "context": "local"},
+    "G6_all": {"repair": true, "strict_evidence": true, "pairs_per_batch": 4, "order": "source", "rebalance": true},
+    "G6_no_repair": {"strict_evidence": true, "pairs_per_batch": 4, "order": "source", "rebalance": true},
+    "G6_no_short_batch": {"repair": true, "strict_evidence": true, "order": "source", "rebalance": true},
+    "G6_no_order": {"repair": true, "strict_evidence": true, "pairs_per_batch": 4, "rebalance": true},
+    "G6_no_rebalance": {"repair": true, "strict_evidence": true, "pairs_per_batch": 4, "order": "source"},
+    "G1_no_evidence_gate": {"repair": true},
+    "G1_single_label_diagnostic": {"repair": true, "strict_evidence": true, "multilabel": false}
+  },
+  "preference": {"betas": [0.05, 0.1], "learning_rate": 0.000005, "epochs": 1, "reference": "selected_sft_frozen"},
+  "online_rl": {"algorithm": "GRPO", "num_generations": 4, "beta": 0.04, "learning_rate": 0.000002, "epochs": 1, "reward_ablation": "no_evidence"},
+  "repeat_seeds": [17, 73]
+}
