@@ -17,6 +17,7 @@ from kg_agent.pairwise import relation_rejection
 from kg_agent.source import SourceRouter, parse_icd_graph
 from kg_agent.assemble import assemble_graph
 from .protocol import build_batches, dumps, load_variant, parse_decisions
+from .chat import render_prompt
 
 
 def candidate_ceiling(graph, batches):
@@ -71,7 +72,7 @@ def assemble_decisions(batch, text):
     return result, errors
 
 
-def run_records(records, cached, config, generate, *, oracle=False):
+def run_records(records, cached, config, generate, *, oracle=False, generate_many=None):
     if cached is not None and len(cached) != len(records):
         raise ValueError("Cache/gold length mismatch; never guess sample alignment")
     if not oracle and cached is None:
@@ -109,8 +110,14 @@ def run_records(records, cached, config, generate, *, oracle=False):
         totals["candidate_pairs"] += audit["candidate_pairs"]
         totals["ungrounded_entities"] += len(audit["ungrounded_ids"])
         chunks = []
-        for batch in batches:
-            generated = generate(batch)
+        generated_rows = (
+            generate_many(batches)
+            if generate_many is not None
+            else [generate(batch) for batch in batches]
+        )
+        if len(generated_rows) != len(batches):
+            raise ValueError("Generation batch alignment mismatch")
+        for batch, generated in zip(batches, generated_rows):
             text = generated.get("text", "")
             edges, errors = assemble_decisions(batch, text)
             if generated.get("error"):
@@ -140,6 +147,17 @@ def run_records(records, cached, config, generate, *, oracle=False):
                     "grounding": audit,
                 },
             }
+        )
+        print(
+            dumps(
+                {
+                    "completed_sample": i,
+                    "total_samples": len(records),
+                    "candidate_pairs": audit["candidate_pairs"],
+                    "relation_edges": len(graph["relations"]),
+                }
+            ),
+            flush=True,
         )
     return predictions, raw_generations, dict(totals)
 
@@ -195,7 +213,15 @@ def main():
     )
     p.add_argument("--output-dir", required=True)
     p.add_argument("--max-new-tokens", type=int, default=16000)
+    p.add_argument("--inference-batch-size", type=int, default=8)
+    p.add_argument(
+        "--raw-prompt-diagnostic",
+        action="store_true",
+        help="Explicit inference-template mismatch diagnostic; never use to select normal checkpoints",
+    )
     args = p.parse_args()
+    if args.inference_batch_size < 1:
+        p.error("inference-batch-size must be positive")
     records = json.loads(Path(args.gold).read_text())
     cached = (
         [
@@ -223,6 +249,7 @@ def main():
 
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, local_files_only=True)
     tokenizer.pad_token = tokenizer.pad_token or tokenizer.eos_token
+    tokenizer.padding_side = "left"
     model = AutoModelForCausalLM.from_pretrained(
         args.base_model,
         torch_dtype=torch.bfloat16,
@@ -235,45 +262,78 @@ def main():
         ).merge_and_unload()
     model = PeftModel.from_pretrained(model, args.adapter).to("cuda").eval()
 
-    def generate(batch):
-        encoded = tokenizer(batch["prompt"], return_tensors="pt").to(model.device)
+    def generate_group(batches):
+        if not batches:
+            return []
+        encoded = tokenizer(
+            [
+                (
+                    b["prompt"]
+                    if args.raw_prompt_diagnostic
+                    else render_prompt(tokenizer, b["prompt"])
+                )
+                for b in batches
+            ],
+            padding=True,
+            return_tensors="pt",
+        ).to(model.device)
         n = encoded["input_ids"].shape[1]
         if n + args.max_new_tokens > model.config.max_position_embeddings:
-            return {"text": "", "error": "context_budget_exceeded", "tokens": 0}
+            return [
+                {"text": "", "error": "context_budget_exceeded", "tokens": 0}
+                for _ in batches
+            ]
 
         class CompleteJSON(StoppingCriteria):
             def __call__(self, input_ids, scores, **kwargs):
-                try:
-                    extract_json_object(
-                        tokenizer.decode(input_ids[0, n:], skip_special_tokens=True)
-                    )
-                    return True
-                except ValueError:
-                    return False
+                done = []
+                for row in input_ids[:, n:]:
+                    try:
+                        extract_json_object(
+                            tokenizer.decode(row, skip_special_tokens=True)
+                        )
+                        done.append(True)
+                    except ValueError:
+                        done.append(False)
+                return torch.tensor(done, dtype=torch.bool, device=input_ids.device)
 
         started = time.monotonic()
         with torch.inference_mode():
-            tokens = model.generate(
+            output = model.generate(
                 **encoded,
                 do_sample=False,
                 max_new_tokens=args.max_new_tokens,
                 use_cache=True,
                 pad_token_id=tokenizer.pad_token_id,
                 stopping_criteria=StoppingCriteriaList([CompleteJSON()]),
-            )[0, n:]
-        result = {
-            "text": tokenizer.decode(tokens, skip_special_tokens=True).strip(),
-            "tokens": len(tokens),
-            "input_tokens": n,
-            "truncated": len(tokens) >= args.max_new_tokens,
-            "seconds": time.monotonic() - started,
-        }
+            )[:, n:]
+        elapsed = time.monotonic() - started
+        results = []
+        for batch, row, mask in zip(batches, output, encoded["attention_mask"]):
+            ids = row.tolist()
+            if tokenizer.pad_token_id in ids:
+                ids = ids[: ids.index(tokenizer.pad_token_id)]
+            result = {
+                "text": tokenizer.decode(ids, skip_special_tokens=True).strip(),
+                "tokens": len(ids),
+                "input_tokens": int(mask.sum()),
+                "truncated": len(ids) >= args.max_new_tokens,
+                "amortized_seconds": elapsed / len(batches),
+            }
+            results.append(result)
         with (out / "raw_stream.jsonl").open("a") as stream:
-            stream.write(dumps({"id": batch["id"], **result}) + "\n")
-        return result
+            for batch, result in zip(batches, results):
+                stream.write(dumps({"id": batch["id"], **result}) + "\n")
+        return results
+
+    def generate_many(batches):
+        results = []
+        for i in range(0, len(batches), args.inference_batch_size):
+            results.extend(generate_group(batches[i : i + args.inference_batch_size]))
+        return results
 
     predictions, raw, audit = run_records(
-        records, cached, config, generate, oracle=args.oracle
+        records, cached, config, None, oracle=args.oracle, generate_many=generate_many
     )
     metrics = evaluate_records(records, predictions)
     report = {

@@ -1,0 +1,4 @@
+[
+  {"messages":[{"role":"user","content":"Fatigue is a core symptom of Condition X."},{"role":"assistant","content":"{\"entities\":[{\"id\":\"S\",\"label\":\"Symptom\",\"name\":\"Fatigue\"},{\"id\":\"D\",\"label\":\"Disease\",\"name\":\"Condition X\"}],\"relations\":[{\"source\":\"S\",\"target\":\"D\",\"relation\":\"is_core_symptom_of\",\"evidence\":\"Fatigue is a core symptom of Condition X.\"}]}"}]},
+  {"messages":[{"role":"user","content":"Feature Z is a core symptom of Condition Y. Feature Z is not a symptom of Condition W."},{"role":"assistant","content":"{\"entities\":[{\"id\":\"S\",\"label\":\"Symptom\",\"name\":\"Feature Z\"},{\"id\":\"A\",\"label\":\"Disease\",\"name\":\"Condition Y\"},{\"id\":\"B\",\"label\":\"Disease\",\"name\":\"Condition W\"}],\"relations\":[{\"source\":\"S\",\"target\":\"A\",\"relation\":\"is_core_symptom_of\",\"evidence\":\"Feature Z is a core symptom of Condition Y.\"}]}"}]}
+]

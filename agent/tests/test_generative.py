@@ -253,3 +253,56 @@ def test_local_evidence_gate_counts_unknown_batch():
     ] = "This distant sentence supplies a diagnostic condition."
     target, stats = supervision(batches[0], gold, doc, config)
     assert target is None and stats["unknown_batches"] == 1
+
+
+def test_batched_generation_alignment_is_required():
+    import pytest
+    from generative.evaluate import run_records
+
+    record = {
+        "messages": [
+            {"role": "user", "content": TEXT},
+            {"role": "assistant", "content": dumps(GOLD)},
+        ]
+    }
+    with pytest.raises(ValueError, match="Generation batch alignment"):
+        run_records(
+            [record],
+            None,
+            ProtocolConfig(),
+            None,
+            oracle=True,
+            generate_many=lambda batches: [],
+        )
+
+
+def test_checkpoint_selection_uses_tune_f05_not_loss_or_empty_precision():
+    from generative.run_experiment import select_checkpoint
+    from pair_metrics import counts_metric
+
+    candidates = [
+        {"step": 1, "checkpoint": "a", "relation": counts_metric(0, 0, 100)},
+        {"step": 2, "checkpoint": "b", "relation": counts_metric(30, 10, 70)},
+        {"step": 3, "checkpoint": "c", "relation": counts_metric(60, 20, 40)},
+    ]
+    result = select_checkpoint(candidates)
+    assert result["checkpoint"] == "c" and result["eligibility_met"]
+
+
+def test_chat_renderer_disables_thinking_and_prevents_double_wrapping():
+    import pytest
+    from generative.chat import render_prompt
+
+    class Tokenizer:
+        def apply_chat_template(self, messages, **kwargs):
+            assert kwargs == {
+                "tokenize": False,
+                "add_generation_prompt": True,
+                "enable_thinking": False,
+            }
+            assert messages == [{"role": "user", "content": "payload"}]
+            return "<|im_start|>user\npayload<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+
+    text = render_prompt(Tokenizer(), "payload")
+    with pytest.raises(ValueError, match="already chat-rendered"):
+        render_prompt(Tokenizer(), text)

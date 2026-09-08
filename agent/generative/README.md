@@ -1,6 +1,6 @@
 # 生成式 relation 对照实验（2026-09-08）
 
-状态：实验实现与数据预检阶段，**没有新模型效果结论**。原分类器仅保留为历史对照，不再作为本轮改进路线。
+状态更新：用户提供新的 GPU 状态接口后，已验证三个空闲 A100 节点并启动 G0/G1/G6 三轮 SFT + 自动验证/回归流水线，详见 [运行记录](../reports/20260908/RUNNING.md)。**尚无完整新模型准确率结论**。原分类器仅保留为历史对照，不再作为本轮改进路线。
 
 ## 不改的部分
 
@@ -57,14 +57,18 @@ GRPO 属于 PPO 系列、去掉单独 critic 的方法；本轮使用它试在�
 
 每轮都保存配置、代码/输入 SHA256、checkpoint、原始生成、完整错误边及训练曲线数据。公开 Git 只放代码、配置、合成测试和聚合报告，不放原始医学语料、权重、连接信息。
 
-资源说明：2026-09-08 已连接原服务器，但其 A100 正被另一个视频训练占用。没有停止该任务或未经确认并发启动新训练；等待空闲端口或共享许可。没有把“代码实现/CPU 预检通过”写成“消融训练完成”。
+资源说明：原服务器上的视频训练未被停止或占用。后续经用户提供的 GPU 接口找到其他空闲节点，并核验相同账户、共享卷、原始数据 inode/SHA256；三台节点使用同版本独立环境。曾发生的数据同步安全拦截在只读验证归属后获准重试，没有绕过拦截。没有把“代码实现/CPU 预检通过”写成“消融训练完成”。
 
 参考：[DPO 原论文](https://arxiv.org/abs/2305.18290)、[GRPO 原论文](https://arxiv.org/abs/2402.03300)、[TRL DPO](https://huggingface.co/docs/trl/v0.23.1/en/dpo_trainer)、[TRL GRPO](https://huggingface.co/docs/trl/v0.23.1/en/grpo_trainer)。
 
-## 已实现入口（尚未完成 GPU 验证）
+## 已实现入口与 GPU 验证
 
 在 `agent/` 下运行模块：`generative.build_data`、`generative.build_preferences`、`generative.train --mode sft|dpo|grpo`、`generative.evaluate`。各模块 `--help` 列出参数。训练入口拒绝非 train-tagged 数据和非空输出目录；`--preflight-only` 只做 token 长度审计。评测默认允许 16000 个输出 tokens，训练在线 rollout 上限独立记录。
 
-DPO 冻结参考必须是同一个 SFT checkpoint，不是禁用 SFT adapter 后的裸底座。GRPO 先在内存合并 SFT 再训练新的残差 LoRA，推理必须按 base → SFT merge → RL adapter 重建。该差异已在入口中明确，正式训练前仍必须完成一批真实前向/反向、参考不变性和保存再加载一致性测试。
+DPO 冻结参考必须是同一个 SFT checkpoint，不是禁用 SFT adapter 后的裸底座。GRPO 先在内存合并 SFT 再训练新的残差 LoRA，推理必须按 base → SFT merge → RL adapter 重建。SFT 真实前后向和保存重载检查已经通过；DPO/GRPO 的参考不变性及 GPU 更新验证仍需完成，不能以 import 成功冒充 RL 训练成功。
 
-后续尚需接通每 epoch 自动图评测/选模、预算匹配调度、训练曲线导出、完整在线 entity→relation 评测和按来源 bootstrap。已有严格 scorer 可复用，但这些流程未跑完前不能宣布实验完成。
+`generative.run_experiment` 启动有限流程：冻结独立代码快照 → 完整 SFT → 各 epoch checkpoint 的全 tuning 图生成 → 仅按 tuning 选模 → 全 148 条固定预测实体及 oracle 实体评测，逐项规则对照随评测保存。用本地 GPU 锁防止本项目重复占卡，启动前检查空闲；失败记录阶段及日志，不静默跳过样本。选模优先 precision≥.5 且 recall≥.1，再最大化 F0.5；无合格模型时明确记录回退。
+
+发现并修复了裸 prompt 激活 Qwen3 长推理的问题。训练、DPO、GRPO 和推理共用 `chat.render_prompt` 的 `apply_chat_template(enable_thinking=False)`，禁止二次套模板；该公共安全修复适用于本轮所有 G 组。[Qwen 官方说明](https://huggingface.co/Qwen/Qwen3-8B#switching-between-thinking-and-non-thinking-mode)给出此硬开关。原 2-step checkpoint 的同输入模板对照只作工程诊断，不算医学准确率实验。推理保留 16000 输出预算，训练长度审计在实际 chat 渲染后计算。
+
+尚需完成其余去项/预算匹配消融、训练曲线导出、完整在线 entity→relation 评测、RL 和按来源 bootstrap。已有严格 scorer 可复用，但这些流程未跑完前不能宣布完整研究完成。

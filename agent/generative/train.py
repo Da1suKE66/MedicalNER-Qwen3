@@ -14,6 +14,7 @@ from pathlib import Path
 import random
 
 from .protocol import dumps, reward_components
+from .chat import render_prompt
 
 
 def read_rows(path):
@@ -69,6 +70,17 @@ def main():
     p.add_argument("--evidence-weight", type=float, default=0.2)
     p.add_argument("--num-generations", type=int, default=4)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument(
+        "--max-steps",
+        type=int,
+        default=-1,
+        help="Positive values are smoke/budget-controlled runs, not full epochs",
+    )
+    p.add_argument(
+        "--verify-save",
+        action="store_true",
+        help="Check saved adapter logits against the in-memory trained policy",
+    )
     p.add_argument("--preflight-only", action="store_true")
     args = p.parse_args()
     if args.mode != "sft" and not args.sft_adapter:
@@ -99,12 +111,14 @@ def main():
     set_seed(args.seed)
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, local_files_only=True)
     tokenizer.pad_token = tokenizer.pad_token or tokenizer.eos_token
+    rows = [{**row, "prompt": render_prompt(tokenizer, row["prompt"])} for row in rows]
     audit = length_audit(rows, tokenizer, args.max_length, args.mode)
     manifest = {
         "status": "preflight",
         "arguments": vars(args),
         "length_audit": audit,
         "records": len(rows),
+        "prompt_template": "Qwen3 apply_chat_template enable_thinking=False shared by train/eval/RL",
         "data_sha256": hashlib.sha256(Path(args.data).read_bytes()).hexdigest(),
         "groups": sorted(set(r["group_id"] for r in rows)),
         "versions": {
@@ -150,6 +164,7 @@ def main():
         learning_rate=args.learning_rate
         or {"sft": 5e-5, "dpo": 5e-6, "grpo": 2e-6}[args.mode],
         num_train_epochs=args.epochs or (3 if args.mode == "sft" else 1),
+        max_steps=args.max_steps,
         per_device_train_batch_size=args.batch_size,
         gradient_accumulation_steps=args.gradient_accumulation,
         seed=args.seed,
@@ -164,6 +179,7 @@ def main():
         warmup_ratio=0.05,
         lr_scheduler_type="cosine",
         remove_unused_columns=False,
+        disable_tqdm=True,
     )
     if args.mode == "sft":
         from train_sft import JsonlSFTDataset, CausalCollator
@@ -308,9 +324,41 @@ def main():
         )
     manifest["status"] = "running"
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    manifest["trainable_parameters"] = sum(
+        p.numel() for p in model.parameters() if p.requires_grad
+    )
+    manifest["total_parameters"] = sum(p.numel() for p in model.parameters())
+    if any(
+        p.requires_grad and "lora_" not in name for name, p in model.named_parameters()
+    ):
+        raise RuntimeError(
+            "Unexpected trainable base parameter; this study is LoRA-only"
+        )
     trainer.train()
     trainer.save_model(str(out / "final"))
     tokenizer.save_pretrained(out / "final")
+    if args.verify_save:
+        active = "policy" if args.mode == "dpo" else "default"
+        saved = out / "final" / active if active != "default" else out / "final"
+        model.eval()
+        model.set_adapter(active)
+        inputs = tokenizer(rows[0]["prompt"], return_tensors="pt").to(model.device)
+        with torch.inference_mode():
+            expected = model(**inputs).logits[:, -1, :].float().cpu()
+        model.load_adapter(
+            str(saved), adapter_name="save_verification", is_trainable=False
+        )
+        model.set_adapter("save_verification")
+        with torch.inference_mode():
+            actual = model(**inputs).logits[:, -1, :].float().cpu()
+        delta = float((expected - actual).abs().max())
+        manifest["save_reload_max_logit_difference"] = delta
+        model.set_adapter(active)
+        model.delete_adapter("save_verification")
+        if delta > 0.02:
+            raise RuntimeError(
+                f"Saved adapter reload differs from trained policy: {delta}"
+            )
     trainer.state.save_to_json(str(out / "trainer_state.json"))
     manifest["status"] = "training_complete_evaluation_pending"
     manifest["peak_allocated_gpu_bytes"] = torch.cuda.max_memory_allocated()
