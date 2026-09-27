@@ -100,8 +100,19 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
         if supplied is None:
             raise ValueError(f"Invalid entity cache row {i}")
         graph = {"entities": copy.deepcopy(supplied["entities"]), "relations": []}
+        raw_payload = doc.raw
+        if config.matching == "nfkc_v2":
+            from data_repair.source_provenance import source_view
+
+            # v2 training preserves literal payload/offsets, including embedded
+            # JSON lists and Unicode. The legacy Router may normalize or
+            # reserialize them first, so use the same source projection here.
+            view = source_view(_message(record, "user"))
+            if view["source_type"] != "free_text":
+                raise ValueError("v2 source projection disagrees with free-text route")
+            raw_payload = view["raw_payload"]
         batches, _, audit = build_batches(
-            doc.raw, graph["entities"], config, sample_id=i
+            raw_payload, graph["entities"], config, sample_id=i
         )
         totals["gold_triples"] += len(_relation_set(gold))
         totals["candidate_covered_triples"] += len(

@@ -124,6 +124,7 @@ class ProtocolConfig:
     rebalance: bool = False
     negative_ratio: int = 3
     grounding: str = "exact"
+    matching: str = "legacy"
 
     def __post_init__(self):
         if (
@@ -131,6 +132,7 @@ class ProtocolConfig:
             or self.order not in {"hash", "source"}
             or self.context not in {"full", "local"}
             or self.grounding not in {"exact", "disease_comma"}
+            or self.matching not in {"legacy", "nfkc_v2"}
         ):
             raise ValueError("Invalid generative protocol")
         if self.negative_ratio < 0:
@@ -145,10 +147,28 @@ def build_batches(raw, nodes, config, *, sample_id="", selected_pairs=None):
     It can still miss relation evidence: this is measured during supervision.
     Original node names and graph IDs are retained for strict external scoring.
     """
-    text, changes = repair_text(raw) if config.repair else (raw, [])
+    # Opt-in versioning keeps historical datasets and frozen runs reproducible.
+    normalization = None
+    if config.matching == "nfkc_v2":
+        from data_repair.text_normalization import normalize_with_offsets, find_mentions
+
+        normalization = normalize_with_offsets(raw, repair=config.repair)
+        text, changes = normalization["text"], normalization["changes"]
+        hit_finder = find_mentions
+    else:
+        text, changes = repair_text(raw) if config.repair else (raw, [])
+        hit_finder = exact_hits
     doc = SourceRouter().route(text)
     if doc.source_type != "free_text":
         raise ValueError("Relation model must not process structured ICD records")
+    if normalization is not None:
+        from kg_agent.contracts import SourceDocument
+        from kg_agent.source import SentenceSpanSplitter
+
+        # The v2 caller supplies the literal free-text payload, including any
+        # embedded JSON arrays. Do not reserialize it and invalidate offsets.
+        doc = SourceDocument(source_type="free_text", raw=text,
+                             spans=SentenceSpanSplitter().split(text))
     entities, missing, grounding_aliases = [], [], []
     known = set()
     for node in nodes:
@@ -159,7 +179,9 @@ def build_batches(raw, nodes, config, *, sample_id="", selected_pairs=None):
         original = str(node.get("name") or node.get("properties", {}).get("Name", ""))
         name = repair_text(original)[0] if config.repair else original
         label = normalize_label(node.get("label"))
-        hits = exact_hits(name, doc.raw)
+        if config.matching == "nfkc_v2":
+            name = normalize_with_offsets(name, repair=config.repair)["text"]
+        hits = hit_finder(name, doc.raw)
         if not hits and label == "Disease" and config.grounding == "disease_comma":
             hits = disease_comma_hits(name, doc.raw)
             if hits:
@@ -282,7 +304,7 @@ def build_batches(raw, nodes, config, *, sample_id="", selected_pairs=None):
             + dumps(payload)
             + "\n"
         )
-        original_spans = {
+        original_spans = {} if normalization is not None else {
             s.id: raw[
                 original_offset(s.start, changes) : original_offset(
                     s.end, changes, end=True
@@ -290,6 +312,17 @@ def build_batches(raw, nodes, config, *, sample_id="", selected_pairs=None):
             ]
             for s in spans
         }
+        if normalization is not None:
+            from data_repair.text_normalization import map_range
+
+            # Positions are relative to the unmodified payload passed by the
+            # caller, not the already-normalized legacy Router output.
+            if doc.raw != normalization["text"]:
+                raise ValueError("Normalization/routing changed offset coordinates")
+            original_spans = {
+                s.id: raw[slice(*map_range(normalization, s.start, s.end))]
+                for s in spans
+            }
         batches.append(
             {
                 "id": f"{sample_id}:{offset}",

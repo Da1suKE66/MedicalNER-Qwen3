@@ -107,6 +107,15 @@ def validate_training_rows(rows, mode):
             raise ValueError(f"Empty/non-string prompt: {row['id']}")
         if row["prompt"].startswith("<|im_start|>"):
             raise ValueError("Prompt is already chat-rendered")
+        if (row.get("data_version", "").startswith("teacher-silver-repair-v2")
+                or any(key in row for key in ("loss_mask_contract", "loss_mask_spans", "pair_supervision"))):
+            if mode != "sft":
+                raise ValueError("Partial/UNKNOWN silver supervision is not eligible for this RL reward or preference objective")
+            from data_repair.supervision_v2 import validate_partial_row
+
+            validate_partial_row(row)
+        elif mode != "sft" and row.get("eligible_for_rl") is False:
+            raise ValueError("This data release is not eligible for RL")
         if mode == "sft":
             continue
         batch = prompt_batch(row)
@@ -363,17 +372,41 @@ class PairCountCollator:
 
     def __call__(self, items):
         counts = [item["_pair_count"] for item in items]
+        supervision = [item.get("_supervision_counts") for item in items]
         batch = self.collator(
-            [{k: v for k, v in item.items() if k != "_pair_count"} for item in items]
+            [{k: v for k, v in item.items() if k not in {"_pair_count", "_supervision_counts"}} for item in items]
         )
+        if any(value is not None for value in supervision):
+            if not all(value is not None for value in supervision):
+                raise ValueError("Do not mix legacy and partial-supervision row formats")
+            batch["_supervision_counts_batch"] = supervision
         return {**batch, "_pair_counts": counts}
 
 
-def record_sft_batch(counters, inputs, pair_counts):
+def record_sft_batch(counters, inputs, pair_counts, supervision_counts=None):
     if len(inputs["input_ids"]) != len(pair_counts):
         raise ValueError("SFT batch/pair-count alignment mismatch")
     tokens = int(inputs["attention_mask"].sum().item())
     supervised = int((inputs["labels"] != -100).sum().item())
+    if supervision_counts is not None:
+        if len(supervision_counts) != len(pair_counts):
+            raise ValueError("Partial-supervision exposure alignment mismatch")
+        actual = Counter()
+        for counts in supervision_counts:
+            actual.update(counts)
+        if (actual["prompt_tokens"] + actual["completion_tokens"] != tokens
+                or actual["completion_tokens"] - actual["masked_completion_tokens"] != supervised
+                or actual["supervised_pairs"] + actual["unknown_pairs"] != sum(pair_counts)):
+            raise ValueError("Partial-supervision exposure does not match actual loss tensors")
+        counters["sft_sequence_loss_exposures"] += len(pair_counts)
+        counters["sft_pair_loss_exposures"] += actual["supervised_pairs"]
+        counters["sft_candidate_pair_context_exposures"] += sum(pair_counts)
+        counters["sft_unknown_pair_context_exposures"] += actual["unknown_pairs"]
+        counters["sft_input_token_loss_exposures"] += tokens
+        counters["sft_completion_token_loss_exposures"] += supervised
+        counters["sft_prompt_token_loss_exposures"] += actual["prompt_tokens"]
+        counters["sft_masked_completion_token_context_exposures"] += actual["masked_completion_tokens"]
+        return
     counters["sft_sequence_loss_exposures"] += len(pair_counts)
     counters["sft_pair_loss_exposures"] += sum(pair_counts)
     counters["sft_input_token_loss_exposures"] += tokens
@@ -537,6 +570,8 @@ def main():
 
 
 def execute(args, rows, out, manifest):
+    # Library callers must obey the same data-admission gate as the CLI.
+    validate_training_rows(rows, args.mode)
     import torch
     from peft import LoraConfig, PeftModel, get_peft_model
     from transformers import (
@@ -680,6 +715,7 @@ def execute(args, rows, out, manifest):
             ):
                 # Counts are never tokenized or forwarded to the language model.
                 pair_counts = inputs.pop("_pair_counts")
+                supervision_counts = inputs.pop("_supervision_counts_batch", None)
                 loss = super().compute_loss(
                     model,
                     inputs,
@@ -687,7 +723,7 @@ def execute(args, rows, out, manifest):
                     num_items_in_batch=num_items_in_batch,
                 )
                 if model.training:
-                    record_sft_batch(counters, inputs, pair_counts)
+                    record_sft_batch(counters, inputs, pair_counts, supervision_counts)
                 return loss
 
             def _get_train_sampler(self, train_dataset=None):

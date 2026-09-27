@@ -32,17 +32,35 @@ class JsonlSFTDataset:
             prompt = str(row.get("prompt") or "")
             completion = str(row.get("completion") or "")
             prompt_ids = tokenizer(prompt, add_special_tokens=True, truncation=False)["input_ids"]
-            completion_ids = tokenizer(completion, add_special_tokens=False, truncation=False)["input_ids"]
+            partial = (row.get("data_version", "").startswith("teacher-silver-repair-v2")
+                       or any(key in row for key in ("loss_mask_contract", "loss_mask_spans", "pair_supervision")))
+            if partial:
+                from data_repair.supervision_v2 import masked_token_labels
+
+                completion_ids, completion_labels = masked_token_labels(row, tokenizer)
+            else:
+                completion_ids = tokenizer(completion, add_special_tokens=False, truncation=False)["input_ids"]
+                completion_labels = list(completion_ids)
             if tokenizer.eos_token_id is not None:
                 completion_ids = completion_ids + [tokenizer.eos_token_id]
+                completion_labels = completion_labels + [tokenizer.eos_token_id]
             if len(prompt_ids) + len(completion_ids) > max_seq_length:
                 raise ValueError(f"Record {row.get('id')} exceeds max_seq_length: {len(prompt_ids)} input + {len(completion_ids)} target tokens. Rechunk the source; silently removing the entity table is forbidden.")
             input_ids = prompt_ids + completion_ids
             input_ids = input_ids[:max_seq_length]
             prompt_length = min(len(prompt_ids), len(input_ids))
-            labels = [-100] * prompt_length + input_ids[prompt_length:]
+            labels = [-100] * prompt_length + completion_labels
             labels = labels[:max_seq_length]
-            self.items.append({"input_ids": input_ids, "labels": labels})
+            item = {"input_ids": input_ids, "labels": labels}
+            if partial:
+                item["_supervision_counts"] = {
+                    "prompt_tokens": prompt_length,
+                    "completion_tokens": len(completion_ids),
+                    "masked_completion_tokens": sum(label == -100 for label in completion_labels),
+                    "supervised_pairs": sum(not status.startswith("UNKNOWN_") for status in row["pair_supervision"].values()),
+                    "unknown_pairs": sum(status.startswith("UNKNOWN_") for status in row["pair_supervision"].values()),
+                }
+            self.items.append(item)
 
     def __len__(self) -> int:
         return len(self.items)

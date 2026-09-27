@@ -102,6 +102,8 @@ def evaluation_command(job, adapter, output, *, tune=False, oracle=False):
         cmd += ["--entity-predictions", job["entity_predictions"]]
     if oracle or tune:
         cmd.append("--oracle")
+    if job.get("matrix"):
+        cmd += ["--matrix", job["matrix"]]
     if job["mode"] == "grpo":
         cmd += ["--grpo-sft-adapter", job["sft_adapter"]]
     return cmd
@@ -161,7 +163,7 @@ def run_job(job, queue_root, env):
         verify_evaluation(output, job["regression_count"])
         selection = {"checkpoint": job["adapter"]}
     else:
-        if job["mode"] in {"dpo", "grpo"}:
+        if job["mode"] in {"dpo", "grpo"} or job.get("gpu_smoke", False):
             run("gpu_smoke", training_command(job, root / "smoke", smoke=True))
             verify_training(root / "smoke", job["mode"], 2)
         train = root / "train"
