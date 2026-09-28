@@ -14,9 +14,13 @@ import json
 import math
 import os
 from pathlib import Path
+import sys
 
 from .protocol import dumps, parse_decisions, reward_components
 from .chat import render_prompt
+from .supervision_guard import (
+    SupervisionGuardError, audit_partial_supervision, is_partial_row,
+)
 
 
 def read_rows(path):
@@ -107,8 +111,7 @@ def validate_training_rows(rows, mode):
             raise ValueError(f"Empty/non-string prompt: {row['id']}")
         if row["prompt"].startswith("<|im_start|>"):
             raise ValueError("Prompt is already chat-rendered")
-        if (row.get("data_version", "").startswith("teacher-silver-repair-v2")
-                or any(key in row for key in ("loss_mask_contract", "loss_mask_spans", "pair_supervision"))):
+        if is_partial_row(row):
             if mode != "sft":
                 raise ValueError("Partial/UNKNOWN silver supervision is not eligible for this RL reward or preference objective")
             from data_repair.supervision_v2 import validate_partial_row
@@ -494,7 +497,14 @@ def parse_args(argv=None):
         help="Reconstruct a fresh base(+merged SFT)+saved policy and compare logits",
     )
     p.add_argument("--preflight-only", action="store_true")
+    p.add_argument(
+        "--allow-positive-only-ablation",
+        action="store_true",
+        help="Allow partial SFT with zero negatives only as a diagnostic ablation with positive --max-steps",
+    )
     args = p.parse_args(argv)
+    if args.allow_positive_only_ablation and args.mode != "sft":
+        p.error("--allow-positive-only-ablation applies only to partial SFT")
     if args.mode != "sft" and not args.sft_adapter:
         p.error("Preference/RL must start at an explicitly selected SFT checkpoint")
     for name in (
@@ -554,13 +564,20 @@ def parse_args(argv=None):
 def main():
     args = parse_args()
     rows = read_rows(args.data)
-    validate_training_rows(rows, args.mode)
+    # Preserve the legacy/held-out rejection boundary: invalid inputs must not
+    # create checkpoint directories. Only explicitly train-tagged partial SFT
+    # may create an output directory to persist its supervision-gate audit.
+    if (args.mode != "sft" or not any(is_partial_row(row) for row in rows)
+            or any(not isinstance(row, dict) or row.get("split") != "train" for row in rows)):
+        validate_training_rows(rows, args.mode)
     out = Path(args.output_dir)
     if out.exists() and any(out.iterdir()):
         raise ValueError("Output must be new/empty; never overwrite old checkpoints")
     out.mkdir(parents=True, exist_ok=True)
     manifest = {"status": "preflight_started", "arguments": vars(args)}
     try:
+        # Keep data identity and rejection audits even when no ML runtime loads.
+        manifest["data_sha256"] = hashlib.sha256(Path(args.data).read_bytes()).hexdigest()
         execute(args, rows, out, manifest)
     except Exception as exc:
         manifest.update(status="failed", error_type=type(exc).__name__, error=str(exc))
@@ -571,6 +588,19 @@ def main():
 
 def execute(args, rows, out, manifest):
     # Library callers must obey the same data-admission gate as the CLI.
+    if args.mode == "sft":
+        try:
+            manifest["supervision_audit"] = audit_partial_supervision(
+                rows,
+                allow_positive_only_ablation=getattr(args, "allow_positive_only_ablation", False),
+                max_steps=args.max_steps,
+            )
+        except SupervisionGuardError as exc:
+            manifest["supervision_audit"] = exc.audit
+            raise
+        if manifest["supervision_audit"]["applicable"]:
+            print("Partial SFT supervision audit: " + dumps(manifest["supervision_audit"]),
+                  file=sys.stderr, flush=True)
     validate_training_rows(rows, args.mode)
     import torch
     from peft import LoraConfig, PeftModel, get_peft_model
@@ -605,6 +635,22 @@ def execute(args, rows, out, manifest):
     audit = length_audit(
         rows, tokenizer, args.max_length, args.mode, args.max_completion_length
     )
+    partial_dataset = None
+    if args.mode == "sft" and manifest["supervision_audit"]["applicable"]:
+        # Reuse the existing real-tokenizer mask validation before model load,
+        # including --preflight-only. The dataset and SFT loss stay unchanged.
+        from train_sft import JsonlSFTDataset
+
+        try:
+            partial_dataset = JsonlSFTDataset(rows, tokenizer, args.max_length)
+        except Exception as exc:
+            manifest["supervision_audit"].update(
+                tokenizer_validation="failed_JsonlSFTDataset",
+                decision="rejected",
+                rejection_reason=str(exc),
+            )
+            raise
+        manifest["supervision_audit"]["tokenizer_validation"] = "passed_JsonlSFTDataset"
     manifest.update(
         {
             "status": "cpu_preflight_passed_no_model_loaded",
@@ -705,7 +751,8 @@ def execute(args, rows, out, manifest):
         model.config.use_cache = False
         tokenizer.padding_side = "right"
         dataset = PairCountDataset(
-            JsonlSFTDataset(rows, tokenizer, args.max_length), rows
+            partial_dataset if partial_dataset is not None
+            else JsonlSFTDataset(rows, tokenizer, args.max_length), rows
         )
         weights = [r.get("sample_weight", 1.0) for r in rows]
 

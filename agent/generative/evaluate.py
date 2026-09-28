@@ -12,6 +12,13 @@ import time
 from build_stage_data import _message
 from evaluate import _graph, _relation_set
 from evaluate_graphs import evaluate_records
+from evaluation_identity import (
+    IDENTITY_KEY,
+    alignment_summary,
+    make_input_identity,
+    resolve_sample_indices,
+    validate_alignment,
+)
 from kg_agent.normalize import normalize_text
 from kg_agent.pairwise import relation_rejection
 from kg_agent.source import SourceRouter, parse_icd_graph
@@ -72,18 +79,44 @@ def assemble_decisions(batch, text):
     return result, errors
 
 
-def run_records(records, cached, config, generate, *, oracle=False, generate_many=None):
-    if cached is not None and len(cached) != len(records):
-        raise ValueError("Cache/gold length mismatch; never guess sample alignment")
+def run_records(
+    records,
+    cached,
+    config,
+    generate,
+    *,
+    oracle=False,
+    generate_many=None,
+    strict_identity=False,
+    sample_indices=None,
+):
+    """Generate aligned rows; subsets must supply their original sample indices."""
     if not oracle and cached is None:
         raise ValueError("Predicted-entity evaluation requires a full aligned cache")
+    indices = resolve_sample_indices(records, sample_indices)
+    cache_alignment = (
+        validate_alignment(
+            records, cached, strict_identity=strict_identity,
+            sample_indices=indices, context="entity cache",
+        )
+        if cached is not None else None
+    )
     predictions, raw_generations = [], []
     totals = Counter()
     for i, record in enumerate(records):
+        sample_index = indices[i]
         doc = SourceRouter().route(_message(record, "user"))
         gold = _graph(_message(record, "assistant"))
         if gold is None:
             raise ValueError(f"Invalid gold record {i}")
+        uses_cache = cached is not None and (
+            not oracle or doc.source_type == "structured_icd"
+        )
+        identity = make_input_identity(
+            record, sample_index, upstream=cache_alignment[i] if uses_cache else None,
+        )
+        totals["identity_verified_samples"] += identity["status"] == "verified"
+        totals["identity_unverified_samples"] += identity["status"] == "unverified"
         if doc.source_type == "structured_icd":
             graph = (
                 _graph(cached[i])
@@ -93,7 +126,11 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
             if graph is None:
                 raise ValueError(f"Invalid ICD cached graph {i}")
             predictions.append(
-                {"output": graph, "trace": {"source_type": "structured_icd"}}
+                {
+                    "output": copy.deepcopy(graph),
+                    IDENTITY_KEY: identity,
+                    "trace": {"source_type": "structured_icd"},
+                }
             )
             continue
         supplied = gold if oracle else _graph(cached[i])
@@ -112,8 +149,19 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
                 raise ValueError("v2 source projection disagrees with free-text route")
             raw_payload = view["raw_payload"]
         batches, _, audit = build_batches(
-            raw_payload, graph["entities"], config, sample_id=i
+            raw_payload, graph["entities"], config, sample_id=sample_index
         )
+        for batch in batches:
+            # build_batches already owns sample_id. Never overwrite it with a
+            # subset's local enumerate() index or silently remap a shard twice.
+            if (
+                type(batch.get("sample_id")) is not int
+                or batch["sample_id"] != sample_index
+            ):
+                raise ValueError(
+                    "Batch sample_id mismatch; pass original sample_indices for subsets"
+                )
+            batch[IDENTITY_KEY] = copy.deepcopy(identity)
         totals["gold_triples"] += len(_relation_set(gold))
         totals["candidate_covered_triples"] += len(
             _relation_set(gold) & candidate_ceiling(graph, batches)
@@ -129,6 +177,9 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
         if len(generated_rows) != len(batches):
             raise ValueError("Generation batch alignment mismatch")
         for batch, generated in zip(batches, generated_rows):
+            for key in ("id", "sample_id", IDENTITY_KEY):
+                if key in generated and generated[key] != batch[key]:
+                    raise ValueError(f"Generation batch alignment mismatch: {key}")
             text = generated.get("text", "")
             edges, errors = assemble_decisions(batch, text)
             if generated.get("error"):
@@ -141,16 +192,18 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
             totals["empty_edge_batches"] += not edges
             raw_generations.append(
                 {
-                    "id": batch["id"],
-                    "sample_id": i,
-                    "prompt": batch["prompt"],
                     **generated,
+                    "id": batch["id"],
+                    "sample_id": batch["sample_id"],
+                    IDENTITY_KEY: copy.deepcopy(identity),
+                    "prompt": batch["prompt"],
                     "parse_errors": errors,
                 }
             )
         predictions.append(
             {
                 "output": graph,
+                IDENTITY_KEY: identity,
                 "trace": {
                     "source_type": "free_text",
                     "chunks": chunks,
@@ -162,7 +215,8 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
         print(
             dumps(
                 {
-                    "completed_sample": i,
+                    "completed_sample": sample_index,
+                    "identity_status": identity["status"],
                     "total_samples": len(records),
                     "candidate_pairs": audit["candidate_pairs"],
                     "relation_edges": len(graph["relations"]),
@@ -173,7 +227,11 @@ def run_records(records, cached, config, generate, *, oracle=False, generate_man
     return predictions, raw_generations, dict(totals)
 
 
-def rule_ablation(records, predictions):
+def rule_ablation(records, predictions, *, strict_identity=False, sample_indices=None):
+    indices = resolve_sample_indices(records, sample_indices)
+    validate_alignment(
+        records, predictions, strict_identity=strict_identity, sample_indices=indices,
+    )
     rules = {
         "symptom_disease_type_mismatch",
         "different_disease_in_evidence",
@@ -202,7 +260,10 @@ def rule_ablation(records, predictions):
             graph["relations"] = accepted
         reports[name] = {
             "removed": dict(removed),
-            "metrics": evaluate_records(records, filtered),
+            "metrics": evaluate_records(
+                records, filtered, strict_identity=strict_identity,
+                sample_indices=indices,
+            ),
         }
     return reports
 
@@ -212,6 +273,14 @@ def main():
     p.add_argument("--gold", required=True)
     p.add_argument("--entity-predictions")
     p.add_argument("--oracle", action="store_true")
+    p.add_argument(
+        "--strict-identity", action="store_true",
+        help="Reject predictions/entity caches with missing or unverified identity",
+    )
+    p.add_argument(
+        "--sample-indices",
+        help="JSON list of original dataset indices for an explicitly selected gold/cache subset",
+    )
     p.add_argument("--base-model", required=True)
     p.add_argument("--adapter", required=True)
     p.add_argument(
@@ -243,6 +312,19 @@ def main():
         if args.entity_predictions
         else None
     )
+    indices = resolve_sample_indices(
+        records,
+        json.loads(Path(args.sample_indices).read_text()) if args.sample_indices else None,
+    )
+    if cached is None and not args.oracle:
+        p.error("Predicted-entity evaluation requires --entity-predictions")
+    if cached is not None:
+        # Fail before loading a model or creating output files.
+        checked = validate_alignment(
+            records, cached, strict_identity=args.strict_identity,
+            sample_indices=indices, context="entity cache",
+        )
+        print(dumps({"entity_cache_alignment": alignment_summary(checked)}), flush=True)
     config = load_variant(args.matrix, args.variant)
     out = Path(args.output_dir)
     if out.exists() and any(out.iterdir()):
@@ -291,8 +373,13 @@ def main():
         n = encoded["input_ids"].shape[1]
         if n + args.max_new_tokens > model.config.max_position_embeddings:
             return [
-                {"text": "", "error": "context_budget_exceeded", "tokens": 0}
-                for _ in batches
+                {
+                    "id": batch["id"],
+                    "sample_id": batch["sample_id"],
+                    IDENTITY_KEY: copy.deepcopy(batch[IDENTITY_KEY]),
+                    "text": "", "error": "context_budget_exceeded", "tokens": 0,
+                }
+                for batch in batches
             ]
 
         class CompleteJSON(StoppingCriteria):
@@ -325,6 +412,9 @@ def main():
             if tokenizer.pad_token_id in ids:
                 ids = ids[: ids.index(tokenizer.pad_token_id)]
             result = {
+                "id": batch["id"],
+                "sample_id": batch["sample_id"],
+                IDENTITY_KEY: copy.deepcopy(batch[IDENTITY_KEY]),
                 "text": tokenizer.decode(ids, skip_special_tokens=True).strip(),
                 "tokens": len(ids),
                 "input_tokens": int(mask.sum()),
@@ -344,13 +434,18 @@ def main():
         return results
 
     predictions, raw, audit = run_records(
-        records, cached, config, None, oracle=args.oracle, generate_many=generate_many
+        records, cached, config, None, oracle=args.oracle, generate_many=generate_many,
+        strict_identity=args.strict_identity, sample_indices=indices,
     )
-    metrics = evaluate_records(records, predictions)
+    metrics = evaluate_records(
+        records, predictions, strict_identity=args.strict_identity, sample_indices=indices,
+    )
     report = {
         "metrics": metrics,
         "coverage_and_generation": audit,
-        "rule_ablation": rule_ablation(records, predictions),
+        "rule_ablation": rule_ablation(
+            records, predictions, strict_identity=args.strict_identity, sample_indices=indices,
+        ),
         "arguments": vars(args),
         "entity_source": "oracle" if args.oracle else "fixed_predicted_cache",
         "not_full_live_pipeline": True,
