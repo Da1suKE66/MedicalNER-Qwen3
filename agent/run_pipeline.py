@@ -30,7 +30,8 @@ def main() -> None:
     parser.add_argument("--max-new-tokens-entities", type=int, default=1024)
     parser.add_argument("--max-new-tokens-relations", type=int, default=768)
     parser.add_argument("--max-entity-candidates", type=int, default=64)
-    parser.add_argument("--max-pairs-per-chunk", type=int, default=128)
+    parser.add_argument("--max-pairs-per-chunk", type=int, default=0,
+                        help="0: submit all candidates in batches; positive caps are legacy diagnostics and report omitted pairs")
     parser.add_argument("--max-spans-per-chunk", type=int, default=16)
     parser.add_argument("--max-chars-per-chunk", type=int, default=6000)
     parser.add_argument(
@@ -44,6 +45,8 @@ def main() -> None:
         help="Ask the relation model to emit an explicit NONE decision for every candidate pair",
     )
     parser.add_argument("--relation-batch-size", type=int, default=128)
+    parser.add_argument("--relation-multilabel", action="store_true",
+                        help="Versioned prompt opt-in: emit all supported labels for each pair; legacy default preserves old prompts")
     args = parser.parse_args()
     if args.relation_classifier_selection and (not args.base_model or args.relation_adapter):
         parser.error('Classifier needs --base-model and cannot be combined with --relation-adapter')
@@ -77,6 +80,7 @@ def main() -> None:
             entity_mention_copy=args.entity_mention_copy,
             relation_emit_none=args.relation_emit_none,
             relation_batch_size=args.relation_batch_size,
+            relation_multilabel=args.relation_multilabel,
         )
         classifier = None
         if args.relation_classifier_selection:
@@ -97,6 +101,7 @@ def main() -> None:
             entity_mention_copy=args.entity_mention_copy,
             relation_emit_none=args.relation_emit_none,
             relation_batch_size=args.relation_batch_size,
+            relation_multilabel=args.relation_multilabel,
         )
         agent = TwoStageKGAgent(NoLLMBackend(), config=config)
 

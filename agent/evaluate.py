@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import json
 from pathlib import Path
 from typing import Any
@@ -34,22 +35,69 @@ def _graph(value: Any) -> dict[str, Any] | None:
 
 
 def _node_name(node: dict[str, Any]) -> str:
-    return str(node.get("name") or node.get("properties", {}).get("Name") or "").strip()
+    value = node.get("name")
+    if not value:
+        properties = node.get("properties")
+        value = properties.get("Name") if isinstance(properties, dict) else None
+    return value.strip() if isinstance(value, str) else ""
+
+
+def _invalid_entity_indices(graph: dict[str, Any]) -> set[int]:
+    """Malformed nodes remain visible; duplicate IDs cannot bind endpoints."""
+    ids = Counter(
+        str(node["id"])
+        for node in graph["entities"]
+        if isinstance(node, dict) and type(node.get("id")) in (str, int)
+    )
+    return {
+        index
+        for index, node in enumerate(graph["entities"])
+        if (
+            not isinstance(node, dict)
+            or type(node.get("id")) not in (str, int)
+            or not str(node["id"]).strip()
+            or ids[str(node["id"])] != 1
+            or not isinstance(node.get("label"), str)
+            or not node["label"].strip()
+            or not _node_name(node)
+        )
+    }
+
+
+def _validate_gold_graph(graph: dict[str, Any]) -> None:
+    """A malformed annotation cannot match a generated failure sentinel."""
+    if _invalid_entity_indices(graph):
+        raise ValueError("Invalid gold graph: malformed entity or duplicate entity ID")
+    ids = {str(node["id"]) for node in graph["entities"]}
+    for edge in graph["relations"]:
+        if not isinstance(edge, dict):
+            raise ValueError("Invalid gold graph: malformed relation")
+        label = edge.get("relation") or edge.get("type")
+        if (
+            str(edge.get("source")) not in ids
+            or str(edge.get("target")) not in ids
+            or not isinstance(label, str)
+            or not label.strip()
+        ):
+            raise ValueError("Invalid gold graph: malformed relation or missing endpoint")
 
 
 def _entity_set(graph: dict[str, Any]) -> set[tuple[str, str]]:
+    invalid = _invalid_entity_indices(graph)
     return {
-        (str(node.get("label") or "").strip(), normalize_text(_node_name(node)))
-        for node in graph["entities"]
-        if isinstance(node, dict) and _node_name(node)
+        ("__INVALID_ENTITY__", str(index))
+        if index in invalid
+        else (node["label"].strip(), normalize_text(_node_name(node)))
+        for index, node in enumerate(graph["entities"])
     }
 
 
 def _relation_set(graph: dict[str, Any]) -> set[tuple[tuple[str, str], str, tuple[str, str]]]:
+    invalid = _invalid_entity_indices(graph)
     by_id = {
         str(node.get("id")): (str(node.get("label") or ""), normalize_text(_node_name(node)))
-        for node in graph["entities"]
-        if isinstance(node, dict) and node.get("id") is not None
+        for index, node in enumerate(graph["entities"])
+        if index not in invalid
     }
     result: set[tuple[tuple[str, str], str, tuple[str, str]]] = set()
     for index, relation in enumerate(graph["relations"]):
@@ -125,6 +173,7 @@ def main() -> None:
         predicted = _graph(predictions[index]) if index < len(predictions) else None
         if gold is None:
             raise ValueError(f'Invalid gold at index {index}')
+        _validate_gold_graph(gold)
         if predicted is None:
             predicted = {"entities": [], "relations": []}
         else:

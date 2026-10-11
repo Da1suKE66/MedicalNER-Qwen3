@@ -104,7 +104,13 @@ def main():
     )
     p.add_argument("--variants", nargs="+")
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--assume-closed-world-silver", action="store_true",
+                   help="Historical reproduction only: explicitly treat every unannotated silver pair as negative")
     args = p.parse_args()
+    if not args.assume_closed_world_silver:
+        p.error("This legacy builder labels unannotated silver pairs as no relation. "
+                "Use data_repair.release_v2 for UNKNOWN-aware supervision; "
+                "only historical reproduction may opt in with --assume-closed-world-silver.")
     records = json.loads(Path(args.train).read_text())
     groups = source_groups(records)
     shuffled = sorted(set(groups))
@@ -157,6 +163,8 @@ def main():
             "variant": name,
             "config": asdict(config),
             "seed": args.seed,
+            "supervision_policy": "legacy_closed_world_silver_explicit_opt_in",
+            "unannotated_pairs_are_verified_negatives": False,
             "source_train_sha256": hashlib.sha256(
                 Path(args.train).read_bytes()
             ).hexdigest(),

@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "scope": "all sealed manifest files",
+  "files_hashed": 679,
+  "bytes_hashed": 2349709500,
+  "frozen_input_rows": {
+    "data/teacher_original/deepseek_watermark_20260804_182312_output_only_full_groupdisjoint_train.json": 1345,
+    "data/evaluation/dev_gold_full_148.json": 148,
+    "data/evaluation/tune_records_130.json": 130,
+    "data/evaluation/entity_cache_148.jsonl": 148,
+    "data/evaluation/stress64/paired.jsonl": 64,
+    "data/v3/V3_missing_only.jsonl": 1845,
+    "data/v3/V3_grounded_none.jsonl": 1845
+  },
+  "model_weights_included": false,
+  "medical_correctness_verified": false,
+  "strict_json_catalog_files": 195,
+  "repaired_v2": {
+    "original_records_preserved": 1345,
+    "mapped_mentions_checked": 14596,
+    "partial_rows_checked": 8702,
+    "train_tune_group_overlap": 0,
+    "manual_review_items": 264
+  },
+  "v3": {
+    "V3_missing_only": {
+      "rows": 1845,
+      "decision": "allowed",
+      "positive_pairs": 5789,
+      "negative_pairs": 2484,
+      "unknown_pairs": 16685,
+      "negative_ratio": 0.3002538377855675,
+      "max_tokens": 4932,
+      "supervised_completion_tokens": 224478,
+      "real_tokenizer_mask_audit": true
+    },
+    "V3_grounded_none": {
+      "rows": 1845,
+      "decision": "allowed",
+      "positive_pairs": 5789,
+      "negative_pairs": 3900,
+      "unknown_pairs": 15269,
+      "negative_ratio": 0.4025183197440396,
+      "max_tokens": 4932,
+      "supervised_completion_tokens": 243200,
+      "real_tokenizer_mask_audit": true
+    }
+  }
+}

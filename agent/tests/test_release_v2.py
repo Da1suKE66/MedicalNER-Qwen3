@@ -5,7 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from data_repair.release_v2 import canonical, prepare_record, run, sha
+from data_repair.release_v2 import LEGACY_VERSION, VERSION, canonical, prepare_record, run, sha
+from data_repair.supervision_v2 import LEGACY_EVIDENCE_POLICY, UNIQUE_EVIDENCE_POLICY
 from data_repair.verify_v2 import verify
 from kg_agent.contracts import ONTOLOGY
 
@@ -85,3 +86,33 @@ def test_output_corruption_fails_verifier(tmp_path):
         handle.write("\n")
     with pytest.raises(ValueError, match="Release file changed"):
         verify(out)
+
+
+def test_new_release_reviews_ambiguous_citations_with_explicit_legacy_replay(tmp_path):
+    from test_partial_supervision_v2 import ambiguous_example
+    _, graph, doc = ambiguous_example()
+    source, split = fixture(tmp_path)
+    records = json.loads(source.read_text())
+    records[1] = message(doc.raw, graph)
+    source.write_text(canonical(records))
+    old_source = source.read_bytes()
+    frozen = json.loads(split.read_text())
+    frozen["source_train_sha256"] = sha(old_source)
+    split.write_text(canonical(frozen))
+    strict_dir, legacy_dir = tmp_path / "unique", tmp_path / "legacy"
+    strict = run(source, split, strict_dir, sha(old_source))
+    legacy = run(source, split, legacy_dir, sha(old_source), evidence_policy=LEGACY_EVIDENCE_POLICY)
+    assert source.read_bytes() == old_source
+    assert strict["version"] == VERSION and legacy["version"] == LEGACY_VERSION
+    assert strict["evidence_grounding_policy"] == UNIQUE_EVIDENCE_POLICY
+    assert "evidence_grounding_policy" not in legacy
+    assert strict["summary"]["ambiguous_evidence_annotations"] == 1
+    reviews = [json.loads(line) for line in (strict_dir / "review_queue.jsonl").read_text().splitlines()]
+    assert any(r.get("reason") == "evidence_occurrence_ambiguous" and r["not_a_negative"] for r in reviews)
+    strict_rows = [json.loads(line) for line in (strict_dir / "base/train.jsonl").read_text().splitlines()]
+    legacy_rows = [json.loads(line) for line in (legacy_dir / "base/train.jsonl").read_text().splitlines()]
+    assert sum(v == "SUPPORTED_SILVER" for r in strict_rows for v in r["pair_supervision"].values()) == 1
+    assert sum(v == "SUPPORTED_SILVER" for r in legacy_rows for v in r["pair_supervision"].values()) == 2
+    assert all(r["data_version"] == VERSION for r in strict_rows)
+    assert all(r["data_version"] == LEGACY_VERSION for r in legacy_rows)
+    assert verify(strict_dir)["passed"] and verify(legacy_dir)["passed"]

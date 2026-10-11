@@ -18,11 +18,13 @@ from generative.protocol import ProtocolConfig, build_batches, dumps
 from kg_agent.source import SentenceSpanSplitter
 from .pipeline import split_assignment
 from .supervision_v2 import (
+    EVIDENCE_POLICIES, LEGACY_EVIDENCE_POLICY, UNIQUE_EVIDENCE_POLICY,
     inject_contract_negative, partial_supervision, validate_partial_row,
 )
 
 
-VERSION = "teacher-silver-repair-v2-partial-supervision"
+LEGACY_VERSION = "teacher-silver-repair-v2-partial-supervision"
+VERSION = LEGACY_VERSION + "-unique-evidence-v1"
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -48,13 +50,16 @@ def canonical(value):
                       separators=(",", ":"))
 
 
-def prepare_record(record, index, group, split, conflict=None, restoration=None):
+def prepare_record(record, index, group, split, conflict=None, restoration=None, *,
+                   evidence_policy=UNIQUE_EVIDENCE_POLICY):
     from .review_policy import review_record
     from .source_provenance import source_view
     from .text_normalization import (
         find_mentions, map_range, normalize_with_offsets, repair_graph_text,
     )
 
+    if evidence_policy not in EVIDENCE_POLICIES:
+        raise ValueError("Unsupported evidence grounding policy")
     original_user = _message(record, "user")
     user = original_user
     if restoration:
@@ -104,6 +109,8 @@ def prepare_record(record, index, group, split, conflict=None, restoration=None)
               "record_blocked": blocked, "entities": [], "annotations": [],
               "semantic_adjudication": "not_human_adjudicated",
               "unannotated_pair_policy": "UNKNOWN_MASKED_NOT_NONE"}
+    if evidence_policy != LEGACY_EVIDENCE_POLICY:
+        result["evidence_grounding_policy"] = evidence_policy
     if view["source_type"] != "free_text":
         result["status"] = "deterministic_source_preserved_review_untyped_fields"
         return result
@@ -127,10 +134,13 @@ def prepare_record(record, index, group, split, conflict=None, restoration=None)
         evidence = edge.get("evidence") or edge.get("evidence_sentence") or ""
         values = evidence if isinstance(evidence, list) else [evidence]
         locations = [locate(v) if isinstance(v, str) and v.strip() else [] for v in values]
-        result["annotations"].append({"index": i, "annotation": edge,
-                                      "evidence_fragments": locations,
-                                      "all_evidence_located": bool(locations) and all(locations),
-                                      "pair_blocked": blocked or (str(edge["source"]), str(edge["target"])) in blocked_pairs})
+        annotation = {"index": i, "annotation": edge,
+                      "evidence_fragments": locations,
+                      "all_evidence_located": bool(locations) and all(locations),
+                      "pair_blocked": blocked or (str(edge["source"]), str(edge["target"])) in blocked_pairs}
+        if evidence_policy != LEGACY_EVIDENCE_POLICY:
+            annotation["ambiguous_evidence_occurrence"] = any(len(hits) > 1 for hits in locations)
+        result["annotations"].append(annotation)
     result["spans"] = []
     for span in SentenceSpanSplitter().split(mapping["text"]):
         a, b = map_range(mapping, span.start, span.end)
@@ -159,14 +169,16 @@ def build_rows(item, config, *, sampled=True, seed=42):
     for batch in batches:
         target, counts = partial_supervision(batch, graph, doc,
                                             blocked_pairs=item["blocked_pairs"],
-                                            record_blocked=item["record_blocked"])
+                                            record_blocked=item["record_blocked"],
+                                            evidence_policy=item.get("evidence_grounding_policy", LEGACY_EVIDENCE_POLICY))
         stats.update(counts)
         if not counts.get("SUPPORTED_SILVER", 0):
             stats["all_unknown_rows_excluded"] += 1
             continue
         row = {**batch, **target, "group_id": item["group_id"], "split": item["split"],
                "sample_weight": 1.0, "annotation_source": "mechanically_repaired_teacher_silver",
-               "data_version": VERSION}
+               "data_version": (LEGACY_VERSION if item.get("evidence_grounding_policy", LEGACY_EVIDENCE_POLICY)
+                                == LEGACY_EVIDENCE_POLICY else VERSION)}
         validate_partial_row(row)
         for pair, decision in zip(row["pairs"], row["target"]["decisions"]):
             supervised.update((index, pair["source"], pair["target"], edge["relation"])
@@ -187,10 +199,12 @@ def variants():
 
 
 def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev=None,
-        upstream_raw=None, expected_upstream_sha256=None):
+        upstream_raw=None, expected_upstream_sha256=None, evidence_policy=UNIQUE_EVIDENCE_POLICY):
     from .review_policy import conflicting_inputs
 
     source, split_path, out = map(Path, (input_path, frozen_split, output_dir))
+    if evidence_policy not in EVIDENCE_POLICIES:
+        raise ValueError("Unsupported evidence grounding policy")
     if out.exists():
         raise ValueError("Refusing to overwrite any existing data version")
     before = sha(source.read_bytes())
@@ -211,7 +225,8 @@ def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev
         upstream_provenance = {"path": str(upstream_path.resolve()), "sha256": upstream_hash,
                                "restored_source_indices": sorted(restorations)}
     conflicts = conflicting_inputs(records)
-    prepared = [prepare_record(record, i, group, split, conflicts.get(i), restorations.get(i))
+    prepared = [prepare_record(record, i, group, split, conflicts.get(i), restorations.get(i),
+                               evidence_policy=evidence_policy)
                 for i, (record, group, split) in enumerate(zip(records, groups, splits))]
     by_text = defaultdict(list)
     for item in prepared:
@@ -235,6 +250,8 @@ def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev
         summary["ungrounded_entities"] += sum(not node["mentions"] for node in item["entities"])
         summary["free_relations"] += len(item["annotations"])
         summary["missing_evidence_annotations"] += sum(not a["all_evidence_located"] for a in item["annotations"])
+        if evidence_policy != LEGACY_EVIDENCE_POLICY:
+            summary["ambiguous_evidence_annotations"] += sum(a["ambiguous_evidence_occurrence"] for a in item["annotations"])
         summary["graph_changes"] += len(item["graph_changes"])
         summary["source_changes"] += len(item["source"]["normalization_changes"])
         for issue in item["issues"] + item["source_view"].get("issues", []):
@@ -253,6 +270,11 @@ def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev
                 review.append({"source_index": item["source_index"], "split": item["split"],
                                "kind": "relation", "relation_index": annotation["index"],
                                "reason": "evidence_scope_or_binding_unresolved", "decision": "PENDING",
+                               "not_a_negative": True})
+            if annotation.get("ambiguous_evidence_occurrence"):
+                review.append({"source_index": item["source_index"], "split": item["split"],
+                               "kind": "relation", "relation_index": annotation["index"],
+                               "reason": "evidence_occurrence_ambiguous", "decision": "PENDING",
                                "not_a_negative": True})
         for field, edits in (("graph", item["graph_changes"]), ("source", item["source"]["normalization_changes"])):
             changes.extend({"source_index": item["source_index"], "field": field, "change": edit} for edit in edits)
@@ -320,7 +342,8 @@ def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev
         old_sha = sha(path.read_bytes())
         dev_records = strict_json(path.read_text())
         dev_conflicts = conflicting_inputs(dev_records)
-        audits = [prepare_record(r, i, i, "historical_regression_audit_only", dev_conflicts.get(i))
+        audits = [prepare_record(r, i, i, "historical_regression_audit_only", dev_conflicts.get(i),
+                                  evidence_policy=evidence_policy)
                   for i,r in enumerate(dev_records)]
         write("historical_regression_audit_only.jsonl", audits)
         if sha(path.read_bytes()) != old_sha:
@@ -330,7 +353,8 @@ def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev
     code_files = [p for p in (ROOT / "agent/data_repair").glob("*.py")]
     code_files += [ROOT / name for name in ("agent/generative/protocol.py", "agent/generative/train.py", "agent/train_sft.py",
                                            "agent/kg_agent/source.py", "agent/kg_agent/ontology.json", "schemas/v2.0.0/schema.json")]
-    manifest = {"version": VERSION, "status": "mechanically_repaired_partial_silver_candidate",
+    manifest = {"version": LEGACY_VERSION if evidence_policy == LEGACY_EVIDENCE_POLICY else VERSION,
+                "status": "mechanically_repaired_partial_silver_candidate",
                 "source_path": str(source.resolve()), "source_sha256": before,
                 "frozen_split_path": str(split_path.resolve()), "frozen_split_sha256": sha(split_path.read_bytes()),
                 "records_conserved": len(prepared) == len(records), "input_unchanged": sha(source.read_bytes()) == before,
@@ -347,6 +371,8 @@ def run(input_path, frozen_split, output_dir, expected_sha256, *, historical_dev
                           "real_tokenizer_loss_mask_checked": False, "human_semantic_adjudication": False,
                           "real_negative_pool_adjudicated": False, "eligible_for_existing_rl_objective": False,
                           "new_model_evaluation_completed": False, "automatic_deployment_allowed": False}}
+    if evidence_policy != LEGACY_EVIDENCE_POLICY:
+        manifest["evidence_grounding_policy"] = evidence_policy
     if not manifest["records_conserved"] or not manifest["input_unchanged"]:
         raise RuntimeError("Source conservation failed")
     path = out / "manifest.json"
@@ -365,10 +391,13 @@ def main():
     parser.add_argument("--historical-dev")
     parser.add_argument("--upstream-raw")
     parser.add_argument("--expected-upstream-sha256")
+    parser.add_argument("--evidence-policy", choices=EVIDENCE_POLICIES, default=UNIQUE_EVIDENCE_POLICY,
+                        help="Unique citation locations by default; legacy policy is explicit historical replay only")
     args = parser.parse_args()
     result = run(args.input, args.frozen_split, args.output_dir, args.expected_sha256,
                  historical_dev=args.historical_dev, upstream_raw=args.upstream_raw,
-                 expected_upstream_sha256=args.expected_upstream_sha256)
+                 expected_upstream_sha256=args.expected_upstream_sha256,
+                 evidence_policy=args.evidence_policy)
     print(canonical({"output": args.output_dir, "summary": result["summary"], "gates": result["gates"]}), flush=True)
 
 

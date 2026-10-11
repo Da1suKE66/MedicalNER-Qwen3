@@ -1,0 +1,701 @@
+{
+  "audit_script_sha256": "da3a93a149a72dd61c911877949a1ec416cb611e0147b809d966f2c30c1f3a13",
+  "count_scope": "One unweighted pass per file; derived variants are not independent medical samples.",
+  "datasets": {
+    "data/repaired_v2/base/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4765,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 14047,
+        "candidate_pairs": 18814,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 4785,
+        "rows": 1333,
+        "unknown_pairs": 14049
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1333,
+        "rows_with_unknown": 1333
+      },
+      "source_groups": 253
+    },
+    "data/repaired_v2/base/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 479,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_UNANNOTATED": 4603,
+        "candidate_pairs": 5082,
+        "multi_relation_pairs": 3,
+        "positive_relation_edges": 482,
+        "rows": 325,
+        "unknown_pairs": 4603
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 325,
+        "rows_with_unknown": 325
+      },
+      "source_groups": 26
+    },
+    "data/repaired_v2/local/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4592,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_EVIDENCE": 141,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 13947,
+        "candidate_pairs": 18682,
+        "multi_relation_pairs": 14,
+        "positive_relation_edges": 4606,
+        "rows": 1322,
+        "unknown_pairs": 14090
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1322,
+        "rows_with_unknown": 1322
+      },
+      "source_groups": 253
+    },
+    "data/repaired_v2/local/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 471,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_EVIDENCE": 4,
+        "UNKNOWN_UNANNOTATED": 4543,
+        "candidate_pairs": 5018,
+        "multi_relation_pairs": 1,
+        "positive_relation_edges": 472,
+        "rows": 321,
+        "unknown_pairs": 4547
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 321,
+        "rows_with_unknown": 321
+      },
+      "source_groups": 26
+    },
+    "data/repaired_v2/short/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4765,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 8544,
+        "candidate_pairs": 13311,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 4785,
+        "rows": 3344,
+        "unknown_pairs": 8546
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 19,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 3344,
+        "rows_with_unknown": 3325
+      },
+      "source_groups": 253
+    },
+    "data/repaired_v2/short/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 479,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_UNANNOTATED": 1251,
+        "candidate_pairs": 1730,
+        "multi_relation_pairs": 3,
+        "positive_relation_edges": 482,
+        "rows": 435,
+        "unknown_pairs": 1251
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 435,
+        "rows_with_unknown": 435
+      },
+      "source_groups": 26
+    },
+    "data/repaired_v2/source_order/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4765,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 12387,
+        "candidate_pairs": 17154,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 4785,
+        "rows": 1172,
+        "unknown_pairs": 12389
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1172,
+        "rows_with_unknown": 1172
+      },
+      "source_groups": 253
+    },
+    "data/repaired_v2/source_order/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 479,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_UNANNOTATED": 4435,
+        "candidate_pairs": 4914,
+        "multi_relation_pairs": 3,
+        "positive_relation_edges": 482,
+        "rows": 315,
+        "unknown_pairs": 4435
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 315,
+        "rows_with_unknown": 315
+      },
+      "source_groups": 26
+    },
+    "data/repaired_v2/synthetic_negative_auxiliary/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 502,
+        "SYNTHETIC_NEGATIVE": 270,
+        "UNKNOWN_UNANNOTATED": 1406,
+        "candidate_pairs": 2178,
+        "multi_relation_pairs": 4,
+        "positive_relation_edges": 506,
+        "rows": 135,
+        "unknown_pairs": 1406
+      },
+      "distinct_sample_ids": 114,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 135,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 0,
+        "rows_with_unknown": 135
+      },
+      "source_groups": 92
+    },
+    "data/v2_controlled/V2_G5_local_common/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4592,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_EVIDENCE": 141,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 13947,
+        "candidate_pairs": 18682,
+        "multi_relation_pairs": 14,
+        "positive_relation_edges": 4606,
+        "rows": 1322,
+        "unknown_pairs": 14090
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1322,
+        "rows_with_unknown": 1322
+      },
+      "source_groups": 253
+    },
+    "data/v2_controlled/V2_G5_local_common/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 471,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_EVIDENCE": 4,
+        "UNKNOWN_UNANNOTATED": 4543,
+        "candidate_pairs": 5018,
+        "multi_relation_pairs": 1,
+        "positive_relation_edges": 472,
+        "rows": 321,
+        "unknown_pairs": 4547
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 321,
+        "rows_with_unknown": 321
+      },
+      "source_groups": 26
+    },
+    "data/v2_controlled/V2_base/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4765,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 14047,
+        "candidate_pairs": 18814,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 4785,
+        "rows": 1333,
+        "unknown_pairs": 14049
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1333,
+        "rows_with_unknown": 1333
+      },
+      "source_groups": 253
+    },
+    "data/v2_controlled/V2_base/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 479,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_UNANNOTATED": 4603,
+        "candidate_pairs": 5082,
+        "multi_relation_pairs": 3,
+        "positive_relation_edges": 482,
+        "rows": 325,
+        "unknown_pairs": 4603
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 325,
+        "rows_with_unknown": 325
+      },
+      "source_groups": 26
+    },
+    "data/v2_controlled/V2_full_common/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4592,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_EVIDENCE": 141,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 13947,
+        "candidate_pairs": 18682,
+        "multi_relation_pairs": 14,
+        "positive_relation_edges": 4606,
+        "rows": 1322,
+        "unknown_pairs": 14090
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1322,
+        "rows_with_unknown": 1322
+      },
+      "source_groups": 253
+    },
+    "data/v2_controlled/V2_full_common/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 471,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_EVIDENCE": 4,
+        "UNKNOWN_UNANNOTATED": 4543,
+        "candidate_pairs": 5018,
+        "multi_relation_pairs": 1,
+        "positive_relation_edges": 472,
+        "rows": 321,
+        "unknown_pairs": 4547
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 321,
+        "rows_with_unknown": 321
+      },
+      "source_groups": 26
+    },
+    "data/v2_controlled/V2_noise10/train.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 4765,
+        "SYNTHETIC_NEGATIVE": 270,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_UNANNOTATED": 14047,
+        "candidate_pairs": 19084,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 4785,
+        "rows": 1333,
+        "unknown_pairs": 14049
+      },
+      "distinct_sample_ids": 441,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 135,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1198,
+        "rows_with_unknown": 1333
+      },
+      "source_groups": 253
+    },
+    "data/v2_controlled/V2_noise10/tune.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 479,
+        "SYNTHETIC_NEGATIVE": 0,
+        "UNKNOWN_UNANNOTATED": 4603,
+        "candidate_pairs": 5082,
+        "multi_relation_pairs": 3,
+        "positive_relation_edges": 482,
+        "rows": 325,
+        "unknown_pairs": 4603
+      },
+      "distinct_sample_ids": 42,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 0,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 325,
+        "rows_with_unknown": 325
+      },
+      "source_groups": 26
+    },
+    "data/v3/V3_grounded_none.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 5789,
+        "SYNTHETIC_NEGATIVE": 3900,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1220,
+        "UNKNOWN_UNANNOTATED": 14047,
+        "candidate_pairs": 24958,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 5809,
+        "rows": 1845,
+        "unknown_pairs": 15269
+      },
+      "distinct_sample_ids": 953,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 512,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1333,
+        "rows_with_unknown": 1845
+      },
+      "source_groups": 253
+    },
+    "data/v3/V3_missing_only.jsonl": {
+      "counts": {
+        "SUPPORTED_SILVER": 5789,
+        "SYNTHETIC_NEGATIVE": 2484,
+        "UNKNOWN_CONSTRUCTED_ABLATION": 1416,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1220,
+        "UNKNOWN_UNANNOTATED": 14047,
+        "candidate_pairs": 24958,
+        "multi_relation_pairs": 20,
+        "positive_relation_edges": 5809,
+        "rows": 1845,
+        "unknown_pairs": 16685
+      },
+      "distinct_sample_ids": 953,
+      "row_distribution": {
+        "all_decisions_negative": 0,
+        "all_decisions_positive": 0,
+        "mixed_positive_negative_supervision": 414,
+        "negative_only_supervision": 0,
+        "no_supervised_decisions": 0,
+        "positive_only_supervision": 1431,
+        "rows_with_unknown": 1845
+      },
+      "source_groups": 253
+    }
+  },
+  "evidence_policy_comparison": {
+    "builder_code_sha256": {
+      "agent/data_repair/release_v2.py": "fcfaa3cb301ed730af17de71facb5ea3fcc740d02e2978419fe5d4c0a5c27964",
+      "agent/data_repair/supervision_v2.py": "ac07cb7a10e05d3eabf136dba512a0f579b02f84c34af3ae1745f85246739a32",
+      "agent/data_repair/text_normalization.py": "595988decef1c5f92757417f0f9bca5a7f3c9416059e3608be2864d4791d7dae",
+      "agent/generative/protocol.py": "484c803a4b1988bc6dbe601d557c68ed6527a173f8eeba351e328300a67333d2",
+      "agent/kg_agent/contracts.py": "cb34b19df2b36aa21d6efef36827fd53082a9fbf1d89f0db110266934ffb8933",
+      "agent/kg_agent/ontology.json": "16ae394d3f3bf94fb0d26063c7e8015d395f35a0c589e5bd64b954154e6de502",
+      "agent/kg_agent/source.py": "54f8b394d0f4eabe796af514fbc3dc135f777c5615da4fa872212e38e53e8b3f"
+    },
+    "labels_rewritten_for_evaluation": false,
+    "legacy_replay_all_equal": true,
+    "new_release_written": false,
+    "policy": "unique-evidence-v1",
+    "splits": {
+      "train": {
+        "labels_added": 0,
+        "labels_quarantined": 150,
+        "legacy_replay_equals_stored_rows": true,
+        "retained_unknown_reasons": {
+          "evidence_occurrence_ambiguous": 128,
+          "semantic_or_source_review": 2,
+          "silver_absence_is_not_negative": 13941
+        },
+        "stored": {
+          "counts": {
+            "SUPPORTED_SILVER": 4765,
+            "SYNTHETIC_NEGATIVE": 0,
+            "UNKNOWN_REVIEW": 2,
+            "UNKNOWN_UNANNOTATED": 14047,
+            "candidate_pairs": 18814,
+            "multi_relation_pairs": 20,
+            "positive_relation_edges": 4785,
+            "rows": 1333,
+            "unknown_pairs": 14049
+          },
+          "distinct_sample_ids": 441,
+          "row_distribution": {
+            "all_decisions_negative": 0,
+            "all_decisions_positive": 0,
+            "mixed_positive_negative_supervision": 0,
+            "negative_only_supervision": 0,
+            "no_supervised_decisions": 0,
+            "positive_only_supervision": 1333,
+            "rows_with_unknown": 1333
+          },
+          "source_groups": 253
+        },
+        "stored_unique_positive_labels": 4785,
+        "unique": {
+          "counts": {
+            "SUPPORTED_SILVER": 4615,
+            "SYNTHETIC_NEGATIVE": 0,
+            "UNKNOWN_EVIDENCE": 128,
+            "UNKNOWN_REVIEW": 2,
+            "UNKNOWN_UNANNOTATED": 13941,
+            "candidate_pairs": 18686,
+            "multi_relation_pairs": 20,
+            "positive_relation_edges": 4635,
+            "rows": 1323,
+            "unknown_pairs": 14071
+          },
+          "distinct_sample_ids": 441,
+          "row_distribution": {
+            "all_decisions_negative": 0,
+            "all_decisions_positive": 0,
+            "mixed_positive_negative_supervision": 0,
+            "negative_only_supervision": 0,
+            "no_supervised_decisions": 0,
+            "positive_only_supervision": 1323,
+            "rows_with_unknown": 1323
+          },
+          "source_groups": 253
+        },
+        "unique_positive_labels": 4635
+      },
+      "tune": {
+        "labels_added": 0,
+        "labels_quarantined": 38,
+        "legacy_replay_equals_stored_rows": true,
+        "retained_unknown_reasons": {
+          "evidence_occurrence_ambiguous": 8,
+          "silver_absence_is_not_negative": 4185
+        },
+        "stored": {
+          "counts": {
+            "SUPPORTED_SILVER": 479,
+            "SYNTHETIC_NEGATIVE": 0,
+            "UNKNOWN_UNANNOTATED": 4603,
+            "candidate_pairs": 5082,
+            "multi_relation_pairs": 3,
+            "positive_relation_edges": 482,
+            "rows": 325,
+            "unknown_pairs": 4603
+          },
+          "distinct_sample_ids": 42,
+          "row_distribution": {
+            "all_decisions_negative": 0,
+            "all_decisions_positive": 0,
+            "mixed_positive_negative_supervision": 0,
+            "negative_only_supervision": 0,
+            "no_supervised_decisions": 0,
+            "positive_only_supervision": 325,
+            "rows_with_unknown": 325
+          },
+          "source_groups": 26
+        },
+        "stored_unique_positive_labels": 482,
+        "unique": {
+          "counts": {
+            "SUPPORTED_SILVER": 441,
+            "SYNTHETIC_NEGATIVE": 0,
+            "UNKNOWN_EVIDENCE": 8,
+            "UNKNOWN_UNANNOTATED": 4185,
+            "candidate_pairs": 4634,
+            "multi_relation_pairs": 3,
+            "positive_relation_edges": 444,
+            "rows": 297,
+            "unknown_pairs": 4193
+          },
+          "distinct_sample_ids": 42,
+          "row_distribution": {
+            "all_decisions_negative": 0,
+            "all_decisions_positive": 0,
+            "mixed_positive_negative_supervision": 0,
+            "negative_only_supervision": 0,
+            "no_supervised_decisions": 0,
+            "positive_only_supervision": 297,
+            "rows_with_unknown": 297
+          },
+          "source_groups": 26
+        },
+        "unique_positive_labels": 444
+      }
+    }
+  },
+  "historical_data_modified": false,
+  "input_hashes_unchanged_after_audit": true,
+  "input_sha256": {
+    "data/repaired_v2/base/train.jsonl": "661004db3ffaf010de7bbdca61b428935b8c2c078d567b4b456a6c8daa6946f5",
+    "data/repaired_v2/base/tune.jsonl": "6a11758623d0d62b300285fc9cdd463f7ab27982c424db6e4a89510b4095fcaa",
+    "data/repaired_v2/frozen_split.jsonl": "691e97fff38aa46f4716cf4f844905287acb28e264cf9a0512a8d6dfa29eb2bd",
+    "data/repaired_v2/local/train.jsonl": "1dc5aa6be850ce169bc05430b5100fce362d898199ec2a13c9eacb151b1a8b51",
+    "data/repaired_v2/local/tune.jsonl": "4e2e2819449dd9b8adb8dc491122ff4b2eaf0d83dfbb6284d1221fa6fb7b4f2b",
+    "data/repaired_v2/records.jsonl": "d7d3449322c935b890b302f379eb6f21844b90120ac44ea0537649eb43166eee",
+    "data/repaired_v2/review_queue.jsonl": "4f5505c02a3a0827a18e34adc1a338bc6825c329a977946c9e12c254edab5102",
+    "data/repaired_v2/short/train.jsonl": "358df2dec7e70b2526c83c1a57b5fa8f110008d9ca114f52139a2099fcea093b",
+    "data/repaired_v2/short/tune.jsonl": "332f5fb4e52f661b975a12e793ebd516d4bf814b20bab78eb30c4e729da3ab97",
+    "data/repaired_v2/source_order/train.jsonl": "950e88ec454e063479a2d6e75943863d3a3fd7696588d7aea173de3cbb6263e4",
+    "data/repaired_v2/source_order/tune.jsonl": "fd8ced0b432d082ddeb79c6c95b934543500530b30dba86948e52a0e9000241f",
+    "data/repaired_v2/synthetic_negative_auxiliary/train.jsonl": "7fdb332467f5d383d7f722043514975020fc126b403a5f7a5afc37345b56981d",
+    "data/teacher_original/train_entities_v4.jsonl": "6f6ca44ae91ae9eb2ffb698998078ae3dddee41cf9fd3a4b76766f357ba8dda4",
+    "data/teacher_original/train_relations_v4.jsonl": "4f600d207a5dbb7821320f1334c905ea3e5655e46f1d5b71ff1982810fa02a63",
+    "data/v2_controlled/V2_G5_local_common/train.jsonl": "1dc5aa6be850ce169bc05430b5100fce362d898199ec2a13c9eacb151b1a8b51",
+    "data/v2_controlled/V2_G5_local_common/tune.jsonl": "4e2e2819449dd9b8adb8dc491122ff4b2eaf0d83dfbb6284d1221fa6fb7b4f2b",
+    "data/v2_controlled/V2_base/train.jsonl": "661004db3ffaf010de7bbdca61b428935b8c2c078d567b4b456a6c8daa6946f5",
+    "data/v2_controlled/V2_base/tune.jsonl": "6a11758623d0d62b300285fc9cdd463f7ab27982c424db6e4a89510b4095fcaa",
+    "data/v2_controlled/V2_full_common/train.jsonl": "bbf18c8e2d76514929b8f0a369c24ab98cc3baa921c7dacd34e2a73b93ccd0a4",
+    "data/v2_controlled/V2_full_common/tune.jsonl": "095a33b525e4b1394b9788bdfc36b311123d086eac3e3cc7be9d309a1aec629a",
+    "data/v2_controlled/V2_noise10/train.jsonl": "6c7549b32f7977bb5c87766706e4a99493594e27855ee5e115af704317070f3f",
+    "data/v2_controlled/V2_noise10/tune.jsonl": "6a11758623d0d62b300285fc9cdd463f7ab27982c424db6e4a89510b4095fcaa",
+    "data/v3/V3_grounded_none.jsonl": "9f71578ea7eeeb7b77b972a3474f7c8b57f8bc2e894f78c646fa71b43b7337a7",
+    "data/v3/V3_missing_only.jsonl": "bf3c1e13bf8417161cec3049d7c1f3d919fb1af51a7f36892af4ff97f86d311c"
+  },
+  "legacy_stage_internal_tune_exposure": {
+    "data/teacher_original/train_entities_v4.jsonl": {
+      "literal_NONE_targets": 0,
+      "rows": 1563,
+      "rows_by_internal_split": {
+        "train": 1444,
+        "tune": 119
+      },
+      "rows_with_literal_NONE": 0,
+      "source_records_by_internal_split": {
+        "train": 670,
+        "tune": 69
+      }
+    },
+    "data/teacher_original/train_relations_v4.jsonl": {
+      "literal_NONE_targets": 8017,
+      "rows": 1135,
+      "rows_by_internal_split": {
+        "train": 1046,
+        "tune": 89
+      },
+      "rows_with_literal_NONE": 1130,
+      "source_records_by_internal_split": {
+        "train": 539,
+        "tune": 49
+      }
+    }
+  },
+  "python_version": "3.12.14",
+  "raw_text_exported": false,
+  "reviews": {
+    "by_kind": {
+      "entity": 251,
+      "record_or_semantics": 11,
+      "relation": 2
+    },
+    "by_reason": {
+      "alias_or_missing_context_not_confirmed_false_entity": 251,
+      "conflicting_identical_input": 2,
+      "evidence_scope_or_binding_unresolved": 2,
+      "no_space_sentence_boundary": 1,
+      "normal_population_as_diagnostic_criterion": 1,
+      "normality_section_only_hint": 4,
+      "relation_type_reference_requires_review": 1,
+      "unparsed_json_block": 2
+    },
+    "by_split": {
+      "train": 234,
+      "tune": 30
+    },
+    "items": 264,
+    "source_records": 256
+  },
+  "row_distribution_definition": "positive_only/negative_only refer to supervised decisions and may contain masked UNKNOWN; all_decisions_* exclude UNKNOWN.",
+  "source_audit": {
+    "ambiguous_positive_labels_in_base": {
+      "train": 150,
+      "tune": 38
+    },
+    "ambiguous_positive_labels_in_base_total": 188,
+    "caveat": "Ambiguous citations and absent surface matches are review findings, not adjudicated medical errors.",
+    "counts": {
+      "ambiguous_evidence_annotations": 197,
+      "free_entities": 7164,
+      "free_relation_annotations": 6165,
+      "free_text": 739,
+      "missing_evidence_annotations": 2,
+      "multi_relation_pairs": 30,
+      "records": 1345,
+      "relations_incident_ungrounded": 895,
+      "structured_icd": 606,
+      "ungrounded_entities": 251
+    }
+  },
+  "version": "relation-supervision-audit-v1"
+}

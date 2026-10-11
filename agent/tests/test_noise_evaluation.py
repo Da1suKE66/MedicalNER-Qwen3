@@ -20,7 +20,7 @@ def paired():
 
 def test_gold_has_perfect_score_and_zero_noise_edges():
     pair = paired()
-    results = summarize([pair], [{"text": pair[c]["completion"]} for c in ("clean", "noisy")])
+    results = summarize([pair], [{"id": pair[c]["id"], "text": pair[c]["completion"]} for c in ("clean", "noisy")])
     assert results["clean"]["f1"] == results["noisy"]["f1"] == 1
     assert results["noise_incident"]["false_relation_pair_rate"] == 0
     assert results["nonincident"]["noisy_recall"] == 1
@@ -33,7 +33,7 @@ def test_empty_output_cannot_pass_the_positive_retention_guard():
         target = copy.deepcopy(pair[condition]["target"])
         for d in target["decisions"]:
             d["relations"] = []
-        generations.append({"text": dumps(target)})
+        generations.append({"id": pair[condition]["id"], "text": dumps(target)})
     result = summarize([pair], generations)
     assert result["noise_incident"]["false_relation_pair_rate"] == 0
     assert result["noisy"]["recall"] == 0 and result["noisy"]["empty_on_positive"] == 1
@@ -42,3 +42,22 @@ def test_empty_output_cannot_pass_the_positive_retention_guard():
 def test_partial_generation_is_not_full_stress_result():
     with pytest.raises(ValueError, match="Incomplete"):
         summarize([paired()], [])
+
+
+@pytest.mark.parametrize("corruption", ["reordered", "missing_id", "wrong_prompt"])
+def test_same_length_stress_output_requires_declared_identity(corruption):
+    from robustness.noise_evaluation import digest
+
+    pair = paired()
+    generations = [{"id": pair[c]["id"], "text": pair[c]["completion"],
+                    "prompt_sha256": digest(pair[c]["prompt"].encode("utf-8"))}
+                   for c in ("clean", "noisy")]
+    assert summarize([pair], generations)["clean"]["f1"] == 1
+    if corruption == "reordered":
+        generations.reverse()
+    elif corruption == "missing_id":
+        generations[0].pop("id")
+    else:
+        generations[0]["prompt_sha256"] = "0" * 64
+    with pytest.raises(ValueError, match="alignment mismatch"):
+        summarize([pair], generations)

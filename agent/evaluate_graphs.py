@@ -11,6 +11,8 @@ from evaluate import (
     _entity_set,
     _relation_set,
     _load_predictions,
+    _invalid_entity_indices,
+    _validate_gold_graph,
 )
 from build_stage_data import _message
 from evaluation_identity import (
@@ -58,6 +60,7 @@ def summarize_counts(rows):
         "samples": len(rows),
         "alignment": alignment_summary([r["alignment"] for r in rows]),
         "invalid_predictions": sum(r["invalid_prediction"] for r in rows),
+        "malformed_entity_rows": sum(r["malformed_entity_rows"] for r in rows),
         "json_closure_rate": (
             1 - sum(r["invalid_prediction"] for r in rows) / len(rows) if rows else 0
         ),
@@ -93,6 +96,7 @@ def evaluate_records(
         gold = _graph(_message(record, "assistant"))
         if gold is None:
             raise ValueError(f"Invalid gold graph at {i}")
+        _validate_gold_graph(gold)
         predicted = _graph(raw)
         invalid = predicted is None
         predicted = predicted or EMPTY
@@ -123,6 +127,7 @@ def evaluate_records(
                 .route(_message(record, "user"))
                 .source_type,
                 "invalid_prediction": invalid,
+                "malformed_entity_rows": len(_invalid_entity_indices(predicted)),
                 "relation_stage_errors": relation_errors,
                 "entity": counts_metric(len(e & g), len(e - g), len(g - e)),
                 "relation": counts_metric(len(p & t), len(p - t), len(t - p)),
@@ -153,6 +158,8 @@ def evaluate_records(
             "evidence_exact": "Same triple AND normalized evidence exact match",
             "evidence_compatible": "Same triple AND one nonempty normalized evidence contains the other; a lenient span metric, NOT semantic entailment",
             "empty_set": "Precision/recall/F1 are zero when undefined; invalid predictions contribute all gold false negatives",
+            "malformed_entities": "Each malformed entity row counts as an entity FP; duplicate IDs are ambiguous and cannot bind relation endpoints. Malformed gold raises an error.",
+            "json_closure_rate": "Top-level graph JSON/container parse rate only; malformed_entity_rows and relation_stage_errors must be inspected separately. It is not raw generation protocol success.",
             "macro_relation_f1": "Mean over gold-supported relation types; zero-support predicted types remain in micro FP",
         },
     }

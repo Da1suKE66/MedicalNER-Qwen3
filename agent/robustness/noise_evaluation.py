@@ -72,6 +72,14 @@ def summarize(paired, generations):
         predictions = {}
         for j, condition in enumerate(("clean", "noisy")):
             row, generated = pair[condition], generations[2 * i + j]
+            if generated.get("id") != row["id"]:
+                raise ValueError("Stress generation ID alignment mismatch")
+            expected_digest = digest(row["prompt"].encode("utf-8"))
+            if (
+                "prompt_sha256" in generated
+                and generated["prompt_sha256"] != expected_digest
+            ):
+                raise ValueError("Stress generation prompt_sha256 alignment mismatch")
             expected, gold_errors = parse_decisions(row["completion"], row)
             found, errors = parse_decisions(generated["text"], row)
             if gold_errors:
@@ -151,7 +159,7 @@ def evaluate(args):
             ids = tokens.tolist()
             if tokenizer.pad_token_id in ids:
                 ids = ids[:ids.index(tokenizer.pad_token_id)]
-            generated = {"id": row["id"], "text": tokenizer.decode(ids, skip_special_tokens=True).strip(), "tokens": len(ids), "truncated": len(ids) >= 16000}
+            generated = {"id": row["id"], "prompt_sha256": digest(row["prompt"].encode("utf-8")), "text": tokenizer.decode(ids, skip_special_tokens=True).strip(), "tokens": len(ids), "truncated": len(ids) >= 16000}
             generations.append(generated)
             with (output / "generations.jsonl").open("a") as stream:
                 stream.write(dumps(generated) + "\n")

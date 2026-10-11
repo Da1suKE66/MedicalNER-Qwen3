@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Train one JSON-only LoRA adapter for either pipeline stage."""
+"""Replay legacy stage SFT; current relation data uses generative.train."""
 
 from __future__ import annotations
 
@@ -20,6 +20,44 @@ def _read_jsonl(path: str, limit: int | None = None) -> list[dict[str, Any]]:
     if not rows:
         raise ValueError(f"no records found in {path}")
     return rows
+
+
+def validate_legacy_training_rows(rows: list[dict[str, Any]], stage: str) -> None:
+    """Keep raw-prompt replay separate from the current relation contract.
+
+    Historical stage exports have a stage tag but no split tag. Preserve those
+    exports; an explicit non-training split is never admissible. New relation
+    formats need their corpus supervision gate and shared chat renderer.
+    """
+    from generative.supervision_guard import is_partial_row
+
+    if not rows:
+        raise ValueError("Empty legacy training data")
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ValueError("Legacy training rows must be JSON objects")
+        if is_partial_row(row) or any(key in row for key in ("pairs", "target", "output_contract")):
+            raise ValueError(
+                "Current/partial relation data must use generative.train, which "
+                "enforces the supervision gate and shared non-thinking chat template"
+            )
+        if row.get("stage") != stage:
+            raise ValueError(
+                f"Require legacy rows tagged stage={stage!r}; current relation "
+                "data must use generative.train"
+            )
+        if "split" in row and row["split"] != "train":
+            raise ValueError("Only split='train' is allowed; held-out rows cannot enter SFT")
+        for key in ("prompt", "completion"):
+            if not isinstance(row.get(key), str) or not row[key].strip():
+                raise ValueError(f"Missing/non-string legacy {key}")
+        if row["prompt"].startswith("<|im_start|>"):
+            raise ValueError("Legacy replay requires raw prompts; use generative.train for chat-rendered training")
+
+
+def validate_output_directory(path: Path) -> None:
+    if path.exists() and (not path.is_dir() or any(path.iterdir())):
+        raise ValueError("Output must be new/empty; never overwrite old checkpoints")
 
 
 class JsonlSFTDataset:
@@ -114,13 +152,19 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
+    # Fail on data/overwrite errors before importing the GPU runtime or loading
+    # a base model. The generic dataset remains shared by generative.train.
+    rows = _read_jsonl(args.data, args.limit)
+    validate_legacy_training_rows(rows, args.stage)
+    out = Path(args.output_dir)
+    validate_output_directory(out)
+
     import torch
     from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
     from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
 
     random.seed(args.seed)
     torch.manual_seed(args.seed)
-    rows = _read_jsonl(args.data, args.limit)
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, trust_remote_code=True)
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -159,7 +203,7 @@ def main() -> None:
     model.print_trainable_parameters()
 
     dataset = JsonlSFTDataset(rows, tokenizer, args.max_seq_length)
-    out = Path(args.output_dir)
+    validate_output_directory(out)
     out.mkdir(parents=True, exist_ok=True)
     training_args = TrainingArguments(
         output_dir=str(out),
@@ -197,6 +241,8 @@ def main() -> None:
         "learning_rate": args.learning_rate,
         "load_in_4bit": args.load_in_4bit,
         "seed": args.seed,
+        "prompt_template": "legacy raw prompt replay, paired with kg_agent.pipeline.TransformersBackend",
+        "split_validation": "explicit tags must be train; untagged historical stage exports retained, source disjointness not certified",
     }
     (out / "training_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(manifest, ensure_ascii=False))

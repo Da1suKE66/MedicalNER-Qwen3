@@ -55,3 +55,21 @@ python -m data_repair.verify /absolute/path/to/new_private_release
 
 数据文件仅写本地私有工作目录，目录权限700、文件600；stdout只打印聚合manifest。
 Git仅提交程序、合成测试、方案和聚合结果，不提交上述原始或修复医学记录。
+
+## 2026-10-12：证据定位策略的版本边界
+
+`release_v2` 新生成的候选版本默认使用 `unique-evidence-v1`，版本名为
+`teacher-silver-repair-v2-partial-supervision-unique-evidence-v1`。同一证据文本在
+完整原文中多次命中时，该实体对的全部关系标记为 `UNKNOWN_EVIDENCE`，原因是
+`evidence_occurrence_ambiguous`，并进入待审清单。局部窗口只保留一个命中不能
+消除完整原文的歧义；明确指定的有效 span ID 可以消除定位歧义。这只是定位门禁，
+不表示已认证医学语义。
+
+历史 V2/V3 文件保持原样，读取、结构验证不会重写旧标签、掩码或版本。显式添加
+`--evidence-policy legacy-all-occurrences-v1` 可重建历史的多位置合并策略；只能
+输出到新目录。新旧策略的训练曝光量不同，必须在实验 manifest 中区分，不能作为
+相同训练数据的精确复现。历史银标评测标签也不随训练门禁改写。
+
+Partial-row 验证现在同时核对实体 ID、规范类型、有向候选对和当前 ontology 的
+allowed-relation 表，拒绝输入类型变化后遗留的旧 allowed 列表。该检查沿用当前
+source-only ontology，不引入新的 target-type 规则，也不把 UNKNOWN 变成 NONE。

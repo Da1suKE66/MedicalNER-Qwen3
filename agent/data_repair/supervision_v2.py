@@ -9,12 +9,17 @@ from collections import Counter, defaultdict
 from copy import deepcopy
 import hashlib
 import json
+import re
 
 from generative.protocol import dumps, parse_decisions
+from kg_agent.contracts import SCHEMA_LABELS, allowed_relations, normalize_label
 
 
 CONTRACT = "pair-unknown-loss-mask-v1"
 KNOWN = {"SUPPORTED_SILVER", "SYNTHETIC_NEGATIVE"}
+LEGACY_EVIDENCE_POLICY = "legacy-all-occurrences-v1"
+UNIQUE_EVIDENCE_POLICY = "unique-evidence-v1"
+EVIDENCE_POLICIES = (UNIQUE_EVIDENCE_POLICY, LEGACY_EVIDENCE_POLICY)
 
 
 def serialize_partial(target, statuses):
@@ -45,14 +50,21 @@ def serialize_partial(target, statuses):
     return "".join(pieces), merged
 
 
-def partial_supervision(batch, graph, doc, *, blocked_pairs=(), record_blocked=False):
+def partial_supervision(batch, graph, doc, *, blocked_pairs=(), record_blocked=False,
+                        evidence_policy=UNIQUE_EVIDENCE_POLICY):
     """Preserve every valid label of one pair; quarantine an incomplete pair.
 
     No annotation means unknown. Finding one valid label never proves the
     other labels on the pair absent. Source/target IDs and evidence stay local.
+    New targets require each citation to locate uniquely in the full document,
+    even if a local window hides another occurrence. Explicit span references
+    are already disambiguated. The legacy policy is for historical replay only;
+    existing serialized rows are never changed by validation.
     """
     from .text_normalization import find_mentions
 
+    if evidence_policy not in EVIDENCE_POLICIES:
+        raise ValueError("Unsupported evidence grounding policy")
     blocked = {tuple(map(str, pair)) for pair in blocked_pairs}
     annotated = defaultdict(list)
     for edge in graph["relations"]:
@@ -81,6 +93,9 @@ def partial_supervision(batch, graph, doc, *, blocked_pairs=(), record_blocked=F
                         spans = {value}
                     else:
                         hits = find_mentions(value, doc.raw)
+                        if len(hits) > 1 and evidence_policy == UNIQUE_EVIDENCE_POLICY:
+                            reason = "evidence_occurrence_ambiguous"
+                            break
                         spans = {s.id for s in doc.spans for a, b in hits
                                  if s.start < b and a < s.end}
                     if not spans:
@@ -108,14 +123,82 @@ def partial_supervision(batch, graph, doc, *, blocked_pairs=(), record_blocked=F
         stats["multilabel_pairs"] += len(relations) > 1
     target = {"decisions": decisions}
     completion, ignored = serialize_partial(target, statuses)
-    return {"target": target, "completion": completion, "pair_supervision": statuses,
-            "unknown_reasons": reasons, "loss_mask_spans": ignored,
-            "loss_mask_contract": CONTRACT, "eligible_for_rl": False}, dict(stats)
+    result = {"target": target, "completion": completion, "pair_supervision": statuses,
+              "unknown_reasons": reasons, "loss_mask_spans": ignored,
+              "loss_mask_contract": CONTRACT, "eligible_for_rl": False}
+    if evidence_policy != LEGACY_EVIDENCE_POLICY:
+        result["evidence_grounding_policy"] = evidence_policy
+    return result, dict(stats)
+
+
+def _validate_input_tables(row):
+    """Check the actual source ontology without silently tightening its range.
+
+    Prompt/row equality alone cannot detect stale allowed lists after an entity
+    type changes. Keep this independent of augmentation's train-only validator
+    because partial rows may be tune data or already chat-rendered.
+    """
+    entities, pairs, spans = (row.get(key) for key in ("entities", "pairs", "spans"))
+    if any(not isinstance(value, list) or not value for value in (entities, pairs, spans)):
+        raise ValueError("Nonempty entity/pair/span tables required")
+    by_id, local_ids = {}, set()
+    for entity in entities:
+        if not isinstance(entity, dict):
+            raise ValueError("Invalid entity table")
+        eid, local = entity.get("id"), entity.get("entity_id")
+        if not isinstance(eid, str) or not eid or eid in by_id:
+            raise ValueError("Duplicate or invalid upstream entity ID")
+        if (not isinstance(local, str) or not re.fullmatch(r"E\d{3,}", local)
+                or local in local_ids):
+            raise ValueError("Duplicate or invalid local entity ID")
+        if not isinstance(entity.get("name"), str) or not entity["name"].strip():
+            raise ValueError("Empty entity name")
+        label = entity.get("label")
+        if not isinstance(label, str) or label not in SCHEMA_LABELS or normalize_label(label) != label:
+            raise ValueError("Noncanonical entity type")
+        by_id[eid] = entity
+        local_ids.add(local)
+    endpoints, directed, pids = set(), set(), set()
+    for pair in pairs:
+        if not isinstance(pair, dict):
+            raise ValueError("Invalid pair table")
+        source, target, pid = (pair.get(key) for key in ("source", "target", "pair_id"))
+        if (not isinstance(source, str) or not isinstance(target, str)
+                or source not in by_id or target not in by_id or source == target):
+            raise ValueError("Invalid directed pair endpoints")
+        if (source, target) in directed:
+            raise ValueError("Duplicate directed pair")
+        if not isinstance(pid, str) or not re.fullmatch(r"P\d{4,}", pid) or pid in pids:
+            raise ValueError("Duplicate or invalid pair ID")
+        expected = list(allowed_relations(by_id[source]["label"], by_id[target]["label"]))
+        if not expected or pair.get("allowed") != expected:
+            raise ValueError("Stale allowed_relations for entity types")
+        endpoints.update((source, target))
+        directed.add((source, target))
+        pids.add(pid)
+    if endpoints != set(by_id):
+        raise ValueError("Unused or missing prompt entities")
+    span_ids = []
+    for span in spans:
+        if (not isinstance(span, dict) or not isinstance(span.get("span_id"), str)
+                or not span["span_id"] or not isinstance(span.get("text"), str)):
+            raise ValueError("Invalid source span")
+        span_ids.append(span["span_id"])
+    if len(set(span_ids)) != len(span_ids):
+        raise ValueError("Duplicate source span ID")
+    if "original_spans" in row:
+        originals = row["original_spans"]
+        if (not isinstance(originals, dict) or set(originals) != set(span_ids)
+                or any(not isinstance(text, str) for text in originals.values())):
+            raise ValueError("Original/source span mapping mismatch")
 
 
 def validate_partial_row(row):
     from robustness.entity_noise import prompt_payload, protocol_prefix
 
+    _validate_input_tables(row)
+    if row.get("evidence_grounding_policy", LEGACY_EVIDENCE_POLICY) not in EVIDENCE_POLICIES:
+        raise ValueError("Unsupported evidence grounding policy")
     # Validate the input too: SFT must not accept hidden gold/provenance columns
     # inserted into its JSON payload or prose. Only the shared deterministic
     # input projection, raw or exactly chat-rendered, is admissible.

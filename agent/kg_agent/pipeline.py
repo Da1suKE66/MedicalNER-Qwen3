@@ -41,7 +41,9 @@ class RelationClassifierBackend(Protocol):
 @dataclass(frozen=True)
 class PipelineConfig:
     max_entity_candidates: int = 64
-    max_pairs_per_chunk: int = 128
+    # 0 means all candidates; relation_batch_size controls prompt size.
+    # A positive cap is a legacy diagnostic and is reported in the trace.
+    max_pairs_per_chunk: int = 0
     max_new_tokens_entities: int = 1024
     max_new_tokens_relations: int = 768
     max_spans_per_chunk: int = 16
@@ -49,6 +51,7 @@ class PipelineConfig:
     entity_mention_copy: bool = False
     relation_emit_none: bool = False
     relation_batch_size: int = 128
+    relation_multilabel: bool = False
     assembler: AssemblerConfig = field(default_factory=AssemblerConfig)
 
 
@@ -114,7 +117,7 @@ def _candidate_pairs(
                     "allowed_relations": list(allowed),
                 }
             )
-            if len(pairs) >= max_pairs:
+            if max_pairs > 0 and len(pairs) >= max_pairs:
                 return pairs
     return pairs
 
@@ -194,7 +197,13 @@ class TwoStageKGAgent:
 
         for chunk_index, chunk in enumerate(chunks if self.relation_classifier is None else []):
             active_span_ids = {span.id for span in chunk}
-            pairs = _candidate_pairs(entities, active_span_ids, self.config.max_pairs_per_chunk)
+            all_pairs = _candidate_pairs(entities, active_span_ids, 0)
+            cap = self.config.max_pairs_per_chunk
+            pairs = all_pairs[:cap] if cap > 0 else all_pairs
+            call_trace = trace["chunks"][chunk_index]
+            call_trace["candidate_pairs"] = len(all_pairs)
+            call_trace["submitted_pairs"] = len(pairs)
+            call_trace["omitted_pairs_by_explicit_cap"] = len(all_pairs) - len(pairs)
             if not pairs:
                 continue
             rows = [
@@ -218,6 +227,7 @@ class TwoStageKGAgent:
                     pair_batch,
                     _span_rows(document, chunk),
                     emit_none=self.config.relation_emit_none,
+                    multilabel=self.config.relation_multilabel,
                 )
                 try:
                     response = self.relation_backend.generate(

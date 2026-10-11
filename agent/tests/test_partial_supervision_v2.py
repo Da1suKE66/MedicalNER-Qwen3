@@ -9,10 +9,13 @@ from types import SimpleNamespace
 import pytest
 
 from data_repair.supervision_v2 import (
+    LEGACY_EVIDENCE_POLICY, UNIQUE_EVIDENCE_POLICY,
     inject_contract_negative, masked_token_labels, partial_supervision,
     serialize_partial, validate_partial_row,
 )
 from generative.protocol import ProtocolConfig, build_batches
+from robustness.entity_noise import prompt_payload, protocol_prefix
+from generative.protocol import dumps
 from generative.train import validate_training_rows
 
 
@@ -191,3 +194,83 @@ def test_exact_chat_rendering_accepted_but_metadata_in_prose_is_not():
     row["prompt"] = "gold labels are ...\n" + raw
     with pytest.raises(ValueError, match="unexpected fields"):
         validate_partial_row(row)
+
+
+@pytest.mark.parametrize("mutation, expected", [
+    (lambda r: next(e for e in r["entities"] if e["id"] == "S").update(label="Medication"),
+     "Stale allowed_relations"),
+    (lambda r: r["entities"][0].update(label="not-an-entity-type"), "Noncanonical"),
+    (lambda r: r["entities"][0].update(name=""), "Empty entity name"),
+    (lambda r: r["entities"][1].update(entity_id=r["entities"][0]["entity_id"]), "local entity ID"),
+    (lambda r: r["pairs"][0]["allowed"].append("invented_relation"), "Stale allowed_relations"),
+    (lambda r: r["pairs"][0].update(target=r["pairs"][0]["source"]), "endpoints"),
+    (lambda r: r["pairs"][1].update(source=r["pairs"][0]["source"], target=r["pairs"][0]["target"]),
+     "Duplicate directed pair"),
+    (lambda r: r["spans"].append(copy.deepcopy(r["spans"][0])), "Duplicate source span"),
+])
+def test_input_tables_rejected_even_when_prompt_is_synchronized(mutation, expected):
+    row, _, _ = example()
+    mutation(row)
+    row["prompt"] = protocol_prefix() + "\n" + dumps(prompt_payload(row)) + "\n"
+    with pytest.raises(ValueError, match=expected):
+        validate_partial_row(row)
+
+
+def ambiguous_example():
+    text = ("Feature A is described. Condition B is described. Feature A is described. "
+            "Condition C is a subtype of Condition B.")
+    nodes = [{"id": "S", "name": "Feature A", "label": "Symptom"},
+             {"id": "D", "name": "Condition B", "label": "Disease"},
+             {"id": "X", "name": "Condition C", "label": "Disease"}]
+    graph = {"entities": nodes, "relations": [
+        {"source": "S", "target": "D", "relation": "is_core_symptom_of", "evidence": "Feature A is described."},
+        {"source": "X", "target": "D", "relation": "subtype_of", "evidence": "Condition C is a subtype of Condition B."}]}
+    batches, doc, _ = build_batches(text, nodes, ProtocolConfig(), sample_id=1)
+    return batches[0], graph, doc
+
+
+def test_ambiguous_occurrence_masks_whole_multilabel_pair_and_preserves_other_pair():
+    batch, graph, doc = ambiguous_example()
+    graph["relations"].insert(0, {"source": "S", "target": "D", "relation": "supports_diagnosis_of",
+                                  "evidence": doc.spans[0].id})
+    before = copy.deepcopy((batch, graph, doc))
+    partial, stats = partial_supervision(batch, graph, doc)
+    pid = next(p["pair_id"] for p in batch["pairs"] if (p["source"], p["target"]) == ("S", "D"))
+    assert partial["pair_supervision"][pid] == "UNKNOWN_EVIDENCE"
+    assert partial["unknown_reasons"][pid] == "evidence_occurrence_ambiguous"
+    assert next(d for d in partial["target"]["decisions"] if d["pair_id"] == pid)["relations"] == []
+    assert stats["positive_edges"] == stats["SUPPORTED_SILVER"] == 1
+    assert partial["evidence_grounding_policy"] == UNIQUE_EVIDENCE_POLICY
+    row = {**batch, **partial}
+    assert validate_partial_row(row)
+    _, labels = masked_token_labels(row, Tokenizer())
+    for a, b in row["loss_mask_spans"]:
+        assert all(label == -100 for label in labels[a:b])
+    assert (batch, graph, doc) == before
+    legacy, legacy_stats = partial_supervision(batch, graph, doc, evidence_policy=LEGACY_EVIDENCE_POLICY)
+    assert legacy_stats["positive_edges"] == 3
+    assert "evidence_grounding_policy" not in legacy
+    # Reading old rows neither rejects nor silently rewrites their old targets.
+    assert validate_partial_row({**batch, **legacy})
+
+
+def test_local_context_cannot_make_globally_ambiguous_evidence_unique():
+    batch, graph, doc = ambiguous_example()
+    batch["spans"] = [s for s in batch["spans"] if s["span_id"] != doc.spans[2].id]
+    partial, _ = partial_supervision(batch, graph, doc)
+    pid = next(p["pair_id"] for p in batch["pairs"] if (p["source"], p["target"]) == ("S", "D"))
+    assert partial["unknown_reasons"][pid] == "evidence_occurrence_ambiguous"
+
+
+def test_explicit_span_id_disambiguates_repeated_text():
+    batch, graph, doc = ambiguous_example()
+    graph["relations"][0]["evidence"] = doc.spans[0].id
+    partial, stats = partial_supervision(batch, graph, doc)
+    assert stats["SUPPORTED_SILVER"] == 2
+    assert validate_partial_row({**batch, **partial})
+
+
+def test_unknown_evidence_policy_is_rejected():
+    batch, graph, doc = ambiguous_example()
+    with pytest.raises(ValueError, match="evidence grounding policy"):
+        partial_supervision(batch, graph, doc, evidence_policy="typo")

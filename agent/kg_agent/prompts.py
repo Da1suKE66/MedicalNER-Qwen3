@@ -51,6 +51,7 @@ def build_relation_prompt(
     spans: list[dict[str, str]],
     *,
     emit_none: bool = False,
+    multilabel: bool = False,
 ) -> str:
     def short_name(value: str) -> str:
         value = str(value)
@@ -67,7 +68,15 @@ def build_relation_prompt(
     span_text = "\n".join(
         f"{span['span_id']}: {span['text']}" for span in spans
     )
-    if emit_none:
+    if multilabel:
+        decision_rules = """For each pair, return every distinct explicitly supported relation from its allowed list, with one output entry per relation. A pair can have multiple relations; do not choose only one.
+Use the same pair_id on entries belonging to that pair. Evidence must be one source span ID supporting that particular relation. Preserve input pair order and do not invent endpoints or relation names."""
+        decision_rules += (
+            "\nDo not omit pairs. If no allowed relation is supported, return exactly one NONE entry with empty evidence_span_id."
+            if emit_none else
+            "\nOmit unsupported pairs entirely; do not output NONE entries. An empty relations list is valid."
+        )
+    elif emit_none:
         decision_rules = """For every pair, return exactly one decision. Use relation `NONE` when the source spans do not explicitly support any allowed relation; use an empty evidence_span_id for NONE.
 Do not omit pairs. The order and pair IDs must be preserved."""
     else:

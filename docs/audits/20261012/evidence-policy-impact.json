@@ -1,0 +1,53 @@
+{
+  "historical_partial_rows_validated": {
+    "data/repaired_v2/source_order/train.jsonl": 1172,
+    "data/repaired_v2/short/train.jsonl": 3344,
+    "data/repaired_v2/synthetic_negative_auxiliary/train.jsonl": 135,
+    "data/repaired_v2/local/train.jsonl": 1322,
+    "data/repaired_v2/base/train.jsonl": 1333,
+    "data/repaired_v2/source_order/tune.jsonl": 315,
+    "data/repaired_v2/short/tune.jsonl": 435,
+    "data/repaired_v2/local/tune.jsonl": 321,
+    "data/repaired_v2/base/tune.jsonl": 325,
+    "data/v3/V3_missing_only.jsonl": 1845,
+    "data/v3/V3_grounded_none.jsonl": 1845
+  },
+  "historical_bytes_rewritten": false,
+  "policy": "unique-evidence-v1",
+  "impact": {
+    "train": {
+      "legacy_replay_equal": true,
+      "old_rows": 1333,
+      "new_rows": 1323,
+      "old_supervised_labels": 4785,
+      "new_supervised_labels": 4635,
+      "removed_labels": 150,
+      "new_labels": 0,
+      "status_and_reason_counts": {
+        "UNKNOWN_UNANNOTATED": 13941,
+        "SUPPORTED_SILVER": 4615,
+        "silver_absence_is_not_negative": 13941,
+        "UNKNOWN_EVIDENCE": 128,
+        "evidence_occurrence_ambiguous": 128,
+        "UNKNOWN_REVIEW": 2,
+        "semantic_or_source_review": 2
+      }
+    },
+    "tune": {
+      "legacy_replay_equal": true,
+      "old_rows": 325,
+      "new_rows": 297,
+      "old_supervised_labels": 482,
+      "new_supervised_labels": 444,
+      "removed_labels": 38,
+      "new_labels": 0,
+      "status_and_reason_counts": {
+        "SUPPORTED_SILVER": 441,
+        "UNKNOWN_UNANNOTATED": 4185,
+        "silver_absence_is_not_negative": 4185,
+        "UNKNOWN_EVIDENCE": 8,
+        "evidence_occurrence_ambiguous": 8
+      }
+    }
+  }
+}

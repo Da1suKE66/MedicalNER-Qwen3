@@ -422,6 +422,7 @@ def parse_decisions(text, batch):
     visible = {s["span_id"] for s in batch["spans"]}
     seen = set()
     order = []
+    labels_by_pair = {}
     for decision in data["decisions"]:
         if not isinstance(decision, dict) or set(decision) != {"pair_id", "relations"}:
             errors.append("invalid_decision")
@@ -432,13 +433,15 @@ def parse_decisions(text, batch):
             continue
         if pid in seen:
             errors.append("duplicate_pair")
-            continue
-        seen.add(pid)
-        order.append(pid)
+            # Retain new emitted edges for scoring: a repeated decision must
+            # not hide hallucinated relations. Identical triples still dedupe.
+        else:
+            seen.add(pid)
+            order.append(pid)
         if not isinstance(decision["relations"], list):
             errors.append("invalid_relations")
             continue
-        labels = set()
+        labels = labels_by_pair.setdefault(pid, set())
         for edge in decision["relations"]:
             if not isinstance(edge, dict) or set(edge) != {
                 "relation",
