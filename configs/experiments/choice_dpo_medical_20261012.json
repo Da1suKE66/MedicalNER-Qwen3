@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "python": "/root/venvs/medicalner/bin/python",
+  "code_root": "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code",
+  "code_sha256": "ad8be8f5488d7ca999e310b6270e82ccf7a2fbc41c362f649c50f9fa5a26bd11",
+  "output_dir": "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1",
+  "deadline": "2026-10-12T11:35:00Z",
+  "wait_for_status": "/workspace/medicalner/20261012/choice_dpo/queue_v1/status.json",
+  "cuda_visible_devices": "0",
+  "lock_dir": "/tmp/medicalner-gpu-locks",
+  "expected_sha256": {
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation/sample_indices.json": "945c27b3d91298a1aca9a58063384555cf530358b1bbd5678233bb59901235ae",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation/matrix.json": "444ab3b0228855c6237d822c6ae234f5091461c77b6b784dd2ab5a47879b751a",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation/manifest.json": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation/records.json": "6eb66b03eefacce0d330eb71bd505fd8a659cdadb32e6b5d1d764df041c64123",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/schemas/current.json": "4c073b991b99210907ef458615bec00ce3123ff0d9411d35ebd332f965c829ab",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/scripts/run_rapid_queue.py": "465a000fb35ecb596c708875c0ac8b7f27d51335abf47199af042d98af3be58b",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/schemas/v3.0.0/schema.json": "b8fb4b08e7ebdb17fa46357e5f4d76d5defdc5a8eaa5295ec792b1312d5dec45",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/schemas/v2.0.0/schema.json": "e153e4ef2919ff30c644662d8883160e4c62e9259359b2df59bd876fb0096b77",
+    "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/schemas/v2.0.0/conflicts.json": "df81d27008f865ba439642e8a6fb6c436519bfd780352e3bf37466517a849d69"
+  },
+  "jobs": [
+    {
+      "name": "parent_eval",
+      "kind": "choice_evaluation",
+      "output": "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1/parent_eval",
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/agent/evaluate_choice_medical.py",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation",
+        "--adapter",
+        "/workspace/medicalner/20261012/choice_pipeline/train_queue_v1/train16/final",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1/parent_eval",
+        "--pairs-per-batch",
+        "4",
+        "--max-input-tokens",
+        "6144",
+        "--max-new-tokens",
+        "512",
+        "--max-seconds",
+        "570"
+      ],
+      "timeout_seconds": 600,
+      "minimum_start_seconds": 240,
+      "expected_samples": 12,
+      "required_files": [
+        "metrics.json",
+        "predictions.jsonl",
+        "generations.jsonl",
+        "run_manifest.json"
+      ]
+    },
+    {
+      "name": "sft_eval",
+      "kind": "choice_evaluation",
+      "output": "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1/sft_eval",
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/agent/evaluate_choice_medical.py",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation",
+        "--adapter",
+        "/workspace/medicalner/20261012/choice_dpo/queue_v1/sft32/final",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1/sft_eval",
+        "--pairs-per-batch",
+        "4",
+        "--max-input-tokens",
+        "6144",
+        "--max-new-tokens",
+        "512",
+        "--max-seconds",
+        "570"
+      ],
+      "timeout_seconds": 600,
+      "minimum_start_seconds": 240,
+      "expected_samples": 12,
+      "required_files": [
+        "metrics.json",
+        "predictions.jsonl",
+        "generations.jsonl",
+        "run_manifest.json"
+      ]
+    },
+    {
+      "name": "dpo_eval",
+      "kind": "choice_evaluation",
+      "output": "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1/dpo_eval",
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/code/agent/evaluate_choice_medical.py",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/choice_dpo/medical_release_v1/evaluation",
+        "--adapter",
+        "/workspace/medicalner/20261012/choice_dpo/queue_v1/dpo32/final",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/choice_dpo/medical_queue_v1/dpo_eval",
+        "--pairs-per-batch",
+        "4",
+        "--max-input-tokens",
+        "6144",
+        "--max-new-tokens",
+        "512",
+        "--max-seconds",
+        "570"
+      ],
+      "timeout_seconds": 600,
+      "minimum_start_seconds": 240,
+      "expected_samples": 12,
+      "required_files": [
+        "metrics.json",
+        "predictions.jsonl",
+        "generations.jsonl",
+        "run_manifest.json"
+      ]
+    }
+  ]
+}
