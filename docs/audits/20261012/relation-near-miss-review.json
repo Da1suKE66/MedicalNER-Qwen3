@@ -1,0 +1,130 @@
+{
+  "version": "relation-near-miss-review-v1",
+  "counts_sha256": "83ac213ba8f39c58fda9c8e19b8941ee4d15c6203799a2da76e4cdab0ea71329",
+  "scope": {
+    "unique_medical_samples": 12,
+    "gold_relations_per_run": 40,
+    "runs": 6,
+    "latest_runs": [
+      "choice_parent",
+      "choice_sft32",
+      "choice_dpo32"
+    ],
+    "historical_runs": [
+      "legacy_grounded64_source16",
+      "legacy_grounded64_hash16",
+      "legacy_dpo16_hash16"
+    ],
+    "same_samples_reused_across_runs": true,
+    "full_pipeline": false,
+    "review_authority": "Agent review of supplied source text and schema; not clinical expert adjudication"
+  },
+  "latest_findings": {
+    "confirmed_synonym_recoveries_by_run": {
+      "choice_parent": 0,
+      "choice_sft32": 0,
+      "choice_dpo32": 0
+    },
+    "lexical_recoveries_at_0_80_by_run": {
+      "choice_parent": 0,
+      "choice_sft32": 0,
+      "choice_dpo32": 0
+    },
+    "lexical_recoveries_at_0_90_by_run": {
+      "choice_parent": 0,
+      "choice_sft32": 0,
+      "choice_dpo32": 0
+    },
+    "entity_tables_equal_to_gold": 36,
+    "interpretation": "No observed score loss attributable to generated alternative entity names in this oracle-entity subset. Same-label/type lexical scans and separate source review found no confirmed synonym FP/FN recovery."
+  },
+  "historical_findings": {
+    "false_lexical_recovery_sample_index": 43,
+    "affected_runs": [
+      "legacy_grounded64_source16",
+      "legacy_grounded64_hash16",
+      "legacy_dpo16_hash16"
+    ],
+    "character_similarity_at_both_endpoints": 0.8235294117647058,
+    "semantic_review": "Parent and subtype endpoints were reversed. Shared words must not turn the incorrect directed subtype edge into a true positive.",
+    "source_order_run_strict_f1": 0.10727969348659004,
+    "source_order_run_unjustified_0_80_f1": 0.11494252873563218,
+    "pending_relation_semantics": {
+      "sample_index": 127,
+      "relation": "differentiates_from",
+      "reverse_matches_to_unmatched_gold_in_source_order_run": 3,
+      "decision": "Pending an explicit ontology decision and source adjudication. Not counted as accepted TP; schema does not declare symmetry."
+    }
+  },
+  "candidate_coverage": {
+    "unreachable_gold_relations": 14,
+    "samples": [
+      {
+        "sample_index": 34,
+        "ungrounded_entity_count": 1,
+        "gold_relations_touching_ungrounded_entities": 9
+      },
+      {
+        "sample_index": 36,
+        "ungrounded_entity_count": 1,
+        "gold_relations_touching_ungrounded_entities": 3
+      },
+      {
+        "sample_index": 122,
+        "ungrounded_entity_count": 1,
+        "gold_relations_touching_ungrounded_entities": 2
+      }
+    ],
+    "interpretation": "Canonical qualified disease titles did not ground to source. Requires entity/title-to-mention alignment review before candidate generation. A permissive final scorer cannot create missing predictions; removing qualifiers is not a verified alias rule."
+  },
+  "review_categories": [
+    {
+      "sample_index": 22,
+      "category": "Negated criterion is not equivalent to an affirmative symptom concept",
+      "accepted_extra_tp": 0
+    },
+    {
+      "sample_index": 34,
+      "category": "Parallel symptom wording can inform grounding; core versus associated relations remain distinct",
+      "accepted_extra_tp": 0
+    },
+    {
+      "sample_index": 36,
+      "category": "Generic disease and qualified subtype are not synonyms",
+      "accepted_extra_tp": 0
+    },
+    {
+      "sample_index": 43,
+      "category": "Parent/subtype reversal",
+      "accepted_extra_tp": 0
+    },
+    {
+      "sample_index": 48,
+      "category": "Differential diagnosis versus hierarchical membership",
+      "accepted_extra_tp": 0
+    },
+    {
+      "sample_index": 56,
+      "category": "Silver causality strength needs review; current reverse membership edge is not thereby correct",
+      "accepted_extra_tp": 0
+    },
+    {
+      "sample_index": 127,
+      "category": "Potential symmetry convention in historical outputs requires separate adjudication",
+      "accepted_extra_tp": 0
+    }
+  ],
+  "evaluation_policy": {
+    "strict_scores_unchanged": true,
+    "production_scorer_modified": false,
+    "gold_modified": false,
+    "new_training": false,
+    "diagnostic_matching": "Maximum one-to-one within sample after locking exact TP; no prediction/gold reused",
+    "next_metric_design": "Keep strict F1. A separate equivalence metric requires a frozen, source-reviewed alias/inverse/symmetry policy, preservation of type, negation and qualifiers, and independent validation."
+  },
+  "verification": {
+    "near_miss_tests_passed": 8,
+    "all_six_strict_counts_reproduced": true,
+    "all_diagnostic_gold_and_prediction_denominators_preserved": true
+  }
+}
