@@ -6,8 +6,10 @@
 
 - 原P0 `grounded_s42` 已完成64步，权重变化、保存与重载验收通过。adapter位于 `/workspace/medicalner/20261012/pilot/grounded_s42/train/final`。
 - 原P0的 `base-only-tune` 因用户新时限要求主动中断；原队列status为failed/signal15，另有 `pilot/replan_for_six_hour_screen.json` 说明。这不是模型训练失败，也不是完整tune结果。完整130条和压力评测仍待后续补齐；已生成raw_stream保留。
-- `missing64` 使用原冻结数据、相同64步和全部训练参数单独运行，输出 `/workspace/medicalner/20261012/rapid/missing64`；14:39核验已记录30步，无错误。
-- 快速队列已创建并验证，等待missing64完成后取得GPU锁，运行15个有限阶段。配置：[rapid_screen_20261012.json](../configs/experiments/rapid_screen_20261012.json)。冻结快照 `rapid/snapshot_v1`，结果 `rapid/screen_v1`。当前是已排队，不代表各阶段已完成。
+- `missing64` 使用原冻结数据、相同64步和全部训练参数完成训练，权重更新、保存与重载验收通过；耗时1673.8秒，loss0.07989（不是评测成绩）。输出 `/workspace/medicalner/20261012/rapid/missing64`，adapter指纹 `4ad1271d47f3093f9e4278edd3258467c988939c8721c55dc473a0a5da1dc084`。
+- 原快速快照v1漏带 `schemas/v2.0.0/schema.json`，三组医疗评测在生成预测前失败。队列已主动停止；DPO零步导出完成，刚开始的DPO16中断。失败日志、状态与产物保留在 `rapid/screen_v1`，不能计为有效评测。
+- 补齐schema并单独校验SHA后的配置为 [rapid_screen_20261012_v2.json](../configs/experiments/rapid_screen_20261012_v2.json)，冻结快照 `rapid/snapshot_v2`，结果 `rapid/screen_v2`。增加从实际解压快照隔离导入的CPU预检，覆盖四种医疗条件、机械任务和训练数据。实验数据、模型、顺序、超参及截止时间不变；v1配置继续留存用于复现失败。
+- v2本机及服务器预检均通过，队列已重启并写出首条真实生成记录。预检脚本 [validate_rapid_snapshot.py](../scripts/validate_rapid_snapshot.py) 有4项回归测试，收据 [rapid-snapshot-v2-preflight.json](audits/20261012/rapid-snapshot-v2-preflight.json) 仅验证CPU数据与解码契约，不是模型效果。统计报告脚本的12项测试与预检4项测试联合通过。
 - 队列硬截止19:35，留45分钟给下载、指标复算和结论整理；20:20前提供完成/失败/未完成清单。阶段超时保留数据、不排名；依赖失败则明确跳过，独立阶段继续。没有数据支撑的方向写证据不足，不赶时间造结论。
 - 本任务15分钟一次的有限自动跟进已创建（id `ner`），只处理这轮筛选，截止后报告并暂停；不是无限期P0—P6自动训练。本机Codex调度需可用，服务器tmux队列独立运行。
 
@@ -56,13 +58,13 @@
 
 独立复算工具为 [report_rapid_screen.py](../scripts/report_rapid_screen.py)，另有12项专项测试通过。医疗预测按原始身份和全部gold逐样本集合计数，同时检查条件完成状态、原始生成数量、文件SHA、解码预算、截断数和规则删除TP/FP。机械偏好单独成表。训练报告把记录到的实际曝光与预期单遍计数分开；运行时未分别记录的正负类别实际曝光保持空值。
 
-将服务器 `rapid/screen_v1` 的状态、运行清单和预测结果同步至本机私有工作区后，在仓库根目录执行（不要把逐条预测或原文提交到GitHub）：
+将服务器 `rapid/screen_v2` 的状态、运行清单和预测结果同步至本机私有工作区后，在仓库根目录执行（不要把逐条预测或原文提交到GitHub）：
 
 ```bash
 ../.venv-audit/bin/python scripts/report_rapid_screen.py \
-  --root ../audit_work/rapid_20261012/collected/screen_v1 \
+  --root ../audit_work/rapid_20261012/collected/screen_v2 \
   --screen-dir ../audit_work/rapid_20261012/evaluation \
-  --queue-config ../audit_work/rapid_20261012/queue_v1.json \
+  --queue-config ../audit_work/rapid_20261012/queue_v2.json \
   --mechanical-gold ../audit_work/rapid_20261012/rl/mechanical_holdout_records.json \
   --training-manifest ../audit_work/rapid_20261012/data/manifest.json \
   --output-prefix ../audit_work/rapid_20261012/report
