@@ -1,0 +1,572 @@
+{
+  "observed_at": "2026-10-12T07:29:03+00:00",
+  "scope": "six_condition_oracle_subset_not_final_quality",
+  "source_manifest_sha256": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+  "denominators": {
+    "medical_samples": 12,
+    "medical_gold_triples": 40,
+    "medical_candidate_pairs": 240,
+    "candidate_covered_gold_triples_by_condition": {
+      "full_hash16": 26,
+      "full_source16": 26,
+      "full_hash4": 26,
+      "local_hash16": 26
+    }
+  },
+  "verified_conditions": [
+    {
+      "job": "grounded64_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 175,
+        "fn": 31,
+        "precision": 0.04891304347826087,
+        "recall": 0.225,
+        "f1": 0.08035714285714286
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 11,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 236.32804829900124,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        }
+      }
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "full_source16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 14,
+        "fp": 207,
+        "fn": 26,
+        "precision": 0.06334841628959276,
+        "recall": 0.35,
+        "f1": 0.10727969348659004
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 5,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 5,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 236.5286800440008,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 111,
+          "relation": {
+            "tp": 14,
+            "fp": 96,
+            "fn": 26,
+            "precision": 0.12727272727272726,
+            "recall": 0.35,
+            "f1": 0.18666666666666668
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 207,
+            "fn": 26,
+            "precision": 0.06334841628959276,
+            "recall": 0.35,
+            "f1": 0.10727969348659004
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 207,
+            "fn": 26,
+            "precision": 0.06334841628959276,
+            "recall": 0.35,
+            "f1": 0.10727969348659004
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 111,
+          "relation": {
+            "tp": 14,
+            "fp": 96,
+            "fn": 26,
+            "precision": 0.12727272727272726,
+            "recall": 0.35,
+            "f1": 0.18666666666666668
+          }
+        }
+      }
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "full_hash4",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 176,
+        "fn": 30,
+        "precision": 0.053763440860215055,
+        "recall": 0.25,
+        "f1": 0.08849557522123894
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 64,
+      "truncated_batches": 0,
+      "parse_error_batches": 20,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 160.8816426869962,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 99,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 176,
+            "fn": 30,
+            "precision": 0.053763440860215055,
+            "recall": 0.25,
+            "f1": 0.08849557522123894
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 176,
+            "fn": 30,
+            "precision": 0.053763440860215055,
+            "recall": 0.25,
+            "f1": 0.08849557522123894
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 99,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        }
+      }
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "local_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 160,
+        "fn": 30,
+        "precision": 0.058823529411764705,
+        "recall": 0.25,
+        "f1": 0.09523809523809523
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 8,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 11,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 215.36433649999526,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 83,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 160,
+            "fn": 30,
+            "precision": 0.058823529411764705,
+            "recall": 0.25,
+            "f1": 0.09523809523809523
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 160,
+            "fn": 30,
+            "precision": 0.058823529411764705,
+            "recall": 0.25,
+            "f1": 0.09523809523809523
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 83,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        }
+      }
+    },
+    {
+      "job": "missing64_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 183,
+        "fn": 30,
+        "precision": 0.05181347150259067,
+        "recall": 0.25,
+        "f1": 0.08583690987124463
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 10,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 249.2430961699938,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 110,
+          "relation": {
+            "tp": 10,
+            "fp": 73,
+            "fn": 30,
+            "precision": 0.12048192771084337,
+            "recall": 0.25,
+            "f1": 0.16260162601626016
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 183,
+            "fn": 30,
+            "precision": 0.05181347150259067,
+            "recall": 0.25,
+            "f1": 0.08583690987124463
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 183,
+            "fn": 30,
+            "precision": 0.05181347150259067,
+            "recall": 0.25,
+            "f1": 0.08583690987124463
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 110,
+          "relation": {
+            "tp": 10,
+            "fp": 73,
+            "fn": 30,
+            "precision": 0.12048192771084337,
+            "recall": 0.25,
+            "f1": 0.16260162601626016
+          }
+        }
+      }
+    },
+    {
+      "job": "base_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 327,
+        "fn": 30,
+        "precision": 0.02967359050445104,
+        "recall": 0.25,
+        "f1": 0.05305039787798409
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 2,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 3,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 313.8545755380037,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 123,
+          "relation": {
+            "tp": 10,
+            "fp": 204,
+            "fn": 30,
+            "precision": 0.04672897196261682,
+            "recall": 0.25,
+            "f1": 0.07874015748031496
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 327,
+            "fn": 30,
+            "precision": 0.02967359050445104,
+            "recall": 0.25,
+            "f1": 0.05305039787798409
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 327,
+            "fn": 30,
+            "precision": 0.02967359050445104,
+            "recall": 0.25,
+            "f1": 0.05305039787798409
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 123,
+          "relation": {
+            "tp": 10,
+            "fp": 204,
+            "fn": 30,
+            "precision": 0.04672897196261682,
+            "recall": 0.25,
+            "f1": 0.07874015748031496
+          }
+        }
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "job": "grounded64_screen",
+      "condition": "full_hash16",
+      "errors": {
+        "unknown_relation": 11,
+        "invalid_json": 4,
+        "duplicate_pair": 1
+      },
+      "batches": 22,
+      "generated_tokens": 7689,
+      "input_tokens": 33809,
+      "seconds": 236.32804829900124
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "full_source16",
+      "errors": {
+        "unknown_relation": 2,
+        "invalid_json": 2,
+        "duplicate_pair": 1
+      },
+      "batches": 22,
+      "generated_tokens": 7749,
+      "input_tokens": 33879,
+      "seconds": 236.5286800440008
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "full_hash4",
+      "errors": {
+        "invalid_json": 16,
+        "unknown_relation": 3,
+        "duplicate_pair": 6
+      },
+      "batches": 64,
+      "generated_tokens": 8123,
+      "input_tokens": 59998,
+      "seconds": 160.8816426869962
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "local_hash16",
+      "errors": {
+        "unknown_relation": 11,
+        "invalid_json": 3,
+        "duplicate_pair": 3
+      },
+      "batches": 22,
+      "generated_tokens": 7254,
+      "input_tokens": 31694,
+      "seconds": 215.36433649999526
+    },
+    {
+      "job": "missing64_screen",
+      "condition": "full_hash16",
+      "errors": {
+        "unknown_relation": 7,
+        "invalid_json": 4,
+        "duplicate_pair": 3
+      },
+      "batches": 22,
+      "generated_tokens": 7880,
+      "input_tokens": 33809,
+      "seconds": 249.2430961699938
+    },
+    {
+      "job": "base_screen",
+      "condition": "full_hash16",
+      "errors": {
+        "unknown_relation": 11
+      },
+      "batches": 22,
+      "generated_tokens": 15582,
+      "input_tokens": 33809,
+      "seconds": 313.8545755380037
+    }
+  ],
+  "dpo_training_receipt": {
+    "status": "training_complete_evaluation_pending",
+    "global_step": 16,
+    "train_metrics": {
+      "train_runtime": 74.9649,
+      "train_samples_per_second": 0.854,
+      "train_steps_per_second": 0.213,
+      "train_loss": 0.6687192469835281,
+      "epoch": 1.0
+    },
+    "policy_weights_changed": true,
+    "reference_adapter_sha256_before": "e8dddb16431dfd05a95e0ea897966b07fff2a8ae68ac13cb51d02171b76456ae",
+    "reference_adapter_sha256_after": "e8dddb16431dfd05a95e0ea897966b07fff2a8ae68ac13cb51d02171b76456ae",
+    "policy_adapter_sha256_before": "e8dddb16431dfd05a95e0ea897966b07fff2a8ae68ac13cb51d02171b76456ae",
+    "policy_adapter_sha256_after": "99cb7f3127cc423db21843f3888288e49856d048dc6872e385250d09a251cf74",
+    "saved_adapter_sha256_verified": "99cb7f3127cc423db21843f3888288e49856d048dc6872e385250d09a251cf74",
+    "observed_exposure": {
+      "dpo_pair_loss_exposures": 64,
+      "dpo_prompt_token_loss_exposures": 124304,
+      "dpo_completion_token_loss_exposures": 13000
+    }
+  },
+  "dpo_initial_matches_zero_control": true,
+  "limitations": [
+    "Medical gold and UNKNOWN handling are unchanged; every missing gold triple remains FN.",
+    "Candidates cover only the stated subset of gold; this is a recall ceiling, not measured recall.",
+    "Subset selection excludes zero-candidate and high-candidate documents; no full-130 or pipeline claim.",
+    "Mechanical preference tasks are artificial and never pooled with medical metrics.",
+    "Frozen runtime records total supervised/UNKNOWN/sequence exposure, not separate observed positive/negative/edge exposure; expected class counts are not measurements.",
+    "Incomplete, missing and invalid conditions have no accepted P/R/F1.",
+    "No automatic winner or causal direction conclusion is selected."
+  ]
+}
