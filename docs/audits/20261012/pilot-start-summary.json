@@ -1,0 +1,33 @@
+{
+  "snapshot_at": "2026-10-12T05:26:44.053815+00:00",
+  "status": "running",
+  "active_stage": "grounded_s42-train",
+  "started_at": "2026-10-12T05:24:55.710793+00:00",
+  "code_commit": "d8a204eeb93955feeca7b37c1cf4f5d107f28160",
+  "code_sha256": "50ff3f13789679322228b72c8cb1183a518927535bd6dfa0552cc2bad2f38e3c",
+  "config_sha256": "8e5ea74e299175979aa01e06042dee15410bc753f16d99ed744a0d7d7c8ce1a9",
+  "private_data_upload_authorized": true,
+  "all_frozen_hashes_verified": true,
+  "formal_training_started": true,
+  "optimizer_step_observed": true,
+  "completed_optimizer_steps_lower_bound": 1,
+  "last_logged_training_metrics": {
+    "loss": 0.3721,
+    "grad_norm": 1.395317554473877,
+    "learning_rate": 0,
+    "epoch": 0.008719346049046322
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4090",
+    "utilization_percent": 100,
+    "memory_used_mib": 31380,
+    "memory_total_mib": 49140
+  },
+  "quality_evaluation_complete": false,
+  "planned_variant_steps": 64,
+  "planned_variants": [
+    "grounded_s42",
+    "missing_s42"
+  ],
+  "quality_claim": "Startup evidence only; accuracy and F1 are not yet evaluated."
+}

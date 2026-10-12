@@ -10,7 +10,7 @@
 | V4 数据发布 | 从冻结 prepared records 以 unique-evidence-v1 重建；歧义证据维持 UNKNOWN。 |
 | 独立训练环境 | 已完成；Python3.12 + torch2.8.0/cu128 + transformers4.56.2 + peft0.17.1；pip check及GPU BF16前后向通过，与现有 LF 环境隔离。 |
 | 2-step smoke | 已用4条完全合成样例完成；权重确有更新，重新加载的权重指纹一致，首个prompt末token logits差为0。 |
-| V4_grounded_empty | 首个64-step试点：原文外干扰负例 + 构造文本中无支持关系的负例。 |
+| V4_grounded_empty | 已启动首个64-step试点：原文外干扰负例 + 构造文本中无支持关系的负例。实际优化进度见下方启动快照。 |
 | 裸底座0-step tune | 同模型加载器、相同候选/模板/解码；作为新服务器基线。 |
 | grounded tune / stress | 完整130条 tune 和64对压力样例；不省略失败样本。 |
 | V4_missing_only | 第二个64-step对照：同输入和正目标，仅屏蔽原文内构造负例的 loss。 |
@@ -41,7 +41,9 @@ GPU 串行执行；新目录写入，输入和代码绑定 SHA256，进程持有
 
 - 数据聚合与哈希：[pilot-data-manifest.json](audits/20261012/pilot-data-manifest.json)。
 - 冻结队列配置：[relation_pilot_20261012.json](../configs/experiments/relation_pilot_20261012.json)。路径按授权服务器目录布局填写，重定位时必须重新验证。
-- 当前准备状态：训练环境已安装并验收。4条完全合成样例的2-step项目smoke已完成。私有医疗数据上传被自动审批审核暂停，需要用户明确确认具体数据和目标服务器；尚未上传，尚未开始正式训练。
+- 数据上传已获用户明确授权并完成。服务器端归档哈希、全部训练/评测输入及代码哈希验证通过，七阶段 dry-run 通过；私有医学文本和标注仅保留在本地私有工作目录与授权服务器，不随代码提交。
 - smoke 验收：[pilot-smoke-summary.json](audits/20261012/pilot-smoke-summary.json)。2步训练耗时4.53秒，峰值分配显存约19.12GiB；这只是短合成样例的工程验证，不能估算长医学文本吞吐或质量。
-- 正式试点仍未启动。WebUI在smoke后已恢复原启动方式；正式队列启动前需再次以CPU界面模式重启WebUI，释放其空闲CUDA上下文。
-- 队列运行目录预定为 `/workspace/medicalner/20261012/pilot`；启动后须核对 `status.json`、实际GPU占用与训练日志，不能只凭tmux会话存在宣布训练成功。
+- 正式试点已于北京时间 2026-10-12 13:24:55 启动，独立 tmux 会话为 `medicalner-relation-pilot`。启动前确认 GPU 无活动计算进程，空闲显存占用4MiB，无需重启 WebUI。
+- 队列运行目录为 `/workspace/medicalner/20261012/pilot`；`status.json`、GPU占用与训练日志共同用于确认实际进度。运行时输入/代码保持冻结，GitHub 后续进度记录不会改动正在运行的代码。
+- 启动快照（北京时间13:26:44）：`grounded_s42-train` 正在运行，已观察到首个优化步骤，loss=0.3721、grad_norm=1.3953；GPU利用率100%，当时显存31380MiB。首条日志的学习率为0是warmup起点，最终权重变化仍须由训练结束时的权重指纹验证，不能用此条loss代替验收。见 [pilot-start-summary.json](audits/20261012/pilot-start-summary.json)。
+- 这是一份启动时快照，后续实时状态以服务器文件为准。两组完整训练及质量评测尚未结束，当前没有新的准确率/F1结论。
