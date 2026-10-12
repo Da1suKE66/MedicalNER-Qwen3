@@ -268,6 +268,34 @@ def rule_ablation(records, predictions, *, strict_identity=False, sample_indices
     return reports
 
 
+def load_evaluation_model(base_model, adapter, *, base_only=False, grpo_sft_adapter=None):
+    """Use the same base/decode path for an explicit zero-step baseline.
+
+    Omitting an adapter is an error unless base_only is explicitly requested.
+    GRPO residual adapters still require reconstruction of their merged SFT base.
+    """
+    if (base_only and adapter) or (not base_only and not adapter):
+        raise ValueError("Choose exactly one of --adapter and --base-only")
+    if base_only and grpo_sft_adapter:
+        raise ValueError("--grpo-sft-adapter requires --adapter, not --base-only")
+    import torch
+    from transformers import AutoModelForCausalLM
+
+    model = AutoModelForCausalLM.from_pretrained(
+        base_model,
+        torch_dtype=torch.bfloat16,
+        attn_implementation="sdpa",
+        local_files_only=True,
+    )
+    if not base_only:
+        from peft import PeftModel
+
+        if grpo_sft_adapter:
+            model = PeftModel.from_pretrained(model, grpo_sft_adapter).merge_and_unload()
+        model = PeftModel.from_pretrained(model, adapter)
+    return model.to("cuda").eval()
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--gold", required=True)
@@ -282,7 +310,12 @@ def main():
         help="JSON list of original dataset indices for an explicitly selected gold/cache subset",
     )
     p.add_argument("--base-model", required=True)
-    p.add_argument("--adapter", required=True)
+    model_condition = p.add_mutually_exclusive_group(required=True)
+    model_condition.add_argument("--adapter", help="Trained adapter checkpoint")
+    model_condition.add_argument(
+        "--base-only", action="store_true",
+        help="Explicit zero-step base-model control, with no adapter loaded",
+    )
     p.add_argument(
         "--grpo-sft-adapter",
         help="Rebuild merged SFT base before loading residual GRPO LoRA",
@@ -300,6 +333,8 @@ def main():
         help="Explicit inference-template mismatch diagnostic; never use to select normal checkpoints",
     )
     args = p.parse_args()
+    if args.base_only and args.grpo_sft_adapter:
+        p.error("--grpo-sft-adapter requires --adapter, not --base-only")
     if args.inference_batch_size < 1:
         p.error("inference-batch-size must be positive")
     records = json.loads(Path(args.gold).read_text())
@@ -331,10 +366,8 @@ def main():
         raise ValueError("Choose a new evaluation output directory")
     out.mkdir(parents=True, exist_ok=True)
     import torch
-    from peft import PeftModel
     from transformers import (
         AutoTokenizer,
-        AutoModelForCausalLM,
         StoppingCriteria,
         StoppingCriteriaList,
     )
@@ -343,17 +376,10 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, local_files_only=True)
     tokenizer.pad_token = tokenizer.pad_token or tokenizer.eos_token
     tokenizer.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(
-        args.base_model,
-        torch_dtype=torch.bfloat16,
-        attn_implementation="sdpa",
-        local_files_only=True,
+    model = load_evaluation_model(
+        args.base_model, args.adapter,
+        base_only=args.base_only, grpo_sft_adapter=args.grpo_sft_adapter,
     )
-    if args.grpo_sft_adapter:
-        model = PeftModel.from_pretrained(
-            model, args.grpo_sft_adapter
-        ).merge_and_unload()
-    model = PeftModel.from_pretrained(model, args.adapter).to("cuda").eval()
 
     def generate_group(batches):
         if not batches:
@@ -447,6 +473,7 @@ def main():
             records, predictions, strict_identity=args.strict_identity, sample_indices=indices,
         ),
         "arguments": vars(args),
+        "model_condition": "base_only" if args.base_only else "adapter",
         "entity_source": "oracle" if args.oracle else "fixed_predicted_cache",
         "not_full_live_pipeline": True,
     }

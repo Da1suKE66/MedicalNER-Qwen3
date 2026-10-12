@@ -1,0 +1,11 @@
+# Isolated relation-agent runtime for the 2026-10-12 pilot, Python 3.12.
+# Install torch from https://download.pytorch.org/whl/cu128 first.
+# Do not install together with root requirements.txt or the LLaMA-Factory venv.
+torch==2.8.0
+transformers==4.56.2
+tokenizers==0.22.2
+peft==0.17.1
+accelerate==1.10.1
+datasets==4.1.1
+trl==0.23.1
+jinja2>=3.1,<4

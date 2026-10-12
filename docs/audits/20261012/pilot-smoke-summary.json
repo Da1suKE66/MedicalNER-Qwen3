@@ -1,0 +1,23 @@
+{
+  "status": "training_complete_evaluation_pending",
+  "global_step": 2,
+  "train_metrics": {
+    "train_runtime": 4.5318,
+    "train_samples_per_second": 0.883,
+    "train_steps_per_second": 0.441,
+    "train_loss": 0.1976289600133896,
+    "epoch": 1.0
+  },
+  "policy_weights_changed": true,
+  "saved_adapter_sha256_verified": "55426e3c51d9715146a61b8fed514ee9362b17ca60432fe16aa1dd89527f3d8f",
+  "save_reload_max_logit_difference": 0.0,
+  "save_reload_scope": "exact trained/saved LoRA weight fingerprint, fresh base(+SFT merge)+saved adapter; both plain inference without Trainer autocast wrapper; first training prompt final-token logits only",
+  "peak_allocated_gpu_bytes": 20524836864,
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.56.2",
+    "peft": "0.17.1"
+  },
+  "data": "4 fully synthetic Feature/Condition rows; no private medical corpus",
+  "purpose": "runtime validation only, no extraction quality claim"
+}

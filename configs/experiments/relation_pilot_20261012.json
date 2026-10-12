@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "code_root": "/workspace/medicalner/20261012/code",
+  "python": "/root/venvs/medicalner/bin/python",
+  "base_model": "/root/models/Qwen3-8B",
+  "output_dir": "/workspace/medicalner/20261012/pilot",
+  "matrix": "/workspace/medicalner/20261012/data/experiments.json",
+  "tune_gold": "/workspace/medicalner/20261012/evaluation/tune_records_130.json",
+  "stress_data": "/workspace/medicalner/20261012/evaluation/stress64_paired.jsonl",
+  "variants": [
+    {
+      "name": "grounded_s42",
+      "variant": "V4_grounded_empty",
+      "train_data": "/workspace/medicalner/20261012/data/V4_grounded_empty.jsonl"
+    },
+    {
+      "name": "missing_s42",
+      "variant": "V4_missing_only",
+      "train_data": "/workspace/medicalner/20261012/data/V4_missing_only.jsonl"
+    }
+  ],
+  "cuda_visible_devices": "0",
+  "steps": 64,
+  "seed": 42,
+  "learning_rate": 5e-05,
+  "batch_size": 1,
+  "gradient_accumulation": 16,
+  "max_length": 6144,
+  "inference_batch_size": 1,
+  "max_new_tokens": 16000,
+  "base_only_tune": true,
+  "stage_timeout_seconds": 21600,
+  "code_sha256": "50ff3f13789679322228b72c8cb1183a518927535bd6dfa0552cc2bad2f38e3c",
+  "expected_sha256": {
+    "/workspace/medicalner/20261012/data/V4_grounded_empty.jsonl": "6ab0e777fba5b5f0730702b40fdca90ec27e2b3daea8727fd143dbce83e3d4ba",
+    "/workspace/medicalner/20261012/data/V4_missing_only.jsonl": "ab6fac59b1df72c1717adb796627be863d9e9540c275fc69b6e8ce3f3f54afb7",
+    "/workspace/medicalner/20261012/data/base_unique_train.jsonl": "f3a5cecaace0c6dd4136d5eb5ba6f1d4e5fd9de30cc54a448fbf42b58db742d6",
+    "/workspace/medicalner/20261012/data/experiments.json": "444ab3b0228855c6237d822c6ae234f5091461c77b6b784dd2ab5a47879b751a",
+    "/workspace/medicalner/20261012/data/manifest.json": "1e482233ad94333a80ddc917dc24c59032c48476d442b1f23f2c4f832ab81765",
+    "/workspace/medicalner/20261012/evaluation/stress64_paired.jsonl": "9a2e7b326a97ffb3f5d1acd6364b6e1a4c6e5b56aee44d213de0847c80f959fb",
+    "/workspace/medicalner/20261012/evaluation/tune_records_130.json": "30cad9a8071044c329a24b7d74435a06db34e7223520112e9d2c58903db4452d"
+  }
+}
