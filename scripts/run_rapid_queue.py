@@ -46,7 +46,7 @@ def validate_config(config):
         if not set(job.get("depends_on", [])) <= seen:
             raise ValueError("Dependencies must refer to earlier jobs")
         seen.add(name)
-        if job["kind"] not in {"train", "screen", "zero_control", "evaluation"}:
+        if job["kind"] not in {"train", "screen", "zero_control", "evaluation", "choice_evaluation"}:
             raise ValueError("Unknown job kind")
         if not isinstance(job["command"], list) or not job["command"] or not all(isinstance(x, str) for x in job["command"]):
             raise ValueError("Command must be a nonempty argument vector")
@@ -112,6 +112,17 @@ def validate_outputs(job):
             raise ValueError(f"Missing output artifact: {relative}")
     if job["kind"] == "train":
         return validate_train(job)
+    if job["kind"] == "choice_evaluation":
+        out = Path(job["output"])
+        report = json.loads((out / "metrics.json").read_text())
+        rows = [json.loads(x) for x in (out / "predictions.jsonl").read_text().splitlines() if x.strip()]
+        if report.get("status") != "complete" or report.get("samples") != job["expected_samples"] or len(rows) != job["expected_samples"]:
+            raise ValueError("Choice evaluation did not process its full frozen denominator")
+        identities = [row.get("id") for row in rows]
+        if any(not identity for identity in identities) or len(set(identities)) != len(rows):
+            raise ValueError("Choice evaluation has missing or duplicated identities")
+        return {"samples": len(rows), "relation": report["relation"], "evidence": report["evidence"],
+                "scope": report.get("scope"), "independent_recount_pending": True}
     if job["kind"] == "screen":
         report = json.loads((Path(job["output"]) / "run.json").read_text())
         if report.get("status") != "complete" or set(report.get("conditions", {})) != set(job["conditions"]):

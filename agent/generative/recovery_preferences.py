@@ -66,6 +66,9 @@ def _construct(recipe):
     expected = _recipe(*(recipe[k] for k in ("index", "kind", "partition", "pairs_per_batch", "template")))
     if expected != recipe:
         raise ValueError("Noncanonical construction recipe")
+    # JSON object key order is not semantic. Preserve the original recipe's
+    # canonical construction order before deriving identities from its bytes.
+    recipe = expected
     index, kind, partition, size, template = (recipe[k] for k in ("index", "kind", "partition", "pairs_per_batch", "template"))
     key = digest(dumps(recipe))[:12]
     names = {"S1": f"Feature Cedar {key}", "S2": f"Feature Birch {key}",
