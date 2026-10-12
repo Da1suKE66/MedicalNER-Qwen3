@@ -1,6 +1,7 @@
 """CPU/mock safety contracts. These tests do NOT run a model or establish RL quality."""
 
 from collections import Counter
+from contextlib import nullcontext
 import copy
 import hashlib
 import json
@@ -51,8 +52,7 @@ def argv(tmp_path, mode="dpo", *extra):
         str(tmp_path / "data.jsonl"),
         "--base-model",
         str(tmp_path / "base"),
-        "--sft-adapter",
-        str(tmp_path / "sft"),
+        *(["--sft-adapter", str(tmp_path / "sft")] if mode != "sft" else []),
         "--output-dir",
         str(tmp_path / "out"),
         *extra,
@@ -68,7 +68,10 @@ class Tokenizer:
         return [1] * (len(text) + int(add_special_tokens))
 
     def __call__(self, text, add_special_tokens=False, **kwargs):
-        return {"input_ids": self.encode(text, add_special_tokens=add_special_tokens)}
+        class Inputs(dict):
+            def to(self, device):
+                return self
+        return Inputs(input_ids=self.encode(text, add_special_tokens=add_special_tokens))
 
     def apply_chat_template(self, messages, **kwargs):
         assert kwargs == {
@@ -561,14 +564,29 @@ def test_preference_cli_counts_hashes_and_no_overwrite(tmp_path, monkeypatch):
     assert (out / "full.jsonl").read_bytes() == before
 
 
-@pytest.mark.parametrize("mode", ["sft", "dpo", "grpo"])
+@pytest.mark.parametrize("mode", ["sft", "continued_sft", "dpo", "grpo"])
 def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
     """Exercise real main/config wiring with fake trainers; never import torch."""
+    continued = mode == "continued_sft"
+    mode = "sft" if continued else mode
     base_parameters = {"base.weight": Parameter(1)}
+    saved_weights, peft_calls = {}, []
+
+    class Logits:
+        def __getitem__(self, index):
+            return self
+        def float(self):
+            return self
+        cpu = abs = float
+        def __sub__(self, other):
+            return self
+        def max(self):
+            return 0.0
 
     class Model:
         training = True
         config = SimpleNamespace(max_position_embeddings=8192)
+        device = SimpleNamespace(type="cuda")
 
         def __init__(self):
             self.params = dict(base_parameters)
@@ -596,11 +614,25 @@ def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
         def enable_input_require_grads(self):
             self.input_gradients_enabled = True
 
+        def __call__(self, **kwargs):
+            return SimpleNamespace(logits=Logits())
+
+        def to(self, device):
+            return self
+
+        def eval(self):
+            self.training = False
+            return self
+
     def from_peft(model, path, adapter_name="default", is_trainable=False, **kwargs):
+        peft_calls.append((str(path), adapter_name, is_trainable))
         model.load_adapter(path, adapter_name, is_trainable)
+        if str(path) in saved_weights:
+            model.params[f"layer.lora_A.{adapter_name}.weight"].value = saved_weights[str(path)]
         return model
 
     def get_peft(model, config):
+        assert not continued, "Continued SFT must not initialize fresh LoRA weights"
         model.load_adapter("new", "default", True)
         return model
 
@@ -614,6 +646,7 @@ def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
                 save_to_json=lambda path: Path(path).write_text('{"mock":true}'),
             )
             trainers.append(self)
+            self.accelerator = SimpleNamespace(unwrap_model=lambda model, **kw: model)
 
         def compute_loss(self, model, inputs, **kwargs):
             assert "_pair_counts" not in inputs
@@ -656,6 +689,8 @@ def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
 
         def save_model(self, path):
             train.adapter_path(path, mode).mkdir(parents=True)
+            name = "policy" if mode == "dpo" else "default"
+            saved_weights[str(train.adapter_path(path, mode))] = self.model.params[f"layer.lora_A.{name}.weight"].value
 
     model_loader = Mock()
     model_loader.from_pretrained.side_effect = lambda *a, **k: Model()
@@ -663,9 +698,11 @@ def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
         is_available=lambda: True,
         is_bf16_supported=lambda: True,
         max_memory_allocated=lambda: 0,
+        empty_cache=lambda: None,
     )
     monkeypatch.setitem(
-        sys.modules, "torch", SimpleNamespace(cuda=fake_cuda, bfloat16="mock_bf16")
+        sys.modules, "torch", SimpleNamespace(cuda=fake_cuda, bfloat16="mock_bf16",
+            inference_mode=nullcontext, autocast=lambda *a, **k: nullcontext())
     )
     monkeypatch.setitem(
         sys.modules,
@@ -711,12 +748,24 @@ def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
     if mode == "dpo":
         row = next(preferences.omission_preferences([row]))
     (tmp_path / "data.jsonl").write_text(dumps(row) + "\n")
+    continuation_args = []
+    if continued:
+        parent_model = Model()
+        parent_model.load_adapter("parent", "default")
+        fingerprint = train.adapter_fingerprint(parent_model, "default")
+        parent_path = tmp_path / "parent.json"
+        parent_path.write_text(json.dumps({"status": "training_complete_evaluation_pending",
+            "arguments": {"mode": "sft", "base_model": str(tmp_path / "base")}, "policy_adapter_sha256_after": fingerprint,
+            "global_step": 64, "data_sha256": "parent-data"}))
+        continuation_args = ["--sft-adapter", str(tmp_path / "grounded64" / "final"),
+                             "--parent-receipt", str(parent_path)]
     monkeypatch.setattr(
         sys,
         "argv",
         [
             "train",
             *argv(tmp_path, mode, "--max-steps", "2", "--gradient-accumulation", "4"),
+            *continuation_args,
         ],
     )
     train.main()
@@ -755,7 +804,14 @@ def test_entrypoint_wiring_with_mock_runtime_only(tmp_path, monkeypatch, mode):
         assert manifest["observed_exposure"]["sft_pair_loss_exposures"] == 16
         assert manifest["observed_exposure"]["sft_sequence_loss_exposures"] == 1
         assert manifest["observed_exposure"]["sft_completion_token_loss_exposures"] == 2
-    model_loader.from_pretrained.assert_called_once()
+    assert model_loader.from_pretrained.call_count == (2 if continued else 1)
+    if continued:
+        assert peft_calls[0] == (str(tmp_path / "grounded64" / "final"), "default", True)
+        assert manifest["parent_training_receipt"]["initialization_verified"]
+        assert manifest["policy_adapter_sha256_before"] == fingerprint
+        assert manifest["saved_adapter_sha256_verified"] == manifest["policy_adapter_sha256_after"]
+        assert manifest["arguments"]["verify_save"]
+        assert not manifest["parent_training_receipt"]["optimizer_state_resumed"]
 
 
 def test_main_does_not_overwrite_preexisting_output(tmp_path, monkeypatch):

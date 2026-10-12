@@ -119,6 +119,17 @@ def validate_training_rows(rows, mode):
             validate_partial_row(row)
         elif mode != "sft" and row.get("eligible_for_rl") is False:
             raise ValueError("This data release is not eligible for RL")
+        recovery_audit = None
+        if "preference_contract" in row:
+            # Only this deterministic, fully artificial release may contain
+            # malformed rejected text. Never make generic RL parsing permissive.
+            from .recovery_preferences import CONTRACT, verify_case
+
+            expected_view = {"sft": "chosen_sft", "dpo": "preference"}.get(mode)
+            if (row["preference_contract"] != CONTRACT or expected_view is None
+                    or row.get("training_view") != expected_view):
+                raise ValueError("Unsupported recovery preference contract or training view")
+            recovery_audit = verify_case(row)
         if mode == "sft":
             continue
         batch = prompt_batch(row)
@@ -129,7 +140,9 @@ def validate_training_rows(rows, mode):
             if not isinstance(text, str) or not text.strip():
                 raise ValueError(f"Empty/non-string {field}: {row['id']}")
             decisions, errors = parse_decisions(text, batch)
-            if errors:
+            allowed_errors = (recovery_audit["expected_rejected_errors"]
+                              if recovery_audit is not None and field == "rejected" else [])
+            if errors != allowed_errors:
                 raise ValueError(f"Invalid {field} for {row['id']}: {errors}")
             parsed.append(
                 sorted(
@@ -137,7 +150,8 @@ def validate_training_rows(rows, mode):
                     for d in decisions
                 )
             )
-        if mode == "dpo" and parsed[0] == parsed[1]:
+        structural_preference = recovery_audit is not None and bool(recovery_audit["expected_rejected_errors"])
+        if mode == "dpo" and not structural_preference and parsed[0] == parsed[1]:
             raise ValueError(
                 "Identical chosen/rejected decisions are not informative preferences"
             )
@@ -192,6 +206,29 @@ def length_audit(rows, tokenizer, max_length, mode, max_completion_length=None):
         "max_prompt_tokens": max(prompt_lengths),
         "max_completion_tokens": max(completion_lengths),
         "count_scope": "one dataset pass, not observed training exposure; completions include EOS",
+    }
+
+
+def recovery_admission_audit(rows):
+    """Aggregate an already validated recovery release without copying its text."""
+    contracted = [row for row in rows if "preference_contract" in row]
+    if not contracted:
+        return None
+    if len(contracted) != len(rows):
+        raise ValueError("Do not mix recipe-verified recovery rows with other training data")
+    errors, structural = Counter(), 0
+    for row in rows:
+        _, rejected_errors = parse_decisions(row["rejected"], prompt_batch(row))
+        errors.update(rejected_errors)
+        structural += bool(rejected_errors)
+    aligned = [(row["id"], row["prompt_sha256"], row["chosen_sha256"]) for row in rows]
+    return {
+        "contract": rows[0]["preference_contract"],
+        "training_view": rows[0]["training_view"],
+        "rows": len(rows), "structural_rejected_rows": structural,
+        "rejected_error_counts": dict(errors),
+        "prompt_chosen_alignment_sha256": hashlib.sha256(dumps(aligned).encode()).hexdigest(),
+        "validation": "entire row reconstructed from closed artificial recipe; chosen strict; UNKNOWN and held-out rejected",
     }
 
 
@@ -341,6 +378,79 @@ def initialize_dpo_reference(model, checkpoint):
     raise RuntimeError("Exact SFT reference could not be restored; do not bypass DPO initialization equality")
 
 
+def starting_policy_receipt(args):
+    """Bind continued training to recorded weights, not merely a path argument.
+
+    Continued SFT starts a new optimizer/scheduler. It updates the existing LoRA
+    directly; its final adapter therefore reloads over the original base alone.
+    DPO may opt into the same parent receipt gate without changing its objective.
+    """
+    continued_sft = args.mode == "sft" and bool(getattr(args, "sft_adapter", None))
+    explicit = getattr(args, "parent_receipt", None)
+    if not continued_sft and not explicit:
+        return None
+    if not getattr(args, "sft_adapter", None) or args.mode not in {"sft", "dpo"}:
+        raise ValueError("Parent receipt requires an SFT/DPO starting adapter")
+    path = Path(explicit) if explicit else Path(args.sft_adapter).parent / "run_manifest.json"
+    payload = path.read_bytes()
+    receipt = json.loads(payload)
+    fingerprint = receipt.get("policy_adapter_sha256_after")
+    if (receipt.get("status") != "training_complete_evaluation_pending"
+            or receipt.get("arguments", {}).get("mode") != "sft"
+            or not isinstance(fingerprint, str) or len(fingerprint) != 64
+            or any(c not in "0123456789abcdef" for c in fingerprint)):
+        raise ValueError("Parent receipt must identify completed SFT and its exact final adapter fingerprint")
+    parent_base = receipt.get("arguments", {}).get("base_model")
+    if (not isinstance(parent_base, str) or not parent_base
+            or Path(parent_base).resolve() != Path(args.base_model).resolve()):
+        raise ValueError("Parent SFT base model differs from the declared continuation base")
+    return {
+        "receipt_sha256": hashlib.sha256(payload).hexdigest(),
+        "policy_adapter_sha256": fingerprint,
+        "global_step": receipt.get("global_step"),
+        "data_sha256": receipt.get("data_sha256"),
+        "status": receipt["status"],
+        "declared_base_model_matches": True,
+        "initialization_verified": False,
+        "optimizer_state_resumed": False,
+    }
+
+
+def initialize_continued_sft(model, checkpoint, parent, peft_loader):
+    """Load trainable parent weights; never create a fresh adapter for this arm."""
+    if parent is None:
+        raise ValueError("Continued SFT requires a verified parent receipt")
+    model = peft_loader.from_pretrained(
+        model, checkpoint, adapter_name="default", is_trainable=True,
+        local_files_only=True,
+    )
+    model.set_adapter("default")
+    verify_starting_policy(model, "default", parent)
+    return model
+
+
+def verify_starting_policy(model, active, parent):
+    observed = adapter_fingerprint(model, active)
+    if observed != parent["policy_adapter_sha256"]:
+        raise RuntimeError("Loaded starting adapter does not match the parent receipt fingerprint")
+    parent.update(initialization_verified=True, loaded_adapter_sha256=observed)
+    return observed
+
+
+def require_policy_update(before, after):
+    if before == after:
+        raise RuntimeError("Continued SFT did not update the starting adapter weights")
+
+
+def disable_sft_dropout(model, dropout_type):
+    """Match DPOConfig.disable_dropout without changing existing SFT defaults."""
+    modules = [module for module in model.modules() if isinstance(module, dropout_type)]
+    nonzero = sum(module.p != 0 for module in modules)
+    for module in modules:
+        module.p = 0.0
+    return {"disabled": True, "dropout_modules": len(modules), "nonzero_before": nonzero}
+
+
 def record_dpo_batch(counters, inputs):
     # Called only after policy compute_loss, never during reference precomputation.
     counters["dpo_pair_loss_exposures"] += len(inputs["prompt_input_ids"])
@@ -456,8 +566,14 @@ def parse_args(argv=None):
     p.add_argument("--data", required=True)
     p.add_argument("--base-model", required=True)
     p.add_argument(
-        "--sft-adapter", help="Mandatory SFT starting/reference checkpoint for DPO/GRPO"
+        "--sft-adapter", help="Existing trainable LoRA for continued SFT; mandatory SFT starting/reference checkpoint for DPO/GRPO"
     )
+    p.add_argument(
+        "--parent-receipt",
+        help="Completed SFT run_manifest.json whose final fingerprint must match the starting adapter; continued SFT defaults to the adapter parent directory",
+    )
+    p.add_argument("--sft-disable-dropout", action="store_true",
+        help="Set torch.nn.Dropout probabilities to zero for an SFT control matched to DPO disable_dropout")
     p.add_argument("--output-dir", required=True)
     p.add_argument("--learning-rate", type=float)
     p.add_argument("--epochs", type=float)
@@ -507,6 +623,14 @@ def parse_args(argv=None):
         p.error("--allow-positive-only-ablation applies only to partial SFT")
     if args.mode != "sft" and not args.sft_adapter:
         p.error("Preference/RL must start at an explicitly selected SFT checkpoint")
+    if args.parent_receipt and (not args.sft_adapter or args.mode not in {"sft", "dpo"}):
+        p.error("--parent-receipt requires --sft-adapter in SFT or DPO mode")
+    if args.sft_disable_dropout and args.mode != "sft":
+        p.error("--sft-disable-dropout applies only to SFT; DPO already disables dropout")
+    if args.mode == "sft" and args.sft_adapter:
+        # Continuation is accepted only with actual weight-update and independent
+        # saved-policy checks, even when the caller omits --verify-save.
+        args.verify_save = True
     for name in (
         "batch_size",
         "gradient_accumulation",
@@ -602,6 +726,16 @@ def execute(args, rows, out, manifest):
             print("Partial SFT supervision audit: " + dumps(manifest["supervision_audit"]),
                   file=sys.stderr, flush=True)
     validate_training_rows(rows, args.mode)
+    recovery_audit = recovery_admission_audit(rows)
+    if recovery_audit is not None:
+        manifest["recovery_preference_admission"] = recovery_audit
+    parent = starting_policy_receipt(args)
+    if parent is not None:
+        manifest["parent_training_receipt"] = parent
+    continued_sft = args.mode == "sft" and bool(getattr(args, "sft_adapter", None))
+    if continued_sft:
+        args.verify_save = True
+        manifest["sft_initialization"] = "continue_existing_adapter_new_optimizer"
     import torch
     from peft import LoraConfig, PeftModel, get_peft_model
     from transformers import (
@@ -746,7 +880,12 @@ def execute(args, rows, out, manifest):
     if args.mode == "sft":
         from train_sft import JsonlSFTDataset, CausalCollator
 
-        model = get_peft_model(model, lora)
+        model = (
+            initialize_continued_sft(model, args.sft_adapter, parent, PeftModel)
+            if continued_sft else get_peft_model(model, lora)
+        )
+        if getattr(args, "sft_disable_dropout", False):
+            manifest["sft_dropout"] = disable_sft_dropout(model, torch.nn.Dropout)
         model.enable_input_require_grads()
         model.config.use_cache = False
         tokenizer.padding_side = "right"
@@ -890,6 +1029,8 @@ def execute(args, rows, out, manifest):
         )
     active = "policy" if args.mode == "dpo" else "default"
     manifest["policy_adapter_sha256_before"] = adapter_fingerprint(model, active)
+    if parent is not None:
+        verify_starting_policy(model, active, parent)
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
     train_result = trainer.train()
     manifest["global_step"] = trainer.state.global_step
@@ -901,6 +1042,8 @@ def execute(args, rows, out, manifest):
         manifest["policy_adapter_sha256_before"]
         != manifest["policy_adapter_sha256_after"]
     )
+    if continued_sft:
+        require_policy_update(manifest["policy_adapter_sha256_before"], manifest["policy_adapter_sha256_after"])
     if args.mode == "dpo":
         manifest["reference_adapter_sha256_after"] = adapter_fingerprint(
             model, "reference"
