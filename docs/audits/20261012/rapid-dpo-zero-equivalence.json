@@ -1,0 +1,16 @@
+{
+  "samples": 12,
+  "batches": 22,
+  "matching_per_batch_fields": [
+    "text",
+    "tokens",
+    "input_tokens",
+    "truncated",
+    "id",
+    "sample_id",
+    "input_identity",
+    "prompt",
+    "parse_errors"
+  ],
+  "all_generation_content_equal": true
+}
