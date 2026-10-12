@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "scope": "artificial_protocol_engineering_only_not_medical_quality",
+  "status": "training_and_inference_contract_verified_semantic_quality_insufficient",
+  "output_contract": "bounded-choices-v1",
+  "cpu_tests": {
+    "passed": 1340,
+    "skipped": 1
+  },
+  "frozen_run": {
+    "code_sha256": "8e020e741f8295750de63e7a2fbb7a18864459339078bd5f333b697f7a79e108",
+    "train_data_sha256": "4faca2272712516e8e8daccde523b3235f87f1e4e47b3bbac1234292cc1c75ac",
+    "holdout_data_sha256": "e7ae4e914d69c5d1532a32d505733a4eb49780042200e8990c30c3c773a35326",
+    "protocol_sha256": "8c6f52f6ac4ae34d3c13689b08d0f4b8cdeec0399a7c101b40e277ca77a1bcec",
+    "base_tokenizer_config_sha256": "1d6c5ee32b35796ef4b0f1ebbd77c7a15184d8c61d5594918f74bc8fa9891eb3",
+    "base_weight_hash_claim": false
+  },
+  "training": {
+    "optimizer_updates": 16,
+    "training_rows_available": 512,
+    "consumed_rows": 64,
+    "consumed_rows_basis": "16 updates x 4 complete microbatches; Trainer epoch .125 of512",
+    "collator_prepared_rows_v1": 65,
+    "prefetched_not_trained_rows": 1,
+    "v1_per_stage_consumed_rows": "unavailable;collator per-stage counts include prefetch",
+    "training_seconds": 51.5458,
+    "train_loss": 0.4411777276545763,
+    "weights_changed": true,
+    "saved_reload_exact": true,
+    "adapter_parameters_sha256": "0e7c9d0f69ecd6e239cc9e994ea3cb0584cd736e5de703a376ca462bdde4964e",
+    "postrun_fix": "Repository train_choices now counts successful training_step separately from collator prefetch. This telemetry fix has CPU tests; frozen v1 weights/receipt were not modified or retrained."
+  },
+  "probe": {
+    "source_samples": 2,
+    "requested_component_attempts": 4,
+    "component_metrics": {
+      "entities": {
+        "tp": 8,
+        "fp": 9,
+        "fn": 8,
+        "precision": 0.47058823529411764,
+        "recall": 0.5,
+        "f1": 0.48484848484848486,
+        "gold_count": 16,
+        "predicted_count": 17,
+        "samples": 2,
+        "failed_samples": 0
+      },
+      "relations": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.5,
+        "recall": 0.25,
+        "f1": 0.3333333333333333,
+        "gold_count": 4,
+        "predicted_count": 2,
+        "samples": 2,
+        "failed_samples": 0
+      },
+      "relation_evidence": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "gold_count": 4,
+        "predicted_count": 2,
+        "samples": 2,
+        "failed_samples": 0
+      }
+    },
+    "assertions": {
+      "all_requested_attempted": true,
+      "grammar_failures": 0,
+      "component_failures": 0,
+      "component_budget_exhaustions": 0,
+      "grammar_failure_definition": "illegal choice path or incomplete integer task; includes token-budget termination",
+      "engineering_pass": true
+    },
+    "pipeline_smoke": {
+      "samples": 1,
+      "status": "complete",
+      "uses_predicted_entities": true,
+      "separate_from_component_F1": true,
+      "entities_emitted": 7,
+      "relations_emitted": 11,
+      "generation_calls": 12,
+      "max_calls": 16,
+      "clinical_quality_claim": false
+    }
+  },
+  "independent_recount": {
+    "matches": true,
+    "counts": {
+      "entities": {
+        "tp": 8,
+        "fp": 9,
+        "fn": 8
+      },
+      "relations": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 3
+      },
+      "relation_evidence": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 4
+      }
+    },
+    "receipt_sha256": "44abac37298273a050b5f659f0c371c69921adb5845afbebf1e6f7da6eb31188"
+  },
+  "remaining_failures": [
+    "entity boundary and label errors despite source-grounded substrings",
+    "both relation probes selected the first candidate and omitted other supported pairs or labels",
+    "relation evidence selection was incorrect even where the triple matched",
+    "single raw pipeline emitted11relations: structurally valid is not evidence of semantic validity"
+  ],
+  "not_completed": [
+    "real medical choice-format training data release",
+    "full medical SFT",
+    "new protocol semantic DPO/RL",
+    "full medical end-to-end benchmark"
+  ],
+  "prior_json_recovery_dpo_started": false
+}

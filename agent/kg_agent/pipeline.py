@@ -38,6 +38,12 @@ class RelationClassifierBackend(Protocol):
         ...
 
 
+class EntitySelectorBackend(Protocol):
+    def select(self, spans: list[dict[str, str]], *, target_name: str | None,
+               max_candidates: int) -> tuple[list[EntityCandidate], dict[str, Any]]:
+        ...
+
+
 @dataclass(frozen=True)
 class PipelineConfig:
     max_entity_candidates: int = 64
@@ -138,11 +144,12 @@ def _filter_valid_relations(graph: Graph, document: SourceDocument, trace: dict[
 class TwoStageKGAgent:
     """Orchestrate the fixed workflow; the backend only makes semantic calls."""
 
-    def __init__(self, entity_backend: LLMBackend, relation_backend: LLMBackend | None = None, config: PipelineConfig | None = None, *, relation_classifier: RelationClassifierBackend | None = None):
+    def __init__(self, entity_backend: LLMBackend, relation_backend: LLMBackend | None = None, config: PipelineConfig | None = None, *, relation_classifier: RelationClassifierBackend | None = None, entity_selector: EntitySelectorBackend | None = None):
         self.entity_backend = entity_backend
         self.relation_backend = relation_backend or entity_backend
         self.config = config or PipelineConfig()
         self.relation_classifier = relation_classifier
+        self.entity_selector = entity_selector
         self.router = SourceRouter()
 
     def run(self, raw: Any, *, metadata: dict[str, Any] | None = None) -> PipelineResult:
@@ -167,22 +174,33 @@ class TwoStageKGAgent:
         )
         all_candidates: list[EntityCandidate] = []
         for chunk_index, chunk in enumerate(chunks):
-            prompt = build_entity_prompt(
-                _span_rows(document, chunk),
-                target_name=fixed[0].name if fixed else None,
-                max_candidates=self.config.max_entity_candidates,
-                mention_copy=self.config.entity_mention_copy,
-            )
             call_trace: dict[str, Any] = {"chunk": chunk_index, "span_ids": [span.id for span in chunk]}
             try:
-                response = self.entity_backend.generate(prompt, max_new_tokens=self.config.max_new_tokens_entities)
-                candidates = parse_entity_candidates(response)
+                if self.entity_selector is not None:
+                    candidates, call_trace["entity_selection"] = self.entity_selector.select(
+                        _span_rows(document, chunk),
+                        target_name=fixed[0].name if fixed else None,
+                        max_candidates=self.config.max_entity_candidates,
+                    )
+                else:
+                    prompt = build_entity_prompt(
+                        _span_rows(document, chunk),
+                        target_name=fixed[0].name if fixed else None,
+                        max_candidates=self.config.max_entity_candidates,
+                        mention_copy=self.config.entity_mention_copy,
+                    )
+                    response = self.entity_backend.generate(prompt, max_new_tokens=self.config.max_new_tokens_entities)
+                    candidates = parse_entity_candidates(response)
                 valid_candidates, candidate_report = validate_candidates(candidates, document)
                 all_candidates.extend(valid_candidates)
                 call_trace["candidate_count"] = len(valid_candidates)
                 call_trace["candidate_issues"] = [issue.__dict__ for issue in candidate_report.issues]
             except Exception as exc:  # a failed chunk is isolated and traceable
                 call_trace["error"] = f"{type(exc).__name__}: {exc}"
+                if self.entity_selector is not None:
+                    # Choice runs fail explicitly instead of returning a valid
+                    # empty graph that could be mistaken for successful NER.
+                    raise
             trace["chunks"].append(call_trace)
 
         entities, span_to_entity_id, dropped = normalize_candidates(all_candidates, document, fixed)
@@ -276,6 +294,13 @@ class TwoStageKGAgent:
         graph = _filter_valid_relations(Graph(entities, list(unique.values())), document, trace)
         validation = validate_graph(graph, document)
         trace["mode"] = "entity_llm_relation_classifier" if self.relation_classifier is not None else "two_stage_llm_pipeline"
+        if self.entity_selector is not None:
+            trace["entity_output_contract"] = getattr(self.entity_selector, "output_contract", "typed_candidates")
+        if self.relation_classifier is not None:
+            trace["relation_output_contract"] = getattr(self.relation_classifier, "output_contract", "classifier_logits")
+        if (self.entity_selector is not None and self.relation_classifier is not None
+                and trace["entity_output_contract"] == trace["relation_output_contract"] == "bounded-choices-v1"):
+            trace["mode"] = "two_stage_bounded_choices"
         trace["coverage"] = {
             "entities": len(graph.entities),
             "relations": len(graph.relations),

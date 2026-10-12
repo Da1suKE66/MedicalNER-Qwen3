@@ -1,5 +1,21 @@
 # Reliable two-stage medical KG agent
 
+**2026-10-12 output-contract correction:** Current work uses
+[`run_choice_pipeline.py`](run_choice_pipeline.py): both Qwen causal-LM stages
+select finite source/label/evidence indices, and Python alone assembles JSON.
+The decoder enforces the integer-token paths used by
+[`train_choices.py`](train_choices.py). This retains LoRA without introducing
+a classification head. Historical JSON checkpoints cannot be loaded as if they
+were trained for this protocol. See the latest entry in
+[the experiment log](../docs/rapid_screen_20261012.md).
+
+This first release admits only recipe-verified artificial training worlds for
+engineering verification. Medical silver annotation completeness, clean entity
+splits and UNKNOWN loss migration still require a separate release. Passing a
+decoder test or a short GPU run does not establish improved medical F1.
+
+The classifier documentation below describes the historical implementation.
+
 The existing ICD parser, Qwen entity adapter and deterministic JSON assembly
 remain. An opt-in, non-generative relation head replaces long relation-JSON
 generation. Read [the audit](reports/20260907/AUDIT.md) and
