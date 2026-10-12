@@ -242,7 +242,13 @@ def training_exposure(root, jobs, training_manifest, queue):
     for job in jobs:
         if job["name"] not in {"matched_control", "matched_source", "matched_short4"}:
             continue
-        item = {"job": job["name"], "status": "missing", "per_class_exposure_directly_recorded": False}
+        epochs = job.get("expected_epochs", 1)
+        need(isinstance(epochs, (int, float)) and not isinstance(epochs, bool)
+             and math.isfinite(epochs) and epochs >= 1 and int(epochs) == epochs,
+             "training_budget_requires_positive_whole_epochs")
+        epochs = int(epochs)
+        item = {"job": job["name"], "status": "missing", "planned_epochs": epochs,
+                "per_class_exposure_directly_recorded": False}
         path = root / job["name"] / "run_manifest.json"
         if not path.is_file():
             result.append(item)
@@ -266,6 +272,9 @@ def training_exposure(root, jobs, training_manifest, queue):
                 "negative_pairs": admission["negative_pairs"], "positive_edges": supervision["positive_edges"],
                 "supervised_pairs": admission["supervised_pairs"], "candidate_pairs": admission["candidate_pairs"],
                 "unknown_pairs_context_only": admission["unknown_pairs"],
+                "input_tokens": (supervision["prompt_tokens_once"] + supervision["completion_tokens_once"]
+                                 if supervision.get("prompt_tokens_once") is not None
+                                 and supervision.get("completion_tokens_once") is not None else None),
                 "supervised_completion_tokens": supervision.get("supervised_completion_tokens_once"),
                 "prompt_tokens": supervision.get("prompt_tokens_once"),
                 "masked_completion_tokens_context_only": supervision.get("masked_completion_tokens_once"),
@@ -275,6 +284,14 @@ def training_exposure(root, jobs, training_manifest, queue):
             item["recorded_totals_match_one_pass"] = (
                 receipt.get("status") == "training_complete_evaluation_pending"
                 and all(item["observed"][key] == value for key, value in comparable.items()))
+            item["expected_training_budget"] = {
+                key: value * epochs if value is not None else None
+                for key, value in item["expected_one_pass"].items()}
+            budget_comparable = {key: value for key, value in item["expected_training_budget"].items()
+                                 if key in item["observed"] and value is not None}
+            item["recorded_totals_match_training_budget"] = (
+                receipt.get("status") == "training_complete_evaluation_pending"
+                and all(item["observed"][key] == value for key, value in budget_comparable.items()))
         result.append(item)
     return result
 
@@ -365,15 +382,15 @@ def markdown(report):
         if not rows:
             lines.append("| — | — | missing | — | — | — | — | — | — | — | — |")
         lines.append("")
-    lines += ["Matched-training exposure (measured totals versus frozen one-pass expectations)", "",
-              "| Job | Status | Actual rows | Actual supervised pairs | Actual UNKNOWN context pairs | Expected positive/negative/edges | Recorded totals match one pass |",
-              "|---|---|---|---|---|---|---|"]
+    lines += ["Matched-training exposure (measured totals versus planned epoch budget)", "",
+              "| Job | Status | Planned epochs | Actual rows | Actual supervised pairs | Actual UNKNOWN context pairs | Expected budget positive/negative/edges | Recorded totals match budget |",
+              "|---|---|---|---|---|---|---|---|"]
     for row in report["matched_training_exposure"]:
-        observed, expected = row.get("observed", {}), row.get("expected_one_pass", {})
+        observed, expected = row.get("observed", {}), row.get("expected_training_budget", row.get("expected_one_pass", {}))
         classes = "/".join(str(expected.get(k, "—")) for k in ("positive_pairs", "negative_pairs", "positive_edges"))
-        lines.append(f"| {row['job']} | {row['status']} | {observed.get('rows', '—')} | "
+        lines.append(f"| {row['job']} | {row['status']} | {row.get('planned_epochs', 1)} | {observed.get('rows', '—')} | "
                      f"{observed.get('supervised_pairs', '—')} | {observed.get('unknown_pairs_context_only', '—')} | "
-                     f"{classes} | {row.get('recorded_totals_match_one_pass', 'not verified')} |")
+                     f"{classes} | {row.get('recorded_totals_match_training_budget', 'not verified')} |")
     lines.append("")
     lines += ["- " + text for text in report["limitations"]]
     return "\n".join(lines) + "\n"

@@ -194,6 +194,8 @@ def test_observed_exposure_never_invents_positive_negative_measurements(release)
     result = reporter.build_report(release["root"], release["screen"], queue_config=release["queue"], training_manifest=data_manifest)
     row = result["matched_training_exposure"][0]
     assert row["recorded_totals_match_one_pass"]
+    assert row["planned_epochs"] == 1 and row["recorded_totals_match_training_budget"]
+    assert row["expected_training_budget"] == row["expected_one_pass"]
     assert row["expected_one_pass"]["positive_pairs"] == 818
     assert row["observed_positive_pairs"] is None and not row["equal_positive_negative_exposure_verified"]
 
@@ -220,3 +222,43 @@ def test_independent_recount_rejects_same_length_identity_swap():
                     "input_identity": make_input_identity(item, i)} for i, item in enumerate(records)]
     with pytest.raises(ValueError, match="sample_index mismatch"):
         reporter.recount(records, predictions[::-1], [0, 1])
+
+
+@pytest.mark.parametrize("observed_passes, expected_match", [(3, True), (2, False)])
+def test_three_epoch_exposure_budget_rejects_two_pass_totals(release, observed_passes, expected_match):
+    queue = reporter.read_json(release["queue"])
+    queue["jobs"].append({"name": "matched_control", "kind": "train", "expected_epochs": 3,
+                          "command": ["python", "--data", "/remote/data/V4_control.jsonl"]})
+    data_manifest = release["tmp"] / "data_manifest.json"
+    write(data_manifest, {"output_sha256": {"V4_control.jsonl": "a" * 64}, "audits": {"V4_control": {
+        "admission": {"rows": 256, "positive_pairs": 818, "negative_pairs": 488, "supervised_pairs": 1306,
+                      "candidate_pairs": 3544, "unknown_pairs": 2238},
+        "supervision": {"positive_edges": 821, "completion_tokens_once": 63184, "supervised_completion_tokens_once": 33487,
+                        "prompt_tokens_once": 664548, "masked_completion_tokens_once": 29697}}}})
+    queue["expected_sha256"] = {"/remote/data/manifest.json": reporter.digest(data_manifest)}
+    write(release["queue"], queue)
+    one_pass = {"sft_sequence_loss_exposures": 256, "sft_pair_loss_exposures": 1306,
+                "sft_candidate_pair_context_exposures": 3544, "sft_unknown_pair_context_exposures": 2238,
+                "sft_completion_token_loss_exposures": 33487, "sft_prompt_token_loss_exposures": 664548,
+                "sft_input_token_loss_exposures": 727732,
+                "sft_masked_completion_token_context_exposures": 29697}
+    write(release["root"] / "matched_control/run_manifest.json", {
+        "status": "training_complete_evaluation_pending", "data_sha256": "a" * 64,
+        "global_step": observed_passes * 16,
+        "observed_exposure": {key: value * observed_passes for key, value in one_pass.items()}})
+    result = reporter.build_report(release["root"], release["screen"], queue_config=release["queue"], training_manifest=data_manifest)
+    row = result["matched_training_exposure"][0]
+    assert row["planned_epochs"] == 3
+    assert row["expected_one_pass"]["positive_pairs"] == 818
+    assert row["expected_training_budget"]["rows"] == 768
+    assert row["expected_training_budget"]["positive_pairs"] == 2454
+    assert row["expected_training_budget"]["negative_pairs"] == 1464
+    assert row["expected_training_budget"]["positive_edges"] == 2463
+    assert row["expected_training_budget"]["supervised_completion_tokens"] == 100461
+    assert row["expected_training_budget"]["input_tokens"] == 2183196
+    assert row["recorded_totals_match_training_budget"] is expected_match
+    assert not row["recorded_totals_match_one_pass"]
+    assert row["observed_positive_pairs"] is None and row["observed_negative_pairs"] is None
+    assert row["observed_positive_edges"] is None and not row["equal_positive_negative_exposure_verified"]
+    markdown = reporter.markdown(result)
+    assert "Planned epochs" in markdown and "2454/1464/2463" in markdown
