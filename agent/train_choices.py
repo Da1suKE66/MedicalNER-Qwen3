@@ -57,12 +57,13 @@ class ChoiceExposureMixin:
         return result
 
 
-def main():
+def main(argv=None, *, relation_format="choices"):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--data", required=True, help="Recipe-verified recovery preferences; rejected JSON is never a model target")
     p.add_argument("--base-model", required=True)
     p.add_argument("--output-dir", required=True)
-    p.add_argument("--stages", nargs="+", choices=("entities", "relations"), default=["entities", "relations"])
+    p.add_argument("--relation-format", choices=("choices", "labels"), default=relation_format)
+    p.add_argument("--stages", nargs="+", choices=("entities", "relations"))
     p.add_argument("--max-steps", type=int, required=True)
     p.add_argument("--max-length", type=int, default=6144)
     p.add_argument("--batch-size", type=int, default=1)
@@ -70,7 +71,11 @@ def main():
     p.add_argument("--learning-rate", type=float, default=1e-4)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--preflight-only", action="store_true")
-    args = p.parse_args()
+    args = p.parse_args(argv)
+    if args.stages is None:
+        args.stages = ["relations"] if args.relation_format == "labels" else ["entities", "relations"]
+    if args.relation_format == "labels" and args.stages != ["relations"]:
+        p.error("Literal-label training supports the relation stage only")
     if (any(getattr(args, k) < 1 for k in ("max_steps", "max_length", "batch_size", "gradient_accumulation"))
             or not math.isfinite(args.learning_rate) or args.learning_rate <= 0
             or len(set(args.stages)) != len(args.stages)):
@@ -78,8 +83,16 @@ def main():
     out = Path(args.output_dir)
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise ValueError("Use a new output directory; previous runs are immutable")
-    from generative.choice_data import compile_recovery_row, encode_row
-    from kg_agent.choice_backend import CONTRACT, adapter_files_digest, protocol_implementation_digest, base_input_digest
+    from kg_agent.choice_backend import adapter_files_digest, base_input_digest
+    if args.relation_format == "labels":
+        from generative.label_data import compile_recovery_row, encode_row
+        from kg_agent.label_backend import CONTRACT, COMPLETION_ENCODING, protocol_implementation_digest
+        receipt_filename = "label_contract.json"
+    else:
+        from generative.choice_data import compile_recovery_row, encode_row
+        from kg_agent.choice_backend import CONTRACT, protocol_implementation_digest
+        COMPLETION_ENCODING = "independent_integer_newline_tokens_then_eos"
+        receipt_filename = "choice_contract.json"
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, local_files_only=True)
     if tokenizer.pad_token_id is None:
@@ -98,7 +111,7 @@ def main():
         "data_sha256": hashlib.sha256(source).hexdigest(), "source_rows": len(rows),
         "training_rows": len(encoded), "stages": args.stages,
         "max_total_tokens": max(len(item["input_ids"]) for item in encoded),
-        "completion_encoding": "independent_integer_newline_tokens_then_eos",
+        "completion_encoding": COMPLETION_ENCODING,
         "medical_training": False, "clinical_quality_claim": False,
         "unknown_policy": "Rejected at reconstruction; no unknown-to-empty conversion",
         "exposure_counting_version": "successful_training_step_v2",
@@ -204,7 +217,7 @@ def main():
     receipt = {k: audit[k] for k in ("output_contract", "stages", "completion_encoding", "protocol_sha256", "adapter_sha256", "base_input_sha256", "scope")}
     receipt.update(training_manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest(),
                    training_data_sha256=audit["data_sha256"], medical_quality_evaluated=False)
-    (final / "choice_contract.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    (final / receipt_filename).write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps(audit, ensure_ascii=False), flush=True)
 
 

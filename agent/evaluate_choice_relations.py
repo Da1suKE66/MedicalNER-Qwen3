@@ -1,8 +1,10 @@
-"""Full semantic artificial holdout, relation-only bounded-choice evaluation.
+"""Full semantic artificial holdout, relation-only output evaluation.
 
 This is a component comparison with authored entity candidates, not medical or
 end-to-end quality evidence. No length, label, prediction, or success filtering
 is permitted. Failed generations remain in the gold denominator as full FN.
+Historical integer choices are the default; literal labels require an explicit
+format selection or the evaluate_label_relations entry point.
 """
 
 from __future__ import annotations
@@ -21,6 +23,7 @@ from generative.choice_data import compile_recovery_row, validate_row
 from generative.choice_preferences import DATA_VERSION as PREFERENCE_VERSION, validate_preference_row
 from generative.recovery_preferences import STRUCTURAL, verify_case
 from kg_agent.choice_backend import ChoiceFailure, ChoiceGenerator, check_adapter_contract
+from kg_agent import label_backend
 
 
 SCOPE = "artificial_semantic_relation_holdout_not_medical_not_pipeline"
@@ -32,14 +35,24 @@ def digest(value):
                                     separators=(",", ":"), allow_nan=False).encode()).hexdigest()
 
 
-def prepare_cases(sources):
+def _check_format(relation_format):
+    if relation_format not in ("choices", "labels"):
+        raise ValueError("relation_format must be choices or labels")
+
+
+def prepare_cases(sources, *, relation_format="choices"):
     """Freeze all semantic cases before generation; structural exclusions listed."""
+    _check_format(relation_format)
     if not isinstance(sources, list) or not sources:
         raise ValueError("A nonempty raw recovery holdout is required")
     cases, exclusions, seen = [], [], set()
     for index, input_row in enumerate(sources):
         if isinstance(input_row, dict) and input_row.get("data_version") == PREFERENCE_VERSION:
             validate_preference_row(input_row, require_train=False)
+            source = input_row["source_row"]
+        elif relation_format == "labels" and isinstance(input_row, dict) and input_row.get("data_version") == "artificial-literal-relation-data-v1":
+            from generative.label_data import validate_row as validate_label_row
+            validate_label_row(input_row, require_train=False)
             source = input_row["source_row"]
         else:
             source = input_row
@@ -59,12 +72,23 @@ def prepare_cases(sources):
         if source["reason"] in STRUCTURAL:
             exclusions.append({**identity, "reason": "structural_rejected_not_representable_as_legal_actions"})
             continue
+        gold_edges = task.edges(compiled["actions"])
+        target = {"gold_actions": list(compiled["actions"])}
+        if relation_format == "labels":
+            from generative.label_data import compile_recovery_row as compile_labels, validate_row as validate_labels
+            literal = compile_labels(source)
+            task = validate_labels(literal, require_train=False)
+            if _sets(gold_edges) != _sets(literal["target"]):
+                raise ValueError("Literal conversion changed certified gold relations or evidence")
+            if compiled["task_input"] != literal["task_input"]:
+                raise ValueError("Literal conversion changed frozen input candidates")
+            target = {"gold_completion_text": literal["completion"],
+                      "output_contract": label_backend.CONTRACT, "relation_format": "labels"}
         cases.append({**identity, "task": task, "task_input": compiled["task_input"],
                       "task_input_sha256": digest(compiled["task_input"]),
                       "prompt_sha256": hashlib.sha256(task.prompt.encode()).hexdigest(),
                       "prompt_chars": len(task.prompt), "source_chars": len(source["oracle_source_text"]),
-                      "gold_actions": list(compiled["actions"]),
-                      "gold_edges": task.edges(compiled["actions"])})
+                      **target, "gold_edges": gold_edges})
     if not cases:
         raise ValueError("No semantic holdout cases remain")
     manifest = {"scope": SCOPE, "selection_policy": SELECTION, "source_samples": len(sources),
@@ -73,6 +97,8 @@ def prepare_cases(sources):
                     "kind", "task_input_sha256", "prompt_sha256")} for case in cases],
                 "selection_uses_predictions": False, "selection_uses_lengths": False,
                 "selection_uses_gold_performance": False}
+    if relation_format == "labels":
+        manifest.update(relation_format="labels", output_contract=label_backend.CONTRACT)
     manifest["selection_sha256"] = digest(manifest)
     return cases, manifest
 
@@ -160,7 +186,24 @@ def summarize(records):
             "scope": "Authored relation candidates only; no entity-stage or medical generalization claim"}}
 
 
-def evaluate_cases(cases, generator, *, max_seconds=None, on_record=None, clock=time.monotonic):
+def checked_label_result(task, returned_edges, trace):
+    """Recheck the exact model text; incomplete or invalid prefixes yield no edges."""
+    if (trace.get("output_contract") != label_backend.CONTRACT
+            or trace.get("eos_observed") is not True or trace.get("complete") is not True
+            or trace.get("error") or trace.get("budget_exhausted") or trace.get("deadline_exhausted")):
+        raise ChoiceFailure("Incomplete literal-label response", trace)
+    try:
+        edges = task.parse(trace.get("completion_text"))
+        # Equality is semantic: record and evidence ordering is unrestricted.
+        if _sets(edges) != _sets(returned_edges):
+            raise ValueError("Returned edges differ from literal completion text")
+    except (ValueError, TypeError, KeyError) as exc:
+        raise ChoiceFailure("Invalid literal-label response: " + str(exc), trace) from exc
+    return edges
+
+
+def evaluate_cases(cases, generator, *, relation_format="choices", max_seconds=None, on_record=None, clock=time.monotonic):
+    _check_format(relation_format)
     if not cases:
         raise ValueError("No cases to evaluate")
     if max_seconds is not None and (not math.isfinite(max_seconds) or max_seconds <= 0):
@@ -168,28 +211,37 @@ def evaluate_cases(cases, generator, *, max_seconds=None, on_record=None, clock=
     records, start = [], clock()
     for case in cases:
         row_start = clock()
+        target_keys = ("gold_actions",) if relation_format == "choices" else ("gold_completion_text", "output_contract", "relation_format")
         record = {key: deepcopy(case[key]) for key in ("id", "source_id", "source_index", "input_row_sha256", "source_row_sha256", "kind",
-            "task_input", "task_input_sha256", "prompt_sha256", "prompt_chars", "source_chars", "gold_actions", "gold_edges")}
-        record.update(actions=[], predicted_edges=[], candidate_pairs=len(case["task"].pairs),
+            "task_input", "task_input_sha256", "prompt_sha256", "prompt_chars", "source_chars", "gold_edges") + target_keys}
+        record.update({"actions": []} if relation_format == "choices" else {"completion_text": None})
+        record.update(predicted_edges=[], candidate_pairs=len(case["task"].pairs),
                       trace={}, generation_attempted=False)
         try:
             if max_seconds is not None and clock() - start >= max_seconds:
                 raise ChoiceFailure("Evaluation deadline reached before generation", {"deadline_exhausted": True})
             record["generation_attempted"] = True
-            actions, trace = generator.run(case["task"])
-            record.update(actions=list(actions), trace=deepcopy(trace))
+            result, trace = generator.run(case["task"])
+            record["trace"] = deepcopy(trace)
+            if relation_format == "choices":
+                record["actions"] = list(result)
+            else:
+                record["completion_text"] = trace.get("completion_text")
             if max_seconds is not None and clock() - start > max_seconds:
                 raise ChoiceFailure("Generation exceeded evaluation deadline", {**trace, "deadline_exhausted": True})
             if trace.get("error") or trace.get("complete") is False:
                 raise ChoiceFailure("Generator returned an incomplete action sequence", trace)
-            record["predicted_edges"] = case["task"].edges(actions)
+            record["predicted_edges"] = (case["task"].edges(result) if relation_format == "choices"
+                                         else checked_label_result(case["task"], result, trace))
             record["status"] = "complete"
         except Exception as exc:
             trace = deepcopy(getattr(exc, "trace", record["trace"]))
             record.update(status="failed", predicted_edges=[], trace=trace,
                           error_type=type(exc).__name__, error=str(exc))
-            if "actions" in trace:
+            if relation_format == "choices" and "actions" in trace:
                 record["actions"] = list(trace["actions"])
+            elif relation_format == "labels":
+                record["completion_text"] = trace.get("completion_text")
         record["elapsed_seconds"] = max(0.0, clock() - row_start)
         gold, evidence = _sets(record["gold_edges"])
         predicted, predicted_evidence = _sets(record["predicted_edges"])
@@ -199,12 +251,17 @@ def evaluate_cases(cases, generator, *, max_seconds=None, on_record=None, clock=
         if on_record is not None:
             on_record(record)
     report = summarize(records)
+    if relation_format == "labels":
+        report.update(relation_format="labels", output_contract=label_backend.CONTRACT)
+        report["metric_contract"]["failure_policy"] = "Every invalid, non-EOS or failed response keeps all gold as FN; partial literal text is diagnostic only"
     report["elapsed_seconds"] = max(0.0, clock() - start)
     return report, records
 
 
-def load_generator(args):
-    receipt = check_adapter_contract(args.adapter, "relations", base_model=args.base_model)
+def load_generator(args, *, relation_format="choices"):
+    _check_format(relation_format)
+    check = check_adapter_contract if relation_format == "choices" else label_backend.check_adapter_contract
+    receipt = check(args.adapter, "relations", base_model=args.base_model)
     import torch
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -219,11 +276,13 @@ def load_generator(args):
         is_trainable=False, local_files_only=True).to("cuda").eval()
     model.config.pad_token_id = tokenizer.pad_token_id
     backend = SimpleNamespace(model=model, tokenizer=tokenizer, adapter_name="default")
-    return ChoiceGenerator(backend, max_input_tokens=args.max_input_tokens,
+    generator_class = ChoiceGenerator if relation_format == "choices" else label_backend.LabelGenerator
+    return generator_class(backend, max_input_tokens=args.max_input_tokens,
                            max_new_tokens=args.max_new_tokens), receipt
 
 
-def parse_args(argv=None):
+def parse_args(argv=None, *, relation_format="choices"):
+    _check_format(relation_format)
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("data", "adapter", "base-model", "output-dir"):
         parser.add_argument("--" + name, required=True)
@@ -231,6 +290,7 @@ def parse_args(argv=None):
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--max-seconds", type=float)
     parser.add_argument("--preflight-only", action="store_true")
+    parser.add_argument("--relation-format", choices=("choices", "labels"), default=relation_format)
     args = parser.parse_args(argv)
     if args.max_input_tokens < 1 or args.max_new_tokens < 1 or (
             args.max_seconds is not None and (not math.isfinite(args.max_seconds) or args.max_seconds <= 0)):
@@ -238,21 +298,25 @@ def parse_args(argv=None):
     return args
 
 
-def main(argv=None):
-    args = parse_args(argv)
+def main(argv=None, *, relation_format="choices"):
+    args = parse_args(argv, relation_format=relation_format)
+    relation_format = args.relation_format
     out = Path(args.output_dir)
     if out.exists() and (not out.is_dir() or any(out.iterdir())):
         raise ValueError("Use a new output directory; existing runs are immutable")
     source_bytes = Path(args.data).read_bytes()
     sources = [json.loads(line) for line in source_bytes.decode().splitlines() if line.strip()]
-    cases, selection = prepare_cases(sources)
-    receipt = check_adapter_contract(args.adapter, "relations", base_model=args.base_model)
+    cases, selection = prepare_cases(sources, relation_format=relation_format)
+    check = check_adapter_contract if relation_format == "choices" else label_backend.check_adapter_contract
+    receipt = check(args.adapter, "relations", base_model=args.base_model)
     manifest = {"status": "preflight_complete" if args.preflight_only else "running", "scope": SCOPE,
                 "args": vars(args), "data_sha256": hashlib.sha256(source_bytes).hexdigest(),
                 "adapter_sha256": receipt["adapter_sha256"], "protocol_sha256": receipt["protocol_sha256"],
                 "base_input_sha256": receipt["base_input_sha256"], "selection": selection,
                 "decoding": {"do_sample": False, "num_beams": 1,
                              "max_input_tokens": args.max_input_tokens, "max_new_tokens": args.max_new_tokens}}
+    if relation_format == "labels":
+        manifest.update(relation_format="labels", output_contract=label_backend.CONTRACT)
     out.mkdir(parents=True, exist_ok=True)
     def save(name, value):
         (out / name).write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
@@ -261,12 +325,13 @@ def main(argv=None):
         print(json.dumps(manifest, ensure_ascii=False))
         return
     try:
-        generator, _ = load_generator(args)
+        generator, _ = load_generator(args) if relation_format == "choices" else load_generator(args, relation_format="labels")
         with (out / "predictions.jsonl").open("w", encoding="utf-8") as stream:
             def append(row):
                 stream.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n")
                 stream.flush()
-            metrics, _ = evaluate_cases(cases, generator, max_seconds=args.max_seconds, on_record=append)
+            metrics, _ = evaluate_cases(cases, generator, relation_format=relation_format,
+                                        max_seconds=args.max_seconds, on_record=append)
         metrics.update(data_sha256=manifest["data_sha256"], adapter_sha256=manifest["adapter_sha256"],
                        selection_sha256=selection["selection_sha256"],
                        predictions_sha256=hashlib.sha256((out / "predictions.jsonl").read_bytes()).hexdigest())

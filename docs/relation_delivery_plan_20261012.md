@@ -123,3 +123,18 @@ Precision明确称精确率。开放图没有自然TN，不造Accuracy；仅在�
 ## 2026-10-12 19:40窗口的最新状态
 
 用户在pipeline协议纠正后要求继续DPO。已完成非JSON语义DPO32、同父continued-SFT32及父模型对照；人工24条和医学12篇oracle关系单模块全部完整评测、独立复算。新DPO未提升F1，新增医疗误报明显；当前不扩大该配方。具体结果及后续优先级以 [choice_dpo_20261012.md](choice_dpo_20261012.md) 为准，取代前文“尚未启动新DPO”的阶段状态。完整端到端本窗口未运行，真实医学监督迁移仍是未完成主项。
+# 2026-10-12 用户纠正：关系输出恢复完整语义标签
+
+19:40汇总后，用户指出将语义label替换为动态数字编号缺乏依据。此前把程序负责JSON组装与数字状态机改造绑定，额外加入了按编号递增输出；其F1收益未被独立验证。现将关系主路线改为直接生成完整label的文本记录，不把旧数字协议作为已验证有效的主路线。
+
+模型输出四个TAB分隔字段：起点实体引用、完整关系label、终点实体引用、逗号分隔的可见证据引用。例如 `E001<TAB>is_core_symptom_of<TAB>E002<TAB>SENT_004`。记录和证据顺序不受递增规则限制；同一实体对可以输出多个不同关系。程序检查全部记录、合并重复边和证据、复制原文并组装JSON。不能解析的记录使该批失败，不丢弃坏行伪装成功，不修复模型JSON。没有EOS的输出即使末尾看起来完整，也记录为失败/预算耗尽，不接受部分结果。
+
+训练和推理共享 `RelationLabelTask` 的输入表和语义。SFT完整编码文字completion后追加一个EOS，prompt损失为-100；新 `label_contract.json` 绑定代码、tokenizer配置与真实adapter文件。旧数字adapter不得直接当label模型使用。新入口为 `train_label_relations.py`、`evaluate_label_relations.py`、`evaluate_label_medical.py`、`run_label_pipeline.py`；共享原训练/评分实现，保留旧实验入口和冻结产物。实体模块仍有单独的契约，当前修正针对关系模块。
+
+该改动单独调整输出表示及相关提示词。候选构建、医学标注和历史ontology语义不在本次表示修正中被偷偷改写。既有目标类型约束缺口、规范病名对齐、原文残缺和不完整银标仍需明确处理；不能把UNKNOWN当作空关系监督。当前literal-label训练编译器严格只准入可重建的完整人工world，不接受未审定医学银标；这是表示迁移与工程检查，尚未完成真实医学SFT迁移。
+
+验证包含任意输出顺序、多关系/多证据、非法引用整批拒绝、不同输入表顺序下的稳定引用、EOS/预算边界、真实Qwen tokenizer、训练收据及完整评分分母。人工256训练/32留出原始recipe的目标编解码检查均通过，最大prompt+completion为1313 tokens；这是CPU数据验收，不是模型预测结果。旧语义24条与旧医学12篇40条的实际结果保留，不用重编码gold冒充新模型评测。
+
+代码准备完成后，仍需在匹配的训练数据和预算下训练与评测实际label模型。不能声称文字label必然优于数字，也不能把解析器/CPU通过当作F1提升。本次修改不自动启动GPU训练或替换线上权重。
+
+本次整套CPU回归为1631 passed、2 skipped。用与服务器SHA完全一致的Qwen3 tokenizer/model配置对旧对照的128条训练来源和24条留出来源重新验收：分别177/34条关系目标，全部文字completion逐字编解码一致，训练入口preflight通过。公开聚合见 [literal-label-correction-verification.json](audits/20261012/literal-label-correction-verification.json)。旧独立复算脚本仅认识数字动作记录；新label模型的分数发布前还需显式支持新trace的独立复算，不能把新记录交给旧脚本混用。

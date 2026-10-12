@@ -26,10 +26,19 @@ class NoTextGeneration:
 def build_agent(args):
     if not args.base_model:
         raise ValueError("Free text requires --base-model")
+    relation_format = getattr(args, "relation_format", "choices")
+    if relation_format == "labels":
+        from kg_agent.label_backend import LabelGenerator, LabelRelationSelector
+        from kg_agent.label_backend import check_adapter_contract as check_relation_contract
+        relation_generator_type, relation_selector_type = LabelGenerator, LabelRelationSelector
+    else:
+        check_relation_contract = check_adapter_contract
+        relation_generator_type, relation_selector_type = ChoiceGenerator, ChoiceRelationSelector
     for stage, path in (("entities", args.entity_adapter), ("relations", args.relation_adapter)):
         if not path:
             raise ValueError(f"Free text requires a trained {stage} choice adapter")
-        check_adapter_contract(path, stage, base_model=args.base_model)
+        checker = check_adapter_contract if stage == "entities" else check_relation_contract
+        checker(path, stage, base_model=args.base_model)
     backend = TransformersBackend(args.base_model, args.entity_adapter, adapter_name="entities",
                                   load_in_4bit=args.load_in_4bit)
     if Path(args.relation_adapter).resolve() == Path(args.entity_adapter).resolve():
@@ -44,19 +53,20 @@ def build_agent(args):
                               max_chars_per_chunk=args.max_chars_per_chunk),
         entity_selector=ChoiceEntitySelector(ChoiceGenerator(
             backend, max_input_tokens=args.max_input_tokens, max_new_tokens=args.max_entity_tokens)),
-        relation_classifier=ChoiceRelationSelector(ChoiceGenerator(
+        relation_classifier=relation_selector_type(relation_generator_type(
             relation_view, max_input_tokens=args.max_input_tokens, max_new_tokens=args.max_relation_tokens),
             config=ProtocolConfig(pairs_per_batch=args.pairs_per_batch, order=args.order, context=args.context)),
     )
 
 
-def main():
+def main(argv=None, *, relation_format="choices"):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, help="JSONL raw sources or {text, metadata}")
     parser.add_argument("--output", required=True)
     parser.add_argument("--base-model")
     parser.add_argument("--entity-adapter")
     parser.add_argument("--relation-adapter")
+    parser.add_argument("--relation-format", choices=("choices", "labels"), default=relation_format)
     parser.add_argument("--load-in-4bit", action="store_true")
     parser.add_argument("--max-input-tokens", type=int, default=6144)
     parser.add_argument("--max-entity-tokens", type=int, default=2048)
@@ -67,7 +77,7 @@ def main():
     parser.add_argument("--pairs-per-batch", type=int, default=4)
     parser.add_argument("--order", choices=("source", "hash"), default="source")
     parser.add_argument("--context", choices=("full", "local"), default="full")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     for key in ("max_input_tokens", "max_entity_tokens", "max_relation_tokens", "max_entity_candidates",
                 "max_spans_per_chunk", "max_chars_per_chunk", "pairs_per_batch"):
         if getattr(args, key) < 1:

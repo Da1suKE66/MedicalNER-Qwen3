@@ -301,6 +301,8 @@ class TwoStageKGAgent:
         if (self.entity_selector is not None and self.relation_classifier is not None
                 and trace["entity_output_contract"] == trace["relation_output_contract"] == "bounded-choices-v1"):
             trace["mode"] = "two_stage_bounded_choices"
+        if trace.get("relation_output_contract") == "relation-label-lines-v1":
+            trace["mode"] = "two_stage_literal_relation_labels"
         trace["coverage"] = {
             "entities": len(graph.entities),
             "relations": len(graph.relations),

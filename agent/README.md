@@ -1,15 +1,30 @@
 # Reliable two-stage medical KG agent
 
-**2026-10-12 output-contract correction:** Current work uses
-[`run_choice_pipeline.py`](run_choice_pipeline.py): both Qwen causal-LM stages
-select finite source/label/evidence indices, and Python alone assembles JSON.
-The decoder enforces the integer-token paths used by
-[`train_choices.py`](train_choices.py). This retains LoRA without introducing
-a classification head. Historical JSON checkpoints cannot be loaded as if they
-were trained for this protocol. See the latest entry in
-[the experiment log](../docs/rapid_screen_20261012.md).
+**2026-10-12 user correction: literal relation labels.** The selected relation
+output is now readable records such as
+`E001<TAB>is_core_symptom_of<TAB>E002<TAB>SENT_004`, using full semantic labels
+and existing source references. Python validates records, merges duplicates,
+copies evidence and assembles JSON. There is no dynamic relation-label index,
+numeric state machine or ascending-output requirement in this relation path.
+Qwen remains a causal LM with LoRA, without a classification head.
 
-This first release admits only recipe-verified artificial training worlds for
+[`train_label_relations.py`](train_label_relations.py) uses the shared SFT
+trainer with literal-label targets and a distinct training receipt.
+[`evaluate_label_relations.py`](evaluate_label_relations.py) and
+[`evaluate_label_medical.py`](evaluate_label_medical.py) retain complete gold
+denominators and explicitly account for parse/termination failures.
+[`run_label_pipeline.py`](run_label_pipeline.py) connects that relation adapter
+to a separately verified entity adapter. The entity stage still has its own
+existing output contract; this correction does not claim new entity training.
+Numeric/JSON relation checkpoints are not interchangeable with a label-trained
+checkpoint. The new code is prepared; no new trained label checkpoint or quality
+improvement is claimed by the code change. See the correction in
+[the delivery plan](../docs/relation_delivery_plan_20261012.md).
+
+The earlier [`run_choice_pipeline.py`](run_choice_pipeline.py) and its integer
+training/evaluation entries remain available for historical reproduction.
+
+The current literal-label compiler admits only recipe-verified artificial training worlds for
 engineering verification. Medical silver annotation completeness, clean entity
 splits and UNKNOWN loss migration still require a separate release. Passing a
 decoder test or a short GPU run does not establish improved medical F1.
