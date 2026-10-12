@@ -1,0 +1,108 @@
+{
+  "observed_at": "2026-10-12T09:26:33.430904+00:00",
+  "scope": "read_only_saved_rapid_outputs_no_rescoring_or_decoding_changes",
+  "decode_limit": 2048,
+  "at_limit_batches": 25,
+  "at_limit_invalid_json_batches": 25,
+  "repeated_pair_id_batches": 19,
+  "unexpected_pair_id_batches": 6,
+  "runtime_error_batches": 0,
+  "per_condition": [
+    {
+      "condition": "matched_control_screen/full_hash16",
+      "rows": 22,
+      "token_limit_rows": 2,
+      "tokens": {
+        "2048": 2
+      },
+      "stats": {
+        "valid_json": 0,
+        "repeated_pair_id_rows": 2,
+        "extra_pair_id_rows": 0,
+        "think_tags": 0,
+        "runtime_errors": 0
+      }
+    },
+    {
+      "condition": "matched_control_screen/full_hash4",
+      "rows": 64,
+      "token_limit_rows": 9,
+      "tokens": {
+        "2048": 9
+      },
+      "stats": {
+        "valid_json": 0,
+        "repeated_pair_id_rows": 5,
+        "extra_pair_id_rows": 4,
+        "think_tags": 0,
+        "runtime_errors": 0
+      }
+    },
+    {
+      "condition": "matched_control_screen/full_source16",
+      "rows": 22,
+      "token_limit_rows": 7,
+      "tokens": {
+        "2048": 7
+      },
+      "stats": {
+        "valid_json": 0,
+        "repeated_pair_id_rows": 6,
+        "extra_pair_id_rows": 1,
+        "think_tags": 0,
+        "runtime_errors": 0
+      }
+    },
+    {
+      "condition": "matched_source_screen/full_hash16",
+      "rows": 22,
+      "token_limit_rows": 2,
+      "tokens": {
+        "2048": 2
+      },
+      "stats": {
+        "valid_json": 0,
+        "repeated_pair_id_rows": 1,
+        "extra_pair_id_rows": 1,
+        "think_tags": 0,
+        "runtime_errors": 0
+      }
+    },
+    {
+      "condition": "matched_source_screen/full_source16",
+      "rows": 22,
+      "token_limit_rows": 5,
+      "tokens": {
+        "2048": 5
+      },
+      "stats": {
+        "valid_json": 0,
+        "repeated_pair_id_rows": 5,
+        "extra_pair_id_rows": 0,
+        "think_tags": 0,
+        "runtime_errors": 0
+      }
+    }
+  ],
+  "illustrative_counts_without_raw_text": [
+    {
+      "expected_pairs": 2,
+      "observed_decision_mentions": 67
+    },
+    {
+      "expected_pairs": 4,
+      "observed_unique_decision_ids": 151
+    }
+  ],
+  "limitations": [
+    "truncated flag is length>=limit, not recorded finish_reason",
+    "raw token IDs and EOS events absent; non-limit malformed outputs cannot be assigned definitive stop causes",
+    "target and UNKNOWN masking audit found no demonstrated cause; optimization and masked-context train/inference mismatch remain hypotheses"
+  ],
+  "json_contract": {
+    "model_generates": "intermediate decisions JSON including punctuation, pair IDs, relation labels and evidence IDs",
+    "code_assembles": "final entity/relation graph and output file",
+    "stopping_checker": "completion detection, not grammar-constrained token selection",
+    "strict_parser_failure": "returns no edges for entire batch; all gold FN retained"
+  }
+}
