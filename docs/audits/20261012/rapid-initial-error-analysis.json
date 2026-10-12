@@ -1,0 +1,195 @@
+{
+  "scope": "first_complete_condition_diagnostic_not_final_pipeline_quality",
+  "source_condition": "grounded64_screen/full_hash16",
+  "gold_fn_partition": {
+    "unreachable_candidate": 14,
+    "reachable_but_not_extracted": 17
+  },
+  "fn_relation_labels": {
+    "has_specifier": 1,
+    "is_core_symptom_of": 20,
+    "has_diagnostic_criterion": 1,
+    "is_associated_symptom_of": 2,
+    "subtype_of": 2,
+    "differentiates_from": 5
+  },
+  "fp_by_source_type_relation_target_type": [
+    {
+      "source_type": "Symptom",
+      "relation": "is_associated_symptom_of",
+      "target_type": "Symptom",
+      "count": 95
+    },
+    {
+      "source_type": "Symptom",
+      "relation": "is_associated_symptom_of",
+      "target_type": "Disease",
+      "count": 16
+    },
+    {
+      "source_type": "Disease",
+      "relation": "differentiates_from",
+      "target_type": "Disease",
+      "count": 12
+    },
+    {
+      "source_type": "__INVALID_ENDPOINT__",
+      "relation": "INVALID:unknown_relation",
+      "target_type": "__INVALID_ENDPOINT__",
+      "count": 11
+    },
+    {
+      "source_type": "Disease",
+      "relation": "has_diagnostic_criterion",
+      "target_type": "Symptom",
+      "count": 11
+    },
+    {
+      "source_type": "Diagnostic Criterion",
+      "relation": "required_for",
+      "target_type": "Symptom",
+      "count": 6
+    },
+    {
+      "source_type": "Symptom",
+      "relation": "is_associated_symptom_of",
+      "target_type": "Diagnostic Criterion",
+      "count": 5
+    },
+    {
+      "source_type": "Symptom",
+      "relation": "supports_Diagnostic Criterion_of",
+      "target_type": "Diagnostic Criterion",
+      "count": 4
+    },
+    {
+      "source_type": "Symptom",
+      "relation": "is_core_symptom_of",
+      "target_type": "Symptom",
+      "count": 4
+    },
+    {
+      "source_type": "Diagnostic Criterion",
+      "relation": "required_for",
+      "target_type": "Disease",
+      "count": 2
+    },
+    {
+      "source_type": "Symptom",
+      "relation": "is_core_symptom_of",
+      "target_type": "Disease",
+      "count": 2
+    },
+    {
+      "source_type": "Diagnostic Criterion",
+      "relation": "co_occurs_with",
+      "target_type": "Symptom",
+      "count": 2
+    },
+    {
+      "source_type": "Disease",
+      "relation": "has_diagnostic_criterion",
+      "target_type": "Diagnostic Criterion",
+      "count": 1
+    },
+    {
+      "source_type": "Disease",
+      "relation": "associated_with_poor_prognosis",
+      "target_type": "Symptom",
+      "count": 1
+    },
+    {
+      "source_type": "Disease",
+      "relation": "causes",
+      "target_type": "Symptom",
+      "count": 1
+    },
+    {
+      "source_type": "Disease",
+      "relation": "has_specifier",
+      "target_type": "Disease",
+      "count": 1
+    },
+    {
+      "source_type": "Disease",
+      "relation": "subtype_of",
+      "target_type": "Disease",
+      "count": 1
+    }
+  ],
+  "parse_error_occurrences": {
+    "unknown_relation": 11,
+    "invalid_json": 4,
+    "duplicate_pair": 1
+  },
+  "parse_error_batches": 11,
+  "truncated_batches": 0,
+  "batches": 22,
+  "invalid_json_syntax_audit": [
+    {
+      "tokens": 327,
+      "characters": 1061,
+      "truncated": false,
+      "contains_code_fence": false,
+      "contains_think_tag": false,
+      "starts_json_object": true,
+      "ends_json_object": false,
+      "json_error": "Expecting ',' delimiter",
+      "error_position": 1059
+    },
+    {
+      "tokens": 334,
+      "characters": 1079,
+      "truncated": false,
+      "contains_code_fence": false,
+      "contains_think_tag": false,
+      "starts_json_object": true,
+      "ends_json_object": false,
+      "json_error": "Expecting ',' delimiter",
+      "error_position": 1077
+    },
+    {
+      "tokens": 486,
+      "characters": 1647,
+      "truncated": false,
+      "contains_code_fence": false,
+      "contains_think_tag": false,
+      "starts_json_object": true,
+      "ends_json_object": false,
+      "json_error": "Expecting ',' delimiter",
+      "error_position": 1645
+    },
+    {
+      "tokens": 426,
+      "characters": 1443,
+      "truncated": false,
+      "contains_code_fence": false,
+      "contains_think_tag": false,
+      "starts_json_object": true,
+      "ends_json_object": false,
+      "json_error": "Expecting ',' delimiter",
+      "error_position": 1441
+    }
+  ],
+  "independent_fn_partition": {
+    "unreachable_candidate": 14,
+    "reachable_invalid_json_batch": 7,
+    "reachable_wrong_relation_on_same_directed_pair": 9,
+    "reachable_empty_or_missing_decision": 1
+  },
+  "independent_fp_partition": {
+    "symptom_predicate_wrong_target_type": 104,
+    "invalid_unknown_relation_placeholders": 11,
+    "wrong_predicate_on_gold_directed_pair": 10,
+    "only_reverse_pair_annotated": 16,
+    "directed_pair_unannotated_both_endpoints_gold": 34
+  },
+  "clinical_interpretation": "The 50 reversed/unannotated-pair discrepancies are metric FP but are not all established medical hallucinations; adjudication is needed.",
+  "parseable_unique_pairs": 190,
+  "parseable_nonempty_pairs": 183,
+  "parseable_empty_pairs": 7,
+  "fp_invalid_placeholders": 11,
+  "f1_if_invalid_placeholders_ignored": 0.08450704225352113,
+  "invalid_json_stop_cause": "Unknown: existing artifacts do not distinguish EOS from other stopping criteria; none reached token limit.",
+  "ontology_scope": "Symptom relation allowed-list constrains source type only; type rule adds a semantic target constraint."
+}
