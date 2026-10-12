@@ -1,0 +1,331 @@
+{
+  "observed_at": "2026-10-12T07:39:10+00:00",
+  "scope": "DPO16_feasibility_and_small_fixed_subset_not_final_medical_RL_quality",
+  "medical_samples": 12,
+  "medical_gold_triples": 40,
+  "artificial_mechanical_samples": 16,
+  "medical": [
+    {
+      "job": "dpo_zero_medical",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 175,
+        "fn": 31,
+        "precision": 0.04891304347826087,
+        "recall": 0.225,
+        "f1": 0.08035714285714286
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 11,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 240.27660194700002,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        }
+      }
+    },
+    {
+      "job": "dpo16_medical",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 171,
+        "fn": 31,
+        "precision": 0.05,
+        "recall": 0.225,
+        "f1": 0.08181818181818182
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 12,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 240.6591253009974,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 100,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 171,
+            "fn": 31,
+            "precision": 0.05,
+            "recall": 0.225,
+            "f1": 0.08181818181818182
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 171,
+            "fn": 31,
+            "precision": 0.05,
+            "recall": 0.225,
+            "f1": 0.08181818181818182
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 100,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        }
+      }
+    }
+  ],
+  "artificial_mechanical": [
+    {
+      "job": "dpo_zero_mechanical",
+      "queue_status": "complete",
+      "condition": "mechanical",
+      "status": "verified",
+      "scope": "artificial_mechanical_only",
+      "relation": {
+        "tp": 14,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.875,
+        "f1": 0.9333333333333333
+      },
+      "samples": 16,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 0,
+      "batches": 16,
+      "truncated_batches": 0,
+      "parse_error_batches": 0,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 77.69606266599294,
+      "elapsed_scope": "generation_time_only",
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        }
+      }
+    },
+    {
+      "job": "dpo16_mechanical",
+      "queue_status": "complete",
+      "condition": "mechanical",
+      "status": "verified",
+      "scope": "artificial_mechanical_only",
+      "relation": {
+        "tp": 14,
+        "fp": 2,
+        "fn": 2,
+        "precision": 0.875,
+        "recall": 0.875,
+        "f1": 0.875
+      },
+      "samples": 16,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 0,
+      "batches": 16,
+      "truncated_batches": 0,
+      "parse_error_batches": 0,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 79.95435764899594,
+      "elapsed_scope": "generation_time_only",
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        }
+      }
+    }
+  ],
+  "zero_loader_equivalence": {
+    "samples": 12,
+    "batches": 22,
+    "matching_per_batch_fields": [
+      "text",
+      "tokens",
+      "input_tokens",
+      "truncated",
+      "id",
+      "sample_id",
+      "input_identity",
+      "prompt",
+      "parse_errors"
+    ],
+    "all_generation_content_equal": true
+  },
+  "interpretation": [
+    "Medical true positives remain9;4 fewer false positives are already removed by existing rules. Post-rule counts and F1 are unchanged.",
+    "Artificial mechanical holdout gains2 false positives,with unchanged14 true positives.",
+    "This64-pair synthetic,16-step,one-seed recipe has no demonstrated meaningful quality gain; this does not invalidate medically reviewed preference training in general."
+  ],
+  "primary_metrics_unchanged": true
+}
