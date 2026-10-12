@@ -54,4 +54,20 @@
 
 最终收集每个完整condition的12条预测、原始生成与metrics，严格身份核验后从预测重新计算TP/FP/FN，再计算micro P/R/F1；缺行、错位或指标不一致则不能发布为有效成绩。规则删除TP/FP独立复算，训练暴露计数与冻结清单核对。精确率不称Accuracy；不完整condition保留全部分母，但不参与比较。
 
+独立复算工具为 [report_rapid_screen.py](../scripts/report_rapid_screen.py)，另有12项专项测试通过。医疗预测按原始身份和全部gold逐样本集合计数，同时检查条件完成状态、原始生成数量、文件SHA、解码预算、截断数和规则删除TP/FP。机械偏好单独成表。训练报告把记录到的实际曝光与预期单遍计数分开；运行时未分别记录的正负类别实际曝光保持空值。
+
+将服务器 `rapid/screen_v1` 的状态、运行清单和预测结果同步至本机私有工作区后，在仓库根目录执行（不要把逐条预测或原文提交到GitHub）：
+
+```bash
+../.venv-audit/bin/python scripts/report_rapid_screen.py \
+  --root ../audit_work/rapid_20261012/collected/screen_v1 \
+  --screen-dir ../audit_work/rapid_20261012/evaluation \
+  --queue-config ../audit_work/rapid_20261012/queue_v1.json \
+  --mechanical-gold ../audit_work/rapid_20261012/rl/mechanical_holdout_records.json \
+  --training-manifest ../audit_work/rapid_20261012/data/manifest.json \
+  --output-prefix ../audit_work/rapid_20261012/report
+```
+
+输出同名前缀的聚合JSON与Markdown。某个完整条件可以先验收，同任务中尚未完成的其他条件仍标为missing/incomplete；缺失或无效条件没有有效P/R/F1，不能用于方向排名。
+
 截止报告按方向给“值得进入正式训练 / 当前不支持 / 证据不足”，同时列推理改动与专门训练的证据层次、失败、耗时和未完成原因。多方向结果用于后续完整实验排序，最终模型、全流程和独立测试的要求继续有效。
