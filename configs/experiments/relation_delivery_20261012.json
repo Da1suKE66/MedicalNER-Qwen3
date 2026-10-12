@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "kind": "execution_roadmap_not_training_config",
+  "plan": "docs/relation_delivery_plan_20261012.md",
+  "status": "in_progress",
+  "runtime_baseline_commit": "d8a204eeb93955feeca7b37c1cf4f5d107f28160",
+  "gpu_concurrency": 1,
+  "selection_split": "frozen_internal_tune_130",
+  "regression_split": "historical_148_not_new_blind_test",
+  "independent_human_test_status": "not_available_requires_new_sources_and_review",
+  "seeds": [17, 42, 73],
+  "product_seed": 42,
+  "final_baseline": "S0_dense_full_hash_16_complete_training",
+  "heartbeat_state": "not_created_pending_explicit_persistent_automation_authorization",
+  "relation_selection": {
+    "scope_after_p1": "live_e2e_free_text_tune_same_frozen_entity_model",
+    "minimum_precision": 0.5,
+    "minimum_recall": 0.1,
+    "rank": ["f0.5_desc", "f1_desc", "recall_desc", "checkpoint_step_asc"],
+    "no_eligible_candidate": "diagnostic_fallback_not_quality_success"
+  },
+  "stages": [
+    {
+      "id": "P0",
+      "name": "negative_supervision_pilot",
+      "state": "running",
+      "depends_on": [],
+      "config": "configs/experiments/relation_pilot_20261012.json",
+      "acceptance": ["both_64_step_runs_verified", "all_seven_stages_complete", "full_counts_independently_recomputed"],
+      "is_final_model": false
+    },
+    {
+      "id": "P1",
+      "name": "clean_entity_and_live_pipeline",
+      "state": "planned_implementation_required",
+      "depends_on": ["P0"],
+      "cpu_preparation_can_overlap_p0": true,
+      "entity_epochs": 3,
+      "acceptance": ["train_tune_source_groups_disjoint", "entity_checkpoint_available", "entity_seed42_selected_by_complete_free_text_entity_f1", "frozen_entity_checkpoint_hash_and_template", "relation_e2e_selection_contract_frozen_before_p2_results", "raw_input_runs_both_models", "modern_relation_protocol", "strict_input_and_model_identity", "complete_e2e_tune_baseline"]
+    },
+    {
+      "id": "P2",
+      "name": "full_sft_and_sparse_negative_contract",
+      "state": "planned_implementation_required",
+      "depends_on": ["P0", "P1"],
+      "epochs": 3,
+      "max_steps": -1,
+      "arms": ["S0_dense_full_hash_16", "S4a_dense_audited_candidates", "S4b_sparse_audited_candidates"],
+      "audited_pair_all_negative_sequence_fraction": 0.1,
+      "acceptance": ["unknown_not_negative", "multilabel_preserved", "matched_dense_sparse_information", "every_epoch_complete_tune", "actual_supervision_exposure"]
+    },
+    {
+      "id": "P3",
+      "name": "order_short_output_short_input_combination",
+      "state": "planned_implementation_required",
+      "depends_on": ["P2"],
+      "epochs": 3,
+      "arms": ["S1_source_order", "S2_four_pairs", "S3a_full_common", "S3b_local_common", "S5_tune_selected_combination"],
+      "acceptance": ["atomic_decision_edge_evidence_counters_match", "label_free_order_and_windows", "all_gold_in_eval_denominator", "costs_separate_from_exposure", "id_permutation_tests", "complete_training_and_tune"]
+    },
+    {
+      "id": "P4",
+      "name": "out_of_fold_entity_adaptation_rules_multirelation",
+      "state": "planned_implementation_required",
+      "depends_on": ["P1", "P3"],
+      "train_group_folds": 3,
+      "relation_epochs": 3,
+      "acceptance": ["train_only_oof_provenance", "gold_vs_oof_control", "raw_filtered_metrics", "rule_deleted_tp_fp", "multirelation_support_and_set_metrics"]
+    },
+    {
+      "id": "P5",
+      "name": "full_dpo_and_online_grpo",
+      "state": "planned_implementation_and_audited_data_required",
+      "depends_on": ["P4"],
+      "dpo_screen_max_steps": 64,
+      "dpo_full_epochs": 2,
+      "dpo_beta_screen": [0.05, 0.1],
+      "dpo_learning_rate": 0.000001,
+      "grpo_full_optimizer_steps": 128,
+      "grpo_generations_per_prompt": 4,
+      "grpo_batch_size": 1,
+      "grpo_gradient_accumulation": 16,
+      "grpo_beta": 0.04,
+      "grpo_learning_rate": 0.000001,
+      "dpo_data_contract": "fully_adjudicated_or_provably_complete_constructed_tasks_only",
+      "rl_seed_parent_contract": "each_seed_uses_corresponding_seed_final_sft_with_parent_hash",
+      "continued_sft_control": "same_start_train_groups_chosen_sources_preregister_updates_and_exposure_report_gpu_cost",
+      "standard_ppo": "not_implemented_not_claimed",
+      "acceptance": ["same_loader_zero_step", "true_continue_sft_control", "train_only_current_policy_preferences", "unknown_guard_preserved", "reward_hacking_tests", "frozen_reference", "actual_rollout_and_cost_counts", "saved_weight_reload", "full_tune_for_all_branches"]
+    },
+    {
+      "id": "P6",
+      "name": "three_seed_final_evaluation_and_delivery",
+      "state": "planned",
+      "depends_on": ["P5"],
+      "acceptance": ["baseline_sft_rl_three_seeds", "final_baseline_is_full_s0", "rl_parent_checkpoint_hashes_per_seed", "relation_three_seeds_with_one_frozen_entity", "live_e2e_three_seeds_with_corresponding_retrained_entities", "live_e2e_from_raw_input", "complete_historical_regression_148", "stress_64_pairs", "bootstrap_by_source_group_2000", "independent_metric_recomputation", "model_and_inference_package", "honest_independent_test_status", "final_report_and_github_record"]
+    }
+  ],
+  "publication_constraints": ["no_private_medical_text", "no_raw_predictions", "no_weights", "no_credentials"],
+  "completion_rule": "Deliver trained model, reproducible live pipeline, full reports and explicit remaining limitations; never claim unavailable human blind testing or unmeasured improvement."
+}

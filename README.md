@@ -2,6 +2,8 @@
 
 **2026-10-12 迁移审核：** 当前两阶段 relation 的问题定位、代码修复、历史实验核算及新训练/评测方案见 [完整审核记录](docs/relation_audit_20261012.md)。本轮启动准备和运行状态见 [实验进展](docs/experiment_progress_20261012.md)。CPU 审核使用 `requirements-audit.txt`。下方是一阶段 LLaMA-Factory 历史工作流，不能把其数据、环境和提示词直接与 `agent/generative` 的 UNKNOWN-mask 训练混用。
 
+后续完整流水线、顺序/长度、RL和最终模型验收见 [正式交付路线](docs/relation_delivery_plan_20261012.md)；64-step诊断不是最终交付。
+
 Clean workflow for generating mental-health knowledge graph extraction data and
 fine-tuning Qwen with LoRA.
 
