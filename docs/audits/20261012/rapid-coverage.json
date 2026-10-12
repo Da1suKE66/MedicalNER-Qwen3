@@ -1,0 +1,66 @@
+{
+  "version": "selected-candidate-coverage-audit-20261012-v1",
+  "scope": "frozen_12_document_oracle_rapid_screen_not_full_tune",
+  "read_model_outputs": false,
+  "modified_gold": false,
+  "records_sha256": "6eb66b03eefacce0d330eb71bd505fd8a659cdadb32e6b5d1d764df041c64123",
+  "sample_indices_sha256": "945c27b3d91298a1aca9a58063384555cf530358b1bbd5678233bb59901235ae",
+  "screen_manifest_sha256": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+  "config": {
+    "repair": true,
+    "strict_evidence": true,
+    "pairs_per_batch": 16,
+    "order": "hash",
+    "context": "full",
+    "multilabel": true,
+    "rebalance": false,
+    "negative_ratio": 3,
+    "grounding": "exact",
+    "matching": "nfkc_v2"
+  },
+  "counts": {
+    "duplicate_normalized_entity_keys": 0,
+    "duplicate_entity_ids": 0,
+    "documents": 12,
+    "gold_triples": 40,
+    "covered_triples": 26,
+    "uncovered_triples": 14,
+    "candidate_pairs": 240,
+    "documents_with_uncovered_triples": 3,
+    "gold_relation_rows": 40
+  },
+  "primary_reason_counts_mutually_exclusive": {
+    "endpoint_not_grounded_in_source": 14,
+    "invalid_entity_type": 0,
+    "relation_not_allowed_by_source_target_ontology": 0,
+    "self_pair_excluded": 0,
+    "other_or_normalized_identity_mapping": 0
+  },
+  "grounding_failure_endpoint_location_counts": {
+    "source_only": 2,
+    "target_only": 12,
+    "both_endpoints": 0
+  },
+  "grounding_failure_endpoint_type_incidence_counts": {
+    "Disease": 14
+  },
+  "unique_ungrounded_entities": 3,
+  "unique_ungrounded_entities_incident_to_uncovered_gold": 3,
+  "same_name_id_mapping_caused_uncovered_triples": 0,
+  "raw_gold_rows_represented_by_uncovered_strict_triples": 14,
+  "disease_comma_alias_would_restore_any_missing_endpoint_in_uncovered_triples": 0,
+  "all_four_screen_conditions_same_coverage": true,
+  "candidate_recall_ceiling": 0.65,
+  "candidate_f1_ceiling_if_precision_one": 0.7878787878787878,
+  "audit_assertions": {
+    "gold_40_covered_26_uncovered_14": true,
+    "reason_count_sum_14": true,
+    "entity_grounding_replayed_matches_build_batches_audit": true,
+    "candidate_coverage_recomputed_for_all_four_conditions": true
+  },
+  "limitations": [
+    "This is candidate reachability, not measured model recall or F1.",
+    "The strict silver annotation is unchanged; an absent textual name does not establish clinical invalidity.",
+    "Alias expansion or gold repair would require a separate reviewed protocol, not silent evaluation relabeling."
+  ]
+}

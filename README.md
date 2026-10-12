@@ -4,6 +4,8 @@
 
 后续完整流水线、顺序/长度、RL和最终模型验收见 [正式交付路线](docs/relation_delivery_plan_20261012.md)；64-step诊断不是最终交付。
 
+当前优先执行 [六小时多方向筛选](docs/rapid_screen_20261012.md)，明确区分固定子集诊断和最终完整效果。
+
 Clean workflow for generating mental-health knowledge graph extraction data and
 fine-tuning Qwen with LoRA.
 
