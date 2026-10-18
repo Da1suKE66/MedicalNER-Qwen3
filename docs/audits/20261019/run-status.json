@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-18T22:15:22.241852+00:00",
+  "snapshot_utc": "2026-10-18T22:28:58.003586+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -250,5 +250,18 @@
     "source_cached_entity_jobs_replayed": 125,
     "source_new_gpu_entity_jobs": 0,
     "final_entity_graph_sha256_check_pending": true
-  }
+  },
+  "full_relation_batch8_control": {
+    "status": "queued",
+    "job": "evaluate_full_relation_batch8_selected_entity",
+    "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
+    "samples": 130,
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "same_selected_actual_entity_cache": true,
+    "batch_size": 8
+  },
+  "relation_selection_policy_file": "relation-comparison-plan.json"
 }
