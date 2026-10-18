@@ -64,6 +64,8 @@ def _items(value: Any) -> list[Any]:
 
 
 def display_name(value: Any) -> str:
+    if value is None:
+        return ""
     if isinstance(value, Mapping):
         found = _first(value, "title", "name", "label", "term", "display", "text")
         if found is not None:
@@ -371,7 +373,8 @@ def parse_icd_graph(record: Mapping[str, Any] | SourceDocument) -> Graph:
     counters: dict[str, int] = {"D": 1}
 
     title = display_name(_first(data, "title", "canonical_title", "name", "label"))
-    title = title or "Unnamed disease"
+    if not title:
+        raise ValueError("Structured ICD input requires a nonempty source title")
     code = _first(data, "code", "icd_code")
     uri = _first(data, "uri", "icd_uri")
 

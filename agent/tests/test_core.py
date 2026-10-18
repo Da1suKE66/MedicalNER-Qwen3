@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -40,6 +41,17 @@ def test_icd_parser_does_not_expand_aliases_to_nodes() -> None:
         ("D2", "D1", "subtype_of"),
         ("D1", "D3", "rules_out"),
     }
+
+
+@pytest.mark.parametrize("title", [None, "", "   "])
+def test_icd_missing_title_cannot_fabricate_a_none_or_unnamed_disease(title) -> None:
+    with pytest.raises(ValueError, match="source title"):
+        parse_icd_graph({"code": "A00", "uri": "urn:example:a", "title": title})
+
+
+def test_null_icd_alias_cannot_become_a_literal_none_name() -> None:
+    graph = parse_icd_graph({"title": "Example disease", "synonyms": [None, "Example synonym"]})
+    assert graph.entities[0].properties["Aliases"] == ["Example synonym"]
 
 
 def test_legacy_medical_wrapper_routes_icd_deterministically() -> None:

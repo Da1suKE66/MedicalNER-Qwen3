@@ -1,5 +1,68 @@
 # Reliable two-stage medical KG agent
 
+**Recommended entry, 2026-10-19: semantic text for both stages.**
+[`run_semantic_pipeline.py`](run_semantic_pipeline.py) runs the actual causal-LM
+entity stage followed by the relation stage, applies source/semantic rules, and
+assembles graph JSON in Python. Entity completions are
+`type<TAB>source mention<TAB>full canonical name`; relation completions are
+`source type<TAB>source name<TAB>full relation label<TAB>target type<TAB>target name<TAB>source evidence`.
+Neither model generates graph JSON, numeric label indices or hash references.
+This entry requires completed, non-smoke `semantic-text-v1` training receipts
+with matching stage, protocol, base configuration/tokenizer and adapter weights.
+Historical JSON, numeric-choice and four-field relation-label adapters are
+rejected. A working entry point does not establish clinical accuracy.
+
+Run from the repository root with local, approved semantic adapters:
+
+```bash
+PYTHONPATH=agent python agent/run_semantic_pipeline.py \
+  --source-file /private/path/original-source.txt \
+  --base-model /private/path/Qwen3-8B \
+  --entity-adapter /private/path/semantic-entities \
+  --relation-adapter /private/path/semantic-relations \
+  --variant full_source --output /private/path/prediction.json
+```
+
+An original structured ICD JSON/header input uses `SourceRouter` and
+`parse_icd_graph` as a separate deterministic path and needs no model arguments
+or GPU. It must contain an explicit nonempty title/name. Pass original source
+files, not chat records, gold or previously extracted graph JSON.
+
+For a free-text passage whose subject title comes from a separate original
+header in the same source group, explicitly add:
+
+```bash
+  --title-source-file /private/path/original-structured-header.json \
+  --source-group-id declared-source-group
+```
+
+The CLI verifies the header type, literal title slice, original input hashes
+and receipt using the shared runtime verifier. The group ID records the caller's
+same-group declaration; it does not independently prove a cross-file provenance
+relationship. Conflicting embedded group IDs, absent literal titles and
+unverifiable headers fail. Without an explicit title source, no title is guessed
+or read from gold. Unicode-escaped JSON title text without a literal source
+slice is rejected for this title-context path.
+
+The output is an envelope with `status`, `graph`, input hashes and a compact
+summary. Complete raw inputs, prompts, generations, parsing and failure traces
+are stored alongside it as `prediction.json.trace.json`; both files use mode
+`0600` and existing files are never overwritten. A failed generation exits
+nonzero with `graph: null` and any `partial_graph` explicitly marked. A completed
+empty sequence is distinguished from failed generation and from predictions
+removed by rules. Stdout prints only paths, counts and status. No oracle-entity
+mode is exposed by this live CLI.
+
+Variants `full_source`, `short_source` and `short_canonical` share the full-source
+entity stage; the latter two use source-derived relation windows and the complete
+validated entity table. In frozen data release v2, canonical relation targets
+sort by `(source type, normalized source name, target type, normalized target
+name, relation label, evidence start)`. Source-ordered relation targets sort by
+`(source entity position, target entity position, relation label, evidence start)`;
+they are neither opaque-ID order nor pure evidence-position order. The relation
+parser accepts arbitrary record order, and the prompt's `order` selects entity
+table presentation. The legacy paths below remain for historical reproduction.
+
 **2026-10-12 user correction: literal relation labels.** The selected relation
 output is now readable records such as
 `E001<TAB>is_core_symptom_of<TAB>E002<TAB>SENT_004`, using full semantic labels

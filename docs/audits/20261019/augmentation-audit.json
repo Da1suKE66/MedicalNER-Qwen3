@@ -1,0 +1,129 @@
+{
+  "audit_version": "semantic-augmentation-quality-audit-20261019-v1",
+  "scope": "aggregate_only_no_source_text_no_credentials",
+  "source_census": {
+    "raw_sources": 858,
+    "migration_sources_excluded": 673,
+    "legacy_train_sources_outside_all_migration_partitions": 148,
+    "eligible_with_original_body": 104,
+    "title_only_excluded_from_second_trial": 44
+  },
+  "selection_guards": {
+    "legacy_validation_heldout_and_regression_sources_used": 0,
+    "migration_train_tune_and_historical_source_ids_used": 0,
+    "old_assistant_graphs_used_for_new_annotation": false,
+    "frozen_evaluation_changed": false
+  },
+  "api": {
+    "requested_model": "deepseek-flash",
+    "actual_response_models": {
+      "deepseek-flash": 26
+    },
+    "thinking": "disabled",
+    "temperature": 0.2,
+    "concurrency": 2,
+    "new_annotation_calls": 16,
+    "independent_verifier_calls": 10,
+    "completed_responses": 26,
+    "actual_transport_attempts_with_api_responses": 26,
+    "finish_reasons": {
+      "stop": 26
+    },
+    "usage": {
+      "prompt_tokens": 65815,
+      "completion_tokens": 26813,
+      "total_tokens": 92628,
+      "prompt_cache_hit_tokens": 29952,
+      "prompt_cache_miss_tokens": 35863
+    },
+    "currency_cost": "not_in_api_receipts_not_estimated",
+    "sandbox_dns_failures": {
+      "sources_attempted": 8,
+      "api_responses": 0,
+      "known_usage": 0,
+      "not_conflated_with_teacher_quality": true
+    }
+  },
+  "trials": [
+    {
+      "name": "pilot8_network_v1",
+      "requested_sources": 8,
+      "completed_api_responses": 15,
+      "machine_accepted_silver": 5,
+      "verifier_rejected": 2,
+      "local_validation_rejected": 1,
+      "total_tokens": 48911,
+      "admitted_training_rows": 0
+    },
+    {
+      "name": "pilot8_v2",
+      "requested_body_sources": 8,
+      "completed_api_responses": 10,
+      "machine_accepted_silver": 2,
+      "local_validation_rejected": 6,
+      "total_tokens": 40085,
+      "admitted_training_rows": 0
+    },
+    {
+      "name": "pilot8_v2_reverify",
+      "new_annotation_calls": 0,
+      "new_verifier_calls": 1,
+      "verifier_rejected": 1,
+      "total_tokens": 3632,
+      "admitted_training_rows": 0
+    }
+  ],
+  "distinct_source_ids_across_trials": 10,
+  "quality_findings": [
+    {
+      "status": "confirmed",
+      "finding": "A teacher coverage PASS can miss explicit diagnostic duration or harm requirements."
+    },
+    {
+      "status": "confirmed",
+      "finding": "Teacher agreement and exact source quotes can still promote a possibility statement to a necessary diagnostic condition."
+    },
+    {
+      "status": "needs_review",
+      "finding": "Diagnostic evidence from an examination is not automatically an explicit recommendation to perform it."
+    },
+    {
+      "status": "needs_review",
+      "finding": "Subtype support needs adequate hierarchy context; a list-introduction-only quotation is insufficient."
+    },
+    {
+      "status": "needs_review",
+      "finding": "Literal-substring entity names may omit source exceptions or overstate core symptom status."
+    }
+  ],
+  "container_boundary_reverification": {
+    "version": "two-block-container-optional-single-boundary-blank-v1",
+    "surface_boundary_rejections": 5,
+    "only_boundary_problem": 1,
+    "other_failures_after_boundary_parse": 4,
+    "new_verifier_calls": 1,
+    "new_annotation_calls": 0,
+    "verifier_rejected": 1,
+    "substantive_annotation_fields_changed": false,
+    "internal_blank_records_still_rejected": true
+  },
+  "final_disposition": {
+    "all_trial_outputs_quarantined": true,
+    "admitted_augmented_sources": 0,
+    "admitted_augmented_training_rows": 0,
+    "expanded_to_full_pool": false,
+    "reason": "Automatic source/type checks and teacher agreement did not establish reliable semantic labels. No gold or model annotation fields were silently repaired."
+  },
+  "security": {
+    "key_source": "owner-private local file",
+    "key_in_command_arguments": false,
+    "actual_secret_occurrences_in_checked_code_and_artifacts": 0,
+    "checked_files_before_final_audit_write": 27,
+    "no_source_text_or_credential_in_this_audit": true
+  },
+  "validation": {
+    "semantic_augment_tests_passed": 31,
+    "combined_semantic_tests_passed": 126,
+    "gpu_runs_from_this_audit": 0
+  }
+}

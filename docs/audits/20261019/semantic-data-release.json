@@ -1,0 +1,226 @@
+{
+  "snapshot": "2026-10-19 source/data and trainer admission audit",
+  "privacy": "Aggregate counts, ontology labels, relative paths and SHA256 only; no source passages, credentials or model files.",
+  "training_status": "smoke_in_progress_at_initial_review_snapshot",
+  "later_training_results_included": false,
+  "data_version": "source-grounded-semantic-silver-v1",
+  "private_release_relative_path": "audit_work/full_semantic_20261019/data_v2",
+  "release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+  "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+  "compiler_sha256": "fb760e2828b7384bd0ae1c4bc29edd8555376cc2b21557bbe15d717fa597cf56",
+  "source_artifacts": {
+    "frozen_split.jsonl": "691e97fff38aa46f4716cf4f844905287acb28e264cf9a0512a8d6dfa29eb2bd",
+    "records.jsonl": "d7d3449322c935b890b302f379eb6f21844b90120ac44ea0537649eb43166eee"
+  },
+  "record_counts": {
+    "train:free_text": 670,
+    "train:structured_icd": 545,
+    "tune:free_text": 69,
+    "tune:structured_icd": 61
+  },
+  "group_counts": {
+    "train": 545,
+    "tune": 61
+  },
+  "train_tune_group_overlap": 0,
+  "title_contexts": 606,
+  "source_types_policy": {
+    "free_text": "Real model training; all 670 train inputs processed, 2 previously quarantined inputs excluded from supervision.",
+    "structured_icd": "545 train and 61 tune structured records processed separately; deterministic baseline, no model-training dilution."
+  },
+  "old_training_file_contamination": {
+    "entities": {
+      "rows_total": 1563,
+      "tune_rows": 119,
+      "tune_source_records": 69
+    },
+    "relations": {
+      "rows_total": 1135,
+      "tune_rows": 89,
+      "tune_source_records": 49
+    },
+    "old_files_reused": false
+  },
+  "entity_train_annotation_accounting": {
+    "original": 6516,
+    "quarantined_record_entities": 17,
+    "canonical_name_not_source_supported": 9,
+    "exact_mention_unavailable": 4,
+    "duplicate_type_name_ids_merged": 2,
+    "admitted": 6484
+  },
+  "relation_train_annotation_accounting": {
+    "original": 5592,
+    "quarantined_record_relations": 15,
+    "endpoint_unavailable": 22,
+    "pair_blocked": 2,
+    "target_type_guard_rejected": 2,
+    "admitted_evidence_atoms": 5551
+  },
+  "evaluation_preservation": {
+    "tune_records": 130,
+    "free_text_records": 69,
+    "structured_records": 61,
+    "free_text_gold_entities": 648,
+    "free_text_gold_relations": 573,
+    "all_tune_gold_entities": 824,
+    "all_tune_gold_relations": 656,
+    "tune_compiled_relation_evidence_atoms": 572,
+    "unlocated_evidence_atom_not_used_for_sft_but_retained_in_gold": 1,
+    "original_record_and_gold_preserved": true,
+    "historical_148_role": "Previously inspected regression set, not a newly blind holdout; same-group title mapping requires separate original provenance audit."
+  },
+  "supervision_policy": {
+    "kind": "teacher_silver_positive_annotations_not_exhaustive",
+    "ordinary_silver_empty_targets": 0,
+    "explicit_negative_examples": 0,
+    "missing_annotations": "UNKNOWN; no explicit NONE or preference-negative target",
+    "eos": "Supervised as termination of supplied annotations; does not certify missing edges are negative",
+    "clinical_human_adjudication": false,
+    "variant_annotation_counter_equal": true,
+    "short_view_evidence_atoms_using_full_context_fallback_train_plus_tune": 3
+  },
+  "variant_exposure_per_epoch": {
+    "full_source": {
+      "entities": {
+        "rows": 668,
+        "annotation_atoms": 6484,
+        "total_tokens": 741104,
+        "prompt_tokens": 587101,
+        "supervised_completion_tokens_including_eos": 154003,
+        "eos_tokens": 668,
+        "updates_per_epoch_at_batch1_accum8": 84,
+        "unique_source_records": 668,
+        "unique_source_groups": 403
+      },
+      "relations": {
+        "rows": 542,
+        "annotation_atoms": 5551,
+        "total_tokens": 1201053,
+        "prompt_tokens": 818958,
+        "supervised_completion_tokens_including_eos": 382095,
+        "eos_tokens": 542,
+        "updates_per_epoch_at_batch1_accum8": 68,
+        "unique_source_records": 542,
+        "unique_source_groups": 316
+      }
+    },
+    "short_source": {
+      "entities": {
+        "rows": 1092,
+        "annotation_atoms": 6484,
+        "total_tokens": 803065,
+        "prompt_tokens": 648638,
+        "supervised_completion_tokens_including_eos": 154427,
+        "eos_tokens": 1092,
+        "updates_per_epoch_at_batch1_accum8": 137,
+        "unique_source_records": 668,
+        "unique_source_groups": 403
+      },
+      "relations": {
+        "rows": 951,
+        "annotation_atoms": 5551,
+        "total_tokens": 1536807,
+        "prompt_tokens": 1154303,
+        "supervised_completion_tokens_including_eos": 382504,
+        "eos_tokens": 951,
+        "updates_per_epoch_at_batch1_accum8": 119,
+        "unique_source_records": 542,
+        "unique_source_groups": 316
+      }
+    },
+    "short_canonical": {
+      "entities": {
+        "rows": 1092,
+        "annotation_atoms": 6484,
+        "total_tokens": 805249,
+        "prompt_tokens": 650822,
+        "supervised_completion_tokens_including_eos": 154427,
+        "eos_tokens": 1092,
+        "updates_per_epoch_at_batch1_accum8": 137,
+        "unique_source_records": 668,
+        "unique_source_groups": 403
+      },
+      "relations": {
+        "rows": 951,
+        "annotation_atoms": 5551,
+        "total_tokens": 1536807,
+        "prompt_tokens": 1154303,
+        "supervised_completion_tokens_including_eos": 382504,
+        "eos_tokens": 951,
+        "updates_per_epoch_at_batch1_accum8": 119,
+        "unique_source_records": 542,
+        "unique_source_groups": 316
+      }
+    }
+  },
+  "token_lengths": {
+    "full_source": {
+      "full_source/train_entities.jsonl": {
+        "0": 292,
+        "0.5": 713,
+        "0.9": 2271,
+        "0.95": 2511,
+        "1": 3851
+      },
+      "full_source/train_relations.jsonl": {
+        "0": 594,
+        "0.5": 1893,
+        "0.9": 3837,
+        "0.95": 4417,
+        "1": 5815
+      }
+    },
+    "short_canonical": {
+      "short_canonical/train_entities.jsonl": {
+        "0": 294,
+        "0.5": 736,
+        "0.9": 1055,
+        "0.95": 1235,
+        "1": 1664
+      },
+      "short_canonical/train_relations.jsonl": {
+        "0": 594,
+        "0.5": 1536,
+        "0.9": 2297,
+        "0.95": 2647,
+        "1": 5140
+      }
+    },
+    "short_source": {
+      "short_source/train_entities.jsonl": {
+        "0": 292,
+        "0.5": 734,
+        "0.9": 1053,
+        "0.95": 1233,
+        "1": 1662
+      },
+      "short_source/train_relations.jsonl": {
+        "0": 594,
+        "0.5": 1536,
+        "0.9": 2297,
+        "0.95": 2647,
+        "1": 5140
+      }
+    }
+  },
+  "all_training_rows_fit_8192_without_truncation": true,
+  "output_sha256": {
+    "evaluation/train_records.jsonl": "053b80144792fcbb3f983b46020ac93d7613495289c32a94d9cf894cdbd800c1",
+    "evaluation/tune_records.jsonl": "eef876b91f98d49efacc74cc7293220c7403bb803f41ae8b29ed113a3caa40cc",
+    "full_source/train_entities.jsonl": "63a23ac9bc4bcfee628b12f2de0588a9886e80e5bb9f6e3e6658b7de18416d36",
+    "full_source/train_relations.jsonl": "86b73ec8085040d883ebfa6226f603da5accdfa3cfbc52dfec7a71fe2931ab9f",
+    "full_source/tune_entities.jsonl": "2d2d8ee3a4d25c58ec55a869298425187dc04e5f2539650e4acee1eac6ae1a3f",
+    "full_source/tune_relations.jsonl": "1a626743483a74450d5291020d970dfa1778d8044f2c112de46912e28efbf5d0",
+    "short_canonical/train_entities.jsonl": "72b2259818e3904ade384fc1e851d4f17cf9052b5f1b233df7c4e8ee18a5d48e",
+    "short_canonical/train_relations.jsonl": "67ef2c84510de14b50e4847dbc36ff59331414c2e2857f9b568e1e0e426316e4",
+    "short_canonical/tune_entities.jsonl": "02cb5c09cc42e24f72636c0270b06fe7494048eb9e203f481e099d573fac7754",
+    "short_canonical/tune_relations.jsonl": "646aac0bea5654b8bea7d39908506a52484368c2399a807421550d7cf510e1ea",
+    "short_source/train_entities.jsonl": "5e5193a9f97c429ff1af517a20cf77599dfa9e45b7eee4fef80864cbb8388e94",
+    "short_source/train_relations.jsonl": "5cb0b26449dd2358dab20e5d17542c9b5b695a0701408a2a56a173e64c95e980",
+    "short_source/tune_entities.jsonl": "3d95a952ef165e77bd10e7086234a38b7aa6db9d978ebf8136a6d544b4403d9f",
+    "short_source/tune_relations.jsonl": "c71229da398ac196a84eb5b1c5d2f973a0bcf41390d38ab4b969f59bb81f44fc",
+    "source_audit.jsonl": "b1e901501c84b13f073ae06e3a89ff1343fa8f12e840d16650a7eede75070359",
+    "title_source_receipts.json": "d9109bf0fc071f6a0f938f5141fb40a6e703d472cf653bfef207f6c4e1b8a94b"
+  }
+}
