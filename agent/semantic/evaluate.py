@@ -254,11 +254,14 @@ def evaluate_cases(cases, generator, *, variant="full_source", entity_variant="f
             free.append(document)
             positions.append(index)
         def generation(row):
-            if on_generation:
+            if on_generation or hasattr(generator, "validate_generation_event"):
                 source = by_id[row["document_id"]]
-                on_generation({**row, "id": mode + ":" + row["id"], "mode": mode,
+                event = {**row, "id": mode + ":" + row["id"], "mode": mode,
                     IDENTITY_KEY: make_input_identity(source["original_record"], source["index"]),
-                    "semantic_input_identity": deepcopy(source["input_identity"])})
+                    "semantic_input_identity": deepcopy(source["input_identity"])}
+                if hasattr(generator, "validate_generation_event"):
+                    generator.validate_generation_event(event)
+                if on_generation: on_generation(event)
         free_results = run_documents(free, generator, variant=variant, entity_variant=entity_variant, mode=mode, short_chars=short_chars,
                                     deadline=deadline, on_generation=generation)
         for index, result in zip(positions, free_results):
@@ -302,6 +305,8 @@ def evaluate_cases(cases, generator, *, variant="full_source", entity_variant="f
         metrics.update(evaluation_set="historical_regression", blind_test=False, training_allowed=False,
             gold_policy="All 148 original historical cases and all gold retained, including unmatched inputs and failed windows; this inspected historical regression is not a blind test",
             input_context="Verified original raw-source association plus same-source historical structured title for 57 free-text cases; 24 unmatched free-text cases retain original input without title. Versioned augmented input, not a historical same-input comparison.")
+    if hasattr(generator, "finalize_cache"):
+        metrics["entity_cache"] = generator.finalize_cache()
     return metrics, predictions, results_by_mode
 
 
@@ -327,6 +332,7 @@ def main(argv=None):
     parser.add_argument("--batch-size", type=int, default=2)
     parser.add_argument("--max-seconds", type=float)
     parser.add_argument("--preflight-only", action="store_true")
+    parser.add_argument("--entity-cache-run", help="Explicit completed same-runtime full-130 live run; fixed entity replay only, relations still generated")
     args = parser.parse_args(argv)
     if args.expected_samples is None:
         args.expected_samples = 148 if args.evaluation_set == "historical_regression" else 130
@@ -343,6 +349,12 @@ def main(argv=None):
     receipts = {stage: check_adapter_contract(path, stage, base_model=args.base_model)
                 for stage, path in (("entities", args.entity_adapter), ("relations", args.relation_adapter))}
     entity_contract = entity_strategy_contract(args.entity_variant, receipts["entities"], short_chars=data_manifest["short_chars"])
+    cache_plan = None
+    if args.entity_cache_run:
+        from semantic.entity_cache import EntityCachePlan
+        cache_plan = EntityCachePlan.load(args.entity_cache_run, cases, data_manifest, receipts["entities"],
+            entity_variant=args.entity_variant, base_model=args.base_model, max_input_tokens=args.max_input_tokens,
+            max_new_tokens=args.max_new_tokens, mode=args.mode)
     manifest = {"status": "preflight_complete" if args.preflight_only else "running", "complete": False, "completed": False, "failed": False,
                 "args": vars(args), "input_release": data_manifest, "output_contract": CONTRACT,
                 "protocol_sha256": protocol_digest(), "runtime_sha256": sha(Path(__file__).with_name("runtime.py").read_bytes()),
@@ -357,6 +369,8 @@ def main(argv=None):
     if args.evaluation_set == "historical_regression":
         manifest.update(evaluation_set=args.evaluation_set, blind_test=False, training_allowed=False,
                         historical_builder_sha256=sha(Path(__file__).with_name("historical.py").read_bytes()))
+    if cache_plan is not None:
+        manifest["entity_cache"] = deepcopy(cache_plan.provenance)
     out.mkdir(parents=True, exist_ok=True)
     out.chmod(0o700)
     _write(out / "run_manifest.json", manifest)
@@ -371,6 +385,10 @@ def main(argv=None):
         generator = SemanticGenerator(args.base_model, args.entity_adapter, args.relation_adapter,
             max_input_tokens=args.max_input_tokens, max_new_tokens=args.max_new_tokens, batch_size=args.batch_size)
         manifest["loaded_adapter_verification"] = deepcopy(getattr(generator, "weight_verification", {}))
+        if cache_plan is not None:
+            generator = cache_plan.bind(generator)
+            manifest["entity_cache"] = deepcopy(generator.provenance)
+            progress.update(cached_entity_jobs_replayed=0, new_gpu_entity_jobs=0, new_gpu_relation_jobs=0)
         _write(out / "run_manifest.json", manifest)
         _write(out / "manifest.json", manifest)
         with (out / "generations.jsonl").open("x") as stream:
@@ -380,6 +398,9 @@ def main(argv=None):
                 stream.flush()
                 progress.update(generation_jobs_completed=progress["generation_jobs_completed"] + 1,
                                 latest_generation={key: row[key] for key in ("id", "mode", "stage", "status")})
+                if cache_plan is not None:
+                    key = "cached_entity_jobs_replayed" if row["generation_trace"].get("entity_cache") else ("new_gpu_entity_jobs" if row["stage"] == "entities" else "new_gpu_relation_jobs")
+                    progress[key] = progress.get(key, 0) + 1
                 _write(out / "progress.json", progress)
             def document(mode, case, result):
                 progress.update(document_mode_results_completed=progress["document_mode_results_completed"] + 1,
@@ -400,6 +421,8 @@ def main(argv=None):
         _write(out / "metrics.json", metrics)
         manifest.update(status=metrics["status"], complete=metrics["complete"], completed=metrics["complete"],
                         failed=False, metrics_sha256=sha((out / "metrics.json").read_bytes()))
+        if "entity_cache" in metrics:
+            manifest["entity_cache"] = deepcopy(metrics["entity_cache"])
         progress.update(status=metrics["status"], complete=metrics["complete"])
         _write(out / "progress.json", progress)
         _write(out / "run_manifest.json", manifest)

@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "scope": "CPU engineering audit, actual frozen input population and actual Qwen tokenizer, deterministic stub outputs; not model performance and no GPU weights tested",
+  "input_release_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+  "variants": {
+    "full_source": {
+      "samples": 130,
+      "free_text_samples": 69,
+      "structured_samples": 61,
+      "entity_jobs": 69,
+      "failed_entity_jobs": 1,
+      "cache_new_entity_backend_calls": 0,
+      "relation_backend_jobs": 249,
+      "live_oracle_raw_filtered_strict_metrics_exactly_equal": true,
+      "all_case_predictions_equal": true,
+      "free_gold_entity_denominator": 648,
+      "free_gold_relation_denominator": 573,
+      "overall_gold_entity_denominator": 824,
+      "overall_gold_relation_denominator": 656,
+      "runtime_swallowed_cache_exception_rejected": true,
+      "falsely_complete_missing_eos_rejected": true
+    },
+    "short_source": {
+      "samples": 130,
+      "free_text_samples": 69,
+      "structured_samples": 61,
+      "entity_jobs": 125,
+      "failed_entity_jobs": 1,
+      "cache_new_entity_backend_calls": 0,
+      "relation_backend_jobs": 249,
+      "live_oracle_raw_filtered_strict_metrics_exactly_equal": true,
+      "all_case_predictions_equal": true,
+      "free_gold_entity_denominator": 648,
+      "free_gold_relation_denominator": 573,
+      "overall_gold_entity_denominator": 824,
+      "overall_gold_relation_denominator": 656,
+      "runtime_swallowed_cache_exception_rejected": true,
+      "falsely_complete_missing_eos_rejected": true
+    }
+  },
+  "limits": [
+    "Runtime and protocol equality are exact; prior baseline runtime is not allowlisted.",
+    "Base input digest covers tokenizer/configuration rather than base weight bytes.",
+    "A complete evaluation means all requested attempts were scored; cached missing-EOS failure remains generation_complete=false with full gold FN."
+  ],
+  "audited_source_sha256": {
+    "agent/semantic/entity_cache.py": "84bf94a8fb0937f56e12d7c68575b60264ea9bb42bab8bbcaed172a9e6515ae0",
+    "agent/semantic/evaluate.py": "91f0d76becf1581a1d97da04fa73a463f1e5aa4784b840acb0da673103988636",
+    "agent/semantic/runtime.py": "dd3853a8be97e531eecfe7f16e434cb468109e6e62d38b124a78bc37680c2d45",
+    "agent/semantic/protocol.py": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606"
+  },
+  "final_source_sha256": {
+    "agent/semantic/entity_cache.py": "eb1035bd07e10d1ed8cde9634160b198e9f5d327abc34d2edb19a1669a641e9b",
+    "agent/semantic/evaluate.py": "91f0d76becf1581a1d97da04fa73a463f1e5aa4784b840acb0da673103988636",
+    "agent/semantic/runtime.py": "dd3853a8be97e531eecfe7f16e434cb468109e6e62d38b124a78bc37680c2d45",
+    "agent/semantic/protocol.py": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606"
+  },
+  "post_review_metadata_only_change": "Added explicit relation_backend_attempted_jobs unit/definition and corresponding test. No runtime, protocol, decoding or scoring change.",
+  "full_suite": "1890 passed,2 skipped",
+  "remote_snapshot": {
+    "name": "code_eval_v6",
+    "archive_sha256": "dcb0ad7dacd5a026b96779d14fb3d9a630630b50fbdbb9b5b10df7e6e5c1fc8a",
+    "verified_files": 106,
+    "cpu_cli_help_passed": true
+  }
+}
