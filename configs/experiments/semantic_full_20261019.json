@@ -1,8 +1,8 @@
 {
   "experiment": "semantic_full_20261019",
   "output_contract": "semantic-text-v1",
-  "status": "baseline_full130_complete_independent_recount_passed_entity_short_training_running",
-  "status_snapshot_utc": "2026-10-18T20:19:59.190235+00:00",
+  "status": "short_entity_full_data_sft_complete_full130_live_evaluation_running",
+  "status_snapshot_utc": "2026-10-18T20:40:28.918898+00:00",
   "budget_deadline_utc": "2026-10-19T04:15:41Z",
   "model": "Qwen3-8B",
   "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
@@ -143,7 +143,7 @@
     "claim_limit": "Source-absence input corruption; does not adjudicate clinical negative relations or prove live F1 improvement; based on the old951-row view and requires rebasing before comparison with complete-overlap1000-row models"
   },
   "entity_window_repair": {
-    "status": "training_running",
+    "status": "training_complete_full130_evaluation_running",
     "training_job": "entity_short_complete_lr5e5_r16_e2",
     "evaluation_job": "evaluate_entity_short_complete_full_relation",
     "rows": 1361,
@@ -205,5 +205,13 @@
       "same_entity_adapter_and_input_view_required": true,
       "original_gold_unchanged": true
     }
+  },
+  "additional_entity_parameter_trial": {
+    "predeclared_utc": "2026-10-18T20:28:11.470287+00:00",
+    "trigger": "After both existing entity candidates have complete independently recounted130 results, selected actual entity table covers fewer than70% of the573 gold relation endpoint pairs. This is a tune-driven research decision, not a blind-test claim.",
+    "priority": "After source/canonical relation comparison yields a selected full130 relation model, before optional DPO; only if time covers full training plus complete live evaluation.",
+    "training": "Same selected entity input view, frozen full training population, rank16,2epochs,finalcheckpoint; learning_rate1e-4 versus5e-5. No new gold or definition changes.",
+    "evaluation": "All130 live cases with the same selected relation adapter/view. Report overall/free strata, Criterion counts and length-stratified recall, endpoint coverage, missingEOS, raw/filtered P/R/F1. Relation comparisons already completed retain their fixed earlier entity condition; do not mix conditions when claiming a direction improved.",
+    "future_selection": "Only select a final pair after full130 evaluation of that actual pair; preserve matched comparison results separately."
   }
 }

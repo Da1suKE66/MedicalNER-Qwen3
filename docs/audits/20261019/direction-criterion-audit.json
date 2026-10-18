@@ -1,0 +1,136 @@
+{
+  "status": "read_only_completed_no_training_or_gold_changes",
+  "direction_identity_mapping": {
+    "full_atoms": 5551,
+    "full_atoms_direction_label_exact_after_entity_alias_resolution": 5551,
+    "full_atoms_direct_id_match_without_alias": 5540,
+    "full_rows_parser_preserves_directed_triple_set": 542,
+    "short_source_v2_exposures": 5859,
+    "short_source_v2_target_exactly_equal_frozen_full": 5859,
+    "short_canonical_v2_exposures": 5859,
+    "short_canonical_v2_target_exactly_equal_frozen_full": 5859
+  },
+  "direction_mismatches": 0,
+  "raw_direction_reversal_by_label": {
+    "live": {
+      "differentiates_from": 8,
+      "subtype_of": 65
+    },
+    "oracle": {
+      "subtype_of": 33,
+      "has_specifier": 1
+    }
+  },
+  "diagnostic_criterion": {
+    "gold": 83,
+    "exact_typed_hit": 6,
+    "name_in_body_or_title": 83,
+    "name_absent_body_and_title": 0,
+    "exact_name_any_type": 6,
+    "exact_name_wrong_type_only": 0,
+    "free_text_gold": 83,
+    "category:exact_name_missing_without_simple_boundary_overlap": 36,
+    "miss_with_surface_boundary_overlap_candidate": 35,
+    "miss_with_same_type_boundary_overlap_candidate": 1,
+    "miss_with_other_type_boundary_overlap_candidate": 34,
+    "category:exact_name_missing_with_surface_boundary_overlap_candidate": 35,
+    "category:exact_typed_hit": 6,
+    "category:entity_generation_failed_delivery": 6,
+    "compiled_tune_targets": 83,
+    "length_bin_exact_hits": {
+      "<=100": {
+        "gold": 22,
+        "exact_typed_hits": 6
+      },
+      ">200": {
+        "gold": 34,
+        "exact_typed_hits": 0
+      },
+      "101-200": {
+        "gold": 27,
+        "exact_typed_hits": 0
+      }
+    },
+    "reviewed_boundary_findings": {
+      "high_overlap_same_type_missing_leading_bullet_cases": 1,
+      "remaining_other_type_fragment_candidates": 34,
+      "interpretation": "One near-exact same-type punctuation boundary miss is directly documented. Most other overlaps are embedded Disease/Symptom names inside long criterion statements, not proven simple truncation or same-name type errors."
+    }
+  },
+  "name_character_distributions": {
+    "gold_other_normalized_name_chars": {
+      "n": 741,
+      "min": 4,
+      "p50": 33,
+      "p95": 141,
+      "max": 196
+    },
+    "gold_diagnostic_criterion_normalized_name_chars": {
+      "n": 83,
+      "min": 32,
+      "p50": 177,
+      "p95": 407,
+      "max": 606
+    },
+    "predicted_diagnostic_criterion_name_chars": {
+      "n": 8,
+      "min": 70,
+      "p50": 78,
+      "p95": 205,
+      "max": 205
+    },
+    "train_other_name_chars": {
+      "n": 5853,
+      "min": 4,
+      "p50": 29,
+      "p95": 93,
+      "max": 261
+    },
+    "train_diagnostic_criterion_name_chars": {
+      "n": 631,
+      "min": 13,
+      "p50": 161,
+      "p95": 420,
+      "max": 814
+    }
+  },
+  "train_diagnostic_criterion": {
+    "targets": 631,
+    "name_chars_at_least_200": 219
+  },
+  "source_contract_observation": "Active ontology describes subtype_of only as 亚型; prompt says preserve directed relation but does not define subtype(child)->parent or give directional examples. No inversion is performed by render/parse.",
+  "limitations": [
+    "Strict surface-overlap candidates are diagnostic string matches, not asserted synonyms and not rescored TP.",
+    "Gold remains teacher silver; fixed first20 subtype sample is not a clinical accuracy estimate.",
+    "Generation failure and missing names can overlap with long boundaries; categories are priority-ordered, not additive causal attribution."
+  ],
+  "artifact_sha256": {
+    "full_relation_train": "86b73ec8085040d883ebfa6226f603da5accdfa3cfbc52dfec7a71fe2931ab9f",
+    "baseline_raw_predictions": "94b97dd54e7fa8d88cc567d38e995f1d4564794768350f434c167e9d4112600d",
+    "baseline_generations": "fb7c8a61c468bb97b65868ec8611539e896d17e15b253456f50ee63184606bb5"
+  },
+  "fixed_train_subtype_sample": {
+    "selection": "numeric source_index then annotation_index then evidence_fragment_index; first20 train-only subtype_of atoms",
+    "all_train_subtype_atoms": 440,
+    "sampled_atoms": 20,
+    "sampled_sources": 6,
+    "source_frequency": {
+      "12": 4,
+      "14": 1,
+      "41": 1,
+      "71": 1,
+      "77": 1,
+      "83": 12
+    },
+    "child_to_parent_supported_by_local_source_context": 20,
+    "parent_to_child_detected": 0,
+    "ambiguous_direction_in_this_sample": 0,
+    "limitations": "12/20 come from a single source; no estimate of overall clinical accuracy or all 440 annotation consistency."
+  },
+  "recommendations": [
+    "No source/target flipping fix is justified: full compiler, rendering and parsing preserve original prepared directions.",
+    "A future versioned train-only prompt/ontology clarification can explicitly define subtype(child)->broader parent and contrast has_subtype, but do not change frozen labels or scores based on tune.",
+    "Criterion work should target statement-level entity granularity and complete qualified span copying; source-admission relaxation would not recover the 77 misses because all83 names are already supported.",
+    "Retain exact original denominator and separate complete-name type error from missing-name and generation-delivery failures; substring matches are not TP."
+  ]
+}

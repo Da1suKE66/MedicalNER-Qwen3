@@ -108,7 +108,7 @@
     "learning_rate": 5e-05,
     "lora_rank": 16,
     "expected_optimizer_updates": 342,
-    "status": "queued_after_baseline_evaluation",
+    "status": "training_complete_full130_live_evaluation_running",
     "not_matched_compute_or_supervision_frequency": true,
     "training_job": "entity_short_complete_lr5e5_r16_e2",
     "evaluation_job": "evaluate_entity_short_complete_full_relation"
@@ -118,5 +118,30 @@
     "manifest_byte_identical": true,
     "frozen_trainer_admission_verified_rows": 1361,
     "code_archive_sha256": "14f815160d7372668c49add963daedc31352fc56c492b088e968b56d7425d1f7"
-  }
+  },
+  "formal_training": {
+    "global_step": 342,
+    "elapsed_seconds": 1207.0891149044037,
+    "observed_exposure": {
+      "all_rows_seen": true,
+      "max_visits": 2,
+      "min_visits": 2,
+      "row_visits": 2722,
+      "rows": 1361,
+      "scope": "successful training_step calls, including gradient accumulation",
+      "successful_microsteps": 2722,
+      "supervised_tokens": 396202,
+      "unique_rows_seen": 1361,
+      "unique_source_groups_seen": 403
+    },
+    "adapter_files_sha256": "ec5896460ff310f431d97143feafdac1c593c60947c5fbf9e48920b15428038a",
+    "adapter_final_sha256": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c",
+    "saved_weights_bitwise_verified": true,
+    "receipt_sha256": "42510014796ff6141300ee16b4df8512a8c89a3d4c7847eb3665e5764b46fb52",
+    "status": "complete",
+    "variant": "short_source_complete_windows",
+    "epochs": 2
+  },
+  "evaluation_status": "all130 live comparison running; no completed model-quality result yet",
+  "release_snapshot_scope": "Immutable compiler-release fields describe data publication time; current training/evaluation state is recorded separately in formal_training and evaluation_status."
 }
