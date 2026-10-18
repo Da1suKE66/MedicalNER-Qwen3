@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-18T22:28:58.003586+00:00",
+  "snapshot_utc": "2026-10-18T23:05:24.417008+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -110,7 +110,7 @@
       "adapter_final_sha256": "4f2d018c8b9d9cdc29f3fb796871a63dad617faa0fcbdfb88cd369d72f5d9dc3",
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "ae927cbe38d53f3f66280446f91a8e0c69de300e70b853dde966240619309b49",
-      "quality_evaluation": "queued_no_new_quality_score_yet"
+      "quality_evaluation": "completed_two_independent_recounts_passed"
     },
     "relations_short_canonical_complete": {
       "status": "complete",
@@ -149,7 +149,7 @@
       "adapter_final_sha256": "6e1ffdd56c07f6e0dff7950a7e185dc91e6618de7412bc345cb89b76daae0b96",
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
-      "quality_evaluation": "queued_no_new_quality_score_yet"
+      "quality_evaluation": "running_no_complete_quality_score_yet"
     }
   },
   "full130_evaluation": {
@@ -217,7 +217,7 @@
       "updates_each": 250
     }
   },
-  "status": "both_relation_training_complete_source_full130_evaluation_running",
+  "status": "source_relation_full130_complete_canonical_evaluation_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -226,9 +226,9 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "evaluate_relation_short_source_complete_selected_entity",
+  "active_job": "evaluate_relation_short_canonical_complete_selected_entity",
   "paired_relation_evaluation": {
-    "status": "source_running_canonical_queued",
+    "status": "source_complete_canonical_running",
     "jobs": [
       "evaluate_relation_short_source_complete_selected_entity",
       "evaluate_relation_short_canonical_complete_selected_entity"
@@ -249,7 +249,12 @@
     "source_cache_token_and_in_memory_checks": "verified",
     "source_cached_entity_jobs_replayed": 125,
     "source_new_gpu_entity_jobs": 0,
-    "final_entity_graph_sha256_check_pending": true
+    "final_entity_graph_sha256_check_pending": true,
+    "source_result_file": "relation-short-source-results.json",
+    "source_independent_recount_passed": true,
+    "source_final_live_entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "source_final_entity_graph_check_passed": true,
+    "source_second_independent_recount_passed": true
   },
   "full_relation_batch8_control": {
     "status": "queued",
@@ -263,5 +268,26 @@
     "same_selected_actual_entity_cache": true,
     "batch_size": 8
   },
-  "relation_selection_policy_file": "relation-comparison-plan.json"
+  "relation_selection_policy_file": "relation-comparison-plan.json",
+  "fixed_entity_relation_ceiling": {
+    "scope": "Fixed selected actual live entity graph; free-text typed directed relation set",
+    "gold_relations": 573,
+    "gold_relations_with_both_actual_endpoints": 294,
+    "maximum_recall": 0.5130890052356021,
+    "maximum_f1_if_all_available_gold_edges_recovered_and_zero_fp": 0.6782006920415224,
+    "formula": "2 * available_gold_edges / (all_gold_edges + available_gold_edges)",
+    "assumption": "Relation stage may only refer to entities already in the supplied table; no missing entity can be added by relation decoding.",
+    "meaning": "70-80% free-text relation F1 is impossible with this fixed entity table, even for a perfect relation selector. Improving entity recall is necessary, but not sufficient."
+  },
+  "record_isolation": {
+    "status": "offline_diagnostic_only_not_deployed",
+    "file": "relation-record-isolation-diagnostic.json"
+  },
+  "dpo": {
+    "status": "prepared_and_mechanically_verified_not_admitted_or_trained",
+    "pairs": 64,
+    "candidate_train": 48,
+    "mechanical_holdout": 16,
+    "file": "dpo-preference-candidate-design.json"
+  }
 }

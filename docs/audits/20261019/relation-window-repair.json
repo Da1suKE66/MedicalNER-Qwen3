@@ -1,6 +1,6 @@
 {
   "scope": "Aggregate-only relation overlap repair and SFT status; no quality improvement claimed",
-  "snapshot_utc": "2026-10-18T22:15:22.241852+00:00",
+  "snapshot_utc": "2026-10-18T22:58:08.602208+00:00",
   "release": {
     "added_chosen_span_overlap_exposures": 308,
     "all_target_text_names_labels_unchanged": true,
@@ -305,7 +305,7 @@
       "adapter_final_sha256": "4f2d018c8b9d9cdc29f3fb796871a63dad617faa0fcbdfb88cd369d72f5d9dc3",
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "ae927cbe38d53f3f66280446f91a8e0c69de300e70b853dde966240619309b49",
-      "quality_evaluation": "queued_no_new_quality_score_yet"
+      "quality_evaluation": "completed_independently_recounted"
     },
     "canonical_order_receipt": {
       "status": "complete",
@@ -356,7 +356,7 @@
     }
   },
   "evaluation": {
-    "status": "source_running_canonical_queued",
+    "status": "source_complete_canonical_running",
     "jobs": [
       "evaluate_relation_short_source_complete_selected_entity",
       "evaluate_relation_short_canonical_complete_selected_entity"
@@ -374,6 +374,8 @@
     "model_in_memory_revalidation_at_actual_run_required": true,
     "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline.",
     "source_actual_cache_token_and_in_memory_checks": "verified",
-    "final_entity_graph_sha256_check_pending": true
+    "final_entity_graph_sha256_check_pending": true,
+    "source_result_file": "relation-short-source-results.json",
+    "source_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567"
   }
 }

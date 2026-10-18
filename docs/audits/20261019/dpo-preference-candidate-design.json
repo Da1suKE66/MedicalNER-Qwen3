@@ -1,0 +1,127 @@
+{
+  "status": "prepared_and_mechanically_verified_not_admitted_or_trained",
+  "training_performed": false,
+  "candidate_train_pairs": 48,
+  "mechanical_holdout_pairs": 16,
+  "purpose": "Learn the supplied-entity reference contract, not clinical relation truth, label choice or direction.",
+  "view": "relation_complete_overlap_v2/short_source",
+  "chosen_policy": "Keep the complete frozen positive completion byte-for-byte.",
+  "rejected_policy": "Replace one endpoint name by an equal-completion-token-length, same-type donor name from another TRAIN group, absent from the full supplied entity table and original source/title. Leave all other fields and positive records unchanged.",
+  "unknown_as_negative": false,
+  "none_numeric_or_json_target": false,
+  "clinical_adjudication": false,
+  "synthetic_pairs_are_not_independent_new_documents": true,
+  "source_and_donor_partition_group_overlap": 0,
+  "aggregate": {
+    "character_delta_sign_counts": {
+      "negative": 40,
+      "positive": 22,
+      "zero": 2
+    },
+    "chosen_completion_tokens_including_eos": 32494,
+    "chosen_positive_annotation_exposures": 465,
+    "donor_groups": 29,
+    "full_completion_token_delta_counts": {
+      "0": 64
+    },
+    "group_role_counts_used": {
+      "candidate_train_donor": 19,
+      "candidate_train_recipient": 48,
+      "mechanical_holdout_donor": 10,
+      "mechanical_holdout_recipient": 16
+    },
+    "limitations": [
+      "These are entity-reference contract preferences, not a complete medical relation semantic discrimination solution.",
+      "Chosen retains the complete released row of silver annotations, not an exhaustive or clinically adjudicated relation graph.",
+      "No UNKNOWN pair was labelled negative; no direction or alternative in-table relation is asserted clinically false.",
+      "Mechanical holdout is split from frozen TRAIN groups; it is not a clinical or template-generalization evaluation.",
+      "Exact token-length equality removes total completion-length preference only; lexical, type, donor and source-absence shortcuts may remain.",
+      "Only short_source complete-overlap regular windows with at least two records are selected; scope is not all training rows.",
+      "One corrupted endpoint invalidates the whole rejected batch under the existing parser; all other original records remain byte-identical."
+    ],
+    "maximum_prompt_plus_completion_tokens": 3990,
+    "mutated_relation_label_counts": {
+      "associated_with_risk": 1,
+      "causes": 1,
+      "differentiates_from": 19,
+      "has_diagnostic_criterion": 4,
+      "has_specifier": 2,
+      "is_associated_symptom_of": 20,
+      "is_core_symptom_of": 9,
+      "part_of": 2,
+      "predisposes_to": 1,
+      "relieved_by": 1,
+      "subtype_of": 1,
+      "supports_Diagnostic Criterion_of": 2,
+      "supports_diagnosis_of": 1
+    },
+    "mutation_endpoint_counts": {
+      "source": 32,
+      "target": 32
+    },
+    "mutation_endpoint_type_counts": {
+      "Disease": 48,
+      "Symptom": 16
+    },
+    "negative_regression_checks": {
+      "changed_chosen_rejected": true,
+      "changed_donor_provenance_rejected": true,
+      "changed_extra_field_rejected": true,
+      "cross_partition_rejected": true,
+      "training_approval_flag_rejected": true,
+      "wrong_atom_retention_rejected": true,
+      "wrong_top_level_split_rejected": true
+    },
+    "pairs": 64,
+    "partition_counts": {
+      "candidate_train": 48,
+      "mechanical_holdout": 16
+    },
+    "prompt_tokens": 76633,
+    "recipient_groups": 64,
+    "rejected_completion_tokens_including_eos": 32494,
+    "screening_exclusion_attempt_counts": {
+      "fallback_or_less_than_two_records": 9
+    },
+    "status": "offline_candidates_only_no_training_approved",
+    "train_holdout_or_recipient_donor_group_overlap": 0,
+    "unchanged_positive_records_in_rejected": 401
+  },
+  "independent_disk_audit": {
+    "audit_script_sha256": "dbb0a1c7b70e4aff27b32e98be368728aa90e848c916d6ea6e63e1682ac65c99",
+    "builder_imported": false,
+    "candidates_sha256": "8f4657f588987669149f65cc71eca65394d1ee3ac7dd35edfa8aed5efef32ac7",
+    "counts": {
+      "candidate_train": 48,
+      "mechanical_holdout": 16,
+      "positive_records_preserved_in_chosen": 465,
+      "unchanged_records_in_rejected": 401
+    },
+    "disjoint_role_group_counts": {
+      "candidate_train_donor": 19,
+      "candidate_train_recipient": 48,
+      "mechanical_holdout_donor": 10,
+      "mechanical_holdout_recipient": 16
+    },
+    "full_completion_token_deltas": {
+      "0": 64
+    },
+    "manifest_sha256": "a24791663619d7b70bcd3c2aa1d9f7d44d347ea15cf6e6bcdce5d678655b7df3",
+    "new_medical_correctness_claim": false,
+    "pairs": 64,
+    "status": "PASS",
+    "unique_positive_source_atoms": 465
+  },
+  "design_limitations": [
+    "Disease/Symptom endpoint mutations only; long Diagnostic Criterion copying errors are outside this candidate set.",
+    "Source-group roles are disjoint but vocabulary/concept independence is not claimed.",
+    "All groups originate in frozen TRAIN, which prior SFT may already have seen. Mechanical holdout is only excluded from these preference-training candidates; it is not an unseen-base-model or clinical heldout set.",
+    "64 pairs cover only regular short_source windows with at least two positive annotation records; no representative population claim.",
+    "Completion token totals are exactly equal, but character counts differ (40 shorter rejected,22 longer,2 equal); lexical/name-frequency shortcuts remain possible.",
+    "Chosen silver annotations are retained, not newly clinically adjudicated.",
+    "This small candidate set is not evidence that DPO improves F1 or will solve all relation hallucination."
+  ],
+  "candidate_manifest_sha256": "a24791663619d7b70bcd3c2aa1d9f7d44d347ea15cf6e6bcdce5d678655b7df3",
+  "candidate_train_sha256": "c1162a376228b481e58d9ad27cdd44c589857dbd0acd543a38d46ffdf14d36f6",
+  "private_final_receipt_sha256": "548a802a99ca78def5bdf03931ce227887ea563319c74ee7d2196af287caa804"
+}
