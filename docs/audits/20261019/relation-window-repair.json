@@ -257,7 +257,7 @@
     "external_prepared_records_required": false
   },
   "training": {
-    "status": "queued_after_entity_repair_comparison",
+    "status": "source_order_running_canonical_queued",
     "jobs": [
       "relation_short_source_complete_lr5e5_r16_e2",
       "relation_short_canonical_complete_lr5e5_r16_e2"
@@ -270,13 +270,22 @@
     "old_951_row_release_is_not_equal_exposure_control": true
   },
   "evaluation": {
-    "status": "pending_entity_strategy_selection",
-    "population": 130,
+    "status": "queued",
+    "jobs": [
+      "evaluate_relation_short_source_complete_selected_entity",
+      "evaluate_relation_short_canonical_complete_selected_entity"
+    ],
+    "samples": 130,
     "modes": [
       "live",
       "oracle"
     ],
-    "same_entity_adapter_and_input_view_required": true,
-    "original_gold_unchanged": true
+    "same_actual_entity_outputs": true,
+    "batch_size": 8,
+    "max_new_tokens": 4096,
+    "code_snapshot": "code_eval_v6",
+    "cache_origin_same_runtime_verified": true,
+    "model_in_memory_revalidation_at_actual_run_required": true,
+    "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline."
   }
 }

@@ -1,8 +1,8 @@
 {
   "experiment": "semantic_full_20261019",
   "output_contract": "semantic-text-v1",
-  "status": "short_entity_full_data_sft_complete_full130_live_evaluation_running",
-  "status_snapshot_utc": "2026-10-18T20:40:28.918898+00:00",
+  "status": "entity_comparison_complete_source_order_relation_training_running",
+  "status_snapshot_utc": "2026-10-18T21:19:43.033867+00:00",
   "budget_deadline_utc": "2026-10-19T04:15:41Z",
   "model": "Qwen3-8B",
   "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
@@ -68,7 +68,7 @@
     }
   ],
   "comparison_constraints": {
-    "entity_adapter": "Choose after complete baseline-versus-repaired-entity full130 comparison, then freeze the same entity adapter and input view for all relation comparisons",
+    "entity_adapter": "Selected short_source_complete_windows entity adapter, short_source inference, fixed exact live outputs across both relation views; selection recorded in entity-strategy-selection.json",
     "source_split": "fixed source-group-disjoint train and tune",
     "annotation_atoms": "Repaired relation views preserve the same5551 unique source/evidence atoms and share5859 window exposures. Repaired entity view retains6484 unique source/entity atoms with8683 window exposures. Neither repaired release matches old first-window-only exposure.",
     "matched_epochs_not_matched_compute": true,
@@ -143,7 +143,7 @@
     "claim_limit": "Source-absence input corruption; does not adjudicate clinical negative relations or prove live F1 improvement; based on the old951-row view and requires rebasing before comparison with complete-overlap1000-row models"
   },
   "entity_window_repair": {
-    "status": "training_complete_full130_evaluation_running",
+    "status": "training_and_full130_live_evaluation_complete_selected",
     "training_job": "entity_short_complete_lr5e5_r16_e2",
     "evaluation_job": "evaluate_entity_short_complete_full_relation",
     "rows": 1361,
@@ -183,7 +183,7 @@
       "external_prepared_records_required": false
     },
     "training": {
-      "status": "queued_after_entity_repair_comparison",
+      "status": "source_order_running_canonical_queued",
       "jobs": [
         "relation_short_source_complete_lr5e5_r16_e2",
         "relation_short_canonical_complete_lr5e5_r16_e2"
@@ -196,14 +196,23 @@
       "old_951_row_release_is_not_equal_exposure_control": true
     },
     "evaluation": {
-      "status": "pending_entity_strategy_selection",
-      "population": 130,
+      "status": "queued",
+      "jobs": [
+        "evaluate_relation_short_source_complete_selected_entity",
+        "evaluate_relation_short_canonical_complete_selected_entity"
+      ],
+      "samples": 130,
       "modes": [
         "live",
         "oracle"
       ],
-      "same_entity_adapter_and_input_view_required": true,
-      "original_gold_unchanged": true
+      "same_actual_entity_outputs": true,
+      "batch_size": 8,
+      "max_new_tokens": 4096,
+      "code_snapshot": "code_eval_v6",
+      "cache_origin_same_runtime_verified": true,
+      "model_in_memory_revalidation_at_actual_run_required": true,
+      "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline."
     }
   },
   "additional_entity_parameter_trial": {

@@ -108,7 +108,7 @@
     "learning_rate": 5e-05,
     "lora_rank": 16,
     "expected_optimizer_updates": 342,
-    "status": "training_complete_full130_live_evaluation_running",
+    "status": "complete_full130_live_evaluated_and_selected",
     "not_matched_compute_or_supervision_frequency": true,
     "training_job": "entity_short_complete_lr5e5_r16_e2",
     "evaluation_job": "evaluate_entity_short_complete_full_relation"
@@ -142,6 +142,6 @@
     "variant": "short_source_complete_windows",
     "epochs": 2
   },
-  "evaluation_status": "all130 live comparison running; no completed model-quality result yet",
+  "evaluation_status": "completed_independently_recounted; see entity-short-results.json",
   "release_snapshot_scope": "Immutable compiler-release fields describe data publication time; current training/evaluation state is recorded separately in formal_training and evaluation_status."
 }

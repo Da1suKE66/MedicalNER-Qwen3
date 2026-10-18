@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-18T20:40:28.918898+00:00",
+  "snapshot_utc": "2026-10-18T21:19:43.033867+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -98,7 +98,7 @@
   },
   "official_quality_metric": "live.filtered.free_text.relation; always show companion live.raw set scores; strict_raw is a separate invalid-attempt diagnostic",
   "entity_window_repair": {
-    "status": "training_complete_full130_evaluation_running",
+    "status": "training_and_full130_live_evaluation_complete_selected",
     "training_job": "entity_short_complete_lr5e5_r16_e2",
     "evaluation_job": "evaluate_entity_short_complete_full_relation",
     "rows": 1361,
@@ -114,11 +114,12 @@
     "data_manifest_sha256": "2ba8d402e671fea953dfe5886e1366264087f46ce7c3458a394ffb8932871677",
     "evaluation_code_archive_sha256": "14f815160d7372668c49add963daedc31352fc56c492b088e968b56d7425d1f7",
     "observed_updates": 342,
-    "observed_all_rows_twice": true
+    "observed_all_rows_twice": true,
+    "result_file": "entity-short-results.json"
   },
   "relation_short_window_supervision_audit": "resident_v2_independently_passed_and_remote_reproduced",
   "paired_relation_training": {
-    "status": "queued_after_entity_repair_comparison",
+    "status": "source_order_running_canonical_queued",
     "jobs": [
       "relation_short_source_complete_lr5e5_r16_e2",
       "relation_short_canonical_complete_lr5e5_r16_e2"
@@ -130,7 +131,7 @@
     "source_order_vs_canonical_order_matched_exposure": true,
     "old_951_row_release_is_not_equal_exposure_control": true
   },
-  "status": "baseline_complete_short_entity_sft_complete_full130_live_eval_running",
+  "status": "entity_comparison_complete_source_order_relation_training_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -139,5 +140,24 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "evaluate_entity_short_complete_full_relation"
+  "active_job": "relation_short_source_complete_lr5e5_r16_e2",
+  "paired_relation_evaluation": {
+    "status": "queued",
+    "jobs": [
+      "evaluate_relation_short_source_complete_selected_entity",
+      "evaluate_relation_short_canonical_complete_selected_entity"
+    ],
+    "samples": 130,
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "same_actual_entity_outputs": true,
+    "batch_size": 8,
+    "max_new_tokens": 4096,
+    "code_snapshot": "code_eval_v6",
+    "cache_origin_same_runtime_verified": true,
+    "model_in_memory_revalidation_at_actual_run_required": true,
+    "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline."
+  }
 }
