@@ -1,6 +1,6 @@
 # 语义文本流水线：数据与训练准入审核
 
-本目录记录 2026-10-19 的数据发布和训练代码检查，只包含聚合计数、标签、相对路径和哈希，不包含医学原文、凭据或模型文件。两步 smoke 已通过权重更新与保存核验，实体、关系各两轮的完整训练及全量评测已进入持久队列。本页没有尚未完成的质量分数；`trainer-review.json` 保留初审时的状态快照。具体参数见 [实验配置](../../../configs/experiments/semantic_full_20261019.json)。
+本目录记录 2026-10-19 的数据发布和训练代码检查，只包含聚合计数、标签、相对路径和哈希，不包含医学原文、凭据或模型文件。实体基线已完成两轮正式训练，每条样本均访问两次，关系训练和完整评测由持久队列继续执行。实际运行状态见 `run-status.json`；`trainer-review.json` 保留初审时的状态快照。训练 loss 不代表抽取质量，本页不提供尚未完成的效果分数。具体参数见 [实验配置](../../../configs/experiments/semantic_full_20261019.json)。
 
 | 文件 | 内容 |
 |---|---|
@@ -8,6 +8,10 @@
 | [label-distribution.json](label-distribution.json) | 训练及 tune 的标签计数、来源覆盖、零关系标注来源比例；不是模型结果。 |
 | [trainer-review.json](trainer-review.json) | 掩码、EOS、累计梯度、曝光和保存核验；记录已修复的失败状态与文件 SHA 门禁。 |
 | [augmentation-audit.json](augmentation-audit.json) | DeepSeek Flash 小批扩增与逐例复核的聚合记录；候选仍有语义错误，实际新增训练数据为零。 |
+| [original-silver-semantic-audit.json](original-silver-semantic-audit.json) | 原银标的定向复核：同义词被写成上下位关系等问题；抽查不是总体错误率，也没有修改冻结 gold。 |
+| [relation-distractor-design.json](relation-distractor-design.json) | 初版输入干扰实体方案，正确关系目标保持不变；存在明显位置捷径，仅作压力测试设计。 |
+| [relation-distractor-canonical-design.json](relation-distractor-canonical-design.json) | 与 short_canonical 配对的干扰实体方案，保存真实位置及类型偏置统计；已编译和独立复验，尚未训练。 |
+| [run-status.json](run-status.json) | 有时间戳的正式训练、完整评测及样本曝光状态。 |
 
 ## 数据来源与隔离
 
@@ -46,6 +50,10 @@
 ## 评测与训练代码核验
 
 tune 的 130 条原始记录与全部 gold 保留：自由文本 648 个实体、573 条关系，结构化部分单独分层。只有 572 个自由文本关系证据原子可用于同协议的监督编译，缺少定位的 1 条仍留在评测分母。历史 148 条属于已经查看过的回归集，不作为新的盲测集；标题增强必须另有原始来源映射证据。
+
+正式质量指标使用实际实体输出进入关系阶段后的 `live.filtered.free_text.relation`：按类型、规范名、方向及关系标签严格比较去重集合，报告 TP、FP、FN、precision、recall 和 F1。对应 `live.raw` 的纯集合指标必须同时列出，以观察规则删除了多少正确与错误关系。`strict_raw` 额外把无效输出行计入 FP，是无效输出惩罚诊断，不与纯集合 F1 混称。旧评测快照若将该诊断字段列为 `primary_metric`，解读时仍以原始 `filtered`/`raw` 集合字段为准，不重算或修改任何分子、分母。
+
+历史评测发布保留全部 148 条、979 个实体和 704 条关系。81 条自由文本中，57 条通过原文精确匹配及同源结构化记录验证标题，24 条无法验证标题的样本保留原文与全部 gold，不猜标题、不移除样本。其标题输入条件与过去实验不同，不能把分数差异全部归为模型提升。
 
 训练入口逐行拒绝 tune、混合 stage 和重复身份；正式运行还必须提供审核发布清单中的数据 SHA。记录实际完成的 microstep 与每行曝光；正式完成要求每行至少达到整数 epoch 次数。LoRA 初末指纹必须变化，保存后的 safetensors 与内存参数逐项逐位比较。异常处理清除 `completed` 并标记失败，runtime 拒绝失败或 smoke adapter。
 

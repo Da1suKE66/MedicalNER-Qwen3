@@ -1,0 +1,42 @@
+{
+  "audit_version": "original-silver-semantic-review-20261019-v1",
+  "scope": "train_only_original_silver_annotation_review_not_model_FP_FN",
+  "census": {
+    "original_records": 1345,
+    "train_records": 1215,
+    "train_free_text_records_screened": 670,
+    "tune_records_excluded": 130,
+    "selected_training_cases": 8
+  },
+  "review_status_counts": {
+    "confirmed_source_schema_conflict": 2,
+    "needs_review": 3,
+    "context_supports_annotation": 3
+  },
+  "issue_category_counts": {
+    "explicit_synonym_mislabeled_as_subtype": 2,
+    "diagnostic_warning_promoted_to_required_for": 1,
+    "possible_manifestation_list_as_required_criterion": 1,
+    "evidence_fragment_omits_relevant_list_item": 1,
+    "negated_exception_preserved_not_positive_criterion": 1,
+    "modal_modifies_realization_not_requirement": 1,
+    "explicit_recommendation_control": 1
+  },
+  "interpretation": [
+    "Explicit original-source synonym metadata identifies two alias-versus-subtype annotation conflicts.",
+    "Modal feature lists and diagnostic-boundary prose need scope adjudication; keyword hits are not confirmed errors.",
+    "A short evidence quotation can be inadequate while the full input still supports the relation triple.",
+    "Negated exceptions, alternative realizations of a requirement and explicit recommendations provide counterexamples to blanket filters.",
+    "The two train recommendation edges have explicit should/ideally wording; no evidence-to-recommendation error was confirmed in them.",
+    "Selected cases are a targeted review, not a random sample and not an estimate of silver-label error prevalence."
+  ],
+  "changes": {
+    "train_labels": 0,
+    "tune_labels": 0,
+    "frozen_split": 0,
+    "evaluation_denominators": 0
+  },
+  "external_api_calls": 0,
+  "clinical_expert_adjudicated": false,
+  "privacy": "No source text, disease names, source indices, credentials or private paths are included in this public aggregate."
+}

@@ -1,23 +1,34 @@
 {
   "experiment": "semantic_full_20261019",
   "output_contract": "semantic-text-v1",
-  "status": "baseline_training_running",
-  "status_snapshot_utc": "2026-10-18T18:42:00Z",
+  "status": "entity_baseline_complete_relation_baseline_running",
+  "status_snapshot_utc": "2026-10-18T19:09:44Z",
   "budget_deadline_utc": "2026-10-19T04:15:41Z",
   "model": "Qwen3-8B",
   "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
   "data_release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
   "training_code_archive_sha256": "bc4a978d85d5255118d867d546912fb9b684eeabd25b27d08457280dacc4eab5",
   "baseline": {
-    "stages": ["entities", "relations"],
+    "stages": [
+      "entities",
+      "relations"
+    ],
     "separate_adapters": true,
     "variant": "full_source",
     "epochs": 2,
-    "learning_rate": 0.00005,
+    "learning_rate": 5e-05,
     "lora_rank": 16,
     "lora_alpha": 32,
     "lora_dropout": 0.05,
-    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
     "batch_size": 1,
     "gradient_accumulation": 8,
     "precision": "bfloat16",
@@ -27,15 +38,34 @@
     "warmup_ratio": 0.05,
     "weight_decay": 0.01,
     "seed": 42,
-    "expected_optimizer_steps": {"entities": 168, "relations": 136},
+    "expected_optimizer_steps": {
+      "entities": 168,
+      "relations": 136
+    },
     "completion": "full semantic records encoded once plus one supervised EOS",
     "checkpoint_selection": "fixed final checkpoint, then complete frozen tune evaluation"
   },
   "planned_relation_comparisons": [
-    {"variant": "short_source", "learning_rate": 0.00005, "epochs": 2},
-    {"variant": "short_canonical", "learning_rate": 0.00005, "epochs": 2},
-    {"variant": "selected_from_complete_tune", "learning_rate": 0.0001, "epochs": 2},
-    {"variant": "selected_from_complete_tune", "learning_rate": 0.00002, "epochs": 2}
+    {
+      "variant": "short_source",
+      "learning_rate": 5e-05,
+      "epochs": 2
+    },
+    {
+      "variant": "short_canonical",
+      "learning_rate": 5e-05,
+      "epochs": 2
+    },
+    {
+      "variant": "selected_from_complete_tune",
+      "learning_rate": 0.0001,
+      "epochs": 2
+    },
+    {
+      "variant": "selected_from_complete_tune",
+      "learning_rate": 2e-05,
+      "epochs": 2
+    }
   ],
   "comparison_constraints": {
     "entity_adapter": "shared baseline full_source adapter with fixed source-order entity prompt",
@@ -50,14 +80,39 @@
     "structured_records": 61,
     "free_text_entity_gold": 648,
     "free_text_relation_gold": 573,
-    "modes": ["live_two_stage", "oracle_entities_diagnostic"],
-    "views": ["raw_graph_set_metrics", "rule_filtered_graph_set_metrics", "raw_plus_invalid_attempt_fp_diagnostic"],
+    "modes": [
+      "live_two_stage",
+      "oracle_entities_diagnostic"
+    ],
+    "views": [
+      "raw_graph_set_metrics",
+      "rule_filtered_graph_set_metrics",
+      "raw_plus_invalid_attempt_fp_diagnostic"
+    ],
     "directed_typed_exact_matching": true,
     "retain_gold_on_generation_or_parse_failure": true,
-    "report": ["TP", "FP", "FN", "precision", "recall", "F1", "format_failures", "EOS_failures", "budget_failures", "rule_removed_TP", "rule_removed_FP"],
+    "report": [
+      "TP",
+      "FP",
+      "FN",
+      "precision",
+      "recall",
+      "F1",
+      "format_failures",
+      "EOS_failures",
+      "budget_failures",
+      "rule_removed_TP",
+      "rule_removed_FP"
+    ],
     "precision_is_not_accuracy": true,
     "historical_regression": "148 previously inspected records; final-candidate regression, never presented as new blind test",
-    "trusted_title": "explicit additional input from the same source group's original structured record; not inferred from gold"
+    "trusted_title": "explicit additional input from the same source group's original structured record; not inferred from gold",
+    "primary_metric": "live.filtered.free_text.relation",
+    "required_companion": "live.raw.free_text.relation",
+    "strict_raw": "mixed invalid-line FP diagnostic only; not official graph-set F1",
+    "future_code_snapshot": "code_eval_v3",
+    "future_code_archive_sha256": "9f3b8da7174880545090f9e9a58ae3937378d1e758efd79da5f8d6bce934f31f",
+    "baseline_code_snapshot": "code_eval_v1; existing metric arrays unchanged; interpret filtered/raw set scores rather than the old strict_raw primary metadata"
   },
   "augmentation": {
     "provider": "DeepSeek",
@@ -73,5 +128,15 @@
     "negative_policy": "source-verified errors or explicit counterexamples; unannotated pairs remain unknown",
     "preference_controls": "same SFT parent, exact frozen reference, balance addition/omission and length effects"
   },
-  "target": "70-80%+ is a research objective, not a measured or guaranteed result"
+  "target": "70-80%+ is a research objective, not a measured or guaranteed result",
+  "optional_distractor_comparison": {
+    "status": "compiled_independently_verified_not_trained",
+    "control": "short_canonical",
+    "arm": "short_canonical_distractors",
+    "rows": 951,
+    "target_atoms": 5551,
+    "release_manifest_sha256": "5cecbef1b2b4f4f724343e41bd1e5938c3726a951778d735d2389576c2cd2063",
+    "target_bytes_unchanged": true,
+    "claim_limit": "Source-absence input corruption; does not adjudicate clinical negative relations or prove live F1 improvement"
+  }
 }

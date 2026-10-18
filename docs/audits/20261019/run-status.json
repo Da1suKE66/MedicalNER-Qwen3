@@ -1,0 +1,63 @@
+{
+  "snapshot_utc": "2026-10-18T19:09:44Z",
+  "formal_sft": {
+    "entities": {
+      "status": "complete",
+      "variant": "full_source",
+      "epochs": 2,
+      "optimizer_updates": 168,
+      "rows": 668,
+      "source_groups": 403,
+      "observed_visits": {
+        "all_rows_seen": true,
+        "max_visits": 2,
+        "min_visits": 2,
+        "row_visits": 1336,
+        "rows": 668,
+        "scope": "successful training_step calls, including gradient accumulation",
+        "successful_microsteps": 1336,
+        "supervised_tokens": 308006,
+        "unique_rows_seen": 668,
+        "unique_source_groups_seen": 403
+      },
+      "data_sha256": "63a23ac9bc4bcfee628b12f2de0588a9886e80e5bb9f6e3e6658b7de18416d36",
+      "adapter_files_sha256": "7fdfbc2dcc4ce26b2ba456ee83c992823bc8315f470341a727167798b9f2d6c5",
+      "saved_weights_bitwise_verified": true,
+      "train_loss": 0.12477300586622386,
+      "elapsed_seconds": 877.0748472213745
+    },
+    "relations": {
+      "status": "running",
+      "variant": "full_source",
+      "epochs_planned": 2,
+      "rows": 542,
+      "optimizer_updates_completed": 100,
+      "optimizer_updates_planned": 136,
+      "all_rows_seen_at_least_once": true,
+      "row_visits_completed": 798,
+      "source_groups_seen": 316
+    }
+  },
+  "full130_evaluation": {
+    "status": "queued",
+    "live": true,
+    "oracle": true,
+    "quality_metrics_available": false
+  },
+  "training_loss_is_not_quality_score": true,
+  "augmentation_rows_admitted": 0,
+  "verification": {
+    "full_suite": "1825 passed, 2 skipped",
+    "metric_metadata_followup": "32 passed",
+    "scope": "full suite before metadata-only metric clarification, followed by evaluator and historical targeted regression tests"
+  },
+  "distractor_arm": {
+    "status": "compiled_independently_verified_not_trained",
+    "control": "short_canonical",
+    "variant": "short_canonical_distractors",
+    "rows": 951,
+    "positive_atoms": 5551,
+    "completion_unchanged": true
+  },
+  "official_quality_metric": "live.filtered.free_text.relation; always show companion live.raw set scores; strict_raw is a separate invalid-attempt diagnostic"
+}
