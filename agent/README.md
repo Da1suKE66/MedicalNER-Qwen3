@@ -53,9 +53,20 @@ empty sequence is distinguished from failed generation and from predictions
 removed by rules. Stdout prints only paths, counts and status. No oracle-entity
 mode is exposed by this live CLI.
 
-Variants `full_source`, `short_source` and `short_canonical` share the full-source
-entity stage; the latter two use source-derived relation windows and the complete
-validated entity table. In frozen data release v2, canonical relation targets
+`--variant full_source|short_source|short_canonical` controls the relation stage;
+the latter two use source-derived relation windows and the complete validated
+entity table. The entity stage defaults to `--entity-variant full_source`.
+For an entity adapter trained on complete source windows, add
+`--entity-variant short_source --short-chars 2400`; `--variant full_source` can
+still use the existing full-source relation adapter. The CLI explicitly accepts
+the entity training variants `short_source` and `short_source_complete_windows`
+for that input view and rejects other mismatches. The output and private trace
+retain the actual training variant, input view and training data SHA; matching
+input views alone does not establish complete-window supervision. Successful
+entity windows merge by type/name with global body offsets. Any failed window
+keeps the result failed, with its successful portion only in `partial_graph`.
+
+In frozen data release v2, canonical relation targets
 sort by `(source type, normalized source name, target type, normalized target
 name, relation label, evidence start)`. Source-ordered relation targets sort by
 `(source entity position, target entity position, relation label, evidence start)`;

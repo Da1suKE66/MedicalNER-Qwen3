@@ -23,7 +23,7 @@ from kg_agent.source import SourceRouter, parse_icd_graph
 from pair_metrics import counts_metric
 from semantic.data import DATA_VERSION, VARIANTS, canonical, sha
 from semantic.protocol import CONTRACT, normalize_name
-from semantic.runtime import SemanticGenerator, check_adapter_contract, protocol_digest, run_documents, verify_title_context
+from semantic.runtime import ENTITY_VARIANTS, SemanticGenerator, check_adapter_contract, entity_strategy_contract, protocol_digest, run_documents, verify_title_context
 
 
 def load_release(directory, *, expected_samples=None, evaluation_set="tune"):
@@ -186,6 +186,10 @@ def score_results(cases, results, *, mode):
             "failed_samples": sum(not row["trace"]["generation_complete"] for row in results),
             "failed_generation_calls": failed_generation_calls,
             "budget_exhaustions": sum(row["trace"].get("budget_exhaustions", 0) for row in results),
+            "entity_windows": {
+                "total": sum(row["trace"].get("entity_window_count", 0) for row in results),
+                "successful": sum(row["trace"].get("entity_successful_windows", 0) for row in results),
+                "documents_with_incomplete_entity_stage": sum(row["trace"].get("entity_complete") is False for row in results)},
             "deadline_exhaustions": sum(bool(row["trace"].get("deadline_exhausted")) for row in results)}, raw, filtered
 
 
@@ -219,12 +223,14 @@ def _oracle_entities(case):
     return list(unique.values())
 
 
-def evaluate_cases(cases, generator, *, variant="full_source", modes=("live", "oracle"), short_chars=2400,
+def evaluate_cases(cases, generator, *, variant="full_source", entity_variant="full_source", modes=("live", "oracle"), short_chars=2400,
                    max_seconds=None, on_generation=None, on_document=None, clock=time.monotonic):
     if not cases or not modes or len(set(modes)) != len(modes) or any(mode not in ("live", "oracle") for mode in modes):
         raise ValueError("Nonempty cases and distinct live/oracle modes are required")
     if max_seconds is not None and (not math.isfinite(max_seconds) or max_seconds <= 0):
         raise ValueError("max_seconds must be positive and finite")
+    receipt = getattr(generator, "receipts", {}).get("entities") if "live" in modes else None
+    entity_contract = entity_strategy_contract(entity_variant, receipt, short_chars=short_chars)
     started = clock()
     deadline = started + max_seconds if max_seconds is not None else None
     reports, predictions, results_by_mode = {}, {}, {}
@@ -253,7 +259,7 @@ def evaluate_cases(cases, generator, *, variant="full_source", modes=("live", "o
                 on_generation({**row, "id": mode + ":" + row["id"], "mode": mode,
                     IDENTITY_KEY: make_input_identity(source["original_record"], source["index"]),
                     "semantic_input_identity": deepcopy(source["input_identity"])})
-        free_results = run_documents(free, generator, variant=variant, mode=mode, short_chars=short_chars,
+        free_results = run_documents(free, generator, variant=variant, entity_variant=entity_variant, mode=mode, short_chars=short_chars,
                                     deadline=deadline, on_generation=generation)
         for index, result in zip(positions, free_results):
             if mode == "oracle":
@@ -272,7 +278,8 @@ def evaluate_cases(cases, generator, *, variant="full_source", modes=("live", "o
     expired = deadline is not None and clock() >= deadline
     incomplete = expired or any(report["deadline_exhaustions"] for report in reports.values())
     metrics = {"status": "incomplete" if incomplete else "complete", "complete": not incomplete,
-        "samples": len(cases), "modes": reports, "variant": variant, "output_contract": CONTRACT,
+        "samples": len(cases), "modes": reports, "variant": variant, "entity_variant": entity_variant,
+        "entity_strategy": entity_contract, "output_contract": CONTRACT,
         "primary_metric": ("live" if "live" in modes else "oracle") + ".filtered.free_text.relation",
         "primary_metric_definition": "Typed directed micro precision/recall/F1 of the final rule-filtered graph against all original gold. Live is the complete pipeline; oracle-only runs are component evaluations, not live pipeline results. Structured ICD is reported separately.",
         "reported_metric_views": {
@@ -288,6 +295,9 @@ def evaluate_cases(cases, generator, *, variant="full_source", modes=("live", "o
         "entity_order_control": "Full source, source order, and the same declared entity adapter for every relation variant",
         "gold_annotation_scope": "Frozen teacher silver annotations; matching scores are not human-adjudicated clinical correctness or proof that unannotated relations are false",
         "precision_is_not_accuracy": True, "no_true_negative_accuracy": "Open-world extraction has no defined finite true-negative universe"}
+    if entity_variant == "short_source":
+        metrics.update(entity_order_control="Source-only windows, source order, and the same declared short_source entity adapter for every relation variant",
+            entity_window_policy="Same source_windows algorithm and literal prompt as data_v2 short_source, using the explicit character/overlap budget in entity_strategy. Inference visits all source-only windows, including windows without supervised training rows. No gold-driven or failure-driven full-source fallback; cross-boundary names can be missed. Successful local raw/filtered entities merge separately with global body offsets; any failed window keeps entity_complete/generation_complete false and every original gold remains scored.")
     if historical:
         metrics.update(evaluation_set="historical_regression", blind_test=False, training_allowed=False,
             gold_policy="All 148 original historical cases and all gold retained, including unmatched inputs and failed windows; this inspected historical regression is not a blind test",
@@ -308,6 +318,7 @@ def main(argv=None):
     for name in ("release", "base-model", "entity-adapter", "relation-adapter", "output-dir"):
         parser.add_argument("--" + name, required=True)
     parser.add_argument("--variant", choices=VARIANTS, default="full_source")
+    parser.add_argument("--entity-variant", choices=ENTITY_VARIANTS, default="full_source")
     parser.add_argument("--mode", choices=("live", "oracle", "both"), default="both")
     parser.add_argument("--evaluation-set", choices=("tune", "historical_regression"), default="tune")
     parser.add_argument("--expected-samples", type=int)
@@ -331,10 +342,14 @@ def main(argv=None):
     cases, data_manifest = load_release(args.release, expected_samples=args.expected_samples, evaluation_set=args.evaluation_set)
     receipts = {stage: check_adapter_contract(path, stage, base_model=args.base_model)
                 for stage, path in (("entities", args.entity_adapter), ("relations", args.relation_adapter))}
+    entity_contract = entity_strategy_contract(args.entity_variant, receipts["entities"], short_chars=data_manifest["short_chars"])
     manifest = {"status": "preflight_complete" if args.preflight_only else "running", "complete": False, "completed": False, "failed": False,
                 "args": vars(args), "input_release": data_manifest, "output_contract": CONTRACT,
                 "protocol_sha256": protocol_digest(), "runtime_sha256": sha(Path(__file__).with_name("runtime.py").read_bytes()),
                 "evaluator_sha256": sha(Path(__file__).read_bytes()), "samples": len(cases),
+                "entity_variant": args.entity_variant, "entity_strategy": entity_contract,
+                "relation_prompt_variant": args.variant, "relation_training_variant": receipts["relations"]["variant"],
+                "relation_prompt_matches_training_variant": args.variant == receipts["relations"]["variant"],
                 "base_input_hash_scope": "Model configuration and tokenizer files; not base weight bytes",
                 "sample_indices": [case["index"] for case in cases],
                 "adapters": {stage: {key: value[key] for key in ("stage", "variant", "adapter_files_sha256", "base_input_sha256", "data_sha256")}
@@ -370,7 +385,7 @@ def main(argv=None):
                 progress.update(document_mode_results_completed=progress["document_mode_results_completed"] + 1,
                                 latest_document={"id": case["id"], "mode": mode, "generation_complete": result["trace"]["generation_complete"]})
                 _write(out / "progress.json", progress)
-            metrics, predictions, _ = evaluate_cases(cases, generator, variant=args.variant,
+            metrics, predictions, _ = evaluate_cases(cases, generator, variant=args.variant, entity_variant=args.entity_variant,
                 modes=("live", "oracle") if args.mode == "both" else (args.mode,), short_chars=data_manifest["short_chars"],
                 max_seconds=args.max_seconds, on_generation=generation, on_document=document)
         for view in ("raw", "filtered"):
@@ -378,6 +393,9 @@ def main(argv=None):
             path.write_text("".join(canonical(row) + "\n" for mode in predictions for row in predictions[mode][view]))
             path.chmod(0o600)
         metrics.update(input_release_sha256=data_manifest["manifest_sha256"], protocol_sha256=manifest["protocol_sha256"],
+            entity_strategy=entity_contract,
+            relation_training_variant=manifest["relation_training_variant"],
+            relation_prompt_matches_training_variant=manifest["relation_prompt_matches_training_variant"],
             artifacts_sha256={name: sha((out / name).read_bytes()) for name in ("generations.jsonl", "predictions.raw.jsonl", "predictions.filtered.jsonl")})
         _write(out / "metrics.json", metrics)
         manifest.update(status=metrics["status"], complete=metrics["complete"], completed=metrics["complete"],

@@ -19,7 +19,7 @@ from kg_agent.assemble import assemble_graph
 from kg_agent.source import SourceRouter, parse_icd_graph
 from semantic.data import VARIANTS, canonical, sha
 from semantic.protocol import CONTRACT
-from semantic.runtime import SemanticGenerator, run_document, verify_title_context
+from semantic.runtime import ENTITY_VARIANTS, SemanticGenerator, entity_strategy_contract, run_document, verify_title_context
 
 
 def _input(path, observer=None):
@@ -102,10 +102,13 @@ def _write_private(path, value):
 def execute(args, *, generator_factory=None):
     """Return result envelope, full private trace, and a process exit code."""
     generator_factory = generator_factory or SemanticGenerator
+    entity_variant = getattr(args, "entity_variant", "full_source")
     trace = {"output_contract": CONTRACT, "status": "running", "started_unix": time.time(),
-             "variant": args.variant, "source_input": None, "title_source_input": None,
+             "variant": args.variant, "entity_variant": entity_variant, "entity_strategy": None,
+             "source_input": None, "title_source_input": None,
              "generation_events": [], "result": None, "exception": None}
     envelope = {"output_contract": CONTRACT, "status": "failed", "variant": args.variant,
+                "entity_variant": entity_variant, "entity_strategy": None,
                 "graph": None, "source_type": None, "input_identity": None,
                 "trace_file": str(_trace_path(args.output)), "error": None}
     try:
@@ -148,6 +151,8 @@ def execute(args, *, generator_factory=None):
                 "trace": {"generation_complete": True, "generation_calls": 0, "failed_calls": 0,
                           "entity_source": "deterministic_structured_icd",
                           "parser": "kg_agent.source.parse_icd_graph"}}
+            strategy = {**entity_strategy_contract(entity_variant, short_chars=args.short_chars),
+                        "entity_strategy_applied": False, "reason": "deterministic_structured_icd_no_entity_adapter"}
         else:
             if not all((args.base_model, args.entity_adapter, args.relation_adapter)):
                 raise ValueError("Free-text inference requires --base-model, --entity-adapter and --relation-adapter")
@@ -156,10 +161,19 @@ def execute(args, *, generator_factory=None):
                 batch_size=args.batch_size)
             trace["adapter_receipts"] = deepcopy(getattr(generator, "receipts", {}))
             trace["adapter_weight_verification"] = deepcopy(getattr(generator, "weight_verification", {}))
+            receipt = trace["adapter_receipts"].get("entities")
+            if not isinstance(receipt, dict):
+                raise ValueError("Live entity inference requires its verified training receipt")
+            strategy = {**entity_strategy_contract(entity_variant, receipt, short_chars=args.short_chars),
+                        "entity_strategy_applied": True}
+            envelope["entity_strategy"], trace["entity_strategy"] = deepcopy(strategy), deepcopy(strategy)
             deadline = time.monotonic() + args.timeout_seconds if args.timeout_seconds else None
-            result = run_document(raw, metadata, generator, variant=args.variant, mode="live",
+            result = run_document(raw, metadata, generator, variant=args.variant, entity_variant=entity_variant, mode="live",
                 short_chars=args.short_chars, deadline=deadline,
                 on_generation=lambda event: trace["generation_events"].append(deepcopy(event)))
+        envelope["entity_strategy"], trace["entity_strategy"] = deepcopy(strategy), deepcopy(strategy)
+        result["trace"]["entity_variant"] = entity_variant
+        result["trace"]["entity_strategy"] = deepcopy(strategy)
         trace["result"] = result
         complete = result["trace"].get("generation_complete") is True
         graph = result["filtered_graph"]
@@ -202,6 +216,8 @@ def main(argv=None):
     parser.add_argument("--relation-adapter")
     parser.add_argument("--output", required=True, help="New graph envelope JSON; raw trace is written beside it with mode 0600")
     parser.add_argument("--variant", choices=VARIANTS, default="full_source")
+    parser.add_argument("--entity-variant", choices=ENTITY_VARIANTS, default="full_source",
+                        help="Entity input view; must match the adapter's declared training input view")
     parser.add_argument("--title-source-file", help="Explicit same-group original structured header; never an assistant graph")
     parser.add_argument("--source-group-id", help="Explicit caller declaration that primary input and title source belong to this group")
     parser.add_argument("--max-input-tokens", type=int, default=8192)

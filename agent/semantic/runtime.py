@@ -21,6 +21,11 @@ from semantic.data import VARIANTS, canonical, sha, source_windows
 from semantic import protocol as p
 
 
+ENTITY_VARIANTS = ("full_source", "short_source")
+ENTITY_TRAINING_INPUT_VIEWS = {"full_source": "full_source", "short_source": "short_source",
+                             "short_source_complete_windows": "short_source"}
+
+
 def protocol_digest():
     return hashlib.sha256(Path(p.__file__).read_bytes()).hexdigest()
 
@@ -287,6 +292,86 @@ def _empty_entity_result():
     return {"valid": False, "entities": [], "filtered_entities": []}
 
 
+def entity_strategy_contract(entity_variant, receipt=None, *, short_chars=2400):
+    """Require an explicitly matched entity adapter when a receipt is present."""
+    if entity_variant not in ENTITY_VARIANTS:
+        raise ValueError("Unknown entity inference variant")
+    trained = receipt.get("variant") if receipt is not None else None
+    trained_view = ENTITY_TRAINING_INPUT_VIEWS.get(trained)
+    if receipt is not None and trained_view != entity_variant:
+        raise ValueError("Entity inference view differs from or cannot verify the entity adapter training variant")
+    return {"entity_variant": entity_variant, "entity_prompt_variant": entity_variant,
+            "entity_training_variant": trained, "entity_training_input_view": trained_view,
+            "entity_prompt_matches_training_input_view": trained_view == entity_variant if receipt is not None else None,
+            "entity_prompt_matches_training_variant":
+                trained == entity_variant if receipt is not None else None,
+            "entity_training_data_sha256": receipt.get("data_sha256") if receipt is not None else None,
+            "entity_training_manifest_canonical_sha256": sha(receipt) if receipt is not None else None,
+            "entity_window_char_budget": short_chars if entity_variant == "short_source" else None,
+            "entity_window_overlap_chars": min(400, short_chars // 4) if entity_variant == "short_source" else None,
+            "entity_window_boundaries_use_gold": False,
+            "variant_match_scope": "Input view and source order only; it does not establish complete-window supervision. Exact supervision is identified by the training manifest and data SHA, including changed overlap/title exposure policies.",
+            "entity_order": "source", "automatic_full_source_fallback": False}
+
+
+def _merge_entity_windows(runs):
+    """Union locally parsed successes; shift body anchors, never re-ground globally.
+
+    Raw and filtered unions are independent. An entity must pass grounding in at
+    least one complete local window to enter the relation table. Two failed
+    grounding records from different windows cannot jointly manufacture one.
+    """
+    successes = [run for run in runs if run["status"] == "complete"]
+    failed = [run for run in runs if run["status"] != "complete"]
+    def merge(field):
+        merged = {}
+        for run in successes:
+            for source in run["parse"][field]:
+                entity = deepcopy(source)
+                for name in ("mentions", "canonical_name_anchors"):
+                    for anchor in entity[name]:
+                        if anchor["context"] == "body":
+                            anchor["start"] += run["window"]["start"]
+                            anchor["end"] += run["window"]["start"]
+                entity["source_windows"] = [{"window": deepcopy(run["window"]),
+                    "generation_id": run["id"], "source_lines": deepcopy(source["source_lines"]),
+                    "locally_grounded": source["grounding_verified"]}]
+                key = entity["label"], p.normalize_name(entity["name"])
+                if key not in merged:
+                    merged[key] = entity
+                    continue
+                current = merged[key]
+                for name in ("mentions", "canonical_name_anchors", "source_windows"):
+                    for value in entity[name]:
+                        if value not in current[name]: current[name].append(value)
+                current["grounding_verified"] = current["grounding_verified"] or entity["grounding_verified"]
+                current["rule_rejections"].extend(entity["rule_rejections"])
+                # The source-window provenance above disambiguates local lines.
+                current["source_lines"].extend(entity["source_lines"])
+                if entity["canonical_name_source"] == "copied": current["canonical_name_source"] = "copied"
+                elif current["canonical_name_source"] == "model_inferred":
+                    current["canonical_name_source"] = entity["canonical_name_source"]
+        result = list(merged.values())
+        for entity in result:
+            for name in ("mentions", "canonical_name_anchors"):
+                entity[name].sort(key=lambda a: (a["context"] != "body", a["start"], a["end"]))
+        return p._ordered(result, "source")
+    raw, filtered = merge("entities"), merge("filtered_entities")
+    filtered_ids = {entity["id"] for entity in filtered}
+    return {"valid": bool(successes), "complete": not failed, "partial": bool(successes and failed),
+        "output_contract": p.CONTRACT, "entities": raw, "raw_entities": deepcopy(raw),
+        "filtered_entities": filtered, "validated_entities": deepcopy(filtered),
+        "rejected_entities": [{"entity": deepcopy(entity), "reasons": deepcopy(entity["rule_rejections"])}
+                              for entity in raw if entity["id"] not in filtered_ids],
+        "errors": [{"generation_id": run["id"], "window": deepcopy(run["window"]), "reason": run["error"]} for run in failed],
+        "trace": {"entity_variant": "short_source", "windows": len(runs), "successful_windows": len(successes),
+            "failed_windows": len(failed), "accepted_entities": len(raw), "filtered_entities": len(filtered),
+            "body_anchor_coordinates": "full original source payload; local offsets plus source-window start",
+            "title_anchor_coordinates": "title-local start/end and unchanged original structured-source source_start/source_end",
+            "merge_policy": "Typed normalized name union of successful windows; raw and locally grounded unions computed separately; no global re-grounding or gold-driven fallback",
+            "generation_ids": [run["id"] for run in runs]}}
+
+
 def _merge_relations(runs, field):
     merged = {}
     for run in runs:
@@ -307,15 +392,17 @@ def _graph(entities, relations):
             "relations": [deepcopy(edge) for edge in relations if edge["source"] in ids and edge["target"] in ids]}
 
 
-def run_documents(documents, generator, *, variant="full_source", mode="live", short_chars=2400,
+def run_documents(documents, generator, *, variant="full_source", entity_variant="full_source", mode="live", short_chars=2400,
                   deadline=None, on_generation=None, on_document=None):
-    """Batch full-text entities, then batch all source-only relation windows.
+    """Batch explicit full/short source entities, then all relation windows.
 
     documents contain text/metadata/id; oracle mode additionally requires an
     explicit oracle_entities table. No gold is inspected in live mode.
     """
     if variant not in VARIANTS or mode not in ("live", "oracle"):
         raise ValueError("Unknown semantic evaluation variant or entity mode")
+    receipt = getattr(generator, "receipts", {}).get("entities") if mode == "live" else None
+    entity_contract = entity_strategy_contract(entity_variant, receipt, short_chars=short_chars)
     order = "canonical" if variant == "short_canonical" else "source"
     jobs, states = [], []
     for index, document in enumerate(documents):
@@ -339,14 +426,26 @@ def run_documents(documents, generator, *, variant="full_source", mode="live", s
                                "trace": {"entity_source": "oracle_no_model_prediction_or_grounding_claim"}}
         else:
             text, metadata = document["text"], document.get("metadata", {})
-            jobs.append({"id": f"{document['id']}:entities", "document_index": index, "document_id": document["id"],
-                "window": {"start": 0, "end": len(text), "index": 0}, "text": text, "metadata": metadata,
-                "prompt": p.build_entity_prompt(text, metadata, "source")})
+            windows = ([(0, len(text))] if entity_variant == "full_source"
+                       else source_windows(text, short_chars, min(400, short_chars // 4)))
+            for window_index, (a, b) in enumerate(windows):
+                window = {"start": a, "end": b, "index": window_index}
+                local_metadata = (metadata if entity_variant == "full_source" else
+                    {**deepcopy(metadata), "variant": entity_variant, "order": "source",
+                     "source_window": {**window, "full_source_fallback": False}, "relation_entity_table_scope": None})
+                suffix = "" if entity_variant == "full_source" else f":{window_index}"
+                jobs.append({"id": f"{document['id']}:entities{suffix}", "document_index": index, "document_id": document["id"],
+                    "window": window, "text": text[a:b], "metadata": local_metadata, "entity_variant": entity_variant,
+                    "prompt": p.build_entity_prompt(text[a:b], local_metadata, "source")})
     for run in _run_jobs(jobs, generator, "entities", deadline, on_generation):
         state = states[run["document_index"]]
         state["entity_runs"].append(run)
-        if run["status"] == "complete":
+        if entity_variant == "full_source" and run["status"] == "complete":
             state["entity"] = run["parse"]
+    if mode == "live" and entity_variant == "short_source":
+        for state in states:
+            if "structured_graph" not in state:
+                state["entity"] = _merge_entity_windows(state["entity_runs"])
     relation_jobs = []
     for index, state in enumerate(states):
         document, entity_result = state["document"], state["entity"]
@@ -371,7 +470,7 @@ def run_documents(documents, generator, *, variant="full_source", mode="live", s
         er, rr = state["entity"], grouped[index]
         if "structured_graph" in state:
             error = state["structured_error"]
-            result = {"id": state["id"], "mode": mode, "variant": variant, "output_contract": p.CONTRACT,
+            result = {"id": state["id"], "mode": mode, "variant": variant, "entity_variant": entity_variant, "output_contract": p.CONTRACT,
                 "raw_graph": state["structured_graph"], "filtered_graph": deepcopy(state["structured_graph"]),
                 "generations": [], "trace": {"entity_source": "deterministic_structured_icd", "generation_complete": error is None,
                     "generation_calls": 0, "failed_calls": int(error is not None), "error": error,
@@ -382,10 +481,14 @@ def run_documents(documents, generator, *, variant="full_source", mode="live", s
             continue
         runs = state["entity_runs"] + rr
         failed = [run for run in runs if run["status"] != "complete"]
-        result = {"id": state["id"], "mode": mode, "variant": variant, "output_contract": p.CONTRACT,
+        result = {"id": state["id"], "mode": mode, "variant": variant, "entity_variant": entity_variant, "output_contract": p.CONTRACT,
             "raw_graph": _graph(er["entities"], _merge_relations(rr, "relations")),
             "filtered_graph": _graph(er["filtered_entities"], _merge_relations(rr, "filtered_relations")),
-            "trace": {"entity_source": mode, "entity_context": "full_source", "entity_order": "source", "relation_order": order,
+            "trace": {"entity_source": mode, "entity_context": entity_variant if mode == "live" else "oracle",
+                **entity_contract, "relation_order": order,
+                "entity_strategy_applied": mode == "live", "entity_window_count": len(state["entity_runs"]),
+                "entity_successful_windows": sum(run["status"] == "complete" for run in state["entity_runs"]),
+                "entity_complete": all(run["status"] == "complete" for run in state["entity_runs"]),
                 "relation_entity_table_scope": "complete_filtered_entity_stage_table" if mode == "live" else "complete_oracle_table",
                 "generation_calls": len(runs), "failed_calls": len(failed), "generation_complete": not failed,
                 "invalid_entity_attempts": sum(run["invalid_attempt_records"] for run in state["entity_runs"]),

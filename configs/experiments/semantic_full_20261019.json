@@ -1,8 +1,8 @@
 {
   "experiment": "semantic_full_20261019",
   "output_contract": "semantic-text-v1",
-  "status": "entity_baseline_complete_relation_baseline_running",
-  "status_snapshot_utc": "2026-10-18T19:09:44Z",
+  "status": "baseline_sft_complete_full130_evaluation_running_entity_window_repair_queued",
+  "status_snapshot_utc": "2026-10-18T19:46:46.333126+00:00",
   "budget_deadline_utc": "2026-10-19T04:15:41Z",
   "model": "Qwen3-8B",
   "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
@@ -68,11 +68,12 @@
     }
   ],
   "comparison_constraints": {
-    "entity_adapter": "shared baseline full_source adapter with fixed source-order entity prompt",
+    "entity_adapter": "Choose after complete baseline-versus-repaired-entity full130 comparison, then freeze the same entity adapter and input view for all relation comparisons",
     "source_split": "fixed source-group-disjoint train and tune",
-    "annotation_atoms": "identical across full_source, short_source, short_canonical",
+    "annotation_atoms": "Frozen data_v2 relation views have matched annotation-atom Counters; their overlap-supervision consistency is under audit. Repaired entity complete-window data retains unique atoms but repeats visible labels across windows.",
     "matched_epochs_not_matched_compute": true,
-    "no_subset_scores_for_final_selection": true
+    "no_subset_scores_for_final_selection": true,
+    "relation_short_window_admission": "independent_overlap_supervision_audit_required_before_queueing"
   },
   "evaluation": {
     "complete_tune_records": 130,
@@ -110,8 +111,8 @@
     "primary_metric": "live.filtered.free_text.relation",
     "required_companion": "live.raw.free_text.relation",
     "strict_raw": "mixed invalid-line FP diagnostic only; not official graph-set F1",
-    "future_code_snapshot": "code_eval_v3",
-    "future_code_archive_sha256": "9f3b8da7174880545090f9e9a58ae3937378d1e758efd79da5f8d6bce934f31f",
+    "future_code_snapshot": "code_eval_v4",
+    "future_code_archive_sha256": "14f815160d7372668c49add963daedc31352fc56c492b088e968b56d7425d1f7",
     "baseline_code_snapshot": "code_eval_v1; existing metric arrays unchanged; interpret filtered/raw set scores rather than the old strict_raw primary metadata"
   },
   "augmentation": {
@@ -138,5 +139,28 @@
     "release_manifest_sha256": "5cecbef1b2b4f4f724343e41bd1e5938c3726a951778d735d2389576c2cd2063",
     "target_bytes_unchanged": true,
     "claim_limit": "Source-absence input corruption; does not adjudicate clinical negative relations or prove live F1 improvement"
+  },
+  "entity_window_repair": {
+    "status": "queued_after_baseline_evaluation",
+    "training_job": "entity_short_complete_lr5e5_r16_e2",
+    "evaluation_job": "evaluate_entity_short_complete_full_relation",
+    "rows": 1361,
+    "source_records": 668,
+    "unique_document_entity_atoms": 6484,
+    "entity_window_supervision_exposures": 8683,
+    "new_data_byte_identical_between_reviewed_local_and_remote": true,
+    "training_epochs": 2,
+    "expected_optimizer_updates": 342,
+    "evaluation_mode": "live, all130; unchanged relation adapter oracle diagnostic from baseline",
+    "same_relation_adapter_as_baseline": true,
+    "not_equal_compute_or_entity_exposure_ablation": true,
+    "data_manifest_sha256": "2ba8d402e671fea953dfe5886e1366264087f46ce7c3458a394ffb8932871677",
+    "evaluation_code_archive_sha256": "14f815160d7372668c49add963daedc31352fc56c492b088e968b56d7425d1f7",
+    "training_variant": "short_source_complete_windows",
+    "inference_variant": "short_source",
+    "learning_rate": 5e-05,
+    "lora_rank": 16,
+    "window_chars": 2400,
+    "overlap_chars": 400
   }
 }
