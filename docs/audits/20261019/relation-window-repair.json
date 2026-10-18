@@ -1,6 +1,6 @@
 {
   "scope": "Aggregate-only relation overlap repair and SFT status; no quality improvement claimed",
-  "snapshot_utc": "2026-10-18T21:38:47.693880+00:00",
+  "snapshot_utc": "2026-10-18T22:15:22.241852+00:00",
   "release": {
     "added_chosen_span_overlap_exposures": 308,
     "all_target_text_names_labels_unchanged": true,
@@ -257,7 +257,7 @@
     "external_prepared_records_required": false
   },
   "training": {
-    "status": "source_order_complete_canonical_running",
+    "status": "both_complete",
     "jobs": [
       "relation_short_source_complete_lr5e5_r16_e2",
       "relation_short_canonical_complete_lr5e5_r16_e2"
@@ -306,10 +306,57 @@
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "ae927cbe38d53f3f66280446f91a8e0c69de300e70b853dde966240619309b49",
       "quality_evaluation": "queued_no_new_quality_score_yet"
+    },
+    "canonical_order_receipt": {
+      "status": "complete",
+      "variant": "short_canonical",
+      "epochs": 2.0,
+      "learning_rate": 5e-05,
+      "rank": 16,
+      "optimizer_updates": 250,
+      "elapsed_seconds": 1734.900295972824,
+      "dataset": {
+        "eos_supervised": true,
+        "max_target_tokens": 3870,
+        "max_tokens": 5140,
+        "no_truncation": true,
+        "prompt_loss_masked": true,
+        "rows": 1000,
+        "source_groups": 316,
+        "source_records": 542,
+        "target_tokens_one_pass": 399973,
+        "tokens_one_pass": 1610825
+      },
+      "observed_exposure": {
+        "all_rows_seen": true,
+        "max_visits": 2,
+        "min_visits": 2,
+        "row_visits": 2000,
+        "rows": 1000,
+        "scope": "successful training_step calls, including gradient accumulation",
+        "successful_microsteps": 2000,
+        "supervised_tokens": 799946,
+        "unique_rows_seen": 1000,
+        "unique_source_groups_seen": 316
+      },
+      "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+      "adapter_files_sha256": "9801b1da477af37a9e86ac144ee618977dcb2a7c30334de1e23219408d8f9701",
+      "adapter_final_sha256": "6e1ffdd56c07f6e0dff7950a7e185dc91e6618de7412bc345cb89b76daae0b96",
+      "saved_weights_bitwise_verified": true,
+      "receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
+      "quality_evaluation": "queued_no_new_quality_score_yet"
+    },
+    "observed_pair_verification": {
+      "same_non_data_parameters": true,
+      "same_initial_adapter": true,
+      "same_dataset_token_counts_and_exposure": true,
+      "same_trainer_protocol_environment": true,
+      "epochs": 2,
+      "updates_each": 250
     }
   },
   "evaluation": {
-    "status": "queued",
+    "status": "source_running_canonical_queued",
     "jobs": [
       "evaluate_relation_short_source_complete_selected_entity",
       "evaluate_relation_short_canonical_complete_selected_entity"
@@ -325,6 +372,8 @@
     "code_snapshot": "code_eval_v6",
     "cache_origin_same_runtime_verified": true,
     "model_in_memory_revalidation_at_actual_run_required": true,
-    "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline."
+    "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline.",
+    "source_actual_cache_token_and_in_memory_checks": "verified",
+    "final_entity_graph_sha256_check_pending": true
   }
 }
