@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-19T00:36:22.932036+00:00",
+  "snapshot_utc": "2026-10-19T00:57:28.211279+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -152,37 +152,30 @@
       "quality_evaluation": "completed_two_independent_recounts_passed"
     },
     "entities_short_complete_lr1e4": {
-      "status": "running",
+      "status": "complete",
       "rows": 1361,
       "epochs": 2,
       "learning_rate": 0.0001,
       "rank": 16,
-      "expected_updates": 342,
+      "optimizer_updates": 342,
       "data_sha256": "ffefd37becfa34b3292c6075111b549ac9a2a00a9d435b2f9943d3c613c0e021",
-      "snapshot_progress": {
-        "elapsed_seconds": 7.199732065200806,
-        "epoch": 0.005878030859662013,
-        "global_step": 1,
-        "logs": {
-          "epoch": 0.005878030859662013,
-          "grad_norm": 0.5090771913528442,
-          "learning_rate": 0.0,
-          "loss": 0.2159
-        },
-        "observed_exposure": {
-          "all_rows_seen": false,
-          "max_visits": 1,
-          "min_visits": 0,
-          "row_visits": 8,
-          "rows": 1361,
-          "scope": "successful training_step calls, including gradient accumulation",
-          "successful_microsteps": 8,
-          "supervised_tokens": 4698,
-          "unique_rows_seen": 8,
-          "unique_source_groups_seen": 6
-        }
+      "observed_exposure": {
+        "all_rows_seen": true,
+        "max_visits": 2,
+        "min_visits": 2,
+        "row_visits": 2722,
+        "rows": 1361,
+        "scope": "successful training_step calls, including gradient accumulation",
+        "successful_microsteps": 2722,
+        "supervised_tokens": 396202,
+        "unique_rows_seen": 1361,
+        "unique_source_groups_seen": 403
       },
-      "quality_evaluation": "not_yet_available"
+      "adapter_final_sha256": "fbe68bbb526232445cba4421145999595db9b41d92bc904312b6c1d70a244bc1",
+      "saved_weights_bitwise_verified": true,
+      "receipt_sha256": "1482d82e099ab72c58021c35be46d4c78cac1cb2e10efe58cb35b4817f23cea7",
+      "quality_evaluation": "not_yet_available",
+      "training_result_file": "entity-lr1e4-training.json"
     }
   },
   "full130_evaluation": {
@@ -250,7 +243,7 @@
       "updates_each": 250
     }
   },
-  "status": "all_matched_relation_views_complete_entityLR1e4_training_running",
+  "status": "entityLR1e4_full_training_complete_matched_control_evaluation_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -259,7 +252,7 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "entity_short_complete_lr1e4_r16_e2",
+  "active_job": "evaluate_entity_lr5e5_control_short_canonical_batch4",
   "paired_relation_evaluation": {
     "status": "both_complete_two_independent_recounts_passed",
     "jobs": [
@@ -344,7 +337,7 @@
   "parameter_continuation_plan_file": "parameter-continuation-plan.json",
   "entity_union_offline_diagnostic_file": "entity-union-feasibility-diagnostic.json",
   "entity_lr_comparison": {
-    "status": "training_running_two_full_live_evaluations_queued",
+    "status": "training_complete_matched_control_running_treatment_queued",
     "training_job": "entity_short_complete_lr1e4_r16_e2",
     "epochs": 2,
     "rows": 1361,

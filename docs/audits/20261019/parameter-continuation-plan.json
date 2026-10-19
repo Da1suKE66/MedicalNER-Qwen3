@@ -1,7 +1,7 @@
 {
   "version": 3,
   "declared_utc": "2026-10-18T23:26:47.256148+00:00",
-  "status": "selected_entity_bundle_admitted_training_running",
+  "status": "entity_training_complete_control_running_treatment_queued",
   "reason": "All current relation-view arms share an actual entity table covering294/573gold relation endpoints, which imposes67.82%maximum free relationF1 even with perfect selection. The conditional full-data entityLR comparison is necessary to address this bottleneck.",
   "unchanged_policies": [
     "Finish and independently recount all3matched relation views first",
@@ -40,7 +40,7 @@
   "configured_batch_match_limit": "Actual relation prompt lengths/padding may differ as entities change; audit observed batch sizes and OOM retries. Both arms configure entity4/relation4, not an identical tensor-shape claim.",
   "queued_gpu_plan_unchanged": false,
   "relation_selection_policy": "relation-comparison-plan.json",
-  "snapshot_utc": "2026-10-19T00:36:22.932036+00:00",
+  "snapshot_utc": "2026-10-19T00:57:28.211279+00:00",
   "queue_plan_sha256": "81f55553ac61139ff07419963257080145a25460ce031b3c50fa60d19e9edd6e",
   "jobs_before": 10,
   "jobs_after": 13,
@@ -53,5 +53,8 @@
   "reserved_audit_seconds": 900,
   "remaining_seconds_at_admission": 13207.928577423096,
   "admission_receipt_sha256": "18720e58634fe7b4efad927a84db2605f11609ead32ea70e6aa1672b5625c106",
-  "original_declared_priority_unchanged": true
+  "original_declared_priority_unchanged": true,
+  "entity_training_result_file": "entity-lr1e4-training.json",
+  "entity_training_completed": true,
+  "new_entity_quality_metrics_available": false
 }
