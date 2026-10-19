@@ -1,7 +1,7 @@
 {
   "version": 3,
   "declared_utc": "2026-10-18T23:26:47.256148+00:00",
-  "status": "entity_training_complete_control_running_treatment_queued",
+  "status": "entity_training_and_control_complete_treatment_running",
   "reason": "All current relation-view arms share an actual entity table covering294/573gold relation endpoints, which imposes67.82%maximum free relationF1 even with perfect selection. The conditional full-data entityLR comparison is necessary to address this bottleneck.",
   "unchanged_policies": [
     "Finish and independently recount all3matched relation views first",
@@ -40,7 +40,7 @@
   "configured_batch_match_limit": "Actual relation prompt lengths/padding may differ as entities change; audit observed batch sizes and OOM retries. Both arms configure entity4/relation4, not an identical tensor-shape claim.",
   "queued_gpu_plan_unchanged": false,
   "relation_selection_policy": "relation-comparison-plan.json",
-  "snapshot_utc": "2026-10-19T00:57:28.211279+00:00",
+  "snapshot_utc": "2026-10-19T01:36:30.941982+00:00",
   "queue_plan_sha256": "81f55553ac61139ff07419963257080145a25460ce031b3c50fa60d19e9edd6e",
   "jobs_before": 10,
   "jobs_after": 13,
@@ -56,5 +56,21 @@
   "original_declared_priority_unchanged": true,
   "entity_training_result_file": "entity-lr1e4-training.json",
   "entity_training_completed": true,
-  "new_entity_quality_metrics_available": false
+  "new_entity_quality_metrics_available": false,
+  "control_result_file": "entity-lr5e5-batch4-control.json",
+  "next_relation_lr_guard": {
+    "status": "prepared_independently_reviewed_not_admitted",
+    "all13_jobs_must_complete_first": true,
+    "training_seconds": 2400,
+    "both_mode_evaluation_seconds": 4200,
+    "audit_seconds": 900,
+    "new_entity_combination_seconds_if_required": 3000,
+    "required_seconds_if_old_entity_retained": 7500,
+    "required_seconds_if_new_entity_selected": 10500,
+    "latest_admission_if_old_entity_retained_utc": "2026-10-19T02:10:41Z",
+    "latest_admission_if_new_entity_selected_utc": "2026-10-19T01:20:41Z",
+    "new_entity_branch_budget_status": "expired_no_partial_bundle_allowed",
+    "review_status": "source_review_pass_and9isolated_CPU_checks_no_remote_execution",
+    "budget_revision_basis": "Training measured1775s, reserve2400; both-mode eval measured3629s, reserve4200; do not reduce full130population or omit final combined measurement."
+  }
 }

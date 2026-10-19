@@ -1,0 +1,281 @@
+{
+  "status": "complete_full130_live_root_independent_recount_passed",
+  "snapshot_utc": "2026-10-19T01:36:30.941982+00:00",
+  "run": "entity_lr5e5_control_short_canonical_batch4",
+  "role": "5e-5 entity control for the pending matched entity LR trial, not a new learning-rate result",
+  "samples": 130,
+  "strata": {
+    "free_text": 69,
+    "structured_icd": 61
+  },
+  "gold_denominators": {
+    "free_text_entities": 648,
+    "free_text_relations": 573,
+    "overall_entities": 824,
+    "overall_relations": 656
+  },
+  "scores": {
+    "raw": {
+      "overall": {
+        "entity": {
+          "tp": 501,
+          "fp": 148,
+          "fn": 323,
+          "precision": 0.7719568567026194,
+          "recall": 0.6080097087378641,
+          "f1": 0.6802443991853361
+        },
+        "relation": {
+          "tp": 234,
+          "fp": 239,
+          "fn": 422,
+          "precision": 0.49471458773784355,
+          "recall": 0.3567073170731707,
+          "f1": 0.4145261293179805
+        }
+      },
+      "free_text": {
+        "entity": {
+          "tp": 379,
+          "fp": 141,
+          "fn": 269,
+          "precision": 0.7288461538461538,
+          "recall": 0.5848765432098766,
+          "f1": 0.648972602739726
+        },
+        "relation": {
+          "tp": 177,
+          "fp": 228,
+          "fn": 396,
+          "precision": 0.43703703703703706,
+          "recall": 0.3089005235602094,
+          "f1": 0.3619631901840491
+        }
+      },
+      "structured_icd": {
+        "entity": {
+          "tp": 122,
+          "fp": 7,
+          "fn": 54,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "f1": 0.8
+        },
+        "relation": {
+          "tp": 57,
+          "fp": 11,
+          "fn": 26,
+          "precision": 0.8382352941176471,
+          "recall": 0.6867469879518072,
+          "f1": 0.7549668874172185
+        }
+      }
+    },
+    "filtered": {
+      "overall": {
+        "entity": {
+          "tp": 501,
+          "fp": 145,
+          "fn": 323,
+          "precision": 0.7755417956656346,
+          "recall": 0.6080097087378641,
+          "f1": 0.6816326530612244
+        },
+        "relation": {
+          "tp": 233,
+          "fp": 232,
+          "fn": 423,
+          "precision": 0.5010752688172043,
+          "recall": 0.3551829268292683,
+          "f1": 0.41570026761819806
+        }
+      },
+      "free_text": {
+        "entity": {
+          "tp": 379,
+          "fp": 138,
+          "fn": 269,
+          "precision": 0.7330754352030948,
+          "recall": 0.5848765432098766,
+          "f1": 0.6506437768240343
+        },
+        "relation": {
+          "tp": 176,
+          "fp": 221,
+          "fn": 397,
+          "precision": 0.4433249370277078,
+          "recall": 0.30715532286212915,
+          "f1": 0.3628865979381443
+        }
+      },
+      "structured_icd": {
+        "entity": {
+          "tp": 122,
+          "fp": 7,
+          "fn": 54,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "f1": 0.8
+        },
+        "relation": {
+          "tp": 57,
+          "fp": 11,
+          "fn": 26,
+          "precision": 0.8382352941176471,
+          "recall": 0.6867469879518072,
+          "f1": 0.7549668874172185
+        }
+      }
+    },
+    "strict_raw": {
+      "overall": {
+        "entity": {
+          "tp": 501,
+          "fp": 148,
+          "fn": 323,
+          "precision": 0.7719568567026194,
+          "recall": 0.6080097087378641,
+          "f1": 0.6802443991853361
+        },
+        "relation": {
+          "tp": 234,
+          "fp": 447,
+          "fn": 422,
+          "precision": 0.3436123348017621,
+          "recall": 0.3567073170731707,
+          "f1": 0.350037397157816
+        }
+      },
+      "free_text": {
+        "entity": {
+          "tp": 379,
+          "fp": 141,
+          "fn": 269,
+          "precision": 0.7288461538461538,
+          "recall": 0.5848765432098766,
+          "f1": 0.648972602739726
+        },
+        "relation": {
+          "tp": 177,
+          "fp": 436,
+          "fn": 396,
+          "precision": 0.28874388254486133,
+          "recall": 0.3089005235602094,
+          "f1": 0.2984822934232715
+        }
+      },
+      "structured_icd": {
+        "entity": {
+          "tp": 122,
+          "fp": 7,
+          "fn": 54,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "f1": 0.8
+        },
+        "relation": {
+          "tp": 57,
+          "fp": 11,
+          "fn": 26,
+          "precision": 0.8382352941176471,
+          "recall": 0.6867469879518072,
+          "f1": 0.7549668874172185
+        }
+      }
+    }
+  },
+  "entity_learning_rate": 5e-05,
+  "relation_learning_rate": 5e-05,
+  "entity_variant": "short_source",
+  "relation_variant": "short_canonical",
+  "entity_batch": 4,
+  "relation_batch": 4,
+  "max_input_tokens": 8192,
+  "max_new_tokens": 4096,
+  "queue_duration_seconds": 1770.5686676502228,
+  "generation_saved_trace_counts": {
+    "entities": {
+      "calls": 125,
+      "successful": 125,
+      "failed": 0,
+      "eos_observed": 125,
+      "budget_caps": 0,
+      "parse_error_records": {},
+      "max_generated_tokens": 565,
+      "actual_batch_histogram": {
+        "4": 124,
+        "1": 1
+      }
+    },
+    "relations": {
+      "calls": 125,
+      "successful": 100,
+      "failed": 25,
+      "eos_observed": 122,
+      "budget_caps": 3,
+      "parse_error_records": {
+        "unknown_entity_reference": 36,
+        "invalid_record": 11
+      },
+      "max_generated_tokens": 4096,
+      "actual_batch_histogram": {
+        "4": 124,
+        "1": 1
+      }
+    }
+  },
+  "generation_full_token_redecode_independent_pair_audit": "pending_both_arms_complete",
+  "failed_samples": 21,
+  "invalid_relation_attempt_fp": 208,
+  "rule_deletions": {
+    "entity_removed_fp": 3,
+    "entity_removed_tp": 0,
+    "relation_removed_fp": 7,
+    "relation_removed_tp": 1
+  },
+  "coverage": {
+    "actual_table_entities": 517,
+    "endpoint_only_recall_upper_bound": 0.5130890052356021,
+    "gold_edges_with_both_actual_table_endpoints": 294,
+    "gold_edges_with_both_raw_endpoints": 294,
+    "gold_endpoint_coverage_lost_to_entity_rules": 0,
+    "gold_relations": 573,
+    "input_budget_refusals": 0,
+    "raw_entities": 520,
+    "samples": 69,
+    "zero_actual_table_entities": 0,
+    "zero_relation_generation_calls": 0
+  },
+  "entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+  "cached_entity_calls": 125,
+  "new_gpu_entity_calls": 0,
+  "new_gpu_relation_calls": 125,
+  "actual_loaded_adapter_fingerprints_verified": true,
+  "manifest_sha256": "d992d8a651cb36ac9067548c851db1b0d77ea3f86660996f5218345a2bb9d3c9",
+  "metrics_sha256": "3410cdeb750b243f461eb40f0d13a7f8dd7a7e32dd7a1ff4701d5ef4dd042723",
+  "root_independent_report_sha256": "fe8b5679ae64ca7e89764db21d22f3768004ecbde455237f71389a8530f374f3",
+  "runtime_sha256": "dd3853a8be97e531eecfe7f16e434cb468109e6e62d38b124a78bc37680c2d45",
+  "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+  "evaluator_sha256": "91f0d76becf1581a1d97da04fa73a463f1e5aa4784b840acb0da673103988636",
+  "same_adapter_batch8_reference": {
+    "filtered_relation": {
+      "f0_5": 0.4049700874367234,
+      "f1": 0.3617677286742035,
+      "fn": 397,
+      "fp": 224,
+      "precision": 0.44,
+      "recall": 0.30715532286212915,
+      "tp": 176
+    },
+    "filtered_f1_delta_percentage_points": 0.1118869263940836,
+    "not_a_learning_rate_effect": true
+  },
+  "new_entity_treatment_status": "running_no_complete_quality_metrics",
+  "limits": [
+    "All130cases and original gold retained; failure gold is not dropped.",
+    "Precision is not classification accuracy; strict_raw includes invalid-output penalties and is not pure graph-set F1.",
+    "No new batch4 oracle score was measured.",
+    "Pair selection and full independent token/provenance audit wait for both complete arms.",
+    "Frozen silver labels are not human clinical ground truth."
+  ]
+}
