@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "started_utc": "2026-10-19T07:10:13.552554+00:00",
+  "deadline_utc": "2026-10-19T11:00:00Z",
+  "status": "training_entity_epoch_control_and_preparing_dpo",
+  "baseline_live_free_relation": {
+    "tp": 238,
+    "fp": 183,
+    "fn": 335,
+    "f1": 0.4788732394366197
+  },
+  "baseline_live_free_entity": {
+    "tp": 401,
+    "fp": 117,
+    "fn": 247,
+    "f1": 0.6878216123499142
+  },
+  "dpo": {
+    "status": "queued_after_entity_e3",
+    "training_pairs": 208,
+    "mechanical_holdout_pairs": 32,
+    "reviewed_semantic_pairs": 16,
+    "reference_parent": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2",
+    "learning_rate": 5e-06,
+    "beta": 0.1,
+    "epochs": 1,
+    "gradient_accumulation": 4,
+    "planned_updates": 52,
+    "train_sha256": "1191b1e6ffa56a352539e86614179e57f89efc760fe580ddb582a1c200bea3b9",
+    "training_and_smoke_completed": false
+  },
+  "api": {
+    "status": "automatic_approval_rejected_no_successful_requests",
+    "action": "12_existing_train_original_texts_to_DeepSeek_Flash",
+    "reason": "specific_possible_sensitive_medical_text_disclosure_not_explicitly_authorized",
+    "fallback": "locally_reviewed_resident_train_semantic_preferences",
+    "retry_without_new_authorization_or_public_source_evidence": false
+  },
+  "short_input": {
+    "status": "two_matched_6_long_source_pilots_queued",
+    "budgets": [
+      2400,
+      1600
+    ],
+    "selection": "source_only_length_gt1600_then_source_sha_first6",
+    "not_full_population": true
+  },
+  "prepared_entity_training": {
+    "criterion_replay_rows": 1509,
+    "criterion_replay_added_rows": 148,
+    "short1600_rows": 2042,
+    "short1600_all_original_entity_atoms_preserved": 6484
+  },
+  "record_isolation_diagnostic": {
+    "status": "completed_offline_not_adopted",
+    "baseline_relation_f1": 0.4788732394366197,
+    "isolation_relation_f1": 0.46875,
+    "additional_tp": 2,
+    "additional_fp": 28,
+    "report": "current_record_isolation/report.json"
+  },
+  "scope": "Running experiment snapshot; queued jobs are not completed results"
+}
