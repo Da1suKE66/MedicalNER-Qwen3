@@ -1,5 +1,7 @@
 # 2026-10-19 afternoon experiments
 
+**Final round result:** all four new trained candidates completed the same full130 validation. The original E2+relation SFT remains selected; free-text relation F1 is47.8873%. DPO52 finished at46.5808%, with235TP/201FP/338FN. Label-weighted training and the GPU batch probe were not run because their remaining-time guards failed. See [Chinese final summary](SUMMARY.zh.md), [DPO52 result](dpo52-results.json), [DPO52 attribution](dpo52-error-attribution.json) and [closeout status](round-closeout.json). Earlier progress statements below are historical snapshots.
+
 The user authorized another 3–4 hours of work. This round began at 15:05 Beijing
 time and has a 19:00 deadline. The previous experiment artifacts remain frozen.
 One GPU queue runs the jobs; CPU data preparation proceeds alongside training.
@@ -77,7 +79,7 @@ entity changes alone. A static inference review found no definite implementation
 GPU reproduction is still pending. See the
 [complete entity-control result and limitations](entity-e3-results.json).
 
-Progress at 17:58 Beijing:
+Historical progress snapshot at 17:58 Beijing (superseded by the final record above):
 
 | Experiment | Scope | Status at this record |
 |---|---|---|
