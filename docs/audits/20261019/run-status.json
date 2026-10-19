@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-18T23:58:27.944514+00:00",
+  "snapshot_utc": "2026-10-19T00:36:22.932036+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -150,6 +150,39 @@
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
       "quality_evaluation": "completed_two_independent_recounts_passed"
+    },
+    "entities_short_complete_lr1e4": {
+      "status": "running",
+      "rows": 1361,
+      "epochs": 2,
+      "learning_rate": 0.0001,
+      "rank": 16,
+      "expected_updates": 342,
+      "data_sha256": "ffefd37becfa34b3292c6075111b549ac9a2a00a9d435b2f9943d3c613c0e021",
+      "snapshot_progress": {
+        "elapsed_seconds": 7.199732065200806,
+        "epoch": 0.005878030859662013,
+        "global_step": 1,
+        "logs": {
+          "epoch": 0.005878030859662013,
+          "grad_norm": 0.5090771913528442,
+          "learning_rate": 0.0,
+          "loss": 0.2159
+        },
+        "observed_exposure": {
+          "all_rows_seen": false,
+          "max_visits": 1,
+          "min_visits": 0,
+          "row_visits": 8,
+          "rows": 1361,
+          "scope": "successful training_step calls, including gradient accumulation",
+          "successful_microsteps": 8,
+          "supervised_tokens": 4698,
+          "unique_rows_seen": 8,
+          "unique_source_groups_seen": 6
+        }
+      },
+      "quality_evaluation": "not_yet_available"
     }
   },
   "full130_evaluation": {
@@ -217,7 +250,7 @@
       "updates_each": 250
     }
   },
-  "status": "both_relation_order_evaluations_complete_full_relation_batch8_control_running",
+  "status": "all_matched_relation_views_complete_entityLR1e4_training_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -226,7 +259,7 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "evaluate_full_relation_batch8_selected_entity",
+  "active_job": "entity_short_complete_lr1e4_r16_e2",
   "paired_relation_evaluation": {
     "status": "both_complete_two_independent_recounts_passed",
     "jobs": [
@@ -262,12 +295,14 @@
     "canonical_actual_loaded_weights_verified": true,
     "canonical_cached_entity_jobs_replayed": 125,
     "canonical_new_gpu_entity_jobs": 0,
-    "final_relation_view_selection": "pending_full_source_batch8_control",
+    "final_relation_view_selection": "short_canonical",
     "canonical_second_independent_recount_passed": true,
-    "canonical_second_independent_aggregate_sha256": "a627c62ddfb5f95869c20fb633def80b67cd59b2b2caea2a1b887ee23683aa58"
+    "canonical_second_independent_aggregate_sha256": "a627c62ddfb5f95869c20fb633def80b67cd59b2b2caea2a1b887ee23683aa58",
+    "selection_file": "relation-strategy-selection.json",
+    "full_source_batch8_control_complete": true
   },
   "full_relation_batch8_control": {
-    "status": "running",
+    "status": "complete_two_independent_recounts_passed",
     "job": "evaluate_full_relation_batch8_selected_entity",
     "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
     "samples": 130,
@@ -276,7 +311,12 @@
       "oracle"
     ],
     "same_selected_actual_entity_cache": true,
-    "batch_size": 8
+    "batch_size": 8,
+    "result_file": "full-relation-batch8-results.json",
+    "manifest_sha256": "5db7a5577a93f9b13539afac87c74b7741f1a9b1633336437197648382ad6883",
+    "independent_recount_passed": true,
+    "second_independent_recount_passed": true,
+    "second_independent_aggregate_sha256": "50c4937185dcbf6702a1f138f3385d5110ff226c36eb2021b462c5587f8ab998"
   },
   "relation_selection_policy_file": "relation-comparison-plan.json",
   "fixed_entity_relation_ceiling": {
@@ -299,8 +339,28 @@
     "candidate_train": 48,
     "mechanical_holdout": 16,
     "file": "dpo-preference-candidate-design.json",
-    "implementation": "private_v2_fixed_two_v1_finalization_boundaries;53_CPU_tests_passed;independent_review_in_progress;realTorch_GPU_unverified_not_deployed"
+    "implementation": "private_v2_two_finalization_fixes_independently_verified;53author_plus3independent_CPU_tests_passed;realTorch_GPU_unverified_not_deployed"
   },
   "parameter_continuation_plan_file": "parameter-continuation-plan.json",
-  "entity_union_offline_diagnostic_file": "entity-union-feasibility-diagnostic.json"
+  "entity_union_offline_diagnostic_file": "entity-union-feasibility-diagnostic.json",
+  "entity_lr_comparison": {
+    "status": "training_running_two_full_live_evaluations_queued",
+    "training_job": "entity_short_complete_lr1e4_r16_e2",
+    "epochs": 2,
+    "rows": 1361,
+    "learning_rates": [
+      5e-05,
+      0.0001
+    ],
+    "rank": 16,
+    "selected_relation_view": "short_canonical",
+    "batch_size": 4,
+    "jobs": [
+      "entity_short_complete_lr1e4_r16_e2",
+      "evaluate_entity_lr5e5_control_short_canonical_batch4",
+      "evaluate_entity_lr1e4_short_canonical_batch4"
+    ],
+    "new_quality_metrics_available": false,
+    "actual_new_entity_outputs_required": true
+  }
 }

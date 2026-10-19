@@ -3809,5 +3809,13 @@
       "affected_live_windows": 1,
       "raw_carriage_returns": 0
     }
+  },
+  "subsequent_matched_control_and_selection": {
+    "checked_utc": "2026-10-19T00:36:22.932036+00:00",
+    "matched_full_control_complete": true,
+    "control_result_file": "full-relation-batch8-results.json",
+    "selection_file": "relation-strategy-selection.json",
+    "selected_view": "short_canonical",
+    "earlier_review_snapshots_preserved": true
   }
 }

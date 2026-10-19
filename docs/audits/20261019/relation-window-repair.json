@@ -1,6 +1,6 @@
 {
   "scope": "Aggregate-only relation overlap repair and SFT status; no quality improvement claimed",
-  "snapshot_utc": "2026-10-18T23:58:27.944514+00:00",
+  "snapshot_utc": "2026-10-19T00:36:22.932036+00:00",
   "release": {
     "added_chosen_span_overlap_exposures": 308,
     "all_target_text_names_labels_unchanged": true,
@@ -356,7 +356,7 @@
     }
   },
   "evaluation": {
-    "status": "both_order_evaluations_complete_full_source_batch8_control_running",
+    "status": "both_short_views_and_matched_full_control_complete",
     "jobs": [
       "evaluate_relation_short_source_complete_selected_entity",
       "evaluate_relation_short_canonical_complete_selected_entity"
@@ -380,6 +380,9 @@
     "canonical_result_file": "relation-short-canonical-results.json",
     "canonical_independent_recount_passed": true,
     "canonical_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
-    "canonical_second_independent_recount_passed": true
+    "canonical_second_independent_recount_passed": true,
+    "full_source_batch8_control_complete": true,
+    "selected_relation_view": "short_canonical",
+    "selection_file": "relation-strategy-selection.json"
   }
 }

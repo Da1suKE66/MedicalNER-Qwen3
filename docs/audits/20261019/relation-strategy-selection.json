@@ -1,0 +1,227 @@
+{
+  "status": "selected_after_three_complete_independently_recounted_relation_views",
+  "selected_utc": "2026-10-19T00:34:40.481040+00:00",
+  "policy_sha256": "6d7651b916f2c70104e6ab474f37063200d8d539da178b34e7cf580865e791f5",
+  "selection_is_tune_not_blind_test": true,
+  "selected_view": "short_canonical",
+  "selected_run": "relation_short_canonical_complete_selected_entity",
+  "selected_relation_adapter": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr5e5_r16_e2",
+  "selected_training_receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
+  "scoreboard": [
+    {
+      "run": "full_relation_batch8_selected_entity",
+      "view": "full_source",
+      "relation_adapter": "/workspace/medicalner/20261019/runs/relation_full_source_lr5e5_r16_e2",
+      "manifest_sha256": "5db7a5577a93f9b13539afac87c74b7741f1a9b1633336437197648382ad6883",
+      "metrics_sha256": "8d979fb69b9d68fb830d4d2d37f1c16f0d91b25d9acd6283479ef65961862795",
+      "independent_aggregate_sha256": "dcc69a9a95b2ac97dfb22bc35513653ab42b4dc66b3a0f6ee5fad725340dade1",
+      "entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+      "live_filtered": {
+        "f0_5": 0.33691115086463924,
+        "f1": 0.2661955241460542,
+        "fn": 460,
+        "fp": 163,
+        "precision": 0.40942028985507245,
+        "recall": 0.19720767888307156,
+        "tp": 113
+      },
+      "live_raw": {
+        "f0_5": 0.32664756446991405,
+        "f1": 0.2632794457274827,
+        "fn": 459,
+        "fp": 179,
+        "precision": 0.3890784982935154,
+        "recall": 0.19895287958115182,
+        "tp": 114
+      },
+      "oracle_filtered": {
+        "f0_5": 0.45129334067143645,
+        "f1": 0.37104072398190047,
+        "fn": 409,
+        "fp": 147,
+        "precision": 0.5273311897106109,
+        "recall": 0.2862129144851658,
+        "tp": 164
+      },
+      "live_failed_relation_calls": 21,
+      "training_receipt_sha256": "e99e4e00847587b596480e28fa45b1640ee0cbd57a69c5b166d707443042e533",
+      "rank_key_exact": [
+        "226/849",
+        "114/433",
+        "113/573",
+        "-21",
+        "0"
+      ]
+    },
+    {
+      "run": "relation_short_source_complete_selected_entity",
+      "view": "short_source",
+      "relation_adapter": "/workspace/medicalner/20261019/runs/relation_short_source_complete_lr5e5_r16_e2",
+      "manifest_sha256": "9862abe58a432a9c02cd3000f9c3b87238c526c5816fbecd473059b76ca06987",
+      "metrics_sha256": "b073c827f3e8415fbd861bb6d73352ac513c062aca248b63c9a209c422f0f1ea",
+      "independent_aggregate_sha256": "856ba1bba3598a8d5446f36f2e55085e6f73e75565098011fd58b071a5e47c93",
+      "entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+      "live_filtered": {
+        "f0_5": 0.39280958721704395,
+        "f1": 0.3564954682779456,
+        "fn": 396,
+        "fp": 243,
+        "precision": 0.42142857142857143,
+        "recall": 0.3089005235602094,
+        "tp": 177
+      },
+      "live_raw": {
+        "f0_5": 0.37824054398640033,
+        "f1": 0.34970530451866405,
+        "fn": 395,
+        "fp": 267,
+        "precision": 0.4,
+        "recall": 0.3106457242582897,
+        "tp": 178
+      },
+      "oracle_filtered": {
+        "f0_5": 0.5845604640785363,
+        "f1": 0.5292929292929293,
+        "fn": 311,
+        "fp": 155,
+        "precision": 0.6282973621103117,
+        "recall": 0.4572425828970332,
+        "tp": 262
+      },
+      "live_failed_relation_calls": 15,
+      "training_receipt_sha256": "ae927cbe38d53f3f66280446f91a8e0c69de300e70b853dde966240619309b49",
+      "rank_key_exact": [
+        "118/331",
+        "178/509",
+        "59/191",
+        "-15",
+        "-1"
+      ]
+    },
+    {
+      "run": "relation_short_canonical_complete_selected_entity",
+      "view": "short_canonical",
+      "relation_adapter": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr5e5_r16_e2",
+      "manifest_sha256": "d431f503dabba7f73031d8298a795587f079a4be146293e59ab9f6e50d731e71",
+      "metrics_sha256": "6d9f7b5871cb6294f1cb2ee5942381fa1cbb172740ea5b47806f196242749030",
+      "independent_aggregate_sha256": "1c2f50db263097fda09a58d842ef11c14d26a9574528f38d2736a1d4300e876b",
+      "entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+      "live_filtered": {
+        "f0_5": 0.4049700874367234,
+        "f1": 0.3617677286742035,
+        "fn": 397,
+        "fp": 224,
+        "precision": 0.44,
+        "recall": 0.30715532286212915,
+        "tp": 176
+      },
+      "live_raw": {
+        "f0_5": 0.39990962494351556,
+        "f1": 0.36012207527975587,
+        "fn": 396,
+        "fp": 233,
+        "precision": 0.4317073170731707,
+        "recall": 0.3089005235602094,
+        "tp": 177
+      },
+      "oracle_filtered": {
+        "f0_5": 0.6376237623762376,
+        "f1": 0.6069745523091423,
+        "fn": 251,
+        "fp": 166,
+        "precision": 0.6598360655737705,
+        "recall": 0.5619546247818499,
+        "tp": 322
+      },
+      "live_failed_relation_calls": 24,
+      "training_receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
+      "rank_key_exact": [
+        "352/973",
+        "354/983",
+        "176/573",
+        "-24",
+        "-2"
+      ]
+    }
+  ],
+  "template_sha256": "6cfdfd21e912d68d08a0457f042ec9f2ee0f2fb30c4bc82c940df1153fe7c1a8",
+  "deadline_utc": "2026-10-19T04:15:41Z",
+  "selection_receipt_sha256": "e8ccf036c767a77e5a32baa3aae8c780559debb688dd858ab7079873c90cfb30",
+  "selection_keys": {
+    "version": 1,
+    "declared_utc": "2026-10-18T22:28:35.096409+00:00",
+    "status": "before_any_repaired_relation_full130_results_inspected",
+    "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
+    "candidate_runs": [
+      "full_relation_batch8_selected_entity",
+      "relation_short_source_complete_selected_entity",
+      "relation_short_canonical_complete_selected_entity"
+    ],
+    "requirements": [
+      "All130 original records and frozen gold scored in live and oracle modes",
+      "Completed receipts and independent TP/FP/FN recount",
+      "Identical live entity graph SHA and125 cached entity windows",
+      "Same runtime/protocol, batch8, max-input8192, max-new4096, greedy decoding",
+      "Disclose repeated supervision and optimizer-update differences between full and short views"
+    ],
+    "primary": "live.filtered.free_text.relation.f1",
+    "tie_break": [
+      "live.raw.free_text.relation.f1",
+      "live.filtered.free_text.relation.recall",
+      "fewer live failed relation generation calls"
+    ],
+    "exact_tie_preference": [
+      "full_source",
+      "short_source",
+      "short_canonical"
+    ],
+    "parameter_trial_policy": "Only selected view gets LR1e-4 and2e-5 comparisons; keep data,rank16,epochs2,seed42 and final checkpoint fixed. Match batch8 cachedentity full130 live/oracle evaluation.",
+    "conditional_entity_trial": "Existing predeclared LR1e-4 trial remains after relation comparison and before optional DPO, budget permitting. New entity adapter must generate new entities; no old entity cache.",
+    "selection_is_tune_not_blind_test": true
+  },
+  "limitations": [
+    "Canonical beats source order by only0.5272percentage points of live F1 and has more failed windows. Selection follows the predeclared primary metric, not a claim of broad or stable superiority.",
+    "Same selected entity outputs cover294/573gold relations; longer Criterion recall remains a major bottleneck.",
+    "Any subsequent entity/relation checkpoint combination requires its own full130live evaluation before claiming a score."
+  ],
+  "second_independent_policy_ranking": {
+    "winner": "short_canonical",
+    "ordered_views": [
+      "short_canonical",
+      "short_source",
+      "full_batch8"
+    ],
+    "exact_keys": {
+      "full_batch8": [
+        "226/849",
+        "114/433",
+        "113/573",
+        "-21",
+        "0"
+      ],
+      "short_source": [
+        "118/331",
+        "178/509",
+        "59/191",
+        "-15",
+        "-1"
+      ],
+      "short_canonical": [
+        "352/973",
+        "354/983",
+        "176/573",
+        "-24",
+        "-2"
+      ]
+    },
+    "selection_receipt_or_plan_created": false
+  },
+  "selector_completed_path_review_sha256": "e63009f7bbbcbb9f36413118ebaf8307e0b8abc616bb17da84e207a55c417b03",
+  "selector_metric_schema_check": {
+    "initial_complete_path_rejection": "Saved metrics include an extraF0.5field absent from independentP/R/F1reports; whole-dictionary equality refused admission.",
+    "fix": "ExactTP/FP/FN match;P/R/F1 match to1e-12;F0.5independently recomputed from counts in all54checks.",
+    "result_metrics_or_policy_modified": false,
+    "final_selector_sha256": "38a32decba539be1974a4b8a041d2616a0c43caa3602a82d2f931a273851eec7",
+    "complete_path_and_mutated_metric_refusal_tests": "independently_passed"
+  }
+}
