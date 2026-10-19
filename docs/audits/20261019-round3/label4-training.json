@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "experiment": "round3_label4_full1000_cont1epoch_lr2e5",
+  "training_manifest_sha256": "2bb091b669db0333b4d34ce7306f925f074956957ad707f0ff93255ae4b54b24",
+  "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+  "parent_parameter_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+  "final_parameter_sha256": "a6ffc379c2dec0b60611b1663f1f8820321eaac53ab0c4df9d8191bbba62a4f9",
+  "adapter_files_sha256": "1a2227debe91635c563fa74b46b04a46b6cba6b4aa5da4c8ad8a3dba028d031c",
+  "parameters": {
+    "epochs": 1.0,
+    "learning_rate": 2e-05,
+    "gradient_accumulation": 8,
+    "batch_size": 1,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "dropout": 0.05,
+    "warmup_ratio": 0.05,
+    "max_length": 8192,
+    "seed": 42,
+    "label_weight": 4.0
+  },
+  "dataset": {
+    "eos_supervised": true,
+    "max_target_tokens": 3870,
+    "max_tokens": 5140,
+    "no_truncation": true,
+    "prompt_loss_masked": true,
+    "relation_label_tokens_one_pass": 27752,
+    "rows": 1000,
+    "source_groups": 316,
+    "source_records": 542,
+    "target_tokens_one_pass": 399973,
+    "tokens_one_pass": 1610825,
+    "weighted_token_mass_one_pass": 483229.0
+  },
+  "observed_exposure": {
+    "all_rows_seen": true,
+    "longest_example_seen": true,
+    "max_visits": 1,
+    "min_visits": 1,
+    "relation_label_tokens": 27752,
+    "row_visits": 1000,
+    "rows": 1000,
+    "scope": "successful training_step calls, including gradient accumulation",
+    "successful_microsteps": 1000,
+    "supervised_tokens": 399973,
+    "unique_rows_seen": 1000,
+    "unique_source_groups_seen": 316,
+    "weighted_token_mass": 483229.0
+  },
+  "optimizer_updates": 125,
+  "formal_elapsed_seconds": 880.0094103813171,
+  "independent_saved_tensor_verification": {
+    "method": "NumPy safetensors bytes normalized to same canonical LoRA key/FP32 fingerprint; no model initialization",
+    "parent_disk_parameter_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+    "formal_disk_parameter_sha256": "a6ffc379c2dec0b60611b1663f1f8820321eaac53ab0c4df9d8191bbba62a4f9",
+    "all_parameters_finite": true,
+    "parameter_tensors": 504,
+    "parameter_elements": 43646976,
+    "changed_elements": 43646932,
+    "max_absolute_delta": 0.0009952043183147907,
+    "delta_l2": 0.9676943387039395,
+    "formal_safetensors_file_sha256": "e0c12f7377d3c8929e86aa3dbd77657c7b0a7b153e20c585fd1ba9b24b466341"
+  },
+  "save_reload_scope": "new PEFT adapter slot on the same unmodified base model; not fresh base reload",
+  "actual_code_sha256": {
+    "train_label_weighted.py": "190042550b0e943a10beaceddadc71a47340c73e98b807a279d66c3f66f75dc0",
+    "label_weights.py": "c1c0f4ea610b406681728aad2c25cc4d90aca475b1c1e245dc98e206cd3b2c56",
+    "preflight.py": "8b705e0e93fdb2f5424032e86ed95951eee84385653a2abd62648e7f47b112d4",
+    "verify_torch_math.py": "338b587fb27218c670c608792d47dc25f93f7a8257f9c32822e2753d98524c1d",
+    "run_smoke_then_train.py": "0548baef187afc0828cf52032df67b1d08bc86de71026749507d913e05ef65c1"
+  },
+  "limitations": [
+    "CPU NumPy independently verified saved tensor fingerprint and delta; this review did not rerun training or CUDA.",
+    "Save-vs-live and adapter-slot reload assertions are actual trainer receipts; fresh full-base reload is not claimed.",
+    "Observed aggregate exposure does not retain a per-row visit log; min/max/unique1000 and token sums are reconciled with frozen training code.",
+    "Extra epoch, changed LR and label weighting change together; no matched unweighted continuation control."
+  ],
+  "contains_source_text_or_per_row_data": false,
+  "evaluation_pending": true
+}

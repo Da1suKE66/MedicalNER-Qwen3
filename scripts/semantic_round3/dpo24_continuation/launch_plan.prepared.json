@@ -1,0 +1,77 @@
+{
+  "deadline_unix": 1792416000,
+  "stop_when_empty": true,
+  "jobs": [
+    {
+      "id": "dpo24_reviewed_semantic_lr2e6_beta01",
+      "cwd": "/workspace/medicalner/20261019/code_eval_v6",
+      "argv": [
+        "/root/venvs/medicalner/bin/python",
+        "/workspace/medicalner/round3_20261019/dpo24/code/run_smoke_then_train.py",
+        "--config",
+        "/workspace/medicalner/round3_20261019/dpo24/code/dpo24_config.json",
+        "--deadline-unix",
+        "1792416000",
+        "--label4-result-delivered"
+      ],
+      "environment": {
+        "PYTHONPATH": "/workspace/medicalner/20261019/code_eval_v6/agent",
+        "TOKENIZERS_PARALLELISM": "false",
+        "PYTHONUNBUFFERED": "1"
+      },
+      "receipt": "/workspace/medicalner/round3_20261019/dpo24/runs/formal/training_manifest.json",
+      "estimated_seconds": 2400,
+      "time_reservation_note": "Wrapper total smoke+formal timeout600s; full130 reserve1800s. Latest start12:40UTC. Does not alter or preempt the label4 plan."
+    },
+    {
+      "id": "evaluate_dpo24_full130_fixed_entity",
+      "cwd": "/workspace/medicalner/20261019/code_eval_v6",
+      "argv": [
+        "/root/venvs/medicalner/bin/python",
+        "-m",
+        "semantic.evaluate",
+        "--release",
+        "/workspace/medicalner/20261019/data_v2",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--entity-adapter",
+        "/workspace/medicalner/20261019/runs/entity_short_complete_lr1e4_r16_e2",
+        "--entity-variant",
+        "short_source",
+        "--relation-adapter",
+        "/workspace/medicalner/round3_20261019/dpo24/runs/formal",
+        "--variant",
+        "short_canonical",
+        "--output-dir",
+        "/workspace/medicalner/round3_20261019/evaluation/dpo24_full130_fixed_entity",
+        "--mode",
+        "live",
+        "--expected-samples",
+        "130",
+        "--max-input-tokens",
+        "8192",
+        "--max-new-tokens",
+        "4096",
+        "--batch-size",
+        "4",
+        "--entity-cache-run",
+        "/workspace/medicalner/20261019/evaluation/entity_lr1e4_short_canonical_batch4"
+      ],
+      "environment": {
+        "PYTHONPATH": "/workspace/medicalner/20261019/code_eval_v6/agent",
+        "TOKENIZERS_PARALLELISM": "false",
+        "PYTHONUNBUFFERED": "1"
+      },
+      "receipt": "/workspace/medicalner/round3_20261019/evaluation/dpo24_full130_fixed_entity/manifest.json",
+      "estimated_seconds": 1800
+    }
+  ],
+  "status": "prepared_not_deployed_not_queued",
+  "deadline_scope": "Root-arranged finite continuation plan after delivering label4 result; not an explicit user deadline.",
+  "launch_conditions": [
+    "Label4 completed130 result delivered first",
+    "Existing label4 queue finished and GPU idle",
+    "Start by2026-10-19T12:40:00Z; otherwise skip this continuation"
+  ],
+  "expected_formal_updates": 6
+}

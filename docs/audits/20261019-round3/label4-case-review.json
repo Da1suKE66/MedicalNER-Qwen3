@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "experiment": "round3 label4 full1000 originalSFT_cont1epoch_lr2e5",
+  "scope": "CPU review of existing complete130 fixedE2 artifacts and four private semantic cases; no new GPU/model run.",
+  "source_text_or_entity_names_in_report": false,
+  "semantic_case_count": 4,
+  "identity_checks": {
+    "full130_gold_unchanged": true,
+    "actual_entities_unchanged": true,
+    "actual_relation_prompts_unchanged": 125,
+    "actual_adapter_matches_completed_training": true
+  },
+  "relation_filtered_free_text": {
+    "baseline": {
+      "tp": 238,
+      "fp": 183,
+      "fn": 335,
+      "precision": 0.5653206650831354,
+      "recall": 0.41535776614310643,
+      "f1": 0.4788732394366197
+    },
+    "label4": {
+      "tp": 239,
+      "fp": 184,
+      "fn": 334,
+      "precision": 0.5650118203309693,
+      "recall": 0.41710296684118675,
+      "f1": 0.4799196787148594
+    },
+    "f1_percentage_point_delta": 0.10464392782397192
+  },
+  "changes": {
+    "new_tp": 11,
+    "lost_tp": 10,
+    "removed_fp": 37,
+    "new_fp": 38,
+    "changed_documents": 24
+  },
+  "attribution_counts": {
+    "new_tp:normal_parse_semantic_addition": 11,
+    "removed_fp:normal_parse_relation_absent_or_changed": 37,
+    "new_fp:normal_parse_semantic_addition": 32,
+    "lost_tp:normal_parse_relation_absent_or_changed": 10,
+    "new_fp:recovered_previously_failed_windows": 4,
+    "new_fp:normal_parse_rule_acceptance_changed": 2
+  },
+  "manual_case_findings": [
+    {
+      "case": "improvement_1",
+      "tp_delta": 5,
+      "fp_delta": -5,
+      "finding": "Five associated-to-core label changes now match frozen silver, with unchanged endpoints/evidence."
+    },
+    {
+      "case": "improvement_2",
+      "tp_delta": 2,
+      "fp_delta": -2,
+      "finding": "Two definition-level symptom labels changed associated-to-core and now match silver; evidence length is excluded from relation identity."
+    },
+    {
+      "case": "regression_1",
+      "tp_delta": -2,
+      "fp_delta": 2,
+      "finding": "Optional/associated manifestations promoted to core; source qualifier did not justify the stronger label."
+    },
+    {
+      "case": "regression_2",
+      "tp_delta": -2,
+      "fp_delta": 2,
+      "finding": "Two direct symptom-to-disease edges replaced by symptom-to-criterion edges; different graph structure, not proof of fabricated symptoms."
+    }
+  ],
+  "newly_failed_windows": {
+    "count": 5,
+    "old_filtered_document_counts_all_zero": true,
+    "new_filtered_document_counts_all_zero": true,
+    "gold_relation_counts_all_zero": true,
+    "direct_lost_tp": 0,
+    "schema_drift_cases": 2,
+    "schema_drift_baseline": "Six-field self relations, complete with EOS, removed by self_relation rule.",
+    "schema_drift_candidate": "Four-field definition records, complete with EOS, rejected as invalid_record; not JSON error or cap."
+  },
+  "recovered_windows": {
+    "count": 2,
+    "one_window_relations_already_present_elsewhere": 13,
+    "unique_new_counted_fp_from_other_recovered_window": 4
+  },
+  "truncation": {
+    "count": 1,
+    "generated_tokens": 4096,
+    "eos_observed": false,
+    "previous_window_already_failed": true,
+    "complete_rows_before_tail": 6,
+    "distinct_relation_keys_before_tail": 6,
+    "seventh_relation_distinct": true,
+    "source_window_chars": 2400,
+    "complete_evidence_copies_of_entire_window": 6,
+    "parser_skipped_for_missing_eos": true,
+    "whole_document_graph_changed": false,
+    "cause": "Different semantic TAB relations repeatedly copied entire raw JSON-like source window as evidence. This is not JSON target output or repeated identical relation."
+  },
+  "rules_acceptance_changes": {
+    "new_counted_fp": 2,
+    "previous_reason": "evidence_not_in_body",
+    "candidate_reason": "Evidence changed to an exact source span; unchanged rule now accepts existing raw relation identity."
+  },
+  "fn_endpoint_decomposition": {
+    "baseline": {
+      "total_fn": 335,
+      "both_endpoints_available": 73,
+      "missing_at_least_one_endpoint": 262,
+      "missing_source_only": 147,
+      "missing_target_only": 106,
+      "missing_both": 9,
+      "available_wrong_label_same_direction": 41,
+      "available_no_predicted_label_for_pair": 31,
+      "available_true_relation_removed_by_rules": 1
+    },
+    "candidate": {
+      "total_fn": 334,
+      "both_endpoints_available": 72,
+      "missing_at_least_one_endpoint": 262,
+      "missing_source_only": 147,
+      "missing_target_only": 106,
+      "missing_both": 9,
+      "available_wrong_label_same_direction": 34,
+      "available_no_predicted_label_for_pair": 37,
+      "available_true_relation_removed_by_rules": 1
+    }
+  },
+  "interpretation": "F1 increased by0.10464percentage points, with almost balanced gains/losses. New failure count did not cause the ten lostTP. No statistically significant or single-factor improvement is claimed.",
+  "joint_interventions": [
+    "extra SFT epoch",
+    "changed LR",
+    "label-token weighting"
+  ],
+  "matched_unweighted_continuation_control": false,
+  "source_free_inputs_sha256": {
+    "aggregate.json": "5fd377f7e5ef3b97aea3da7a8d5099b2a363e553c4f9a2610b4ae5a26d16a67f",
+    "attribution.aggregate.json": "bb5f0a3a4b04174197fc917c025069a265763aed735d10a67011a52fdcb551a4",
+    "failure_changes.aggregate.json": "18cea5faacca799057fcf9523e02a60d8101d34458777f651cf99505f5add5c1"
+  }
+}

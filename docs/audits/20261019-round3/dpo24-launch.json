@@ -1,0 +1,16 @@
+{
+  "first_result_delivered_utc": "2026-10-19T12:39:24.577677+00:00",
+  "root_recount_status": "PASS",
+  "root_recount_sha256": "23ceabd02917ed3204e5f082c75ab86ac250d707b3a2c607fcf0a543c410f1e3",
+  "label4_manifest_sha256": "0356a86871860198869b51adc7743da9e627485ae2f4bc3f5c5d2e2ee47dc631",
+  "label4_metrics_sha256": "71dd6e751b03218444099b42619cd50dbbf602f17240fd20c5f754877f18f65e",
+  "plan_sha256": "a8ef4e94c4fad57a8844668373bb2890ebcc6e6fde31fe5e4a13da9703ed68c0",
+  "runner_sha256": "6311dbb86d0724a5c4d815359243ca39e69cd626d2fd86c2c212ada53e3b3814",
+  "status": "continuation_queue_launched",
+  "runner_pid": 5234,
+  "launched_unix": 1792413569.3756306,
+  "deadline_unix": 1792416000,
+  "queue_root": "/workspace/medicalner/round3_20261019/dpo24/queue",
+  "previous_queue_finished": true,
+  "GPU_idle_before_launch": true
+}
