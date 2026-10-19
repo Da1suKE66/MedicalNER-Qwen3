@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-19T02:33:42.049272+00:00",
+  "snapshot_utc": "2026-10-19T03:26:38.785316+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -174,8 +174,9 @@
       "adapter_final_sha256": "fbe68bbb526232445cba4421145999595db9b41d92bc904312b6c1d70a244bc1",
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "1482d82e099ab72c58021c35be46d4c78cac1cb2e10efe58cb35b4817f23cea7",
-      "quality_evaluation": "not_yet_available",
-      "training_result_file": "entity-lr1e4-training.json"
+      "quality_evaluation": "completed_two_independent_recounts_passed",
+      "training_result_file": "entity-lr1e4-training.json",
+      "quality_result_file": "entity-lr-comparison-results.json"
     },
     "relations_short_canonical_complete_lr1e4": {
       "job": "relation_short_canonical_complete_lr1e4_r16_e2",
@@ -233,7 +234,7 @@
       "adapter_files_sha256": "62ec4fab7cf39f9a06bedfddff68be161fd0db5ddb86e5ff4af27749d6484a00",
       "saved_weights_bitwise_verified": true,
       "status": "complete",
-      "quality_evaluation": "running_no_complete_scores",
+      "quality_evaluation": "complete_two_independent_recounts_passed",
       "file": "relation-lr1e4-training.json"
     }
   },
@@ -302,7 +303,7 @@
       "updates_each": 250
     }
   },
-  "status": "entityLR_pair_complete_relationLR_training_complete_full130_both_evaluation_running",
+  "status": "all15_jobs_complete_new_relationLR_selected_target_not_achieved",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -311,7 +312,7 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "evaluate_relation_short_canonical_lr1e4_selected_new_entity_batch4",
+  "active_job": null,
   "paired_relation_evaluation": {
     "status": "both_complete_two_independent_recounts_passed",
     "jobs": [
@@ -423,19 +424,40 @@
     "actual_new_entity_outputs_verified": true
   },
   "relation_lr_comparison": {
-    "status": "training_complete_full130_both_evaluation_running",
+    "status": "both_arms_complete_two_independent_recounts_passed",
     "training_job": "relation_short_canonical_complete_lr1e4_r16_e2",
     "evaluation_job": "evaluate_relation_short_canonical_lr1e4_selected_new_entity_batch4",
     "fixed_entity": "entity_short_complete_lr1e4_r16_e2",
     "batch_size": 4,
     "samples_per_mode": 130,
-    "new_quality_metrics_available": false,
+    "new_quality_metrics_available": true,
     "plan_file": "parameter-continuation-plan.json",
     "training_receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
     "training_file": "relation-lr1e4-training.json",
     "actual_loaded_adapter_fingerprints_verified": true,
     "cached_entity_calls": 125,
-    "new_gpu_entity_calls": 0
+    "new_gpu_entity_calls": 0,
+    "result_file": "relation-lr-comparison-results.json",
+    "selected_learning_rate": 0.0001,
+    "actual_combined_pipeline_evaluated": true,
+    "live_filtered_free_relation": {
+      "f0_5": 0.5272485600354453,
+      "f1": 0.4788732394366197,
+      "fn": 335,
+      "fp": 183,
+      "precision": 0.5653206650831354,
+      "recall": 0.41535776614310643,
+      "tp": 238
+    },
+    "oracle_filtered_free_relation_absolute_only": {
+      "f0_5": 0.7642158638174574,
+      "f1": 0.7535714285714286,
+      "fn": 151,
+      "fp": 125,
+      "precision": 0.7714808043875686,
+      "recall": 0.7364746945898778,
+      "tp": 422
+    }
   },
   "current_selected_entity_relation_ceiling": {
     "scope": "Selected1e-4entity actual outputs; conditional zeroFP theoretical bound, not measured relation score",
@@ -444,5 +466,12 @@
     "maximum_recall": 0.5427574171029669,
     "maximum_f1_if_all_reachable_correct_and_zero_fp": 0.7036199095022625
   },
-  "entity_lr_error_diagnostic_file": "entity-lr-error-diagnostic.json"
+  "entity_lr_error_diagnostic_file": "entity-lr-error-diagnostic.json",
+  "final_experiment_summary_file": "final-experiment-summary.json",
+  "selected_pipeline_result_file": "relation-lr-comparison-results.json",
+  "queue_status_at_last_snapshot": "waiting_for_plan",
+  "runner_exited_claimed": false,
+  "all_admitted_jobs_complete": true,
+  "target_70_80_free_pipeline_f1_achieved": false,
+  "final_error_diagnostic_file": "final-error-diagnostic.json"
 }

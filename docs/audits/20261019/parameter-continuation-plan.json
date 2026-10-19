@@ -1,8 +1,8 @@
 {
   "version": 4,
   "declared_utc": "2026-10-19T01:55:50.960249+00:00",
-  "snapshot_utc": "2026-10-19T02:03:35.173315+00:00",
-  "status": "selected_entity_relation_lr1e4_training_running_full130_both_evaluation_queued",
+  "snapshot_utc": "2026-10-19T03:26:38.785316+00:00",
+  "status": "selected_entity_relation_lr1e4_training_and_full130_both_evaluation_complete",
   "explicit_design_revision": "v3 relationLR continuation fixed-old-entity factorial requirement; preserves v3 entity comparison and all earlier results",
   "revision_reason": "Use the actual selected entity graph as the fixed relationLR condition, so each trained model receives a complete measured final pipeline within remaining time. The extra old-entity factorial arm is omitted when the new entity wins.",
   "revised_before_entity_treatment_quality_scores_inspected": true,
@@ -123,6 +123,11 @@
   "independent_guard_review_sha256": "d5cd2537949f2a709ad20d060774ba116864a88c50350f96969dca91d3f5d82a",
   "guard_cpu_checks_passed": 11,
   "deadline_utc": "2026-10-19T04:15:41Z",
-  "new_relation_quality_metrics_available": false,
-  "future_scope": "Complete and independently audit this actual pair; any later LR2e-5 or DPO requires complete training/evaluation budget. No partial final results."
+  "new_relation_quality_metrics_available": true,
+  "future_scope": "Complete and independently audit this actual pair; any later LR2e-5 or DPO requires complete training/evaluation budget. No partial final results.",
+  "final_result_file": "relation-lr-comparison-results.json",
+  "final_summary_file": "final-experiment-summary.json",
+  "selected_relation_learning_rate": 0.0001,
+  "further_trials_executed": false,
+  "future_scope_at_window_close": "No further full LR2e-5 trial or DPO comparison fits; preparatory artifacts are not completed experiments."
 }

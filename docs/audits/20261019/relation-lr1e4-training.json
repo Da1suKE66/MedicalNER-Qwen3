@@ -1,9 +1,9 @@
 {
-  "status": "full_training_complete_full130_quality_evaluation_running",
+  "status": "full_training_and_full130_both_quality_evaluation_complete",
   "snapshot_utc": "2026-10-19T02:33:42.049272+00:00",
   "job": "relation_short_canonical_complete_lr1e4_r16_e2",
   "receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
-  "new_quality_metrics_available": false,
+  "new_quality_metrics_available": true,
   "stage": "relations",
   "variant": "short_canonical",
   "parameters": {
@@ -83,7 +83,7 @@
   "remote_adapter_file_contract_checked": true,
   "evaluation": {
     "run": "relation_short_canonical_lr1e4_selected_new_entity_batch4",
-    "status": "running",
+    "status": "complete_two_independent_recounts_passed",
     "modes": [
       "live",
       "oracle"
@@ -124,6 +124,7 @@
   "limitations": [
     "Training completion, exposure and loading checks are not evidence of extraction quality.",
     "Local audit checks saved training and loaded/CUDA execution fingerprints; it does not independently reload GPU tensors.",
-    "Final entity graph, complete130 identity/gold and both-mode scores must be rechecked after completion."
-  ]
+    "The final full130 identity/gold, entity-graph and both-mode score checks are complete and recorded in relation-lr-comparison-results.json; training evidence alone is not a quality score."
+  ],
+  "quality_result_file": "relation-lr-comparison-results.json"
 }
