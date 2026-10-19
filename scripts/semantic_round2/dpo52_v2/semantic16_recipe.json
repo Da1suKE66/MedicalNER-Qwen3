@@ -1,0 +1,362 @@
+{
+  "kind": "semantic_preference_single_mutation_v1",
+  "split": "train",
+  "input_file_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+  "items": [
+    {
+      "source_row_id": "train:147:short_canonical:relations:0",
+      "source_row_sha256": "6edaeb38cda6b2c26f357e90ac0263f78a3211d9ffcef30be2d398bbd0dc325f",
+      "rejected_sha256": "4090d90a05188b0d4c358f622f651b568b3b32834512656ebb4451ec88417665",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 8,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:5cc205d9c9662611f097438b696cd4ad86365bec75cee22ce54ab27d36fbe6d2",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "51e8dc78dda76444cad152caecc7749c14013cc702e001b5611c2b6b1a5a2b12"
+      }
+    },
+    {
+      "source_row_id": "train:147:short_canonical:relations:0",
+      "source_row_sha256": "6edaeb38cda6b2c26f357e90ac0263f78a3211d9ffcef30be2d398bbd0dc325f",
+      "rejected_sha256": "06e7ffc7453a46a7fe28ab1d3a269a20a5b7aa1f036e08d6ed45533c427e070d",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 9,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:f8edcc0d2be1cbc8fd9e28bffc9c58469f4b6d39f8f2c17f88e0d1ff8df69aad",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "51e8dc78dda76444cad152caecc7749c14013cc702e001b5611c2b6b1a5a2b12"
+      }
+    },
+    {
+      "source_row_id": "train:147:short_canonical:relations:0",
+      "source_row_sha256": "6edaeb38cda6b2c26f357e90ac0263f78a3211d9ffcef30be2d398bbd0dc325f",
+      "rejected_sha256": "9f2b8dfb538055c93fb170cf53371cacfdc57fb719197c80d2026ccad72f10ef",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 10,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:1a3fb4e9c9e2ad057d46cc2243ffb253d572b4015fa3f53efaae1da78afbc562",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "51e8dc78dda76444cad152caecc7749c14013cc702e001b5611c2b6b1a5a2b12"
+      }
+    },
+    {
+      "source_row_id": "train:147:short_canonical:relations:0",
+      "source_row_sha256": "6edaeb38cda6b2c26f357e90ac0263f78a3211d9ffcef30be2d398bbd0dc325f",
+      "rejected_sha256": "2dad1aa64076245635d15b38fc2e364799a15d95bd86ab1fe70e365ec5351c87",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 11,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:6c04c9d13aa3c14caf98c3b5506b6925a1717ec444d17bea70f5c0fc417167cf",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "51e8dc78dda76444cad152caecc7749c14013cc702e001b5611c2b6b1a5a2b12"
+      }
+    },
+    {
+      "source_row_id": "train:147:short_canonical:relations:0",
+      "source_row_sha256": "6edaeb38cda6b2c26f357e90ac0263f78a3211d9ffcef30be2d398bbd0dc325f",
+      "rejected_sha256": "1ba30c67892d2b1ac729fbb20d42deaf4cdfc3537fda5f1fbdf136c2b200c2b2",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 12,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:eeb03ddad7ba4d28edd529ddac595bca78146f9e2e3a82b1366e9e4cd08db279",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "51e8dc78dda76444cad152caecc7749c14013cc702e001b5611c2b6b1a5a2b12"
+      }
+    },
+    {
+      "source_row_id": "train:603:short_canonical:relations:0",
+      "source_row_sha256": "a18d8f19befa42ed635e608bfd0a04595b4b5e07426bbeabd50077cda3448432",
+      "rejected_sha256": "104ac99f8dd37595b18dcdc7110c3dfdda0f4840983b177a268396c95a720f16",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 1,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:6f8e5098da0d56e2a1105a34155abb572b6217d1318258be83f04cf6ed23d3c9",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "cc2cc7982f231f7f41edc17064ce53f58e4d4dd1ab905f81539ed0198b9ca636"
+      }
+    },
+    {
+      "source_row_id": "train:603:short_canonical:relations:0",
+      "source_row_sha256": "a18d8f19befa42ed635e608bfd0a04595b4b5e07426bbeabd50077cda3448432",
+      "rejected_sha256": "66524e5a42446c3a60829751ba68c3d9518197b9a60c3e45b35e635c1891975b",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 2,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:c2f29fc33f28316a3c9409d1abcd3ef9fb054ad5d38fe49a4cfef972fd0d2c78",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "cc2cc7982f231f7f41edc17064ce53f58e4d4dd1ab905f81539ed0198b9ca636"
+      }
+    },
+    {
+      "source_row_id": "train:607:short_canonical:relations:0",
+      "source_row_sha256": "af9864c7f747df712df7ba11b5d842d35aea4ebb27f0ccdd1c62dc8cfe0584db",
+      "rejected_sha256": "abc084c5ec17b42c72f357df136ff7532cd5937d0427db79f436a54aac6941c5",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 2,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:81bb692855331c749e496bd44028329ce8885cde5f55d0295f404ca2cbd1bb4c",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "7eb64f86f40e5f02a7797c4923a0a58b8d974e10618e66dee60cd6000fc7f5bd"
+      }
+    },
+    {
+      "source_row_id": "train:803:short_canonical:relations:0",
+      "source_row_sha256": "d9e299d42dab3327b50e9dfa3031630c82fdaec31e400fe3bfe21648328f7753",
+      "rejected_sha256": "f99af0f7c6961d37cc3177485f8f5cf82bd30e0f5c1628b522cc1f60b96c7232",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 1,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:99fba5b1f7645ba31750505264f43beca054836615544dac7d44cd28bc79ad23",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "cc2cc7982f231f7f41edc17064ce53f58e4d4dd1ab905f81539ed0198b9ca636"
+      }
+    },
+    {
+      "source_row_id": "train:803:short_canonical:relations:0",
+      "source_row_sha256": "d9e299d42dab3327b50e9dfa3031630c82fdaec31e400fe3bfe21648328f7753",
+      "rejected_sha256": "2b1469468fa38e6701b45123ad4afca45145a6ae0d7dd89f5c5db11e2788b548",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 2,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:348d7b0980fa7a8cac32333a76d73551381f0fa761d0be986f04f24ae66b7cd4",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "cc2cc7982f231f7f41edc17064ce53f58e4d4dd1ab905f81539ed0198b9ca636"
+      }
+    },
+    {
+      "source_row_id": "train:807:short_canonical:relations:0",
+      "source_row_sha256": "62f67d225c9647a3f7044e91daaac67ee3daf46668611f2d88562f4ea73f7b80",
+      "rejected_sha256": "ab6f43b3381877028351b6a2f72e68da4f023a3c03511a492f1e46feb8929c60",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 3,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:388eff9acc00b7ae28b4d8a0b61279ede7ddb5ebff16cd346d1390d8e75fb6ed",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "7eb64f86f40e5f02a7797c4923a0a58b8d974e10618e66dee60cd6000fc7f5bd"
+      }
+    },
+    {
+      "source_row_id": "train:859:short_canonical:relations:0",
+      "source_row_sha256": "1e1c32cb5bd46d66ef7afb3ba8e55b7a3fedc1bc28513256c07735a5917a89ed",
+      "rejected_sha256": "8c7ee11403df6417f0e625c855cf6c1de6f9ccf7f09e7d2855740d69a7d2ea7d",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 8,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:75f8ea2f745f5d19c01bc1f18ff3bf8acf7f27b13aadeaf0dea3cac6efc42b28",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "cc5a728c3ca2c7eccf62b31d1b6c3dfe91e8c126aa4e0964f8c2e27efc13b40d"
+      }
+    },
+    {
+      "source_row_id": "train:859:short_canonical:relations:0",
+      "source_row_sha256": "1e1c32cb5bd46d66ef7afb3ba8e55b7a3fedc1bc28513256c07735a5917a89ed",
+      "rejected_sha256": "2351fa25b15df800bb9b23808d94e36c18b1b4141074d4c840044e034cc0fb3e",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 9,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly denies this symptom as present/characteristic for the exact named condition; changing only its relation to core-symptom contradicts that negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:6135d37dcf8f81d17987d300658043daa084e532d4c0a5cae47bc39414f24ae6",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "cc5a728c3ca2c7eccf62b31d1b6c3dfe91e8c126aa4e0964f8c2e27efc13b40d"
+      }
+    },
+    {
+      "source_row_id": "train:14:short_canonical:relations:0",
+      "source_row_sha256": "bca8a2f16693bffb95e5ad936144fde3088c7f4338aa2439f5b5ac759c6e389d",
+      "rejected_sha256": "1ab968defc2a8b2c9e9b66ac7f54d8f187e8b9e68a2585954e1b133cdea24455",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 0,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source explicitly lists a narrower named class inside a broader grouping, or calls it a form of that grouping; swapping the same-type endpoints reverses that stated hierarchy."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:2ab7d22fb3bde4a23765ba0baea2059bc66168c9eb4d6b93b44b10ff4253d610",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "bf415275a7f805b1e41b8ec39cf1f3624953c5cce9af1b96f1f5bca1cdd4cd68"
+      }
+    },
+    {
+      "source_row_id": "train:358:short_canonical:relations:1",
+      "source_row_sha256": "fd626c41ac723f0e5958732ab4b4c60f761c9df922482e4d4975e7ba9ab6bf0a",
+      "rejected_sha256": "25eebc6eda6a40e6c5c2a917f0af4eed81f6cf6333df46aa6389bdf2aa2d4010",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 4,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source explicitly lists a narrower named class inside a broader grouping, or calls it a form of that grouping; swapping the same-type endpoints reverses that stated hierarchy."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:2ea29060f6714f20c0ad21d6161196df388d71f5ab36cf506320d9fe9d0b575f",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "e42b05b771778dc1bf6b4652bb83eed16fd2d247b7f010c6394893949c32030c"
+      }
+    },
+    {
+      "source_row_id": "train:12:short_canonical:relations:0",
+      "source_row_sha256": "dff8027b2a991c31987eaf1c4287d02f635ca35244d869baaf5685531c1b04cd",
+      "rejected_sha256": "e89d3599b67a2f386198bd2e339d3e6ab4ee4c084eabfb682fdb896c415b6342",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 0,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source explicitly lists a narrower named class inside a broader grouping, or calls it a form of that grouping; swapping the same-type endpoints reverses that stated hierarchy."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "local_train_source_contrast_v1:0134065b1a126f8b13066c0ce801718ad292b03996c69c75dca6543147808a04",
+        "human_adjudicated": false,
+        "method": "source-specific explicit negation or directed hierarchy; no missing-label assumptions",
+        "source_evidence_sha256": "95b8774031c6d38b8e83a5789fe813c47b89170de0576a197011becc22372a4b"
+      }
+    }
+  ],
+  "source_text_in_recipe": false,
+  "external_teacher_used": false,
+  "unchanged_silver_remainder_not_claimed_human_gold": true
+}

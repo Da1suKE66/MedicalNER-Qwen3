@@ -49,9 +49,9 @@
   "dropout": 0.0,
   "optimizer": "AdamW_policy_LoRA_only_constant_lr_weight_decay_0",
   "train_loss": 0.5476139410613821,
-  "status": "training_complete_quality_evaluation_running",
+  "status": "training_and_full130_evaluation_complete_no_quality_improvement",
   "training_manifest_sha256": "2994e577c0ff9faef8d97c5e4839b012baf15658f5fcfcd2acf12057d1e67f7f",
-  "full130_quality_evaluated": false,
+  "full130_quality_evaluated": true,
   "formal_parameters": {
     "epochs": 1,
     "learning_rate": 5e-06,
@@ -67,5 +67,7 @@
     "report_sha256": "d5975d33351828140e306c973be766a71f5220c4233c8479d75d4775fcfa5925",
     "scope": "Independent local byte/hash/token/schedule reconciliation of frozen GPU receipts; no second CUDA training or weight reload",
     "pipeline_quality_claim": false
-  }
+  },
+  "selected_for_final_pipeline": false,
+  "quality_result": "See dpo-results.json: live free-text relation F1 decreased1.1341 percentage points."
 }

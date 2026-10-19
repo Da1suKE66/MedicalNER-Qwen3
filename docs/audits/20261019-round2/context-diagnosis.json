@@ -1,0 +1,195 @@
+{
+  "status": "PASS",
+  "confirmed_facts": [
+    "Every relation window receives the same complete filtered document entity-stage table at inference; no local-only filtering occurs.",
+    "All1000 canonical SFT rows likewise supply the complete admitted source entity table. This table-scope design is consistent between training and inference.",
+    "Selected SFT uses admitted entity annotations; actual inference supplies imperfect predicted entities. This is an input-quality distribution difference.",
+    "Canonical SFT has only positive supervised rows; live inference visits all source-only windows even when no positive annotation was supplied for comparable train windows.",
+    "Two1600 relation windows repeat until4096 tokens without EOS; all2400 relation windows completed. These are observed output failures, not established causal explanations."
+  ],
+  "hypotheses_not_proven": [
+    "Shorter body windows plus a complete document table can increase the proportion of entity names without local grounding, giving the relation stage less nearby context per supplied entity.",
+    "Additional predicted entity errors and missing cross-window discourse context may increase incorrect relation decisions or repetitive continuation.",
+    "Positive-only relation supervision may weaken abstention on inference windows; these pilot data do not establish its causal contribution."
+  ],
+  "limitations": [
+    "Nonlocal entity names are not automatically irrelevant or false; they may be necessary for long-distance or title-mediated relations.",
+    "Source-anchor presence does not prove relation entailment.",
+    "This is6long-source exploratory evidence, not a full-population causal ablation."
+  ],
+  "minimal_verification_proposal": [
+    "Keep the existing2400 system as control; do not ship a local-only table-pruning rule based on these6 tune sources.",
+    "Prepare TRAIN-only relation rows using out-of-fold or separately generated predicted entity tables; preserve required positive endpoints and teach ignoring added source-grounded distractors without inventing NONE labels.",
+    "If testing local context tables, retain a source-only global-memory path with verified title and actual endpoint mentions for cross-window relations, and measure retained TRAIN supervision before any GPU run.",
+    "Evaluate fixed-entity relation-only contrasts separately from entity-window changes, then require full130 live evaluation with all original gold and failed windows retained."
+  ],
+  "matching_definition": "Uses existing audited find_mentions through protocol._anchors: case/whitespace/known conservative normalization with exact original source offsets; no synonym/semantic match credit.",
+  "inputs": {
+    "1600": {
+      "generations_sha256": "efaa4a44639876acf97e9d1f4c5508c3af84b1bd486a11f652b0bf13a78c5d28",
+      "manifest_sha256": "80ed228a318dafb482f091e7559e4ab46a1a941588a5aee056d921c862cdc771"
+    },
+    "2400": {
+      "generations_sha256": "f0527375dad50a519bcc1feff937c580965bf0b33b5854017b458df7aa72010c",
+      "manifest_sha256": "692e49cbe88469599adaba349043ddeff0c935270c7c7378c2372bb7d6adaf57"
+    }
+  },
+  "report_sha256": "53539517791e79e98bbe08ab922ebb85c17eb4a15a0bc4f564e63e23c1eae956",
+  "canonical_sft_training": {
+    "all_windows_used_complete_admitted_source_entity_table": true,
+    "canonical_train_file_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+    "entity_table_source": "Frozen admitted source annotations, not actual predicted/noisy entity-stage outputs",
+    "positive_supervision": {
+      "auxiliary_full_source_rows": 2,
+      "exposures_with_at_least_one_nonlocal_endpoint": 74,
+      "nonempty_positive_rows": 1000,
+      "relation_evidence_exposures": 5859,
+      "rows": 1000,
+      "zero_positive_rows": 0
+    },
+    "relation_windows": 1000,
+    "source_count": 542,
+    "unanchored_table_entry_fraction": 0.4636551724137931,
+    "unique_train_evidence_atoms_with_any_nonlocal_endpoint_exposure": 74
+  },
+  "pilot": {
+    "2400": {
+      "relation_windows": 22,
+      "table_size": {
+        "count": 22,
+        "max": 30,
+        "mean": 17.181818181818183,
+        "median": 13.0,
+        "min": 7,
+        "p95": 30,
+        "sum": 378
+      },
+      "unanchored_table_entry_fraction": 0.5687830687830688,
+      "window_entry_counts": {
+        "anchored_in_title": 22,
+        "anchored_in_window_body": 160,
+        "anchored_in_window_or_title": 163,
+        "not_anchored_anywhere_in_full_source_or_title": 0,
+        "not_anchored_in_window_or_title": 215,
+        "table_entries": 378,
+        "title_only_in_this_window": 3
+      },
+      "prompt_token_composition": {
+        "entity_table": {
+          "count": 22,
+          "max": 242,
+          "mean": 164.86363636363637,
+          "median": 154.0,
+          "min": 108,
+          "p95": 242,
+          "sum": 3627
+        },
+        "instruction_wrappers_or_boundary_tokens": {
+          "count": 22,
+          "max": 250,
+          "mean": 250,
+          "median": 250.0,
+          "min": 250,
+          "p95": 250,
+          "sum": 5500
+        },
+        "rendered_prompt_tokens": {
+          "count": 22,
+          "max": 1328,
+          "mean": 1203.6363636363637,
+          "median": 1229.5,
+          "min": 924,
+          "p95": 1323,
+          "sum": 26480
+        },
+        "source_body": {
+          "count": 22,
+          "max": 540,
+          "mean": 390,
+          "median": 405.5,
+          "min": 95,
+          "p95": 479,
+          "sum": 8580
+        },
+        "vocabulary_and_source_metadata": {
+          "count": 22,
+          "max": 425,
+          "mean": 398.77272727272725,
+          "median": 419.0,
+          "min": 262,
+          "p95": 425,
+          "sum": 8773
+        }
+      }
+    },
+    "1600": {
+      "relation_windows": 36,
+      "table_size": {
+        "count": 36,
+        "max": 36,
+        "mean": 22.444444444444443,
+        "median": 24.0,
+        "min": 11,
+        "p95": 36,
+        "sum": 808
+      },
+      "unanchored_table_entry_fraction": 0.693069306930693,
+      "window_entry_counts": {
+        "anchored_in_title": 36,
+        "anchored_in_window_body": 239,
+        "anchored_in_window_or_title": 248,
+        "not_anchored_anywhere_in_full_source_or_title": 0,
+        "not_anchored_in_window_or_title": 560,
+        "table_entries": 808,
+        "title_only_in_this_window": 9
+      },
+      "prompt_token_composition": {
+        "entity_table": {
+          "count": 36,
+          "max": 306,
+          "mean": 201.13888888888889,
+          "median": 177.0,
+          "min": 152,
+          "p95": 306,
+          "sum": 7241
+        },
+        "instruction_wrappers_or_boundary_tokens": {
+          "count": 36,
+          "max": 250,
+          "mean": 250,
+          "median": 250.0,
+          "min": 250,
+          "p95": 250,
+          "sum": 9000
+        },
+        "rendered_prompt_tokens": {
+          "count": 36,
+          "max": 1255,
+          "mean": 1140.4166666666667,
+          "median": 1124.0,
+          "min": 1026,
+          "p95": 1244,
+          "sum": 41055
+        },
+        "source_body": {
+          "count": 36,
+          "max": 375,
+          "mean": 267.8888888888889,
+          "median": 267.5,
+          "min": 158,
+          "p95": 365,
+          "sum": 9644
+        },
+        "vocabulary_and_source_metadata": {
+          "count": 36,
+          "max": 431,
+          "mean": 421.3888888888889,
+          "median": 419.0,
+          "min": 417,
+          "p95": 431,
+          "sum": 15170
+        }
+      }
+    }
+  }
+}

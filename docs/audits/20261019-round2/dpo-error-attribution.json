@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "scope": "filtered free-text graph changes; attribution uses actual matched relation windows and per-window parsed graph",
+  "counts": {
+    "new_fp:normal_parse_semantic_addition": 22,
+    "lost_tp:normal_parse_relation_absent_or_changed": 8,
+    "lost_tp:normal_parse_then_rule_removed": 1
+  },
+  "new_failure_documents": [
+    {
+      "document_id": "tune:790",
+      "window_index": 0,
+      "old_filtered_relation_count": 0,
+      "new_filtered_relation_count": 0,
+      "old_raw_relation_count": 1,
+      "new_raw_relation_count": 0
+    },
+    {
+      "document_id": "tune:779",
+      "window_index": 0,
+      "old_filtered_relation_count": 0,
+      "new_filtered_relation_count": 0,
+      "old_raw_relation_count": 1,
+      "new_raw_relation_count": 0
+    },
+    {
+      "document_id": "tune:773",
+      "window_index": 0,
+      "old_filtered_relation_count": 0,
+      "new_filtered_relation_count": 0,
+      "old_raw_relation_count": 1,
+      "new_raw_relation_count": 0
+    }
+  ],
+  "lost_tp_caused_by_new_failed_windows": 0,
+  "new_fp_from_recovered_windows": 0,
+  "source923": {
+    "lost_tp": 5,
+    "new_fp": 3,
+    "all_four_windows_complete_before_and_after": true,
+    "lost_breakdown": {
+      "normal_parse_relation_absent_or_changed": 4,
+      "normal_parse_then_evidence_rule_removed": 1
+    },
+    "semantic_issue": "An instruction to assign an additional diagnosis was emitted as three causal relations.",
+    "evidence_rule_issue": "One previously correct relation remains in raw but changed curly quotation marks to ASCII apostrophes, failing literal evidence matching.",
+    "unicode_quote_only_difference_verified": true
+  },
+  "source774": {
+    "lost_tp": 3,
+    "all_four_windows_complete_before_and_after": true,
+    "cause": "Three subtype edges omitted by the model; no parser failure or output truncation."
+  },
+  "clinical_caution": "Source1135 removes two silver-FP subtype edges whose source text may support the hierarchy. This is a score improvement, not independently proven hallucination reduction.",
+  "model_outputs_or_source_text_in_this_aggregate": false
+}

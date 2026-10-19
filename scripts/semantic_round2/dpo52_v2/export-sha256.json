@@ -1,0 +1,12 @@
+{
+  "prepare_release.py": "e554b67371d707457ed8ef40afcaf7ce7517d9e19fe468323834aaa1952f987f",
+  "semantic_dpo.py": "2133d95d321944202df701f1764ec3763dbb8795b13d516dcb864c428d93e12a",
+  "build_pairs.py": "ebf61cdbb7aa9eeb3fab2b9d2ae195ab47c19bed61dda4e1eae0e4b14988d91a",
+  "rebuild_quality_data.py": "16e8a39e3a62f10c77e3aef3a9c22693921963e0e143d4537253967647b7b0ae",
+  "run_smoke_then_train.py": "bc065ce6c3d034b1a6b7fbc63a9fbaf0b57e55706d55ccc0528321138dd31ac8",
+  "semantic16_recipe.json": "7b988f404adab123757ab0dd661d4504012efac7f30cfcb1ae740e87b621bbe2",
+  "semantic20_recipe.json": "baa88c6eb92475e1d452ca11666f907a9e1b1e556b2665bb22d4861fc197fe15",
+  "selection_recipe.json": "15395788b8a25f4053f46f3eac6400517f89ed1cb67de9cfa1954cd74827b332",
+  "dpo_config.json": "43626d8f0d0d9c8034d49f999dba7657271e279ede380d17c261c9c7c0831a00",
+  "launch_plan.json": "2a37ef63ed93c841ecb9fcbc2bb8bf64212321644be3c6df5ee77443c88ee0fd"
+}

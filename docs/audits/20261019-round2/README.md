@@ -11,24 +11,84 @@ precision 56.5321%, recall 41.5358%, F1 47.8873%. These are reused validation
 results, not an independent test or human adjudication. The 70–80% target has
 not been achieved.
 
-Progress at 16:08 Beijing:
+The first DPO run did not improve the complete live pipeline evaluation. All
+130 cases finished; the primary 69-case free-text comparison is:
+
+| Relation model | TP / FP / FN | Precision | Recall | Micro-F1 |
+|---|---|---|---|---|
+| Fixed SFT parent | 238 / 183 / 335 | 56.5321% | 41.5358% | 47.8873% |
+| DPO, 208 pairs, one epoch | 234 / 194 / 339 | 54.6729% | 40.8377% | 46.7532% |
+
+The entity outputs and all 125 relation prompts were verified equal between
+the runs. Independent CPU recount retained every original gold item and
+reproduced the metrics. DPO gained 5 true positives but lost 9; it removed
+11 false positives and added 22. Relation window failures increased from
+18 to 20. Both runs reached EOS without token-limit truncation. The relation
+model remains the SFT parent; this DPO checkpoint is not selected. See the
+[complete aggregate result and limitations](dpo-results.json).
+
+Eight of the nine lost true positives came from normally parsed semantic
+changes, and one from literal evidence matching after a quotation-mark change.
+All 22 new false positives came from normally parsed outputs. New failed
+windows did not account for the filtered true-positive loss. See the
+[failure attribution](dpo-error-attribution.json).
+
+The matched short-input screen is also complete. This table describes only
+the same six long source texts, with 125 entity and 105 relation gold items:
+
+| Input characters | Entity TP / FP / FN | Entity recall | Relation TP / FP / FN | Relation precision | Relation F1 |
+|---|---|---|---|---|---|
+| 2400 | 76 / 28 / 49 | 60.80% | 46 / 37 / 59 | 55.42% | 48.94% |
+| 1600 | 84 / 45 / 41 | 67.20% | 42 / 67 / 63 | 38.53% | 39.25% |
+
+Neither arm recovered any of the six long diagnostic criteria. The 1600 arm
+produced two relation windows with repeated records and no EOS at the 4096-token
+limit; the 2400 arm had no failed windows. Total generated tokens increased
+from 9079 to 22243, and elapsed time from 274 to 783 seconds. Keep 2400 for the
+remaining trials. This inference-only screen does not establish that dedicated
+1600-context training could never help. See [pilot metrics](short-input-pilot.json)
+and [repetition evidence without original text](short-input-failures.json).
+
+Both training and inference deliberately supply the full source entity table
+to each relation window. The observed difference is annotated tables in SFT
+versus imperfect predicted tables in the live pipeline. Shortening reduced the
+average body tokens by 31.3%, but total relation prompt tokens by only 5.25%,
+because predicted entity tables grew. This screen changes both entity and
+relation windowing; it cannot isolate the relation-context effect. A simple
+local-only table rule would also remove endpoints needed by 74 admitted training
+relation evidence atoms. No such rule was deployed. See the
+[context diagnosis and protected cross-window supervision](context-diagnosis.json).
+
+Progress at 16:33 Beijing:
 
 | Experiment | Scope | Status at this record |
 |---|---|---|
-| Entity three-epoch control | All 1361 admitted entity windows; same LR and data | Trained: 513 updates; full evaluation queued |
+| Entity three-epoch control | All 1361 admitted entity windows; same LR and data | Trained: 513 updates; full evaluation running |
 | Targeted DPO | 208 train preferences; 32 mechanical checks excluded | Trained: 52 updates; each pair used once |
-| DPO live pipeline evaluation | All 130 original cases; fixed actual entity output | Running; quality result pending |
-| Shorter input screening | Same 6 source-selected long cases, 2400 vs 1600 characters | Both arms queued |
-| Final full-data training and validation | 1509-row long-criterion replay, or a context change justified by the pilot | Full training and 130-case evaluation queued |
+| DPO live pipeline evaluation | All 130 original cases; fixed actual entity output | Complete: F1 decreased 1.1341 percentage points |
+| Shorter input screening | Same 6 source-selected long cases, 2400 vs 1600 characters | Complete: keep 2400 after negative screen |
+| Final full-data training and validation | All 1361 base windows plus 148 complete long-criterion replays | Full training and 130-case evaluation queued |
+| Semantic-focused DPO52 | 36 reviewed semantic contrasts plus 16 table-reference contrasts | Resident preflight passed; fresh-parent training and full130 evaluation queued |
+
+The next preference candidate uses LR 2e-6, beta 0.1 and one epoch, for 13
+optimizer updates. It excludes the known source188 preference issue and removes
+the generic omission, repetition and ontology-invalid-direction pairs from this
+new mixture. Both its smoke and formal run start afresh from the SFT parent.
+At least 45 minutes must remain before this job starts, reserving time for its
+complete evaluation. Changes to composition, learning rate and update count are
+combined, so this is not a single-factor ablation. The 52 preferences are a
+separate DPO dataset, not a reduction of the full SFT training set. See
+[preparation evidence](dpo52-preparation.json) and
+[versioned code and source-free recipes](../../../scripts/semantic_round2/dpo52_v2/README.md).
 
 Both completed training runs include saved-weight verification. DPO took
 466.2 seconds after its separate GPU smoke check. Its frozen reference stayed
 identical to the selected SFT parent, while policy weights changed. A separate
 CPU review reconciled data/code hashes, token targets, and all 208 successful
 preference visits against the saved receipts. This review did not rerun CUDA
-training or independently reload the remote weights. Training completion is
-not evidence of improved extraction quality; that requires the complete live
-pipeline comparison. See [training evidence](dpo-training.json) and
+training or independently reload the remote weights. The completed live
+pipeline comparison above establishes that this run did not improve the
+measured quality. See [training evidence](dpo-training.json) and
 [independent evidence review](dpo-training-review.json).
 
 DPO preferences contain 64 outside-table references, 64 omissions of known
@@ -60,6 +120,14 @@ as a diagnostic criterion. A separate, untrained candidate removes its two
 unsupported diagnostic relations while retaining the other 14 targets.
 Uncertainty was not converted into a negative label. Existing training parents
 and all evaluation labels remain frozen.
+
+One of the 208 trained preference pairs contains those two questionable
+diagnostic relations in both chosen and rejected completions. That pair's
+preference difference is the omission of a different known positive relation.
+This is a retained label-quality limitation; it does not establish the cause
+of the measured DPO regression. The next candidate should quarantine this
+pair and use more directly reviewed semantic contradictions. The already
+trained data and its result remain immutable.
 
 An attempted 12-source DeepSeek review was rejected by automatic approval
 review because disclosure of the specific medical source text had not been

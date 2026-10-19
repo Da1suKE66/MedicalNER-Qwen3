@@ -2,7 +2,7 @@
   "version": 1,
   "started_utc": "2026-10-19T07:10:13.552554+00:00",
   "deadline_utc": "2026-10-19T11:00:00Z",
-  "status": "dpo_training_complete_full130_live_evaluation_running",
+  "status": "dpo208_and_shortening_screen_complete_entity_e3_full130_running",
   "baseline_live_free_relation": {
     "tp": 238,
     "fp": 183,
@@ -16,7 +16,7 @@
     "f1": 0.6878216123499142
   },
   "dpo": {
-    "status": "training_complete_full130_live_evaluation_running",
+    "status": "complete_no_improvement_not_selected",
     "training_pairs": 208,
     "mechanical_holdout_pairs": 32,
     "reviewed_semantic_pairs": 16,
@@ -50,7 +50,25 @@
     "reference_unchanged": true,
     "saved_reload_exact": true,
     "current_runtime_contract_check_passed": true,
-    "medical_quality_evaluation_complete": false
+    "medical_quality_evaluation_complete": true,
+    "independent_training_review": {
+      "status": "PASS",
+      "report_sha256": "d5975d33351828140e306c973be766a71f5220c4233c8479d75d4775fcfa5925"
+    },
+    "live_free_relation": {
+      "f1": 0.4675324675324675,
+      "fn": 339,
+      "fp": 194,
+      "precision": 0.5467289719626168,
+      "recall": 0.4083769633507853,
+      "tp": 234
+    },
+    "delta_f1_percentage_points": -1.134077190415217,
+    "evaluation_manifest_sha256": "ce8a5b9e2cf33e3c2724dc1454b088ace0286907d36fb6f8342b9374fa321392",
+    "independent_complete_recount": "PASS",
+    "relation_failed_windows": 20,
+    "relation_token_limit_exhaustions": 0,
+    "selected_for_final_pipeline": false
   },
   "api": {
     "status": "automatic_approval_rejected_no_successful_requests",
@@ -60,13 +78,114 @@
     "retry_without_new_authorization_or_public_source_evidence": false
   },
   "short_input": {
-    "status": "two_matched_6_long_source_pilots_queued",
-    "budgets": [
+    "status": "complete_screen_not_selected",
+    "scope": "Matched6long_source_only_pilot_not_full130",
+    "short_chars": [
       2400,
       1600
     ],
-    "selection": "source_only_length_gt1600_then_source_sha_first6",
-    "not_full_population": true
+    "all_selected_original_gold_retained": true,
+    "same_models_and_source_selection_verified": true,
+    "scores": {
+      "2400": {
+        "filtered_free_text": {
+          "entity": {
+            "f1": 0.6637554585152838,
+            "fn": 49,
+            "fp": 28,
+            "precision": 0.7307692307692307,
+            "recall": 0.608,
+            "tp": 76
+          },
+          "relation": {
+            "f1": 0.48936170212765956,
+            "fn": 59,
+            "fp": 37,
+            "precision": 0.5542168674698795,
+            "recall": 0.4380952380952381,
+            "tp": 46
+          }
+        },
+        "generation_checks": {
+          "live:entities": {
+            "budget_exhausted": 0,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 22,
+            "events": 22,
+            "failed": 0,
+            "generated_tokens": 2343,
+            "missing_eos": 0
+          },
+          "live:relations": {
+            "budget_exhausted": 0,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 22,
+            "events": 22,
+            "failed": 0,
+            "generated_tokens": 6736,
+            "missing_eos": 0
+          }
+        },
+        "manifest_sha256": "692e49cbe88469599adaba349043ddeff0c935270c7c7378c2372bb7d6adaf57",
+        "metrics_sha256": "7626568424945f2f9ad45523c29e0dc62d1b1f11948ad5cee82c0437c923a767",
+        "recount_sha256": "0486b6c619c5e8ecf48a8f38e58abb43ea79232ea96f6a9844078145d4aa4729"
+      },
+      "1600": {
+        "filtered_free_text": {
+          "entity": {
+            "f1": 0.6614173228346457,
+            "fn": 41,
+            "fp": 45,
+            "precision": 0.6511627906976745,
+            "recall": 0.672,
+            "tp": 84
+          },
+          "relation": {
+            "f1": 0.3925233644859813,
+            "fn": 63,
+            "fp": 67,
+            "precision": 0.3853211009174312,
+            "recall": 0.4,
+            "tp": 42
+          }
+        },
+        "generation_checks": {
+          "live:entities": {
+            "budget_exhausted": 0,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 36,
+            "events": 36,
+            "failed": 0,
+            "generated_tokens": 3180,
+            "missing_eos": 0
+          },
+          "live:relations": {
+            "budget_exhausted": 2,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 34,
+            "events": 36,
+            "failed": 2,
+            "generated_tokens": 19063,
+            "missing_eos": 2
+          }
+        },
+        "manifest_sha256": "80ed228a318dafb482f091e7559e4ab46a1a941588a5aee056d921c862cdc771",
+        "metrics_sha256": "6f5f89d44babee7840a23759335ab443544f93755bb030b6b99ba6e22270cd4e",
+        "recount_sha256": "9aaddc45725e3795d9b786332a6de4854599d566cd3960facc9763c3a856173e"
+      }
+    },
+    "paired_review_sha256": "b9596224bf53e8dd65d516e4737f03918270ba7840f48c54f06ed33b62a8e840",
+    "long_criterion_over160chars": {
+      "gold": 6,
+      "matched_2400": 0,
+      "matched_1600": 0
+    },
+    "selection": "Keep2400-character context and prioritize complete-row longCriterion replay full-data training; do not run full1600 training in this round based on this negative screen.",
+    "limitation": "Inference-only context screen using existing2400-trained adapters; it does not prove a dedicated1600-trained model cannot improve."
   },
   "prepared_entity_training": {
     "criterion_replay_rows": 1509,
@@ -83,7 +202,7 @@
     "report": "current_record_isolation/report.json"
   },
   "scope": "Running experiment snapshot; queued jobs are not completed results",
-  "snapshot_utc": "2026-10-19T08:01:49.691680+00:00",
+  "snapshot_utc": "2026-10-19T08:34:53.252715+00:00",
   "entity_e3_training": {
     "completed": true,
     "global_step": 513,
@@ -95,7 +214,7 @@
     "training_manifest_sha256": "8a273c7bfc8d1eeb6b18b24b340d73c971b1dfe22bf70f2b81b2bd7852a4e8b6",
     "quality_evaluation": "queued_not_yet_scored"
   },
-  "queue_jobs": 8,
+  "queue_jobs": 10,
   "data_quality_review": {
     "modal_relations_checked": 38,
     "supported_retained": 28,
@@ -104,5 +223,62 @@
     "relation_targets_removed_in_separate_untrained_candidate": 2,
     "existing_train_and_evaluation_unchanged": true,
     "repaired_relation_candidate_trained": false
+  },
+  "dpo_next_data_review": {
+    "status": "20_additional_semantic_pairs_reviewed_dpo52_candidate_preparation",
+    "current_chosen_rows_with_detected_diagnostic_label_noise": 1,
+    "known_source": 188,
+    "current_pair_mutation": "omit_known_positive",
+    "unsupported_diagnostic_edges_shared_by_chosen_and_rejected": 2,
+    "known_noise_does_not_establish_cause_of_measured_dpo_regression": true,
+    "next_version_should_isolate_pair_without_overwriting_frozen_v1": true,
+    "additional_semantic_pairs": 20,
+    "new_semantic_pair_kinds": {
+      "explicit_negation": 6,
+      "subtype_direction": 14
+    },
+    "planned_next_population": {
+      "semantic_pairs": 36,
+      "outside_entity_table": 16,
+      "total_pairs": 52
+    },
+    "planned_lr": 2e-06,
+    "planned_beta": 0.1,
+    "planned_epochs": 1,
+    "planned_optimizer_updates": 13,
+    "new_training_started": false,
+    "preparation_directory": "dpo52_v2",
+    "priority": "After primary SFT controls and full130 results, only with enough time for complete evaluation."
+  },
+  "dpo52_v2": {
+    "status": "resident_cpu_preflight_passed_queued_after_primary_sft",
+    "train_pairs": 52,
+    "mutation_counts": {
+      "outside_entity_table": 16,
+      "reviewed_semantic_contradiction": 36
+    },
+    "semantic_change_counts": {
+      "explicit_negation_label_flip": 19,
+      "subtype_direction_reversal": 17
+    },
+    "formal_parameters": {
+      "epochs": 1,
+      "learning_rate": 2e-06,
+      "beta": 0.1,
+      "gradient_accumulation": 4,
+      "optimizer_updates": 13,
+      "max_length": 4096,
+      "seed": 42
+    },
+    "output_sha256": {
+      "candidate_train.jsonl": "f913255399b61a98f7650ecf251356f6b8122570cf0b16700e31c438ccec8a7e",
+      "mechanical_holdout.jsonl": "1e9455694d5452f223cf3df190ff247f937791c4c6ac309ee9923f1fd3ce6abe"
+    },
+    "remote_admission_sha256": "fabda6f026e7395198e2c40e07484f5030655349a0531097de2869ae20713a7b",
+    "remote_candidate_manifest_sha256": "379d7072bc7448080d7e93390817e6bb2399b19da3e039ac5dab38ec2103b30d",
+    "minimum_remaining_time_before_launch_seconds": 2700,
+    "gpu_training_completed": false,
+    "private_root": "dpo52_v2",
+    "remote_root": "/workspace/medicalner/round2_20261019/dpo52_v2"
   }
 }

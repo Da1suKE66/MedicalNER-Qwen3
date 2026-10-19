@@ -1,0 +1,426 @@
+{
+  "status": "complete_no_improvement_not_selected",
+  "evaluation_samples": 130,
+  "free_text_samples": 69,
+  "source_release_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+  "evaluation_manifest_sha256": "ce8a5b9e2cf33e3c2724dc1454b088ace0286907d36fb6f8342b9374fa321392",
+  "metrics_sha256": "3b553e6da75ef2ec437f79fbfa5c69ed677c550bbf40ac425a8e9ecf4fb08b63",
+  "all_original_gold_retained": true,
+  "baseline_live_free_relation": {
+    "tp": 238,
+    "fp": 183,
+    "fn": 335,
+    "precision": 0.5653206650831354,
+    "recall": 0.41535776614310643,
+    "f1": 0.4788732394366197
+  },
+  "dpo_live_free_relation": {
+    "f1": 0.4675324675324675,
+    "fn": 339,
+    "fp": 194,
+    "precision": 0.5467289719626168,
+    "recall": 0.4083769633507853,
+    "tp": 234
+  },
+  "delta_f1_percentage_points": -1.134077190415217,
+  "all_candidate_scores": {
+    "filtered": {
+      "free_text": {
+        "entity": {
+          "f1": 0.6878216123499142,
+          "fn": 247,
+          "fp": 117,
+          "precision": 0.7741312741312741,
+          "recall": 0.6188271604938271,
+          "tp": 401
+        },
+        "relation": {
+          "f1": 0.4675324675324675,
+          "fn": 339,
+          "fp": 194,
+          "precision": 0.5467289719626168,
+          "recall": 0.4083769633507853,
+          "tp": 234
+        }
+      },
+      "overall": {
+        "entity": {
+          "f1": 0.7110808973487424,
+          "fn": 301,
+          "fp": 124,
+          "precision": 0.8083462132921174,
+          "recall": 0.6347087378640777,
+          "tp": 523
+        },
+        "relation": {
+          "f1": 0.5052083333333334,
+          "fn": 365,
+          "fp": 205,
+          "precision": 0.5866935483870968,
+          "recall": 0.44359756097560976,
+          "tp": 291
+        }
+      },
+      "structured_icd": {
+        "entity": {
+          "f1": 0.8,
+          "fn": 54,
+          "fp": 7,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "tp": 122
+        },
+        "relation": {
+          "f1": 0.7549668874172185,
+          "fn": 26,
+          "fp": 11,
+          "precision": 0.8382352941176471,
+          "recall": 0.6867469879518072,
+          "tp": 57
+        }
+      }
+    },
+    "raw": {
+      "free_text": {
+        "entity": {
+          "f1": 0.6825531914893617,
+          "fn": 247,
+          "fp": 126,
+          "precision": 0.7609108159392789,
+          "recall": 0.6188271604938271,
+          "tp": 401
+        },
+        "relation": {
+          "f1": 0.4645669291338583,
+          "fn": 337,
+          "fp": 207,
+          "precision": 0.5327313769751693,
+          "recall": 0.4118673647469459,
+          "tp": 236
+        }
+      },
+      "overall": {
+        "entity": {
+          "f1": 0.7067567567567568,
+          "fn": 301,
+          "fp": 133,
+          "precision": 0.7972560975609756,
+          "recall": 0.6347087378640777,
+          "tp": 523
+        },
+        "relation": {
+          "f1": 0.5021422450728363,
+          "fn": 363,
+          "fp": 218,
+          "precision": 0.5733855185909981,
+          "recall": 0.44664634146341464,
+          "tp": 293
+        }
+      },
+      "structured_icd": {
+        "entity": {
+          "f1": 0.8,
+          "fn": 54,
+          "fp": 7,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "tp": 122
+        },
+        "relation": {
+          "f1": 0.7549668874172185,
+          "fn": 26,
+          "fp": 11,
+          "precision": 0.8382352941176471,
+          "recall": 0.6867469879518072,
+          "tp": 57
+        }
+      }
+    },
+    "strict_raw": {
+      "free_text": {
+        "entity": {
+          "f1": 0.6825531914893617,
+          "fn": 247,
+          "fp": 126,
+          "precision": 0.7609108159392789,
+          "recall": 0.6188271604938271,
+          "tp": 401
+        },
+        "invalid_attempt_fp": {
+          "entity": 0,
+          "relation": 106
+        },
+        "relation": {
+          "f1": 0.4206773618538324,
+          "fn": 337,
+          "fp": 313,
+          "precision": 0.42987249544626593,
+          "recall": 0.4118673647469459,
+          "tp": 236
+        }
+      },
+      "overall": {
+        "entity": {
+          "f1": 0.7067567567567568,
+          "fn": 301,
+          "fp": 133,
+          "precision": 0.7972560975609756,
+          "recall": 0.6347087378640777,
+          "tp": 523
+        },
+        "invalid_attempt_fp": {
+          "entity": 0,
+          "relation": 106
+        },
+        "relation": {
+          "f1": 0.4603299293008641,
+          "fn": 363,
+          "fp": 324,
+          "precision": 0.47487844408427876,
+          "recall": 0.44664634146341464,
+          "tp": 293
+        }
+      },
+      "structured_icd": {
+        "entity": {
+          "f1": 0.8,
+          "fn": 54,
+          "fp": 7,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "tp": 122
+        },
+        "invalid_attempt_fp": {
+          "entity": 0,
+          "relation": 0
+        },
+        "relation": {
+          "f1": 0.7549668874172185,
+          "fn": 26,
+          "fp": 11,
+          "precision": 0.8382352941176471,
+          "recall": 0.6867469879518072,
+          "tp": 57
+        }
+      }
+    }
+  },
+  "changes": {
+    "raw": {
+      "new_tp": 5,
+      "lost_tp": 8,
+      "removed_fp": 16,
+      "new_fp": 22,
+      "changed_documents": 18
+    },
+    "filtered": {
+      "new_tp": 5,
+      "lost_tp": 9,
+      "removed_fp": 11,
+      "new_fp": 22,
+      "changed_documents": 14
+    }
+  },
+  "per_label_changes": {
+    "raw": {
+      "argues_against": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 1
+      },
+      "causes": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 3,
+        "new_fp": 4
+      },
+      "differentiates_from": {
+        "new_tp": 2,
+        "lost_tp": 2,
+        "removed_fp": 2,
+        "new_fp": 4
+      },
+      "has_diagnostic_criterion": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 1,
+        "new_fp": 1
+      },
+      "has_manifestation": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 1
+      },
+      "has_specifier": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 3
+      },
+      "is_associated_symptom_of": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 6,
+        "new_fp": 0
+      },
+      "is_core_symptom_of": {
+        "new_tp": 2,
+        "lost_tp": 3,
+        "removed_fp": 2,
+        "new_fp": 2
+      },
+      "part_of": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 4
+      },
+      "relieved_by": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 2
+      },
+      "subtype_of": {
+        "new_tp": 1,
+        "lost_tp": 3,
+        "removed_fp": 2,
+        "new_fp": 0
+      }
+    },
+    "filtered": {
+      "argues_against": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 1
+      },
+      "causes": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 1,
+        "new_fp": 4
+      },
+      "differentiates_from": {
+        "new_tp": 2,
+        "lost_tp": 3,
+        "removed_fp": 0,
+        "new_fp": 4
+      },
+      "has_manifestation": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 1
+      },
+      "has_specifier": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 3
+      },
+      "is_associated_symptom_of": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 6,
+        "new_fp": 2
+      },
+      "is_core_symptom_of": {
+        "new_tp": 2,
+        "lost_tp": 3,
+        "removed_fp": 2,
+        "new_fp": 1
+      },
+      "part_of": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 4
+      },
+      "relieved_by": {
+        "new_tp": 0,
+        "lost_tp": 0,
+        "removed_fp": 0,
+        "new_fp": 2
+      },
+      "subtype_of": {
+        "new_tp": 1,
+        "lost_tp": 3,
+        "removed_fp": 2,
+        "new_fp": 0
+      }
+    }
+  },
+  "fn_endpoint_decomposition": {
+    "baseline": {
+      "total_fn": 335,
+      "both_endpoints_available": 73,
+      "missing_at_least_one_endpoint": 262,
+      "missing_source_only": 147,
+      "missing_target_only": 106,
+      "missing_both": 9,
+      "available_wrong_label_same_direction": 41,
+      "available_no_predicted_label_for_pair": 31,
+      "available_true_relation_removed_by_rules": 1
+    },
+    "candidate": {
+      "total_fn": 339,
+      "both_endpoints_available": 77,
+      "missing_at_least_one_endpoint": 262,
+      "missing_source_only": 147,
+      "missing_target_only": 106,
+      "missing_both": 9,
+      "available_wrong_label_same_direction": 35,
+      "available_no_predicted_label_for_pair": 40,
+      "available_true_relation_removed_by_rules": 2
+    }
+  },
+  "actual_entity_outputs_equal": true,
+  "actual_relation_prompts_equal": true,
+  "prompt_checks_per_run": 125,
+  "generation_checks": {
+    "live:entities": {
+      "budget_exhausted": 0,
+      "cached_entity_events": 125,
+      "deadline_exhausted": 0,
+      "eos_observed": 125,
+      "events": 125,
+      "failed": 0,
+      "generated_tokens": 12654,
+      "missing_eos": 0
+    },
+    "live:relations": {
+      "budget_exhausted": 0,
+      "cached_entity_events": 0,
+      "deadline_exhausted": 0,
+      "eos_observed": 125,
+      "events": 125,
+      "failed": 20,
+      "generated_tokens": 44270,
+      "missing_eos": 0
+    }
+  },
+  "baseline_relation_failures": 18,
+  "candidate_relation_failures": 20,
+  "baseline_and_candidate_relation_token_limit_exhaustions": 0,
+  "evidence": {
+    "cpu_recount_sha256": "93ce50c18260dac9508288298c86c3384f3db653e01ba043cbc91fbb00de746b",
+    "paired_comparison_sha256": "7dcfd84bcf2309427ba9615735c65ea2e329beb764dd4ab1e5102e31e384f7c3"
+  },
+  "selection": "Keep original relation SFT parent; do not promote this DPO checkpoint. Prioritize entity recall/context trials; any next preference experiment must change data composition rather than assuming more epochs will help.",
+  "limitations": [
+    "Complete130 evaluation includes61 deterministic structured cases; primary model comparison is69 free-text cases.",
+    "Reused tune set, not a blind test; frozen teacher-silver gold is not clinical adjudication.",
+    "Precision is TP/(TP+FP), recall is TP/(TP+FN), micro-F1 is2TP/(2TP+FP+FN). No true-negative accuracy is claimed.",
+    "Strict raw scores add invalid output attempts as an explicit diagnostic, not ordinary set F1."
+  ],
+  "error_attribution": {
+    "normal_parse_lost_tp": 8,
+    "normal_parse_rule_removed_tp": 1,
+    "normal_parse_new_fp": 22,
+    "lost_tp_caused_by_new_failed_windows": 0,
+    "attribution_sha256": "f48123abcebf353a64d9095a7bfd070581ee13fb2b32742092d8e62a3dc182f4"
+  }
+}
