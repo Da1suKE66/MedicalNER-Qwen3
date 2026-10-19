@@ -70,6 +70,8 @@
     "same_base_protocol_trainer_environment": true,
     "new_fingerprint_differs_from_initial_and_old_final": true
   },
-  "quality_metrics_available": false,
-  "evaluation_required": "Fresh batch4 control with old entity cache and fresh batch4 new entity pipeline, all130 original live records; both use same short_canonical relation adapter. No score inference from training loss."
+  "quality_metrics_available": true,
+  "evaluation_required": "Fresh batch4 control with old entity cache and fresh batch4 new entity pipeline, all130 original live records; both use same short_canonical relation adapter. No score inference from training loss.",
+  "full130_evaluation_complete": true,
+  "quality_result_file": "entity-lr-comparison-results.json"
 }

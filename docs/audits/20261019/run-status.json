@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-19T01:36:30.941982+00:00",
+  "snapshot_utc": "2026-10-19T02:03:35.173315+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -243,7 +243,7 @@
       "updates_each": 250
     }
   },
-  "status": "entityLR_control_complete_new_entity_full130_evaluation_running",
+  "status": "entityLR_pair_complete_new_entity_selected_relationLR1e4_training_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -252,7 +252,7 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "evaluate_entity_lr1e4_short_canonical_batch4",
+  "active_job": "relation_short_canonical_complete_lr1e4_r16_e2",
   "paired_relation_evaluation": {
     "status": "both_complete_two_independent_recounts_passed",
     "jobs": [
@@ -313,7 +313,7 @@
   },
   "relation_selection_policy_file": "relation-comparison-plan.json",
   "fixed_entity_relation_ceiling": {
-    "scope": "Fixed selected actual live entity graph; free-text typed directed relation set",
+    "scope": "Historical original5e-5entity graph used for the three relation-view comparisons; superseded for the new selected-entity LR continuation",
     "gold_relations": 573,
     "gold_relations_with_both_actual_endpoints": 294,
     "maximum_recall": 0.5130890052356021,
@@ -337,7 +337,7 @@
   "parameter_continuation_plan_file": "parameter-continuation-plan.json",
   "entity_union_offline_diagnostic_file": "entity-union-feasibility-diagnostic.json",
   "entity_lr_comparison": {
-    "status": "training_and_control_complete_treatment_running",
+    "status": "both_complete_two_independent_recounts_passed",
     "training_job": "entity_short_complete_lr1e4_r16_e2",
     "epochs": 2,
     "rows": 1361,
@@ -353,10 +353,30 @@
       "evaluate_entity_lr5e5_control_short_canonical_batch4",
       "evaluate_entity_lr1e4_short_canonical_batch4"
     ],
-    "new_quality_metrics_available": false,
+    "new_quality_metrics_available": true,
     "actual_new_entity_outputs_required": true,
     "control_result_file": "entity-lr5e5-batch4-control.json",
     "control_independent_recount_passed": true,
-    "new_entity_loaded_weights_verified": true
+    "new_entity_loaded_weights_verified": true,
+    "result_file": "entity-lr-comparison-results.json",
+    "selected_learning_rate": 0.0001,
+    "actual_new_entity_outputs_verified": true
+  },
+  "relation_lr_comparison": {
+    "status": "training_running_evaluation_queued",
+    "training_job": "relation_short_canonical_complete_lr1e4_r16_e2",
+    "evaluation_job": "evaluate_relation_short_canonical_lr1e4_selected_new_entity_batch4",
+    "fixed_entity": "entity_short_complete_lr1e4_r16_e2",
+    "batch_size": 4,
+    "samples_per_mode": 130,
+    "new_quality_metrics_available": false,
+    "plan_file": "parameter-continuation-plan.json"
+  },
+  "current_selected_entity_relation_ceiling": {
+    "scope": "Selected1e-4entity actual outputs; conditional zeroFP theoretical bound, not measured relation score",
+    "gold_relations": 573,
+    "reachable": 311,
+    "maximum_recall": 0.5427574171029669,
+    "maximum_f1_if_all_reachable_correct_and_zero_fp": 0.7036199095022625
   }
 }
