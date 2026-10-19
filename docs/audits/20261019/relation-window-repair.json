@@ -1,6 +1,6 @@
 {
   "scope": "Aggregate-only relation overlap repair and SFT status; no quality improvement claimed",
-  "snapshot_utc": "2026-10-18T22:58:08.602208+00:00",
+  "snapshot_utc": "2026-10-18T23:58:27.944514+00:00",
   "release": {
     "added_chosen_span_overlap_exposures": 308,
     "all_target_text_names_labels_unchanged": true,
@@ -344,7 +344,7 @@
       "adapter_final_sha256": "6e1ffdd56c07f6e0dff7950a7e185dc91e6618de7412bc345cb89b76daae0b96",
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
-      "quality_evaluation": "queued_no_new_quality_score_yet"
+      "quality_evaluation": "completed_two_independent_recounts_passed"
     },
     "observed_pair_verification": {
       "same_non_data_parameters": true,
@@ -356,7 +356,7 @@
     }
   },
   "evaluation": {
-    "status": "source_complete_canonical_running",
+    "status": "both_order_evaluations_complete_full_source_batch8_control_running",
     "jobs": [
       "evaluate_relation_short_source_complete_selected_entity",
       "evaluate_relation_short_canonical_complete_selected_entity"
@@ -374,8 +374,12 @@
     "model_in_memory_revalidation_at_actual_run_required": true,
     "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline.",
     "source_actual_cache_token_and_in_memory_checks": "verified",
-    "final_entity_graph_sha256_check_pending": true,
+    "final_entity_graph_sha256_check_pending": false,
     "source_result_file": "relation-short-source-results.json",
-    "source_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567"
+    "source_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "canonical_result_file": "relation-short-canonical-results.json",
+    "canonical_independent_recount_passed": true,
+    "canonical_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "canonical_second_independent_recount_passed": true
   }
 }

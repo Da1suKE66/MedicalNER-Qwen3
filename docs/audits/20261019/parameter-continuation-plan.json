@@ -1,0 +1,43 @@
+{
+  "version": 3,
+  "declared_utc": "2026-10-18T23:26:47.256148+00:00",
+  "status": "prepared_and_independently_reviewed_not_queued",
+  "reason": "All current relation-view arms share an actual entity table covering294/573gold relation endpoints, which imposes67.82%maximum free relationF1 even with perfect selection. The conditional full-data entityLR comparison is necessary to address this bottleneck.",
+  "unchanged_policies": [
+    "Finish and independently recount all3matched relation views first",
+    "Select relation view using immutable relation_selection_policy_v1",
+    "Preserve original labels,gold denominators,runtime,protocol,and metric definitions",
+    "Full-data training and complete130evaluation only; no partial results ranked"
+  ],
+  "next_order": [
+    "Complete pending canonical/full_source batch8 controls and freeze selected relation checkpoint",
+    "Admit the matched batch4 entityLR1e-4 train/control/treatment triple if full reserved budget plus audit fits",
+    "Admit selected-view relationLR1e-4 training+full130 live/oracle with original fixed5e-5entity cache if budget fits",
+    "Evaluate any actual final combination of selected entity and relation checkpoints on all130 before claiming its score",
+    "Try relationLR2e-5 if the whole training+evaluation and any necessary final-pair evaluation fit; DPO remains last"
+  ],
+  "entity_template_sha256": "6cfdfd21e912d68d08a0457f042ec9f2ee0f2fb30c4bc82c940df1153fe7c1a8",
+  "entity_reserved_seconds_including_training_and_both_live_evaluations": 7800,
+  "comparison_rules": [
+    "EntityLR attribution uses fresh selected-relation batch4 control and new-entity batch4 evaluation; old batch8 scores are retained separately",
+    "RelationLR trials retain same earlier selected5e-5entity table and batch8, even if a better entity has since been found",
+    "A combined entity+relation score must be measured, not composed from separately improved stages",
+    "If available time falls short, keep completed reliable comparisons and explicitly record omitted experiments"
+  ],
+  "budget_note": "7800seconds is conservative planning, not measured new runtime. Recheck elapsed real job times, latest queue, remaining budget and audit allowance at every admission. Do not enqueue all alternative templates.",
+  "deadline_utc": "2026-10-19T04:15:41Z",
+  "entity_trial_training_rows": 1361,
+  "entity_trial_epochs": 2,
+  "entity_trial_rank": 16,
+  "entity_trial_learning_rates": [
+    5e-05,
+    0.0001
+  ],
+  "entity_and_relation_decoding_batch_size": 4,
+  "entity_trial_evaluation_samples": 130,
+  "entity_template_mutually_exclusive_alternatives": 3,
+  "independent_template_review": "GO_preparation_only_no_design_blockers",
+  "configured_batch_match_limit": "Actual relation prompt lengths/padding may differ as entities change; audit observed batch sizes and OOM retries. Both arms configure entity4/relation4, not an identical tensor-shape claim.",
+  "queued_gpu_plan_unchanged": true,
+  "relation_selection_policy": "relation-comparison-plan.json"
+}

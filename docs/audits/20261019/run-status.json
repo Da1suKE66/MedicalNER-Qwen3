@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-18T23:05:24.417008+00:00",
+  "snapshot_utc": "2026-10-18T23:58:27.944514+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -149,7 +149,7 @@
       "adapter_final_sha256": "6e1ffdd56c07f6e0dff7950a7e185dc91e6618de7412bc345cb89b76daae0b96",
       "saved_weights_bitwise_verified": true,
       "receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
-      "quality_evaluation": "running_no_complete_quality_score_yet"
+      "quality_evaluation": "completed_two_independent_recounts_passed"
     }
   },
   "full130_evaluation": {
@@ -217,7 +217,7 @@
       "updates_each": 250
     }
   },
-  "status": "source_relation_full130_complete_canonical_evaluation_running",
+  "status": "both_relation_order_evaluations_complete_full_relation_batch8_control_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -226,9 +226,9 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "evaluate_relation_short_canonical_complete_selected_entity",
+  "active_job": "evaluate_full_relation_batch8_selected_entity",
   "paired_relation_evaluation": {
-    "status": "source_complete_canonical_running",
+    "status": "both_complete_two_independent_recounts_passed",
     "jobs": [
       "evaluate_relation_short_source_complete_selected_entity",
       "evaluate_relation_short_canonical_complete_selected_entity"
@@ -249,15 +249,25 @@
     "source_cache_token_and_in_memory_checks": "verified",
     "source_cached_entity_jobs_replayed": 125,
     "source_new_gpu_entity_jobs": 0,
-    "final_entity_graph_sha256_check_pending": true,
+    "final_entity_graph_sha256_check_pending": false,
     "source_result_file": "relation-short-source-results.json",
     "source_independent_recount_passed": true,
     "source_final_live_entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
     "source_final_entity_graph_check_passed": true,
-    "source_second_independent_recount_passed": true
+    "source_second_independent_recount_passed": true,
+    "canonical_result_file": "relation-short-canonical-results.json",
+    "canonical_independent_recount_passed": true,
+    "canonical_final_live_entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "canonical_final_entity_graph_check_passed": true,
+    "canonical_actual_loaded_weights_verified": true,
+    "canonical_cached_entity_jobs_replayed": 125,
+    "canonical_new_gpu_entity_jobs": 0,
+    "final_relation_view_selection": "pending_full_source_batch8_control",
+    "canonical_second_independent_recount_passed": true,
+    "canonical_second_independent_aggregate_sha256": "a627c62ddfb5f95869c20fb633def80b67cd59b2b2caea2a1b887ee23683aa58"
   },
   "full_relation_batch8_control": {
-    "status": "queued",
+    "status": "running",
     "job": "evaluate_full_relation_batch8_selected_entity",
     "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
     "samples": 130,
@@ -288,6 +298,9 @@
     "pairs": 64,
     "candidate_train": 48,
     "mechanical_holdout": 16,
-    "file": "dpo-preference-candidate-design.json"
-  }
+    "file": "dpo-preference-candidate-design.json",
+    "implementation": "private_v2_fixed_two_v1_finalization_boundaries;53_CPU_tests_passed;independent_review_in_progress;realTorch_GPU_unverified_not_deployed"
+  },
+  "parameter_continuation_plan_file": "parameter-continuation-plan.json",
+  "entity_union_offline_diagnostic_file": "entity-union-feasibility-diagnostic.json"
 }
