@@ -56,7 +56,7 @@
   "adapter_final_sha256": "49c61785cb4ae833b459f02db24a47e1d7e4f0ea4027a4e35f1df055290f378b",
   "saved_weights_bitwise_verified": true,
   "training_manifest_sha256": "2b68410d6348f08afefd95cc12218bea0ebb2dd7d2c45953a8cee3f92a31b9f9",
-  "quality_evaluation": "full130_running_no_score_yet",
+  "quality_evaluation": "full130_completed_recount_pass_no_improvement",
   "augmentation": "148 complete existing rows replayed in addition to1361 original rows; no new source documents or labels",
   "same_initialization_as_e2": true
 }

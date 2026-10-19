@@ -2,7 +2,7 @@
   "version": 1,
   "started_utc": "2026-10-19T07:10:13.552554+00:00",
   "deadline_utc": "2026-10-19T11:00:00Z",
-  "status": "entity_replay_full_training_complete_full130_evaluation_running",
+  "status": "replay_full130_complete_no_gain_DPO52_training_complete_full130_running",
   "baseline_live_free_relation": {
     "tp": 238,
     "fp": 183,
@@ -202,7 +202,7 @@
     "report": "current_record_isolation/report.json"
   },
   "scope": "Running experiment snapshot; queued jobs are not completed results",
-  "snapshot_utc": "2026-10-19T09:33:24.041775+00:00",
+  "snapshot_utc": "2026-10-19T09:58:57.434619+00:00",
   "entity_e3_training": {
     "completed": true,
     "global_step": 513,
@@ -225,7 +225,7 @@
     "repaired_relation_candidate_trained": false
   },
   "dpo_next_data_review": {
-    "status": "20_additional_semantic_pairs_reviewed_dpo52_candidate_preparation",
+    "status": "DPO52_trained_full130_evaluation_running",
     "current_chosen_rows_with_detected_diagnostic_label_noise": 1,
     "known_source": 188,
     "current_pair_mutation": "omit_known_positive",
@@ -246,12 +246,12 @@
     "planned_beta": 0.1,
     "planned_epochs": 1,
     "planned_optimizer_updates": 13,
-    "new_training_started": false,
+    "new_training_started": true,
     "preparation_directory": "dpo52_v2",
     "priority": "After primary SFT controls and full130 results, only with enough time for complete evaluation."
   },
   "dpo52_v2": {
-    "status": "resident_cpu_preflight_passed_queued_after_primary_sft",
+    "status": "smoke_and_formal_training_complete_full130_evaluation_running",
     "train_pairs": 52,
     "mutation_counts": {
       "outside_entity_table": 16,
@@ -277,9 +277,34 @@
     "remote_admission_sha256": "fabda6f026e7395198e2c40e07484f5030655349a0531097de2869ae20713a7b",
     "remote_candidate_manifest_sha256": "379d7072bc7448080d7e93390817e6bb2399b19da3e039ac5dab38ec2103b30d",
     "minimum_remaining_time_before_launch_seconds": 2700,
-    "gpu_training_completed": false,
+    "gpu_training_completed": true,
     "private_root": "dpo52_v2",
-    "remote_root": "/workspace/medicalner/round2_20261019/dpo52_v2"
+    "remote_root": "/workspace/medicalner/round2_20261019/dpo52_v2",
+    "training_manifest_sha256": "7cfa53348235ecb2c396e989b7dab65d602d1480cda1876f31a09277ae5c3c1f",
+    "global_step": 13,
+    "elapsed_seconds": 129.48493696499645,
+    "observed_exposure": {
+      "chosen_completion_loss_tokens": 28881,
+      "eos_scored_per_preference_visit": 2,
+      "max_visits": 1,
+      "min_visits": 1,
+      "pairs": 52,
+      "prompt_context_token_exposures": 117148,
+      "prompt_loss_tokens": 0,
+      "rejected_completion_loss_tokens": 28900,
+      "scope": "Successful policy backward calls; reference-only forwards reported separately",
+      "successful_backward_microsteps": 52,
+      "unique_pairs_seen": 52
+    },
+    "reference_unchanged": true,
+    "saved_reload_exact": true,
+    "medical_quality_evaluation_complete": false,
+    "independent_training_review": {
+      "status": "PASS",
+      "checks": 192,
+      "aggregate_sha256": "53c2dd7487d1046b7b49ab6143c1b2f92ceb43c503120eacca8429feb5b8458c",
+      "scope": "CPU/read-only artifact, token and current runtime contract verification; no CUDA replay"
+    }
   },
   "entity_e3_evaluation": {
     "completed": true,
@@ -344,17 +369,18 @@
     "free_relation_f1": 0.4788732394366197,
     "selection_basis": "Best fully evaluated actual live free-text relation F1; standalone entity F1 is reported separately."
   },
-  "current_job": "evaluate_entity_criterion_replay_full130_fixed_relation",
+  "current_job": "evaluate_dpo52_full130_fixed_entity",
   "replay_training": {
-    "status": "training_complete_full130_evaluation_running",
+    "status": "full130_complete_no_improvement_not_selected",
     "rows": 1509,
     "base_rows": 1361,
     "complete_row_replays": 148,
     "epochs": 2,
     "learning_rate": 0.0001,
-    "full130_evaluation_queued": true,
+    "full130_evaluation_queued": false,
     "global_step": 378,
-    "rows_seen_every_epoch": 1509
+    "rows_seen_every_epoch": 1509,
+    "full130_evaluation_completed": true
   },
   "entity_criterion_replay_training": {
     "completed": true,
@@ -366,7 +392,7 @@
     "elapsed_seconds": 1377.37166762352,
     "manifest_sha256": "2b68410d6348f08afefd95cc12218bea0ebb2dd7d2c45953a8cee3f92a31b9f9",
     "saved_weights_bitwise_verified": true,
-    "quality_evaluation": "full130_running_no_score_yet"
+    "quality_evaluation": "full130_completed_recount_pass_no_improvement"
   },
   "additional_relation_candidate": {
     "status": "resident_full1000_CPU_preflight_passed_and_independently_reviewed_queued_after_main10jobs",
@@ -401,5 +427,96 @@
       5
     ],
     "followup": "Only after complete quality evaluations, run at most3-minute resident-source prefix probe; no metric result claimed."
+  },
+  "entity_criterion_replay_evaluation": {
+    "completed": true,
+    "samples": 130,
+    "independent_recount": "PASS",
+    "recount_sha256": "1f28b0b4863badd34ed24518c6a808c4ddd255638bc6b8a9383723d55d56795b",
+    "evaluation_manifest_sha256": "148ca9854f51b1231ff562376516bdf6f7720541d0cb2d87c9870d44593c5db0",
+    "metrics_sha256": "32bb165311feecb1197e03cbf0c581bdcca62a9830d11af4d6012a72a6c80fa6",
+    "free_text": {
+      "entity": {
+        "f1": 0.6822916666666666,
+        "fn": 255,
+        "fp": 111,
+        "precision": 0.7797619047619048,
+        "recall": 0.6064814814814815,
+        "tp": 393
+      },
+      "relation": {
+        "f1": 0.43610547667342797,
+        "fn": 358,
+        "fp": 198,
+        "precision": 0.5205811138014528,
+        "recall": 0.37521815008726006,
+        "tp": 215
+      }
+    },
+    "generation_checks": {
+      "live:entities": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 0,
+        "generated_tokens": 12328,
+        "missing_eos": 0
+      },
+      "live:relations": {
+        "budget_exhausted": 1,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 124,
+        "events": 125,
+        "failed": 14,
+        "generated_tokens": 44222,
+        "missing_eos": 1
+      }
+    },
+    "selected_as_best_pipeline": false,
+    "entity_f1_change_percentage_points": -0.5529945683247606,
+    "relation_f1_change_percentage_points": -4.276776276319172,
+    "independent_comparison_sha256": "3f6dffd7ace41d6e3c431aa78dc41277633f34ba52dcca8562eaf9d635b6f0c4",
+    "long_criterion_exact_match": {
+      "E2": 3,
+      "replay": 4,
+      "gold": 53
+    },
+    "lost_TP_buckets": {
+      "both_available_all_former_support_windows_complete_changed_output": 19,
+      "now_missing_entity_endpoint": 21
+    },
+    "endpoint_reachability_ceiling": {
+      "arms": {
+        "E2": {
+          "actual_tp": 238,
+          "all_actual_TP_have_both_endpoints": true,
+          "all_filtered_predictions_have_both_endpoints": true,
+          "gold": 573,
+          "optimistic_f1_if_all_reachable_gold_and_no_FP": 0.7036199095022625,
+          "optimistic_precision_if_all_reachable_gold_and_no_FP": 1.0,
+          "optimistic_recall": 0.5427574171029669,
+          "reachable": 311,
+          "tp_with_both_endpoints": 238,
+          "unreachable": 262
+        },
+        "replay": {
+          "actual_tp": 215,
+          "all_actual_TP_have_both_endpoints": true,
+          "all_filtered_predictions_have_both_endpoints": true,
+          "gold": 573,
+          "optimistic_f1_if_all_reachable_gold_and_no_FP": 0.6962457337883959,
+          "optimistic_precision_if_all_reachable_gold_and_no_FP": 1.0,
+          "optimistic_recall": 0.5340314136125655,
+          "reachable": 306,
+          "tp_with_both_endpoints": 215,
+          "unreachable": 267
+        }
+      },
+      "formula": "max_recall=reachable_gold/gold; optimistic_F1=2*reachable_gold/(2*reachable_gold+unreachable_gold) with zero FP",
+      "scope": "Fixed current filtered E tables on these69free-text validation records under this endpoint-constrained protocol only; not actual scores or future model ceilings"
+    }
   }
 }
