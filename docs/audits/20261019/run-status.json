@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-10-19T02:03:35.173315+00:00",
+  "snapshot_utc": "2026-10-19T02:33:42.049272+00:00",
   "formal_sft": {
     "entities": {
       "status": "complete",
@@ -176,6 +176,65 @@
       "receipt_sha256": "1482d82e099ab72c58021c35be46d4c78cac1cb2e10efe58cb35b4817f23cea7",
       "quality_evaluation": "not_yet_available",
       "training_result_file": "entity-lr1e4-training.json"
+    },
+    "relations_short_canonical_complete_lr1e4": {
+      "job": "relation_short_canonical_complete_lr1e4_r16_e2",
+      "receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
+      "stage": "relations",
+      "variant": "short_canonical",
+      "parameters": {
+        "base_model": "/root/models/Qwen3-8B",
+        "batch_size": 1,
+        "data": "/workspace/medicalner/20261019/relation_complete_overlap_v2/short_canonical/train_relations.jsonl",
+        "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+        "dropout": 0.05,
+        "epochs": 2.0,
+        "gradient_accumulation": 8,
+        "learning_rate": 0.0001,
+        "logging_steps": 5,
+        "lora_alpha": 32,
+        "lora_rank": 16,
+        "max_length": 8192,
+        "max_steps": -1,
+        "output_dir": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2",
+        "seed": 42,
+        "smoke_only": false,
+        "stage": "relations",
+        "warmup_ratio": 0.05,
+        "weight_decay": 0.01
+      },
+      "dataset": {
+        "eos_supervised": true,
+        "max_target_tokens": 3870,
+        "max_tokens": 5140,
+        "no_truncation": true,
+        "prompt_loss_masked": true,
+        "rows": 1000,
+        "source_groups": 316,
+        "source_records": 542,
+        "target_tokens_one_pass": 399973,
+        "tokens_one_pass": 1610825
+      },
+      "observed_exposure": {
+        "all_rows_seen": true,
+        "max_visits": 2,
+        "min_visits": 2,
+        "row_visits": 2000,
+        "rows": 1000,
+        "scope": "successful training_step calls, including gradient accumulation",
+        "successful_microsteps": 2000,
+        "supervised_tokens": 799946,
+        "unique_rows_seen": 1000,
+        "unique_source_groups_seen": 316
+      },
+      "global_step": 250,
+      "elapsed_seconds": 1735.7760128974915,
+      "adapter_final_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+      "adapter_files_sha256": "62ec4fab7cf39f9a06bedfddff68be161fd0db5ddb86e5ff4af27749d6484a00",
+      "saved_weights_bitwise_verified": true,
+      "status": "complete",
+      "quality_evaluation": "running_no_complete_scores",
+      "file": "relation-lr1e4-training.json"
     }
   },
   "full130_evaluation": {
@@ -243,7 +302,7 @@
       "updates_each": 250
     }
   },
-  "status": "entityLR_pair_complete_new_entity_selected_relationLR1e4_training_running",
+  "status": "entityLR_pair_complete_relationLR_training_complete_full130_both_evaluation_running",
   "baseline_evaluation": {
     "status": "completed_independently_recounted",
     "samples": 130,
@@ -252,7 +311,7 @@
     "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
     "result_file": "baseline-results.json"
   },
-  "active_job": "relation_short_canonical_complete_lr1e4_r16_e2",
+  "active_job": "evaluate_relation_short_canonical_lr1e4_selected_new_entity_batch4",
   "paired_relation_evaluation": {
     "status": "both_complete_two_independent_recounts_passed",
     "jobs": [
@@ -324,7 +383,8 @@
   },
   "record_isolation": {
     "status": "offline_diagnostic_only_not_deployed",
-    "file": "relation-record-isolation-diagnostic.json"
+    "file": "relation-record-isolation-diagnostic.json",
+    "canonical_entity_lr_pair_file": "canonical-record-isolation-diagnostic.json"
   },
   "dpo": {
     "status": "prepared_and_mechanically_verified_not_admitted_or_trained",
@@ -363,14 +423,19 @@
     "actual_new_entity_outputs_verified": true
   },
   "relation_lr_comparison": {
-    "status": "training_running_evaluation_queued",
+    "status": "training_complete_full130_both_evaluation_running",
     "training_job": "relation_short_canonical_complete_lr1e4_r16_e2",
     "evaluation_job": "evaluate_relation_short_canonical_lr1e4_selected_new_entity_batch4",
     "fixed_entity": "entity_short_complete_lr1e4_r16_e2",
     "batch_size": 4,
     "samples_per_mode": 130,
     "new_quality_metrics_available": false,
-    "plan_file": "parameter-continuation-plan.json"
+    "plan_file": "parameter-continuation-plan.json",
+    "training_receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
+    "training_file": "relation-lr1e4-training.json",
+    "actual_loaded_adapter_fingerprints_verified": true,
+    "cached_entity_calls": 125,
+    "new_gpu_entity_calls": 0
   },
   "current_selected_entity_relation_ceiling": {
     "scope": "Selected1e-4entity actual outputs; conditional zeroFP theoretical bound, not measured relation score",
@@ -378,5 +443,6 @@
     "reachable": 311,
     "maximum_recall": 0.5427574171029669,
     "maximum_f1_if_all_reachable_correct_and_zero_fp": 0.7036199095022625
-  }
+  },
+  "entity_lr_error_diagnostic_file": "entity-lr-error-diagnostic.json"
 }
