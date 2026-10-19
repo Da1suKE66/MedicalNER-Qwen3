@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "review_scope": "independent local byte/hash/token/schedule reconciliation of existing GPU receipts; no CUDA rerun",
+  "check_assertions": 487,
+  "formal_receipt_sha256": "2994e577c0ff9faef8d97c5e4839b012baf15658f5fcfcd2acf12057d1e67f7f",
+  "smoke_receipt_sha256": "0802c80efe1d1d413ed4cf3dcd11b960cbfd9eb2184852fc56e077f4ff19cba9",
+  "parent_receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
+  "train_data_sha256": "1191b1e6ffa56a352539e86614179e57f89efc760fe580ddb582a1c200bea3b9",
+  "holdout_data_sha256": "1e9455694d5452f223cf3df190ff247f937791c4c6ac309ee9923f1fd3ce6abe",
+  "trainer_sha256": "66ee89be8d9fc7b6bb33c51069b52b36166515a90234f53781fa7e4087c19397",
+  "builder_sha256": "ebf61cdbb7aa9eeb3fab2b9d2ae195ab47c19bed61dda4e1eae0e4b14988d91a",
+  "review_script_sha256": "8c8a00b3dd3480af14dd3c87a6f2ff94453f96cb70dc5100ea354b22d39a01fa",
+  "formal_counts": {
+    "pairs": 208,
+    "chosen_tokens_including_eos": 96233,
+    "rejected_tokens_including_eos": 96251,
+    "prompt_tokens_per_branch": 253651,
+    "policy_eos_targets": 416,
+    "reference_eos_scored": 416,
+    "max_prompt_plus_completion": 3633,
+    "optimizer_updates": 52
+  },
+  "smoke_counts": {
+    "pairs": 4,
+    "chosen_tokens_including_eos": 6919,
+    "rejected_tokens_including_eos": 7000,
+    "prompt_tokens_per_branch": 5811,
+    "policy_eos_targets": 8,
+    "reference_eos_scored": 8,
+    "max_prompt_plus_completion": 3633,
+    "optimizer_updates": 1
+  },
+  "mutation_counts": {
+    "outside_entity_table": 64,
+    "omit_known_positive": 64,
+    "ontology_invalid_direction": 32,
+    "repeat_exact_record": 32,
+    "reviewed_semantic_contradiction": 16
+  },
+  "matched_runtime_dependency_files": 6,
+  "matched_runtime_input_files": 8,
+  "parent_and_reference_parameter_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+  "formal_final_parameter_sha256": "c59cec6cd1a350c427f91b737293a7b16ddb89bdee03deadd2dbed899f5ef8f5",
+  "formal_adapter_files_sha256": "de3c9564273b2ddd0bbe882ef78ce5f4dbddf9cfd8cbf0901cf4fe647f4dec60",
+  "runtime_reported_save_reload_max_logit_difference": 0.0,
+  "formal_elapsed_seconds": 466.1992875489959,
+  "smoke_elapsed_seconds": 32.27635034400009,
+  "formal_started_utc": "2026-10-19T07:43:03.022341+00:00",
+  "formal_finished_utc": "2026-10-19T07:50:49.221628+00:00",
+  "runtime_reported_peak_allocated_gpu_bytes": 24691251712,
+  "input_artifacts_preserved": true,
+  "gpu_work_performed_by_reviewer": false,
+  "api_or_ssh_used": false,
+  "blocking_findings": [],
+  "limitations": [
+    "Saved model bytes/CUDA tensors were not independently downloaded or reloaded; their checks are verified as reported by the frozen GPU trainer.",
+    "The resident candidate manifest raw file is not in this review. Its recorded hash is internally consistent; every train/holdout JSONL byte hash matches local frozen data.",
+    "Full base weight bytes are outside base_input_sha256; this digest covers config/tokenizer only.",
+    "Zero-logit save/reload equality covers the recorded first scheduled prompt last-token logits, not all prompts.",
+    "This review confirms training evidence consistency, not improvement in pipeline F1."
+  ]
+}

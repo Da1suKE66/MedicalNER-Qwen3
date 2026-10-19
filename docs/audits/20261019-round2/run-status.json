@@ -2,7 +2,7 @@
   "version": 1,
   "started_utc": "2026-10-19T07:10:13.552554+00:00",
   "deadline_utc": "2026-10-19T11:00:00Z",
-  "status": "training_entity_epoch_control_and_preparing_dpo",
+  "status": "dpo_training_complete_full130_live_evaluation_running",
   "baseline_live_free_relation": {
     "tp": 238,
     "fp": 183,
@@ -16,7 +16,7 @@
     "f1": 0.6878216123499142
   },
   "dpo": {
-    "status": "queued_after_entity_e3",
+    "status": "training_complete_full130_live_evaluation_running",
     "training_pairs": 208,
     "mechanical_holdout_pairs": 32,
     "reviewed_semantic_pairs": 16,
@@ -27,7 +27,30 @@
     "gradient_accumulation": 4,
     "planned_updates": 52,
     "train_sha256": "1191b1e6ffa56a352539e86614179e57f89efc760fe580ddb582a1c200bea3b9",
-    "training_and_smoke_completed": false
+    "training_and_smoke_completed": true,
+    "gpu_smoke": {
+      "completed": true,
+      "pairs": 4,
+      "updates": 1,
+      "reference_unchanged": true,
+      "saved_reload_exact": true,
+      "saved_reload_max_logit_difference": 0.0,
+      "peak_gpu_gib": 22.67347526550293,
+      "elapsed_seconds": 32.27635034400009
+    },
+    "latest_observed_step": 52,
+    "latest_observed_pairs": 208,
+    "all_reference_pairs_precomputed": 208,
+    "prompt_loss_tokens": 0,
+    "global_step": 52,
+    "epochs_every_pair": 1,
+    "elapsed_seconds": 466.1992875489959,
+    "training_manifest_sha256": "2994e577c0ff9faef8d97c5e4839b012baf15658f5fcfcd2acf12057d1e67f7f",
+    "adapter_final_sha256": "c59cec6cd1a350c427f91b737293a7b16ddb89bdee03deadd2dbed899f5ef8f5",
+    "reference_unchanged": true,
+    "saved_reload_exact": true,
+    "current_runtime_contract_check_passed": true,
+    "medical_quality_evaluation_complete": false
   },
   "api": {
     "status": "automatic_approval_rejected_no_successful_requests",
@@ -59,5 +82,27 @@
     "additional_fp": 28,
     "report": "current_record_isolation/report.json"
   },
-  "scope": "Running experiment snapshot; queued jobs are not completed results"
+  "scope": "Running experiment snapshot; queued jobs are not completed results",
+  "snapshot_utc": "2026-10-19T08:01:49.691680+00:00",
+  "entity_e3_training": {
+    "completed": true,
+    "global_step": 513,
+    "rows": 1361,
+    "epochs_every_row": 3,
+    "elapsed_seconds": 1817.7254915237427,
+    "initial_weights_equal_e2_control": true,
+    "saved_weights_bitwise_verified": true,
+    "training_manifest_sha256": "8a273c7bfc8d1eeb6b18b24b340d73c971b1dfe22bf70f2b81b2bd7852a4e8b6",
+    "quality_evaluation": "queued_not_yet_scored"
+  },
+  "queue_jobs": 8,
+  "data_quality_review": {
+    "modal_relations_checked": 38,
+    "supported_retained": 28,
+    "uncertain_retained": 9,
+    "source_rows_with_unsupported_diagnostic_claim": 1,
+    "relation_targets_removed_in_separate_untrained_candidate": 2,
+    "existing_train_and_evaluation_unchanged": true,
+    "repaired_relation_candidate_trained": false
+  }
 }
