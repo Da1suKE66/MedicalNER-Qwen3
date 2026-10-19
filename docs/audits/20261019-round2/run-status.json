@@ -2,7 +2,7 @@
   "version": 1,
   "started_utc": "2026-10-19T07:10:13.552554+00:00",
   "deadline_utc": "2026-10-19T11:00:00Z",
-  "status": "entity_e3_full130_complete_entity_gain_no_pipeline_gain_replay_sft_running",
+  "status": "entity_replay_full_training_complete_full130_evaluation_running",
   "baseline_live_free_relation": {
     "tp": 238,
     "fp": 183,
@@ -202,7 +202,7 @@
     "report": "current_record_isolation/report.json"
   },
   "scope": "Running experiment snapshot; queued jobs are not completed results",
-  "snapshot_utc": "2026-10-19T09:09:25.636760+00:00",
+  "snapshot_utc": "2026-10-19T09:33:24.041775+00:00",
   "entity_e3_training": {
     "completed": true,
     "global_step": 513,
@@ -214,7 +214,7 @@
     "training_manifest_sha256": "8a273c7bfc8d1eeb6b18b24b340d73c971b1dfe22bf70f2b81b2bd7852a4e8b6",
     "quality_evaluation": "full130_completed_recount_pass"
   },
-  "queue_jobs": 10,
+  "queue_jobs": 12,
   "data_quality_review": {
     "modal_relations_checked": 38,
     "supported_retained": 28,
@@ -344,14 +344,62 @@
     "free_relation_f1": 0.4788732394366197,
     "selection_basis": "Best fully evaluated actual live free-text relation F1; standalone entity F1 is reported separately."
   },
-  "current_job": "entity_criterion_replay_lr1e4_r16_e2",
+  "current_job": "evaluate_entity_criterion_replay_full130_fixed_relation",
   "replay_training": {
-    "status": "running",
+    "status": "training_complete_full130_evaluation_running",
     "rows": 1509,
     "base_rows": 1361,
     "complete_row_replays": 148,
     "epochs": 2,
     "learning_rate": 0.0001,
-    "full130_evaluation_queued": true
+    "full130_evaluation_queued": true,
+    "global_step": 378,
+    "rows_seen_every_epoch": 1509
+  },
+  "entity_criterion_replay_training": {
+    "completed": true,
+    "rows": 1509,
+    "source_groups": 403,
+    "row_visits": 3018,
+    "epochs_every_row": 2,
+    "global_step": 378,
+    "elapsed_seconds": 1377.37166762352,
+    "manifest_sha256": "2b68410d6348f08afefd95cc12218bea0ebb2dd7d2c45953a8cee3f92a31b9f9",
+    "saved_weights_bitwise_verified": true,
+    "quality_evaluation": "full130_running_no_score_yet"
+  },
+  "additional_relation_candidate": {
+    "status": "resident_full1000_CPU_preflight_passed_and_independently_reviewed_queued_after_main10jobs",
+    "private_directory": "label_weight_sft",
+    "rationale": "Relation label tokens are6.94percent of original full1000-row target token count; names/evidence84.70percent. Impact remains unproven.",
+    "proposed": "Whole1000-row one-epoch continuation from original SFT parent with label token weight4 and LR2e-5",
+    "queue_changed": true,
+    "gpu_training_started": false,
+    "launch_only_if": "Prior10jobs complete and at least50minutes remain; run longest-row GPU smoke before fresh-parent complete formal training and fixed-E full130 evaluation",
+    "limitation": "Additional training, LR and token weighting are combined; no matched unweighted continuation control is yet planned.",
+    "minimum_remaining_seconds": 3000,
+    "formal_rows": 1000,
+    "formal_optimizer_updates": 125,
+    "remote_preflight_sha256": "eb6812e32d291e90144e222684a400381b390c18fd3536295f25819453f74b8e",
+    "wrapper_sha256": "0548baef187afc0828cf52032df67b1d08bc86de71026749507d913e05ef65c1",
+    "evaluation_directory": "label4_cont1epoch_full130_fixed_entity"
+  },
+  "queue_plan_sha256": "7301a6bc63d13ffd2406bfbdf0cd7b82f824cb4aede2a56f437b1f98f29e18a6",
+  "batch_invariance_review": {
+    "status": "static_review_complete_no_definite_bug_GPU_not_run",
+    "known_source_index": 310,
+    "same_entity_table_relation_prompt_and_R_weights": true,
+    "batch_composition_and_padding_changed": true,
+    "definite_implementation_bug_found": false,
+    "gpu_reproduction_completed": false,
+    "private_directory": "metrics_review/batch_invariance",
+    "report_sha256": "24de04f639dc2d18f63e77c79e56b374473c8724a7391718f951fedbf5f11606",
+    "probe_script_sha256": "94cea2531eadb84bad8da8a3bafc99f47e4ef2cf3d07e2045e6928e9f0d6c768",
+    "first_output_difference_token_one_based": 8,
+    "left_padding_counts": [
+      86,
+      5
+    ],
+    "followup": "Only after complete quality evaluations, run at most3-minute resident-source prefix probe; no metric result claimed."
   }
 }

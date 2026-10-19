@@ -1,0 +1,48 @@
+{
+  "blocking_findings": [],
+  "changes_by_reviewer": [],
+  "checks": {
+    "accumulation_denominator": "WeightedLossMixin sums shifted target weights across actual group microbatches. model_accepts_loss_kwargs=True prevents second Trainer division. Root separately reports actual HF4.56.2 CPU SGD reference PASS including partial group; reviewer did not rerun it.",
+    "causal_shift": "logits[:,:-1] aligns with labels[:,1:] and loss_weights[:,1:]; first completion token is predicted at final prompt position.",
+    "formal_full_release": "Locked1000rows with dataSHA, one epoch, batch1 accumulation8, expected125updates; min/max row visits1,1000total and per-token weighted/unweighted counts verified.",
+    "launch": "Sealed config code hashes match reviewed files; PYTHONPATH declared in launch plan; parent base/R adapter paths are frozen known resident paths.",
+    "parent_admission": "Exact frozen manifest plus runtime.check_adapter_contract validates base config/tokenizer, protocol, adapter files, completed nonsmoke relation contract; actual loaded parent LoRA fingerprint verified with bounded exact reload.",
+    "prompt_and_eos": "Original encode_row IDs/labels unchanged; prompt and padding weight0; EOS appended once and weight1; no source/target truncation.",
+    "relation_label_offsets": "Literal third TAB field only; full completion token IDs checked; cross-semantic-field tokens rejected; labels appearing in evidence/entity fields do not receive extra weight.",
+    "save_and_reload": "All saved adapter tensors compared exactly to live values; new reload_check adapter slot fingerprint verified; receipt states same-base reload limitation; runtime required receipt fields present for formal run; smoke remains ineligible.",
+    "smoke_formal_separation": "Longest admitted complete example, exactly1update, accumulation1,warmup0; formal is a fresh subprocess loading original parent again, not smoke weights; all paths distinct.",
+    "trainable_state": "PeftModel.from_pretrained/load_adapter use is_trainable=True for default adapter; no alternate policy adapter; base remains PEFT-frozen by construction. enable_input_require_grads adds activation-gradient hook, not an optimizer target for embedding parameters."
+  },
+  "expected_full_formal": {
+    "input_tokens": 1610825,
+    "relation_label_tokens": 27752,
+    "rows": 1000,
+    "source_groups": 316,
+    "source_records": 542,
+    "supervised_tokens": 399973,
+    "updates": 125,
+    "weighted_token_mass": 483229
+  },
+  "files_sha256": {
+    "label_weights.py": "c1c0f4ea610b406681728aad2c25cc4d90aca475b1c1e245dc98e206cd3b2c56",
+    "launch_plan.aggregate.json": "71226cea617a220bbd2e99963bc8bc97940ac2c3d09420ac67239487baf1c4c7",
+    "preflight.py": "8b705e0e93fdb2f5424032e86ed95951eee84385653a2abd62648e7f47b112d4",
+    "run_smoke_then_train.py": "e9b35e69c58b54b448ea670f4458df383804d6cc21d3b777d05636a41577980d",
+    "train_label_weighted.py": "190042550b0e943a10beaceddadc71a47340c73e98b807a279d66c3f66f75dc0",
+    "training_config.json": "c6956245522c5f82f61d216d42490ed45d85a2e209534ba968d3c713c21a314d",
+    "verify_torch_math.py": "338b587fb27218c670c608792d47dc25f93f7a8257f9c32822e2753d98524c1d"
+  },
+  "gpu_runs_by_reviewer": 0,
+  "math_tests_rerun_by_reviewer": 0,
+  "nonblocking_limitations": [
+    "No claim of GPU fit/speed or successful training: longest5140-token GPU smoke still required.",
+    "Full-logit FP32 weighted CE increases memory pressure; smoke intentionally tests longest complete row and must fail closed if OOM.",
+    "Saved reload check is a new adapter slot on same base, not a fresh-process base-model replay. Subsequent standard runtime loading/full130 evaluation is still required.",
+    "3000s start and2700s formal admission thresholds plus1320s formal maximum do not mathematically guarantee1800s evaluation reserve. Author explicitly labels30min evaluation as estimate; root must enforce any hard remaining-time requirement.",
+    "Extra epoch, LR change and label weighting are joint interventions; improvement cannot be attributed solely to weighting without matched weight1 continuation.",
+    "Uniform label-token weighting does not balance rare relation classes and does not repair missing entity endpoints or silver annotation defects.",
+    "Canonical full1000row release is complete across its542source records, with short windows and required auxiliary rows; it is not new raw-source augmentation or a complete-pipeline evaluation."
+  ],
+  "scope": "CPU static code review of sealed candidate; no GPU, scalar/math test rerun, formal data or queue mutation",
+  "status": "READ_ONLY_CODE_REVIEW_NO_BLOCKING_FINDING"
+}

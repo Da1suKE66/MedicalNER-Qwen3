@@ -1,0 +1,48 @@
+{
+  "status": "prepared_not_queued",
+  "data": "/workspace/medicalner/20261019/relation_complete_overlap_v2/short_canonical/train_relations.jsonl",
+  "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+  "base_model": "/root/models/Qwen3-8B",
+  "parent_adapter": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2",
+  "parent_parameters_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+  "smoke_output": "/workspace/medicalner/round2_20261019/label_weight_sft/smoke_1update_longest",
+  "formal_output": "/workspace/medicalner/round2_20261019/label_weight_sft/relation_label4_cont1epoch_lr2e5",
+  "receipt_dir": "/workspace/medicalner/round2_20261019/label_weight_sft/execution_receipts",
+  "code_sha256": {
+    "label_weights.py": "c1c0f4ea610b406681728aad2c25cc4d90aca475b1c1e245dc98e206cd3b2c56",
+    "train_label_weighted.py": "190042550b0e943a10beaceddadc71a47340c73e98b807a279d66c3f66f75dc0",
+    "preflight.py": "8b705e0e93fdb2f5424032e86ed95951eee84385653a2abd62648e7f47b112d4",
+    "verify_torch_math.py": "338b587fb27218c670c608792d47dc25f93f7a8257f9c32822e2753d98524c1d",
+    "run_smoke_then_train.py": "0548baef187afc0828cf52032df67b1d08bc86de71026749507d913e05ef65c1"
+  },
+  "expected_rows": 1000,
+  "expected_updates": 125,
+  "all_targets_and_EOS_retained": true,
+  "smoke": {
+    "updates": 1,
+    "row_selection": "global longest complete input",
+    "accumulation": 1,
+    "warmup_ratio": 0
+  },
+  "formal": {
+    "epochs": 1,
+    "learning_rate": 2e-05,
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "accumulation": 8,
+    "warmup_ratio": 0.05,
+    "label_weight": 4.0,
+    "max_length": 8192
+  },
+  "causal_interpretation": "Exploratory continuation: extra epoch, changed learning rate and label weighting are joint interventions; no matched unweighted continuation control has run.",
+  "time_budget": {
+    "start_requires_remaining_seconds": 3000,
+    "evaluation_conservative_estimate_seconds": 1800,
+    "smoke_plus_formal_timeout_seconds": 1500,
+    "formal_timeout_seconds": 1320,
+    "training_estimated_seconds": 1200,
+    "timeout_not_a_successful_truncated_run": true,
+    "cpu_preflight_timeout_seconds": 180
+  }
+}

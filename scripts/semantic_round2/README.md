@@ -38,3 +38,10 @@ The primary outcome is live pipeline typed directed relation set precision,
 recall and F1 against every original gold item. Report failed samples and the
 raw graph companion metric. Structured deterministic cases are a separate
 stratum. Oracle-entity results and invalid-attempt penalties are diagnostics.
+
+The isolated [relation-label weighted SFT candidate](label_weight_sft/README.md)
+continues the original relation adapter on all1000 admitted rows. It preserves
+every target token and EOS while increasing only semantic relation-label token
+weights. CPU math and data checks are preparation evidence, not quality results;
+its GPU smoke, complete training and fixed-entity full130 evaluation must each
+succeed before it can be selected.

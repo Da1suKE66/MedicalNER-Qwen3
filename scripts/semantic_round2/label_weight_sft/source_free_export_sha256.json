@@ -1,0 +1,10 @@
+{
+  "label_weights.py": "c1c0f4ea610b406681728aad2c25cc4d90aca475b1c1e245dc98e206cd3b2c56",
+  "train_label_weighted.py": "190042550b0e943a10beaceddadc71a47340c73e98b807a279d66c3f66f75dc0",
+  "preflight.py": "8b705e0e93fdb2f5424032e86ed95951eee84385653a2abd62648e7f47b112d4",
+  "verify_torch_math.py": "338b587fb27218c670c608792d47dc25f93f7a8257f9c32822e2753d98524c1d",
+  "run_smoke_then_train.py": "0548baef187afc0828cf52032df67b1d08bc86de71026749507d913e05ef65c1",
+  "training_config.json": "1ee77bbcf2f391223493a9f67ef4e9755d789b8c9a802331c4ca5ac1e9637281",
+  "launch_plan.aggregate.json": "71226cea617a220bbd2e99963bc8bc97940ac2c3d09420ac67239487baf1c4c7",
+  "README.md": "29dfc392c89ea8d91078bb641db39e894a4e27f009d1e12c68677f41fae261fe"
+}

@@ -76,7 +76,7 @@ and padding also changed. This limits per-source causal attribution to the
 entity changes alone. A static inference review is pending. See the
 [complete entity-control result and limitations](entity-e3-results.json).
 
-Progress at 17:10 Beijing:
+Progress at 17:32 Beijing:
 
 | Experiment | Scope | Status at this record |
 |---|---|---|
@@ -84,8 +84,14 @@ Progress at 17:10 Beijing:
 | Targeted DPO | 208 train preferences; 32 mechanical checks excluded | Trained: 52 updates; each pair used once |
 | DPO live pipeline evaluation | All 130 original cases; fixed actual entity output | Complete: F1 decreased 1.1341 percentage points |
 | Shorter input screening | Same 6 source-selected long cases, 2400 vs 1600 characters | Complete: keep 2400 after negative screen |
-| Final full-data training and validation | All 1361 base windows plus 148 complete long-criterion replays | Full training running; 130-case evaluation follows |
+| Final full-data training and validation | All 1361 base windows plus 148 complete long-criterion replays | Trained: all1509 rows visited twice, 378 updates; full130 evaluation running |
 | Semantic-focused DPO52 | 36 reviewed semantic contrasts plus 16 table-reference contrasts | Resident preflight passed; fresh-parent training and full130 evaluation queued |
+| Relation-label weighted SFT | All1000 original relation rows, one-epoch continuation, label-token weight4 | CPU admission and independent review passed; queued after original10jobs, conditional on50minutes remaining |
+
+The long-criterion replay training completed in 1377.4 seconds. Its saved
+weights match the trained tensors, and all 1509 complete windows were used
+exactly twice. The new model is not yet selected: its full130 evaluation is
+still running. See [training evidence](entity-replay-training.json).
 
 The next preference candidate uses LR 2e-6, beta 0.1 and one epoch, for 13
 optimizer updates. It excludes the known source188 preference issue and removes
@@ -98,7 +104,26 @@ separate DPO dataset, not a reduction of the full SFT training set. See
 [preparation evidence](dpo52-preparation.json) and
 [versioned code and source-free recipes](../../../scripts/semantic_round2/dpo52_v2/README.md).
 
-Both completed training runs include saved-weight verification. DPO took
+The optional relation continuation uses LR2e-5 and125 updates. Its full1000-row
+release contains399973 target tokens including EOS; relation-label tokens are
+6.94% and entity names plus evidence are84.70%. These counts do not measure
+actual loss or gradient contributions. All original tokens remain supervised;
+only relation-label-field token weights change from1 to4. The real CPU
+HF Trainer regression matched an explicit grouped-loss reference, including
+unequal microbatches and a final partial accumulation group. A separate GPU
+smoke must still pass before formal training. The main10jobs retain priority.
+
+This candidate combines an extra epoch, a new LR and label weighting; without
+a matched unweighted continuation it cannot establish the weighting's isolated
+effect. Its runtime estimate and remaining-time gate do not guarantee an
+improvement or completed evaluation. No result is claimed yet. See
+[preparation and limits](label-weight-preparation.json),
+[independent code review](label-weight-code-review.json) and
+[versioned candidate](../../../scripts/semantic_round2/label_weight_sft/README.md).
+The code/configuration's prepared status is a frozen preparation record;
+run-status.json reports the current queue state.
+
+All completed training runs include saved-weight verification. DPO took
 466.2 seconds after its separate GPU smoke check. Its frozen reference stayed
 identical to the selected SFT parent, while policy weights changed. A separate
 CPU review reconciled data/code hashes, token targets, and all 208 successful
