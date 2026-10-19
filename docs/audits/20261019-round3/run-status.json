@@ -1,0 +1,24 @@
+{
+  "status": "label4_training_complete_full130_evaluation_running",
+  "deadline_utc": "2026-10-19T12:49:00Z",
+  "label4_training_manifest_sha256": "2bb091b669db0333b4d34ce7306f925f074956957ad707f0ff93255ae4b54b24",
+  "label4_completed_rows": 1000,
+  "label4_completed_updates": 125,
+  "label4_formal_train_seconds": 877.7568,
+  "label4_finished_utc": "2026-10-19T12:16:01.883288Z",
+  "full130_metrics_status": "pending",
+  "api_successful_calls": 62,
+  "api_unique_train_sources": 31,
+  "api_independently_reviewed_release_pairs": 24,
+  "api_release_categories": {
+    "explicit_negation_label_flip": 8,
+    "explicit_positive_label_flip": 13,
+    "subtype_direction_reversal": 3
+  },
+  "api_release_hold": 7,
+  "api_release_train_sha256": "4adfdcea74a3e6f2f5f695eedada04a7a81e1bba65a3b555fcfff641b910122b",
+  "dpo_data_release_status": "prepared_CPU_admission_checked_not_trained",
+  "dpo_not_started_reason": "Only one GPU; current hour reserved for already-started full1000 label4 and full130 evaluation. New24 full-chosen reviewed preferences prepared separately.",
+  "selected_pipeline_unchanged": true,
+  "new_model_uses_api_data": false
+}

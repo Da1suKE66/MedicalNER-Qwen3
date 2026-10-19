@@ -1,0 +1,55 @@
+{
+  "release_version": "reviewed24-bidirectional-semantic-round3-v1",
+  "train_pairs": 24,
+  "train_source_groups": 24,
+  "mechanical_holdout_pairs": 32,
+  "group_overlap": 0,
+  "original_tune_group_overlap": 0,
+  "holdout_source_and_donor_group_overlap": 0,
+  "source188_source_or_donor_occurrences": 0,
+  "output_sha256": {
+    "candidate_train.jsonl": "4adfdcea74a3e6f2f5f695eedada04a7a81e1bba65a3b555fcfff641b910122b",
+    "mechanical_holdout.jsonl": "1e9455694d5452f223cf3df190ff247f937791c4c6ac309ee9923f1fd3ce6abe"
+  },
+  "mutation_counts": {
+    "reviewed_semantic_contradiction": 24
+  },
+  "semantic_change_counts": {
+    "explicit_negation_label_flip": 8,
+    "explicit_positive_label_flip": 13,
+    "subtype_direction_reversal": 3
+  },
+  "no_truncation": true,
+  "max_length": 4096,
+  "max_prompt_plus_completion_tokens": 3273,
+  "prompt_tokens_one_pass": 24394,
+  "chosen_tokens_one_pass_including_eos": 11155,
+  "rejected_tokens_one_pass_including_eos": 11150,
+  "completion_length_delta_counts": {
+    "-1": 13,
+    "0": 3,
+    "1": 8
+  },
+  "full_chosen_records": 176,
+  "preparer_sha256": "58b58d6de30a8a23107b51c11e855af836506af5c67981a952abcfe5d899fdb4",
+  "locked_builder_sha256": "ebf61cdbb7aa9eeb3fab2b9d2ae195ab47c19bed61dda4e1eae0e4b14988d91a",
+  "full_chosen_unchanged": true,
+  "unknown_as_negative": false,
+  "human_adjudicated": false,
+  "medical_gold": false,
+  "status": "local_data_release_prepared_not_trained",
+  "external_API_calls_this_packaging_step": 0,
+  "successful_API_calls_in_prior_review": 62,
+  "limitations": [
+    "Agent and teacher review are not clinical expert adjudication.",
+    "Chosen remains existing non-exhaustive silver; this adds preferences, not independent SFT sources.",
+    "Seven uncertain full responses remain quarantined; no gold or old training artifact was changed.",
+    "Bidirectional labels reduce one-sided preference construction but do not prove model improvement.",
+    "Mechanical holdout was drawn from TRAIN and is not a clinical generalization test.",
+    "No new DPO training or evaluation has run on this release."
+  ],
+  "private_manifest_sha256": "e577bbc65b6f5f25ad8d8351de79bd9be302b4bf758379e67e5f9f8ee738f2ac",
+  "selection_recipe_sha256": "b70dae69df3ac276443340c62a1aa6b497ce4994c4ffafc9d16bb70f8bef7d10",
+  "trainer_admission_status": "cpu_data_verified_gpu_pending",
+  "trainer_admission_sha256": "4155811a3c5eeeda810d0948a2bc0468db22e8b0ef13b6911f10b7410666a011"
+}
