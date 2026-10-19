@@ -1,7 +1,7 @@
 {
   "first_result_delivered_utc": "2026-10-19T12:39:24.577677+00:00",
   "first_result_due_utc": "2026-10-19T12:49:00Z",
-  "status": "label4_verified_DPO24_trained_full130_evaluation_running",
+  "status": "label4_and_DPO24_completed_double_checked_original_pipeline_retained",
   "label4": {
     "manifest_sha256": "0356a86871860198869b51adc7743da9e627485ae2f4bc3f5c5d2e2ee47dc631",
     "metrics_sha256": "71dd6e751b03218444099b42619cd50dbbf602f17240fd20c5f754877f18f65e",
@@ -218,7 +218,7 @@
     "fixed_entities_verified": true
   },
   "DPO24": {
-    "status": "training_complete_full130_evaluation_running",
+    "status": "full130_complete_double_checked",
     "only_after_first_label4_full130_result_verified": true,
     "latest_training_start_utc": "2026-10-19T12:40:00Z",
     "finite_plan_deadline_utc": "2026-10-19T13:20:00Z",
@@ -240,9 +240,20 @@
     "formal_training_seconds": 60.48480889100756,
     "evaluation_pid": 5307,
     "evaluation_started_utc": "2026-10-19T12:41:37.959876Z",
-    "quality_result_available": false
+    "quality_result_available": true,
+    "evaluation_manifest_sha256": "f86ab05bdbb69738362fdb64e8f1089f0348e03705696a05f9cd3f98bbd43f1a",
+    "evaluation_metrics_sha256": "8552dd0aad35600a0aae11497208807251db974ddc001c60ff039c8fc5b3b428",
+    "free_text_relation": {
+      "f1": 0.4693069306930693,
+      "fn": 336,
+      "fp": 200,
+      "precision": 0.5423340961098398,
+      "recall": 0.41361256544502617,
+      "tp": 237
+    },
+    "evaluation_finished_utc": "2026-10-19T13:03:53.852993Z"
   },
   "selected_pipeline_unchanged": true,
   "selection_reason": "The new model has only+0.10464 F1 percentage points on reused tune and more failed windows; no reliable global improvement established.",
-  "snapshot_utc": "2026-10-19T12:49:00Z"
+  "snapshot_utc": "2026-10-19T13:13:58.902791+00:00"
 }

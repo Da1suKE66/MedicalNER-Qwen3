@@ -1,0 +1,66 @@
+{
+  "status": "finite_round_completed_results_verified",
+  "snapshot_utc": "2026-10-19T13:13:58.902791+00:00",
+  "reviewer": "root_direct_no_subagents",
+  "formal_training_complete": true,
+  "full130_evaluation_complete": true,
+  "evaluation_finished_utc": "2026-10-19T13:03:53.852993Z",
+  "two_cpu_metric_recounts_passed": true,
+  "samples": 130,
+  "free_text_samples": 69,
+  "all_original_gold_retained": true,
+  "actual_entity_tables_and_125_prompts_unchanged": true,
+  "DPO24_relation_free_text": {
+    "f1": 0.4693069306930693,
+    "fn": 336,
+    "fp": 200,
+    "precision": 0.5423340961098398,
+    "recall": 0.41361256544502617,
+    "tp": 237
+  },
+  "DPO24_relation_overall": {
+    "f1": 0.5064599483204134,
+    "fn": 362,
+    "fp": 211,
+    "precision": 0.5821782178217821,
+    "recall": 0.4481707317073171,
+    "tp": 294
+  },
+  "DPO24_manifest_sha256": "f86ab05bdbb69738362fdb64e8f1089f0348e03705696a05f9cd3f98bbd43f1a",
+  "DPO24_metrics_sha256": "8552dd0aad35600a0aae11497208807251db974ddc001c60ff039c8fc5b3b428",
+  "root_recount_sha256": "93a31efa84744663aef2a2544e06ca44de4da30b27f6f4130cb0864f0b9491c8",
+  "second_recount_sha256": "41c9f99309e1bc0bfff6d7dd3e6998374ad082dcb0d462ea4e3a5e1b4f554288",
+  "changed_graphs": {
+    "new_tp": 3,
+    "lost_tp": 4,
+    "removed_fp": 7,
+    "new_fp": 24,
+    "changed_documents": 8
+  },
+  "generation_checks": {
+    "live:entities": {
+      "budget_exhausted": 0,
+      "cached_entity_events": 125,
+      "deadline_exhausted": 0,
+      "eos_observed": 125,
+      "events": 125,
+      "failed": 0,
+      "generated_tokens": 12654,
+      "missing_eos": 0
+    },
+    "live:relations": {
+      "budget_exhausted": 1,
+      "cached_entity_events": 0,
+      "deadline_exhausted": 0,
+      "eos_observed": 124,
+      "events": 125,
+      "failed": 17,
+      "generated_tokens": 44169,
+      "missing_eos": 1
+    }
+  },
+  "selected_pipeline_unchanged": true,
+  "selection_reason": "DPO24 free relation F1 46.9307% is below original SFT 47.8873%; label4 47.9920% has only marginal difference. No claimed achievement of70–80%.",
+  "new_GPU_or_API_work_during_closeout": false,
+  "automation_pause": "after_successful_result_publication"
+}

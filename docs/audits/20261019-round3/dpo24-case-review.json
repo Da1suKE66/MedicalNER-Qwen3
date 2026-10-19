@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "reviewer": "root_direct_no_subagents",
+  "scope": "Saved full130 artifacts, semantic case reading and textual record cross-check; no model inference or clinical human adjudication",
+  "case_218": {
+    "new_tp": 2,
+    "removed_fp": 2,
+    "finding": "Two associated labels changed to core on the definition-level depressive symptom evidence; matches frozen silver."
+  },
+  "case_1264": {
+    "new_tp": 1,
+    "finding": "Added one differentiates_from edge supported by the boundary paragraph; matches frozen silver."
+  },
+  "case_310": {
+    "lost_tp": 4,
+    "new_fp": 6,
+    "removed_fp": 2,
+    "finding": "Six core labels changed to associated; four formerly matched gold. Input/entities/evidence and successful parsing retained. All four lost TP in the run occur here."
+  },
+  "case_548": {
+    "new_counted_fp": 13,
+    "already_present_in_old_failed_completion": 13,
+    "old_failed_unknown_entity_records": 1,
+    "new_parse_failed": false,
+    "old_tokens": 1065,
+    "new_tokens": 585,
+    "finding": "All13 newly counted FP existed in old raw completion. One outside-table record previously invalidated whole window; new shorter valid output exposes13 non-gold graph edges. Not13 newly invented semantic edges."
+  },
+  "truncation_case_248": {
+    "old_status": "failed",
+    "old_tokens": 623,
+    "old_parse_error_reasons": {
+      "unknown_entity_reference": 9
+    },
+    "new_status": "failed",
+    "new_tokens": 4096,
+    "source_chars": 2400,
+    "distinct_record_prefixes": 7,
+    "full_source_evidence_copies": 6,
+    "eos_observed": false,
+    "document_graph_changed": false,
+    "finding": "Six distinct complete subtype records each copy full source; seventh distinct record truncates. Baseline window was already invalid. This case does not explain the four lost TP."
+  },
+  "inputs_sha256": {
+    "audit_work/round3_20261019/independent_dpo24_review/dpo24_vs_parent/aggregate.json": "41c9f99309e1bc0bfff6d7dd3e6998374ad082dcb0d462ea4e3a5e1b4f554288",
+    "audit_work/round3_20261019/independent_dpo24_review/dpo24_vs_parent/changes.private.json": "44f54d12ed7bf42592023f61f9e27d076d20ebba6e996fff21f0cd3421d7d193",
+    "audit_work/full_semantic_20261019/completed_runs/relation_short_canonical_lr1e4_selected_new_entity_batch4/generations.jsonl": "5399abb04ad6020db56a0fab4620b428505b03c478e569c593b249a508026ba0",
+    "audit_work/round3_20261019/completed_runs/dpo24_full130_fixed_entity/generations.jsonl": "528ffd8c365d2743685093382e8996fd229c9a6a61777d0a4a109bd997539af9"
+  }
+}
