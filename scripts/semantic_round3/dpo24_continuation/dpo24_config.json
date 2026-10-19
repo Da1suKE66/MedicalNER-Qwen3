@@ -1,0 +1,41 @@
+{
+  "common_argv": [
+    "--candidates-root",
+    "/workspace/medicalner/round3_20261019/dpo24/data",
+    "--base-release",
+    "/workspace/medicalner/20261019/data_v2",
+    "--overlap-release",
+    "/workspace/medicalner/20261019/relation_complete_overlap_v2",
+    "--tokenizer",
+    "/root/models/Qwen3-8B",
+    "--base-model",
+    "/root/models/Qwen3-8B",
+    "--parent-adapter",
+    "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2",
+    "--epochs",
+    "1",
+    "--gradient-accumulation",
+    "4",
+    "--learning-rate",
+    "2e-6",
+    "--beta",
+    "0.1",
+    "--seed",
+    "42",
+    "--max-length",
+    "4096",
+    "--max-seconds",
+    "600"
+  ],
+  "smoke_output": "/workspace/medicalner/round3_20261019/dpo24/runs/smoke",
+  "formal_output": "/workspace/medicalner/round3_20261019/dpo24/runs/formal",
+  "expected_pairs": 24,
+  "expected_train_sha256": "4adfdcea74a3e6f2f5f695eedada04a7a81e1bba65a3b555fcfff641b910122b",
+  "previous_label4_manifest": "/workspace/medicalner/round3_20261019/evaluation/label4_cont1epoch_full130_fixed_entity/manifest.json",
+  "code_sha256": {
+    "semantic_dpo.py": "77ccbcc2aab0fea027527f825b8e68e86a4b6e2e846439a9b71e47ae0598d339",
+    "build_pairs.py": "ebf61cdbb7aa9eeb3fab2b9d2ae195ab47c19bed61dda4e1eae0e4b14988d91a",
+    "run_smoke_then_train.py": "fc23be805eec1e3f45acbb9e971fe75da8f1c6fb8698d880949c9f021511a979"
+  },
+  "deadline_unix": 1792416000
+}

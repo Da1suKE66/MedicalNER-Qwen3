@@ -1,0 +1,68 @@
+{
+  "deadline_unix": 1792414140,
+  "stop_when_empty": true,
+  "jobs": [
+    {
+      "id": "relation_label4_cont1epoch_lr2e5",
+      "cwd": "/workspace/medicalner/20261019/code_eval_v6",
+      "argv": [
+        "/root/venvs/medicalner/bin/python",
+        "/workspace/medicalner/round2_20261019/label_weight_sft/run_smoke_then_train.py",
+        "--config",
+        "/workspace/medicalner/round3_20261019/label4_config.json",
+        "--deadline-unix",
+        "1792414140"
+      ],
+      "environment": {
+        "PYTHONPATH": "/workspace/medicalner/20261019/code_eval_v6/agent",
+        "TOKENIZERS_PARALLELISM": "false",
+        "PYTHONUNBUFFERED": "1"
+      },
+      "receipt": "/workspace/medicalner/round3_20261019/label_weight_sft/relation_label4_cont1epoch_lr2e5/training_manifest.json",
+      "estimated_seconds": 3000,
+      "time_reservation_note": "Fresh one-hour user extension; unchanged50minute launch gate and full-data1000-row algorithm; full130 comparison reserved."
+    },
+    {
+      "id": "evaluate_label4_cont1epoch_full130_fixed_entity",
+      "cwd": "/workspace/medicalner/20261019/code_eval_v6",
+      "argv": [
+        "/root/venvs/medicalner/bin/python",
+        "-m",
+        "semantic.evaluate",
+        "--release",
+        "/workspace/medicalner/20261019/data_v2",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--entity-adapter",
+        "/workspace/medicalner/20261019/runs/entity_short_complete_lr1e4_r16_e2",
+        "--entity-variant",
+        "short_source",
+        "--relation-adapter",
+        "/workspace/medicalner/round3_20261019/label_weight_sft/relation_label4_cont1epoch_lr2e5",
+        "--variant",
+        "short_canonical",
+        "--output-dir",
+        "/workspace/medicalner/round3_20261019/evaluation/label4_cont1epoch_full130_fixed_entity",
+        "--mode",
+        "live",
+        "--expected-samples",
+        "130",
+        "--max-input-tokens",
+        "8192",
+        "--max-new-tokens",
+        "4096",
+        "--batch-size",
+        "4",
+        "--entity-cache-run",
+        "/workspace/medicalner/20261019/evaluation/entity_lr1e4_short_canonical_batch4"
+      ],
+      "environment": {
+        "PYTHONPATH": "/workspace/medicalner/20261019/code_eval_v6/agent",
+        "TOKENIZERS_PARALLELISM": "false",
+        "PYTHONUNBUFFERED": "1"
+      },
+      "receipt": "/workspace/medicalner/round3_20261019/evaluation/label4_cont1epoch_full130_fixed_entity/manifest.json",
+      "estimated_seconds": 1800
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "version": "json-termination-readonly-20261012-v1",
+  "tokenizer": {
+    "eos_token_id": 151645,
+    "pad_token_id": 151643
+  },
+  "training": {
+    "V4_grounded_empty": {
+      "rows": 1835,
+      "sha256": "6ab0e777fba5b5f0730702b40fdca90ec27e2b3daea8727fd143dbce83e3d4ba",
+      "counts": {
+        "valid_complete_json_targets": 1835,
+        "rows_unknown_last": 1081,
+        "rows_any_outer_closing_token_masked": 0,
+        "rows_all_outer_closing_tokens_masked": 0,
+        "rows_outer_closing_has_supervised_token": 1835,
+        "completion_contains_eos_token": 0,
+        "completion_contains_pad_token": 0,
+        "rows_serialize_ends_correct_outer_close": 1835,
+        "rows_known_last": 754
+      },
+      "closing_token_patterns": [
+        {
+          "last_status": "unknown",
+          "tokens_and_masked": [
+            [
+              "]}",
+              false
+            ]
+          ],
+          "rows": 1081
+        },
+        {
+          "last_status": "known",
+          "tokens_and_masked": [
+            [
+              "]}",
+              false
+            ]
+          ],
+          "rows": 754
+        }
+      ]
+    },
+    "V4_missing_only": {
+      "rows": 1835,
+      "sha256": "ab6fac59b1df72c1717adb796627be863d9e9540c275fc69b6e8ce3f3f54afb7",
+      "counts": {
+        "valid_complete_json_targets": 1835,
+        "rows_unknown_last": 1207,
+        "rows_any_outer_closing_token_masked": 0,
+        "rows_all_outer_closing_tokens_masked": 0,
+        "rows_outer_closing_has_supervised_token": 1835,
+        "completion_contains_eos_token": 0,
+        "completion_contains_pad_token": 0,
+        "rows_serialize_ends_correct_outer_close": 1835,
+        "rows_known_last": 628
+      },
+      "closing_token_patterns": [
+        {
+          "last_status": "unknown",
+          "tokens_and_masked": [
+            [
+              "]}",
+              false
+            ]
+          ],
+          "rows": 1207
+        },
+        {
+          "last_status": "known",
+          "tokens_and_masked": [
+            [
+              "]}",
+              false
+            ]
+          ],
+          "rows": 628
+        }
+      ]
+    }
+  },
+  "generation": {
+    "base_screen/full_hash16": {
+      "counts": {
+        "rows": 22
+      },
+      "json_error_counts": {},
+      "retokenized_prefix_any_accepted_by_stopper": 0,
+      "invalid_generated_token_min": null,
+      "invalid_generated_token_max": null,
+      "raw_ids_recorded": false,
+      "structural_tail_counts_after_string_elision": {},
+      "closure_diagnostics": {}
+    },
+    "grounded64_screen/full_hash16": {
+      "counts": {
+        "rows": 22,
+        "invalid_json": 4,
+        "max_token_truncated": 0,
+        "execution_error": 0,
+        "final_text_rejected_by_stopper": 4,
+        "rows_with_eos_metadata": 0,
+        "rows_with_stop_reason_metadata": 0
+      },
+      "json_error_counts": {
+        "Expecting ',' delimiter": 4
+      },
+      "retokenized_prefix_any_accepted_by_stopper": 0,
+      "invalid_generated_token_min": 327,
+      "invalid_generated_token_max": 486,
+      "raw_ids_recorded": false,
+      "structural_tail_counts_after_string_elision": {
+        ":\"\",\"\":[\"\"]}]}}]": 4
+      },
+      "closure_diagnostics": {
+        "json_error_at_second_last_char": 4,
+        "ends_reversed_outer_close": 4,
+        "parses_after_final_two_char_swap_only": 4
+      }
+    },
+    "grounded64_screen/full_hash4": {
+      "counts": {
+        "rows": 64,
+        "invalid_json": 16,
+        "max_token_truncated": 0,
+        "execution_error": 0,
+        "final_text_rejected_by_stopper": 16,
+        "rows_with_eos_metadata": 0,
+        "rows_with_stop_reason_metadata": 0
+      },
+      "json_error_counts": {
+        "Expecting ',' delimiter": 16
+      },
+      "retokenized_prefix_any_accepted_by_stopper": 0,
+      "invalid_generated_token_min": 66,
+      "invalid_generated_token_max": 151,
+      "raw_ids_recorded": false,
+      "structural_tail_counts_after_string_elision": {
+        ":\"\",\"\":[\"\"]}]}}]": 15,
+        "\",\"\",\"\",\"\"]}]}}]": 1
+      },
+      "closure_diagnostics": {
+        "json_error_at_second_last_char": 16,
+        "ends_reversed_outer_close": 16,
+        "parses_after_final_two_char_swap_only": 16
+      }
+    },
+    "grounded64_screen/full_source16": {
+      "counts": {
+        "rows": 22,
+        "invalid_json": 2,
+        "max_token_truncated": 0,
+        "execution_error": 0,
+        "final_text_rejected_by_stopper": 2,
+        "rows_with_eos_metadata": 0,
+        "rows_with_stop_reason_metadata": 0
+      },
+      "json_error_counts": {
+        "Expecting ',' delimiter": 2
+      },
+      "retokenized_prefix_any_accepted_by_stopper": 0,
+      "invalid_generated_token_min": 138,
+      "invalid_generated_token_max": 378,
+      "raw_ids_recorded": false,
+      "structural_tail_counts_after_string_elision": {
+        ",\"\":[\"\",\"\"]}]}}]": 1,
+        ":\"\",\"\":[\"\"]}]}}]": 1
+      },
+      "closure_diagnostics": {
+        "json_error_at_second_last_char": 2,
+        "ends_reversed_outer_close": 2,
+        "parses_after_final_two_char_swap_only": 2
+      }
+    },
+    "grounded64_screen/local_hash16": {
+      "counts": {
+        "rows": 22,
+        "invalid_json": 3,
+        "max_token_truncated": 0,
+        "execution_error": 0,
+        "final_text_rejected_by_stopper": 3,
+        "rows_with_eos_metadata": 0,
+        "rows_with_stop_reason_metadata": 0
+      },
+      "json_error_counts": {
+        "Expecting ',' delimiter": 3
+      },
+      "retokenized_prefix_any_accepted_by_stopper": 0,
+      "invalid_generated_token_min": 334,
+      "invalid_generated_token_max": 532,
+      "raw_ids_recorded": false,
+      "structural_tail_counts_after_string_elision": {
+        ":\"\",\"\":[\"\"]}]}}]": 3
+      },
+      "closure_diagnostics": {
+        "json_error_at_second_last_char": 3,
+        "ends_reversed_outer_close": 3,
+        "parses_after_final_two_char_swap_only": 3
+      }
+    },
+    "missing64_screen/full_hash16": {
+      "counts": {
+        "rows": 22,
+        "invalid_json": 4,
+        "max_token_truncated": 0,
+        "execution_error": 0,
+        "final_text_rejected_by_stopper": 4,
+        "rows_with_eos_metadata": 0,
+        "rows_with_stop_reason_metadata": 0
+      },
+      "json_error_counts": {
+        "Expecting ',' delimiter": 4
+      },
+      "retokenized_prefix_any_accepted_by_stopper": 0,
+      "invalid_generated_token_min": 327,
+      "invalid_generated_token_max": 486,
+      "raw_ids_recorded": false,
+      "structural_tail_counts_after_string_elision": {
+        ":\"\",\"\":[\"\"]}]}}]": 4
+      },
+      "closure_diagnostics": {
+        "json_error_at_second_last_char": 4,
+        "ends_reversed_outer_close": 4,
+        "parses_after_final_two_char_swap_only": 4
+      }
+    }
+  },
+  "proven_findings": [
+    "Both frozen 1835-row SFT completion corpora contain valid full JSON targets matching target objects exactly.",
+    "Actual Qwen tokenizer leaves the final outer-closing token ]} supervised in every row in both corpora; zero final outer-closing tokens overlap UNKNOWN masks.",
+    "SFT appends one supervised EOS after the complete target; no target contains internal EOS or padding tokens.",
+    "All 29 invalid JSON outputs in six completed screen conditions swap their final two bracket characters: suffix }}] instead of }]}. Each JSON error is at the second-last character.",
+    "A diagnostic swap of only the final two characters makes all 29 parse as JSON. This was not applied to prediction artifacts, gold or reported metrics.",
+    "The existing stopping extractor rejects all 29 malformed outputs. Retokenized-prefix replay found no accepted earlier prefix. None reached max_new_tokens or had a runtime error.",
+    "Stored generations omit raw generated IDs, EOS-observed flags and explicit stopping reason; EOS-versus-padding cannot be directly proved retrospectively."
+  ],
+  "interpretation": [
+    "No demonstrated malformed-target, truncated-target, or terminal-closure loss-mask defect in the frozen data and training path.",
+    "The observed failure is malformed outer closure generation after fine-tuning, rather than merely an unfinished valid JSON prefix.",
+    "Insufficient optimization, changes to grammar probabilities during partial SFT, and exposure to masked placeholder context remain plausible but unproved causes.",
+    "The decoder can terminate on model EOS independently of valid JSON. Premature EOS remains plausible, but cannot be established from stripped decoded strings alone.",
+    "The stopping extractor permits wrapped/first-object JSON while scoring uses strict whole-string JSON; this general contract mismatch is real, but was not responsible for accepting the 29 observed malformed endings."
+  ],
+  "recommendations": [
+    "Preserve current frozen results and report structural-invalid rate separately from semantic precision/recall.",
+    "In a new versioned diagnostic runner, record generated token IDs, EOS/pad IDs, first-JSON-complete event, actual stop reason and unstripped final tokens.",
+    "Replay a small fixed set of affected prompts with the same checkpoint to distinguish model EOS from padding removal; do not alter the ongoing GPU queue.",
+    "After the baseline is frozen, compare grammar-constrained decoding or a separately trained structure objective. Keep raw and constrained metrics separate; do not silently repair existing outputs.",
+    "Do not unmask UNKNOWN empty decisions to teach syntax, because that would incorrectly convert unannotated pairs into negatives."
+  ]
+}

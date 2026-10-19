@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "experiment": "DPO52 semantic36_outside16_lr2e6_beta01_e1",
+  "self_comparison": false,
+  "scope": "Filtered69 free-text graph deltas; actual125 matched relation windows; no source text or entity names.",
+  "counts": {
+    "new_fp:normal_parse_semantic_addition": 7,
+    "lost_tp:normal_parse_relation_absent_or_changed": 4,
+    "removed_fp:normal_parse_relation_absent_or_changed": 2,
+    "new_fp:recovered_previously_failed_windows": 13,
+    "new_tp:normal_parse_semantic_addition": 1
+  },
+  "all_graph_deltas_attributed": true,
+  "interpretation": "Failed-window associations are not claims that suppressed text contained the desired edge. Mixed cases are retained explicitly; no counterfactual repair is applied.",
+  "clinical_caution": "Silver FP/FN disagreement is not independent clinical adjudication.",
+  "failures_and_truncation": {
+    "baseline": {
+      "relation_windows": 125,
+      "status_counts": {
+        "complete": 107,
+        "failed": 18
+      },
+      "eos_observed": 125,
+      "output_budget_exhausted": 0,
+      "missing_eos": 0,
+      "deadline_exhausted": 0,
+      "parse_error_record_counts": {
+        "unknown_entity_reference": 54,
+        "unknown_or_wrong_source_relation": 5
+      },
+      "generated_tokens": 41217,
+      "invalid_attempt_records": 97
+    },
+    "candidate": {
+      "relation_windows": 125,
+      "status_counts": {
+        "complete": 107,
+        "failed": 18
+      },
+      "eos_observed": 124,
+      "output_budget_exhausted": 1,
+      "missing_eos": 1,
+      "deadline_exhausted": 0,
+      "parse_error_record_counts": {
+        "unknown_entity_reference": 45,
+        "unknown_or_wrong_source_relation": 5
+      },
+      "generated_tokens": 44774,
+      "invalid_attempt_records": 67
+    },
+    "newly_failed_windows": 1,
+    "recovered_windows": 1,
+    "changed_status_windows": 2,
+    "changes_without_source_text": [
+      {
+        "event_id": "live:tune:677:relations:0",
+        "document_index": 35,
+        "window_index": 0,
+        "baseline_status": "complete",
+        "candidate_status": "failed",
+        "baseline_parse_error_types": {},
+        "candidate_parse_error_types": {
+          "unknown_entity_reference": 1
+        },
+        "baseline_cap_hit": false,
+        "candidate_cap_hit": false
+      },
+      {
+        "event_id": "live:tune:548:relations:0",
+        "document_index": 24,
+        "window_index": 0,
+        "baseline_status": "failed",
+        "candidate_status": "complete",
+        "baseline_parse_error_types": {
+          "unknown_entity_reference": 1
+        },
+        "candidate_parse_error_types": {},
+        "baseline_cap_hit": false,
+        "candidate_cap_hit": false
+      }
+    ],
+    "definition": "Window/invalid-record counts are separate from graph FP/FN; full130 live relation windows."
+  },
+  "private_selected_case_count": 4
+}

@@ -1,0 +1,222 @@
+{
+  "version": "dense-abstention-unique-evidence-20261012-v1",
+  "protocol": "dense_fixed_pair_diagnostic_not_sparse_positive",
+  "source_manifest_sha256": "cce07aa6add954dae08ca9dcaa16048468e84466cf167eb39e5ee1b1655d8c28",
+  "source_input_sha256": {
+    "records.jsonl": "d7d3449322c935b890b302f379eb6f21844b90120ac44ea0537649eb43166eee",
+    "frozen_split.jsonl": "691e97fff38aa46f4716cf4f844905287acb28e264cf9a0512a8d6dfa29eb2bd",
+    "base/train.jsonl": "661004db3ffaf010de7bbdca61b428935b8c2c078d567b4b456a6c8daa6946f5",
+    "base/tune.jsonl": "6a11758623d0d62b300285fc9cdd463f7ab27982c424db6e4a89510b4095fcaa"
+  },
+  "seed": 42,
+  "evidence_grounding_policy": "unique-evidence-v1",
+  "protocol_config": {
+    "repair": true,
+    "strict_evidence": true,
+    "pairs_per_batch": 16,
+    "order": "hash",
+    "context": "full",
+    "multilabel": true,
+    "rebalance": false,
+    "negative_ratio": 3,
+    "grounding": "exact",
+    "matching": "nfkc_v2"
+  },
+  "synthetic_cases_per_arm": 512,
+  "source_group_counts": {
+    "train": 545,
+    "tune": 61
+  },
+  "base_rows": 1323,
+  "base_supervision": {
+    "rows": 1323,
+    "UNKNOWN_UNANNOTATED": 13941,
+    "SUPPORTED_SILVER": 4615,
+    "positive_edges": 4635,
+    "UNKNOWN_EVIDENCE": 128,
+    "UNKNOWN_REVIEW": 2
+  },
+  "rebuild_stats": {
+    "structured_icd": 545,
+    "records": 670,
+    "all_candidate_pairs": 99864,
+    "ungrounded_entities": 222,
+    "UNKNOWN_UNANNOTATED": 14941,
+    "positive_edges": 4635,
+    "multilabel_pairs": 20,
+    "all_unknown_rows_excluded": 153,
+    "rows": 1323,
+    "retained_pair_decisions": 18686,
+    "retained_unknown_decisions": 14071,
+    "SUPPORTED_SILVER": 4615,
+    "UNKNOWN_EVIDENCE": 150,
+    "UNKNOWN_REVIEW": 18
+  },
+  "historical_base_positive_edges": 4785,
+  "rebuilt_base_positive_edges": 4635,
+  "constructed_source_groups": 92,
+  "grounded_negative_decisions_unmasked": 1400,
+  "audits": {
+    "V4_missing_only": {
+      "supervision": {
+        "rows": 1835,
+        "UNKNOWN_UNANNOTATED": 13941,
+        "SUPPORTED_SILVER": 5639,
+        "positive_edges": 5659,
+        "max_sequence_tokens": 4932,
+        "prompt_tokens_once": 4708893,
+        "completion_tokens_once": 440614,
+        "supervised_completion_tokens_once": 219099,
+        "masked_completion_tokens_once": 221515,
+        "UNKNOWN_EVIDENCE": 128,
+        "UNKNOWN_REVIEW": 2,
+        "SYNTHETIC_NEGATIVE": 2508,
+        "UNKNOWN_CONSTRUCTED_ABLATION": 1400,
+        "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1212
+      },
+      "row_distribution": {
+        "positive_only_supervision_rows": 1417,
+        "mixed_positive_negative_rows": 418,
+        "negative_only_supervision_rows": 0,
+        "all_unknown_rows": 0
+      },
+      "admission": {
+        "version": "partial-supervision-guard-v1",
+        "applicable": true,
+        "rows": 1835,
+        "partial_rows": 1835,
+        "legacy_rows": 0,
+        "validated_rows": 1835,
+        "invalid_rows": 0,
+        "validation_errors": [],
+        "count_scope": "one pass of validated partial rows, before weighted sampling; pairs, not relation edges or tokens",
+        "allow_positive_only_ablation": false,
+        "positive_only_ablation": false,
+        "ablation_max_steps": null,
+        "minimum_negative_pairs": 1,
+        "minimum_negative_ratio": null,
+        "warnings": [
+          "Negative supervision is a minority: 2508/8147 (30.78%). Descriptive scarcity warning only; no minimum negative ratio is enforced."
+        ],
+        "decision": "allowed",
+        "status_counts": {
+          "SUPPORTED_SILVER": 5639,
+          "SYNTHETIC_NEGATIVE": 2508,
+          "UNKNOWN_CONSTRUCTED_ABLATION": 1400,
+          "UNKNOWN_EVIDENCE": 128,
+          "UNKNOWN_REVIEW": 2,
+          "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1212,
+          "UNKNOWN_UNANNOTATED": 13941
+        },
+        "positive_pairs": 5639,
+        "negative_pairs": 2508,
+        "unknown_pairs": 16683,
+        "unknown_loss_pairs": 0,
+        "supervised_pairs": 8147,
+        "candidate_pairs": 24830,
+        "negative_ratio": 0.3078433779305266,
+        "negative_ratio_denominator": "positive_pairs + negative_pairs; UNKNOWN excluded",
+        "positive_only": false,
+        "character_mask_validation": "passed_validate_partial_row",
+        "tokenizer_validation": "pending_JsonlSFTDataset"
+      }
+    },
+    "V4_grounded_empty": {
+      "supervision": {
+        "rows": 1835,
+        "UNKNOWN_UNANNOTATED": 13941,
+        "SUPPORTED_SILVER": 5639,
+        "positive_edges": 5659,
+        "max_sequence_tokens": 4932,
+        "prompt_tokens_once": 4708893,
+        "completion_tokens_once": 440614,
+        "supervised_completion_tokens_once": 237651,
+        "masked_completion_tokens_once": 202963,
+        "UNKNOWN_EVIDENCE": 128,
+        "UNKNOWN_REVIEW": 2,
+        "SYNTHETIC_NEGATIVE": 3908,
+        "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1212
+      },
+      "row_distribution": {
+        "positive_only_supervision_rows": 1323,
+        "mixed_positive_negative_rows": 512,
+        "negative_only_supervision_rows": 0,
+        "all_unknown_rows": 0
+      },
+      "admission": {
+        "version": "partial-supervision-guard-v1",
+        "applicable": true,
+        "rows": 1835,
+        "partial_rows": 1835,
+        "legacy_rows": 0,
+        "validated_rows": 1835,
+        "invalid_rows": 0,
+        "validation_errors": [],
+        "count_scope": "one pass of validated partial rows, before weighted sampling; pairs, not relation edges or tokens",
+        "allow_positive_only_ablation": false,
+        "positive_only_ablation": false,
+        "ablation_max_steps": null,
+        "minimum_negative_pairs": 1,
+        "minimum_negative_ratio": null,
+        "warnings": [
+          "Negative supervision is a minority: 3908/9547 (40.93%). Descriptive scarcity warning only; no minimum negative ratio is enforced."
+        ],
+        "decision": "allowed",
+        "status_counts": {
+          "SUPPORTED_SILVER": 5639,
+          "SYNTHETIC_NEGATIVE": 3908,
+          "UNKNOWN_EVIDENCE": 128,
+          "UNKNOWN_REVIEW": 2,
+          "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1212,
+          "UNKNOWN_UNANNOTATED": 13941
+        },
+        "positive_pairs": 5639,
+        "negative_pairs": 3908,
+        "unknown_pairs": 15283,
+        "unknown_loss_pairs": 0,
+        "supervised_pairs": 9547,
+        "candidate_pairs": 24830,
+        "negative_ratio": 0.4093432491882267,
+        "negative_ratio_denominator": "positive_pairs + negative_pairs; UNKNOWN excluded",
+        "positive_only": false,
+        "character_mask_validation": "passed_validate_partial_row",
+        "tokenizer_validation": "pending_JsonlSFTDataset"
+      }
+    }
+  },
+  "identical_prompts_completions_positive_targets": true,
+  "original_unknown_supervision_unchanged_across_arms": true,
+  "supervised_token_budget_matched": false,
+  "tokenizer_checked": true,
+  "max_length": 6144,
+  "clinical_adjudication_completed": false,
+  "evaluation_gold_modified": false,
+  "existing_release_modified": false,
+  "code_sha256": {
+    "agent/data_repair/launch_release.py": "4b6ca407387de754cf1713df1919ddbd11e4e209cee12b0a1060c2339dbbe93b",
+    "agent/data_repair/release_v2.py": "fcfaa3cb301ed730af17de71facb5ea3fcc740d02e2978419fe5d4c0a5c27964",
+    "agent/data_repair/supervision_v2.py": "ac07cb7a10e05d3eabf136dba512a0f579b02f84c34af3ae1745f85246739a32",
+    "agent/data_repair/abstention_repair.py": "c044febd86b672614917191b5a9904a7065a1c4569f71f35e1ce280983927a42",
+    "agent/data_repair/text_normalization.py": "595988decef1c5f92757417f0f9bca5a7f3c9416059e3608be2864d4791d7dae",
+    "agent/generative/protocol.py": "484c803a4b1988bc6dbe601d557c68ed6527a173f8eeba351e328300a67333d2",
+    "agent/kg_agent/contracts.py": "cb34b19df2b36aa21d6efef36827fd53082a9fbf1d89f0db110266934ffb8933",
+    "agent/kg_agent/ontology.json": "16ae394d3f3bf94fb0d26063c7e8015d395f35a0c589e5bd64b954154e6de502",
+    "agent/kg_agent/source.py": "54f8b394d0f4eabe796af514fbc3dc135f777c5615da4fa872212e38e53e8b3f"
+  },
+  "caveats": [
+    "Constructed extraction negatives are not expert-adjudicated clinical negatives.",
+    "This is a diagnostic dense-pair comparison, not a sparse-output experiment.",
+    "Equal steps and prompts do not equalize supervised completion-token exposure.",
+    "Changed strict-evidence anchors alter synthetic selection versus historical V3."
+  ],
+  "tokenizer_sha256": {
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+  },
+  "output_sha256": {
+    "base_unique_train.jsonl": "f3a5cecaace0c6dd4136d5eb5ba6f1d4e5fd9de30cc54a448fbf42b58db742d6",
+    "V4_missing_only.jsonl": "ab6fac59b1df72c1717adb796627be863d9e9540c275fc69b6e8ce3f3f54afb7",
+    "V4_grounded_empty.jsonl": "6ab0e777fba5b5f0730702b40fdca90ec27e2b3daea8727fd143dbce83e3d4ba",
+    "experiments.json": "444ab3b0228855c6237d822c6ae234f5091461c77b6b784dd2ab5a47879b751a"
+  }
+}

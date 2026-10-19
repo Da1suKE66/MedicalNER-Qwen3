@@ -1,0 +1,21 @@
+{
+  "status": "prepared_then_paused_before_GPU_launch_by_user_pipeline_priority",
+  "planned_dpo_training_started": false,
+  "data": {
+    "contract": "fully-artificial-recovery-preferences-v1",
+    "train_rows": 256,
+    "semantic_preferences": 192,
+    "structural_rejected_preferences": 64,
+    "mechanical_holdout_rows": 32,
+    "medical_source_rows": 0,
+    "train_sha256": "4faca2272712516e8e8daccde523b3235f87f1e4e47b3bbac1234292cc1c75ac"
+  },
+  "training_fixes": [
+    "SFT with --sft-adapter now updates the existing LoRA instead of silently creating a new one",
+    "parent receipt and initial weights are checked; save/reload must match",
+    "structural rejected examples require exact recipe reconstruction; UNKNOWN remains ineligible",
+    "optional continued-SFT dropout control is explicit"
+  ],
+  "preference_scorer": "implemented completion-only policy/reference logprob comparison; CPU tests only, no new GPU preference score",
+  "scope_note": "New bounded-choice SFT reuses only certified authored chosen semantics, not rejected JSON targets. JSON-recovery DPO remains unlaunched."
+}

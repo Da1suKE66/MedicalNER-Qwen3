@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "output_contract": "bounded-choices-v1",
+  "status": "engineering_verification_not_medical_model_release",
+  "reason": "User requested fixing pipeline output responsibilities before RL",
+  "architecture": "Qwen3-8B causal LM plus LoRA; source-grounded finite choices, deterministic assembly",
+  "entrypoints": {
+    "training": "agent/train_choices.py",
+    "pipeline": "agent/run_choice_pipeline.py"
+  },
+  "training": {
+    "scope": "fully artificial recipe-verified worlds",
+    "source_rows": 256,
+    "tasks": 512,
+    "stages": [
+      "entities",
+      "relations"
+    ],
+    "max_steps": 16,
+    "max_length": 6144,
+    "batch_size": 1,
+    "gradient_accumulation": 4,
+    "learning_rate": 0.0001,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.0,
+    "seed": 42,
+    "timeout_seconds": 1200
+  },
+  "prerequisites": {
+    "medical_silver_allowed": false,
+    "unknown_as_negative_allowed": false,
+    "legacy_json_adapter_direct_use": false,
+    "fresh_outputs": true,
+    "shared_gpu_lock": true,
+    "exact_save_reload_required": true
+  },
+  "data_sha256": "4faca2272712516e8e8daccde523b3235f87f1e4e47b3bbac1234292cc1c75ac",
+  "snapshot_v1_code_sha256": "8e020e741f8295750de63e7a2fbb7a18864459339078bd5f333b697f7a79e108",
+  "evaluation_scope": "bounded artificial task and raw pipeline engineering checks; not full medical evaluation",
+  "rl_status": "previous JSON-recovery DPO paused before launch; rework semantic preferences after new SFT contract"
+}

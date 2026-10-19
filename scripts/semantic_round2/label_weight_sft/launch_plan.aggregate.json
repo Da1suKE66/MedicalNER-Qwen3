@@ -1,0 +1,70 @@
+{
+  "status": "prepared_not_queued",
+  "PYTHONPATH": "/workspace/medicalner/20261019/code_eval_v6/agent",
+  "wrapper_argv": [
+    "/root/venvs/medicalner/bin/python",
+    "/workspace/medicalner/round2_20261019/label_weight_sft/run_smoke_then_train.py",
+    "--config",
+    "/workspace/medicalner/round2_20261019/label_weight_sft/training_config.json"
+  ],
+  "optional_deadline_flag": "--deadline-unix (UTC Unix seconds; requires at least3000s remaining before start)",
+  "root_controls_queue": true,
+  "evaluation_required": "Full130 with unchanged baseline cached actual entity outputs, prompts, gold and scorer; verify SHAs and pairwise artifacts.",
+  "expected_formal_exposure": {
+    "rows": 1000,
+    "row_visits": 1000,
+    "min_visits": 1,
+    "max_visits": 1,
+    "updates": 125,
+    "input_tokens": 1610825,
+    "target_tokens": 399973,
+    "relation_label_tokens": 27752,
+    "weighted_token_mass": 483229
+  },
+  "local_cpu_tests": {
+    "passed": 10,
+    "actual_torch_local_available": false
+  },
+  "server_cpu_torch_check": {
+    "status": "PASS reported by root after actual server CPU execution",
+    "files_verified": {
+      "label_weights.py": "c1c0f4ea610b406681728aad2c25cc4d90aca475b1c1e245dc98e206cd3b2c56",
+      "verify_torch_math.py": "338b587fb27218c670c608792d47dc25f93f7a8257f9c32822e2753d98524c1d"
+    },
+    "unit_weight_CE": true,
+    "unequal_microbatch_gradients": true,
+    "Trainer_accumulation_denominators": [
+      12,
+      12,
+      7
+    ],
+    "last_partial_group": true,
+    "SGD_parameter_max_abs_difference": 0.0
+  },
+  "estimated_runtime_minutes": {
+    "historical_R_2epoch_training": 28.9296,
+    "projected_1epoch_training": 14.4648,
+    "historical_fixed_E_full130_evaluation": 20.11238727115,
+    "projected_train_plus_eval_before_overhead": 34.577187271149995,
+    "caution": "Estimate from unweighted training; custom weighted loss and loading/smoke overhead remain unmeasured.",
+    "conservative_training_including_smoke_and_loading": 20,
+    "conservative_full130_evaluation": 30,
+    "risk": "20min weighted-training estimate is unmeasured. Training timeout1500s is independent of evaluation reserve; an overrun or timeout means failure, never partial training accepted as complete."
+  },
+  "stop_conditions": [
+    "Less than3000s remaining for training and conservative1800s full130 evaluation",
+    "Any code/data/parent fingerprint mismatch",
+    "Any preflight/math/smoke failure",
+    "Incomplete training exposure or nonfinite weights",
+    "Do not extend deadline or displace the10 queued jobs"
+  ],
+  "limitations": [
+    "Token shares are not measured loss shares or gradient shares.",
+    "Weights do not fix missing entities or source annotation defects.",
+    "Full1000-row release includes one known-questionable source188 row.",
+    "Uniform label multiplier does not balance rare/frequent relationship classes.",
+    "More training, different LR and weighting are confounded without matched weight1 continuation.",
+    "Reused130-document tune is adaptive, not a new blind test."
+  ],
+  "smoke_plus_formal_timeout_seconds": 1500
+}

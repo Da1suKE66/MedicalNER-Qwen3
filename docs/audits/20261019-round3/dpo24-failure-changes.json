@@ -1,0 +1,55 @@
+{
+  "baseline": {
+    "relation_windows": 125,
+    "status_counts": {
+      "complete": 107,
+      "failed": 18
+    },
+    "eos_observed": 125,
+    "output_budget_exhausted": 0,
+    "missing_eos": 0,
+    "deadline_exhausted": 0,
+    "parse_error_record_counts": {
+      "unknown_entity_reference": 54,
+      "unknown_or_wrong_source_relation": 5
+    },
+    "generated_tokens": 41217,
+    "invalid_attempt_records": 97
+  },
+  "candidate": {
+    "relation_windows": 125,
+    "status_counts": {
+      "complete": 108,
+      "failed": 17
+    },
+    "eos_observed": 124,
+    "output_budget_exhausted": 1,
+    "missing_eos": 1,
+    "deadline_exhausted": 0,
+    "parse_error_record_counts": {
+      "unknown_entity_reference": 44,
+      "unknown_or_wrong_source_relation": 5
+    },
+    "generated_tokens": 44169,
+    "invalid_attempt_records": 66
+  },
+  "newly_failed_windows": 0,
+  "recovered_windows": 1,
+  "changed_status_windows": 1,
+  "changes_without_source_text": [
+    {
+      "event_id": "live:tune:548:relations:0",
+      "document_index": 24,
+      "window_index": 0,
+      "baseline_status": "failed",
+      "candidate_status": "complete",
+      "baseline_parse_error_types": {
+        "unknown_entity_reference": 1
+      },
+      "candidate_parse_error_types": {},
+      "baseline_cap_hit": false,
+      "candidate_cap_hit": false
+    }
+  ],
+  "definition": "Window/invalid-record counts are separate from graph FP/FN; full130 live relation windows."
+}

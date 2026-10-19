@@ -1,0 +1,247 @@
+{
+  "observed_at": "2026-10-12T08:52:31.623700+00:00",
+  "scope": "one_epoch_control_all_three_conditions_complete_not_final_quality",
+  "samples": 12,
+  "gold_triples": 40,
+  "medical": [
+    {
+      "job": "matched_control_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 2,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.09090909090909091,
+      "elapsed_seconds": 444.2002008999989,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 22,
+      "protocol_error_batches_excluding_invalid_json": 0
+    },
+    {
+      "job": "matched_control_screen",
+      "condition": "full_source16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 7,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.3181818181818182,
+      "elapsed_seconds": 876.8039048610008,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 22,
+      "protocol_error_batches_excluding_invalid_json": 0
+    },
+    {
+      "job": "matched_control_screen",
+      "condition": "full_hash4",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 55,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 64,
+      "truncated_batches": 9,
+      "parse_error_batches": 64,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.140625,
+      "elapsed_seconds": 949.1792056220002,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 17,
+          "relation": {
+            "tp": 0,
+            "fp": 38,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 55,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 55,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 17,
+          "relation": {
+            "tp": 0,
+            "fp": 38,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 56,
+      "protocol_error_batches_excluding_invalid_json": 8
+    }
+  ],
+  "note": "F1=0 is generation and extraction failure, never correct abstention; JSON failures retain everyFN. New3epoch queue remains waiting with original150minute admission gate.",
+  "hash4_fp_breakdown": {
+    "total_fp": 55,
+    "protocol_penalty_unknown_pair": 8,
+    "protocol_penalty_unknown_relation": 2,
+    "other_emitted_triples_fp_against_silver": 45,
+    "tp": 0,
+    "fn": 40,
+    "f1_if_only_protocol_penalties_omitted_diagnostic": 0,
+    "not_all_fp_are_adjudicated_medical_hallucinations": true
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "policy": {
+    "version": 1,
+    "declared_utc": "2026-10-18T22:28:35.096409+00:00",
+    "status": "before_any_repaired_relation_full130_results_inspected",
+    "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
+    "candidate_runs": [
+      "full_relation_batch8_selected_entity",
+      "relation_short_source_complete_selected_entity",
+      "relation_short_canonical_complete_selected_entity"
+    ],
+    "requirements": [
+      "All130 original records and frozen gold scored in live and oracle modes",
+      "Completed receipts and independent TP/FP/FN recount",
+      "Identical live entity graph SHA and125 cached entity windows",
+      "Same runtime/protocol, batch8, max-input8192, max-new4096, greedy decoding",
+      "Disclose repeated supervision and optimizer-update differences between full and short views"
+    ],
+    "primary": "live.filtered.free_text.relation.f1",
+    "tie_break": [
+      "live.raw.free_text.relation.f1",
+      "live.filtered.free_text.relation.recall",
+      "fewer live failed relation generation calls"
+    ],
+    "exact_tie_preference": [
+      "full_source",
+      "short_source",
+      "short_canonical"
+    ],
+    "parameter_trial_policy": "Only selected view gets LR1e-4 and2e-5 comparisons; keep data,rank16,epochs2,seed42 and final checkpoint fixed. Match batch8 cachedentity full130 live/oracle evaluation.",
+    "conditional_entity_trial": "Existing predeclared LR1e-4 trial remains after relation comparison and before optional DPO, budget permitting. New entity adapter must generate new entities; no old entity cache.",
+    "selection_is_tune_not_blind_test": true
+  },
+  "matched_full_control": {
+    "status": "queued",
+    "job": "evaluate_full_relation_batch8_selected_entity",
+    "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
+    "samples": 130,
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "same_selected_actual_entity_cache": true,
+    "batch_size": 8
+  },
+  "source_and_canonical_training_completed": true,
+  "no_new_quality_score_claimed": true,
+  "queue_plan_sha256": "3c93edf4f6563b6968ea5b6771a4ea64c94f62d1dc7e4256f0420ad2d258c8c1",
+  "queue_total_jobs": 10,
+  "same_live_entity_graph_sha256_required": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567"
+}

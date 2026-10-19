@@ -1,0 +1,618 @@
+{
+  "version": 1,
+  "started_utc": "2026-10-19T07:10:13.552554+00:00",
+  "deadline_utc": "2026-10-19T11:00:00Z",
+  "status": "round_closed_completed_candidates_evaluated_no_final_relation_gain",
+  "baseline_live_free_relation": {
+    "tp": 238,
+    "fp": 183,
+    "fn": 335,
+    "f1": 0.4788732394366197
+  },
+  "baseline_live_free_entity": {
+    "tp": 401,
+    "fp": 117,
+    "fn": 247,
+    "f1": 0.6878216123499142
+  },
+  "dpo": {
+    "status": "complete_no_improvement_not_selected",
+    "training_pairs": 208,
+    "mechanical_holdout_pairs": 32,
+    "reviewed_semantic_pairs": 16,
+    "reference_parent": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2",
+    "learning_rate": 5e-06,
+    "beta": 0.1,
+    "epochs": 1,
+    "gradient_accumulation": 4,
+    "planned_updates": 52,
+    "train_sha256": "1191b1e6ffa56a352539e86614179e57f89efc760fe580ddb582a1c200bea3b9",
+    "training_and_smoke_completed": true,
+    "gpu_smoke": {
+      "completed": true,
+      "pairs": 4,
+      "updates": 1,
+      "reference_unchanged": true,
+      "saved_reload_exact": true,
+      "saved_reload_max_logit_difference": 0.0,
+      "peak_gpu_gib": 22.67347526550293,
+      "elapsed_seconds": 32.27635034400009
+    },
+    "latest_observed_step": 52,
+    "latest_observed_pairs": 208,
+    "all_reference_pairs_precomputed": 208,
+    "prompt_loss_tokens": 0,
+    "global_step": 52,
+    "epochs_every_pair": 1,
+    "elapsed_seconds": 466.1992875489959,
+    "training_manifest_sha256": "2994e577c0ff9faef8d97c5e4839b012baf15658f5fcfcd2acf12057d1e67f7f",
+    "adapter_final_sha256": "c59cec6cd1a350c427f91b737293a7b16ddb89bdee03deadd2dbed899f5ef8f5",
+    "reference_unchanged": true,
+    "saved_reload_exact": true,
+    "current_runtime_contract_check_passed": true,
+    "medical_quality_evaluation_complete": true,
+    "independent_training_review": {
+      "status": "PASS",
+      "report_sha256": "d5975d33351828140e306c973be766a71f5220c4233c8479d75d4775fcfa5925"
+    },
+    "live_free_relation": {
+      "f1": 0.4675324675324675,
+      "fn": 339,
+      "fp": 194,
+      "precision": 0.5467289719626168,
+      "recall": 0.4083769633507853,
+      "tp": 234
+    },
+    "delta_f1_percentage_points": -1.134077190415217,
+    "evaluation_manifest_sha256": "ce8a5b9e2cf33e3c2724dc1454b088ace0286907d36fb6f8342b9374fa321392",
+    "independent_complete_recount": "PASS",
+    "relation_failed_windows": 20,
+    "relation_token_limit_exhaustions": 0,
+    "selected_for_final_pipeline": false
+  },
+  "api": {
+    "status": "automatic_approval_rejected_no_successful_requests",
+    "action": "12_existing_train_original_texts_to_DeepSeek_Flash",
+    "reason": "specific_possible_sensitive_medical_text_disclosure_not_explicitly_authorized",
+    "fallback": "locally_reviewed_resident_train_semantic_preferences",
+    "retry_without_new_authorization_or_public_source_evidence": false
+  },
+  "short_input": {
+    "status": "complete_screen_not_selected",
+    "scope": "Matched6long_source_only_pilot_not_full130",
+    "short_chars": [
+      2400,
+      1600
+    ],
+    "all_selected_original_gold_retained": true,
+    "same_models_and_source_selection_verified": true,
+    "scores": {
+      "2400": {
+        "filtered_free_text": {
+          "entity": {
+            "f1": 0.6637554585152838,
+            "fn": 49,
+            "fp": 28,
+            "precision": 0.7307692307692307,
+            "recall": 0.608,
+            "tp": 76
+          },
+          "relation": {
+            "f1": 0.48936170212765956,
+            "fn": 59,
+            "fp": 37,
+            "precision": 0.5542168674698795,
+            "recall": 0.4380952380952381,
+            "tp": 46
+          }
+        },
+        "generation_checks": {
+          "live:entities": {
+            "budget_exhausted": 0,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 22,
+            "events": 22,
+            "failed": 0,
+            "generated_tokens": 2343,
+            "missing_eos": 0
+          },
+          "live:relations": {
+            "budget_exhausted": 0,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 22,
+            "events": 22,
+            "failed": 0,
+            "generated_tokens": 6736,
+            "missing_eos": 0
+          }
+        },
+        "manifest_sha256": "692e49cbe88469599adaba349043ddeff0c935270c7c7378c2372bb7d6adaf57",
+        "metrics_sha256": "7626568424945f2f9ad45523c29e0dc62d1b1f11948ad5cee82c0437c923a767",
+        "recount_sha256": "0486b6c619c5e8ecf48a8f38e58abb43ea79232ea96f6a9844078145d4aa4729"
+      },
+      "1600": {
+        "filtered_free_text": {
+          "entity": {
+            "f1": 0.6614173228346457,
+            "fn": 41,
+            "fp": 45,
+            "precision": 0.6511627906976745,
+            "recall": 0.672,
+            "tp": 84
+          },
+          "relation": {
+            "f1": 0.3925233644859813,
+            "fn": 63,
+            "fp": 67,
+            "precision": 0.3853211009174312,
+            "recall": 0.4,
+            "tp": 42
+          }
+        },
+        "generation_checks": {
+          "live:entities": {
+            "budget_exhausted": 0,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 36,
+            "events": 36,
+            "failed": 0,
+            "generated_tokens": 3180,
+            "missing_eos": 0
+          },
+          "live:relations": {
+            "budget_exhausted": 2,
+            "cached_entity_events": 0,
+            "deadline_exhausted": 0,
+            "eos_observed": 34,
+            "events": 36,
+            "failed": 2,
+            "generated_tokens": 19063,
+            "missing_eos": 2
+          }
+        },
+        "manifest_sha256": "80ed228a318dafb482f091e7559e4ab46a1a941588a5aee056d921c862cdc771",
+        "metrics_sha256": "6f5f89d44babee7840a23759335ab443544f93755bb030b6b99ba6e22270cd4e",
+        "recount_sha256": "9aaddc45725e3795d9b786332a6de4854599d566cd3960facc9763c3a856173e"
+      }
+    },
+    "paired_review_sha256": "b9596224bf53e8dd65d516e4737f03918270ba7840f48c54f06ed33b62a8e840",
+    "long_criterion_over160chars": {
+      "gold": 6,
+      "matched_2400": 0,
+      "matched_1600": 0
+    },
+    "selection": "Keep2400-character context and prioritize complete-row longCriterion replay full-data training; do not run full1600 training in this round based on this negative screen.",
+    "limitation": "Inference-only context screen using existing2400-trained adapters; it does not prove a dedicated1600-trained model cannot improve."
+  },
+  "prepared_entity_training": {
+    "criterion_replay_rows": 1509,
+    "criterion_replay_added_rows": 148,
+    "short1600_rows": 2042,
+    "short1600_all_original_entity_atoms_preserved": 6484
+  },
+  "record_isolation_diagnostic": {
+    "status": "completed_offline_not_adopted",
+    "baseline_relation_f1": 0.4788732394366197,
+    "isolation_relation_f1": 0.46875,
+    "additional_tp": 2,
+    "additional_fp": 28,
+    "report": "current_record_isolation/report.json"
+  },
+  "scope": "Running experiment snapshot; queued jobs are not completed results",
+  "snapshot_utc": "2026-10-19T11:02:58.529986+00:00",
+  "entity_e3_training": {
+    "completed": true,
+    "global_step": 513,
+    "rows": 1361,
+    "epochs_every_row": 3,
+    "elapsed_seconds": 1817.7254915237427,
+    "initial_weights_equal_e2_control": true,
+    "saved_weights_bitwise_verified": true,
+    "training_manifest_sha256": "8a273c7bfc8d1eeb6b18b24b340d73c971b1dfe22bf70f2b81b2bd7852a4e8b6",
+    "quality_evaluation": "full130_completed_recount_pass"
+  },
+  "queue_jobs": 12,
+  "data_quality_review": {
+    "modal_relations_checked": 38,
+    "supported_retained": 28,
+    "uncertain_retained": 9,
+    "source_rows_with_unsupported_diagnostic_claim": 1,
+    "relation_targets_removed_in_separate_untrained_candidate": 2,
+    "existing_train_and_evaluation_unchanged": true,
+    "repaired_relation_candidate_trained": false
+  },
+  "dpo_next_data_review": {
+    "status": "DPO52_trained_full130_evaluation_running",
+    "current_chosen_rows_with_detected_diagnostic_label_noise": 1,
+    "known_source": 188,
+    "current_pair_mutation": "omit_known_positive",
+    "unsupported_diagnostic_edges_shared_by_chosen_and_rejected": 2,
+    "known_noise_does_not_establish_cause_of_measured_dpo_regression": true,
+    "next_version_should_isolate_pair_without_overwriting_frozen_v1": true,
+    "additional_semantic_pairs": 20,
+    "new_semantic_pair_kinds": {
+      "explicit_negation": 6,
+      "subtype_direction": 14
+    },
+    "planned_next_population": {
+      "semantic_pairs": 36,
+      "outside_entity_table": 16,
+      "total_pairs": 52
+    },
+    "planned_lr": 2e-06,
+    "planned_beta": 0.1,
+    "planned_epochs": 1,
+    "planned_optimizer_updates": 13,
+    "new_training_started": true,
+    "preparation_directory": "dpo52_v2",
+    "priority": "After primary SFT controls and full130 results, only with enough time for complete evaluation."
+  },
+  "dpo52_v2": {
+    "status": "full130_complete_no_gain_not_selected",
+    "train_pairs": 52,
+    "mutation_counts": {
+      "outside_entity_table": 16,
+      "reviewed_semantic_contradiction": 36
+    },
+    "semantic_change_counts": {
+      "explicit_negation_label_flip": 19,
+      "subtype_direction_reversal": 17
+    },
+    "formal_parameters": {
+      "epochs": 1,
+      "learning_rate": 2e-06,
+      "beta": 0.1,
+      "gradient_accumulation": 4,
+      "optimizer_updates": 13,
+      "max_length": 4096,
+      "seed": 42
+    },
+    "output_sha256": {
+      "candidate_train.jsonl": "f913255399b61a98f7650ecf251356f6b8122570cf0b16700e31c438ccec8a7e",
+      "mechanical_holdout.jsonl": "1e9455694d5452f223cf3df190ff247f937791c4c6ac309ee9923f1fd3ce6abe"
+    },
+    "remote_admission_sha256": "fabda6f026e7395198e2c40e07484f5030655349a0531097de2869ae20713a7b",
+    "remote_candidate_manifest_sha256": "379d7072bc7448080d7e93390817e6bb2399b19da3e039ac5dab38ec2103b30d",
+    "minimum_remaining_time_before_launch_seconds": 2700,
+    "gpu_training_completed": true,
+    "private_root": "dpo52_v2",
+    "remote_root": "/workspace/medicalner/round2_20261019/dpo52_v2",
+    "training_manifest_sha256": "7cfa53348235ecb2c396e989b7dab65d602d1480cda1876f31a09277ae5c3c1f",
+    "global_step": 13,
+    "elapsed_seconds": 129.48493696499645,
+    "observed_exposure": {
+      "chosen_completion_loss_tokens": 28881,
+      "eos_scored_per_preference_visit": 2,
+      "max_visits": 1,
+      "min_visits": 1,
+      "pairs": 52,
+      "prompt_context_token_exposures": 117148,
+      "prompt_loss_tokens": 0,
+      "rejected_completion_loss_tokens": 28900,
+      "scope": "Successful policy backward calls; reference-only forwards reported separately",
+      "successful_backward_microsteps": 52,
+      "unique_pairs_seen": 52
+    },
+    "reference_unchanged": true,
+    "saved_reload_exact": true,
+    "medical_quality_evaluation_complete": true,
+    "independent_training_review": {
+      "status": "PASS",
+      "checks": 192,
+      "aggregate_sha256": "53c2dd7487d1046b7b49ab6143c1b2f92ceb43c503120eacca8429feb5b8458c",
+      "scope": "CPU/read-only artifact, token and current runtime contract verification; no CUDA replay"
+    },
+    "live_free_relation": {
+      "f1": 0.4658077304261645,
+      "fn": 338,
+      "fp": 201,
+      "precision": 0.5389908256880734,
+      "recall": 0.41012216404886565,
+      "tp": 235
+    },
+    "selected_for_final_pipeline": false,
+    "evaluation_manifest_sha256": "6eb7be66ccb823a2cc921f7678cd3c1f027ea1ac8ab8409358875ba54a5f980f",
+    "evaluation_metrics_sha256": "b80673bde62807a051d56816ae9d7b740d5c3cf699fd61ebcac1a8fdcfa715a2"
+  },
+  "entity_e3_evaluation": {
+    "completed": true,
+    "samples": 130,
+    "independent_recount": "PASS",
+    "evaluation_manifest_sha256": "76211a0f7ef1ded84624bd4f4a61cee624308f5ba90ef9339a2be1750b8c1652",
+    "metrics_sha256": "82a3ced63f48c6129092876b632c0cb364273e557522fca822cc1e150cb868f0",
+    "free_text": {
+      "entity": {
+        "f1": 0.7024221453287197,
+        "fn": 242,
+        "fp": 102,
+        "precision": 0.7992125984251969,
+        "recall": 0.6265432098765432,
+        "tp": 406
+      },
+      "relation": {
+        "f1": 0.4726911618669315,
+        "fn": 335,
+        "fp": 196,
+        "precision": 0.5483870967741935,
+        "recall": 0.41535776614310643,
+        "tp": 238
+      }
+    },
+    "entity_f1_change_percentage_points": 1.460053297880548,
+    "relation_f1_change_percentage_points": -0.6182077569688194,
+    "generation_checks": {
+      "live:entities": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 0,
+        "generated_tokens": 12569,
+        "missing_eos": 0
+      },
+      "live:relations": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 16,
+        "generated_tokens": 43496,
+        "missing_eos": 0
+      }
+    },
+    "selected_as_best_pipeline": false,
+    "standalone_entity_candidate_improved": true,
+    "independent_comparison_sha256": "67cf5c5a638111d2e4ea1f5cf74f51463eae74e4f04cca3db9d73bf21ff5310e",
+    "long_criterion_exact_match": {
+      "E2": 3,
+      "E3": 4,
+      "gold": 53
+    }
+  },
+  "current_selected_pipeline": {
+    "entity": "entity_short_complete_lr1e4_r16_e2",
+    "relation": "relation_short_canonical_complete_lr1e4_r16_e2",
+    "free_relation_f1": 0.4788732394366197,
+    "selection_basis": "Best fully evaluated actual live free-text relation F1; standalone entity F1 is reported separately."
+  },
+  "current_job": null,
+  "replay_training": {
+    "status": "full130_complete_no_improvement_not_selected",
+    "rows": 1509,
+    "base_rows": 1361,
+    "complete_row_replays": 148,
+    "epochs": 2,
+    "learning_rate": 0.0001,
+    "full130_evaluation_queued": false,
+    "global_step": 378,
+    "rows_seen_every_epoch": 1509,
+    "full130_evaluation_completed": true
+  },
+  "entity_criterion_replay_training": {
+    "completed": true,
+    "rows": 1509,
+    "source_groups": 403,
+    "row_visits": 3018,
+    "epochs_every_row": 2,
+    "global_step": 378,
+    "elapsed_seconds": 1377.37166762352,
+    "manifest_sha256": "2b68410d6348f08afefd95cc12218bea0ebb2dd7d2c45953a8cee3f92a31b9f9",
+    "saved_weights_bitwise_verified": true,
+    "quality_evaluation": "full130_completed_recount_pass_no_improvement"
+  },
+  "additional_relation_candidate": {
+    "status": "not_started_time_reservation_failed",
+    "private_directory": "label_weight_sft",
+    "rationale": "Relation label tokens are6.94percent of original full1000-row target token count; names/evidence84.70percent. Impact remains unproven.",
+    "proposed": "Whole1000-row one-epoch continuation from original SFT parent with label token weight4 and LR2e-5",
+    "queue_changed": true,
+    "gpu_training_started": false,
+    "launch_only_if": "Prior10jobs complete and at least50minutes remain; run longest-row GPU smoke before fresh-parent complete formal training and fixed-E full130 evaluation",
+    "limitation": "Additional training, LR and token weighting are combined; no matched unweighted continuation control is yet planned.",
+    "minimum_remaining_seconds": 3000,
+    "formal_rows": 1000,
+    "formal_optimizer_updates": 125,
+    "remote_preflight_sha256": "eb6812e32d291e90144e222684a400381b390c18fd3536295f25819453f74b8e",
+    "wrapper_sha256": "0548baef187afc0828cf52032df67b1d08bc86de71026749507d913e05ef65c1",
+    "evaluation_directory": "label4_cont1epoch_full130_fixed_entity",
+    "gpu_smoke_started": false,
+    "formal_started": false,
+    "quality_evaluation_completed": false,
+    "preflight_and_code_review_completed": true,
+    "reason": "DPO52 evaluation ended10:11:00UTC; less than required50minutes remained for smoke, full training and full130 evaluation. No gate was weakened."
+  },
+  "queue_plan_sha256": "7301a6bc63d13ffd2406bfbdf0cd7b82f824cb4aede2a56f437b1f98f29e18a6",
+  "batch_invariance_review": {
+    "status": "GPU_probe_not_run_remaining_time_guard_rejected",
+    "known_source_index": 310,
+    "same_entity_table_relation_prompt_and_R_weights": true,
+    "batch_composition_and_padding_changed": true,
+    "definite_implementation_bug_found": false,
+    "gpu_reproduction_completed": false,
+    "private_directory": "metrics_review/batch_invariance",
+    "report_sha256": "24de04f639dc2d18f63e77c79e56b374473c8724a7391718f951fedbf5f11606",
+    "probe_script_sha256": "94cea2531eadb84bad8da8a3bafc99f47e4ef2cf3d07e2045e6928e9f0d6c768",
+    "first_output_difference_token_one_based": 8,
+    "left_padding_counts": [
+      86,
+      5
+    ],
+    "followup": "Only after complete quality evaluations, run at most3-minute resident-source prefix probe; no metric result claimed.",
+    "gpu_result": null,
+    "gpu_probe_attempt": {
+      "status": "not_run_remaining_time_guard_rejected",
+      "code_uploaded": true,
+      "gpu_started": false,
+      "reason": "At attempted launch less than3minutes remained before11:00UTC; assertion stopped before CUDA loading. No reproducibility or F1 result."
+    }
+  },
+  "entity_criterion_replay_evaluation": {
+    "completed": true,
+    "samples": 130,
+    "independent_recount": "PASS",
+    "recount_sha256": "1f28b0b4863badd34ed24518c6a808c4ddd255638bc6b8a9383723d55d56795b",
+    "evaluation_manifest_sha256": "148ca9854f51b1231ff562376516bdf6f7720541d0cb2d87c9870d44593c5db0",
+    "metrics_sha256": "32bb165311feecb1197e03cbf0c581bdcca62a9830d11af4d6012a72a6c80fa6",
+    "free_text": {
+      "entity": {
+        "f1": 0.6822916666666666,
+        "fn": 255,
+        "fp": 111,
+        "precision": 0.7797619047619048,
+        "recall": 0.6064814814814815,
+        "tp": 393
+      },
+      "relation": {
+        "f1": 0.43610547667342797,
+        "fn": 358,
+        "fp": 198,
+        "precision": 0.5205811138014528,
+        "recall": 0.37521815008726006,
+        "tp": 215
+      }
+    },
+    "generation_checks": {
+      "live:entities": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 0,
+        "generated_tokens": 12328,
+        "missing_eos": 0
+      },
+      "live:relations": {
+        "budget_exhausted": 1,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 124,
+        "events": 125,
+        "failed": 14,
+        "generated_tokens": 44222,
+        "missing_eos": 1
+      }
+    },
+    "selected_as_best_pipeline": false,
+    "entity_f1_change_percentage_points": -0.5529945683247606,
+    "relation_f1_change_percentage_points": -4.276776276319172,
+    "independent_comparison_sha256": "3f6dffd7ace41d6e3c431aa78dc41277633f34ba52dcca8562eaf9d635b6f0c4",
+    "long_criterion_exact_match": {
+      "E2": 3,
+      "replay": 4,
+      "gold": 53
+    },
+    "lost_TP_buckets": {
+      "both_available_all_former_support_windows_complete_changed_output": 19,
+      "now_missing_entity_endpoint": 21
+    },
+    "endpoint_reachability_ceiling": {
+      "arms": {
+        "E2": {
+          "actual_tp": 238,
+          "all_actual_TP_have_both_endpoints": true,
+          "all_filtered_predictions_have_both_endpoints": true,
+          "gold": 573,
+          "optimistic_f1_if_all_reachable_gold_and_no_FP": 0.7036199095022625,
+          "optimistic_precision_if_all_reachable_gold_and_no_FP": 1.0,
+          "optimistic_recall": 0.5427574171029669,
+          "reachable": 311,
+          "tp_with_both_endpoints": 238,
+          "unreachable": 262
+        },
+        "replay": {
+          "actual_tp": 215,
+          "all_actual_TP_have_both_endpoints": true,
+          "all_filtered_predictions_have_both_endpoints": true,
+          "gold": 573,
+          "optimistic_f1_if_all_reachable_gold_and_no_FP": 0.6962457337883959,
+          "optimistic_precision_if_all_reachable_gold_and_no_FP": 1.0,
+          "optimistic_recall": 0.5340314136125655,
+          "reachable": 306,
+          "tp_with_both_endpoints": 215,
+          "unreachable": 267
+        }
+      },
+      "formula": "max_recall=reachable_gold/gold; optimistic_F1=2*reachable_gold/(2*reachable_gold+unreachable_gold) with zero FP",
+      "scope": "Fixed current filtered E tables on these69free-text validation records under this endpoint-constrained protocol only; not actual scores or future model ceilings"
+    }
+  },
+  "round_closeout": {
+    "status": "round_closed_completed_candidates_evaluated_no_final_relation_gain",
+    "deadline_utc": "2026-10-19T11:00:00Z",
+    "recorded_utc": "2026-10-19T11:01:41.080951+00:00",
+    "selected_entity": "entity_short_complete_lr1e4_r16_e2",
+    "selected_relation": "relation_short_canonical_complete_lr1e4_r16_e2",
+    "best_live_free_relation": {
+      "tp": 238,
+      "fp": 183,
+      "fn": 335,
+      "precision": 0.5653206650831354,
+      "recall": 0.41535776614310643,
+      "f1": 0.4788732394366197
+    },
+    "full130_comparisons": [
+      "baseline",
+      "entity_e3",
+      "entity_criterion_replay",
+      "dpo208",
+      "dpo52"
+    ],
+    "short_input_scope": "Same6long_source_pilot_only",
+    "label_weight_sft": {
+      "status": "not_started_time_reservation_failed",
+      "gpu_smoke_started": false,
+      "formal_started": false,
+      "quality_evaluation_completed": false,
+      "preflight_and_code_review_completed": true,
+      "reason": "DPO52 evaluation ended10:11:00UTC; less than required50minutes remained for smoke, full training and full130 evaluation. No gate was weakened."
+    },
+    "batch_prefix_probe": {
+      "status": "not_run_remaining_time_guard_rejected",
+      "code_uploaded": true,
+      "gpu_started": false,
+      "reason": "At attempted launch less than3minutes remained before11:00UTC; assertion stopped before CUDA loading. No reproducibility or F1 result."
+    },
+    "deepseek": {
+      "successful_requests": 0,
+      "status": "prior_automatic_approval_rejection_respected",
+      "local_preferences_used": true
+    },
+    "uncompleted": [
+      "label4 GPU smoke/training/full130",
+      "1600-context dedicated full-data SFT",
+      "source310 GPU batch diagnostic",
+      "independent human label adjudication",
+      "new independent blind test"
+    ],
+    "no_new_training_or_evaluation_after_deadline": true,
+    "agent_limitations": "Two final narrative tasks interrupted by account usage limits. Completed machine comparison artifacts and root recount remain available; missing agent prose is not claimed completed.",
+    "target_70_80_final_relation_achieved": false,
+    "metric_warning": "Precision is not TN-based accuracy. Complete130 includes61deterministic structured cases; primary comparisons use69free-text cases. All gold and failed samples remain counted."
+  },
+  "final_dpo52_result": {
+    "f1": 0.4658077304261645,
+    "fn": 338,
+    "fp": 201,
+    "precision": 0.5389908256880734,
+    "recall": 0.41012216404886565,
+    "tp": 235
+  },
+  "selected_for_final_pipeline": "original_E2_and_original_relation_SFT",
+  "latest_queue_observation": {
+    "status": "insufficient_remaining_time",
+    "current": null,
+    "not_launched": "relation_label4_cont1epoch_lr2e5",
+    "completed_jobs": 10,
+    "plan_sha256": "7301a6bc63d13ffd2406bfbdf0cd7b82f824cb4aede2a56f437b1f98f29e18a6"
+  },
+  "next_steps": [
+    "No more GPU work in this closed round; keep the best fully evaluated E2+originalR.",
+    "Future work requires reviewed entity/criterion labels and actual error-based contrasts; prepared but untrained candidates are not improvements."
+  ]
+}

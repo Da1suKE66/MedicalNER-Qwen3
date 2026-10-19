@@ -1,0 +1,6 @@
+# Install only in a dedicated experiment environment; do not upgrade shared tools.
+# Existing remote torch 2.8.0+cu128 / transformers 4.56.2 / peft 0.17.1 are retained.
+trl==0.23.1
+transformers==4.56.2
+peft==0.17.1
+datasets==4.1.1

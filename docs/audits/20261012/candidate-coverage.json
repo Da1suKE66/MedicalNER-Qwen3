@@ -1,0 +1,77 @@
+{
+  "current_code_candidate_coverage_rebuilt": {
+    "fixed_cache": {
+      "samples": 81,
+      "gold_triples": 638,
+      "candidate_covered_triples": 120,
+      "candidate_pairs": 8050,
+      "ungrounded_entities": 0,
+      "batches": 536,
+      "entity": {
+        "tp": 336,
+        "fp": 284,
+        "fn": 493,
+        "precision": 0.5419354838709678,
+        "recall": 0.40530759951749096,
+        "f1": 0.463768115942029,
+        "f0_5": 0.5077062556663645
+      },
+      "candidate_recall_ceiling": 0.18808777429467086
+    },
+    "oracle": {
+      "samples": 81,
+      "gold_triples": 638,
+      "candidate_covered_triples": 546,
+      "candidate_pairs": 14272,
+      "ungrounded_entities": 24,
+      "batches": 920,
+      "entity": {
+        "tp": 829,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "f0_5": 1.0
+      },
+      "candidate_recall_ceiling": 0.8557993730407524
+    }
+  },
+  "current_code_oracle_uncovered_causes": {
+    "ungrounded_endpoint": 92
+  },
+  "current_code_oracle_uncovered_relation_types": {
+    "has_diagnostic_criterion": 9,
+    "is_associated_symptom_of": 53,
+    "is_core_symptom_of": 5,
+    "subtype_of": 1,
+    "has_specifier": 6,
+    "differentiates_from": 12,
+    "commonly_affects": 3,
+    "causes": 3
+  },
+  "fresh_artifact_gold_sha_matches_current_gold": true,
+  "metric_contract_audit": {
+    "micro_relation_f1": "Correct: sum per-document unique directed typed triple TP/FP/FN, then compute 2TP/(2TP+FP+FN).",
+    "entity_identity": "Entity names use NFKC + whitespace collapse + casefold; entity types match the schema strings. Graph IDs and array order are ignored; this is not a span or clinical synonym metric.",
+    "multiple_relations": "Different relation labels for the same endpoints remain distinct triples; duplicate identical triples deduplicate.",
+    "macro_relation_f1": "Only gold-supported relation types averaged; zero-support predicted types still contribute micro FP and policy is documented.",
+    "empty": "Undefined precision/recall/F1=0; invalid prediction adds all gold FN; negative-only correct empty output does not artificially raise positive F1.",
+    "pair_exact_accuracy": "Can equal 1 for all-negative data while positive F1=0; report it only under exact name and never equate with extraction precision or medical accuracy.",
+    "evidence": "evidence_exact/compatible scored separately from triples; compatible substring overlap does not demonstrate entailment.",
+    "identity": "Modern graph/generative path correct and comprehensive CPU checks; historical cache unverified and strict mode opt-in.",
+    "shards": "Current identity-aware sharding preserves original IDs and combines counts by full recomputation rather than average F1; synthetic test passes.",
+    "selection": "select_checkpoint uses tune P>=.5/R>=.1 then F0.5 with explicit fallback; full regression not used for per-run checkpoint selection. Repeated experiment decisions mean same 148 should be called regression, not untouched final holdout."
+  },
+  "missing_evaluations": [
+    "Blinded human-adjudicated held-out documents with explicit exhaustive/partial relation annotation status and grouped source isolation.",
+    "Fresh live entity->relation predictions with verified input identities; fixed old cache and oracle reported separately.",
+    "Same-prompt same-adapter-loader zero-step baseline for DPO/GRPO and at least three training seeds with document/group bootstrap confidence intervals.",
+    "Controlled length/order/local experiments with equal supervised positive and verified-negative pair/token exposure.",
+    "Real held-out entity prediction error challenge distinct from synthetic absent-name corruption, with complete raw invalid-emission accounting.",
+    "Strata by source type (including bare name lists), document/prompt length, entity/pair count, relation count/type, multi-label, evidence distance; no post-hoc exclusion from primary metric.",
+    "Rule precision audit: removed TP/FP and source-adjudicated truly unsupported edges; strict silver FP is not medical hallucination.",
+    "Exact-match set accuracy only with declared sample/pair denominator; primary extraction precision/recall/F1 remains count-based.",
+    "Keep predictions and generations locally in future migrations, plus input, gold, split, code, tokenizer and adapter hashes."
+  ]
+}

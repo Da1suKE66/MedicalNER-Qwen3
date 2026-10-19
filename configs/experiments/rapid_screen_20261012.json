@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "purpose": "six_hour_direction_screen_not_final_quality",
+  "deadline": "2026-10-12T11:35:00+00:00",
+  "report_deadline": "2026-10-12T12:20:00+00:00",
+  "python": "/root/venvs/medicalner/bin/python",
+  "code_root": "/workspace/medicalner/20261012/rapid/snapshot_v1/code",
+  "output_dir": "/workspace/medicalner/20261012/rapid/screen_v1",
+  "cuda_visible_devices": "0",
+  "wait_for_status": "/workspace/medicalner/20261012/rapid/missing64-status.json",
+  "code_sha256": "edd30c04c82d687f2ec7730f46c78fd4f2f0f567baaf0afd303e1e8161e59c3c",
+  "expected_sha256": {
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_control.jsonl": "fc0bbfd44bb070c988d7a246ca11afaf02d68beb7f83c655f288bee42fe4af9b",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_hash_short4.jsonl": "3368f18448bddfe695dd27cb0ccd71cbeb8a6f9ebc396f8287e21fa2f2ffeec5",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_source_order.jsonl": "3ab2ac93ac06e9d4a7fbcffc284eb558dc1a2c2043d67a56867fee1f3ec8b089",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_source_short4.jsonl": "d9131482165c1c81bd338cb116b709bf0c4d15a2402a0f6a1fb12042f245a102",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/data/experiments.json": "7b4ea6426f46f3a4a594aa13231e368d7299b3c836f46f2e31b233d1f2d67451",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/data/manifest.json": "1f00a8d83ac9885df83a2f19259d598eee05efdc2fde15fc7b560f4666ed15b0",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation/manifest.json": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation/matrix.json": "444ab3b0228855c6237d822c6ae234f5091461c77b6b784dd2ab5a47879b751a",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation/records.json": "6eb66b03eefacce0d330eb71bd505fd8a659cdadb32e6b5d1d764df041c64123",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation/sample_indices.json": "945c27b3d91298a1aca9a58063384555cf530358b1bbd5678233bb59901235ae",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/manifest.json": "4167c255fbc87d2e851eb6501268d4293e9a851d13e4d22dc4d9891b13ef5464",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_holdout_preferences.jsonl": "bd1c15c80fd0632dad48c06975349487b9258e9dce0326c96bb82be7647b2ee5",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_holdout_records.json": "93b5ae97ee96a57df54fc9cbf5924d4f48c985c985fd5ce66b99fbdb88869732",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_matrix.json": "4d975fefebb57b3c87265b80acbd8e6e1c341665aa9ce3dd4052bd4e13fd2de1",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/run_recipe.json": "ea302caa957bc1457aaf49f521f20250740976a791134ab7a0a12bab0fc2df79",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/train.jsonl": "5ca747a94dce1eb4ac7d8ebf34e8e19d3cb82f5927ad10b56eecd9a0d15c7519",
+    "/workspace/medicalner/20261012/rapid/snapshot_v1/code/scripts/run_rapid_queue.py": "b7beb99fc644e3062e77efd5f79e39d92a5eca7a7555ac6600caac9fc2559f6b"
+  },
+  "external_adapter_receipts": [
+    {
+      "manifest": "/workspace/medicalner/20261012/pilot/grounded_s42/train/run_manifest.json",
+      "adapter": "/workspace/medicalner/20261012/pilot/grounded_s42/train/final",
+      "steps": 64,
+      "data_sha256": "6ab0e777fba5b5f0730702b40fdca90ec27e2b3daea8727fd143dbce83e3d4ba"
+    },
+    {
+      "manifest": "/workspace/medicalner/20261012/rapid/missing64/run_manifest.json",
+      "adapter": "/workspace/medicalner/20261012/rapid/missing64/final",
+      "steps": 64,
+      "data_sha256": "ab6fac59b1df72c1717adb796627be863d9e9540c275fc69b6e8ce3f3f54afb7"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "grounded64_screen",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/grounded64_screen",
+      "conditions": [
+        "full_hash16",
+        "full_source16",
+        "full_hash4",
+        "local_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/grounded64_screen",
+        "--conditions",
+        "full_hash16",
+        "full_source16",
+        "full_hash4",
+        "local_hash16",
+        "--adapter",
+        "/workspace/medicalner/20261012/pilot/grounded_s42/train/final"
+      ],
+      "depends_on": [],
+      "timeout_seconds": 6180,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "missing64_screen",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/missing64_screen",
+      "conditions": [
+        "full_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/missing64_screen",
+        "--conditions",
+        "full_hash16",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/missing64/final"
+      ],
+      "depends_on": [],
+      "timeout_seconds": 1680,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "base_screen",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/base_screen",
+      "conditions": [
+        "full_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/base_screen",
+        "--conditions",
+        "full_hash16",
+        "--base-only"
+      ],
+      "depends_on": [],
+      "timeout_seconds": 1680,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "dpo_zero",
+      "kind": "zero_control",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero",
+      "depends_on": [],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_preferences",
+        "export-initial",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--sft-adapter",
+        "/workspace/medicalner/20261012/pilot/grounded_s42/train/final",
+        "--data",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/train.jsonl",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero"
+      ],
+      "timeout_seconds": 900,
+      "minimum_start_seconds": 180,
+      "required_files": [
+        "run_manifest.json",
+        "final/policy/adapter_model.safetensors"
+      ]
+    },
+    {
+      "name": "dpo16",
+      "kind": "train",
+      "mode": "dpo",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/dpo16",
+      "depends_on": [
+        "dpo_zero"
+      ],
+      "initial_control_manifest": "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero/run_manifest.json",
+      "expected_steps": 16,
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.train",
+        "--mode",
+        "dpo",
+        "--data",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/train.jsonl",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--sft-adapter",
+        "/workspace/medicalner/20261012/pilot/grounded_s42/train/final",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo16",
+        "--seed",
+        "42",
+        "--max-steps",
+        "16",
+        "--save-steps",
+        "16",
+        "--save-total-limit",
+        "1",
+        "--verify-save",
+        "--learning-rate",
+        "1e-6",
+        "--beta",
+        "0.1",
+        "--batch-size",
+        "1",
+        "--gradient-accumulation",
+        "4",
+        "--max-length",
+        "2048"
+      ],
+      "timeout_seconds": 1800,
+      "minimum_start_seconds": 600,
+      "required_files": [
+        "run_manifest.json"
+      ]
+    },
+    {
+      "name": "dpo_zero_medical",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero_medical",
+      "conditions": [
+        "full_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero_medical",
+        "--conditions",
+        "full_hash16",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero/final/policy"
+      ],
+      "depends_on": [
+        "dpo_zero"
+      ],
+      "timeout_seconds": 1680,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "dpo16_medical",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/dpo16_medical",
+      "conditions": [
+        "full_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo16_medical",
+        "--conditions",
+        "full_hash16",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo16/final/policy"
+      ],
+      "depends_on": [
+        "dpo16"
+      ],
+      "timeout_seconds": 1680,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "dpo_zero_mechanical",
+      "kind": "evaluation",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero_mechanical",
+      "expected_samples": 16,
+      "depends_on": [
+        "dpo_zero"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.evaluate",
+        "--gold",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_holdout_records.json",
+        "--oracle",
+        "--strict-identity",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--matrix",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_matrix.json",
+        "--variant",
+        "mechanical",
+        "--max-new-tokens",
+        "1024",
+        "--inference-batch-size",
+        "4",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero/final/policy",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo_zero_mechanical"
+      ],
+      "timeout_seconds": 900,
+      "minimum_start_seconds": 180,
+      "required_files": [
+        "metrics.json",
+        "predictions.jsonl"
+      ]
+    },
+    {
+      "name": "dpo16_mechanical",
+      "kind": "evaluation",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/dpo16_mechanical",
+      "expected_samples": 16,
+      "depends_on": [
+        "dpo16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.evaluate",
+        "--gold",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_holdout_records.json",
+        "--oracle",
+        "--strict-identity",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--matrix",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/rl/mechanical_matrix.json",
+        "--variant",
+        "mechanical",
+        "--max-new-tokens",
+        "1024",
+        "--inference-batch-size",
+        "4",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo16/final/policy",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/dpo16_mechanical"
+      ],
+      "timeout_seconds": 900,
+      "minimum_start_seconds": 180,
+      "required_files": [
+        "metrics.json",
+        "predictions.jsonl"
+      ]
+    },
+    {
+      "name": "matched_control",
+      "kind": "train",
+      "mode": "sft",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/matched_control",
+      "depends_on": [],
+      "expected_epochs": 1,
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.train",
+        "--mode",
+        "sft",
+        "--data",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_control.jsonl",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_control",
+        "--seed",
+        "42",
+        "--epochs",
+        "1",
+        "--max-steps",
+        "-1",
+        "--save-steps",
+        "16",
+        "--save-total-limit",
+        "1",
+        "--verify-save",
+        "--learning-rate",
+        "5e-5",
+        "--batch-size",
+        "1",
+        "--gradient-accumulation",
+        "16",
+        "--max-length",
+        "6144"
+      ],
+      "timeout_seconds": 2400,
+      "minimum_start_seconds": 600,
+      "required_files": [
+        "run_manifest.json"
+      ]
+    },
+    {
+      "name": "matched_source",
+      "kind": "train",
+      "mode": "sft",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/matched_source",
+      "depends_on": [],
+      "expected_epochs": 1,
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.train",
+        "--mode",
+        "sft",
+        "--data",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_source_order.jsonl",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_source",
+        "--seed",
+        "42",
+        "--epochs",
+        "1",
+        "--max-steps",
+        "-1",
+        "--save-steps",
+        "16",
+        "--save-total-limit",
+        "1",
+        "--verify-save",
+        "--learning-rate",
+        "5e-5",
+        "--batch-size",
+        "1",
+        "--gradient-accumulation",
+        "16",
+        "--max-length",
+        "6144"
+      ],
+      "timeout_seconds": 2400,
+      "minimum_start_seconds": 600,
+      "required_files": [
+        "run_manifest.json"
+      ]
+    },
+    {
+      "name": "matched_short4",
+      "kind": "train",
+      "mode": "sft",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/matched_short4",
+      "depends_on": [],
+      "expected_epochs": 1,
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.train",
+        "--mode",
+        "sft",
+        "--data",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/data/V4_hash_short4.jsonl",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_short4",
+        "--seed",
+        "42",
+        "--epochs",
+        "1",
+        "--max-steps",
+        "-1",
+        "--save-steps",
+        "43",
+        "--save-total-limit",
+        "1",
+        "--verify-save",
+        "--learning-rate",
+        "5e-5",
+        "--batch-size",
+        "1",
+        "--gradient-accumulation",
+        "16",
+        "--max-length",
+        "6144"
+      ],
+      "timeout_seconds": 2400,
+      "minimum_start_seconds": 600,
+      "required_files": [
+        "run_manifest.json"
+      ]
+    },
+    {
+      "name": "matched_control_screen",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/matched_control_screen",
+      "conditions": [
+        "full_hash16",
+        "full_source16",
+        "full_hash4"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_control_screen",
+        "--conditions",
+        "full_hash16",
+        "full_source16",
+        "full_hash4",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_control/final"
+      ],
+      "depends_on": [
+        "matched_control"
+      ],
+      "timeout_seconds": 4680,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "matched_source_screen",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/matched_source_screen",
+      "conditions": [
+        "full_source16",
+        "full_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_source_screen",
+        "--conditions",
+        "full_source16",
+        "full_hash16",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_source/final"
+      ],
+      "depends_on": [
+        "matched_source"
+      ],
+      "timeout_seconds": 3180,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    },
+    {
+      "name": "matched_short4_screen",
+      "kind": "screen",
+      "output": "/workspace/medicalner/20261012/rapid/screen_v1/matched_short4_screen",
+      "conditions": [
+        "full_hash4",
+        "full_hash16"
+      ],
+      "command": [
+        "/root/venvs/medicalner/bin/python",
+        "-u",
+        "-m",
+        "generative.rapid_screen",
+        "evaluate",
+        "--screen-dir",
+        "/workspace/medicalner/20261012/rapid/snapshot_v1/evaluation",
+        "--base-model",
+        "/root/models/Qwen3-8B",
+        "--output-dir",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_short4_screen",
+        "--conditions",
+        "full_hash4",
+        "full_hash16",
+        "--adapter",
+        "/workspace/medicalner/20261012/rapid/screen_v1/matched_short4/final"
+      ],
+      "depends_on": [
+        "matched_short4"
+      ],
+      "timeout_seconds": 3180,
+      "minimum_start_seconds": 300,
+      "required_files": [
+        "run.json"
+      ]
+    }
+  ]
+}

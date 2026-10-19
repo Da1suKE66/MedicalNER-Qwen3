@@ -1,0 +1,42 @@
+{
+  "status": "CPU_PASS_GPU_PENDING_not_launched",
+  "created_utc": "2026-10-19T12:29:31.139996+00:00",
+  "tests": {
+    "passed": 27,
+    "CPU_only": true
+  },
+  "train_sha256": "4adfdcea74a3e6f2f5f695eedada04a7a81e1bba65a3b555fcfff641b910122b",
+  "pairs": 24,
+  "holdout_pairs_excluded": 32,
+  "source_groups": 24,
+  "cross_role_group_overlap": 0,
+  "max_tokens": 3273,
+  "prompt_loss_tokens": 0,
+  "chosen_tokens_including_EOS": 11155,
+  "rejected_tokens_including_EOS": 11150,
+  "formal_updates": 6,
+  "no_truncation": true,
+  "semantic_subclasses": {
+    "subtype_direction_reversal": 3,
+    "explicit_negation_label_flip": 8,
+    "explicit_positive_label_flip": 13
+  },
+  "smoke": {
+    "count": 4,
+    "global_longest_included": true,
+    "max_prompt_plus_completion": 3273,
+    "all_present_semantic_subclasses_covered": true,
+    "semantic_subclasses": {
+      "subtype_direction_reversal": 1,
+      "explicit_negation_label_flip": 1,
+      "explicit_positive_label_flip": 2
+    },
+    "formal_independent_original_parent_reload_required": true
+  },
+  "source_free_export_sha256": "46eb10be5ad14bd5a707d8b417bb8b638aaa5fcc2db86754893e6b333ba8631f",
+  "old_round3_runtime_unchanged": true,
+  "no_network_GPU_queue_or_repo_changes": true,
+  "deadline_scope": "root-arranged finite continuation, not an explicit exact user deadline",
+  "deadline_utc": "2026-10-19T13:20:00Z",
+  "latest_start_utc": "2026-10-19T12:40:00Z"
+}

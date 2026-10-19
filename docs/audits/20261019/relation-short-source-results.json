@@ -1,0 +1,3456 @@
+{
+  "run": "relation_short_source_complete_selected_entity",
+  "status": "completed_independently_recounted",
+  "checked_utc": "2026-10-18T22:58:08.602208+00:00",
+  "samples": 130,
+  "strata": {
+    "free_text": 69,
+    "structured_icd": 61
+  },
+  "gold_denominators": {
+    "overall": {
+      "entity": 824,
+      "relation": 656
+    },
+    "free_text": {
+      "entity": 648,
+      "relation": 573
+    },
+    "structured_icd": {
+      "entity": 176,
+      "relation": 83
+    }
+  },
+  "input_release_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+  "manifest_sha256": "9862abe58a432a9c02cd3000f9c3b87238c526c5816fbecd473059b76ca06987",
+  "metrics_sha256": "b073c827f3e8415fbd861bb6d73352ac513c062aca248b63c9a209c422f0f1ea",
+  "generations_sha256": "bf0046a110394374c7bf90b5eff236fcc191e8ac2e8b3122d822856b02e68568",
+  "independent_aggregate_sha256": "856ba1bba3598a8d5446f36f2e55085e6f73e75565098011fd58b071a5e47c93",
+  "output_contract": "semantic-text-v1",
+  "primary_metric": "live.filtered.free_text.relation",
+  "strict_raw_is_diagnostic_only": true,
+  "precision_is_not_accuracy": true,
+  "elapsed_seconds": 2285.9574692240003,
+  "modes": {
+    "live": {
+      "raw": {
+        "overall": {
+          "samples": 130,
+          "diagnostic_categories": {
+            "entity_fp:no_gold_correspondence": 147,
+            "entity_fn:missing_entity": 322,
+            "relation_fp:no_gold_correspondence": 51,
+            "relation_fp:relation_label_mismatch": 80,
+            "relation_fp:endpoint_not_in_gold": 133,
+            "relation_fn:endpoint_missing_from_actual_table": 300,
+            "relation_fn:relation_label_mismatch": 63,
+            "relation_fn:no_predicted_correspondence": 48,
+            "relation_fp:direction_reversal": 14,
+            "relation_fn:direction_reversal": 9,
+            "entity_fp:entity_type_mismatch": 1,
+            "entity_fn:entity_type_mismatch": 1,
+            "relation_fn:endpoint_type_mismatch": 1
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 72,
+          "entity": {
+            "tp": 501,
+            "fp": 148,
+            "fn": 323,
+            "precision": 0.7719568567026194,
+            "recall": 0.6080097087378641,
+            "f1": 0.6802443991853361
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 73,
+              "precision": 0.7142857142857143,
+              "recall": 0.12048192771084337,
+              "f1": 0.20618556701030927
+            },
+            "Disease": {
+              "tp": 315,
+              "fp": 61,
+              "fn": 132,
+              "precision": 0.8377659574468085,
+              "recall": 0.7046979865771812,
+              "f1": 0.7654921020656136
+            },
+            "Etiology": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "Symptom": {
+              "tp": 176,
+              "fp": 82,
+              "fn": 118,
+              "precision": 0.6821705426356589,
+              "recall": 0.5986394557823129,
+              "f1": 0.6376811594202898
+            }
+          },
+          "relation": {
+            "tp": 235,
+            "fp": 278,
+            "fn": 421,
+            "precision": 0.4580896686159844,
+            "recall": 0.35823170731707316,
+            "f1": 0.4020530367835757
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 18,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 54,
+              "fp": 39,
+              "fn": 32,
+              "precision": 0.5806451612903226,
+              "recall": 0.627906976744186,
+              "f1": 0.6033519553072626
+            },
+            "has_diagnostic_criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 65,
+              "precision": 0.7142857142857143,
+              "recall": 0.13333333333333333,
+              "f1": 0.2247191011235955
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 7,
+              "fn": 1,
+              "precision": 0.5,
+              "recall": 0.875,
+              "f1": 0.6363636363636364
+            },
+            "is_associated_symptom_of": {
+              "tp": 58,
+              "fp": 87,
+              "fn": 112,
+              "precision": 0.4,
+              "recall": 0.3411764705882353,
+              "f1": 0.3682539682539683
+            },
+            "is_core_symptom_of": {
+              "tp": 33,
+              "fp": 56,
+              "fn": 59,
+              "precision": 0.3707865168539326,
+              "recall": 0.358695652173913,
+              "f1": 0.36464088397790057
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 4,
+              "precision": 0.8382352941176471,
+              "recall": 0.9344262295081968,
+              "f1": 0.8837209302325582
+            },
+            "subtype_of": {
+              "tp": 16,
+              "fp": 52,
+              "fn": 81,
+              "precision": 0.23529411764705882,
+              "recall": 0.16494845360824742,
+              "f1": 0.19393939393939394
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "free_text": {
+          "samples": 69,
+          "diagnostic_categories": {
+            "entity_fp:no_gold_correspondence": 140,
+            "entity_fn:missing_entity": 268,
+            "relation_fp:no_gold_correspondence": 51,
+            "relation_fp:relation_label_mismatch": 76,
+            "relation_fp:endpoint_not_in_gold": 126,
+            "relation_fn:endpoint_missing_from_actual_table": 278,
+            "relation_fn:relation_label_mismatch": 59,
+            "relation_fn:no_predicted_correspondence": 48,
+            "relation_fp:direction_reversal": 14,
+            "relation_fn:direction_reversal": 9,
+            "entity_fp:entity_type_mismatch": 1,
+            "entity_fn:entity_type_mismatch": 1,
+            "relation_fn:endpoint_type_mismatch": 1
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 72,
+          "entity": {
+            "tp": 379,
+            "fp": 141,
+            "fn": 269,
+            "precision": 0.7288461538461538,
+            "recall": 0.5848765432098766,
+            "f1": 0.648972602739726
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 73,
+              "precision": 0.7142857142857143,
+              "recall": 0.12048192771084337,
+              "f1": 0.20618556701030927
+            },
+            "Disease": {
+              "tp": 193,
+              "fp": 54,
+              "fn": 82,
+              "precision": 0.7813765182186235,
+              "recall": 0.7018181818181818,
+              "f1": 0.7394636015325671
+            },
+            "Etiology": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "Symptom": {
+              "tp": 176,
+              "fp": 82,
+              "fn": 114,
+              "precision": 0.6821705426356589,
+              "recall": 0.6068965517241379,
+              "f1": 0.6423357664233577
+            }
+          },
+          "relation": {
+            "tp": 178,
+            "fp": 267,
+            "fn": 395,
+            "precision": 0.4,
+            "recall": 0.3106457242582897,
+            "f1": 0.34970530451866405
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 18,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 54,
+              "fp": 39,
+              "fn": 28,
+              "precision": 0.5806451612903226,
+              "recall": 0.6585365853658537,
+              "f1": 0.6171428571428571
+            },
+            "has_diagnostic_criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 65,
+              "precision": 0.7142857142857143,
+              "recall": 0.13333333333333333,
+              "f1": 0.2247191011235955
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 7,
+              "fn": 1,
+              "precision": 0.5,
+              "recall": 0.875,
+              "f1": 0.6363636363636364
+            },
+            "is_associated_symptom_of": {
+              "tp": 58,
+              "fp": 87,
+              "fn": 111,
+              "precision": 0.4,
+              "recall": 0.3431952662721893,
+              "f1": 0.36942675159235666
+            },
+            "is_core_symptom_of": {
+              "tp": 33,
+              "fp": 56,
+              "fn": 56,
+              "precision": 0.3707865168539326,
+              "recall": 0.3707865168539326,
+              "f1": 0.3707865168539326
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "subtype_of": {
+              "tp": 16,
+              "fp": 52,
+              "fn": 63,
+              "precision": 0.23529411764705882,
+              "recall": 0.20253164556962025,
+              "f1": 0.21768707482993196
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "structured_icd": {
+          "samples": 61,
+          "diagnostic_categories": {
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "relation_fp:relation_label_mismatch": 4,
+            "relation_fn:relation_label_mismatch": 4,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 0,
+          "entity": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8
+          },
+          "per_entity": {
+            "Disease": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9457364341085271,
+              "recall": 0.7093023255813954,
+              "f1": 0.8106312292358804
+            },
+            "Symptom": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "relation": {
+            "tp": 57,
+            "fp": 11,
+            "fn": 26,
+            "precision": 0.8382352941176471,
+            "recall": 0.6867469879518072,
+            "f1": 0.7549668874172185
+          },
+          "per_relation": {
+            "differentiates_from": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_associated_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_core_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 0,
+              "precision": 0.8382352941176471,
+              "recall": 1.0,
+              "f1": 0.912
+            },
+            "subtype_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 18,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      },
+      "filtered": {
+        "overall": {
+          "samples": 130,
+          "diagnostic_categories": {
+            "entity_fp:no_gold_correspondence": 144,
+            "entity_fn:missing_entity": 322,
+            "relation_fp:no_gold_correspondence": 38,
+            "relation_fp:relation_label_mismatch": 74,
+            "relation_fp:endpoint_not_in_gold": 128,
+            "relation_fn:endpoint_missing_from_actual_table": 300,
+            "relation_fn:relation_label_mismatch": 59,
+            "relation_fn:no_predicted_correspondence": 53,
+            "relation_fp:direction_reversal": 14,
+            "relation_fn:direction_reversal": 9,
+            "entity_fp:entity_type_mismatch": 1,
+            "entity_fn:entity_type_mismatch": 1,
+            "relation_fn:endpoint_type_mismatch": 1
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 72,
+          "entity": {
+            "tp": 501,
+            "fp": 145,
+            "fn": 323,
+            "precision": 0.7755417956656346,
+            "recall": 0.6080097087378641,
+            "f1": 0.6816326530612244
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 73,
+              "precision": 0.7142857142857143,
+              "recall": 0.12048192771084337,
+              "f1": 0.20618556701030927
+            },
+            "Disease": {
+              "tp": 315,
+              "fp": 60,
+              "fn": 132,
+              "precision": 0.84,
+              "recall": 0.7046979865771812,
+              "f1": 0.7664233576642335
+            },
+            "Etiology": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "Symptom": {
+              "tp": 176,
+              "fp": 80,
+              "fn": 118,
+              "precision": 0.6875,
+              "recall": 0.5986394557823129,
+              "f1": 0.64
+            }
+          },
+          "relation": {
+            "tp": 234,
+            "fp": 254,
+            "fn": 422,
+            "precision": 0.47950819672131145,
+            "recall": 0.3567073170731707,
+            "f1": 0.4090909090909091
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 12,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 54,
+              "fp": 39,
+              "fn": 32,
+              "precision": 0.5806451612903226,
+              "recall": 0.627906976744186,
+              "f1": 0.6033519553072626
+            },
+            "has_diagnostic_criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 65,
+              "precision": 0.7142857142857143,
+              "recall": 0.13333333333333333,
+              "f1": 0.2247191011235955
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 7,
+              "fn": 1,
+              "precision": 0.5,
+              "recall": 0.875,
+              "f1": 0.6363636363636364
+            },
+            "is_associated_symptom_of": {
+              "tp": 57,
+              "fp": 82,
+              "fn": 113,
+              "precision": 0.41007194244604317,
+              "recall": 0.3352941176470588,
+              "f1": 0.36893203883495146
+            },
+            "is_core_symptom_of": {
+              "tp": 33,
+              "fp": 54,
+              "fn": 59,
+              "precision": 0.3793103448275862,
+              "recall": 0.358695652173913,
+              "f1": 0.3687150837988827
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 4,
+              "precision": 0.8382352941176471,
+              "recall": 0.9344262295081968,
+              "f1": 0.8837209302325582
+            },
+            "subtype_of": {
+              "tp": 16,
+              "fp": 41,
+              "fn": 81,
+              "precision": 0.2807017543859649,
+              "recall": 0.16494845360824742,
+              "f1": 0.2077922077922078
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "free_text": {
+          "samples": 69,
+          "diagnostic_categories": {
+            "entity_fp:no_gold_correspondence": 137,
+            "entity_fn:missing_entity": 268,
+            "relation_fp:no_gold_correspondence": 38,
+            "relation_fp:relation_label_mismatch": 70,
+            "relation_fp:endpoint_not_in_gold": 121,
+            "relation_fn:endpoint_missing_from_actual_table": 278,
+            "relation_fn:relation_label_mismatch": 55,
+            "relation_fn:no_predicted_correspondence": 53,
+            "relation_fp:direction_reversal": 14,
+            "relation_fn:direction_reversal": 9,
+            "entity_fp:entity_type_mismatch": 1,
+            "entity_fn:entity_type_mismatch": 1,
+            "relation_fn:endpoint_type_mismatch": 1
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 72,
+          "entity": {
+            "tp": 379,
+            "fp": 138,
+            "fn": 269,
+            "precision": 0.7330754352030948,
+            "recall": 0.5848765432098766,
+            "f1": 0.6506437768240343
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 73,
+              "precision": 0.7142857142857143,
+              "recall": 0.12048192771084337,
+              "f1": 0.20618556701030927
+            },
+            "Disease": {
+              "tp": 193,
+              "fp": 53,
+              "fn": 82,
+              "precision": 0.7845528455284553,
+              "recall": 0.7018181818181818,
+              "f1": 0.7408829174664108
+            },
+            "Etiology": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "Symptom": {
+              "tp": 176,
+              "fp": 80,
+              "fn": 114,
+              "precision": 0.6875,
+              "recall": 0.6068965517241379,
+              "f1": 0.6446886446886447
+            }
+          },
+          "relation": {
+            "tp": 177,
+            "fp": 243,
+            "fn": 396,
+            "precision": 0.42142857142857143,
+            "recall": 0.3089005235602094,
+            "f1": 0.3564954682779456
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 12,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 54,
+              "fp": 39,
+              "fn": 28,
+              "precision": 0.5806451612903226,
+              "recall": 0.6585365853658537,
+              "f1": 0.6171428571428571
+            },
+            "has_diagnostic_criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 65,
+              "precision": 0.7142857142857143,
+              "recall": 0.13333333333333333,
+              "f1": 0.2247191011235955
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 7,
+              "fn": 1,
+              "precision": 0.5,
+              "recall": 0.875,
+              "f1": 0.6363636363636364
+            },
+            "is_associated_symptom_of": {
+              "tp": 57,
+              "fp": 82,
+              "fn": 112,
+              "precision": 0.41007194244604317,
+              "recall": 0.33727810650887574,
+              "f1": 0.37012987012987014
+            },
+            "is_core_symptom_of": {
+              "tp": 33,
+              "fp": 54,
+              "fn": 56,
+              "precision": 0.3793103448275862,
+              "recall": 0.3707865168539326,
+              "f1": 0.375
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "subtype_of": {
+              "tp": 16,
+              "fp": 41,
+              "fn": 63,
+              "precision": 0.2807017543859649,
+              "recall": 0.20253164556962025,
+              "f1": 0.23529411764705882
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "structured_icd": {
+          "samples": 61,
+          "diagnostic_categories": {
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "relation_fp:relation_label_mismatch": 4,
+            "relation_fn:relation_label_mismatch": 4,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 0,
+          "entity": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8
+          },
+          "per_entity": {
+            "Disease": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9457364341085271,
+              "recall": 0.7093023255813954,
+              "f1": 0.8106312292358804
+            },
+            "Symptom": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "relation": {
+            "tp": 57,
+            "fp": 11,
+            "fn": 26,
+            "precision": 0.8382352941176471,
+            "recall": 0.6867469879518072,
+            "f1": 0.7549668874172185
+          },
+          "per_relation": {
+            "differentiates_from": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_associated_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_core_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 0,
+              "precision": 0.8382352941176471,
+              "recall": 1.0,
+              "f1": 0.912
+            },
+            "subtype_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 18,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      },
+      "strict_raw": {
+        "overall": {
+          "samples": 130,
+          "diagnostic_categories": {
+            "entity_fp:no_gold_correspondence": 147,
+            "entity_fn:missing_entity": 322,
+            "relation_fp:no_gold_correspondence": 51,
+            "relation_fp:relation_label_mismatch": 80,
+            "relation_fp:endpoint_not_in_gold": 133,
+            "relation_fn:endpoint_missing_from_actual_table": 300,
+            "relation_fn:relation_label_mismatch": 63,
+            "relation_fn:no_predicted_correspondence": 48,
+            "relation_fp:direction_reversal": 14,
+            "relation_fn:direction_reversal": 9,
+            "entity_fp:entity_type_mismatch": 1,
+            "entity_fn:entity_type_mismatch": 1,
+            "relation_fn:endpoint_type_mismatch": 1
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 72,
+          "entity": {
+            "tp": 501,
+            "fp": 148,
+            "fn": 323,
+            "precision": 0.7719568567026194,
+            "recall": 0.6080097087378641,
+            "f1": 0.6802443991853361
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 73,
+              "precision": 0.7142857142857143,
+              "recall": 0.12048192771084337,
+              "f1": 0.20618556701030927
+            },
+            "Disease": {
+              "tp": 315,
+              "fp": 61,
+              "fn": 132,
+              "precision": 0.8377659574468085,
+              "recall": 0.7046979865771812,
+              "f1": 0.7654921020656136
+            },
+            "Etiology": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "Symptom": {
+              "tp": 176,
+              "fp": 82,
+              "fn": 118,
+              "precision": 0.6821705426356589,
+              "recall": 0.5986394557823129,
+              "f1": 0.6376811594202898
+            }
+          },
+          "relation": {
+            "tp": 235,
+            "fp": 350,
+            "fn": 421,
+            "precision": 0.4017094017094017,
+            "recall": 0.35823170731707316,
+            "f1": 0.37872683319903305
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 18,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 54,
+              "fp": 39,
+              "fn": 32,
+              "precision": 0.5806451612903226,
+              "recall": 0.627906976744186,
+              "f1": 0.6033519553072626
+            },
+            "has_diagnostic_criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 65,
+              "precision": 0.7142857142857143,
+              "recall": 0.13333333333333333,
+              "f1": 0.2247191011235955
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 7,
+              "fn": 1,
+              "precision": 0.5,
+              "recall": 0.875,
+              "f1": 0.6363636363636364
+            },
+            "is_associated_symptom_of": {
+              "tp": 58,
+              "fp": 87,
+              "fn": 112,
+              "precision": 0.4,
+              "recall": 0.3411764705882353,
+              "f1": 0.3682539682539683
+            },
+            "is_core_symptom_of": {
+              "tp": 33,
+              "fp": 56,
+              "fn": 59,
+              "precision": 0.3707865168539326,
+              "recall": 0.358695652173913,
+              "f1": 0.36464088397790057
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 4,
+              "precision": 0.8382352941176471,
+              "recall": 0.9344262295081968,
+              "f1": 0.8837209302325582
+            },
+            "subtype_of": {
+              "tp": 16,
+              "fp": 52,
+              "fn": 81,
+              "precision": 0.23529411764705882,
+              "recall": 0.16494845360824742,
+              "f1": 0.19393939393939394
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "__INVALID_ATTEMPT__": {
+              "tp": 0,
+              "fp": 72,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "free_text": {
+          "samples": 69,
+          "diagnostic_categories": {
+            "entity_fp:no_gold_correspondence": 140,
+            "entity_fn:missing_entity": 268,
+            "relation_fp:no_gold_correspondence": 51,
+            "relation_fp:relation_label_mismatch": 76,
+            "relation_fp:endpoint_not_in_gold": 126,
+            "relation_fn:endpoint_missing_from_actual_table": 278,
+            "relation_fn:relation_label_mismatch": 59,
+            "relation_fn:no_predicted_correspondence": 48,
+            "relation_fp:direction_reversal": 14,
+            "relation_fn:direction_reversal": 9,
+            "entity_fp:entity_type_mismatch": 1,
+            "entity_fn:entity_type_mismatch": 1,
+            "relation_fn:endpoint_type_mismatch": 1
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 72,
+          "entity": {
+            "tp": 379,
+            "fp": 141,
+            "fn": 269,
+            "precision": 0.7288461538461538,
+            "recall": 0.5848765432098766,
+            "f1": 0.648972602739726
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 73,
+              "precision": 0.7142857142857143,
+              "recall": 0.12048192771084337,
+              "f1": 0.20618556701030927
+            },
+            "Disease": {
+              "tp": 193,
+              "fp": 54,
+              "fn": 82,
+              "precision": 0.7813765182186235,
+              "recall": 0.7018181818181818,
+              "f1": 0.7394636015325671
+            },
+            "Etiology": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "Symptom": {
+              "tp": 176,
+              "fp": 82,
+              "fn": 114,
+              "precision": 0.6821705426356589,
+              "recall": 0.6068965517241379,
+              "f1": 0.6423357664233577
+            }
+          },
+          "relation": {
+            "tp": 178,
+            "fp": 339,
+            "fn": 395,
+            "precision": 0.344294003868472,
+            "recall": 0.3106457242582897,
+            "f1": 0.326605504587156
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 18,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 54,
+              "fp": 39,
+              "fn": 28,
+              "precision": 0.5806451612903226,
+              "recall": 0.6585365853658537,
+              "f1": 0.6171428571428571
+            },
+            "has_diagnostic_criterion": {
+              "tp": 10,
+              "fp": 4,
+              "fn": 65,
+              "precision": 0.7142857142857143,
+              "recall": 0.13333333333333333,
+              "f1": 0.2247191011235955
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 7,
+              "fn": 1,
+              "precision": 0.5,
+              "recall": 0.875,
+              "f1": 0.6363636363636364
+            },
+            "is_associated_symptom_of": {
+              "tp": 58,
+              "fp": 87,
+              "fn": 111,
+              "precision": 0.4,
+              "recall": 0.3431952662721893,
+              "f1": 0.36942675159235666
+            },
+            "is_core_symptom_of": {
+              "tp": 33,
+              "fp": 56,
+              "fn": 56,
+              "precision": 0.3707865168539326,
+              "recall": 0.3707865168539326,
+              "f1": 0.3707865168539326
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "subtype_of": {
+              "tp": 16,
+              "fp": 52,
+              "fn": 63,
+              "precision": 0.23529411764705882,
+              "recall": 0.20253164556962025,
+              "f1": 0.21768707482993196
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "__INVALID_ATTEMPT__": {
+              "tp": 0,
+              "fp": 72,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "structured_icd": {
+          "samples": 61,
+          "diagnostic_categories": {
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "relation_fp:relation_label_mismatch": 4,
+            "relation_fn:relation_label_mismatch": 4,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 0,
+          "entity": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8
+          },
+          "per_entity": {
+            "Disease": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9457364341085271,
+              "recall": 0.7093023255813954,
+              "f1": 0.8106312292358804
+            },
+            "Symptom": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "relation": {
+            "tp": 57,
+            "fp": 11,
+            "fn": 26,
+            "precision": 0.8382352941176471,
+            "recall": 0.6867469879518072,
+            "f1": 0.7549668874172185
+          },
+          "per_relation": {
+            "differentiates_from": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_associated_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_core_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 0,
+              "precision": 0.8382352941176471,
+              "recall": 1.0,
+              "f1": 0.912
+            },
+            "subtype_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 18,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      },
+      "rule_deletions": {
+        "overall": {
+          "entity_removed_tp": 0,
+          "entity_removed_fp": 3,
+          "relation_removed_tp": 1,
+          "relation_removed_fp": 24
+        },
+        "free_text": {
+          "entity_removed_tp": 0,
+          "entity_removed_fp": 3,
+          "relation_removed_tp": 1,
+          "relation_removed_fp": 24
+        },
+        "structured_icd": {
+          "entity_removed_tp": 0,
+          "entity_removed_fp": 0,
+          "relation_removed_tp": 0,
+          "relation_removed_fp": 0
+        }
+      },
+      "delivery": {
+        "generation_calls": 250,
+        "failed_generation_calls": 15,
+        "failed_samples": 12,
+        "budget_exhaustions": 0,
+        "deadline_exhaustions": 0,
+        "entity_windows": {
+          "documents_with_incomplete_entity_stage": 0,
+          "successful": 125,
+          "total": 125
+        }
+      },
+      "coverage": {
+        "free_text": {
+          "actual_table_entities": 517,
+          "endpoint_only_recall_upper_bound": 0.5130890052356021,
+          "gold_edges_with_both_actual_table_endpoints": 294,
+          "gold_edges_with_both_raw_endpoints": 294,
+          "gold_endpoint_coverage_lost_to_entity_rules": 0,
+          "gold_relations": 573,
+          "input_budget_refusals": 0,
+          "raw_entities": 520,
+          "samples": 69,
+          "zero_actual_table_entities": 0,
+          "zero_relation_generation_calls": 0
+        },
+        "structured_icd": {
+          "actual_table_entities": 129,
+          "endpoint_only_recall_upper_bound": 0.7349397590361446,
+          "gold_edges_with_both_actual_table_endpoints": 61,
+          "gold_edges_with_both_raw_endpoints": 61,
+          "gold_endpoint_coverage_lost_to_entity_rules": 0,
+          "gold_relations": 83,
+          "input_budget_refusals": 0,
+          "raw_entities": 129,
+          "samples": 61,
+          "zero_actual_table_entities": 0,
+          "zero_relation_generation_calls": 61
+        },
+        "overall": {
+          "actual_table_entities": 646,
+          "endpoint_only_recall_upper_bound": 0.5411585365853658,
+          "gold_edges_with_both_actual_table_endpoints": 355,
+          "gold_edges_with_both_raw_endpoints": 355,
+          "gold_endpoint_coverage_lost_to_entity_rules": 0,
+          "gold_relations": 656,
+          "input_budget_refusals": 0,
+          "raw_entities": 649,
+          "samples": 130,
+          "zero_actual_table_entities": 0,
+          "zero_relation_generation_calls": 61
+        }
+      },
+      "relation_trace_summary": {
+        "calls": 125,
+        "eos_observed": 125,
+        "failed_eos_complete": 15,
+        "max_generated_tokens": 1461,
+        "oom_retries_total": 0,
+        "parse_error_reasons": {
+          "unknown_entity_reference": 56
+        }
+      }
+    },
+    "oracle": {
+      "raw": {
+        "overall": {
+          "samples": 130,
+          "diagnostic_categories": {
+            "relation_fp:no_gold_correspondence": 69,
+            "relation_fp:relation_label_mismatch": 72,
+            "relation_fn:no_predicted_correspondence": 199,
+            "relation_fn:relation_label_mismatch": 70,
+            "relation_fp:direction_reversal": 48,
+            "relation_fn:direction_reversal": 39,
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 198,
+          "entity": {
+            "tp": 770,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.990990990990991,
+            "recall": 0.9344660194174758,
+            "f1": 0.9618988132417239
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 83,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Disease": {
+              "tp": 397,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9826732673267327,
+              "recall": 0.8881431767337807,
+              "f1": 0.9330199764982373
+            },
+            "Symptom": {
+              "tp": 290,
+              "fp": 0,
+              "fn": 4,
+              "precision": 1.0,
+              "recall": 0.9863945578231292,
+              "f1": 0.9931506849315068
+            }
+          },
+          "relation": {
+            "tp": 326,
+            "fp": 196,
+            "fn": 330,
+            "precision": 0.6245210727969349,
+            "recall": 0.4969512195121951,
+            "f1": 0.5534804753820034
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 64,
+              "fp": 17,
+              "fn": 22,
+              "precision": 0.7901234567901234,
+              "recall": 0.7441860465116279,
+              "f1": 0.7664670658682635
+            },
+            "has_diagnostic_criterion": {
+              "tp": 67,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8933333333333333,
+              "f1": 0.9436619718309859
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.5384615384615384,
+              "recall": 0.875,
+              "f1": 0.6666666666666666
+            },
+            "is_associated_symptom_of": {
+              "tp": 72,
+              "fp": 76,
+              "fn": 98,
+              "precision": 0.4864864864864865,
+              "recall": 0.4235294117647059,
+              "f1": 0.4528301886792453
+            },
+            "is_core_symptom_of": {
+              "tp": 34,
+              "fp": 11,
+              "fn": 58,
+              "precision": 0.7555555555555555,
+              "recall": 0.3695652173913043,
+              "f1": 0.49635036496350365
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 4,
+              "precision": 0.8382352941176471,
+              "recall": 0.9344262295081968,
+              "f1": 0.8837209302325582
+            },
+            "subtype_of": {
+              "tp": 25,
+              "fp": 68,
+              "fn": 72,
+              "precision": 0.26881720430107525,
+              "recall": 0.25773195876288657,
+              "f1": 0.2631578947368421
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "free_text": {
+          "samples": 69,
+          "diagnostic_categories": {
+            "relation_fp:no_gold_correspondence": 69,
+            "relation_fp:relation_label_mismatch": 68,
+            "relation_fn:no_predicted_correspondence": 199,
+            "relation_fn:relation_label_mismatch": 66,
+            "relation_fp:direction_reversal": 48,
+            "relation_fn:direction_reversal": 39
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 198,
+          "entity": {
+            "tp": 648,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 83,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Disease": {
+              "tp": 275,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Symptom": {
+              "tp": 290,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "relation": {
+            "tp": 269,
+            "fp": 185,
+            "fn": 304,
+            "precision": 0.5925110132158591,
+            "recall": 0.4694589877835951,
+            "f1": 0.5238558909444986
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 64,
+              "fp": 17,
+              "fn": 18,
+              "precision": 0.7901234567901234,
+              "recall": 0.7804878048780488,
+              "f1": 0.7852760736196319
+            },
+            "has_diagnostic_criterion": {
+              "tp": 67,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8933333333333333,
+              "f1": 0.9436619718309859
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.5384615384615384,
+              "recall": 0.875,
+              "f1": 0.6666666666666666
+            },
+            "is_associated_symptom_of": {
+              "tp": 72,
+              "fp": 76,
+              "fn": 97,
+              "precision": 0.4864864864864865,
+              "recall": 0.4260355029585799,
+              "f1": 0.45425867507886436
+            },
+            "is_core_symptom_of": {
+              "tp": 34,
+              "fp": 11,
+              "fn": 55,
+              "precision": 0.7555555555555555,
+              "recall": 0.38202247191011235,
+              "f1": 0.5074626865671642
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "subtype_of": {
+              "tp": 25,
+              "fp": 68,
+              "fn": 54,
+              "precision": 0.26881720430107525,
+              "recall": 0.31645569620253167,
+              "f1": 0.29069767441860467
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "structured_icd": {
+          "samples": 61,
+          "diagnostic_categories": {
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "relation_fp:relation_label_mismatch": 4,
+            "relation_fn:relation_label_mismatch": 4,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 0,
+          "entity": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8
+          },
+          "per_entity": {
+            "Disease": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9457364341085271,
+              "recall": 0.7093023255813954,
+              "f1": 0.8106312292358804
+            },
+            "Symptom": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "relation": {
+            "tp": 57,
+            "fp": 11,
+            "fn": 26,
+            "precision": 0.8382352941176471,
+            "recall": 0.6867469879518072,
+            "f1": 0.7549668874172185
+          },
+          "per_relation": {
+            "differentiates_from": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_associated_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_core_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 0,
+              "precision": 0.8382352941176471,
+              "recall": 1.0,
+              "f1": 0.912
+            },
+            "subtype_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 18,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      },
+      "filtered": {
+        "overall": {
+          "samples": 130,
+          "diagnostic_categories": {
+            "relation_fp:no_gold_correspondence": 52,
+            "relation_fp:relation_label_mismatch": 65,
+            "relation_fn:no_predicted_correspondence": 211,
+            "relation_fn:relation_label_mismatch": 64,
+            "relation_fp:direction_reversal": 42,
+            "relation_fn:direction_reversal": 40,
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 198,
+          "entity": {
+            "tp": 770,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.990990990990991,
+            "recall": 0.9344660194174758,
+            "f1": 0.9618988132417239
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 83,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Disease": {
+              "tp": 397,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9826732673267327,
+              "recall": 0.8881431767337807,
+              "f1": 0.9330199764982373
+            },
+            "Symptom": {
+              "tp": 290,
+              "fp": 0,
+              "fn": 4,
+              "precision": 1.0,
+              "recall": 0.9863945578231292,
+              "f1": 0.9931506849315068
+            }
+          },
+          "relation": {
+            "tp": 319,
+            "fp": 166,
+            "fn": 337,
+            "precision": 0.6577319587628866,
+            "recall": 0.48628048780487804,
+            "f1": 0.5591586327782647
+          },
+          "per_relation": {
+            "causes": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 64,
+              "fp": 17,
+              "fn": 22,
+              "precision": 0.7901234567901234,
+              "recall": 0.7441860465116279,
+              "f1": 0.7664670658682635
+            },
+            "has_diagnostic_criterion": {
+              "tp": 67,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8933333333333333,
+              "f1": 0.9436619718309859
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.5384615384615384,
+              "recall": 0.875,
+              "f1": 0.6666666666666666
+            },
+            "is_associated_symptom_of": {
+              "tp": 68,
+              "fp": 70,
+              "fn": 102,
+              "precision": 0.4927536231884058,
+              "recall": 0.4,
+              "f1": 0.44155844155844154
+            },
+            "is_core_symptom_of": {
+              "tp": 32,
+              "fp": 11,
+              "fn": 60,
+              "precision": 0.7441860465116279,
+              "recall": 0.34782608695652173,
+              "f1": 0.4740740740740741
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 4,
+              "precision": 0.8382352941176471,
+              "recall": 0.9344262295081968,
+              "f1": 0.8837209302325582
+            },
+            "subtype_of": {
+              "tp": 24,
+              "fp": 50,
+              "fn": 73,
+              "precision": 0.32432432432432434,
+              "recall": 0.24742268041237114,
+              "f1": 0.2807017543859649
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "free_text": {
+          "samples": 69,
+          "diagnostic_categories": {
+            "relation_fp:no_gold_correspondence": 52,
+            "relation_fp:relation_label_mismatch": 61,
+            "relation_fn:no_predicted_correspondence": 211,
+            "relation_fn:relation_label_mismatch": 60,
+            "relation_fp:direction_reversal": 42,
+            "relation_fn:direction_reversal": 40
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 198,
+          "entity": {
+            "tp": 648,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 83,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Disease": {
+              "tp": 275,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Symptom": {
+              "tp": 290,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "relation": {
+            "tp": 262,
+            "fp": 155,
+            "fn": 311,
+            "precision": 0.6282973621103117,
+            "recall": 0.4572425828970332,
+            "f1": 0.5292929292929293
+          },
+          "per_relation": {
+            "causes": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 64,
+              "fp": 17,
+              "fn": 18,
+              "precision": 0.7901234567901234,
+              "recall": 0.7804878048780488,
+              "f1": 0.7852760736196319
+            },
+            "has_diagnostic_criterion": {
+              "tp": 67,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8933333333333333,
+              "f1": 0.9436619718309859
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.5384615384615384,
+              "recall": 0.875,
+              "f1": 0.6666666666666666
+            },
+            "is_associated_symptom_of": {
+              "tp": 68,
+              "fp": 70,
+              "fn": 101,
+              "precision": 0.4927536231884058,
+              "recall": 0.40236686390532544,
+              "f1": 0.44299674267100975
+            },
+            "is_core_symptom_of": {
+              "tp": 32,
+              "fp": 11,
+              "fn": 57,
+              "precision": 0.7441860465116279,
+              "recall": 0.3595505617977528,
+              "f1": 0.48484848484848486
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "subtype_of": {
+              "tp": 24,
+              "fp": 50,
+              "fn": 55,
+              "precision": 0.32432432432432434,
+              "recall": 0.3037974683544304,
+              "f1": 0.3137254901960784
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "structured_icd": {
+          "samples": 61,
+          "diagnostic_categories": {
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "relation_fp:relation_label_mismatch": 4,
+            "relation_fn:relation_label_mismatch": 4,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 0,
+          "entity": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8
+          },
+          "per_entity": {
+            "Disease": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9457364341085271,
+              "recall": 0.7093023255813954,
+              "f1": 0.8106312292358804
+            },
+            "Symptom": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "relation": {
+            "tp": 57,
+            "fp": 11,
+            "fn": 26,
+            "precision": 0.8382352941176471,
+            "recall": 0.6867469879518072,
+            "f1": 0.7549668874172185
+          },
+          "per_relation": {
+            "differentiates_from": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_associated_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_core_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 0,
+              "precision": 0.8382352941176471,
+              "recall": 1.0,
+              "f1": 0.912
+            },
+            "subtype_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 18,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      },
+      "strict_raw": {
+        "overall": {
+          "samples": 130,
+          "diagnostic_categories": {
+            "relation_fp:no_gold_correspondence": 69,
+            "relation_fp:relation_label_mismatch": 72,
+            "relation_fn:no_predicted_correspondence": 199,
+            "relation_fn:relation_label_mismatch": 70,
+            "relation_fp:direction_reversal": 48,
+            "relation_fn:direction_reversal": 39,
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 198,
+          "entity": {
+            "tp": 770,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.990990990990991,
+            "recall": 0.9344660194174758,
+            "f1": 0.9618988132417239
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 83,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Disease": {
+              "tp": 397,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9826732673267327,
+              "recall": 0.8881431767337807,
+              "f1": 0.9330199764982373
+            },
+            "Symptom": {
+              "tp": 290,
+              "fp": 0,
+              "fn": 4,
+              "precision": 1.0,
+              "recall": 0.9863945578231292,
+              "f1": 0.9931506849315068
+            }
+          },
+          "relation": {
+            "tp": 326,
+            "fp": 394,
+            "fn": 330,
+            "precision": 0.4527777777777778,
+            "recall": 0.4969512195121951,
+            "f1": 0.4738372093023256
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 64,
+              "fp": 17,
+              "fn": 22,
+              "precision": 0.7901234567901234,
+              "recall": 0.7441860465116279,
+              "f1": 0.7664670658682635
+            },
+            "has_diagnostic_criterion": {
+              "tp": 67,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8933333333333333,
+              "f1": 0.9436619718309859
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.5384615384615384,
+              "recall": 0.875,
+              "f1": 0.6666666666666666
+            },
+            "is_associated_symptom_of": {
+              "tp": 72,
+              "fp": 76,
+              "fn": 98,
+              "precision": 0.4864864864864865,
+              "recall": 0.4235294117647059,
+              "f1": 0.4528301886792453
+            },
+            "is_core_symptom_of": {
+              "tp": 34,
+              "fp": 11,
+              "fn": 58,
+              "precision": 0.7555555555555555,
+              "recall": 0.3695652173913043,
+              "f1": 0.49635036496350365
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 4,
+              "precision": 0.8382352941176471,
+              "recall": 0.9344262295081968,
+              "f1": 0.8837209302325582
+            },
+            "subtype_of": {
+              "tp": 25,
+              "fp": 68,
+              "fn": 72,
+              "precision": 0.26881720430107525,
+              "recall": 0.25773195876288657,
+              "f1": 0.2631578947368421
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "__INVALID_ATTEMPT__": {
+              "tp": 0,
+              "fp": 198,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "free_text": {
+          "samples": 69,
+          "diagnostic_categories": {
+            "relation_fp:no_gold_correspondence": 69,
+            "relation_fp:relation_label_mismatch": 68,
+            "relation_fn:no_predicted_correspondence": 199,
+            "relation_fn:relation_label_mismatch": 66,
+            "relation_fp:direction_reversal": 48,
+            "relation_fn:direction_reversal": 39
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 198,
+          "entity": {
+            "tp": 648,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "per_entity": {
+            "Diagnostic Criterion": {
+              "tp": 83,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Disease": {
+              "tp": 275,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "Symptom": {
+              "tp": 290,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          },
+          "relation": {
+            "tp": 269,
+            "fp": 383,
+            "fn": 304,
+            "precision": 0.4125766871165644,
+            "recall": 0.4694589877835951,
+            "f1": 0.43918367346938775
+          },
+          "per_relation": {
+            "argues_against": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "causes": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "differentiates_from": {
+              "tp": 64,
+              "fp": 17,
+              "fn": 18,
+              "precision": 0.7901234567901234,
+              "recall": 0.7804878048780488,
+              "f1": 0.7852760736196319
+            },
+            "has_diagnostic_criterion": {
+              "tp": 67,
+              "fp": 0,
+              "fn": 8,
+              "precision": 1.0,
+              "recall": 0.8933333333333333,
+              "f1": 0.9436619718309859
+            },
+            "has_manifestation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "has_specifier": {
+              "tp": 7,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.5384615384615384,
+              "recall": 0.875,
+              "f1": 0.6666666666666666
+            },
+            "is_associated_symptom_of": {
+              "tp": 72,
+              "fp": 76,
+              "fn": 97,
+              "precision": 0.4864864864864865,
+              "recall": 0.4260355029585799,
+              "f1": 0.45425867507886436
+            },
+            "is_core_symptom_of": {
+              "tp": 34,
+              "fp": 11,
+              "fn": 55,
+              "precision": 0.7555555555555555,
+              "recall": 0.38202247191011235,
+              "f1": 0.5074626865671642
+            },
+            "part_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "predisposes_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "progresses_to": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "required_for": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "subtype_of": {
+              "tp": 25,
+              "fp": 68,
+              "fn": 54,
+              "precision": 0.26881720430107525,
+              "recall": 0.31645569620253167,
+              "f1": 0.29069767441860467
+            },
+            "suggests": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_Diagnostic Criterion_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "supports_diagnosis_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "__INVALID_ATTEMPT__": {
+              "tp": 0,
+              "fp": 198,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "structured_icd": {
+          "samples": 61,
+          "diagnostic_categories": {
+            "entity_fn:missing_entity": 54,
+            "relation_fn:endpoint_missing_from_actual_table": 22,
+            "relation_fp:relation_label_mismatch": 4,
+            "relation_fn:relation_label_mismatch": 4,
+            "entity_fp:no_gold_correspondence": 7,
+            "relation_fp:endpoint_not_in_gold": 7
+          },
+          "invalid_entity_attempt_fp": 0,
+          "invalid_relation_attempt_fp": 0,
+          "entity": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8
+          },
+          "per_entity": {
+            "Disease": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 50,
+              "precision": 0.9457364341085271,
+              "recall": 0.7093023255813954,
+              "f1": 0.8106312292358804
+            },
+            "Symptom": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "relation": {
+            "tp": 57,
+            "fp": 11,
+            "fn": 26,
+            "precision": 0.8382352941176471,
+            "recall": 0.6867469879518072,
+            "f1": 0.7549668874172185
+          },
+          "per_relation": {
+            "differentiates_from": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 4,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_associated_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "is_core_symptom_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "rules_out": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 0,
+              "precision": 0.8382352941176471,
+              "recall": 1.0,
+              "f1": 0.912
+            },
+            "subtype_of": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 18,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        }
+      },
+      "rule_deletions": {
+        "overall": {
+          "entity_removed_tp": 0,
+          "entity_removed_fp": 0,
+          "relation_removed_tp": 7,
+          "relation_removed_fp": 30
+        },
+        "free_text": {
+          "entity_removed_tp": 0,
+          "entity_removed_fp": 0,
+          "relation_removed_tp": 7,
+          "relation_removed_fp": 30
+        },
+        "structured_icd": {
+          "entity_removed_tp": 0,
+          "entity_removed_fp": 0,
+          "relation_removed_tp": 0,
+          "relation_removed_fp": 0
+        }
+      },
+      "delivery": {
+        "generation_calls": 125,
+        "failed_generation_calls": 15,
+        "failed_samples": 13,
+        "budget_exhaustions": 3,
+        "deadline_exhaustions": 0,
+        "entity_windows": {
+          "documents_with_incomplete_entity_stage": 0,
+          "successful": 0,
+          "total": 0
+        }
+      },
+      "coverage": {
+        "free_text": {
+          "actual_table_entities": 648,
+          "endpoint_only_recall_upper_bound": 1.0,
+          "gold_edges_with_both_actual_table_endpoints": 573,
+          "gold_edges_with_both_raw_endpoints": 573,
+          "gold_endpoint_coverage_lost_to_entity_rules": 0,
+          "gold_relations": 573,
+          "input_budget_refusals": 0,
+          "raw_entities": 648,
+          "samples": 69,
+          "zero_actual_table_entities": 0,
+          "zero_relation_generation_calls": 0
+        },
+        "structured_icd": {
+          "actual_table_entities": 129,
+          "endpoint_only_recall_upper_bound": 0.7349397590361446,
+          "gold_edges_with_both_actual_table_endpoints": 61,
+          "gold_edges_with_both_raw_endpoints": 61,
+          "gold_endpoint_coverage_lost_to_entity_rules": 0,
+          "gold_relations": 83,
+          "input_budget_refusals": 0,
+          "raw_entities": 129,
+          "samples": 61,
+          "zero_actual_table_entities": 0,
+          "zero_relation_generation_calls": 61
+        },
+        "overall": {
+          "actual_table_entities": 777,
+          "endpoint_only_recall_upper_bound": 0.9664634146341463,
+          "gold_edges_with_both_actual_table_endpoints": 634,
+          "gold_edges_with_both_raw_endpoints": 634,
+          "gold_endpoint_coverage_lost_to_entity_rules": 0,
+          "gold_relations": 656,
+          "input_budget_refusals": 0,
+          "raw_entities": 777,
+          "samples": 130,
+          "zero_actual_table_entities": 0,
+          "zero_relation_generation_calls": 61
+        }
+      },
+      "relation_trace_summary": {
+        "calls": 125,
+        "eos_observed": 122,
+        "failed_eos_complete": 12,
+        "max_generated_tokens": 4096,
+        "oom_retries_total": 0,
+        "parse_error_reasons": {
+          "unknown_entity_reference": 12
+        }
+      }
+    }
+  },
+  "entity_cache": {
+    "all_cached_calls_consumed": true,
+    "cached_entity_calls": 125,
+    "new_gpu_entity_calls": 0,
+    "new_gpu_relation_calls": 250,
+    "new_gpu_relation_calls_unit": "relation_backend_attempted_jobs",
+    "origin_manifest_sha256": "667c141dbce47a6cc217580aac62a6997b7ac2b6fa9331de0879b66ad243ee24",
+    "origin_generations_sha256": "29ec5a2438922fa278c61f194688c19f8a577234f52dd6652604e3ba97888e7c",
+    "token_and_in_memory_checks": "verified",
+    "entity_adapter_fingerprint": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c",
+    "runtime_sha256": "dd3853a8be97e531eecfe7f16e434cb468109e6e62d38b124a78bc37680c2d45",
+    "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+    "relation_batch_size": 8,
+    "final_live_entity_graph_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "final_live_entity_graph_matches_original": true
+  },
+  "loaded_adapter_verification": {
+    "entities": {
+      "cuda_sha256": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c",
+      "expected_sha256": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c",
+      "load_attempts": 1,
+      "loaded_sha256": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c"
+    },
+    "relations": {
+      "cuda_sha256": "4f2d018c8b9d9cdc29f3fb796871a63dad617faa0fcbdfb88cd369d72f5d9dc3",
+      "expected_sha256": "4f2d018c8b9d9cdc29f3fb796871a63dad617faa0fcbdfb88cd369d72f5d9dc3",
+      "load_attempts": 2,
+      "loaded_sha256": "4f2d018c8b9d9cdc29f3fb796871a63dad617faa0fcbdfb88cd369d72f5d9dc3"
+    }
+  },
+  "comparison": {
+    "earlier_same_entity_full_relation_batch4": {
+      "live_filtered_free_relation": {
+        "tp": 119,
+        "fp": 164,
+        "fn": 454,
+        "f1": 0.2780373831775701
+      },
+      "new_minus_old_tp": 58,
+      "new_minus_old_fp": 79,
+      "relation_f1_delta_percentage_points": 7.84580851003755
+    },
+    "matched_batch8_full_relation_control": "queued",
+    "canonical_relation_view": "running",
+    "claim_limit": "Same actual entities; short input, repeated supervision, optimizer steps, relation weights and batch changed versus earlier full-source result. Matched batch8 control pending; cannot attribute entire gain to context length."
+  },
+  "key_limitations": [
+    "Free live filtered precision42.14%,recall30.89%,F135.65% remains well below target. More predictions raised TP and FP together.",
+    "Actual live table covers294/573 gold relation endpoint pairs;279 edges lack an endpoint and117 more are missed despite endpoints being present.",
+    "Live15 EOS-complete relation windows fail semantic reference checks; all56 recorded invalid lines are unknown_entity_reference, not JSON or TAB syntax errors.",
+    "Oracle still has3 missingEOS windows and12 semantic-failure windows; complete input entities do not eliminate semantic relation errors.",
+    "Frozen silver annotations may be incomplete; mismatch diagnostics are not independent clinical adjudication."
+  ],
+  "second_independent_review": {
+    "status": "PASS_second_independent_recount",
+    "private_aggregate_sha256": "88f243019198cd2ff036d72b07c2084bd62e1cd7cd19840180e97e687c538b8d",
+    "entity_cache": {
+      "matched_complete_origin_events": 125,
+      "original_event_sha_and_all_noncache_fields_equal": true,
+      "raw_and_filtered_final_entities_equal_for_all_live_cases": 130,
+      "final_filtered_entity_graphs_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+      "exact_origin_current_runtime_sha": "dd3853a8be97e531eecfe7f16e434cb468109e6e62d38b124a78bc37680c2d45",
+      "new_entity_backend_calls_recorded": 0
+    },
+    "relation_delivery": {
+      "live": {
+        "requested_relation_windows": 125,
+        "all_expected_windows_present": true,
+        "parser_and_token_trace_rechecked": 125,
+        "successful_windows": 110,
+        "failed_windows": 15,
+        "failed_documents": 12,
+        "failure_types": {
+          "invalid_semantic_records": 15
+        },
+        "parse_error_records_by_reason": {
+          "unknown_entity_reference": 56
+        },
+        "budget_cap_windows": 0,
+        "cap_source_indices": [],
+        "windows_with_identical_line_repeats": 1,
+        "eos_observed_windows": 125
+      },
+      "oracle": {
+        "requested_relation_windows": 125,
+        "all_expected_windows_present": true,
+        "parser_and_token_trace_rechecked": 125,
+        "successful_windows": 110,
+        "failed_windows": 15,
+        "failed_documents": 13,
+        "failure_types": {
+          "invalid_semantic_records": 12,
+          "missing_eos": 3
+        },
+        "parse_error_records_by_reason": {
+          "unknown_entity_reference": 12
+        },
+        "budget_cap_windows": 3,
+        "cap_source_indices": [
+          548,
+          170,
+          220
+        ],
+        "windows_with_identical_line_repeats": 6,
+        "eos_observed_windows": 122
+      }
+    },
+    "fn_diagnostics": {
+      "live": {
+        "raw": {
+          "fn_primary_categories": {
+            "endpoint_absent_from_actual_table": 279,
+            "same_endpoints_other_relation": 59,
+            "no_exact_pair_label_prediction": 48,
+            "reverse_same_relation": 9
+          },
+          "reversed_labels": {
+            "subtype_of": 9
+          },
+          "label_confusion_events_not_one_to_one": {
+            "is_associated_symptom_of -> is_core_symptom_of": 27,
+            "differentiates_from -> progresses_to": 3,
+            "is_core_symptom_of -> is_associated_symptom_of": 22,
+            "differentiates_from -> causes": 1,
+            "subtype_of -> differentiates_from": 1,
+            "is_core_symptom_of -> supports_diagnosis_of": 5,
+            "is_associated_symptom_of -> supports_diagnosis_of": 4
+          }
+        },
+        "filtered": {
+          "fn_primary_categories": {
+            "endpoint_absent_from_actual_table": 279,
+            "same_endpoints_other_relation": 55,
+            "no_exact_pair_label_prediction": 53,
+            "reverse_same_relation": 9
+          },
+          "reversed_labels": {
+            "subtype_of": 9
+          },
+          "label_confusion_events_not_one_to_one": {
+            "is_associated_symptom_of -> is_core_symptom_of": 24,
+            "differentiates_from -> progresses_to": 3,
+            "is_core_symptom_of -> is_associated_symptom_of": 22,
+            "differentiates_from -> causes": 1,
+            "is_core_symptom_of -> supports_diagnosis_of": 5,
+            "is_associated_symptom_of -> supports_diagnosis_of": 4
+          }
+        }
+      },
+      "oracle": {
+        "raw": {
+          "fn_primary_categories": {
+            "no_exact_pair_label_prediction": 199,
+            "same_endpoints_other_relation": 66,
+            "reverse_same_relation": 39
+          },
+          "reversed_labels": {
+            "subtype_of": 39
+          },
+          "label_confusion_events_not_one_to_one": {
+            "is_associated_symptom_of -> is_core_symptom_of": 45,
+            "differentiates_from -> progresses_to": 3,
+            "is_core_symptom_of -> is_associated_symptom_of": 4,
+            "is_core_symptom_of -> supports_diagnosis_of": 4,
+            "is_associated_symptom_of -> supports_diagnosis_of": 7,
+            "subtype_of -> rules_out": 1,
+            "subtype_of -> causes": 1,
+            "subtype_of -> differentiates_from": 1,
+            "differentiates_from -> predisposes_to": 1
+          }
+        },
+        "filtered": {
+          "fn_primary_categories": {
+            "no_exact_pair_label_prediction": 211,
+            "same_endpoints_other_relation": 60,
+            "reverse_same_relation": 40
+          },
+          "reversed_labels": {
+            "subtype_of": 40
+          },
+          "label_confusion_events_not_one_to_one": {
+            "is_associated_symptom_of -> is_core_symptom_of": 40,
+            "differentiates_from -> progresses_to": 3,
+            "is_core_symptom_of -> is_associated_symptom_of": 4,
+            "is_core_symptom_of -> supports_diagnosis_of": 4,
+            "subtype_of -> rules_out": 1,
+            "subtype_of -> causes": 1,
+            "is_associated_symptom_of -> supports_diagnosis_of": 6,
+            "differentiates_from -> predisposes_to": 1
+          }
+        }
+      }
+    },
+    "criterion_entities_unchanged": {
+      "gold": 83,
+      "tp": 10,
+      "long_gold": 53,
+      "long_tp": 0
+    },
+    "criterion_endpoint_gold_relation_recall": {
+      "live": {
+        "gold": 107,
+        "tp": 10,
+        "fn": 97
+      },
+      "oracle": {
+        "gold": 107,
+        "tp": 67,
+        "fn": 40
+      }
+    },
+    "old_full_relation_batch4_comparison": {
+      "old_filtered": {
+        "f0_5": 0.3489736070381232,
+        "f1": 0.2780373831775701,
+        "fn": 454,
+        "fp": 164,
+        "precision": 0.4204946996466431,
+        "recall": 0.20767888307155322,
+        "tp": 119
+      },
+      "new_filtered": {
+        "tp": 177,
+        "fp": 243,
+        "fn": 396,
+        "precision": 0.42142857142857143,
+        "recall": 0.3089005235602094,
+        "f1": 0.3564954682779456
+      },
+      "old_batch_size": 4,
+      "new_batch_size": 8,
+      "same_entity_graphs": true,
+      "old_relation_adapter_files_sha256": "9c258fa3d66406baa7bf3b98723d5c4a3227d308fd096146295313efac57b316",
+      "new_relation_adapter_files_sha256": "10124eeb068adc62b1a72a893bb947cc287f7707405e5fead8021be716cce8de",
+      "shared_correct_relations": 113,
+      "new_only_correct": 64,
+      "old_only_correct": 6,
+      "old_train_rows_per_epoch": 542,
+      "new_train_rows_per_epoch": 1000,
+      "old_annotation_exposures_per_epoch": 5551,
+      "new_annotation_exposures_per_epoch": 5859,
+      "old_eos_targets_per_epoch": 542,
+      "new_eos_targets_per_epoch": 1000,
+      "claim_limit": "Different relation checkpoint/training window supervision/exposures/EOS/update budget, inference windows and batch size. No causal shortening claim; wait for planned batch8 full-relation matched inference control."
+    },
+    "limitations": [
+      "Multiple source windows merge into one graph; do not count all gold in every failed window as lost FN, because other windows may recover the edge.",
+      "Oracle has supplied gold entities and is only component diagnosis, not a live pipeline score.",
+      "All silver gold retained; directed subtype mismatches are not automatically adjudicated clinical hierarchy errors, especially in JSON-shaped alias-list sources.",
+      "A copied quote need not entail a relation; body grounding and clinical support remain distinct."
+    ]
+  },
+  "fixed_entity_relation_ceiling": {
+    "scope": "Fixed selected actual live entity graph; free-text typed directed relation set",
+    "gold_relations": 573,
+    "gold_relations_with_both_actual_endpoints": 294,
+    "maximum_recall": 0.5130890052356021,
+    "maximum_f1_if_all_available_gold_edges_recovered_and_zero_fp": 0.6782006920415224,
+    "formula": "2 * available_gold_edges / (all_gold_edges + available_gold_edges)",
+    "assumption": "Relation stage may only refer to entities already in the supplied table; no missing entity can be added by relation decoding.",
+    "meaning": "70-80% free-text relation F1 is impossible with this fixed entity table, even for a perfect relation selector. Improving entity recall is necessary, but not sufficient."
+  },
+  "subsequent_matched_control_and_selection": {
+    "checked_utc": "2026-10-19T00:36:22.932036+00:00",
+    "matched_full_control_complete": true,
+    "control_result_file": "full-relation-batch8-results.json",
+    "selection_file": "relation-strategy-selection.json",
+    "selected_view": "short_canonical",
+    "earlier_review_snapshots_preserved": true
+  }
+}

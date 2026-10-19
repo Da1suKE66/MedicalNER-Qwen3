@@ -1,0 +1,175 @@
+{
+  "status": "selected_after_complete_independent_recounts",
+  "utc": "2026-10-18T21:17:32.357931+00:00",
+  "policy_sha256": "05f3b1d43c396022177a3a55aeb481373c64c5a244bb8c1f707edc5e56d5b737",
+  "winner": "entity_short_complete_full_relation",
+  "candidates": {
+    "baseline_full_source": {
+      "sort_key": [
+        0.2529002320185615,
+        0.23554153522607782,
+        0.5895061728395061,
+        -3
+      ],
+      "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
+      "metrics_sha256": "ec5a146c0c8b0be25ceeb2822d2bb2b49c310dd56bba03be7ef0e8831ca8a05f",
+      "independent_aggregate_sha256": "fa46aed4a12bc5842c8393f974df595455985b338e5cedb3adb8c3d9aa78305d",
+      "entity_failed_jobs": 3,
+      "entity_adapter": "entity_full_source_lr5e5_r16_e2",
+      "entity_variant": "full_source",
+      "relation_adapter": "relation_full_source_lr5e5_r16_e2",
+      "relation_adapter_files_sha256": "9c258fa3d66406baa7bf3b98723d5c4a3227d308fd096146295313efac57b316",
+      "coverage": {
+        "actual_table_entities": 560,
+        "endpoint_only_recall_upper_bound": 0.5427574171029669,
+        "gold_edges_with_both_actual_table_endpoints": 311,
+        "gold_edges_with_both_raw_endpoints": 311,
+        "gold_endpoint_coverage_lost_to_entity_rules": 0,
+        "gold_relations": 573,
+        "input_budget_refusals": 0,
+        "raw_entities": 567,
+        "samples": 69,
+        "zero_actual_table_entities": 3,
+        "zero_relation_generation_calls": 3
+      },
+      "free_text": {
+        "raw": {
+          "entity": {
+            "f0_5": 0.6550068587105624,
+            "f1": 0.6288065843621399,
+            "fn": 266,
+            "fp": 185,
+            "precision": 0.673721340388007,
+            "recall": 0.5895061728395061,
+            "tp": 382
+          },
+          "relation": {
+            "f0_5": 0.2685851318944844,
+            "f1": 0.23554153522607782,
+            "fn": 461,
+            "fp": 266,
+            "precision": 0.2962962962962963,
+            "recall": 0.19546247818499127,
+            "tp": 112
+          }
+        },
+        "filtered": {
+          "entity": {
+            "f0_5": 0.6613573407202216,
+            "f1": 0.6324503311258278,
+            "fn": 266,
+            "fp": 178,
+            "precision": 0.6821428571428572,
+            "recall": 0.5895061728395061,
+            "tp": 382
+          },
+          "relation": {
+            "f0_5": 0.3152111046847889,
+            "f1": 0.2529002320185615,
+            "fn": 464,
+            "fp": 180,
+            "precision": 0.3771626297577855,
+            "recall": 0.19022687609075042,
+            "tp": 109
+          }
+        }
+      }
+    },
+    "entity_short_complete_full_relation": {
+      "sort_key": [
+        0.2780373831775701,
+        0.2764976958525346,
+        0.5848765432098766,
+        0
+      ],
+      "manifest_sha256": "667c141dbce47a6cc217580aac62a6997b7ac2b6fa9331de0879b66ad243ee24",
+      "metrics_sha256": "58e3376967684afa659e16fd775a9402e6a6e676fe369a5b6037a6e4baf2061e",
+      "independent_aggregate_sha256": "da21963d4ff12cbbb9b64a2223e4f91c3d4d46fba35e4b7500deb1598d562ab6",
+      "entity_failed_jobs": 0,
+      "entity_adapter": "entity_short_complete_lr5e5_r16_e2",
+      "entity_variant": "short_source",
+      "relation_adapter": "relation_full_source_lr5e5_r16_e2",
+      "relation_adapter_files_sha256": "9c258fa3d66406baa7bf3b98723d5c4a3227d308fd096146295313efac57b316",
+      "coverage": {
+        "actual_table_entities": 517,
+        "endpoint_only_recall_upper_bound": 0.5130890052356021,
+        "gold_edges_with_both_actual_table_endpoints": 294,
+        "gold_edges_with_both_raw_endpoints": 294,
+        "gold_endpoint_coverage_lost_to_entity_rules": 0,
+        "gold_relations": 573,
+        "input_budget_refusals": 0,
+        "raw_entities": 520,
+        "samples": 69,
+        "zero_actual_table_entities": 0,
+        "zero_relation_generation_calls": 0
+      },
+      "free_text": {
+        "raw": {
+          "entity": {
+            "f0_5": 0.6946480938416423,
+            "f1": 0.648972602739726,
+            "fn": 269,
+            "fp": 141,
+            "precision": 0.7288461538461538,
+            "recall": 0.5848765432098766,
+            "tp": 379
+          },
+          "relation": {
+            "f0_5": 0.34227039361095263,
+            "f1": 0.2764976958525346,
+            "fn": 453,
+            "fp": 175,
+            "precision": 0.4067796610169492,
+            "recall": 0.2094240837696335,
+            "tp": 120
+          }
+        },
+        "filtered": {
+          "entity": {
+            "f0_5": 0.6977172312223858,
+            "f1": 0.6506437768240343,
+            "fn": 269,
+            "fp": 138,
+            "precision": 0.7330754352030948,
+            "recall": 0.5848765432098766,
+            "tp": 379
+          },
+          "relation": {
+            "f0_5": 0.3489736070381232,
+            "f1": 0.2780373831775701,
+            "fn": 454,
+            "fp": 164,
+            "precision": 0.4204946996466431,
+            "recall": 0.20767888307155322,
+            "tp": 119
+          }
+        }
+      }
+    }
+  },
+  "selected_entity_variant": "short_source",
+  "selected_entity_adapter_files_sha256": "ec5896460ff310f431d97143feafdac1c593c60947c5fbf9e48920b15428038a",
+  "selected_entity_adapter_fingerprint": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c",
+  "entity_cache_origin_manifest_sha256": "667c141dbce47a6cc217580aac62a6997b7ac2b6fa9331de0879b66ad243ee24",
+  "live_entity_graphs_sha256": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+  "claim_limit": "Tune-based selection. Compared entity context, overlap supervision and optimizer updates jointly; improved precision/F1 does not imply recall or endpoint coverage improved. Not a blind test.",
+  "next_relation_evaluations": {
+    "status": "queued",
+    "jobs": [
+      "evaluate_relation_short_source_complete_selected_entity",
+      "evaluate_relation_short_canonical_complete_selected_entity"
+    ],
+    "samples": 130,
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "same_actual_entity_outputs": true,
+    "batch_size": 8,
+    "max_new_tokens": 4096,
+    "code_snapshot": "code_eval_v6",
+    "cache_origin_same_runtime_verified": true,
+    "model_in_memory_revalidation_at_actual_run_required": true,
+    "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline."
+  }
+}

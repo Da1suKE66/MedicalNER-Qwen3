@@ -1,0 +1,76 @@
+{
+  "scope": "Read-only review of local trainer, data encoder, collator and installed Transformers 4.56.2 source; no GPU quality claim.",
+  "training_status": "smoke_in_progress_at_initial_review_snapshot",
+  "later_training_results_included": false,
+  "reviewed_files_sha256": {
+    "agent/semantic/train.py": "4747e0314ad9652a9c725e48fc4f96e3a8120325d82c86095c81457dd6461227",
+    "agent/semantic/runtime.py": "53f8ee3c2837a0c41a8a0a714f09633427f704f1f005c954b514f1584507a728",
+    "agent/semantic/data.py": "fb760e2828b7384bd0ae1c4bc29edd8555376cc2b21557bbe15d717fa597cf56",
+    "agent/train_sft.py": "723dc1e27c8dbeeafefa33a22053cb800cdb5a68bc5597f719ad537a543b8ef4"
+  },
+  "blocking_findings_remaining_for_fixed_full_source_two_epoch_plan": [],
+  "resolved_findings": [
+    {
+      "issue": "Exception after completed=True could leave a failed adapter eligible for runtime admission.",
+      "resolution": "Trainer exception handler now sets completed=False and failed=True; runtime also rejects failed=True.",
+      "status": "fixed_by_parent_and_reread"
+    },
+    {
+      "issue": "Generic training file admission did not require the approved release SHA.",
+      "resolution": "Formal runs require --data-sha256, checked against bytes before row admission and checked again afterward.",
+      "status": "fixed_by_parent_and_reread"
+    }
+  ],
+  "verified_design": {
+    "prompt_and_padding_labels": -100,
+    "completion_encoding": "Complete literal text encoded once plus one EOS, with no truncation",
+    "finite_loss_and_gradient_checks": true,
+    "actual_exposure": "Counts only successful training_step calls, including each accumulated microbatch; records row and source-group coverage",
+    "formal_coverage_gate": "Every row must have at least the configured integer number of epoch visits",
+    "adapter_change_gate": "Initial and final LoRA fingerprints must differ",
+    "saved_weight_gate": "Safetensors keys and all live tensors compared bitwise",
+    "base_hash_scope": "Configuration and tokenizer only; receipt does not claim base-weight hashing",
+    "optimizer_resume": "save_only_model=True does not preserve optimizer state for exact continuation"
+  },
+  "loss_normalization_review": {
+    "transformers_version_read": "4.56.2",
+    "qwen3_accepts_num_items_in_batch": true,
+    "denominator": "Non-masked completion tokens summed over the accumulation group",
+    "qwen3_loss": "Cross entropy sum divided by num_items_in_batch",
+    "extra_division_in_ObservedTrainer": false,
+    "Trainer_divides_by_accumulation_when_token_denominator_is_used": false,
+    "Accelerator_creation": "Trainer handles accumulation; no gradient_accumulation_steps argument passed to Accelerator",
+    "loss_is_not_extraction_accuracy": true
+  },
+  "formal_baseline_plan": {
+    "stage_training": "Separate entity and relation causal LoRA adapters from the same base",
+    "variant": "full_source",
+    "epochs": 2,
+    "checkpoint_selection": "Fixed final checkpoint, not best epoch selection",
+    "default_batch_size": 1,
+    "default_gradient_accumulation": 8,
+    "expected_optimizer_updates": {
+      "entities": 168,
+      "relations": 136
+    },
+    "final_acceptance": "Actual observed exposure, finite statistics, changed adapter weights, exact saved tensors, then complete frozen evaluation"
+  },
+  "comparison_caveats": [
+    "Equal epochs match annotation-atom visits but do not equalize optimizer updates, prompt tokens or compute.",
+    "Short-source extra target tokens are exactly its extra EOS boundaries; the other added tokens are prompts and repeated input entity tables.",
+    "At batch size 1 and accumulation 8, per-epoch updates are 84/68 for full entity/relation and 137/119 for short views.",
+    "Short-source versus short-canonical holds row count, atom count, EOS count and update count fixed, while changing ordering and its prompt wording.",
+    "Runtime currently uses full-source entity extraction; a future short-trained entity arm must disclose or resolve that training/inference context difference.",
+    "The current plan fixes the final two-epoch checkpoint; save_total_limit=2 is sufficient for that plan but not for retaining every checkpoint of a future longer run."
+  ],
+  "review_scope_by_file": {
+    "agent/semantic/train.py": "Trainer setup, loss forwarding, observed exposure, data admission and save/exception gates",
+    "agent/semantic/runtime.py": "check_adapter_contract receipt admission only; not an independent full-runtime review",
+    "agent/semantic/data.py": "Prompt/completion encoding, EOS, split admission and no-truncation",
+    "agent/train_sft.py": "CausalCollator padding and label preservation"
+  },
+  "cpu_test_command": "PYTHONPATH=agent python -m pytest -q agent/tests/test_semantic_train.py agent/tests/test_semantic_data.py agent/tests/test_semantic_runtime.py",
+  "cpu_test_result": {
+    "passed": 41
+  }
+}

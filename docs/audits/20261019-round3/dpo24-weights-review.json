@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "scope": "Independent CPU hash of actual saved formal/smoke/parent adapter tensors on resident host; no base model loaded and no CUDA context initialized",
+  "actual_disk_fingerprints": {
+    "formal": {
+      "parameter_sha256": "d1d1487f2a480ccffcf04e2f47cc8b7b16e96ef0209b3c3723eed9d9a2220f04",
+      "lora_tensor_count": 504
+    },
+    "smoke": {
+      "parameter_sha256": "bfb0cfe708601cfbc2c36a039665abbd327e5a12ddcdf7ec2a62b739700daf82",
+      "lora_tensor_count": 504
+    },
+    "parent": {
+      "parameter_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+      "lora_tensor_count": 504
+    }
+  },
+  "actual_parent_manifest_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
+  "actual_parent_adapter_files_sha256": "62ec4fab7cf39f9a06bedfddff68be161fd0db5ddb86e5ff4af27749d6484a00",
+  "actual_formal_adapter_files_sha256": "33e58aa6acbcb908d517e55c317257f8b98c708ebea76e0537fe528be76c48cb",
+  "actual_resident_training_data_sha256": "4adfdcea74a3e6f2f5f695eedada04a7a81e1bba65a3b555fcfff641b910122b",
+  "formal_elapsed_seconds": 60.48480889100756,
+  "formal_started_utc": "2026-10-19T12:40:36.676535+00:00",
+  "formal_finished_utc": "2026-10-19T12:41:37.161342+00:00",
+  "formal_epoch": 1,
+  "formal_optimizer_updates": 6,
+  "formal_actual_unique_pairs": 24,
+  "reference_unchanged": true,
+  "save_reload_max_logit_difference": 0.0,
+  "formal_runtime_accepts_actual_files": true,
+  "smoke_runtime_rejected": true,
+  "live_evaluation_status": "Running per root dispatch; this reviewer did not poll or inspect incomplete metrics",
+  "quality_improvement_claimed": false,
+  "GPU_execution_by_reviewer": false,
+  "hash_locks": {
+    "formal.remote.json": "817d27b869fd8bd5023b5f503afdd37c41e539e625ba8c56424855f242e59d7d",
+    "smoke.remote.json": "8aff1a036a99c658d165c56c7b2e6a3e2d51981528e370a59aa854b61a30c1bb",
+    "remote_cpu_verification.json": "f658d5d4cae9163ced9ff4c1863cdf2810df3e9e14d7fb8086731c1b6e85082b",
+    "fetch_completed_training.py": "a5db1e62b043c511cb1c07b4406ac4ed6f8fb7eb856e95bda24c36a411634d9c",
+    "training_review.py": "f8d615bf15c522c0671976da9b9a1a31dcb4c0563ca6dac376eeedfd9e91d156",
+    "completed_training_review/aggregate_review.json": "ca338d5dadb2da12fce16d480fd35acac9230890e4833f1d03373690bc3d3739"
+  }
+}

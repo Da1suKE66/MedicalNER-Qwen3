@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "experiment": "DPO24 reviewed bidirectional semantics lr2e-6 beta0.1 epoch1",
+  "formal_manifest_sha256": "817d27b869fd8bd5023b5f503afdd37c41e539e625ba8c56424855f242e59d7d",
+  "smoke_manifest_sha256": "8aff1a036a99c658d165c56c7b2e6a3e2d51981528e370a59aa854b61a30c1bb",
+  "data_sha256": "4adfdcea74a3e6f2f5f695eedada04a7a81e1bba65a3b555fcfff641b910122b",
+  "trainer_sha256": "77ccbcc2aab0fea027527f825b8e68e86a4b6e2e846439a9b71e47ae0598d339",
+  "categories": {
+    "explicit_positive_label_flip": 13,
+    "explicit_negation_label_flip": 8,
+    "subtype_direction_reversal": 3
+  },
+  "formal_counts": {
+    "pairs": 24,
+    "updates": 6,
+    "chosen_completion_tokens_including_eos": 11155,
+    "rejected_completion_tokens_including_eos": 11150,
+    "prompt_context_tokens_per_branch": 24394,
+    "policy_eos_targets": 48,
+    "max_prompt_plus_completion": 3273
+  },
+  "smoke_counts": {
+    "pairs": 4,
+    "updates": 1,
+    "chosen_completion_tokens_including_eos": 3853,
+    "rejected_completion_tokens_including_eos": 3852,
+    "prompt_context_tokens_per_branch": 5185,
+    "policy_eos_targets": 8,
+    "max_prompt_plus_completion": 3273
+  },
+  "parent_and_reference_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+  "formal_parameter_sha256": "d1d1487f2a480ccffcf04e2f47cc8b7b16e96ef0209b3c3723eed9d9a2220f04",
+  "formal_adapter_files_sha256": "33e58aa6acbcb908d517e55c317257f8b98c708ebea76e0537fe528be76c48cb",
+  "save_reload_max_logit_difference": 0.0,
+  "independent_actual_runtime_rechecked": true,
+  "gpu_rerun_performed": false,
+  "quality_improvement_claimed": false,
+  "limitations": [
+    "CUDA exposure and reload checks are reconciled from frozen receipts; reviewer did not rerun CUDA.",
+    "Reload logits cover the first scheduled prompt last token only.",
+    "Training evidence does not establish extraction quality.",
+    "Original SFT silver parent is unchanged; reviewed preferences are not human medical gold."
+  ]
+}

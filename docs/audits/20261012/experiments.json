@@ -1,0 +1,346 @@
+{
+  "scope": "Historical experiment and training code audit; legacy CLI admission repaired in sibling working repository. No model trained or quality reevaluated by this audit.",
+  "raw_medical_text_included": false,
+  "training_observations": [
+    {
+      "run": "V2_G5_local_common_s42",
+      "source": "history/20260928/training/V2_G5_local_common_s42/run_manifest.json",
+      "steps": 249,
+      "loss": 0.04273044736868885,
+      "epochs": 3.0,
+      "runtime_seconds": 6209.6748,
+      "peak_allocated_gpu_gib": 35.42809772491455,
+      "versions": {
+        "torch": "2.8.0+cu128",
+        "transformers": "4.56.2",
+        "peft": "0.17.1"
+      },
+      "observed_exposure": {
+        "sft_sequence_loss_exposures": 3966,
+        "sft_pair_loss_exposures": 13776,
+        "sft_candidate_pair_context_exposures": 56046,
+        "sft_unknown_pair_context_exposures": 42270,
+        "sft_input_token_loss_exposures": 10608729,
+        "sft_completion_token_loss_exposures": 450549,
+        "sft_prompt_token_loss_exposures": 9598722,
+        "sft_masked_completion_token_context_exposures": 559458
+      },
+      "weights_changed": true,
+      "save_reload_first_prompt_last_token_logit_difference": 0.0
+    },
+    {
+      "run": "V2_base_s42",
+      "source": "history/20260928/training/V2_base_s42/run_manifest.json",
+      "steps": 252,
+      "loss": 0.04532679400983311,
+      "epochs": 3.0,
+      "runtime_seconds": 8331.5416,
+      "peak_allocated_gpu_gib": 35.58668613433838,
+      "versions": {
+        "torch": "2.8.0+cu128",
+        "transformers": "4.56.2",
+        "peft": "0.17.1"
+      },
+      "observed_exposure": {
+        "sft_sequence_loss_exposures": 3999,
+        "sft_pair_loss_exposures": 14295,
+        "sft_candidate_pair_context_exposures": 56442,
+        "sft_unknown_pair_context_exposures": 42147,
+        "sft_input_token_loss_exposures": 13140924,
+        "sft_completion_token_loss_exposures": 472113,
+        "sft_prompt_token_loss_exposures": 12110676,
+        "sft_masked_completion_token_context_exposures": 558135
+      },
+      "weights_changed": true,
+      "save_reload_first_prompt_last_token_logit_difference": 0.0
+    },
+    {
+      "run": "V2_full_common_s42",
+      "source": "history/20260928/training/V2_full_common_s42/run_manifest.json",
+      "steps": 249,
+      "loss": 0.0436778520364838,
+      "epochs": 3.0,
+      "runtime_seconds": 8252.4335,
+      "peak_allocated_gpu_gib": 35.586631774902344,
+      "versions": {
+        "torch": "2.8.0+cu128",
+        "transformers": "4.56.2",
+        "peft": "0.17.1"
+      },
+      "observed_exposure": {
+        "sft_sequence_loss_exposures": 3966,
+        "sft_pair_loss_exposures": 13776,
+        "sft_candidate_pair_context_exposures": 56046,
+        "sft_unknown_pair_context_exposures": 42270,
+        "sft_input_token_loss_exposures": 13013457,
+        "sft_completion_token_loss_exposures": 450549,
+        "sft_prompt_token_loss_exposures": 12003450,
+        "sft_masked_completion_token_context_exposures": 559458
+      },
+      "weights_changed": true,
+      "save_reload_first_prompt_last_token_logit_difference": 0.0
+    },
+    {
+      "run": "V2_noise10_s42",
+      "source": "history/20260928/training/V2_noise10_s42/run_manifest.json",
+      "steps": 252,
+      "loss": 0.04631069791872823,
+      "epochs": 3.0,
+      "runtime_seconds": 8390.1213,
+      "peak_allocated_gpu_gib": 35.6357421875,
+      "versions": {
+        "torch": "2.8.0+cu128",
+        "transformers": "4.56.2",
+        "peft": "0.17.1"
+      },
+      "observed_exposure": {
+        "sft_sequence_loss_exposures": 3999,
+        "sft_pair_loss_exposures": 15105,
+        "sft_candidate_pair_context_exposures": 57252,
+        "sft_unknown_pair_context_exposures": 42147,
+        "sft_input_token_loss_exposures": 13221642,
+        "sft_completion_token_loss_exposures": 482355,
+        "sft_prompt_token_loss_exposures": 12180864,
+        "sft_masked_completion_token_context_exposures": 558423
+      },
+      "weights_changed": true,
+      "save_reload_first_prompt_last_token_logit_difference": 0.0
+    }
+  ],
+  "supervision_distribution": [
+    {
+      "path": "data/v2_controlled/V2_G5_local_common/train.jsonl",
+      "rows": 1322,
+      "pair_supervision_counts": {
+        "UNKNOWN_UNANNOTATED": 13947,
+        "SUPPORTED_SILVER": 4592,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_EVIDENCE": 141
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 1322
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_G5_local_common/tune.jsonl",
+      "rows": 321,
+      "pair_supervision_counts": {
+        "SUPPORTED_SILVER": 471,
+        "UNKNOWN_UNANNOTATED": 4543,
+        "UNKNOWN_EVIDENCE": 4
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 321
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_base/train.jsonl",
+      "rows": 1333,
+      "pair_supervision_counts": {
+        "UNKNOWN_UNANNOTATED": 14047,
+        "SUPPORTED_SILVER": 4765,
+        "UNKNOWN_REVIEW": 2
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 1333
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_base/tune.jsonl",
+      "rows": 325,
+      "pair_supervision_counts": {
+        "SUPPORTED_SILVER": 479,
+        "UNKNOWN_UNANNOTATED": 4603
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 325
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_full_common/train.jsonl",
+      "rows": 1322,
+      "pair_supervision_counts": {
+        "UNKNOWN_UNANNOTATED": 13947,
+        "SUPPORTED_SILVER": 4592,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_EVIDENCE": 141
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 1322
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_full_common/tune.jsonl",
+      "rows": 321,
+      "pair_supervision_counts": {
+        "SUPPORTED_SILVER": 471,
+        "UNKNOWN_UNANNOTATED": 4543,
+        "UNKNOWN_EVIDENCE": 4
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 321
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_noise10/train.jsonl",
+      "rows": 1333,
+      "pair_supervision_counts": {
+        "UNKNOWN_UNANNOTATED": 14047,
+        "SUPPORTED_SILVER": 4765,
+        "UNKNOWN_REVIEW": 2,
+        "SYNTHETIC_NEGATIVE": 270
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 1198,
+        "positive_and_negative": 135
+      }
+    },
+    {
+      "path": "data/v2_controlled/V2_noise10/tune.jsonl",
+      "rows": 325,
+      "pair_supervision_counts": {
+        "SUPPORTED_SILVER": 479,
+        "UNKNOWN_UNANNOTATED": 4603
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 325
+      }
+    },
+    {
+      "path": "data/v3/V3_grounded_none.jsonl",
+      "rows": 1845,
+      "pair_supervision_counts": {
+        "UNKNOWN_UNANNOTATED": 14047,
+        "SUPPORTED_SILVER": 5789,
+        "UNKNOWN_REVIEW": 2,
+        "SYNTHETIC_NEGATIVE": 3900,
+        "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1220
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 1333,
+        "positive_and_negative": 512
+      }
+    },
+    {
+      "path": "data/v3/V3_missing_only.jsonl",
+      "rows": 1845,
+      "pair_supervision_counts": {
+        "UNKNOWN_UNANNOTATED": 14047,
+        "SUPPORTED_SILVER": 5789,
+        "UNKNOWN_REVIEW": 2,
+        "UNKNOWN_CONSTRUCTED_ABLATION": 1416,
+        "UNKNOWN_SYNTHETIC_UNADJUDICATED": 1220,
+        "SYNTHETIC_NEGATIVE": 2484
+      },
+      "sequence_supervision_patterns": {
+        "positive_only": 1431,
+        "positive_and_negative": 414
+      }
+    }
+  ],
+  "checks_without_confirmed_bug": [
+    "Current generative.train shares non-thinking template with evaluation, audits after render, rejects overlength examples; train_sft masks prompt/pad and offsets-based UNKNOWN labels correctly.",
+    "Inspected installed transformers 4.56.2 Trainer: it unwraps PEFT, recognizes Qwen3 forward **kwargs, counts nonignored labels across gradient-accumulation group, passes num_items_in_batch to Qwen3 causal loss. WeightedTrainer forwards it. No evidence of double division or prompt-loss leakage; run tensor-level GPU/CPU torch parity before new recipe.",
+    "Historical V2 all four completed expected optimizer steps; adapter changed, saved/reloaded weights matched, first training prompt terminal logits difference 0; these checks do not guarantee model quality.",
+    "DPO reference initializes same SFT adapter and audits unchanged weights; GRPO explicitly merges SFT then trains residual LoRA and evaluator reconstructs chain. No current evidence reference was bare base."
+  ],
+  "causal_assessment": {
+    "known": "V2 collapse occurs with oracle entities, near all-candidate prediction, zero decoding truncation and validated saved weights. V2 base removes all supervised abstention outcomes; UNKNOWN is still teacher-forced as empty placeholders but contributes no loss.",
+    "plausible_not_proven": [
+      "Loss of reliable no-edge supervision and every-sequence-positive sampling prior",
+      "Exposure mismatch: train consumes masked empty UNKNOWN prefixes, inference must generate those decisions",
+      "Teacher-silver omissions and domain/endpoint ambiguity",
+      "Sequence/pair/token budgets and source candidate coverage confound cross-version comparisons"
+    ],
+    "not_supported": [
+      "Current collapse caused solely by output cap",
+      "UNKNOWN mask implementation mathematically incorrect",
+      "Low train loss means quality",
+      "More RL compute necessarily solves hallucination"
+    ]
+  },
+  "historical_status": [
+    {
+      "direction": "short output",
+      "completed": "Initial v5/v6/v7 3-record diagnostics; G2 full run 279 steps, fixed F1 10.30%, oracle30.36%. G6 combined changes completed 933 steps.",
+      "limitation": "G2 exposed17702 pairs versus N0 59088 at same279 steps, so no clean length ablation; G6 multiple factors/budget."
+    },
+    {
+      "direction": "short local input",
+      "completed": "V2_full_common versus V2_G5_local_common 249 steps each, same supervision. local prompt token -20.03%, trainer runtime -24.75%; fixed F1 2.07→2.14%, oracle6.01→5.91%.",
+      "missing": "Original G5_20260915 never started; no clean reliable-negative contract local ablation."
+    },
+    {
+      "direction": "rules",
+      "completed": "Deterministic ICD; validation/grounding; archived all_rules evaluations. V2 oracle rule F1 6.27%-6.71%, some TP deleted.",
+      "missing": "Independent blinded rule validation and new gold; low relation precision remains."
+    },
+    {
+      "direction": "sorting",
+      "completed": "G3 source-order279 steps; fixedF1 8.75%, oracle28.43%, one truncation each. Initial v6 mixed neg-ratio/order3-case diagnostic.",
+      "missing": "Order-only matched pair/output/token budget and multiseed; canonical entity serialization plus permutation robustness."
+    },
+    {
+      "direction": "multiple relations",
+      "completed": "Generative default supports lists; G4 weighted resampling completed279; fixed11.01/oracle41.16; G6 combined complete.",
+      "missing": "Single-label diagnostic/leave-one-out completed results absent; per pair-cardinality macro/micro recall and rare label coverage."
+    },
+    {
+      "direction": "DPO",
+      "completed": "beta0.05/0.1 each64 train steps, selected32; fixedF1 8.86/7.75, oracle29.42/23.99; both worse.",
+      "missing": "no-hard64 evaluation failed after14400sec with repetition; only63/69 docs partial. No on-policy clinically reviewed real negative corpus."
+    },
+    {
+      "direction": "GRPO/PPO",
+      "completed": "Two real onlineGRPO runs384 steps6144 rollouts each; fixed11.18/11.33 oracle38.86/39.74, no gain over G1.",
+      "missing": "No PPO results, no same-loader zero-stepGRPO baseline, no seed repeat. Current partial/UNKNOWN data blocked from old RL objective."
+    },
+    {
+      "direction": "negative robustness",
+      "completed": "N0/N10/N25 complete; simple synthetic absent entity noise improves very few stress pairs and not regression. V2_noise10 improves synthetic incident wrong links145/151→50/151 but far worse than historical N0 6/151.",
+      "missing": "V3 two variants prepared only, never trained. All V3 examples still have positive relationships; independent real NER-error hard negatives absent."
+    }
+  ],
+  "proposed_single_48gb_matrix": [
+    {
+      "priority": 0,
+      "name": "contract_and_replay",
+      "work": "Freeze new source-group split, count TP/FP/FN on unchanged historical outputs, no-edge/UNKNOWN semantics, strict identity. Gold-adjudicate at least stratified FP/FN and new blind documents. Add candidate coverage/oracle decomposition; freeze test once."
+    },
+    {
+      "priority": 0,
+      "name": "runtime_and_zero_step",
+      "work": "Fresh isolated exact-version environment, tokenizer/mask/gradient-accumulation parity, 2-step save/reload smoke, zero-step base and fresh LoRA behavior. BF16 rank16/alpha32, batch1 accumulation16 baseline; historical batch2 peak35.6GiB suggests feasible48GB, measure first. Quantization only separate arm."
+    },
+    {
+      "priority": 1,
+      "name": "sparse_no_edge_distractor",
+      "work": "Implement output only supported relations, extra input entities/pairs have no corresponding output. Distinguish confirmed absent/wrong entities from unknown silver pairs; preserve multiple labels, source order, and independently audited all-negative [] examples. Compare fixed/distractor-added input with identical gold positives and sample IDs. Do not simply omit loss on all negatives."
+    },
+    {
+      "priority": 1,
+      "name": "length_and_order_factoring",
+      "work": "After stable negative contract: full16 baseline, full4 same pair passes, local4 context from endpoints/input only, local4 canonical source order. Retain identical known targets or separately report lost coverage. Match supervised pair passes and separately disclose token/compute; not equal steps."
+    },
+    {
+      "priority": 1,
+      "name": "selection",
+      "work": "Pilot64 optimizer steps for failure detection only. Evaluate checkpoints32/64 on tune, continue healthy arms for1-3 matched passes, lr5e-5 baseline and2e-5 only if tuning evidence. Choose fixed precision floor thenF0.5/F1, include empty-output baseline. No tuning on148 historical regression/stress."
+    },
+    {
+      "priority": 2,
+      "name": "rules_multilabel_entity",
+      "work": "Tune endpoint grounding/schema/evidence rule ablations, report removedTP/FP. Stratify multi-edge pairs, labels, length/distance; separately improve entity candidate coverage using source-disjoint OOF NER rather than teacher gold alone. Evaluate new live pipeline."
+    },
+    {
+      "priority": 2,
+      "name": "replicate",
+      "work": "Top2 configurations seeds17/42/73 sequentially, document bootstrap confidence intervals and shared random seed/data order; independent final gold once. Record GPU hours and inference time."
+    },
+    {
+      "priority": 3,
+      "name": "preference_or_online_rl",
+      "work": "Only if stable SFT and adjudicated real SFT rollouts provide balanced wrong-endpoint/unsupported/omission preferences, with partial-label-safe reward. Start DPO16/32/64 steps plus same-loader0, beta0.05/0.1, lr<=1e-6 pilot. GRPO only after validated reward; PPO lowest priority given48GB and old failures."
+    }
+  ]
+}

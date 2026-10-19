@@ -1,0 +1,434 @@
+{
+  "version": "medical-kg-extraction-v3.1.1",
+  "authority": "closed vocabulary in the original teacher system prompt",
+  "node_labels": [
+    "Disease",
+    "Symptom",
+    "Diagnostic Criterion",
+    "Assessment",
+    "Patient",
+    "Medication",
+    "Treatment",
+    "Treatment Plan",
+    "Examination",
+    "Assessment Scale",
+    "Etiology",
+    "Risk",
+    "Communication Strategy",
+    "Guideline",
+    "Evidence"
+  ],
+  "source_relations": [
+    {
+      "source_label": "Disease",
+      "relation": "belongs_to",
+      "description": "属于疾病分类"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "subtype_of",
+      "description": "亚型"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "has_specifier",
+      "description": "Specifier"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "differentiates_from",
+      "description": "鉴别诊断"
+    },
+    {
+      "source_label": "Diagnostic Criterion",
+      "relation": "co_occurs_with",
+      "description": "共病"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "predisposes_to",
+      "description": "增加...的易感性"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "causes",
+      "description": "导致"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "progresses_to",
+      "description": "进展为"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "relapses_to",
+      "description": "复发为"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "associated_with_poor_prognosis",
+      "description": "不良预后"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "has_diagnostic_criterion",
+      "description": "具有诊断标准"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "recommended_assessment",
+      "description": "推荐评估"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "recommended_examination",
+      "description": "推荐检查"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "recommended_treatment_plan",
+      "description": "推荐治疗方案"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "associated_with_risk",
+      "description": "相关风险"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "commonly_affects",
+      "description": "指向特定patient节点"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "rules_out",
+      "description": "疾病排除疾病，与症状排除疾病做补充"
+    },
+    {
+      "source_label": "Disease",
+      "relation": "managed_by_guideline",
+      "description": "指南管理"
+    },
+    {
+      "source_label": "Diagnostic Criterion",
+      "relation": "required_for",
+      "description": "诊断标准"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "is_core_symptom_of",
+      "description": "核心症状"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "is_associated_symptom_of",
+      "description": "伴随症状"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "supports_diagnosis_of",
+      "description": "支持诊断"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "supports_Diagnostic Criterion_of",
+      "description": "支持诊断标准"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "suggests",
+      "description": "提示"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "argues_against",
+      "description": "排除"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "precedes",
+      "description": "先于"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "follows",
+      "description": "继发于"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "worsens",
+      "description": "加重"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "relieved_by",
+      "description": "缓解"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "modulated_by",
+      "description": "调节"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "part_of",
+      "description": "属于"
+    },
+    {
+      "source_label": "Symptom",
+      "relation": "has_manifestation",
+      "description": "表现为"
+    },
+    {
+      "source_label": "Assessment",
+      "relation": "assesses_for",
+      "description": "用于评估"
+    },
+    {
+      "source_label": "Assessment",
+      "relation": "asks_about",
+      "description": "询问症状"
+    },
+    {
+      "source_label": "Assessment",
+      "relation": "triggers_follow_up_question",
+      "description": "触发追问"
+    },
+    {
+      "source_label": "Assessment",
+      "relation": "triggers_scale",
+      "description": "触发量表"
+    },
+    {
+      "source_label": "Assessment",
+      "relation": "triggers_test",
+      "description": "触发检查"
+    },
+    {
+      "source_label": "Assessment",
+      "relation": "informed_by_patient",
+      "description": "受患者影响"
+    },
+    {
+      "source_label": "Patient",
+      "relation": "presents_with",
+      "description": "出现症状"
+    },
+    {
+      "source_label": "Patient",
+      "relation": "has_risk",
+      "description": "存在风险"
+    },
+    {
+      "source_label": "Patient",
+      "relation": "receives_treatment_plan",
+      "description": "接受治疗方案"
+    },
+    {
+      "source_label": "Patient",
+      "relation": "contraindicated_for",
+      "description": "治疗禁忌"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "first_line_for",
+      "description": "一线药物"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "second_line_for",
+      "description": "二线药物"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "recommended_for",
+      "description": "推荐用于"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "contraindicated_in",
+      "description": "禁忌"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "interacts_with",
+      "description": "药物相互作用"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "causes_side_effect",
+      "description": "导致副作用"
+    },
+    {
+      "source_label": "Medication",
+      "relation": "monitor_for",
+      "description": "监测"
+    },
+    {
+      "source_label": "Treatment",
+      "relation": "combined_with",
+      "description": "联合治疗"
+    },
+    {
+      "source_label": "Treatment",
+      "relation": "supported_by_evidence",
+      "description": "证据支持"
+    },
+    {
+      "source_label": "Treatment Plan",
+      "relation": "consists_of_medication",
+      "description": "包含药物"
+    },
+    {
+      "source_label": "Treatment Plan",
+      "relation": "consists_of_treatment",
+      "description": "包含非药物"
+    },
+    {
+      "source_label": "Treatment Plan",
+      "relation": "applicable_to",
+      "description": "适用于疾病"
+    },
+    {
+      "source_label": "Treatment Plan",
+      "relation": "recommended_by",
+      "description": "被指南推荐"
+    },
+    {
+      "source_label": "Examination",
+      "relation": "supports_diagnosis_of",
+      "description": "支持诊断"
+    },
+    {
+      "source_label": "Examination",
+      "relation": "differentiates",
+      "description": "鉴别"
+    },
+    {
+      "source_label": "Examination",
+      "relation": "confirms",
+      "description": "确诊"
+    },
+    {
+      "source_label": "Assessment Scale",
+      "relation": "evaluates",
+      "description": "评估疾病"
+    },
+    {
+      "source_label": "Assessment Scale",
+      "relation": "triggered_by",
+      "description": "被Assessment触发"
+    },
+    {
+      "source_label": "Assessment Scale",
+      "relation": "measures",
+      "description": "测量症状"
+    },
+    {
+      "source_label": "Etiology",
+      "relation": "causes",
+      "description": "导致疾病"
+    },
+    {
+      "source_label": "Etiology",
+      "relation": "contributes_to",
+      "description": "增加发生概率"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "increases_risk_of",
+      "description": "增加风险"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "protective_against",
+      "description": "保护作用"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "triggers_alert_when",
+      "description": "触发预警"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "requires_emergency_action",
+      "description": "需要紧急处理"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "escalates_to",
+      "description": "升级处理"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "mediated_by",
+      "description": "经由"
+    },
+    {
+      "source_label": "Risk",
+      "relation": "applies_to_patient",
+      "description": "适用于患者"
+    },
+    {
+      "source_label": "Communication Strategy",
+      "relation": "recommended_for",
+      "description": "推荐用于"
+    },
+    {
+      "source_label": "Communication Strategy",
+      "relation": "avoid_with",
+      "description": "避免用于"
+    },
+    {
+      "source_label": "Communication Strategy",
+      "relation": "applies_to_stage",
+      "description": "适用于阶段"
+    },
+    {
+      "source_label": "Communication Strategy",
+      "relation": "requires_family_support",
+      "description": "需要家属参与"
+    },
+    {
+      "source_label": "Guideline",
+      "relation": "recommends",
+      "description": "推荐"
+    },
+    {
+      "source_label": "Guideline",
+      "relation": "based_on_evidence",
+      "description": "基于证据"
+    },
+    {
+      "source_label": "Guideline",
+      "relation": "updated_from",
+      "description": "更新自"
+    },
+    {
+      "source_label": "Evidence",
+      "relation": "recommended_by",
+      "description": "被指南引用"
+    },
+    {
+      "source_label": "Evidence",
+      "relation": "supported_by",
+      "description": "被证据支持"
+    },
+    {
+      "source_label": "Evidence",
+      "relation": "derived_from",
+      "description": "来源于"
+    },
+    {
+      "source_label": "Evidence",
+      "relation": "cites",
+      "description": "引用"
+    },
+    {
+      "source_label": "Evidence",
+      "relation": "evidence_level",
+      "description": "证据等级"
+    }
+  ],
+  "target_constraints": "Not specified by the source schema; no invented target constraints."
+}

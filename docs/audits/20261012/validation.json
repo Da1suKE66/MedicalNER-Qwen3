@@ -1,0 +1,19 @@
+{
+  "tests": 843,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "command": "PYTHONDONTWRITEBYTECODE=1 REVIEW_TRIAGE_REAL_CANDIDATE=<private-migration>/data/repaired_v2 python -m pytest -q -p no:cacheprovider agent/tests tests",
+  "python": "3.12.14",
+  "gpu_training_run": false,
+  "private_review_integration_enabled": true,
+  "baseline": {
+    "tests_passed": 785,
+    "scope": "sealed agent/tests + tests + migration test_portable.py"
+  },
+  "notes": [
+    "843 final repository tests passed; the baseline additionally includes unmodified portable launcher tests.",
+    "New pytest.ini resolves agent/src imports from repository root.",
+    "Two portable aggregate audit CLIs both completed against the sealed migration."
+  ]
+}

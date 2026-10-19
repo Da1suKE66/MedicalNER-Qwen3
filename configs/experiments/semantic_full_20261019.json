@@ -1,0 +1,277 @@
+{
+  "experiment": "semantic_full_20261019",
+  "output_contract": "semantic-text-v1",
+  "status": "entity_comparison_complete_source_order_relation_training_running",
+  "status_snapshot_utc": "2026-10-18T22:28:58.003586+00:00",
+  "budget_deadline_utc": "2026-10-19T04:15:41Z",
+  "model": "Qwen3-8B",
+  "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+  "data_release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+  "training_code_archive_sha256": "bc4a978d85d5255118d867d546912fb9b684eeabd25b27d08457280dacc4eab5",
+  "baseline": {
+    "stages": [
+      "entities",
+      "relations"
+    ],
+    "separate_adapters": true,
+    "variant": "full_source",
+    "epochs": 2,
+    "learning_rate": 5e-05,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "precision": "bfloat16",
+    "max_length": 8192,
+    "truncation": false,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.05,
+    "weight_decay": 0.01,
+    "seed": 42,
+    "expected_optimizer_steps": {
+      "entities": 168,
+      "relations": 136
+    },
+    "completion": "full semantic records encoded once plus one supervised EOS",
+    "checkpoint_selection": "fixed final checkpoint, then complete frozen tune evaluation"
+  },
+  "planned_relation_comparisons": [
+    {
+      "variant": "short_source",
+      "learning_rate": 5e-05,
+      "epochs": 2
+    },
+    {
+      "variant": "short_canonical",
+      "learning_rate": 5e-05,
+      "epochs": 2
+    },
+    {
+      "variant": "selected_from_complete_tune",
+      "learning_rate": 0.0001,
+      "epochs": 2
+    },
+    {
+      "variant": "selected_from_complete_tune",
+      "learning_rate": 2e-05,
+      "epochs": 2
+    }
+  ],
+  "comparison_constraints": {
+    "entity_adapter": "Selected short_source_complete_windows entity adapter, short_source inference, fixed exact live outputs across both relation views; selection recorded in entity-strategy-selection.json",
+    "source_split": "fixed source-group-disjoint train and tune",
+    "annotation_atoms": "Repaired relation views preserve the same5551 unique source/evidence atoms and share5859 window exposures. Repaired entity view retains6484 unique source/entity atoms with8683 window exposures. Neither repaired release matches old first-window-only exposure.",
+    "matched_epochs_not_matched_compute": true,
+    "no_subset_scores_for_final_selection": true,
+    "relation_short_window_admission": "passed independent overlap audit and byte-identical server reconstruction"
+  },
+  "evaluation": {
+    "complete_tune_records": 130,
+    "free_text_records": 69,
+    "structured_records": 61,
+    "free_text_entity_gold": 648,
+    "free_text_relation_gold": 573,
+    "modes": [
+      "live_two_stage",
+      "oracle_entities_diagnostic"
+    ],
+    "views": [
+      "raw_graph_set_metrics",
+      "rule_filtered_graph_set_metrics",
+      "raw_plus_invalid_attempt_fp_diagnostic"
+    ],
+    "directed_typed_exact_matching": true,
+    "retain_gold_on_generation_or_parse_failure": true,
+    "report": [
+      "TP",
+      "FP",
+      "FN",
+      "precision",
+      "recall",
+      "F1",
+      "format_failures",
+      "EOS_failures",
+      "budget_failures",
+      "rule_removed_TP",
+      "rule_removed_FP"
+    ],
+    "precision_is_not_accuracy": true,
+    "historical_regression": "148 previously inspected records; final-candidate regression, never presented as new blind test",
+    "trusted_title": "explicit additional input from the same source group's original structured record; not inferred from gold",
+    "primary_metric": "live.filtered.free_text.relation",
+    "required_companion": "live.raw.free_text.relation",
+    "strict_raw": "mixed invalid-line FP diagnostic only; not official graph-set F1",
+    "future_code_snapshot": "code_eval_v6",
+    "future_code_archive_sha256": "dcb0ad7dacd5a026b96779d14fb3d9a630630b50fbdbb9b5b10df7e6e5c1fc8a",
+    "baseline_code_snapshot": "code_eval_v1; existing metric arrays unchanged; interpret filtered/raw set scores rather than the old strict_raw primary metadata",
+    "entity_short_comparison_immutable_snapshot": "code_eval_v4",
+    "entity_cache": "Default off; optional exact-runtime full130 completed live entity replay. No v1 runtime compatibility whitelist; failures retain all gold FN. Relations still use backend."
+  },
+  "augmentation": {
+    "provider": "DeepSeek",
+    "model": "deepseek-flash",
+    "eligible_source_groups": 148,
+    "eligible_with_body": 104,
+    "training_admission": "quarantined until independent source/semantic review",
+    "current_admitted_sources": 0,
+    "credential_policy": "external private file, never tracked or logged"
+  },
+  "dpo": {
+    "status": "deferred_until_sft_evaluation_and_remaining_budget",
+    "negative_policy": "source-verified errors or explicit counterexamples; unannotated pairs remain unknown",
+    "preference_controls": "same SFT parent, exact frozen reference, balance addition/omission and length effects"
+  },
+  "target": "70-80%+ is a research objective, not a measured or guaranteed result",
+  "optional_distractor_comparison": {
+    "status": "compiled_independently_verified_not_trained",
+    "control": "short_canonical",
+    "arm": "short_canonical_distractors",
+    "rows": 951,
+    "target_atoms": 5551,
+    "release_manifest_sha256": "5cecbef1b2b4f4f724343e41bd1e5938c3726a951778d735d2389576c2cd2063",
+    "target_bytes_unchanged": true,
+    "claim_limit": "Source-absence input corruption; does not adjudicate clinical negative relations or prove live F1 improvement; based on the old951-row view and requires rebasing before comparison with complete-overlap1000-row models"
+  },
+  "entity_window_repair": {
+    "status": "training_and_full130_live_evaluation_complete_selected",
+    "training_job": "entity_short_complete_lr5e5_r16_e2",
+    "evaluation_job": "evaluate_entity_short_complete_full_relation",
+    "rows": 1361,
+    "source_records": 668,
+    "unique_document_entity_atoms": 6484,
+    "entity_window_supervision_exposures": 8683,
+    "new_data_byte_identical_between_reviewed_local_and_remote": true,
+    "training_epochs": 2,
+    "expected_optimizer_updates": 342,
+    "evaluation_mode": "live, all130; unchanged relation adapter oracle diagnostic from baseline",
+    "same_relation_adapter_as_baseline": true,
+    "not_equal_compute_or_entity_exposure_ablation": true,
+    "data_manifest_sha256": "2ba8d402e671fea953dfe5886e1366264087f46ce7c3458a394ffb8932871677",
+    "evaluation_code_archive_sha256": "14f815160d7372668c49add963daedc31352fc56c492b088e968b56d7425d1f7",
+    "training_variant": "short_source_complete_windows",
+    "inference_variant": "short_source",
+    "learning_rate": 5e-05,
+    "lora_rank": 16,
+    "window_chars": 2400,
+    "overlap_chars": 400
+  },
+  "relation_window_repair": {
+    "manifest_sha256": "6ec898ca4e04860bb592e1a0348dc2aa542aeb6026925d4ebe3be1f97c136b74",
+    "independent_review": {
+      "status": "passed",
+      "original_anchor_count": 5551,
+      "v1_v2_rows_independently_compared": 2000,
+      "runtime_prompt_matches_per_variant": 998,
+      "old_base_all16_files_unchanged": true,
+      "input_parameters_sha256": "52e2a6103a075d5a350503dc431e81bb3b13df471c105ec3e6c86f27ae362327"
+    },
+    "remote_reproduction": {
+      "data_and_manifest_byte_identical": true,
+      "code_snapshot": "code_data_v5",
+      "code_archive_sha256": "4721ade1d2e655eeaae2a0d10cc7902c978355af8b7fd2df49d3361c5cac023b",
+      "build_uses_already_resident_source_data": true,
+      "external_prepared_records_required": false
+    },
+    "training": {
+      "status": "source_order_running_canonical_queued",
+      "jobs": [
+        "relation_short_source_complete_lr5e5_r16_e2",
+        "relation_short_canonical_complete_lr5e5_r16_e2"
+      ],
+      "epochs": 2,
+      "learning_rate": 5e-05,
+      "rank": 16,
+      "expected_updates_per_variant": 250,
+      "source_order_vs_canonical_order_matched_exposure": true,
+      "old_951_row_release_is_not_equal_exposure_control": true
+    },
+    "evaluation": {
+      "status": "queued",
+      "jobs": [
+        "evaluate_relation_short_source_complete_selected_entity",
+        "evaluate_relation_short_canonical_complete_selected_entity"
+      ],
+      "samples": 130,
+      "modes": [
+        "live",
+        "oracle"
+      ],
+      "same_actual_entity_outputs": true,
+      "batch_size": 8,
+      "max_new_tokens": 4096,
+      "code_snapshot": "code_eval_v6",
+      "cache_origin_same_runtime_verified": true,
+      "model_in_memory_revalidation_at_actual_run_required": true,
+      "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline."
+    }
+  },
+  "additional_entity_parameter_trial": {
+    "predeclared_utc": "2026-10-18T20:28:11.470287+00:00",
+    "trigger": "After both existing entity candidates have complete independently recounted130 results, selected actual entity table covers fewer than70% of the573 gold relation endpoint pairs. This is a tune-driven research decision, not a blind-test claim.",
+    "priority": "After source/canonical relation comparison yields a selected full130 relation model, before optional DPO; only if time covers full training plus complete live evaluation.",
+    "training": "Same selected entity input view, frozen full training population, rank16,2epochs,finalcheckpoint; learning_rate1e-4 versus5e-5. No new gold or definition changes.",
+    "evaluation": "All130 live cases with the same selected relation adapter/view. Report overall/free strata, Criterion counts and length-stratified recall, endpoint coverage, missingEOS, raw/filtered P/R/F1. Relation comparisons already completed retain their fixed earlier entity condition; do not mix conditions when claiming a direction improved.",
+    "future_selection": "Only select a final pair after full130 evaluation of that actual pair; preserve matched comparison results separately."
+  },
+  "matched_relation_comparison": {
+    "policy": {
+      "version": 1,
+      "declared_utc": "2026-10-18T22:28:35.096409+00:00",
+      "status": "before_any_repaired_relation_full130_results_inspected",
+      "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
+      "candidate_runs": [
+        "full_relation_batch8_selected_entity",
+        "relation_short_source_complete_selected_entity",
+        "relation_short_canonical_complete_selected_entity"
+      ],
+      "requirements": [
+        "All130 original records and frozen gold scored in live and oracle modes",
+        "Completed receipts and independent TP/FP/FN recount",
+        "Identical live entity graph SHA and125 cached entity windows",
+        "Same runtime/protocol, batch8, max-input8192, max-new4096, greedy decoding",
+        "Disclose repeated supervision and optimizer-update differences between full and short views"
+      ],
+      "primary": "live.filtered.free_text.relation.f1",
+      "tie_break": [
+        "live.raw.free_text.relation.f1",
+        "live.filtered.free_text.relation.recall",
+        "fewer live failed relation generation calls"
+      ],
+      "exact_tie_preference": [
+        "full_source",
+        "short_source",
+        "short_canonical"
+      ],
+      "parameter_trial_policy": "Only selected view gets LR1e-4 and2e-5 comparisons; keep data,rank16,epochs2,seed42 and final checkpoint fixed. Match batch8 cachedentity full130 live/oracle evaluation.",
+      "conditional_entity_trial": "Existing predeclared LR1e-4 trial remains after relation comparison and before optional DPO, budget permitting. New entity adapter must generate new entities; no old entity cache.",
+      "selection_is_tune_not_blind_test": true
+    },
+    "matched_full_control": {
+      "status": "queued",
+      "job": "evaluate_full_relation_batch8_selected_entity",
+      "reason": "Original full-source relation control used batch4 and old evaluator; add current-runtime batch8 control to match repaired relation views while retaining exact same actual entity outputs.",
+      "samples": 130,
+      "modes": [
+        "live",
+        "oracle"
+      ],
+      "same_selected_actual_entity_cache": true,
+      "batch_size": 8
+    },
+    "source_and_canonical_training_completed": true,
+    "no_new_quality_score_claimed": true,
+    "queue_plan_sha256": "3c93edf4f6563b6968ea5b6771a4ea64c94f62d1dc7e4256f0420ad2d258c8c1",
+    "queue_total_jobs": 10,
+    "same_live_entity_graph_sha256_required": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567"
+  }
+}

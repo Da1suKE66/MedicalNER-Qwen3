@@ -1,0 +1,1285 @@
+{
+  "status": "complete_offline_entity_union_feasibility",
+  "new_model_experiment": false,
+  "union_deployed": false,
+  "union_relation_effect_measured": false,
+  "strict_single_origin_cache_compatible": false,
+  "scope": "Both individual entity outputs were actually measured previously. Pure per-document typed-normalized-name union is an offline derived entity set; no gold affects inclusion. This is not a new model inference or relation result.",
+  "input_identity": {
+    "samples": 130,
+    "free_text": 69,
+    "structured_icd": 61,
+    "release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+    "all_original_and_semantic_identities_verified": true
+  },
+  "definitions": {
+    "entity_identity": "(literal type, NFKC+casefold+whitespace normalized full name), preserving qualifiers and punctuation; every original failed document remains in denominator",
+    "long_name": "Strictly more than160Unicode codepoints in the normalized full name, matching current diagnostic length buckets",
+    "ideal_relation_upper_bound": "If every gold relation with both endpoints present were selected perfectly and no false positive generated, F1=2reachable/(gold+reachable). It ignores evidence, relation-label difficulty and hallucinations; it is never a measured relation score.",
+    "clinical_scope": "Frozen silver agreement, not human-adjudicated clinical correctness; no true-negative accuracy"
+  },
+  "union_additions_over_each_model": {
+    "baseline_full_source": {
+      "overall": {
+        "by_label": {
+          "Diagnostic Criterion": {
+            "added_tp": 4,
+            "added_fp": 2
+          },
+          "Disease": {
+            "added_tp": 44,
+            "added_fp": 22
+          },
+          "Etiology": {
+            "added_tp": 0,
+            "added_fp": 1
+          },
+          "Medication": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Symptom": {
+            "added_tp": 37,
+            "added_fp": 38
+          }
+        },
+        "added_tp": 85,
+        "added_fp": 63,
+        "additional_reachable_gold_relations": 70
+      },
+      "free_text": {
+        "by_label": {
+          "Diagnostic Criterion": {
+            "added_tp": 4,
+            "added_fp": 2
+          },
+          "Disease": {
+            "added_tp": 44,
+            "added_fp": 22
+          },
+          "Etiology": {
+            "added_tp": 0,
+            "added_fp": 1
+          },
+          "Medication": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Symptom": {
+            "added_tp": 37,
+            "added_fp": 38
+          }
+        },
+        "added_tp": 85,
+        "added_fp": 63,
+        "additional_reachable_gold_relations": 70
+      },
+      "structured_icd": {
+        "by_label": {
+          "Diagnostic Criterion": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Disease": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Etiology": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Medication": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Symptom": {
+            "added_tp": 0,
+            "added_fp": 0
+          }
+        },
+        "added_tp": 0,
+        "added_fp": 0,
+        "additional_reachable_gold_relations": 0
+      }
+    },
+    "entity_short_complete_full_relation": {
+      "overall": {
+        "by_label": {
+          "Diagnostic Criterion": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Disease": {
+            "added_tp": 60,
+            "added_fp": 35
+          },
+          "Etiology": {
+            "added_tp": 0,
+            "added_fp": 2
+          },
+          "Medication": {
+            "added_tp": 0,
+            "added_fp": 1
+          },
+          "Symptom": {
+            "added_tp": 28,
+            "added_fp": 65
+          }
+        },
+        "added_tp": 88,
+        "added_fp": 103,
+        "additional_reachable_gold_relations": 87
+      },
+      "free_text": {
+        "by_label": {
+          "Diagnostic Criterion": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Disease": {
+            "added_tp": 60,
+            "added_fp": 35
+          },
+          "Etiology": {
+            "added_tp": 0,
+            "added_fp": 2
+          },
+          "Medication": {
+            "added_tp": 0,
+            "added_fp": 1
+          },
+          "Symptom": {
+            "added_tp": 28,
+            "added_fp": 65
+          }
+        },
+        "added_tp": 88,
+        "added_fp": 103,
+        "additional_reachable_gold_relations": 87
+      },
+      "structured_icd": {
+        "by_label": {
+          "Diagnostic Criterion": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Disease": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Etiology": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Medication": {
+            "added_tp": 0,
+            "added_fp": 0
+          },
+          "Symptom": {
+            "added_tp": 0,
+            "added_fp": 0
+          }
+        },
+        "added_tp": 0,
+        "added_fp": 0,
+        "additional_reachable_gold_relations": 0
+      }
+    }
+  },
+  "complementarity": {
+    "overall": {
+      "correct_shared": 416,
+      "correct_only_full": 88,
+      "correct_only_short": 85,
+      "gold_missed_by_both": 235,
+      "fp_shared": 82,
+      "fp_only_full": 103,
+      "fp_only_short": 63,
+      "gold_relations_newly_reachable_only_by_combining_endpoints": 0
+    },
+    "free_text": {
+      "correct_shared": 294,
+      "correct_only_full": 88,
+      "correct_only_short": 85,
+      "gold_missed_by_both": 181,
+      "fp_shared": 75,
+      "fp_only_full": 103,
+      "fp_only_short": 63,
+      "gold_relations_newly_reachable_only_by_combining_endpoints": 0
+    },
+    "structured_icd": {
+      "correct_shared": 122,
+      "correct_only_full": 0,
+      "correct_only_short": 0,
+      "gold_missed_by_both": 54,
+      "fp_shared": 7,
+      "fp_only_full": 0,
+      "fp_only_short": 0,
+      "gold_relations_newly_reachable_only_by_combining_endpoints": 0
+    }
+  },
+  "limitations": [
+    "Original two runs use different trained entity strategies and runtime versions; this diagnoses complementarity, not a single-factor LR effect.",
+    "Union increases the entity table and may increase relation ambiguity, generation length and hallucinations. Endpoint gains alone cannot establish final relation improvement.",
+    "No union cache, graph runtime, relation prompt, training release or active plan was implemented or changed. A two-origin union cannot be labeled as the current strict single-origin entity cache.",
+    "Any future union relation effect needs separately specified input provenance and actual complete130relation generation/evaluation."
+  ],
+  "aggregate_sha256": "5e3c7642c2d2ce72e3bc8762b1312f4897a5d1ad967551bfb9cf32c328b8094b",
+  "scores": {
+    "baseline_full_source": {
+      "overall": {
+        "samples": 130,
+        "entity": {
+          "tp": 504,
+          "fp": 185,
+          "fn": 320,
+          "precision": 0.7314949201741655,
+          "recall": 0.6116504854368932,
+          "f1": 0.666226040978189,
+          "f0_5": 0.7039106145251397,
+          "gold": 824
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 504,
+            "fp": 185,
+            "fn": 320,
+            "precision": 0.7314949201741655,
+            "recall": 0.6116504854368932,
+            "f1": 0.666226040978189,
+            "f0_5": 0.7039106145251397,
+            "gold": 824
+          },
+          "Diagnostic Criterion": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 77,
+            "precision": 0.75,
+            "recall": 0.07228915662650602,
+            "f1": 0.13186813186813187,
+            "f0_5": 0.2608695652173913,
+            "gold": 83
+          },
+          "name_chars_gt_160": {
+            "tp": 13,
+            "fp": 1,
+            "fn": 56,
+            "precision": 0.9285714285714286,
+            "recall": 0.18840579710144928,
+            "f1": 0.3132530120481928,
+            "f0_5": 0.52,
+            "gold": 69
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 53
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 77,
+            "precision": 0.75,
+            "recall": 0.07228915662650602,
+            "f1": 0.13186813186813187,
+            "f0_5": 0.2608695652173913,
+            "gold": 83
+          },
+          "Disease": {
+            "tp": 331,
+            "fp": 73,
+            "fn": 116,
+            "precision": 0.8193069306930693,
+            "recall": 0.7404921700223713,
+            "f1": 0.7779083431257344,
+            "f0_5": 0.8022297624818225,
+            "gold": 447
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 167,
+            "fp": 107,
+            "fn": 127,
+            "precision": 0.6094890510948905,
+            "recall": 0.5680272108843537,
+            "f1": 0.5880281690140845,
+            "f0_5": 0.6007194244604317,
+            "gold": 294
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 372,
+          "original_gold_relations": 656,
+          "endpoint_only_recall_upper_bound": 0.5670731707317073,
+          "ideal_no_fp_relation_f1_upper_bound": 0.7237354085603113,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      },
+      "free_text": {
+        "samples": 69,
+        "entity": {
+          "tp": 382,
+          "fp": 178,
+          "fn": 266,
+          "precision": 0.6821428571428572,
+          "recall": 0.5895061728395061,
+          "f1": 0.6324503311258278,
+          "f0_5": 0.6613573407202216,
+          "gold": 648
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 382,
+            "fp": 178,
+            "fn": 266,
+            "precision": 0.6821428571428572,
+            "recall": 0.5895061728395061,
+            "f1": 0.6324503311258278,
+            "f0_5": 0.6613573407202216,
+            "gold": 648
+          },
+          "Diagnostic Criterion": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 77,
+            "precision": 0.75,
+            "recall": 0.07228915662650602,
+            "f1": 0.13186813186813187,
+            "f0_5": 0.2608695652173913,
+            "gold": 83
+          },
+          "name_chars_gt_160": {
+            "tp": 13,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.9285714285714286,
+            "recall": 0.19696969696969696,
+            "f1": 0.325,
+            "f0_5": 0.5327868852459017,
+            "gold": 66
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 53
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 77,
+            "precision": 0.75,
+            "recall": 0.07228915662650602,
+            "f1": 0.13186813186813187,
+            "f0_5": 0.2608695652173913,
+            "gold": 83
+          },
+          "Disease": {
+            "tp": 209,
+            "fp": 66,
+            "fn": 66,
+            "precision": 0.76,
+            "recall": 0.76,
+            "f1": 0.76,
+            "f0_5": 0.76,
+            "gold": 275
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 167,
+            "fp": 107,
+            "fn": 123,
+            "precision": 0.6094890510948905,
+            "recall": 0.5758620689655173,
+            "f1": 0.5921985815602837,
+            "f0_5": 0.6024531024531025,
+            "gold": 290
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 311,
+          "original_gold_relations": 573,
+          "endpoint_only_recall_upper_bound": 0.5427574171029669,
+          "ideal_no_fp_relation_f1_upper_bound": 0.7036199095022625,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      },
+      "structured_icd": {
+        "samples": 61,
+        "entity": {
+          "tp": 122,
+          "fp": 7,
+          "fn": 54,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "f1": 0.8,
+          "f0_5": 0.8815028901734104,
+          "gold": 176
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8,
+            "f0_5": 0.8815028901734104,
+            "gold": 176
+          },
+          "Diagnostic Criterion": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "name_chars_gt_160": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 3
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Disease": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 50,
+            "precision": 0.9457364341085271,
+            "recall": 0.7093023255813954,
+            "f1": 0.8106312292358804,
+            "f0_5": 0.8866279069767442,
+            "gold": 172
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 4
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 61,
+          "original_gold_relations": 83,
+          "endpoint_only_recall_upper_bound": 0.7349397590361446,
+          "ideal_no_fp_relation_f1_upper_bound": 0.8472222222222222,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      }
+    },
+    "entity_short_complete_full_relation": {
+      "overall": {
+        "samples": 130,
+        "entity": {
+          "tp": 501,
+          "fp": 145,
+          "fn": 323,
+          "precision": 0.7755417956656346,
+          "recall": 0.6080097087378641,
+          "f1": 0.6816326530612244,
+          "f0_5": 0.7350352112676056,
+          "gold": 824
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 501,
+            "fp": 145,
+            "fn": 323,
+            "precision": 0.7755417956656346,
+            "recall": 0.6080097087378641,
+            "f1": 0.6816326530612244,
+            "f0_5": 0.7350352112676056,
+            "gold": 824
+          },
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "name_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 69,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 69
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 53
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "Disease": {
+            "tp": 315,
+            "fp": 60,
+            "fn": 132,
+            "precision": 0.84,
+            "recall": 0.7046979865771812,
+            "f1": 0.7664233576642335,
+            "f0_5": 0.8089368258859785,
+            "gold": 447
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 176,
+            "fp": 80,
+            "fn": 118,
+            "precision": 0.6875,
+            "recall": 0.5986394557823129,
+            "f1": 0.64,
+            "f0_5": 0.6676783004552352,
+            "gold": 294
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 355,
+          "original_gold_relations": 656,
+          "endpoint_only_recall_upper_bound": 0.5411585365853658,
+          "ideal_no_fp_relation_f1_upper_bound": 0.7022749752720079,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      },
+      "free_text": {
+        "samples": 69,
+        "entity": {
+          "tp": 379,
+          "fp": 138,
+          "fn": 269,
+          "precision": 0.7330754352030948,
+          "recall": 0.5848765432098766,
+          "f1": 0.6506437768240343,
+          "f0_5": 0.6977172312223858,
+          "gold": 648
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 379,
+            "fp": 138,
+            "fn": 269,
+            "precision": 0.7330754352030948,
+            "recall": 0.5848765432098766,
+            "f1": 0.6506437768240343,
+            "f0_5": 0.6977172312223858,
+            "gold": 648
+          },
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "name_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 66,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 66
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 53
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "Disease": {
+            "tp": 193,
+            "fp": 53,
+            "fn": 82,
+            "precision": 0.7845528455284553,
+            "recall": 0.7018181818181818,
+            "f1": 0.7408829174664108,
+            "f0_5": 0.7664813343923749,
+            "gold": 275
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 176,
+            "fp": 80,
+            "fn": 114,
+            "precision": 0.6875,
+            "recall": 0.6068965517241379,
+            "f1": 0.6446886446886447,
+            "f0_5": 0.669710806697108,
+            "gold": 290
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 294,
+          "original_gold_relations": 573,
+          "endpoint_only_recall_upper_bound": 0.5130890052356021,
+          "ideal_no_fp_relation_f1_upper_bound": 0.6782006920415224,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      },
+      "structured_icd": {
+        "samples": 61,
+        "entity": {
+          "tp": 122,
+          "fp": 7,
+          "fn": 54,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "f1": 0.8,
+          "f0_5": 0.8815028901734104,
+          "gold": 176
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8,
+            "f0_5": 0.8815028901734104,
+            "gold": 176
+          },
+          "Diagnostic Criterion": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "name_chars_gt_160": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 3
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Disease": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 50,
+            "precision": 0.9457364341085271,
+            "recall": 0.7093023255813954,
+            "f1": 0.8106312292358804,
+            "f0_5": 0.8866279069767442,
+            "gold": 172
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 4
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 61,
+          "original_gold_relations": 83,
+          "endpoint_only_recall_upper_bound": 0.7349397590361446,
+          "ideal_no_fp_relation_f1_upper_bound": 0.8472222222222222,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      }
+    },
+    "pure_prediction_union": {
+      "overall": {
+        "samples": 130,
+        "entity": {
+          "tp": 589,
+          "fp": 248,
+          "fn": 235,
+          "precision": 0.7037037037037037,
+          "recall": 0.7148058252427184,
+          "f1": 0.7092113184828417,
+          "f0_5": 0.7058964525407478,
+          "gold": 824
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 589,
+            "fp": 248,
+            "fn": 235,
+            "precision": 0.7037037037037037,
+            "recall": 0.7148058252427184,
+            "f1": 0.7092113184828417,
+            "f0_5": 0.7058964525407478,
+            "gold": 824
+          },
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "name_chars_gt_160": {
+            "tp": 13,
+            "fp": 1,
+            "fn": 56,
+            "precision": 0.9285714285714286,
+            "recall": 0.18840579710144928,
+            "f1": 0.3132530120481928,
+            "f0_5": 0.52,
+            "gold": 69
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 53
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "Disease": {
+            "tp": 375,
+            "fp": 95,
+            "fn": 72,
+            "precision": 0.7978723404255319,
+            "recall": 0.8389261744966443,
+            "f1": 0.8178844056706652,
+            "f0_5": 0.8057584873227331,
+            "gold": 447
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 204,
+            "fp": 145,
+            "fn": 90,
+            "precision": 0.5845272206303725,
+            "recall": 0.6938775510204082,
+            "f1": 0.6345256609642301,
+            "f0_5": 0.6035502958579881,
+            "gold": 294
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 442,
+          "original_gold_relations": 656,
+          "endpoint_only_recall_upper_bound": 0.6737804878048781,
+          "ideal_no_fp_relation_f1_upper_bound": 0.8051001821493625,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      },
+      "free_text": {
+        "samples": 69,
+        "entity": {
+          "tp": 467,
+          "fp": 241,
+          "fn": 181,
+          "precision": 0.6596045197740112,
+          "recall": 0.720679012345679,
+          "f1": 0.6887905604719764,
+          "f0_5": 0.6709770114942529,
+          "gold": 648
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 467,
+            "fp": 241,
+            "fn": 181,
+            "precision": 0.6596045197740112,
+            "recall": 0.720679012345679,
+            "f1": 0.6887905604719764,
+            "f0_5": 0.6709770114942529,
+            "gold": 648
+          },
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "name_chars_gt_160": {
+            "tp": 13,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.9285714285714286,
+            "recall": 0.19696969696969696,
+            "f1": 0.325,
+            "f0_5": 0.5327868852459017,
+            "gold": 66
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 53,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 53
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 10,
+            "fp": 4,
+            "fn": 73,
+            "precision": 0.7142857142857143,
+            "recall": 0.12048192771084337,
+            "f1": 0.20618556701030927,
+            "f0_5": 0.3597122302158273,
+            "gold": 83
+          },
+          "Disease": {
+            "tp": 253,
+            "fp": 88,
+            "fn": 22,
+            "precision": 0.7419354838709677,
+            "recall": 0.92,
+            "f1": 0.8214285714285714,
+            "f0_5": 0.7718120805369127,
+            "gold": 275
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 204,
+            "fp": 145,
+            "fn": 86,
+            "precision": 0.5845272206303725,
+            "recall": 0.7034482758620689,
+            "f1": 0.6384976525821596,
+            "f0_5": 0.604982206405694,
+            "gold": 290
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 381,
+          "original_gold_relations": 573,
+          "endpoint_only_recall_upper_bound": 0.6649214659685864,
+          "ideal_no_fp_relation_f1_upper_bound": 0.7987421383647799,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      },
+      "structured_icd": {
+        "samples": 61,
+        "entity": {
+          "tp": 122,
+          "fp": 7,
+          "fn": 54,
+          "precision": 0.9457364341085271,
+          "recall": 0.6931818181818182,
+          "f1": 0.8,
+          "f0_5": 0.8815028901734104,
+          "gold": 176
+        },
+        "entity_scopes": {
+          "all": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 54,
+            "precision": 0.9457364341085271,
+            "recall": 0.6931818181818182,
+            "f1": 0.8,
+            "f0_5": 0.8815028901734104,
+            "gold": 176
+          },
+          "Diagnostic Criterion": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "name_chars_gt_160": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 3
+          },
+          "Diagnostic Criterion_chars_gt_160": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          }
+        },
+        "entity_by_label": {
+          "Diagnostic Criterion": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Disease": {
+            "tp": 122,
+            "fp": 7,
+            "fn": 50,
+            "precision": 0.9457364341085271,
+            "recall": 0.7093023255813954,
+            "f1": 0.8106312292358804,
+            "f0_5": 0.8866279069767442,
+            "gold": 172
+          },
+          "Etiology": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Medication": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 0
+          },
+          "Symptom": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "f0_5": 0.0,
+            "gold": 4
+          }
+        },
+        "relation_endpoint_feasibility": {
+          "both_endpoints_available": 61,
+          "original_gold_relations": 83,
+          "endpoint_only_recall_upper_bound": 0.7349397590361446,
+          "ideal_no_fp_relation_f1_upper_bound": 0.8472222222222222,
+          "actual_union_relation_generation_performed": false,
+          "not_a_measured_relation_score": true
+        }
+      }
+    }
+  },
+  "source_runs": {
+    "baseline_full_source": {
+      "manifest_sha256": "5f9b2c1a2db8636aa4d280d9dcae28d2f11ca687a313f78438f59658a15bd4c8",
+      "runtime_sha256": "33c8d6007743d05908b2a8b2a823a89a4c6ef9bcce089b116f1dac177e5d6c04",
+      "entity_variant": "full_source",
+      "configured_batch_size": 4
+    },
+    "entity_short_complete_full_relation": {
+      "manifest_sha256": "667c141dbce47a6cc217580aac62a6997b7ac2b6fa9331de0879b66ad243ee24",
+      "runtime_sha256": "dd3853a8be97e531eecfe7f16e434cb468109e6e62d38b124a78bc37680c2d45",
+      "entity_variant": "short_source",
+      "configured_batch_size": 4
+    }
+  }
+}

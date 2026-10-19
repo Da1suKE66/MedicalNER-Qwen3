@@ -1,0 +1,14 @@
+{
+  "source_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+  "rows": 1000,
+  "target_relations_with_overlap_repetitions": 5859,
+  "zero_target_rows": 0,
+  "min_entity_count": 2,
+  "entity_table_scope": {
+    "complete_source_entities": 1000
+  },
+  "unannotated_policy": {
+    "UNKNOWN_NOT_EXPLICITLY_SUPERVISED": 1000
+  },
+  "interpretation": "No empty-target relation windows in current full1000 SFT. Distribution gap is observed; causal link to false-positive generation remains untested. Unannotated is unknown, not automatic negative."
+}

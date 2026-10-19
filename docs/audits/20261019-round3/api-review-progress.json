@@ -1,0 +1,49 @@
+{
+  "as_of_utc": "2026-10-19T12:12:00Z",
+  "successful_calls": 62,
+  "distinct_train_sources": 31,
+  "tune_source_text_sent": false,
+  "model": "deepseek-flash",
+  "usage": {
+    "prompt_tokens": 117219,
+    "completion_tokens": 11440,
+    "total_tokens": 128659
+  },
+  "v1": {
+    "sources": 31,
+    "calls": 36,
+    "passed_two_calls": 5,
+    "all_pass_categories": "explicit_negation_label_flip",
+    "failure_interpretation": "21 rejected only because model declined to regenerate an intentionally false negative. 5/31 is NOT a silver-label accuracy rate."
+  },
+  "v2": {
+    "clear_prompt_categories": {
+      "explicit_negation_label_flip": 4,
+      "explicit_positive_label_flip": 16,
+      "subtype_direction_reversal": 5
+    },
+    "clear_prompt_pass": 25,
+    "negative_generation_field_removed_because_prompt_ambiguous": true,
+    "new_sources_sent": 0,
+    "no_gpu_or_training_started_by_this_script": true,
+    "original_results_unchanged": true,
+    "prior_successful_calls": 36,
+    "root_review_pending": true,
+    "same32_source_bound_respected": true,
+    "sources": 26,
+    "successful_calls": 26,
+    "teacher_is_not_human_gold": true,
+    "version": "clear-intentionally-false-response-v2"
+  },
+  "candidate_file_sha256": "6413573775641eb7f9f9e28bd8881404ce3cdfaa2a12ae858309df73941b23b8",
+  "full_chosen_local_review": "pending_final_release",
+  "new_DPO_training_started": false,
+  "label4_training_uses_API_data": false,
+  "api_v1_summary_sha256": "be36939904c943c6dc2c7817868f0b275755ca9cc9f26bbeefd1018492483421",
+  "api_v2_summary_sha256": "658d85a2c11c30c3810b87c7a43b6a325f037a9e52dc1dc84cdf487a10fa5096",
+  "limitations": [
+    "Teacher review and agent review are not expert medical adjudication.",
+    "These are preferences built from existing TRAIN sources, not new independent SFT source documents.",
+    "V2 fixes review prompt ambiguity without changing any candidate chosen, rejected, frozen gold or original API responses."
+  ]
+}

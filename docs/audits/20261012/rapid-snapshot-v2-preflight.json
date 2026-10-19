@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "scope": "CPU_contract_rehearsal_not_model_quality",
+  "model_loaded": false,
+  "resources_sha256": {
+    "code/schemas/v2.0.0/schema.json": "e153e4ef2919ff30c644662d8883160e4c62e9259359b2df59bd876fb0096b77",
+    "code/schemas/current.json": "4c073b991b99210907ef458615bec00ce3123ff0d9411d35ebd332f965c829ab",
+    "code/agent/kg_agent/ontology.json": "16ae394d3f3bf94fb0d26063c7e8015d395f35a0c589e5bd64b954154e6de502",
+    "code/agent/generative/experiments.json": "8dec62da79b12197cba781ec5219c26facfd0f087de9235b355b370d7de80b27"
+  },
+  "screen_manifest_sha256": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+  "medical_conditions": {
+    "full_hash16": {
+      "samples": 12,
+      "batches": 22,
+      "candidate_pairs": 240,
+      "gold_triples": 40,
+      "candidate_covered_triples": 26,
+      "gold_denominator_in_empty_prediction_rehearsal": 40
+    },
+    "full_source16": {
+      "samples": 12,
+      "batches": 22,
+      "candidate_pairs": 240,
+      "gold_triples": 40,
+      "candidate_covered_triples": 26,
+      "gold_denominator_in_empty_prediction_rehearsal": 40
+    },
+    "full_hash4": {
+      "samples": 12,
+      "batches": 64,
+      "candidate_pairs": 240,
+      "gold_triples": 40,
+      "candidate_covered_triples": 26,
+      "gold_denominator_in_empty_prediction_rehearsal": 40
+    },
+    "local_hash16": {
+      "samples": 12,
+      "batches": 22,
+      "candidate_pairs": 240,
+      "gold_triples": 40,
+      "candidate_covered_triples": 26,
+      "gold_denominator_in_empty_prediction_rehearsal": 40
+    }
+  },
+  "training_variants": {
+    "V4_control": {
+      "rows": 256,
+      "positive_pairs": 818,
+      "negative_pairs": 488,
+      "unknown_pairs": 2238
+    },
+    "V4_source_order": {
+      "rows": 253,
+      "positive_pairs": 818,
+      "negative_pairs": 488,
+      "unknown_pairs": 2206
+    },
+    "V4_hash_short4": {
+      "rows": 679,
+      "positive_pairs": 818,
+      "negative_pairs": 488,
+      "unknown_pairs": 1406
+    },
+    "V4_source_short4": {
+      "rows": 649,
+      "positive_pairs": 818,
+      "negative_pairs": 488,
+      "unknown_pairs": 1284
+    }
+  },
+  "dpo_preferences_validated": 64,
+  "mechanical": {
+    "samples": 16,
+    "batches": 16,
+    "candidate_pairs": 96,
+    "gold_triples": 16,
+    "candidate_covered_triples": 16,
+    "gold_denominator_in_empty_prediction_rehearsal": 16
+  }
+}

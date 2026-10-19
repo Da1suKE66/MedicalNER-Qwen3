@@ -1,0 +1,45 @@
+{
+  "version": "source-reviewed-balanced-semantic24-round3-v1",
+  "review_scope": "Local CPU-only source-based review of the 31 TRAIN candidate complete chosen responses; this task made no network or GPU calls. The full round used 62 successful DeepSeek calls.",
+  "teacher_successful_calls_this_round": 62,
+  "candidates_reviewed": 31,
+  "recommended": 24,
+  "held": 7,
+  "category_counts": {
+    "subtype_direction_reversal": 3,
+    "explicit_negation_label_flip": 8,
+    "explicit_positive_label_flip": 13
+  },
+  "complete_chosen_lines_reviewed_in_recommended": 176,
+  "frozen_tune_overlap": 0,
+  "mechanical_holdout_overlap": 0,
+  "source188_count": 0,
+  "outside_table_negative_count": 0,
+  "row_identity_verified": 31,
+  "chosen_rejected_protocol_valid": 31,
+  "one_changed_line_verified": 31,
+  "release_source_count": 24,
+  "human_adjudicated": false,
+  "medical_gold": false,
+  "status": "Data prepared; not scheduled, trained, or evaluated",
+  "hold_counts": {
+    "criterion_negation_boundary": 1,
+    "core_vs_possible_unresolved": 1,
+    "evidence_scope_wrong_sibling": 1,
+    "ontology_ambiguity": 1,
+    "criterion_qualifier_support_scope": 1,
+    "criterion_qualifier_boundary": 1,
+    "teacher_blind_and_quote_validation": 1
+  },
+  "limitations": [
+    "Independent local agent plus same external teacher family is not clinical expert adjudication.",
+    "The semantic contrast is source-grounded; original positive silver targets remain unchanged and are not exhaustive medical gold.",
+    "Core means characteristic in this dataset; it does not assert every symptom is universally present.",
+    "Some supported causal relations depend on the complete induced/withdrawal definition, not temporal language alone.",
+    "The three hierarchy inversions rely on explicit named subclass restrictions or an includes heading.",
+    "Seven full sequences remain quarantined; no hold is automatically a corrected negative label.",
+    "Many candidate sources were already used by SFT; this is training-data review, not heldout proof of generalization."
+  ],
+  "examples_file": "examples_zh.private.json",
+  "selection_recipe_sha256": "b70dae69df3ac276443340c62a1aa6b497ce4994c4ffafc9d16bb70f8bef7d10"
+}

@@ -1,0 +1,294 @@
+{
+  "version": "relation-near-miss-audit-v1",
+  "scope": "frozen_medical_oracle_subset",
+  "records_sha256": "6eb66b03eefacce0d330eb71bd505fd8a659cdadb32e6b5d1d764df041c64123",
+  "sample_indices_sha256": "945c27b3d91298a1aca9a58063384555cf530358b1bbd5678233bb59901235ae",
+  "samples_per_run": 12,
+  "script_sha256": "0459ec20ea819097a2da4460360c7dd54a96a777c5aeea6faed6a75794d6eacd",
+  "methods": {
+    "primary_metric": "Unchanged strict typed directed relation micro-F1",
+    "lexical_candidates": "Same exact relation label and endpoint types; compare source with source and target with target using difflib.SequenceMatcher(autojunk=False), both ratios >= threshold",
+    "matching": "Lock strict TP first, then maximum one-to-one FP/FN matching within each sample; gold and prediction counts stay fixed",
+    "interpretation": "Lexical matches are unadjudicated diagnostics, not semantic correctness or model improvement",
+    "structural_counts": "Separate nonexclusive diagnostics; cannot be added or treated as TP",
+    "oracle_limit": "Given entities do not test generated entity synonyms or end-to-end entity linking"
+  },
+  "jobs": {
+    "choice_parent": {
+      "samples": 12,
+      "strict": {
+        "tp": 11,
+        "fp": 53,
+        "fn": 29,
+        "precision": 0.171875,
+        "recall": 0.275,
+        "f1": 0.21153846153846154,
+        "f0_5": 0.1858108108108108
+      },
+      "structural_diagnostics_nonexclusive": {
+        "oracle_entity_tables_equal": 12,
+        "invalid_graphs": 0,
+        "same_directed_pair_wrong_label": 4,
+        "reversed_pair_same_label": 0,
+        "reversed_differentiates_from": 0
+      },
+      "lexical_diagnostics": {
+        "0.80": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 11,
+            "fp": 53,
+            "fn": 29,
+            "precision": 0.171875,
+            "recall": 0.275,
+            "f1": 0.21153846153846154,
+            "f0_5": 0.1858108108108108
+          }
+        },
+        "0.90": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 11,
+            "fp": 53,
+            "fn": 29,
+            "precision": 0.171875,
+            "recall": 0.275,
+            "f1": 0.21153846153846154,
+            "f0_5": 0.1858108108108108
+          }
+        }
+      },
+      "predictions_sha256": "e09d49abbc9475656565cdab9106aba5beff4a5b62b8bddbf212a4950bd9464b"
+    },
+    "choice_sft32": {
+      "samples": 12,
+      "strict": {
+        "tp": 11,
+        "fp": 56,
+        "fn": 29,
+        "precision": 0.16417910447761194,
+        "recall": 0.275,
+        "f1": 0.205607476635514,
+        "f0_5": 0.17857142857142858
+      },
+      "structural_diagnostics_nonexclusive": {
+        "oracle_entity_tables_equal": 12,
+        "invalid_graphs": 0,
+        "same_directed_pair_wrong_label": 4,
+        "reversed_pair_same_label": 0,
+        "reversed_differentiates_from": 0
+      },
+      "lexical_diagnostics": {
+        "0.80": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 11,
+            "fp": 56,
+            "fn": 29,
+            "precision": 0.16417910447761194,
+            "recall": 0.275,
+            "f1": 0.205607476635514,
+            "f0_5": 0.17857142857142858
+          }
+        },
+        "0.90": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 11,
+            "fp": 56,
+            "fn": 29,
+            "precision": 0.16417910447761194,
+            "recall": 0.275,
+            "f1": 0.205607476635514,
+            "f0_5": 0.17857142857142858
+          }
+        }
+      },
+      "predictions_sha256": "161c0d5d77b51be258c7359aafd35f432f07ead2ccb328e6c260b8b8da49bbdd"
+    },
+    "choice_dpo32": {
+      "samples": 12,
+      "strict": {
+        "tp": 13,
+        "fp": 83,
+        "fn": 27,
+        "precision": 0.13541666666666666,
+        "recall": 0.325,
+        "f1": 0.19117647058823528,
+        "f0_5": 0.15330188679245282
+      },
+      "structural_diagnostics_nonexclusive": {
+        "oracle_entity_tables_equal": 12,
+        "invalid_graphs": 0,
+        "same_directed_pair_wrong_label": 2,
+        "reversed_pair_same_label": 0,
+        "reversed_differentiates_from": 0
+      },
+      "lexical_diagnostics": {
+        "0.80": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 13,
+            "fp": 83,
+            "fn": 27,
+            "precision": 0.13541666666666666,
+            "recall": 0.325,
+            "f1": 0.19117647058823528,
+            "f0_5": 0.15330188679245282
+          }
+        },
+        "0.90": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 13,
+            "fp": 83,
+            "fn": 27,
+            "precision": 0.13541666666666666,
+            "recall": 0.325,
+            "f1": 0.19117647058823528,
+            "f0_5": 0.15330188679245282
+          }
+        }
+      },
+      "predictions_sha256": "ac6d3612c0c8a665d74fb5f2d0c2934843939a074b6526417902962e9599022b"
+    },
+    "legacy_grounded64_source16": {
+      "samples": 12,
+      "strict": {
+        "tp": 14,
+        "fp": 207,
+        "fn": 26,
+        "precision": 0.06334841628959276,
+        "recall": 0.35,
+        "f1": 0.10727969348659004,
+        "f0_5": 0.07575757575757576
+      },
+      "structural_diagnostics_nonexclusive": {
+        "oracle_entity_tables_equal": 12,
+        "invalid_graphs": 0,
+        "same_directed_pair_wrong_label": 7,
+        "reversed_pair_same_label": 4,
+        "reversed_differentiates_from": 3
+      },
+      "lexical_diagnostics": {
+        "0.80": {
+          "additional_matches_not_confirmed_synonyms": 1,
+          "counterfactual_not_semantic_f1": {
+            "tp": 15,
+            "fp": 206,
+            "fn": 25,
+            "precision": 0.06787330316742081,
+            "recall": 0.375,
+            "f1": 0.11494252873563218,
+            "f0_5": 0.08116883116883117
+          }
+        },
+        "0.90": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 14,
+            "fp": 207,
+            "fn": 26,
+            "precision": 0.06334841628959276,
+            "recall": 0.35,
+            "f1": 0.10727969348659004,
+            "f0_5": 0.07575757575757576
+          }
+        }
+      },
+      "predictions_sha256": "5559d7b71e24217533db2395b8b754dd5c3a61145ef07b641a1a804d4e06a864"
+    },
+    "legacy_grounded64_hash16": {
+      "samples": 12,
+      "strict": {
+        "tp": 9,
+        "fp": 175,
+        "fn": 31,
+        "precision": 0.04891304347826087,
+        "recall": 0.225,
+        "f1": 0.08035714285714286,
+        "f0_5": 0.05798969072164949
+      },
+      "structural_diagnostics_nonexclusive": {
+        "oracle_entity_tables_equal": 12,
+        "invalid_graphs": 0,
+        "same_directed_pair_wrong_label": 9,
+        "reversed_pair_same_label": 2,
+        "reversed_differentiates_from": 1
+      },
+      "lexical_diagnostics": {
+        "0.80": {
+          "additional_matches_not_confirmed_synonyms": 1,
+          "counterfactual_not_semantic_f1": {
+            "tp": 10,
+            "fp": 174,
+            "fn": 30,
+            "precision": 0.05434782608695652,
+            "recall": 0.25,
+            "f1": 0.08928571428571429,
+            "f0_5": 0.06443298969072164
+          }
+        },
+        "0.90": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286,
+            "f0_5": 0.05798969072164949
+          }
+        }
+      },
+      "predictions_sha256": "315762760ebcbcb03b5c3429ad633f71f420d621353746f29b7fa294f0160265"
+    },
+    "legacy_dpo16_hash16": {
+      "samples": 12,
+      "strict": {
+        "tp": 9,
+        "fp": 171,
+        "fn": 31,
+        "precision": 0.05,
+        "recall": 0.225,
+        "f1": 0.08181818181818182,
+        "f0_5": 0.05921052631578947
+      },
+      "structural_diagnostics_nonexclusive": {
+        "oracle_entity_tables_equal": 12,
+        "invalid_graphs": 0,
+        "same_directed_pair_wrong_label": 9,
+        "reversed_pair_same_label": 2,
+        "reversed_differentiates_from": 1
+      },
+      "lexical_diagnostics": {
+        "0.80": {
+          "additional_matches_not_confirmed_synonyms": 1,
+          "counterfactual_not_semantic_f1": {
+            "tp": 10,
+            "fp": 170,
+            "fn": 30,
+            "precision": 0.05555555555555555,
+            "recall": 0.25,
+            "f1": 0.09090909090909091,
+            "f0_5": 0.06578947368421052
+          }
+        },
+        "0.90": {
+          "additional_matches_not_confirmed_synonyms": 0,
+          "counterfactual_not_semantic_f1": {
+            "tp": 9,
+            "fp": 171,
+            "fn": 31,
+            "precision": 0.05,
+            "recall": 0.225,
+            "f1": 0.08181818181818182,
+            "f0_5": 0.05921052631578947
+          }
+        }
+      },
+      "predictions_sha256": "40608d3f272c0e30cd280a7bf6cb325b9df15629eb390a152747034399c67513"
+    }
+  }
+}

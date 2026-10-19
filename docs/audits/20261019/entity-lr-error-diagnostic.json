@@ -1,0 +1,283 @@
+{
+  "status": "INDEPENDENT_EXISTING_OUTPUT_DIAGNOSTIC_PASS",
+  "validation_counts": {
+    "saved_events_checked": 500,
+    "eos_complete_events_reparsed": 496,
+    "termination_failure_events_kept_unparsed": 4
+  },
+  "relation_endpoint_reachability": {
+    "control": 294,
+    "treatment": 311,
+    "retained": 270,
+    "newly_reachable": 41,
+    "newly_unreachable": 24,
+    "gold": 573
+  },
+  "relation_window_status_transitions": {
+    "failed -> failed": 21,
+    "complete -> complete": 100,
+    "failed -> complete": 4
+  },
+  "relation_window_error_transitions": {
+    "invalid_semantic_records -> invalid_semantic_records": 19,
+    "None -> None": 100,
+    "invalid_semantic_records -> None": 3,
+    "missing_eos -> None": 1,
+    "missing_eos -> missing_eos": 1,
+    "missing_eos -> invalid_semantic_records": 1
+  },
+  "gross_relation_tp_mechanisms": {
+    "new_tp": {
+      "total": 42,
+      "exclusive_observed_condition": {
+        "same_endpoints_at_least_one_other_window_successful": 12,
+        "other_entity_table_missing_endpoint": 30
+      },
+      "overlapping_flags": {
+        "has_same_direction_wrong_label_in_other_prediction": 5,
+        "has_other_already_present_gold_label_for_same_pair": 1,
+        "has_matching_line_in_other_failed_eos_window": 1,
+        "has_any_opposite_failed_producing_window": 4
+      }
+    },
+    "lost_tp": {
+      "total": 17,
+      "exclusive_observed_condition": {
+        "same_endpoints_at_least_one_other_window_successful": 2,
+        "other_entity_table_missing_endpoint": 15
+      },
+      "overlapping_flags": {
+        "has_same_direction_wrong_label_in_other_prediction": 2,
+        "has_other_already_present_gold_label_for_same_pair": 0,
+        "has_matching_line_in_other_failed_eos_window": 0,
+        "has_any_opposite_failed_producing_window": 0
+      }
+    }
+  },
+  "criterion_recall": {
+    "control": {
+      "raw": {
+        "all": {
+          "tp": 10,
+          "fn": 73,
+          "gold": 83,
+          "recall": 0.12048192771084337
+        },
+        "gt160": {
+          "tp": 0,
+          "fn": 53,
+          "gold": 53,
+          "recall": 0.0
+        }
+      },
+      "filtered": {
+        "all": {
+          "tp": 10,
+          "fn": 73,
+          "gold": 83,
+          "recall": 0.12048192771084337
+        },
+        "gt160": {
+          "tp": 0,
+          "fn": 53,
+          "gold": 53,
+          "recall": 0.0
+        }
+      }
+    },
+    "treatment": {
+      "raw": {
+        "all": {
+          "tp": 14,
+          "fn": 69,
+          "gold": 83,
+          "recall": 0.1686746987951807
+        },
+        "gt160": {
+          "tp": 3,
+          "fn": 50,
+          "gold": 53,
+          "recall": 0.05660377358490566
+        }
+      },
+      "filtered": {
+        "all": {
+          "tp": 14,
+          "fn": 69,
+          "gold": 83,
+          "recall": 0.1686746987951807
+        },
+        "gt160": {
+          "tp": 3,
+          "fn": 50,
+          "gold": 53,
+          "recall": 0.05660377358490566
+        }
+      }
+    }
+  },
+  "relation_fp_observed_conditions": {
+    "new_fp": {
+      "same_typed_direction_has_other_silver_relation_label": 16,
+      "at_least_one_endpoint_not_in_silver_entities": 58,
+      "reverse_typed_direction_has_silver_relation": 12,
+      "both_endpoints_in_silver_but_pair_unannotated": 8
+    },
+    "removed_fp": {
+      "at_least_one_endpoint_not_in_silver_entities": 51,
+      "both_endpoints_in_silver_but_pair_unannotated": 11,
+      "reverse_typed_direction_has_silver_relation": 12,
+      "same_typed_direction_has_other_silver_relation_label": 21
+    }
+  },
+  "matched_relation_adapter_same": true,
+  "fixed_source_gold_all130": true,
+  "limitations": [
+    "Saved output comparison of two actual entity adapters with the same relation adapter; not a new inference or model experiment.",
+    "Changing entities also changes whole relation prompts/padding. Observed endpoint/failure/label mechanisms are not disjoint causal effect estimates; overlap flags must not be added.",
+    "Strict teacher-silver typed/directed set scoring is not human clinical truth. Unannotated predictions are benchmark FP, not automatically clinically false.",
+    "Per-line parse checks diagnose old failed text only; no partial salvage, no missing-EOS rescue, and no changed score."
+  ],
+  "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+  "diagnostic_of": "entity-lr-comparison-results.json",
+  "independent_aggregate_sha256": "0c69c6fae0cf4e8b76d1cff0a175a57ee12549b05ac2345701ab5d7a80df8055",
+  "private_example_count": 5,
+  "new_inference": false,
+  "original_results_or_gold_changed": false,
+  "sample_counts": {
+    "overall": 130,
+    "free_text": 69,
+    "structured_icd": 61
+  },
+  "gold_denominators": {
+    "free_entity": 648,
+    "free_relation": 573
+  },
+  "free_filtered_transitions": {
+    "entity": {
+      "counts": {
+        "retained_tp": 358,
+        "new_tp": 43,
+        "lost_tp": 21,
+        "retained_fp": 87,
+        "new_fp": 30,
+        "removed_fp": 51
+      },
+      "by_type_or_relation": {
+        "retained_tp": {
+          "Disease": 187,
+          "Symptom": 161,
+          "Diagnostic Criterion": 10
+        },
+        "new_tp": {
+          "Diagnostic Criterion": 4,
+          "Symptom": 28,
+          "Disease": 11
+        },
+        "lost_tp": {
+          "Disease": 6,
+          "Symptom": 15
+        },
+        "retained_fp": {
+          "Symptom": 46,
+          "Disease": 36,
+          "Diagnostic Criterion": 4,
+          "Etiology": 1
+        },
+        "new_fp": {
+          "Symptom": 19,
+          "Disease": 10,
+          "Diagnostic Criterion": 1
+        },
+        "removed_fp": {
+          "Symptom": 34,
+          "Disease": 17
+        }
+      }
+    },
+    "relation": {
+      "counts": {
+        "retained_tp": 159,
+        "new_tp": 42,
+        "lost_tp": 17,
+        "retained_fp": 126,
+        "new_fp": 94,
+        "removed_fp": 95
+      },
+      "by_type_or_relation": {
+        "retained_tp": {
+          "is_associated_symptom_of": 77,
+          "differentiates_from": 54,
+          "is_core_symptom_of": 12,
+          "has_diagnostic_criterion": 10,
+          "subtype_of": 2,
+          "has_specifier": 4
+        },
+        "new_tp": {
+          "is_associated_symptom_of": 20,
+          "has_diagnostic_criterion": 4,
+          "differentiates_from": 10,
+          "has_specifier": 3,
+          "progresses_to": 1,
+          "is_core_symptom_of": 4
+        },
+        "lost_tp": {
+          "differentiates_from": 3,
+          "subtype_of": 1,
+          "is_associated_symptom_of": 11,
+          "is_core_symptom_of": 2
+        },
+        "retained_fp": {
+          "is_associated_symptom_of": 70,
+          "has_diagnostic_criterion": 4,
+          "is_core_symptom_of": 7,
+          "differentiates_from": 28,
+          "progresses_to": 2,
+          "has_specifier": 5,
+          "subtype_of": 9,
+          "causes": 1
+        },
+        "new_fp": {
+          "is_core_symptom_of": 15,
+          "differentiates_from": 19,
+          "is_associated_symptom_of": 29,
+          "subtype_of": 21,
+          "causes": 2,
+          "has_diagnostic_criterion": 1,
+          "argues_against": 3,
+          "has_specifier": 4
+        },
+        "removed_fp": {
+          "subtype_of": 14,
+          "has_specifier": 14,
+          "is_associated_symptom_of": 31,
+          "is_core_symptom_of": 13,
+          "differentiates_from": 20,
+          "causes": 3
+        }
+      }
+    }
+  },
+  "example_categories": [
+    {
+      "source_index": 671,
+      "condition": "261-character Criterion recovered with an actual matching diagnostic-criterion relation TP."
+    },
+    {
+      "source_index": 170,
+      "condition": "606-character Criterion fully present in actual input, still omitted."
+    },
+    {
+      "source_index": 220,
+      "condition": "Relation refers to a Disease outside the actual supplied entity table."
+    },
+    {
+      "source_index": 39,
+      "condition": "Same directed typed endpoints, core-symptom versus associated-symptom label disagreement."
+    },
+    {
+      "source_index": 1264,
+      "condition": "Old failed output contains a structurally valid line; new TP also occurs in other successful windows, so no exclusive parse-recovery attribution."
+    }
+  ]
+}

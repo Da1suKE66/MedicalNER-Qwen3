@@ -1,0 +1,715 @@
+{
+  "status": "PASS_EXISTING_COMPLETE_RESULTS_DIAGNOSIS",
+  "samples": 130,
+  "fixed_entities_unchanged": true,
+  "scores": {
+    "control": {
+      "live": {
+        "raw": {
+          "free_text": {
+            "entity": {
+              "tp": 401,
+              "fp": 126,
+              "fn": 247,
+              "precision": 0.7609108159392789,
+              "recall": 0.6188271604938271,
+              "f1": 0.6825531914893617
+            },
+            "relation": {
+              "tp": 201,
+              "fp": 233,
+              "fn": 372,
+              "precision": 0.4631336405529954,
+              "recall": 0.3507853403141361,
+              "f1": 0.39920556107249255
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "f1": 0.8
+            },
+            "relation": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 26,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "f1": 0.7549668874172185
+            }
+          },
+          "overall": {
+            "entity": {
+              "tp": 523,
+              "fp": 133,
+              "fn": 301,
+              "precision": 0.7972560975609756,
+              "recall": 0.6347087378640777,
+              "f1": 0.7067567567567568
+            },
+            "relation": {
+              "tp": 258,
+              "fp": 244,
+              "fn": 398,
+              "precision": 0.5139442231075697,
+              "recall": 0.3932926829268293,
+              "f1": 0.44559585492227977
+            }
+          }
+        },
+        "filtered": {
+          "free_text": {
+            "entity": {
+              "tp": 401,
+              "fp": 117,
+              "fn": 247,
+              "precision": 0.7741312741312741,
+              "recall": 0.6188271604938271,
+              "f1": 0.6878216123499142
+            },
+            "relation": {
+              "tp": 201,
+              "fp": 220,
+              "fn": 372,
+              "precision": 0.47743467933491684,
+              "recall": 0.3507853403141361,
+              "f1": 0.4044265593561368
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "f1": 0.8
+            },
+            "relation": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 26,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "f1": 0.7549668874172185
+            }
+          },
+          "overall": {
+            "entity": {
+              "tp": 523,
+              "fp": 124,
+              "fn": 301,
+              "precision": 0.8083462132921174,
+              "recall": 0.6347087378640777,
+              "f1": 0.7110808973487424
+            },
+            "relation": {
+              "tp": 258,
+              "fp": 231,
+              "fn": 398,
+              "precision": 0.5276073619631901,
+              "recall": 0.3932926829268293,
+              "f1": 0.45065502183406114
+            }
+          }
+        }
+      }
+    },
+    "treatment": {
+      "live": {
+        "raw": {
+          "free_text": {
+            "entity": {
+              "tp": 401,
+              "fp": 126,
+              "fn": 247,
+              "precision": 0.7609108159392789,
+              "recall": 0.6188271604938271,
+              "f1": 0.6825531914893617
+            },
+            "relation": {
+              "tp": 239,
+              "fp": 201,
+              "fn": 334,
+              "precision": 0.5431818181818182,
+              "recall": 0.41710296684118675,
+              "f1": 0.47186574531095754
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "f1": 0.8
+            },
+            "relation": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 26,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "f1": 0.7549668874172185
+            }
+          },
+          "overall": {
+            "entity": {
+              "tp": 523,
+              "fp": 133,
+              "fn": 301,
+              "precision": 0.7972560975609756,
+              "recall": 0.6347087378640777,
+              "f1": 0.7067567567567568
+            },
+            "relation": {
+              "tp": 296,
+              "fp": 212,
+              "fn": 360,
+              "precision": 0.5826771653543307,
+              "recall": 0.45121951219512196,
+              "f1": 0.5085910652920962
+            }
+          }
+        },
+        "filtered": {
+          "free_text": {
+            "entity": {
+              "tp": 401,
+              "fp": 117,
+              "fn": 247,
+              "precision": 0.7741312741312741,
+              "recall": 0.6188271604938271,
+              "f1": 0.6878216123499142
+            },
+            "relation": {
+              "tp": 238,
+              "fp": 183,
+              "fn": 335,
+              "precision": 0.5653206650831354,
+              "recall": 0.41535776614310643,
+              "f1": 0.4788732394366197
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "f1": 0.8
+            },
+            "relation": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 26,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "f1": 0.7549668874172185
+            }
+          },
+          "overall": {
+            "entity": {
+              "tp": 523,
+              "fp": 124,
+              "fn": 301,
+              "precision": 0.8083462132921174,
+              "recall": 0.6347087378640777,
+              "f1": 0.7110808973487424
+            },
+            "relation": {
+              "tp": 295,
+              "fp": 194,
+              "fn": 361,
+              "precision": 0.6032719836400818,
+              "recall": 0.4496951219512195,
+              "f1": 0.5152838427947598
+            }
+          }
+        }
+      },
+      "oracle": {
+        "raw": {
+          "free_text": {
+            "entity": {
+              "tp": 648,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "relation": {
+              "tp": 426,
+              "fp": 140,
+              "fn": 147,
+              "precision": 0.7526501766784452,
+              "recall": 0.743455497382199,
+              "f1": 0.7480245829675154
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "f1": 0.8
+            },
+            "relation": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 26,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "f1": 0.7549668874172185
+            }
+          },
+          "overall": {
+            "entity": {
+              "tp": 770,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.990990990990991,
+              "recall": 0.9344660194174758,
+              "f1": 0.9618988132417239
+            },
+            "relation": {
+              "tp": 483,
+              "fp": 151,
+              "fn": 173,
+              "precision": 0.7618296529968455,
+              "recall": 0.7362804878048781,
+              "f1": 0.7488372093023256
+            }
+          }
+        },
+        "filtered": {
+          "free_text": {
+            "entity": {
+              "tp": 648,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "relation": {
+              "tp": 422,
+              "fp": 125,
+              "fn": 151,
+              "precision": 0.7714808043875686,
+              "recall": 0.7364746945898778,
+              "f1": 0.7535714285714286
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "tp": 122,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "f1": 0.8
+            },
+            "relation": {
+              "tp": 57,
+              "fp": 11,
+              "fn": 26,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "f1": 0.7549668874172185
+            }
+          },
+          "overall": {
+            "entity": {
+              "tp": 770,
+              "fp": 7,
+              "fn": 54,
+              "precision": 0.990990990990991,
+              "recall": 0.9344660194174758,
+              "f1": 0.9618988132417239
+            },
+            "relation": {
+              "tp": 479,
+              "fp": 136,
+              "fn": 177,
+              "precision": 0.7788617886178861,
+              "recall": 0.7301829268292683,
+              "f1": 0.7537372147915028
+            }
+          }
+        }
+      }
+    }
+  },
+  "live_relation_transitions": {
+    "raw": {
+      "counts": {
+        "retained_tp": 190,
+        "new_tp": 49,
+        "lost_tp": 11,
+        "retained_fp": 163,
+        "new_fp": 38,
+        "removed_fp": 70
+      },
+      "by_type_or_relation": {
+        "retained_tp": {
+          "is_associated_symptom_of": 95,
+          "differentiates_from": 62,
+          "is_core_symptom_of": 11,
+          "has_diagnostic_criterion": 12,
+          "has_specifier": 7,
+          "subtype_of": 2,
+          "progresses_to": 1
+        },
+        "new_tp": {
+          "subtype_of": 17,
+          "is_core_symptom_of": 15,
+          "differentiates_from": 7,
+          "causes": 1,
+          "is_associated_symptom_of": 7,
+          "progresses_to": 2
+        },
+        "lost_tp": {
+          "has_diagnostic_criterion": 2,
+          "is_core_symptom_of": 5,
+          "differentiates_from": 2,
+          "is_associated_symptom_of": 2
+        },
+        "retained_fp": {
+          "differentiates_from": 41,
+          "is_associated_symptom_of": 80,
+          "has_diagnostic_criterion": 5,
+          "is_core_symptom_of": 16,
+          "causes": 9,
+          "subtype_of": 8,
+          "argues_against": 2,
+          "progresses_to": 2
+        },
+        "new_fp": {
+          "has_diagnostic_criterion": 1,
+          "has_specifier": 6,
+          "is_core_symptom_of": 6,
+          "differentiates_from": 5,
+          "is_associated_symptom_of": 6,
+          "subtype_of": 4,
+          "causes": 8,
+          "has_manifestation": 2
+        },
+        "removed_fp": {
+          "is_associated_symptom_of": 20,
+          "subtype_of": 28,
+          "differentiates_from": 6,
+          "has_specifier": 9,
+          "is_core_symptom_of": 6,
+          "argues_against": 1
+        }
+      }
+    },
+    "filtered": {
+      "counts": {
+        "retained_tp": 190,
+        "new_tp": 48,
+        "lost_tp": 11,
+        "retained_fp": 149,
+        "new_fp": 34,
+        "removed_fp": 71
+      },
+      "by_type_or_relation": {
+        "retained_tp": {
+          "is_associated_symptom_of": 95,
+          "differentiates_from": 62,
+          "is_core_symptom_of": 11,
+          "has_diagnostic_criterion": 12,
+          "has_specifier": 7,
+          "subtype_of": 2,
+          "progresses_to": 1
+        },
+        "new_tp": {
+          "subtype_of": 16,
+          "is_core_symptom_of": 15,
+          "differentiates_from": 7,
+          "causes": 1,
+          "is_associated_symptom_of": 7,
+          "progresses_to": 2
+        },
+        "lost_tp": {
+          "has_diagnostic_criterion": 2,
+          "is_core_symptom_of": 5,
+          "differentiates_from": 2,
+          "is_associated_symptom_of": 2
+        },
+        "retained_fp": {
+          "is_associated_symptom_of": 78,
+          "differentiates_from": 41,
+          "has_diagnostic_criterion": 4,
+          "is_core_symptom_of": 16,
+          "progresses_to": 2,
+          "causes": 3,
+          "argues_against": 2,
+          "subtype_of": 3
+        },
+        "new_fp": {
+          "has_specifier": 5,
+          "is_associated_symptom_of": 6,
+          "has_manifestation": 2,
+          "subtype_of": 9,
+          "causes": 3,
+          "is_core_symptom_of": 6,
+          "differentiates_from": 3
+        },
+        "removed_fp": {
+          "is_associated_symptom_of": 21,
+          "subtype_of": 27,
+          "differentiates_from": 6,
+          "has_specifier": 9,
+          "is_core_symptom_of": 6,
+          "has_diagnostic_criterion": 1,
+          "argues_against": 1
+        }
+      }
+    }
+  },
+  "new_generation": {
+    "control": {
+      "live": {
+        "attempted": 125,
+        "failed": 21,
+        "semantic_fail_eos_complete": 20,
+        "missing_eos": 1,
+        "cap": 1,
+        "failure_error_counts": {
+          "invalid_semantic_records": 20,
+          "missing_eos": 1
+        },
+        "parse_reason_counts": {
+          "unknown_entity_reference": 47
+        }
+      }
+    },
+    "treatment": {
+      "live": {
+        "attempted": 125,
+        "failed": 18,
+        "semantic_fail_eos_complete": 18,
+        "missing_eos": 0,
+        "cap": 0,
+        "failure_error_counts": {
+          "invalid_semantic_records": 18
+        },
+        "parse_reason_counts": {
+          "unknown_entity_reference": 54,
+          "unknown_or_wrong_source_relation": 5
+        }
+      },
+      "oracle": {
+        "attempted": 125,
+        "failed": 12,
+        "semantic_fail_eos_complete": 11,
+        "missing_eos": 1,
+        "cap": 1,
+        "failure_error_counts": {
+          "invalid_semantic_records": 11,
+          "missing_eos": 1
+        },
+        "parse_reason_counts": {
+          "unknown_entity_reference": 11,
+          "unknown_or_wrong_source_relation": 1,
+          "invalid_record": 4
+        }
+      }
+    }
+  },
+  "live_relation_window_failure_transitions": {
+    "failed -> complete": 7,
+    "complete -> complete": 100,
+    "failed -> failed": 14,
+    "complete -> failed": 4
+  },
+  "live_fn_decomposition": {
+    "gold": 573,
+    "reachable": 311,
+    "missing_endpoints": 262,
+    "true_positive": 238,
+    "remaining_reachable_fn": 73,
+    "all_fn": 335,
+    "oracle_tp_in_missing_endpoint": 170,
+    "oracle_tp_in_reachable_fn": 26
+  },
+  "fn_by_relation": {
+    "missing_endpoint": {
+      "has_manifestation": 2,
+      "is_core_symptom_of": 25,
+      "has_diagnostic_criterion": 61,
+      "is_associated_symptom_of": 58,
+      "part_of": 8,
+      "required_for": 8,
+      "differentiates_from": 11,
+      "subtype_of": 54,
+      "has_specifier": 1,
+      "supports_diagnosis_of": 7,
+      "supports_Diagnostic Criterion_of": 24,
+      "suggests": 2,
+      "predisposes_to": 1
+    },
+    "endpoints_present": {
+      "is_core_symptom_of": 38,
+      "part_of": 3,
+      "is_associated_symptom_of": 9,
+      "subtype_of": 7,
+      "differentiates_from": 2,
+      "has_manifestation": 1,
+      "supports_diagnosis_of": 6,
+      "rules_out": 4,
+      "causes": 1,
+      "has_diagnostic_criterion": 2
+    }
+  },
+  "missing_endpoint_type_incidence_not_unique_nodes": {
+    "Symptom": 107,
+    "Diagnostic Criterion": 93,
+    "Disease": 71
+  },
+  "reachable_fn_same_pair_other_label_count": 41,
+  "reachable_fn_removed_by_rule": 1,
+  "new_tp_observed_mechanisms_overlapping": {
+    "total": 48,
+    "old_wrong_label_same_pair": 16,
+    "old_existing_other_gold_label_same_pair": 2,
+    "any_old_producing_window_failed": 3,
+    "all_old_producing_windows_failed": 3
+  },
+  "oracle_caps": [
+    {
+      "sample_index": 548,
+      "window": {
+        "end": 5960,
+        "index": 2,
+        "start": 3637
+      },
+      "nonblank_lines": 39,
+      "unique_lines": 7,
+      "most_frequent_line_count": 7
+    }
+  ],
+  "limitations": [
+    "Currentbest full pipeline free_text filtered relationF1 is47.8873%;75.3571% is goldentity oracle only, not pipeline performance.",
+    "These are existing saved generations, not a new experiment or parser-salvage result.",
+    "Silverlabels may be incomplete; evaluation FP means disagreement with frozen silver, not proven clinicalerror.",
+    "Missingendpoint262 and reachableFN73 are set partitions; overlapping window/label observations are not causal allocations."
+  ],
+  "remaining_reachable_fn_exclusive_partition": {
+    "other_label_on_same_directed_pair": 41,
+    "no_filtered_label_on_same_directed_pair": 31,
+    "filtered_rule_removed": 1
+  },
+  "example_index": [
+    {
+      "example": 1,
+      "sample_index": 170,
+      "kind": "remaining_problem",
+      "title": "606字诊断标准仍漏实体，oracle又使用反向的另一关系标签",
+      "window": {
+        "end": 2298,
+        "index": 0,
+        "start": 0
+      },
+      "mode": "live"
+    },
+    {
+      "example": 2,
+      "sample_index": 220,
+      "kind": "remaining_problem",
+      "title": "新R在窗口2仍引用实体表外的疾病文本，整窗解析失败",
+      "window": {
+        "end": 6400,
+        "index": 2,
+        "start": 4000
+      },
+      "mode": "live"
+    },
+    {
+      "example": 3,
+      "sample_index": 609,
+      "kind": "remaining_problem",
+      "title": "两个实体都正确存在，但rules_out被输出为differentiates_from",
+      "window": {
+        "end": 426,
+        "index": 0,
+        "start": 0
+      },
+      "mode": "live"
+    },
+    {
+      "example": 4,
+      "sample_index": 548,
+      "kind": "remaining_problem",
+      "title": "提供金标实体后仍重复记录并耗尽4096 token，无EOS整窗失败",
+      "window": {
+        "end": 5960,
+        "index": 2,
+        "start": 3637
+      },
+      "mode": "oracle"
+    },
+    {
+      "example": 5,
+      "sample_index": 249,
+      "kind": "measured_improvement",
+      "title": "固定实体表下，两个associated标签改为银标core标签",
+      "window": {
+        "end": 1297,
+        "index": 0,
+        "start": 0
+      },
+      "mode": "live"
+    }
+  ],
+  "criterion606_current_oracle": {
+    "sample_index": 170,
+    "live_criterion_missing": true,
+    "gold_label": "required_for",
+    "oracle_label": "has_diagnostic_criterion",
+    "direction_reversed": true,
+    "oracle_gold_tp": false,
+    "strict_scoring_retains_fp_and_fn": true
+  },
+  "current_rule_deletions": {
+    "live": {
+      "tp_removed": 1,
+      "fp_removed": 18
+    },
+    "oracle": {
+      "tp_removed": 4,
+      "fp_removed": 15
+    }
+  },
+  "new_tp_label_correction_matrix_overlapping": {
+    "is_associated_symptom_of -> is_core_symptom_of": 12,
+    "differentiates_from -> causes": 1,
+    "subtype_of -> progresses_to": 2,
+    "subtype_of -> differentiates_from": 1
+  },
+  "lost_tp_new_wrong_label_matrix_overlapping": {
+    "is_core_symptom_of -> is_associated_symptom_of": 4
+  },
+  "lost_tp_corresponding_window_status": {
+    "some_new_corresponding_window_complete": 9,
+    "all_new_corresponding_windows_failed": 2
+  },
+  "actual_current_examples_verified": true,
+  "updated_utc": "2026-10-19T03:37:46.022212+00:00",
+  "private_aggregate_sha256": "a6150009e23cf759b09b45435566c451caa8098bf13a67f79a45891cc3f64fdc",
+  "private_receipt_sha256": "93ebdf461ebd467ff9e0104aab747c4af0d02a19acf50c38f219f16e7b4af36e",
+  "private_original_text_published": false,
+  "result_file": "relation-lr-comparison-results.json",
+  "method": "Read-only independent reconstruction of complete original identities, gold, raw/filtered/strict scores and actual current model outputs; no parser changes or new inference."
+}

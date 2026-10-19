@@ -1,0 +1,227 @@
+{
+  "version": "bounded-choice-medical-oracle-comparison-20261012-v1",
+  "independently_verified": true,
+  "freeze": {
+    "code_sha256": "ad8be8f5488d7ca999e310b6270e82ccf7a2fbc41c362f649c50f9fa5a26bd11",
+    "archive_sha256": "c38274010044365f0624e6032fbd23e1f5d97bb7c50def10c33c26374c08620e",
+    "queue_sha256": "e8238745288230305af4b6bbfb7eea1934504f4678d52813d0eb749dd218fef4"
+  },
+  "report": {
+    "scope": "medical_oracle_subset_independent_recount_not_end_to_end",
+    "jobs": [
+      {
+        "job": "parent_eval",
+        "status": "verified",
+        "metric_verified": true,
+        "samples": 12,
+        "relation": {
+          "tp": 11,
+          "fp": 53,
+          "fn": 29,
+          "precision": 0.171875,
+          "recall": 0.275,
+          "f1": 0.21153846153846154
+        },
+        "evidence": {
+          "tp": 3,
+          "fp": 61,
+          "fn": 37,
+          "precision": 0.046875,
+          "recall": 0.075,
+          "f1": 0.057692307692307696
+        },
+        "failed_samples": 0,
+        "invalid_predictions": 0,
+        "failed_batches": 0,
+        "budget_exhaustions": 0,
+        "generation_batches": 64,
+        "failed_generation_samples": 0,
+        "deadline_exhaustions": 0,
+        "rules": {
+          "type_guard": {
+            "relation": {
+              "tp": 11,
+              "fp": 29,
+              "fn": 29,
+              "precision": 0.275,
+              "recall": 0.275,
+              "f1": 0.275
+            },
+            "removed_tp": 0,
+            "removed_fp": 24,
+            "removed_raw_rows": 24,
+            "reasons": {
+              "symptom_disease_type_mismatch": 24
+            },
+            "posthoc_rule_diagnostic": true
+          },
+          "all_legacy_rules": {
+            "relation": {
+              "tp": 11,
+              "fp": 29,
+              "fn": 29,
+              "precision": 0.275,
+              "recall": 0.275,
+              "f1": 0.275
+            },
+            "removed_tp": 0,
+            "removed_fp": 24,
+            "removed_raw_rows": 24,
+            "reasons": {
+              "symptom_disease_type_mismatch": 24
+            },
+            "posthoc_rule_diagnostic": true
+          }
+        },
+        "elapsed_seconds": 54.53246721100004
+      },
+      {
+        "job": "sft_eval",
+        "status": "verified",
+        "metric_verified": true,
+        "samples": 12,
+        "relation": {
+          "tp": 11,
+          "fp": 56,
+          "fn": 29,
+          "precision": 0.16417910447761194,
+          "recall": 0.275,
+          "f1": 0.205607476635514
+        },
+        "evidence": {
+          "tp": 3,
+          "fp": 64,
+          "fn": 37,
+          "precision": 0.04477611940298507,
+          "recall": 0.075,
+          "f1": 0.056074766355140186
+        },
+        "failed_samples": 0,
+        "invalid_predictions": 0,
+        "failed_batches": 0,
+        "budget_exhaustions": 0,
+        "generation_batches": 64,
+        "failed_generation_samples": 0,
+        "deadline_exhaustions": 0,
+        "rules": {
+          "type_guard": {
+            "relation": {
+              "tp": 11,
+              "fp": 31,
+              "fn": 29,
+              "precision": 0.2619047619047619,
+              "recall": 0.275,
+              "f1": 0.2682926829268293
+            },
+            "removed_tp": 0,
+            "removed_fp": 25,
+            "removed_raw_rows": 25,
+            "reasons": {
+              "symptom_disease_type_mismatch": 25
+            },
+            "posthoc_rule_diagnostic": true
+          },
+          "all_legacy_rules": {
+            "relation": {
+              "tp": 11,
+              "fp": 31,
+              "fn": 29,
+              "precision": 0.2619047619047619,
+              "recall": 0.275,
+              "f1": 0.2682926829268293
+            },
+            "removed_tp": 0,
+            "removed_fp": 25,
+            "removed_raw_rows": 25,
+            "reasons": {
+              "symptom_disease_type_mismatch": 25
+            },
+            "posthoc_rule_diagnostic": true
+          }
+        },
+        "elapsed_seconds": 55.906388497998705
+      },
+      {
+        "job": "dpo_eval",
+        "status": "verified",
+        "metric_verified": true,
+        "samples": 12,
+        "relation": {
+          "tp": 13,
+          "fp": 83,
+          "fn": 27,
+          "precision": 0.13541666666666666,
+          "recall": 0.325,
+          "f1": 0.19117647058823528
+        },
+        "evidence": {
+          "tp": 4,
+          "fp": 92,
+          "fn": 36,
+          "precision": 0.041666666666666664,
+          "recall": 0.1,
+          "f1": 0.058823529411764705
+        },
+        "failed_samples": 0,
+        "invalid_predictions": 0,
+        "failed_batches": 0,
+        "budget_exhaustions": 0,
+        "generation_batches": 64,
+        "failed_generation_samples": 0,
+        "deadline_exhaustions": 0,
+        "rules": {
+          "type_guard": {
+            "relation": {
+              "tp": 13,
+              "fp": 54,
+              "fn": 27,
+              "precision": 0.19402985074626866,
+              "recall": 0.325,
+              "f1": 0.24299065420560748
+            },
+            "removed_tp": 0,
+            "removed_fp": 29,
+            "removed_raw_rows": 29,
+            "reasons": {
+              "symptom_disease_type_mismatch": 29
+            },
+            "posthoc_rule_diagnostic": true
+          },
+          "all_legacy_rules": {
+            "relation": {
+              "tp": 13,
+              "fp": 54,
+              "fn": 27,
+              "precision": 0.19402985074626866,
+              "recall": 0.325,
+              "f1": 0.24299065420560748
+            },
+            "removed_tp": 0,
+            "removed_fp": 29,
+            "removed_raw_rows": 29,
+            "reasons": {
+              "symptom_disease_type_mismatch": 29
+            },
+            "posthoc_rule_diagnostic": true
+          }
+        },
+        "elapsed_seconds": 67.57223922999401
+      }
+    ],
+    "samples": 12,
+    "gold_relation_triples": 40,
+    "candidate_covered_gold_triples": 26,
+    "unreachable_gold_triples": 14,
+    "screen_manifest_sha256": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+    "comparison_settings_match": true,
+    "all_three_verified": true,
+    "limitations": [
+      "Oracle entities, selected short/candidate-bounded subset; not full clinical or pipeline effectiveness.",
+      "All original gold triples remain, including unreachable entities and failed generations.",
+      "Rules are post-hoc diagnostics; deleted TP and FP are both reported.",
+      "Evidence is exact normalized source text, not independent semantic entailment.",
+      "No winner is asserted automatically; medical and artificial results remain separate."
+    ]
+  },
+  "full_pipeline_evaluated": false
+}

@@ -1,0 +1,108 @@
+{
+  "status": "resident_cpu_preflight_passed_queued_after_primary_sft",
+  "cpu_tests_passed": 8,
+  "train_pairs": 52,
+  "mechanical_holdout_pairs": 32,
+  "train_source_groups": 38,
+  "mutation_counts": {
+    "outside_entity_table": 16,
+    "reviewed_semantic_contradiction": 36
+  },
+  "semantic_change_counts": {
+    "explicit_negation_label_flip": 19,
+    "subtype_direction_reversal": 17
+  },
+  "max_prompt_plus_completion_tokens": 3273,
+  "chosen_tokens_one_pass_including_eos": 28881,
+  "rejected_tokens_one_pass_including_eos": 28900,
+  "prompt_tokens_one_pass": 58574,
+  "prompt_loss_tokens": 0,
+  "no_truncation": true,
+  "smoke_selected": [
+    {
+      "pair_id": "b8ccd4bea9a018326ddbc6e7445456d6a25408b4d56388c8896bf1116c0b900c",
+      "kind": "outside_entity_table",
+      "semantic_change_kind": null,
+      "total_tokens": 2884
+    },
+    {
+      "pair_id": "083e9d5d8b10203389f172e49e3ae83056d12f33692272e517e3c885516f9b31",
+      "kind": "reviewed_semantic_contradiction",
+      "semantic_change_kind": "explicit_negation_label_flip",
+      "total_tokens": 3273
+    },
+    {
+      "pair_id": "0e952a53a463306b7c2800ef0ae4973dc69d342c0980eb6403e711fdb0523891",
+      "kind": "reviewed_semantic_contradiction",
+      "semantic_change_kind": "explicit_negation_label_flip",
+      "total_tokens": 3273
+    },
+    {
+      "pair_id": "ae2f5b1459d426c2d01e825e148f739173a7f8b5cb2de5dd55afbc18bb1904e2",
+      "kind": "reviewed_semantic_contradiction",
+      "semantic_change_kind": "subtype_direction_reversal",
+      "total_tokens": 2562
+    }
+  ],
+  "smoke_covers_global_longest_and_all_three_categories": true,
+  "source188_source_or_donor_occurrences": 0,
+  "original_tune_or_holdout_overlap": 0,
+  "old16_and_new20_reconstruction_exact": true,
+  "original208_and_v1_code_preserved": true,
+  "output_sha256": {
+    "candidate_train.jsonl": "f913255399b61a98f7650ecf251356f6b8122570cf0b16700e31c438ccec8a7e",
+    "mechanical_holdout.jsonl": "1e9455694d5452f223cf3df190ff247f937791c4c6ac309ee9923f1fd3ce6abe"
+  },
+  "export_sha256": {
+    "prepare_release.py": "e554b67371d707457ed8ef40afcaf7ce7517d9e19fe468323834aaa1952f987f",
+    "semantic_dpo.py": "2133d95d321944202df701f1764ec3763dbb8795b13d516dcb864c428d93e12a",
+    "build_pairs.py": "ebf61cdbb7aa9eeb3fab2b9d2ae195ab47c19bed61dda4e1eae0e4b14988d91a",
+    "rebuild_quality_data.py": "16e8a39e3a62f10c77e3aef3a9c22693921963e0e143d4537253967647b7b0ae",
+    "run_smoke_then_train.py": "bc065ce6c3d034b1a6b7fbc63a9fbaf0b57e55706d55ccc0528321138dd31ac8",
+    "semantic16_recipe.json": "7b988f404adab123757ab0dd661d4504012efac7f30cfcb1ae740e87b621bbe2",
+    "semantic20_recipe.json": "baa88c6eb92475e1d452ca11666f907a9e1b1e556b2665bb22d4861fc197fe15",
+    "selection_recipe.json": "15395788b8a25f4053f46f3eac6400517f89ed1cb67de9cfa1954cd74827b332",
+    "dpo_config.json": "43626d8f0d0d9c8034d49f999dba7657271e279ede380d17c261c9c7c0831a00",
+    "launch_plan.json": "2a37ef63ed93c841ecb9fcbc2bb8bf64212321644be3c6df5ee77443c88ee0fd"
+  },
+  "formal_parameters": {
+    "epochs": 1,
+    "learning_rate": 2e-06,
+    "beta": 0.1,
+    "gradient_accumulation": 4,
+    "optimizer_updates": 13,
+    "max_length": 4096,
+    "seed": 42
+  },
+  "gpu_or_network_used_by_this_agent": false,
+  "clinical_human_gold_claim": false,
+  "limitations": [
+    "52-pair exploratory DPO: 36 reviewed semantic contrasts and 16 entity-reference contrasts.",
+    "Chosen retains complete original silver and uncertainty in unmodified records.",
+    "Source188 is excluded as source or donor from preferences; the unchanged SFT parent is not relabelled.",
+    "Composition, learning rate and optimizer-update count change together relative to DPO208; no single-factor causal claim.",
+    "The retained mechanical holdout comes from original TRAIN and is not a clinical generalization test.",
+    "No unlabelled relation is declared false; no new medical facts are generated."
+  ],
+  "gpu_training_completed": false,
+  "root_semantic_review": {
+    "status": "accepted_for_next_candidate_not_trained",
+    "reviewer": "root_local_source_review",
+    "rows": 20,
+    "scope": "Read chosen/rejected target record, exact cited evidence, source title and contextual text; checked explicit absence and directed subtype definition. Not human clinical adjudication.",
+    "case_counts": {
+      "explicit_negation": 6,
+      "subtype_direction": 14
+    },
+    "private_evidence_sha256": "ab8548b91abe4d35f7407f2b2a2bf68ad05ea637b490c5a2f554c849a639c197",
+    "new_preferences_sha256": "4981d89f5c04be273a767d75fc225832dd3876734053b21b6825d046fa6a6466",
+    "public_source_text_included": false,
+    "tune_labels_changed": false
+  },
+  "remote_admission_sha256": "fabda6f026e7395198e2c40e07484f5030655349a0531097de2869ae20713a7b",
+  "remote_candidate_manifest_sha256": "379d7072bc7448080d7e93390817e6bb2399b19da3e039ac5dab38ec2103b30d",
+  "queue_plan_sha256": "7ab6e77a6f624fbc841863ac17020ff643a067162f83ffdd7affcbe479668d88",
+  "minimum_remaining_time_before_launch_seconds": 2700,
+  "evaluation_after_training": "Full130 live pipeline with same actual E2 entity output as previous baseline; select only after complete comparison.",
+  "external_api_used": false
+}

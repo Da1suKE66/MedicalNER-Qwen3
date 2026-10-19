@@ -1,0 +1,10 @@
+{
+  "README.txt": "1cf3878d91cef14d73af91edb799ec777b0e7f4f965dcb3207ca6a05d0ad6e5c",
+  "build_pairs.py": "ebf61cdbb7aa9eeb3fab2b9d2ae195ab47c19bed61dda4e1eae0e4b14988d91a",
+  "dpo24_config.json": "11a6b0728f29552f9b3ac2f306abf8fa2d981be6a743c4a444b3bb85f696bbd4",
+  "launch_plan.prepared.json": "a8ef4e94c4fad57a8844668373bb2890ebcc6e6fde31fe5e4a13da9703ed68c0",
+  "run_smoke_then_train.py": "fc23be805eec1e3f45acbb9e971fe75da8f1c6fb8698d880949c9f021511a979",
+  "semantic_dpo.py": "77ccbcc2aab0fea027527f825b8e68e86a4b6e2e846439a9b71e47ae0598d339",
+  "smoke_selection.aggregate.json": "c604d576cca412e41577b1a31ea97f2e8f2fa6a0b4cfbc43bf53e66c0d7fa13d",
+  "test_runtime.py": "20f999c3d87da10407f08c9c4c55fac3349ea5032e05dd40834fe2bcf3cc3cf7"
+}

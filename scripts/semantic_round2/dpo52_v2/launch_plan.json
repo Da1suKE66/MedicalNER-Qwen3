@@ -1,0 +1,33 @@
+{
+  "status": "cpu_ready_not_queued",
+  "PYTHONPATH": "/workspace/medicalner/20261019/code_eval_v6/agent",
+  "rebuild_argv": [
+    "/root/venvs/medicalner/bin/python",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/prepare_release.py",
+    "--resident-candidates",
+    "/workspace/medicalner/round2_20261019/dpo_pairs_with_semantic_v1",
+    "--base-release",
+    "/workspace/medicalner/20261019/data_v2",
+    "--overlap-release",
+    "/workspace/medicalner/20261019/relation_complete_overlap_v2",
+    "--tokenizer",
+    "/root/models/Qwen3-8B",
+    "--selection-recipe",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/selection_recipe.json",
+    "--semantic16-recipe",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/semantic16_recipe.json",
+    "--semantic20-recipe",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/semantic20_recipe.json",
+    "--output-dir",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/pairs52"
+  ],
+  "training_wrapper_argv": [
+    "/root/venvs/medicalner/bin/python",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/run_smoke_then_train.py",
+    "--config",
+    "/workspace/medicalner/round2_20261019/dpo52_v2/dpo_config.json"
+  ],
+  "gpu_execution_requires_root_queue": true,
+  "expected_final_updates": 13,
+  "old_sft_parent_restarted_for_both_smoke_and_formal": true
+}

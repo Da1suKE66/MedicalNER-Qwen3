@@ -1,0 +1,133 @@
+{
+  "version": 4,
+  "declared_utc": "2026-10-19T01:55:50.960249+00:00",
+  "snapshot_utc": "2026-10-19T03:26:38.785316+00:00",
+  "status": "selected_entity_relation_lr1e4_training_and_full130_both_evaluation_complete",
+  "explicit_design_revision": "v3 relationLR continuation fixed-old-entity factorial requirement; preserves v3 entity comparison and all earlier results",
+  "revision_reason": "Use the actual selected entity graph as the fixed relationLR condition, so each trained model receives a complete measured final pipeline within remaining time. The extra old-entity factorial arm is omitted when the new entity wins.",
+  "revised_before_entity_treatment_quality_scores_inspected": true,
+  "previous_v3_public_commit": "32fd8c23ffff570a1760a700ee92325ea5b47ded",
+  "original_declared_priority_unchanged": false,
+  "unchanged": [
+    "Entity choice follows frozen complete-pair filtered relationF1/rawF1/entity recall/failures/exact-tie rule",
+    "Semantic literal text outputs, original data, all gold, full130 evaluation, private clinical examples",
+    "Relation training short_canonical1000rows2epochs, rank16seed42; only LR5e-5 to1e-4 changes",
+    "Compare live relation primary filteredF1, then rawF1, recall, fewer failed relation calls; exact tie retain5e-5",
+    "All13existingjobscomplete and both independent root/pair recounts must pass before queue extension; no new runner"
+  ],
+  "selected_entity": "entity_short_complete_lr1e4_r16_e2",
+  "selected_relation_view": "short_canonical",
+  "entity_pair_result_file": "entity-lr-comparison-results.json",
+  "matched_live_baseline": {
+    "run": "entity_lr1e4_short_canonical_batch4",
+    "manifest_sha256": "69aebfa1d516a0de192f2f3f44a181d89a3db92393eb3a6486dc8e419667c35d",
+    "metrics_sha256": "7d871059e61374cd2b36a6ca763cde20774ed9033820c5b1057928ff55e8aeb5",
+    "entity_graph_sha256": "9555e6386803ce132746c88f997d99079eafb343b4ff97f82a441fac3254b57b",
+    "batch_size": 4,
+    "filtered_free_relation": {
+      "f0_5": 0.44528134692069116,
+      "f1": 0.4044265593561368,
+      "fn": 372,
+      "fp": 220,
+      "precision": 0.47743467933491684,
+      "recall": 0.3507853403141361,
+      "tp": 201
+    },
+    "raw_free_relation": {
+      "f0_5": 0.43525335643135554,
+      "f1": 0.39920556107249255,
+      "fn": 372,
+      "fp": 233,
+      "precision": 0.4631336405529954,
+      "recall": 0.3507853403141361,
+      "tp": 201
+    },
+    "matched_live_baseline": true,
+    "matched_oracle_baseline": false
+  },
+  "new_training": {
+    "rows": 1000,
+    "epochs": 2,
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "seed": 42,
+    "batch_size": 1,
+    "gradient_accumulation": 8,
+    "learning_rate": 0.0001,
+    "expected_updates": 250,
+    "expected_row_visits": 2000,
+    "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+    "only_changes_vs_parent": [
+      "learning_rate",
+      "output_path"
+    ]
+  },
+  "evaluation": {
+    "samples_per_mode": 130,
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "entity_batch": 4,
+    "relation_batch": 4,
+    "max_input_tokens": 8192,
+    "max_new_tokens": 4096,
+    "entity_cache_origin": "entity_lr1e4_short_canonical_batch4",
+    "entity_origin_has_no_upstream_cache": true,
+    "entity_graph_sha256": "9555e6386803ce132746c88f997d99079eafb343b4ff97f82a441fac3254b57b",
+    "fresh_relation_generation": true,
+    "actual_final_combination_measured": true,
+    "old_entity_new_relation_factorial_not_planned": true,
+    "oracle_baseline_batch4_available": false,
+    "oracle_limit": "Report new full130 oracle only as absolute component diagnosis; do not attribute differences against old batch8 oracle to LR"
+  },
+  "relation_selection_policy": {
+    "primary": "live.filtered.free_text.relation.f1",
+    "tie_break": [
+      "live.raw.free_text.relation.f1",
+      "live.filtered.free_text.relation.recall",
+      "fewer live failed relation generation calls"
+    ],
+    "exact_tie": "retain5e-5relation",
+    "comparison": "Full130live+oracle with exact selected entity original cache. Control-selected uses oldE batch8 baseline; treatment-selected uses newE batch4 live baseline. New batch4 oracle is absolute only. No stage-gain addition.",
+    "tune_selection_not_blind_test": true
+  },
+  "budget_seconds": {
+    "training": 2400,
+    "evaluation_both_modes": 4200,
+    "audit": 900,
+    "total": 7500
+  },
+  "budget_basis_and_uncertainty": "Training2400s vs measured1775s. Both-eval4200s is a planning estimate: measured old batch4live1770.569s and old batch8oracle backend1956.944s; batch4oracle and newLR output lengths are unmeasured. Audit900s is reserved, not guaranteed. Evaluation itself measures the final selected-entity/new-relation pair.",
+  "admission": {
+    "status": "appended_to_existing_runner",
+    "utc": "2026-10-19T02:02:56.039459+00:00",
+    "old_plan_sha256": "81f55553ac61139ff07419963257080145a25460ce031b3c50fa60d19e9edd6e",
+    "new_plan_sha256": "27a5d084b3f06da30ec18a9d7425a9d933cd898c55de2a8475f11338612e8cb6",
+    "jobs_appended": [
+      "relation_short_canonical_complete_lr1e4_r16_e2",
+      "evaluate_relation_short_canonical_lr1e4_selected_new_entity_batch4"
+    ],
+    "job_count_before": 13,
+    "job_count_after": 15,
+    "selected_entity_arm": "treatment",
+    "reserved_seconds_including_audit": 7500,
+    "remaining_seconds": 7964.960527181625,
+    "new_runner_started": false,
+    "request_sha256": "f16a8858c88b19f11d44b61163c5e816d19b91c1823aa39602455a1a070e283e",
+    "pair_report_sha256": "f4ae384467daef7b21a487b4a1bf50e795a469381d4da1b4df7529c1eb9978c4"
+  },
+  "policy_sha256": "0e695e82dd65027a870b50d4e9df0baa9c45129a6fbc565dee85bf945976c1db",
+  "guard_source_sha256": "fabff2cfcb41e41fd4c2e6e5e7b52b54e7ab9e14da43f65b1dbe1fea597dcd37",
+  "independent_guard_review_sha256": "d5cd2537949f2a709ad20d060774ba116864a88c50350f96969dca91d3f5d82a",
+  "guard_cpu_checks_passed": 11,
+  "deadline_utc": "2026-10-19T04:15:41Z",
+  "new_relation_quality_metrics_available": true,
+  "future_scope": "Complete and independently audit this actual pair; any later LR2e-5 or DPO requires complete training/evaluation budget. No partial final results.",
+  "final_result_file": "relation-lr-comparison-results.json",
+  "final_summary_file": "final-experiment-summary.json",
+  "selected_relation_learning_rate": 0.0001,
+  "further_trials_executed": false,
+  "future_scope_at_window_close": "No further full LR2e-5 trial or DPO comparison fits; preparatory artifacts are not completed experiments."
+}

@@ -1,0 +1,391 @@
+{
+  "observed_at": "2026-10-12T08:32:50.063242+00:00",
+  "scope": "matched_one_epoch_progress_not_final_quality",
+  "medical_samples": 12,
+  "medical_gold_triples": 40,
+  "medical": [
+    {
+      "job": "matched_control_screen",
+      "condition": "full_hash16",
+      "queue_status": "running",
+      "status": "verified",
+      "job_status": "running",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 2,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.09090909090909091,
+      "elapsed_seconds": 444.2002008999989,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      }
+    },
+    {
+      "job": "matched_control_screen",
+      "condition": "full_source16",
+      "queue_status": "running",
+      "status": "verified",
+      "job_status": "running",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 7,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.3181818181818182,
+      "elapsed_seconds": 876.8039048610008,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "training": [
+    {
+      "job": "matched_control",
+      "status": "training_complete_evaluation_pending",
+      "planned_epochs": 1,
+      "per_class_exposure_directly_recorded": false,
+      "global_step": 16,
+      "observed": {
+        "rows": 256,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3544,
+        "unknown_pairs_context_only": 2238,
+        "input_tokens": 727732,
+        "supervised_completion_tokens": 33487,
+        "prompt_tokens": 664548,
+        "masked_completion_tokens_context_only": 29697
+      },
+      "observed_positive_pairs": null,
+      "observed_negative_pairs": null,
+      "observed_positive_edges": null,
+      "equal_positive_negative_exposure_verified": false,
+      "expected_one_pass": {
+        "rows": 256,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3544,
+        "unknown_pairs_context_only": 2238,
+        "input_tokens": 727732,
+        "supervised_completion_tokens": 33487,
+        "prompt_tokens": 664548,
+        "masked_completion_tokens_context_only": 29697
+      },
+      "recorded_totals_match_one_pass": true,
+      "expected_training_budget": {
+        "rows": 256,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3544,
+        "unknown_pairs_context_only": 2238,
+        "input_tokens": 727732,
+        "supervised_completion_tokens": 33487,
+        "prompt_tokens": 664548,
+        "masked_completion_tokens_context_only": 29697
+      },
+      "recorded_totals_match_training_budget": true,
+      "train_metrics": {
+        "train_runtime": 416.5664,
+        "train_samples_per_second": 0.615,
+        "train_steps_per_second": 0.038,
+        "train_loss": 0.13881325628608465,
+        "epoch": 1.0
+      },
+      "saved_adapter_sha256_verified": "3dde7c5a7806de38330d25b079dc5d2cf50498f5b26a31d4b7b38aacf4ba1e17",
+      "policy_weights_changed": true
+    },
+    {
+      "job": "matched_source",
+      "status": "training_complete_evaluation_pending",
+      "planned_epochs": 1,
+      "per_class_exposure_directly_recorded": false,
+      "global_step": 16,
+      "observed": {
+        "rows": 253,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3512,
+        "unknown_pairs_context_only": 2206,
+        "input_tokens": 717353,
+        "supervised_completion_tokens": 33563,
+        "prompt_tokens": 654600,
+        "masked_completion_tokens_context_only": 29190
+      },
+      "observed_positive_pairs": null,
+      "observed_negative_pairs": null,
+      "observed_positive_edges": null,
+      "equal_positive_negative_exposure_verified": false,
+      "expected_one_pass": {
+        "rows": 253,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3512,
+        "unknown_pairs_context_only": 2206,
+        "input_tokens": 717353,
+        "supervised_completion_tokens": 33563,
+        "prompt_tokens": 654600,
+        "masked_completion_tokens_context_only": 29190
+      },
+      "recorded_totals_match_one_pass": true,
+      "expected_training_budget": {
+        "rows": 253,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3512,
+        "unknown_pairs_context_only": 2206,
+        "input_tokens": 717353,
+        "supervised_completion_tokens": 33563,
+        "prompt_tokens": 654600,
+        "masked_completion_tokens_context_only": 29190
+      },
+      "recorded_totals_match_training_budget": true,
+      "train_metrics": {
+        "train_runtime": 412.1999,
+        "train_samples_per_second": 0.614,
+        "train_steps_per_second": 0.039,
+        "train_loss": 0.11585358390584588,
+        "epoch": 1.0
+      },
+      "saved_adapter_sha256_verified": "2616984b7b6b0607fe7387140503563a97649c0fbcfeadfe66deea11b0c17180",
+      "policy_weights_changed": true
+    },
+    {
+      "job": "matched_short4",
+      "status": "training_complete_evaluation_pending",
+      "planned_epochs": 1,
+      "per_class_exposure_directly_recorded": false,
+      "global_step": 43,
+      "observed": {
+        "rows": 679,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 2712,
+        "unknown_pairs_context_only": 1406,
+        "input_tokens": 1137530,
+        "supervised_completion_tokens": 35731,
+        "prompt_tokens": 1083047,
+        "masked_completion_tokens_context_only": 18752
+      },
+      "observed_positive_pairs": null,
+      "observed_negative_pairs": null,
+      "observed_positive_edges": null,
+      "equal_positive_negative_exposure_verified": false,
+      "expected_one_pass": {
+        "rows": 679,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 2712,
+        "unknown_pairs_context_only": 1406,
+        "input_tokens": 1137530,
+        "supervised_completion_tokens": 35731,
+        "prompt_tokens": 1083047,
+        "masked_completion_tokens_context_only": 18752
+      },
+      "recorded_totals_match_one_pass": true,
+      "expected_training_budget": {
+        "rows": 679,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 2712,
+        "unknown_pairs_context_only": 1406,
+        "input_tokens": 1137530,
+        "supervised_completion_tokens": 35731,
+        "prompt_tokens": 1083047,
+        "masked_completion_tokens_context_only": 18752
+      },
+      "recorded_totals_match_training_budget": true,
+      "train_metrics": {
+        "train_runtime": 626.1843,
+        "train_samples_per_second": 1.084,
+        "train_steps_per_second": 0.069,
+        "train_loss": 0.11842429707216662,
+        "epoch": 1.0
+      },
+      "saved_adapter_sha256_verified": "649a6c707923f0765776731ccae720eaeb4d653aa80648eca4db18a66c7b20ec",
+      "policy_weights_changed": true
+    }
+  ],
+  "full_hash16_posthoc_diagnostic": {
+    "observed_at": "2026-10-12T08:17:37.101870+00:00",
+    "job": "matched_control_screen",
+    "condition": "full_hash16",
+    "scope": "posthoc_terminal_bracket_diagnostic_not_primary_score",
+    "deployed": false,
+    "primary_metrics_modified": false,
+    "source_artifact_sha256": {
+      "metrics.json": "f8a7bf72e3cb45ad13ddc285bd24b0a2a8417b148b75b3007b21aa1e6802c3d6",
+      "predictions.jsonl": "60f5649b833d671f27ff24225dffefb334ed741be839f4d7e689cebc0a05eeb5",
+      "generations.jsonl": "eaad7fe5351ae9c9fdce034ea85de628a45e0cfe438ae854856bbce7ac7d0067",
+      "raw_stream.jsonl": "5aa05b121bb9f07a324ecb98f2bdef19a5dbd29177aa2f7ee66997fa3a0ce453"
+    },
+    "samples": 12,
+    "gold_triples": 40,
+    "before": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 40,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "f0_5": 0.0
+    },
+    "before_invalid_json_batches": 22,
+    "max_token_truncated_batches": 2,
+    "repaired_batches": 20,
+    "remaining_invalid_json_batches": 2,
+    "after_posthoc": {
+      "tp": 6,
+      "fp": 224,
+      "fn": 34,
+      "precision": 0.02608695652173913,
+      "recall": 0.15,
+      "f1": 0.044444444444444446,
+      "f0_5": 0.03125
+    },
+    "after_posthoc_all_rules": {
+      "relation": {
+        "tp": 6,
+        "fp": 109,
+        "fn": 34,
+        "precision": 0.05217391304347826,
+        "recall": 0.15,
+        "f1": 0.07741935483870968,
+        "f0_5": 0.06
+      },
+      "removed": {
+        "removed_fp": 115,
+        "symptom_disease_type_mismatch": 115
+      }
+    }
+  },
+  "notes": [
+    "Both completed control conditions produced22invalidJSON batches; zeroFP is parsing failure, not correct abstention.",
+    "invalid_predictions describes assembled graph validity; relation_stage_error_samples separately records relation generation failures.",
+    "All class-specific actual exposure counts remain unmeasured; expected class counts are not observations.",
+    "Posthoc grammar repair is diagnostic only; all primary scores and frozen inputs retained."
+  ]
+}

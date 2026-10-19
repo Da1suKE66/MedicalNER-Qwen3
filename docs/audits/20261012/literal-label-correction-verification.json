@@ -1,0 +1,50 @@
+{
+  "scope": "literal_label_CPU_conversion_only_no_model_training_or_inference",
+  "output_contract": "relation-label-lines-v1",
+  "protocol_sha256": "c1bcba16dedef91333c976d4a428ebe76a8dc168624cf4cd439c397269b36ecd",
+  "base_input_sha256": "1d6c5ee32b35796ef4b0f1ebbd77c7a15184d8c61d5594918f74bc8fa9891eb3",
+  "exact_server_tokenizer_configuration": true,
+  "datasets": {
+    "train128": {
+      "rows": 128,
+      "raw_sources_sha256": "0388a5a7023732dfa7f301a9f107767f80535327081cc7148e97a9918c5a92b0",
+      "relation_records": 177,
+      "empty_targets": 24,
+      "max_prompt_plus_completion_tokens": 1313,
+      "completion_tokens": 3693,
+      "all_literal_completions_roundtrip_exact": true
+    },
+    "holdout24": {
+      "rows": 24,
+      "raw_sources_sha256": "d1f6d91addb26ad1dfe446737df7529fead72c43fa2ddc3b901dd104db3b29ad",
+      "relation_records": 34,
+      "empty_targets": 4,
+      "max_prompt_plus_completion_tokens": 1313,
+      "completion_tokens": 710,
+      "all_literal_completions_roundtrip_exact": true
+    }
+  },
+  "clinical_quality_claim": false,
+  "validation": {
+    "command": "python -m pytest -q",
+    "passed": 1631,
+    "skipped": 2,
+    "new_gpu_training_started": false,
+    "new_model_predictions_produced": false,
+    "old_results_recomputed_as_new_results": false
+  },
+  "training_preflight": {
+    "status": "preflight_complete",
+    "source_rows": 128,
+    "training_rows": 128,
+    "maximum_total_tokens": 1313,
+    "completion_encoding": "literal_relation_lines_then_eos"
+  },
+  "limits": [
+    "Only output representation and matching train/eval plumbing are corrected.",
+    "No new literal-label model has been trained or quality-evaluated.",
+    "Current source-type ontology still needs separate target-type policy work.",
+    "Incomplete medical silver data are not admitted by this compiler.",
+    "Historical independent numeric-action reporters do not accept label traces; use explicit label-aware verification before publishing new model scores."
+  ]
+}

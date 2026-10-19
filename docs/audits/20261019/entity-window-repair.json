@@ -1,0 +1,147 @@
+{
+  "scope": "Aggregate-only training data repair; no model quality claim",
+  "release": {
+    "all_targets_protocol_verified_and_untruncated": true,
+    "all_train_free_text_source_only_windows": 1363,
+    "all_train_free_text_sources": 670,
+    "annotation_counter_equal_to_old": false,
+    "base_files_sha256": {
+      "evaluation/train_records.jsonl": "053b80144792fcbb3f983b46020ac93d7613495289c32a94d9cf894cdbd800c1",
+      "full_source/train_entities.jsonl": "63a23ac9bc4bcfee628b12f2de0588a9886e80e5bb9f6e3e6658b7de18416d36",
+      "short_source/train_entities.jsonl": "5e5193a9f97c429ff1af517a20cf77599dfa9e45b7eee4fef80864cbb8388e94",
+      "title_source_receipts.json": "d9109bf0fc071f6a0f938f5141fb40a6e703d472cf653bfef207f6c4e1b8a94b"
+    },
+    "base_release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+    "compiler_sha256": "a3c796bfe9d877b0716644509e2fa24c6df1d3abad01b862e3491340f2687527",
+    "data_version": "source-grounded-semantic-silver-v1",
+    "excluded_source_windows_no_admitted_train_source": 2,
+    "extra_entity_exposures_vs_original": 2199,
+    "inference_minus_supervised_window_count": 2,
+    "limitations": [
+      "Teacher silver remains incomplete; all locally grounded admitted labels is not all true entities.",
+      "Empty/unannotated windows remain UNKNOWN; inference includes them but training does not supervise empty negatives.",
+      "Overlapping/repeated mentions and visible trusted titles intentionally repeat the same document entity supervision.",
+      "This changes exposure and update counts; it is not an atom-Counter-matched length ablation."
+    ],
+    "max_entities_per_window": 34,
+    "max_total_tokens": 1843,
+    "old_first_window_only_rows": 1092,
+    "output_sha256": {
+      "short_source_complete_windows/train_entities.jsonl": "ffefd37becfa34b3292c6075111b549ac9a2a00a9d435b2f9943d3c613c0e021",
+      "unknown_windows.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "window_audit.jsonl": "d11fbbae8400fc708eafc4bdd3afed2f2abf44b8f32d0183e40e770bc4e16ff6"
+    },
+    "parameters": {
+      "max_length": 8192,
+      "overlap": 400,
+      "short_chars": 2400
+    },
+    "per_atom_window_exposure_histogram": {
+      "1": 5068,
+      "2": 902,
+      "3": 272,
+      "4": 215,
+      "5": 27
+    },
+    "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+    "release_version": "entity_complete_windows_v1",
+    "rows": 1361,
+    "source_groups": 403,
+    "source_only_full_fallbacks": 0,
+    "source_only_windows_represented_train_sources": 1361,
+    "source_records": 668,
+    "split": "train",
+    "status": "compiled_not_trained",
+    "token_counts": {
+      "completion_tokens": 198101,
+      "prompt_tokens": 822538,
+      "total_tokens": 1020639
+    },
+    "total_supervised_entity_window_exposures": 8683,
+    "unique_atom_coverage_unchanged": true,
+    "unique_document_entity_atoms": 6484,
+    "unknown_no_annotation_windows_not_trained": 0,
+    "updates_per_epoch_at_batch1_accum8": 171,
+    "variant": "short_source_complete_windows"
+  },
+  "manifest_sha256": "2ba8d402e671fea953dfe5886e1366264087f46ce7c3458a394ffb8932871677",
+  "independent_review": {
+    "unique_admitted_entity_atoms": 6484,
+    "windows": 1361,
+    "visible_entity_exposures": 8683,
+    "previous_data_release_files_unchanged": true,
+    "prompt_window_and_title_match_verified": 1361
+  },
+  "motivation": {
+    "observed_full_source_entity_repetition_failures": [
+      {
+        "source_index": 418,
+        "output_token_limit": 4096,
+        "largest_identical_line_repetition": 21,
+        "gold_completion_tokens": 440
+      },
+      {
+        "source_index": 548,
+        "output_token_limit": 4096,
+        "largest_identical_line_repetition": 54,
+        "gold_completion_tokens": 667
+      },
+      {
+        "source_index": 549,
+        "output_token_limit": 4096,
+        "largest_identical_line_repetition": 158,
+        "gold_completion_tokens": 285
+      }
+    ],
+    "training_completion_exact_duplicate_lines": 0,
+    "training_completion_eos_supervised": true,
+    "causal_limit": "These full_source decoding loops are observed, but their training cause is not established. The first-window-only bug was found in the unused short entity preparation and did not cause the current full_source baseline failures."
+  },
+  "comparison": {
+    "entity_training_variant": "short_source_complete_windows",
+    "entity_inference_variant": "short_source",
+    "relation_adapter": "same full_source baseline",
+    "relation_inference_variant": "full_source",
+    "evaluation": "all 130 frozen tune cases; same raw and filtered typed directed set metrics",
+    "planned_mode": "live; identical relation adapter oracle results are available from the complete baseline diagnostic",
+    "epochs": 2,
+    "learning_rate": 5e-05,
+    "lora_rank": 16,
+    "expected_optimizer_updates": 342,
+    "status": "complete_full130_live_evaluated_and_selected",
+    "not_matched_compute_or_supervision_frequency": true,
+    "training_job": "entity_short_complete_lr5e5_r16_e2",
+    "evaluation_job": "evaluate_entity_short_complete_full_relation"
+  },
+  "remote_reproduction": {
+    "data_byte_identical": true,
+    "manifest_byte_identical": true,
+    "frozen_trainer_admission_verified_rows": 1361,
+    "code_archive_sha256": "14f815160d7372668c49add963daedc31352fc56c492b088e968b56d7425d1f7"
+  },
+  "formal_training": {
+    "global_step": 342,
+    "elapsed_seconds": 1207.0891149044037,
+    "observed_exposure": {
+      "all_rows_seen": true,
+      "max_visits": 2,
+      "min_visits": 2,
+      "row_visits": 2722,
+      "rows": 1361,
+      "scope": "successful training_step calls, including gradient accumulation",
+      "successful_microsteps": 2722,
+      "supervised_tokens": 396202,
+      "unique_rows_seen": 1361,
+      "unique_source_groups_seen": 403
+    },
+    "adapter_files_sha256": "ec5896460ff310f431d97143feafdac1c593c60947c5fbf9e48920b15428038a",
+    "adapter_final_sha256": "c2f064ca9fbd8745a11f452c001844f9ff3461c6c910be5b93a7bebd13883c2c",
+    "saved_weights_bitwise_verified": true,
+    "receipt_sha256": "42510014796ff6141300ee16b4df8512a8c89a3d4c7847eb3665e5764b46fb52",
+    "status": "complete",
+    "variant": "short_source_complete_windows",
+    "epochs": 2
+  },
+  "evaluation_status": "completed_independently_recounted; see entity-short-results.json",
+  "release_snapshot_scope": "Immutable compiler-release fields describe data publication time; current training/evaluation state is recorded separately in formal_training and evaluation_status."
+}

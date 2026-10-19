@@ -1,0 +1,130 @@
+{
+  "status": "full_training_and_full130_both_quality_evaluation_complete",
+  "snapshot_utc": "2026-10-19T02:33:42.049272+00:00",
+  "job": "relation_short_canonical_complete_lr1e4_r16_e2",
+  "receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
+  "new_quality_metrics_available": true,
+  "stage": "relations",
+  "variant": "short_canonical",
+  "parameters": {
+    "base_model": "/root/models/Qwen3-8B",
+    "batch_size": 1,
+    "data": "/workspace/medicalner/20261019/relation_complete_overlap_v2/short_canonical/train_relations.jsonl",
+    "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+    "dropout": 0.05,
+    "epochs": 2.0,
+    "gradient_accumulation": 8,
+    "learning_rate": 0.0001,
+    "logging_steps": 5,
+    "lora_alpha": 32,
+    "lora_rank": 16,
+    "max_length": 8192,
+    "max_steps": -1,
+    "output_dir": "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2",
+    "seed": 42,
+    "smoke_only": false,
+    "stage": "relations",
+    "warmup_ratio": 0.05,
+    "weight_decay": 0.01
+  },
+  "dataset": {
+    "eos_supervised": true,
+    "max_target_tokens": 3870,
+    "max_tokens": 5140,
+    "no_truncation": true,
+    "prompt_loss_masked": true,
+    "rows": 1000,
+    "source_groups": 316,
+    "source_records": 542,
+    "target_tokens_one_pass": 399973,
+    "tokens_one_pass": 1610825
+  },
+  "observed_exposure": {
+    "all_rows_seen": true,
+    "max_visits": 2,
+    "min_visits": 2,
+    "row_visits": 2000,
+    "rows": 1000,
+    "scope": "successful training_step calls, including gradient accumulation",
+    "successful_microsteps": 2000,
+    "supervised_tokens": 799946,
+    "unique_rows_seen": 1000,
+    "unique_source_groups_seen": 316
+  },
+  "global_step": 250,
+  "elapsed_seconds": 1735.7760128974915,
+  "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+  "trainer_sha256": "4747e0314ad9652a9c725e48fc4f96e3a8120325d82c86095c81457dd6461227",
+  "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+  "adapter_initial_sha256": "825f60d9e8d0158eb43253bb1bdab4378b4910e391aefc056b624ccd314fd9b4",
+  "adapter_final_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+  "adapter_files_sha256": "62ec4fab7cf39f9a06bedfddff68be161fd0db5ddb86e5ff4af27749d6484a00",
+  "saved_weights_bitwise_verified": true,
+  "root_matched_training_check": {
+    "status": "passed",
+    "only_parameter_differences": {
+      "learning_rate": [
+        5e-05,
+        0.0001
+      ],
+      "output_dir": [
+        "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr5e5_r16_e2",
+        "/workspace/medicalner/20261019/runs/relation_short_canonical_complete_lr1e4_r16_e2"
+      ]
+    },
+    "new_adapter_memory_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+    "new_adapter_files_sha256": "62ec4fab7cf39f9a06bedfddff68be161fd0db5ddb86e5ff4af27749d6484a00",
+    "elapsed_seconds": 1735.7760128974915,
+    "all_rows_visited_twice": true,
+    "optimizer_updates": 250,
+    "supervised_tokens": 799946,
+    "matched_old_receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce"
+  },
+  "remote_adapter_file_contract_checked": true,
+  "evaluation": {
+    "run": "relation_short_canonical_lr1e4_selected_new_entity_batch4",
+    "status": "complete_two_independent_recounts_passed",
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "samples_per_mode": 130,
+    "batch_size": 4,
+    "max_input_tokens": 8192,
+    "max_new_tokens": 4096,
+    "fixed_actual_entity_origin": "entity_lr1e4_short_canonical_batch4",
+    "origin_manifest_sha256": "69aebfa1d516a0de192f2f3f44a181d89a3db92393eb3a6486dc8e419667c35d",
+    "expected_live_entity_graph_sha256": "9555e6386803ce132746c88f997d99079eafb343b4ff97f82a441fac3254b57b",
+    "loaded_adapter_verification": {
+      "entities": {
+        "cuda_sha256": "fbe68bbb526232445cba4421145999595db9b41d92bc904312b6c1d70a244bc1",
+        "expected_sha256": "fbe68bbb526232445cba4421145999595db9b41d92bc904312b6c1d70a244bc1",
+        "load_attempts": 1,
+        "loaded_sha256": "fbe68bbb526232445cba4421145999595db9b41d92bc904312b6c1d70a244bc1"
+      },
+      "relations": {
+        "cuda_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+        "expected_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+        "load_attempts": 2,
+        "loaded_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab"
+      }
+    },
+    "cache_token_and_in_memory_checks": "verified",
+    "cached_entity_jobs_replayed": 125,
+    "new_gpu_entity_jobs": 0,
+    "matched_live_baseline_free_filtered_relation": {
+      "tp": 201,
+      "fp": 220,
+      "fn": 372,
+      "f1": 0.4044265593561368
+    },
+    "matched_batch4_oracle_baseline_available": false,
+    "oracle_comparison_limit": "Report absolute diagnostic only; no LR attribution versus earlier batch8 oracle."
+  },
+  "limitations": [
+    "Training completion, exposure and loading checks are not evidence of extraction quality.",
+    "Local audit checks saved training and loaded/CUDA execution fingerprints; it does not independently reload GPU tensors.",
+    "The final full130 identity/gold, entity-graph and both-mode score checks are complete and recorded in relation-lr-comparison-results.json; training evidence alone is not a quality score."
+  ],
+  "quality_result_file": "relation-lr-comparison-results.json"
+}

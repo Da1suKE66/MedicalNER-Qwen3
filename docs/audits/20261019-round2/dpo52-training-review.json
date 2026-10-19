@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "review_scope": "Independent CPU byte/token/schedule reconciliation plus read-only SSH current runtime contract check; no CUDA rerun",
+  "check_assertions": 192,
+  "formal_receipt_sha256": "7cfa53348235ecb2c396e989b7dab65d602d1480cda1876f31a09277ae5c3c1f",
+  "smoke_receipt_sha256": "27300a146cc81d76dbd594f3cff100de74c85ee3e23bb60e66779901f6dc2af1",
+  "parent_receipt_sha256": "dbb8342e60fbd192f570578c458a825a2c8e6808ea78e094c6963e09ee5f3551",
+  "train_data_sha256": "f913255399b61a98f7650ecf251356f6b8122570cf0b16700e31c438ccec8a7e",
+  "holdout_data_sha256": "1e9455694d5452f223cf3df190ff247f937791c4c6ac309ee9923f1fd3ce6abe",
+  "trainer_sha256": "2133d95d321944202df701f1764ec3763dbb8795b13d516dcb864c428d93e12a",
+  "review_script_sha256": "ccabee247769e3c020b209182fdc557e2f0f0a48322590faeabbf7735fdaf481",
+  "formal_counts": {
+    "pairs": 52,
+    "optimizer_updates": 13,
+    "chosen_tokens_including_eos": 28881,
+    "rejected_tokens_including_eos": 28900,
+    "prompt_tokens_per_branch": 58574,
+    "policy_eos_targets": 104,
+    "reference_eos_scored": 104,
+    "max_prompt_plus_completion": 3273
+  },
+  "smoke_counts": {
+    "pairs": 4,
+    "optimizer_updates": 1,
+    "chosen_tokens_including_eos": 5851,
+    "rejected_tokens_including_eos": 5853,
+    "prompt_tokens_per_branch": 6139,
+    "policy_eos_targets": 8,
+    "reference_eos_scored": 8,
+    "max_prompt_plus_completion": 3273
+  },
+  "semantic_composition": {
+    "outside_entity_table": 16,
+    "explicit_negation_label_flip": 19,
+    "subtype_direction_reversal": 17
+  },
+  "source188_training_pair_count": 0,
+  "original_frozen_tune_overlap": 0,
+  "matched_runtime_dependency_files": 6,
+  "matched_runtime_input_files": 9,
+  "parent_and_reference_parameter_sha256": "2dc005293f7ef2ffe7cb3de9253117001417c3066115a0624c162f3b7311e9ab",
+  "formal_final_parameter_sha256": "0c817ac99479157b96aa312df9a6c22580b2172541c2d03e1f581a98dd9a950b",
+  "formal_adapter_files_sha256": "cf0c68d11646e4a81bb8bf80502ee453aea4d0194d636d1bc2934d40039f095e",
+  "current_runtime_formal_accepted": true,
+  "current_runtime_smoke_rejected": true,
+  "runtime_reported_save_reload_max_logit_difference": 0.0,
+  "formal_elapsed_seconds": 129.48493696499645,
+  "smoke_elapsed_seconds": 32.54285726300441,
+  "formal_started_utc": "2026-10-19T09:46:11.497058+00:00",
+  "formal_finished_utc": "2026-10-19T09:48:20.981994+00:00",
+  "input_artifacts_preserved": true,
+  "gpu_work_performed_by_reviewer": false,
+  "read_only_ssh_used": true,
+  "external_model_api_used": false,
+  "quality_improvement_claimed": false,
+  "blocking_findings": [],
+  "code_review_findings": {
+    "completion_mask": "Frozen trainer scores causal logits from prompt_length-1 through completion end; labels are completion tokens only including appended EOS.",
+    "optimizer_scope": "activate(training=True) enables only policy LoRA; reference/base gradients forbidden and final reference fingerprint checked.",
+    "runtime_publication": "Only a completed non-smoke isolated candidate is checked; official completion is published atomically after rechecking source and adapter hashes."
+  },
+  "limitations": [
+    "GPU in-memory tensor equality, backward execution and logit equality are independently reconciled from frozen trainer receipts; reviewer did not execute CUDA or reload the 8B model.",
+    "The current CPU runtime check independently rehashed actual saved adapter files and base config/tokenizer; it does not hash all base-model weight shards.",
+    "Zero-logit reload difference is scoped to the first scheduled prompt last-token logits, not every prompt.",
+    "Source188 is excluded from this preference dataset; the unchanged SFT parent can retain prior silver annotation issues.",
+    "Training evidence consistency does not establish pipeline precision, recall, or F1 improvement."
+  ]
+}

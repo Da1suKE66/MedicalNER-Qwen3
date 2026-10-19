@@ -1,0 +1,53 @@
+{
+  "status": "round_closed_completed_candidates_evaluated_no_final_relation_gain",
+  "deadline_utc": "2026-10-19T11:00:00Z",
+  "recorded_utc": "2026-10-19T11:01:41.080951+00:00",
+  "selected_entity": "entity_short_complete_lr1e4_r16_e2",
+  "selected_relation": "relation_short_canonical_complete_lr1e4_r16_e2",
+  "best_live_free_relation": {
+    "tp": 238,
+    "fp": 183,
+    "fn": 335,
+    "precision": 0.5653206650831354,
+    "recall": 0.41535776614310643,
+    "f1": 0.4788732394366197
+  },
+  "full130_comparisons": [
+    "baseline",
+    "entity_e3",
+    "entity_criterion_replay",
+    "dpo208",
+    "dpo52"
+  ],
+  "short_input_scope": "Same6long_source_pilot_only",
+  "label_weight_sft": {
+    "status": "not_started_time_reservation_failed",
+    "gpu_smoke_started": false,
+    "formal_started": false,
+    "quality_evaluation_completed": false,
+    "preflight_and_code_review_completed": true,
+    "reason": "DPO52 evaluation ended10:11:00UTC; less than required50minutes remained for smoke, full training and full130 evaluation. No gate was weakened."
+  },
+  "batch_prefix_probe": {
+    "status": "not_run_remaining_time_guard_rejected",
+    "code_uploaded": true,
+    "gpu_started": false,
+    "reason": "At attempted launch less than3minutes remained before11:00UTC; assertion stopped before CUDA loading. No reproducibility or F1 result."
+  },
+  "deepseek": {
+    "successful_requests": 0,
+    "status": "prior_automatic_approval_rejection_respected",
+    "local_preferences_used": true
+  },
+  "uncompleted": [
+    "label4 GPU smoke/training/full130",
+    "1600-context dedicated full-data SFT",
+    "source310 GPU batch diagnostic",
+    "independent human label adjudication",
+    "new independent blind test"
+  ],
+  "no_new_training_or_evaluation_after_deadline": true,
+  "agent_limitations": "Two final narrative tasks interrupted by account usage limits. Completed machine comparison artifacts and root recount remain available; missing agent prose is not claimed completed.",
+  "target_70_80_final_relation_achieved": false,
+  "metric_warning": "Precision is not TN-based accuracy. Complete130 includes61deterministic structured cases; primary comparisons use69free-text cases. All gold and failed samples remain counted."
+}

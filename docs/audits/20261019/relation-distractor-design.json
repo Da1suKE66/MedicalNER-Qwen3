@@ -1,0 +1,140 @@
+{
+  "experiment": "train-source-absence-entity-input-corruption-v1",
+  "status": "compiled_not_trained",
+  "data_version": "source-grounded-semantic-silver-v1",
+  "base_release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+  "base_files_sha256": {
+    "full_source/train_entities.jsonl": "63a23ac9bc4bcfee628b12f2de0588a9886e80e5bb9f6e3e6658b7de18416d36",
+    "title_source_receipts.json": "d9109bf0fc071f6a0f938f5141fb40a6e703d472cf653bfef207f6c4e1b8a94b",
+    "full_source/train_relations.jsonl": "86b73ec8085040d883ebfa6226f603da5accdfa3cfbc52dfec7a71fe2931ab9f",
+    "short_source/train_relations.jsonl": "5cb0b26449dd2358dab20e5d17542c9b5b695a0701408a2a56a173e64c95e980"
+  },
+  "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+  "compiler_sha256": "5ba2a9b62d899ca00836f9ff94d4e19f8fda7366b239667626eea5a4599257e2",
+  "parameters": {
+    "seed": 42,
+    "max_candidates": 128,
+    "max_length": 8192
+  },
+  "donor_pool": {
+    "unique_type_name_entries": 3054,
+    "source_records": 668,
+    "source_groups": 403,
+    "splits": [
+      "train"
+    ],
+    "tune_or_test_donors": 0
+  },
+  "arms": {
+    "full_source_distractors": {
+      "control_variant": "full_source",
+      "control_sha256": "86b73ec8085040d883ebfa6226f603da5accdfa3cfbc52dfec7a71fe2931ab9f",
+      "rows": 542,
+      "positive_annotation_atoms": 5551,
+      "source_records": 542,
+      "rows_by_added_entity_count": {
+        "1": 246,
+        "2": 296
+      },
+      "rows_by_requested_entity_count": {
+        "1": 246,
+        "2": 296
+      },
+      "search_status_counts": {
+        "requested_count_found": 542
+      },
+      "unperturbed_reason_counts": {},
+      "token_budget_removed_entities": 0,
+      "added_entity_display_index_histogram": {
+        "0": 485,
+        "1": 302,
+        "2": 51
+      },
+      "candidate_rejection_counts": {
+        "label_not_already_in_entity_table": 312,
+        "full_body_match": 7,
+        "same_source_group": 5,
+        "duplicate_entity_key": 3
+      },
+      "base_token_counts": {
+        "prompt_tokens": 818958,
+        "completion_tokens": 382095,
+        "total_tokens": 1201053
+      },
+      "corrupted_token_counts": {
+        "prompt_tokens": 831783,
+        "completion_tokens": 382095,
+        "total_tokens": 1213878
+      },
+      "added_prompt_tokens": 12825,
+      "max_total_tokens": 5843,
+      "all_rows_fit_without_truncation": true,
+      "completion_bytes_unchanged_per_row": true,
+      "targets_unchanged_per_row": true,
+      "annotation_counter_unchanged": true,
+      "row_count_unchanged": true,
+      "updates_per_epoch_at_batch1_accum8": 68
+    },
+    "short_source_distractors": {
+      "control_variant": "short_source",
+      "control_sha256": "5cb0b26449dd2358dab20e5d17542c9b5b695a0701408a2a56a173e64c95e980",
+      "rows": 951,
+      "positive_annotation_atoms": 5551,
+      "source_records": 542,
+      "rows_by_added_entity_count": {
+        "1": 440,
+        "2": 511
+      },
+      "rows_by_requested_entity_count": {
+        "1": 440,
+        "2": 511
+      },
+      "search_status_counts": {
+        "requested_count_found": 951
+      },
+      "unperturbed_reason_counts": {},
+      "token_budget_removed_entities": 0,
+      "added_entity_display_index_histogram": {
+        "0": 876,
+        "1": 507,
+        "2": 79
+      },
+      "candidate_rejection_counts": {
+        "label_not_already_in_entity_table": 554,
+        "full_body_match": 18,
+        "same_source_group": 6,
+        "duplicate_entity_key": 4
+      },
+      "base_token_counts": {
+        "prompt_tokens": 1154303,
+        "completion_tokens": 382504,
+        "total_tokens": 1536807
+      },
+      "corrupted_token_counts": {
+        "prompt_tokens": 1177274,
+        "completion_tokens": 382504,
+        "total_tokens": 1559778
+      },
+      "added_prompt_tokens": 22971,
+      "max_total_tokens": 5156,
+      "all_rows_fit_without_truncation": true,
+      "completion_bytes_unchanged_per_row": true,
+      "targets_unchanged_per_row": true,
+      "annotation_counter_unchanged": true,
+      "row_count_unchanged": true,
+      "updates_per_epoch_at_batch1_accum8": 119
+    }
+  },
+  "output_sha256": {
+    "full_source_distractors/train_relations.jsonl": "132088927dcd98e1297ec2a0161f32f1df256c1da776b454e00ec951fc060462",
+    "short_source_distractors/train_relations.jsonl": "b5970da3c38eb154540a608fd7bbaa87ccbc9dc98d325cb87de42610dd0d22a5",
+    "donor_pool.jsonl": "5f37148440c44efd0ed167d53a6874ed2af03c634b961d34130cf2e7dddd1b0c"
+  },
+  "caveats": [
+    "Source surface absence is not clinical unrelatedness or reliable negative relation adjudication.",
+    "Current live filtering already rejects source-absent entities; this arm alone cannot establish live F1 improvement.",
+    "Frozen source-order display places unlocated entities near table start; position shortcuts remain a confound.",
+    "Same annotation atoms, rows and epochs preserve update counts; extra input tokens increase compute.",
+    "No NONE, empty target, missing-pair negative or preference data is created."
+  ]
+}

@@ -1,0 +1,6 @@
+data/
+artifacts/
+adapters/
+remote_snapshot/
+*.jsonl
+!tests/fixtures/*.jsonl

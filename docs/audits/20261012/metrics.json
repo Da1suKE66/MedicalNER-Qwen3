@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only archived metrics audit; no new inference or training",
+  "gold_sha256": "09893cf989348136ed6d49561571fb5ba9579d7b5c46240f3d9a0971d466b24f",
+  "gold_records": 148,
+  "archived_metric_arithmetic_checks": [
+    {
+      "path": "history/20260928/eval_20260928_0700/V2_G5_local_common_s42/tune_83/metrics.json",
+      "sha256": "eb6efd060b9455575de4696987ea99f6aa566e1f71846174a6fcc310a08f6d4d",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 343,
+        "fp": 10081,
+        "fn": 230,
+        "precision": 0.0329048349961627,
+        "recall": 0.5986038394415357,
+        "f1": 0.062380649267982174
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0800/V2_base_s42/tune_84/metrics.json",
+      "sha256": "eb3cb46bcad5cadffdecafb5da7fd406253d9eb4cc64fc120e166e90af3ac2d0",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 346,
+        "fp": 10270,
+        "fn": 227,
+        "precision": 0.0325923134890731,
+        "recall": 0.6038394415357766,
+        "f1": 0.061846456341049245
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0800/V2_full_common_s42/tune_83/metrics.json",
+      "sha256": "fbedc5c680e91e47b948e4a2ac154ccbad9a65609016f5603b93dc6bff7a2d71",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 345,
+        "fp": 10254,
+        "fn": 228,
+        "precision": 0.032550240588734784,
+        "recall": 0.6020942408376964,
+        "f1": 0.06176154672395274
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0800/V2_noise10_s42/tune_84/metrics.json",
+      "sha256": "8ccae9c72a74ae8bc6c5d94cfb89a242ae0d5579c167ffcf84a0f361ec2f9fc5",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 330,
+        "fp": 10185,
+        "fn": 243,
+        "precision": 0.03138373751783167,
+        "recall": 0.5759162303664922,
+        "f1": 0.05952380952380952
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0830/V2_G5_local_common_s42/tune_166/metrics.json",
+      "sha256": "5c683035cb250c6803e2b0ca132ef58795dc03524809a0ccea91c47003c76c5d",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 375,
+        "fp": 10257,
+        "fn": 198,
+        "precision": 0.03527088036117382,
+        "recall": 0.6544502617801047,
+        "f1": 0.06693440428380187
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0900/V2_base_s42/tune_168/metrics.json",
+      "sha256": "e906acac28b0d383edaa0261c8e5ab8221c3fae6b4508f852fbc20a74ba14918",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 347,
+        "fp": 10284,
+        "fn": 226,
+        "precision": 0.032640391308437586,
+        "recall": 0.6055846422338569,
+        "f1": 0.061942163513031064
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0900/V2_full_common_s42/tune_166/metrics.json",
+      "sha256": "b390686ca4464c3a79d5bb65a649d7268b6f252287dcd1e7337a952c41b784f5",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 366,
+        "fp": 10264,
+        "fn": 207,
+        "precision": 0.03443085606773283,
+        "recall": 0.6387434554973822,
+        "f1": 0.06533964116754441
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0930/V2_G5_local_common_s42/tune_249/metrics.json",
+      "sha256": "2323f80bce0d069d1c86a9bca0b0dc68af129bf657c00e9ca356d3d757263236",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 358,
+        "fp": 10274,
+        "fn": 215,
+        "precision": 0.0336719337848006,
+        "recall": 0.62478184991274,
+        "f1": 0.06390004462293619
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_0930/V2_noise10_s42/tune_168/metrics.json",
+      "sha256": "74067e838b8edb555a73edbeface285ea3ee7931546999ca9ee34ed8fa832c89",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 348,
+        "fp": 10235,
+        "fn": 225,
+        "precision": 0.03288292544647076,
+        "recall": 0.6073298429319371,
+        "f1": 0.06238795267120832
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1030/V2_G5_local_common_s42/predicted/metrics.json",
+      "sha256": "7efb2690534b35ba2e9b3e553635e5986aab993f1488b6d39a56bad0a86a1199",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 93,
+        "fp": 7941,
+        "fn": 545,
+        "precision": 0.01157580283793876,
+        "recall": 0.14576802507836992,
+        "f1": 0.021448339483394835
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1030/V2_base_s42/tune_252/metrics.json",
+      "sha256": "854c722cfe6824cee3af5a8eafba43c1ce6f6a9d0ebdbe2368f9249e67356cfd",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 345,
+        "fp": 10270,
+        "fn": 228,
+        "precision": 0.03250117757889778,
+        "recall": 0.6020942408376964,
+        "f1": 0.06167322130854487
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1030/V2_full_common_s42/tune_249/metrics.json",
+      "sha256": "83a3ed8718ec5cf17ea82e6f536da719a7974bb1b63f85dc8d1b7ac04cbe165d",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 357,
+        "fp": 10274,
+        "fn": 216,
+        "precision": 0.033581036591101496,
+        "recall": 0.6230366492146597,
+        "f1": 0.06372724027133167
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1030/V2_noise10_s42/tune_252/metrics.json",
+      "sha256": "f30b47c2500c8822c59af55a0088e352e63323d0528bb356bb6039cb60929eee",
+      "samples": 130,
+      "free_text_relation": {
+        "tp": 341,
+        "fp": 10219,
+        "fn": 232,
+        "precision": 0.03229166666666667,
+        "recall": 0.5951134380453752,
+        "f1": 0.06125931914129166
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1130/V2_base_s42/predicted/metrics.json",
+      "sha256": "d3e684e81ac0593a0323b1e0dadfc008d5184f0b9cc5ef628e5cd42809b8a8cf",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 85,
+        "fp": 7949,
+        "fn": 553,
+        "precision": 0.010580034851879512,
+        "recall": 0.13322884012539185,
+        "f1": 0.019603321033210334
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1130/V2_full_common_s42/predicted/metrics.json",
+      "sha256": "ab215b85c35185be2a9e9e0b73980eff7c5733b50d54fffa123a3aa63eb38b08",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 90,
+        "fp": 7962,
+        "fn": 548,
+        "precision": 0.011177347242921014,
+        "recall": 0.14106583072100312,
+        "f1": 0.020713463751438434
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1130/V2_noise10_s42/predicted/metrics.json",
+      "sha256": "d97a475c3add38c1ecad30ae50eb21fdb1279542772f1f089559fb1519023892",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 82,
+        "fp": 7901,
+        "fn": 556,
+        "precision": 0.01027182763372166,
+        "recall": 0.12852664576802508,
+        "f1": 0.019023315160654218
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1230/V2_G5_local_common_s42/oracle/metrics.json",
+      "sha256": "a82ca2564462f11ea837ee50534b9e4158410725a8f136bed9c75175b8b30a17",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 436,
+        "fp": 13676,
+        "fn": 202,
+        "precision": 0.030895691609977325,
+        "recall": 0.6833855799373041,
+        "f1": 0.059118644067796614
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1330/V2_base_s42/oracle/metrics.json",
+      "sha256": "7c00a90565a91574fc6b2097abb3bed5d233dbe0a7ca0e5899c21577277c0367",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 440,
+        "fp": 13731,
+        "fn": 198,
+        "precision": 0.031049326088490578,
+        "recall": 0.6896551724137931,
+        "f1": 0.059423323654534406
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1330/V2_full_common_s42/oracle/metrics.json",
+      "sha256": "1639f966700d6fae621af1d8ee20439be39f308b25ebf32ce222dea453215f89",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 446,
+        "fp": 13746,
+        "fn": 192,
+        "precision": 0.031426155580608794,
+        "recall": 0.6990595611285266,
+        "f1": 0.060148347943358056
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    },
+    {
+      "path": "history/20260928/eval_20260928_1330/V2_noise10_s42/oracle/metrics.json",
+      "sha256": "3a6f6c3d65ac0362985baf656927f5dd185d69789e499fda74c6c1234ee5460b",
+      "samples": 148,
+      "free_text_relation": {
+        "tp": 416,
+        "fp": 13516,
+        "fn": 222,
+        "precision": 0.029859316681022107,
+        "recall": 0.6520376175548589,
+        "f1": 0.05710363761153054
+      },
+      "raw_predictions_available": false,
+      "raw_generations_available": false,
+      "verification_level": "per_sample_count_aggregation_and_metric_arithmetic"
+    }
+  ],
+  "arithmetic_metric_groups_checked": 240,
+  "archived_five_document_inference_recomputed": {
+    "V2_base": {
+      "samples": 5,
+      "relation": {
+        "tp": 21,
+        "fp": 113,
+        "fn": 2,
+        "precision": 0.15671641791044777,
+        "recall": 0.9130434782608695,
+        "f1": 0.267515923566879
+      },
+      "raw_generation_counts": {
+        "batches": 10,
+        "truncated": 0,
+        "decisions": 134,
+        "empty_decisions": 0,
+        "raw_edges": 134
+      },
+      "verification_level": "independent_set_scoring_of_archived_graph_outputs"
+    },
+    "historical_N0_same_V2_prompts": {
+      "samples": 5,
+      "relation": {
+        "tp": 12,
+        "fp": 5,
+        "fn": 11,
+        "precision": 0.7058823529411765,
+        "recall": 0.5217391304347826,
+        "f1": 0.6
+      },
+      "raw_generation_counts": {
+        "batches": 10,
+        "truncated": 0,
+        "decisions": 134,
+        "empty_decisions": 117,
+        "raw_edges": 17
+      },
+      "verification_level": "independent_set_scoring_of_archived_graph_outputs"
+    }
+  },
+  "old_entity_cache_graph_recomputed": {
+    "overall": {
+      "tp": 60,
+      "fp": 105,
+      "fn": 644,
+      "precision": 0.36363636363636365,
+      "recall": 0.08522727272727272,
+      "f1": 0.1380897583429229
+    },
+    "free_text": {
+      "tp": 6,
+      "fp": 103,
+      "fn": 632,
+      "precision": 0.05504587155963303,
+      "recall": 0.009404388714733543,
+      "f1": 0.01606425702811245
+    },
+    "free_text_rows": 81,
+    "rows_with_identity_metadata": 0,
+    "alignment_status": "not_independently_verified",
+    "strata_source": "history/20260928/retest/independent_audit.json",
+    "note": "Cache includes old relation outputs; these are not N0 relation-model scores."
+  },
+  "old_cache_matches_original_complete_predictions": true,
+  "historical_N0_saved_evidence_only": {
+    "predicted": {
+      "tp": 74,
+      "fp": 560,
+      "fn": 564,
+      "precision": 0.1167192429022082,
+      "recall": 0.11598746081504702,
+      "f1": 0.11635220125786164
+    },
+    "oracle": {
+      "tp": 352,
+      "fp": 683,
+      "fn": 286,
+      "precision": 0.34009661835748795,
+      "recall": 0.5517241379310345,
+      "f1": 0.42080095636580994
+    }
+  },
+  "limitations": [
+    "Full-run V2/N0 predictions and generations are not re-scored by this script; arithmetic checks are not raw-output verification.",
+    "The five-document artifact is archived inference, not a newly executed inference experiment.",
+    "Historical entity-cache alignment remains unverified; newly computing hashes cannot authenticate its original input order.",
+    "The repeatedly used regression corpus is not an untouched final holdout.",
+    "Silver-gold false positives are annotation disagreements, not automatically medically unsupported hallucinations."
+  ]
+}

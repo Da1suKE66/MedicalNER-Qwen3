@@ -1,0 +1,388 @@
+{
+  "scope": "Aggregate-only relation overlap repair and SFT status; no quality improvement claimed",
+  "snapshot_utc": "2026-10-19T00:36:22.932036+00:00",
+  "release": {
+    "added_chosen_span_overlap_exposures": 308,
+    "all_target_text_names_labels_unchanged": true,
+    "all_train_free_text_source_only_windows": 1363,
+    "annotation_exposures_per_epoch": 5859,
+    "auxiliary_full_source_atoms": 3,
+    "auxiliary_full_source_rows": 2,
+    "base_files_sha256": {
+      "evaluation/train_records.jsonl": "053b80144792fcbb3f983b46020ac93d7613495289c32a94d9cf894cdbd800c1",
+      "full_source/train_relations.jsonl": "86b73ec8085040d883ebfa6226f603da5accdfa3cfbc52dfec7a71fe2931ab9f",
+      "short_canonical/train_relations.jsonl": "67ef2c84510de14b50e4847dbc36ff59331414c2e2857f9b568e1e0e426316e4",
+      "short_source/train_relations.jsonl": "5cb0b26449dd2358dab20e5d17542c9b5b695a0701408a2a56a173e64c95e980",
+      "title_source_receipts.json": "d9109bf0fc071f6a0f938f5141fb40a6e703d472cf653bfef207f6c4e1b8a94b"
+    },
+    "base_release_manifest_sha256": "c5e1b8bbb443ac51e49458ae7368e41b6fef8c2c6136edce31da5c6c7aaefb3d",
+    "compiler_sha256": "060d1f56e01b92cab59d532e144c6e2670fb27f34e87f0cc7d09abfd0798661d",
+    "independent_input_audit_sha256": "52e2a6103a075d5a350503dc431e81bb3b13df471c105ec3e6c86f27ae362327",
+    "limitations": [
+      "Chosen prepared spans are inherited algorithmic silver matches, not clinical adjudication.",
+      "Other equal-text occurrences remain scope-unverified and are not migrated.",
+      "Empty/unannotated source windows stay UNKNOWN, not negative examples.",
+      "Three original long atoms remain in two full-context auxiliary training rows; short runtime has no gold-dependent fallback.",
+      "Compared with old first-window-only training, this changes repeated exposure, EOS count and update count; only the new two order views are matched."
+    ],
+    "original_unique_label_counts": {
+      "argues_against": 25,
+      "associated_with_risk": 35,
+      "causes": 154,
+      "causes_side_effect": 7,
+      "co_occurs_with": 4,
+      "contributes_to": 12,
+      "differentiates_from": 1005,
+      "evaluates": 4,
+      "has_diagnostic_criterion": 601,
+      "has_manifestation": 62,
+      "has_specifier": 179,
+      "increases_risk_of": 9,
+      "is_associated_symptom_of": 1618,
+      "is_core_symptom_of": 772,
+      "part_of": 119,
+      "precedes": 12,
+      "predisposes_to": 13,
+      "progresses_to": 21,
+      "recommended_assessment": 1,
+      "recommended_examination": 1,
+      "relieved_by": 3,
+      "required_for": 72,
+      "rules_out": 31,
+      "subtype_of": 440,
+      "supports_Diagnostic Criterion_of": 166,
+      "supports_diagnosis_of": 184,
+      "worsens": 1
+    },
+    "original_unique_source_atom_count": 5551,
+    "other_equal_text_occurrence_omissions_not_migrated": 82,
+    "output_sha256": {
+      "chosen_anchor_audit.jsonl": "f6fd52ff5a5ddfc391b51493b14d48ba7ab7b5b7410f88e041bb8bc62ebdfba3",
+      "short_canonical/train_relations.jsonl": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+      "short_source/train_relations.jsonl": "b574df5ecc011f3d744c4191bc3ee61ef7992fa4495f2cad93610837a5d5d31a",
+      "source_window_audit.jsonl": "3f6bca334b57d1f3f8a67f66bac04af9da48a8f62dd616f59d089e898c7be1b8"
+    },
+    "paired_views_same_atom_counter_windows_eos_updates": true,
+    "parameters": {
+      "max_length": 8192,
+      "overlap": 400,
+      "short_chars": 2400
+    },
+    "per_atom_exposure_histogram": {
+      "1": 5243,
+      "2": 308
+    },
+    "protocol_sha256": "c7bdde2df59637f62964119a190984043ea7e9de4d5732b47fcbfc38e7f76606",
+    "rare_labels_original_count_at_most_9": {
+      "causes_side_effect": {
+        "unique_atoms": 7,
+        "window_exposures": 7
+      },
+      "co_occurs_with": {
+        "unique_atoms": 4,
+        "window_exposures": 4
+      },
+      "evaluates": {
+        "unique_atoms": 4,
+        "window_exposures": 4
+      },
+      "increases_risk_of": {
+        "unique_atoms": 9,
+        "window_exposures": 10
+      },
+      "recommended_assessment": {
+        "unique_atoms": 1,
+        "window_exposures": 1
+      },
+      "recommended_examination": {
+        "unique_atoms": 1,
+        "window_exposures": 1
+      },
+      "relieved_by": {
+        "unique_atoms": 3,
+        "window_exposures": 3
+      },
+      "worsens": {
+        "unique_atoms": 1,
+        "window_exposures": 1
+      }
+    },
+    "regular_positive_windows": 998,
+    "release_version": "relation_complete_overlap_v2",
+    "resident_reconstruction": {
+      "anchor_count": 5551,
+      "anchor_ledger_sha256": "9d681440dc0fc0c89e6b786ebfa07c11ad4780d6c6a901d62874f9dbc02b46aa",
+      "approved_aggregate_receipt_sha256": "52e2a6103a075d5a350503dc431e81bb3b13df471c105ec3e6c86f27ae362327",
+      "external_per_atom_ledger_read": false,
+      "external_prepared_records_read": false,
+      "matcher_implementation_sha256": "595988decef1c5f92757417f0f9bca5a7f3c9416059e3608be2864d4791d7dae",
+      "method": "min(find_mentions(frozen evidence, complete resident source))",
+      "old_original_anchor_equivalence_verified_for_this_frozen_release": true,
+      "prior_prepared_equivalence_audit_sha256": "92a1269a6a237c8b7d0ba12f6d0282583197960787d4dfb0409787bd6b510ca1",
+      "prior_prepared_records_sha256": "d7d3449322c935b890b302f379eb6f21844b90120ac44ea0537649eb43166eee"
+    },
+    "runtime_uses_gold_fallback": false,
+    "shared_window_compiler_sha256": "675ccdfe8ec93d45da8d4a6991398f115646493e4066b1e5ce1ee18058df5c2e",
+    "source_groups": 316,
+    "source_records": 542,
+    "split": "train",
+    "status": "compiled_not_trained",
+    "train_heldout_group_overlap": 0,
+    "unique_source_atom_coverage_unchanged": true,
+    "unknown_windows_in_relation_admitted_sources": 213,
+    "unknown_windows_not_trained": 365,
+    "variants": {
+      "short_canonical": {
+        "annotation_exposures": 5859,
+        "completion_token_quantiles": {
+          "max": 3870,
+          "min": 28,
+          "p50": 263,
+          "p95": 1155
+        },
+        "label_exposure_counts": {
+          "argues_against": 25,
+          "associated_with_risk": 38,
+          "causes": 157,
+          "causes_side_effect": 7,
+          "co_occurs_with": 4,
+          "contributes_to": 13,
+          "differentiates_from": 1084,
+          "evaluates": 4,
+          "has_diagnostic_criterion": 621,
+          "has_manifestation": 65,
+          "has_specifier": 204,
+          "increases_risk_of": 10,
+          "is_associated_symptom_of": 1701,
+          "is_core_symptom_of": 791,
+          "part_of": 123,
+          "precedes": 13,
+          "predisposes_to": 13,
+          "progresses_to": 21,
+          "recommended_assessment": 1,
+          "recommended_examination": 1,
+          "relieved_by": 3,
+          "required_for": 72,
+          "rules_out": 32,
+          "subtype_of": 499,
+          "supports_Diagnostic Criterion_of": 171,
+          "supports_diagnosis_of": 185,
+          "worsens": 1
+        },
+        "rows": 1000,
+        "supervised_eos_per_epoch": 1000,
+        "token_counts": {
+          "completion_tokens": 399973,
+          "prompt_tokens": 1210852,
+          "total_tokens": 1610825
+        },
+        "total_token_quantiles": {
+          "max": 5140,
+          "min": 594,
+          "p50": 1533,
+          "p95": 2640
+        },
+        "unique_source_atom_count": 5551,
+        "updates_per_epoch_at_batch1_accum8": 125
+      },
+      "short_source": {
+        "annotation_exposures": 5859,
+        "completion_token_quantiles": {
+          "max": 3870,
+          "min": 28,
+          "p50": 263,
+          "p95": 1155
+        },
+        "label_exposure_counts": {
+          "argues_against": 25,
+          "associated_with_risk": 38,
+          "causes": 157,
+          "causes_side_effect": 7,
+          "co_occurs_with": 4,
+          "contributes_to": 13,
+          "differentiates_from": 1084,
+          "evaluates": 4,
+          "has_diagnostic_criterion": 621,
+          "has_manifestation": 65,
+          "has_specifier": 204,
+          "increases_risk_of": 10,
+          "is_associated_symptom_of": 1701,
+          "is_core_symptom_of": 791,
+          "part_of": 123,
+          "precedes": 13,
+          "predisposes_to": 13,
+          "progresses_to": 21,
+          "recommended_assessment": 1,
+          "recommended_examination": 1,
+          "relieved_by": 3,
+          "required_for": 72,
+          "rules_out": 32,
+          "subtype_of": 499,
+          "supports_Diagnostic Criterion_of": 171,
+          "supports_diagnosis_of": 185,
+          "worsens": 1
+        },
+        "rows": 1000,
+        "supervised_eos_per_epoch": 1000,
+        "token_counts": {
+          "completion_tokens": 399973,
+          "prompt_tokens": 1210852,
+          "total_tokens": 1610825
+        },
+        "total_token_quantiles": {
+          "max": 5140,
+          "min": 594,
+          "p50": 1533,
+          "p95": 2640
+        },
+        "unique_source_atom_count": 5551,
+        "updates_per_epoch_at_batch1_accum8": 125
+      }
+    }
+  },
+  "manifest_sha256": "6ec898ca4e04860bb592e1a0348dc2aa542aeb6026925d4ebe3be1f97c136b74",
+  "independent_review": {
+    "status": "passed",
+    "original_anchor_count": 5551,
+    "v1_v2_rows_independently_compared": 2000,
+    "runtime_prompt_matches_per_variant": 998,
+    "old_base_all16_files_unchanged": true,
+    "input_parameters_sha256": "52e2a6103a075d5a350503dc431e81bb3b13df471c105ec3e6c86f27ae362327"
+  },
+  "remote_reproduction": {
+    "data_and_manifest_byte_identical": true,
+    "code_snapshot": "code_data_v5",
+    "code_archive_sha256": "4721ade1d2e655eeaae2a0d10cc7902c978355af8b7fd2df49d3361c5cac023b",
+    "build_uses_already_resident_source_data": true,
+    "external_prepared_records_required": false
+  },
+  "training": {
+    "status": "both_complete",
+    "jobs": [
+      "relation_short_source_complete_lr5e5_r16_e2",
+      "relation_short_canonical_complete_lr5e5_r16_e2"
+    ],
+    "epochs": 2,
+    "learning_rate": 5e-05,
+    "rank": 16,
+    "expected_updates_per_variant": 250,
+    "source_order_vs_canonical_order_matched_exposure": true,
+    "old_951_row_release_is_not_equal_exposure_control": true,
+    "source_order_receipt": {
+      "status": "complete",
+      "variant": "short_source",
+      "epochs": 2.0,
+      "learning_rate": 5e-05,
+      "rank": 16,
+      "optimizer_updates": 250,
+      "elapsed_seconds": 1735.0127639770508,
+      "dataset": {
+        "eos_supervised": true,
+        "max_target_tokens": 3870,
+        "max_tokens": 5140,
+        "no_truncation": true,
+        "prompt_loss_masked": true,
+        "rows": 1000,
+        "source_groups": 316,
+        "source_records": 542,
+        "target_tokens_one_pass": 399973,
+        "tokens_one_pass": 1610825
+      },
+      "observed_exposure": {
+        "all_rows_seen": true,
+        "max_visits": 2,
+        "min_visits": 2,
+        "row_visits": 2000,
+        "rows": 1000,
+        "scope": "successful training_step calls, including gradient accumulation",
+        "successful_microsteps": 2000,
+        "supervised_tokens": 799946,
+        "unique_rows_seen": 1000,
+        "unique_source_groups_seen": 316
+      },
+      "data_sha256": "b574df5ecc011f3d744c4191bc3ee61ef7992fa4495f2cad93610837a5d5d31a",
+      "adapter_files_sha256": "10124eeb068adc62b1a72a893bb947cc287f7707405e5fead8021be716cce8de",
+      "adapter_final_sha256": "4f2d018c8b9d9cdc29f3fb796871a63dad617faa0fcbdfb88cd369d72f5d9dc3",
+      "saved_weights_bitwise_verified": true,
+      "receipt_sha256": "ae927cbe38d53f3f66280446f91a8e0c69de300e70b853dde966240619309b49",
+      "quality_evaluation": "completed_independently_recounted"
+    },
+    "canonical_order_receipt": {
+      "status": "complete",
+      "variant": "short_canonical",
+      "epochs": 2.0,
+      "learning_rate": 5e-05,
+      "rank": 16,
+      "optimizer_updates": 250,
+      "elapsed_seconds": 1734.900295972824,
+      "dataset": {
+        "eos_supervised": true,
+        "max_target_tokens": 3870,
+        "max_tokens": 5140,
+        "no_truncation": true,
+        "prompt_loss_masked": true,
+        "rows": 1000,
+        "source_groups": 316,
+        "source_records": 542,
+        "target_tokens_one_pass": 399973,
+        "tokens_one_pass": 1610825
+      },
+      "observed_exposure": {
+        "all_rows_seen": true,
+        "max_visits": 2,
+        "min_visits": 2,
+        "row_visits": 2000,
+        "rows": 1000,
+        "scope": "successful training_step calls, including gradient accumulation",
+        "successful_microsteps": 2000,
+        "supervised_tokens": 799946,
+        "unique_rows_seen": 1000,
+        "unique_source_groups_seen": 316
+      },
+      "data_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+      "adapter_files_sha256": "9801b1da477af37a9e86ac144ee618977dcb2a7c30334de1e23219408d8f9701",
+      "adapter_final_sha256": "6e1ffdd56c07f6e0dff7950a7e185dc91e6618de7412bc345cb89b76daae0b96",
+      "saved_weights_bitwise_verified": true,
+      "receipt_sha256": "e8c3d813b2bb294a5b495ecb5f84fc89457b07b5968192fc07f39e47c10936ce",
+      "quality_evaluation": "completed_two_independent_recounts_passed"
+    },
+    "observed_pair_verification": {
+      "same_non_data_parameters": true,
+      "same_initial_adapter": true,
+      "same_dataset_token_counts_and_exposure": true,
+      "same_trainer_protocol_environment": true,
+      "epochs": 2,
+      "updates_each": 250
+    }
+  },
+  "evaluation": {
+    "status": "both_short_views_and_matched_full_control_complete",
+    "jobs": [
+      "evaluate_relation_short_source_complete_selected_entity",
+      "evaluate_relation_short_canonical_complete_selected_entity"
+    ],
+    "samples": 130,
+    "modes": [
+      "live",
+      "oracle"
+    ],
+    "same_actual_entity_outputs": true,
+    "batch_size": 8,
+    "max_new_tokens": 4096,
+    "code_snapshot": "code_eval_v6",
+    "cache_origin_same_runtime_verified": true,
+    "model_in_memory_revalidation_at_actual_run_required": true,
+    "decoding_comparison_caveat": "Both paired short relation views use batch8; earlier full-relation run used batch4. Greedy outputs can depend on numerical batching, so this is not a batch-matched comparison to the earlier full-source baseline.",
+    "source_actual_cache_token_and_in_memory_checks": "verified",
+    "final_entity_graph_sha256_check_pending": false,
+    "source_result_file": "relation-short-source-results.json",
+    "source_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "canonical_result_file": "relation-short-canonical-results.json",
+    "canonical_independent_recount_passed": true,
+    "canonical_final_entity_graph_sha256_verified": "65eb8d280ba56fb25560e85ed8c18fa6e49feb00ca0cd3f3f8ab0bf37fe20567",
+    "canonical_second_independent_recount_passed": true,
+    "full_source_batch8_control_complete": true,
+    "selected_relation_view": "short_canonical",
+    "selection_file": "relation-strategy-selection.json"
+  }
+}

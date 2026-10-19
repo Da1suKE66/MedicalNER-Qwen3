@@ -1,0 +1,1700 @@
+{
+  "version": "bounded-choice-semantic-dpo-20261012-v1",
+  "independently_verified": true,
+  "freeze": {
+    "snapshot_code_sha256": "6e9894a21ea9902af7b2698723d21cf0c74d1f0d024cb746156d3bc2f04cdf0a",
+    "archive_sha256": "1c187f61b2a643cdcb5d226143ed53f1a305b1aa02bc4407f3b41fd2a70f980d",
+    "queue_sha256": "5a680b00994670f4c7a3fae9a31d2fca5e10827a1fbe7d11bcf24a9fbc083c2d",
+    "archive_bytes": 811261,
+    "parent_initial_policy_sha256": "0e7c9d0f69ecd6e239cc9e994ea3cb0584cd736e5de703a376ca462bdde4964e"
+  },
+  "data_manifest_sha256": "708380236c9fece19947796ba86e28aa5a2076ac81ffb0d702f2e142ec018565",
+  "report": {
+    "scope": "adaptive_artificial_semantic_comparison_not_medical_not_full_pipeline",
+    "data_sha256": "ff114b8d32e898d82621e6cb25c6b426b1c86b93c84fd01a3d96018ed386a29f",
+    "samples_per_arm": 24,
+    "runs": {
+      "parent": {
+        "verification": "independently_recounted",
+        "samples": 24,
+        "failed_samples": 0,
+        "relation": {
+          "tp": 9,
+          "fp": 7,
+          "fn": 25,
+          "gold_count": 34,
+          "predicted_count": 16,
+          "precision": 0.5625,
+          "recall": 0.2647058823529412,
+          "f1": 0.36
+        },
+        "evidence": {
+          "tp": 1,
+          "fp": 15,
+          "fn": 33,
+          "gold_count": 34,
+          "predicted_count": 16,
+          "precision": 0.0625,
+          "recall": 0.029411764705882353,
+          "f1": 0.04
+        },
+        "status": "complete",
+        "complete": true,
+        "generation_complete": true,
+        "accounted_samples": 24,
+        "generation_attempted_samples": 24,
+        "complete_generation_count": 24,
+        "budget_exhaustions": 0,
+        "deadline_exhaustions": 0,
+        "errors_by_type": {},
+        "exact_relation_sets": 4,
+        "exact_evidence_sets": 4,
+        "per_relation": {
+          "supports_diagnosis_of": {
+            "relations": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 9,
+              "gold_count": 10,
+              "predicted_count": 1,
+              "precision": 1.0,
+              "recall": 0.1,
+              "f1": 0.18181818181818182
+            },
+            "relation_evidence": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 9,
+              "gold_count": 10,
+              "predicted_count": 1,
+              "precision": 1.0,
+              "recall": 0.1,
+              "f1": 0.18181818181818182
+            }
+          },
+          "is_core_symptom_of": {
+            "relations": {
+              "tp": 8,
+              "fp": 6,
+              "fn": 14,
+              "gold_count": 22,
+              "predicted_count": 14,
+              "precision": 0.5714285714285714,
+              "recall": 0.36363636363636365,
+              "f1": 0.4444444444444444
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 14,
+              "fn": 22,
+              "gold_count": 22,
+              "predicted_count": 14,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "has_specifier": {
+            "relations": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "subtype_of": {
+            "relations": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "gold_count": 2,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "gold_count": 2,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "strata": {
+          "kind": {
+            "omit_one_edge": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "omit_second_relation": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "omit_all_supported": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "empty_on_positive": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "add_unsupported_edge": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              }
+            },
+            "add_multiple_unsupported": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "contradict_explicit_negation": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "all_negative_hallucination": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_target": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.3333333333333333,
+                "f1": 0.4
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_target_type": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "reverse_direction": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 2,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 2,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_evidence": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          },
+          "prompt_chars": {
+            "le_4096": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 10,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.9,
+                "recall": 0.47368421052631576,
+                "f1": 0.6206896551724138
+              },
+              "relation_evidence": {
+                "tp": 1,
+                "fp": 9,
+                "fn": 18,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.1,
+                "recall": 0.05263157894736842,
+                "f1": 0.06896551724137931
+              }
+            },
+            "le_8192": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          },
+          "candidate_pairs": {
+            "2": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 10,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.9,
+                "recall": 0.47368421052631576,
+                "f1": 0.6206896551724138
+              },
+              "relation_evidence": {
+                "tp": 1,
+                "fp": 9,
+                "fn": 18,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.1,
+                "recall": 0.05263157894736842,
+                "f1": 0.06896551724137931
+              }
+            },
+            "8": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          }
+        },
+        "predictions_sha256": "6d7cef26d88e0cc8a77f752a01e88adebf68d438d1d1c2f41d78d106f03ad854",
+        "metrics_sha256": "ad70ae81b84bdc43bc30b3c0b2b693be4c7e7831e816ab2f1ac1513a42c7a58c"
+      },
+      "sft": {
+        "verification": "independently_recounted",
+        "samples": 24,
+        "failed_samples": 0,
+        "relation": {
+          "tp": 9,
+          "fp": 5,
+          "fn": 25,
+          "gold_count": 34,
+          "predicted_count": 14,
+          "precision": 0.6428571428571429,
+          "recall": 0.2647058823529412,
+          "f1": 0.375
+        },
+        "evidence": {
+          "tp": 0,
+          "fp": 14,
+          "fn": 34,
+          "gold_count": 34,
+          "predicted_count": 14,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "status": "complete",
+        "complete": true,
+        "generation_complete": true,
+        "accounted_samples": 24,
+        "generation_attempted_samples": 24,
+        "complete_generation_count": 24,
+        "budget_exhaustions": 0,
+        "deadline_exhaustions": 0,
+        "errors_by_type": {},
+        "exact_relation_sets": 4,
+        "exact_evidence_sets": 4,
+        "per_relation": {
+          "supports_diagnosis_of": {
+            "relations": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 10,
+              "gold_count": 10,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 10,
+              "gold_count": 10,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "is_core_symptom_of": {
+            "relations": {
+              "tp": 9,
+              "fp": 4,
+              "fn": 13,
+              "gold_count": 22,
+              "predicted_count": 13,
+              "precision": 0.6923076923076923,
+              "recall": 0.4090909090909091,
+              "f1": 0.5142857142857142
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 13,
+              "fn": 22,
+              "gold_count": 22,
+              "predicted_count": 13,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "subtype_of": {
+            "relations": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "gold_count": 2,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "gold_count": 2,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "belongs_to": {
+            "relations": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "strata": {
+          "kind": {
+            "omit_one_edge": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.25,
+                "f1": 0.4
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "omit_second_relation": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "omit_all_supported": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "empty_on_positive": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "add_unsupported_edge": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "add_multiple_unsupported": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.25,
+                "f1": 0.4
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "contradict_explicit_negation": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "all_negative_hallucination": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_target": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.3333333333333333,
+                "f1": 0.4
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_target_type": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "reverse_direction": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 2,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 2,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_evidence": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          },
+          "prompt_chars": {
+            "le_4096": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 10,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.9,
+                "recall": 0.47368421052631576,
+                "f1": 0.6206896551724138
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 10,
+                "fn": 19,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "le_8192": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 4,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 4,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          },
+          "candidate_pairs": {
+            "2": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 10,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.9,
+                "recall": 0.47368421052631576,
+                "f1": 0.6206896551724138
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 10,
+                "fn": 19,
+                "gold_count": 19,
+                "predicted_count": 10,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "8": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 4,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 4,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          }
+        },
+        "predictions_sha256": "48ccdc8525f1c1fff6796f4db24b2be1a3a2d6c0b840a71955d7f0a94616d732",
+        "metrics_sha256": "bc985166605e8d40da4a95270b1b03ada18599c5bd15bd354c245a9e93ace486"
+      },
+      "dpo": {
+        "verification": "independently_recounted",
+        "samples": 24,
+        "failed_samples": 0,
+        "relation": {
+          "tp": 9,
+          "fp": 8,
+          "fn": 25,
+          "gold_count": 34,
+          "predicted_count": 17,
+          "precision": 0.5294117647058824,
+          "recall": 0.2647058823529412,
+          "f1": 0.35294117647058826
+        },
+        "evidence": {
+          "tp": 0,
+          "fp": 17,
+          "fn": 34,
+          "gold_count": 34,
+          "predicted_count": 17,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "status": "complete",
+        "complete": true,
+        "generation_complete": true,
+        "accounted_samples": 24,
+        "generation_attempted_samples": 24,
+        "complete_generation_count": 24,
+        "budget_exhaustions": 0,
+        "deadline_exhaustions": 0,
+        "errors_by_type": {},
+        "exact_relation_sets": 4,
+        "exact_evidence_sets": 4,
+        "per_relation": {
+          "supports_diagnosis_of": {
+            "relations": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 10,
+              "gold_count": 10,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 10,
+              "gold_count": 10,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "is_core_symptom_of": {
+            "relations": {
+              "tp": 9,
+              "fp": 5,
+              "fn": 13,
+              "gold_count": 22,
+              "predicted_count": 14,
+              "precision": 0.6428571428571429,
+              "recall": 0.4090909090909091,
+              "f1": 0.5
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 14,
+              "fn": 22,
+              "gold_count": 22,
+              "predicted_count": 14,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "supports_Diagnostic Criterion_of": {
+            "relations": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 2,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "subtype_of": {
+            "relations": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "gold_count": 2,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 2,
+              "gold_count": 2,
+              "predicted_count": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "belongs_to": {
+            "relations": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "relation_evidence": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "gold_count": 0,
+              "predicted_count": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          }
+        },
+        "strata": {
+          "kind": {
+            "omit_one_edge": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "omit_second_relation": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "omit_all_supported": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.5,
+                "recall": 0.25,
+                "f1": 0.3333333333333333
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 2,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "empty_on_positive": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 2,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 3,
+                "precision": 0.3333333333333333,
+                "recall": 0.25,
+                "f1": 0.2857142857142857
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 3,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "add_unsupported_edge": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "add_multiple_unsupported": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 2,
+                "fn": 3,
+                "gold_count": 4,
+                "predicted_count": 3,
+                "precision": 0.3333333333333333,
+                "recall": 0.25,
+                "f1": 0.2857142857142857
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 3,
+                "fn": 4,
+                "gold_count": 4,
+                "predicted_count": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "contradict_explicit_negation": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "all_negative_hallucination": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "gold_count": 0,
+                "predicted_count": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_target": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_target_type": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "reverse_direction": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 2,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 2,
+                "gold_count": 2,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "wrong_evidence": {
+              "samples": 2,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 1,
+                "fp": 0,
+                "fn": 2,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 1,
+                "fn": 3,
+                "gold_count": 3,
+                "predicted_count": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          },
+          "prompt_chars": {
+            "le_4096": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 10,
+                "gold_count": 19,
+                "predicted_count": 11,
+                "precision": 0.8181818181818182,
+                "recall": 0.47368421052631576,
+                "f1": 0.6
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 11,
+                "fn": 19,
+                "gold_count": 19,
+                "predicted_count": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "le_8192": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          },
+          "candidate_pairs": {
+            "2": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 10,
+                "gold_count": 19,
+                "predicted_count": 11,
+                "precision": 0.8181818181818182,
+                "recall": 0.47368421052631576,
+                "f1": 0.6
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 11,
+                "fn": 19,
+                "gold_count": 19,
+                "predicted_count": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "8": {
+              "samples": 12,
+              "failed_samples": 0,
+              "relations": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "relation_evidence": {
+                "tp": 0,
+                "fp": 6,
+                "fn": 15,
+                "gold_count": 15,
+                "predicted_count": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            }
+          }
+        },
+        "predictions_sha256": "6b1c1dc0602166d2ebf19d488350e97c6cdb87e8f2093559099de1b7e4835c83",
+        "metrics_sha256": "c3ff44ebf67ddbdb4639f6e5beebf816439ae7d135022c7c038323cf2c42a751"
+      }
+    },
+    "comparisons_by_error_kind": {
+      "sft_vs_parent": {
+        "omit_one_edge": {
+          "unchanged_error_count": 1,
+          "improved": 1
+        },
+        "omit_second_relation": {
+          "unchanged_error_count": 2
+        },
+        "omit_all_supported": {
+          "unchanged_error_count": 2
+        },
+        "empty_on_positive": {
+          "unchanged_error_count": 2
+        },
+        "add_unsupported_edge": {
+          "regressed": 1,
+          "unchanged_error_count": 1
+        },
+        "add_multiple_unsupported": {
+          "unchanged_error_count": 1,
+          "improved": 1
+        },
+        "contradict_explicit_negation": {
+          "unchanged_error_count": 2
+        },
+        "all_negative_hallucination": {
+          "unchanged_error_count": 2
+        },
+        "wrong_target": {
+          "unchanged_error_count": 2
+        },
+        "wrong_target_type": {
+          "unchanged_error_count": 2
+        },
+        "reverse_direction": {
+          "unchanged_error_count": 2
+        },
+        "wrong_evidence": {
+          "unchanged_error_count": 2
+        }
+      },
+      "dpo_vs_parent": {
+        "omit_one_edge": {
+          "unchanged_error_count": 2
+        },
+        "omit_second_relation": {
+          "unchanged_error_count": 2
+        },
+        "omit_all_supported": {
+          "unchanged_error_count": 2
+        },
+        "empty_on_positive": {
+          "regressed": 1,
+          "unchanged_error_count": 1
+        },
+        "add_unsupported_edge": {
+          "regressed": 1,
+          "unchanged_error_count": 1
+        },
+        "add_multiple_unsupported": {
+          "unchanged_error_count": 1,
+          "regressed": 1
+        },
+        "contradict_explicit_negation": {
+          "unchanged_error_count": 2
+        },
+        "all_negative_hallucination": {
+          "unchanged_error_count": 2
+        },
+        "wrong_target": {
+          "unchanged_error_count": 1,
+          "improved": 1
+        },
+        "wrong_target_type": {
+          "unchanged_error_count": 2
+        },
+        "reverse_direction": {
+          "unchanged_error_count": 2
+        },
+        "wrong_evidence": {
+          "unchanged_error_count": 2
+        }
+      }
+    },
+    "training": {
+      "status": "verified",
+      "same_parent_and_exposure_verified": true,
+      "source_rows": 128,
+      "optimizer_updates": 32,
+      "observed_rows": 128,
+      "reference_unchanged": true
+    },
+    "limitations": [
+      "Names/groups differ across train/holdout but templates overlap.",
+      "Failure rows keep all gold FN; missing/duplicate/wrong gold rows reject the report.",
+      "Equal training rows do not equalize DPO/SFT token loss exposure or compute."
+    ]
+  },
+  "clinical_quality_claim": false
+}

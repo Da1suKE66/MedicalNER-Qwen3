@@ -1,0 +1,111 @@
+{
+  "status": "complete_screen_not_selected",
+  "scope": "Matched6long_source_only_pilot_not_full130",
+  "short_chars": [
+    2400,
+    1600
+  ],
+  "all_selected_original_gold_retained": true,
+  "same_models_and_source_selection_verified": true,
+  "scores": {
+    "2400": {
+      "filtered_free_text": {
+        "entity": {
+          "f1": 0.6637554585152838,
+          "fn": 49,
+          "fp": 28,
+          "precision": 0.7307692307692307,
+          "recall": 0.608,
+          "tp": 76
+        },
+        "relation": {
+          "f1": 0.48936170212765956,
+          "fn": 59,
+          "fp": 37,
+          "precision": 0.5542168674698795,
+          "recall": 0.4380952380952381,
+          "tp": 46
+        }
+      },
+      "generation_checks": {
+        "live:entities": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 22,
+          "events": 22,
+          "failed": 0,
+          "generated_tokens": 2343,
+          "missing_eos": 0
+        },
+        "live:relations": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 22,
+          "events": 22,
+          "failed": 0,
+          "generated_tokens": 6736,
+          "missing_eos": 0
+        }
+      },
+      "manifest_sha256": "692e49cbe88469599adaba349043ddeff0c935270c7c7378c2372bb7d6adaf57",
+      "metrics_sha256": "7626568424945f2f9ad45523c29e0dc62d1b1f11948ad5cee82c0437c923a767",
+      "recount_sha256": "0486b6c619c5e8ecf48a8f38e58abb43ea79232ea96f6a9844078145d4aa4729"
+    },
+    "1600": {
+      "filtered_free_text": {
+        "entity": {
+          "f1": 0.6614173228346457,
+          "fn": 41,
+          "fp": 45,
+          "precision": 0.6511627906976745,
+          "recall": 0.672,
+          "tp": 84
+        },
+        "relation": {
+          "f1": 0.3925233644859813,
+          "fn": 63,
+          "fp": 67,
+          "precision": 0.3853211009174312,
+          "recall": 0.4,
+          "tp": 42
+        }
+      },
+      "generation_checks": {
+        "live:entities": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 36,
+          "events": 36,
+          "failed": 0,
+          "generated_tokens": 3180,
+          "missing_eos": 0
+        },
+        "live:relations": {
+          "budget_exhausted": 2,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 34,
+          "events": 36,
+          "failed": 2,
+          "generated_tokens": 19063,
+          "missing_eos": 2
+        }
+      },
+      "manifest_sha256": "80ed228a318dafb482f091e7559e4ab46a1a941588a5aee056d921c862cdc771",
+      "metrics_sha256": "6f5f89d44babee7840a23759335ab443544f93755bb030b6b99ba6e22270cd4e",
+      "recount_sha256": "9aaddc45725e3795d9b786332a6de4854599d566cd3960facc9763c3a856173e"
+    }
+  },
+  "paired_review_sha256": "b9596224bf53e8dd65d516e4737f03918270ba7840f48c54f06ed33b62a8e840",
+  "long_criterion_over160chars": {
+    "gold": 6,
+    "matched_2400": 0,
+    "matched_1600": 0
+  },
+  "selection": "Keep2400-character context and prioritize complete-row longCriterion replay full-data training; do not run full1600 training in this round based on this negative screen.",
+  "limitation": "Inference-only context screen using existing2400-trained adapters; it does not prove a dedicated1600-trained model cannot improve.",
+  "interpretation": "Entity and relation windowing change together. Predicted entity tables also change; this is not a fixed-entity relation-window ablation."
+}

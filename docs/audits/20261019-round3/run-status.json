@@ -1,0 +1,259 @@
+{
+  "first_result_delivered_utc": "2026-10-19T12:39:24.577677+00:00",
+  "first_result_due_utc": "2026-10-19T12:49:00Z",
+  "status": "label4_and_DPO24_completed_double_checked_original_pipeline_retained",
+  "label4": {
+    "manifest_sha256": "0356a86871860198869b51adc7743da9e627485ae2f4bc3f5c5d2e2ee47dc631",
+    "metrics_sha256": "71dd6e751b03218444099b42619cd50dbbf602f17240fd20c5f754877f18f65e",
+    "root_recount_sha256": "23ceabd02917ed3204e5f082c75ab86ac250d707b3a2c607fcf0a543c410f1e3",
+    "independent_comparison_sha256": "5fd377f7e5ef3b97aea3da7a8d5099b2a363e553c4f9a2610b4ae5a26d16a67f",
+    "samples": 130,
+    "scores": {
+      "live": {
+        "filtered": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6878216123499142,
+              "fn": 247,
+              "fp": 117,
+              "precision": 0.7741312741312741,
+              "recall": 0.6188271604938271,
+              "tp": 401
+            },
+            "relation": {
+              "f1": 0.4799196787148594,
+              "fn": 334,
+              "fp": 184,
+              "precision": 0.5650118203309693,
+              "recall": 0.41710296684118675,
+              "tp": 239
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7110808973487424,
+              "fn": 301,
+              "fp": 124,
+              "precision": 0.8083462132921174,
+              "recall": 0.6347087378640777,
+              "tp": 523
+            },
+            "relation": {
+              "f1": 0.5161290322580645,
+              "fn": 360,
+              "fp": 195,
+              "precision": 0.6028513238289206,
+              "recall": 0.45121951219512196,
+              "tp": 296
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        },
+        "raw": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6825531914893617,
+              "fn": 247,
+              "fp": 126,
+              "precision": 0.7609108159392789,
+              "recall": 0.6188271604938271,
+              "tp": 401
+            },
+            "relation": {
+              "f1": 0.47713717693836977,
+              "fn": 333,
+              "fp": 193,
+              "precision": 0.5542725173210161,
+              "recall": 0.418848167539267,
+              "tp": 240
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7067567567567568,
+              "fn": 301,
+              "fp": 133,
+              "precision": 0.7972560975609756,
+              "recall": 0.6347087378640777,
+              "tp": 523
+            },
+            "relation": {
+              "f1": 0.5133967156439067,
+              "fn": 359,
+              "fp": 204,
+              "precision": 0.592814371257485,
+              "recall": 0.4527439024390244,
+              "tp": 297
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        },
+        "strict_raw": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6825531914893617,
+              "fn": 247,
+              "fp": 126,
+              "precision": 0.7609108159392789,
+              "recall": 0.6188271604938271,
+              "tp": 401
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 68
+            },
+            "relation": {
+              "f1": 0.44692737430167595,
+              "fn": 333,
+              "fp": 261,
+              "precision": 0.47904191616766467,
+              "recall": 0.418848167539267,
+              "tp": 240
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7067567567567568,
+              "fn": 301,
+              "fp": 133,
+              "precision": 0.7972560975609756,
+              "recall": 0.6347087378640777,
+              "tp": 523
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 68
+            },
+            "relation": {
+              "f1": 0.48489795918367345,
+              "fn": 359,
+              "fp": 272,
+              "precision": 0.5219683655536028,
+              "recall": 0.4527439024390244,
+              "tp": 297
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 0
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        }
+      }
+    },
+    "generation_checks": {
+      "live:entities": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 125,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 0,
+        "generated_tokens": 12654,
+        "missing_eos": 0
+      },
+      "live:relations": {
+        "budget_exhausted": 1,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 124,
+        "events": 125,
+        "failed": 21,
+        "generated_tokens": 44104,
+        "missing_eos": 1
+      }
+    },
+    "all_gold_retained": true,
+    "fixed_entities_verified": true
+  },
+  "DPO24": {
+    "status": "full130_complete_double_checked",
+    "only_after_first_label4_full130_result_verified": true,
+    "latest_training_start_utc": "2026-10-19T12:40:00Z",
+    "finite_plan_deadline_utc": "2026-10-19T13:20:00Z",
+    "deadline_origin": "Assistant scheduling bound for continuing already requested DPO; user requested first new result within one hour, not a new explicit 13:20 authorization.",
+    "training_pairs": 24,
+    "parent": "original_SFT_not_label4",
+    "learning_rate": 2e-06,
+    "beta": 0.1,
+    "epochs": 1,
+    "updates": 6,
+    "same_fixed_E2_full130_evaluation": true,
+    "one_GPU_serialize": true,
+    "runner_pid": 5234,
+    "queue_root": "/workspace/medicalner/round3_20261019/dpo24/queue",
+    "launched_unix": 1792413569.3756306,
+    "plan_sha256": "a8ef4e94c4fad57a8844668373bb2890ebcc6e6fde31fe5e4a13da9703ed68c0",
+    "training_manifest_sha256": "817d27b869fd8bd5023b5f503afdd37c41e539e625ba8c56424855f242e59d7d",
+    "training_completed_updates": 6,
+    "formal_training_seconds": 60.48480889100756,
+    "evaluation_pid": 5307,
+    "evaluation_started_utc": "2026-10-19T12:41:37.959876Z",
+    "quality_result_available": true,
+    "evaluation_manifest_sha256": "f86ab05bdbb69738362fdb64e8f1089f0348e03705696a05f9cd3f98bbd43f1a",
+    "evaluation_metrics_sha256": "8552dd0aad35600a0aae11497208807251db974ddc001c60ff039c8fc5b3b428",
+    "free_text_relation": {
+      "f1": 0.4693069306930693,
+      "fn": 336,
+      "fp": 200,
+      "precision": 0.5423340961098398,
+      "recall": 0.41361256544502617,
+      "tp": 237
+    },
+    "evaluation_finished_utc": "2026-10-19T13:03:53.852993Z"
+  },
+  "selected_pipeline_unchanged": true,
+  "selection_reason": "The new model has only+0.10464 F1 percentage points on reused tune and more failed windows; no reliable global improvement established.",
+  "snapshot_utc": "2026-10-19T13:13:58.902791+00:00"
+}

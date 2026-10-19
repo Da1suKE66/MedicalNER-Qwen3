@@ -1,0 +1,1495 @@
+{
+  "schema_version": 1,
+  "scope": "rapid_subset_not_final_pipeline_quality",
+  "source_manifest_sha256": "f7b3cb398c7c3c36babb7befbdd4a200525aea9d9485665f061312a636ebead1",
+  "queue_status": "complete",
+  "denominators": {
+    "medical_samples": 12,
+    "medical_gold_triples": 40,
+    "medical_candidate_pairs": 240,
+    "candidate_covered_gold_triples_by_condition": {
+      "full_hash16": 26,
+      "full_source16": 26,
+      "full_hash4": 26,
+      "local_hash16": 26
+    }
+  },
+  "medical": [
+    {
+      "job": "grounded64_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 175,
+        "fn": 31,
+        "precision": 0.04891304347826087,
+        "recall": 0.225,
+        "f1": 0.08035714285714286
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 11,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 236.32804829900124,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        }
+      },
+      "invalid_json_batches": 4
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "full_source16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 14,
+        "fp": 207,
+        "fn": 26,
+        "precision": 0.06334841628959276,
+        "recall": 0.35,
+        "f1": 0.10727969348659004
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 5,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 5,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 236.5286800440008,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 111,
+          "relation": {
+            "tp": 14,
+            "fp": 96,
+            "fn": 26,
+            "precision": 0.12727272727272726,
+            "recall": 0.35,
+            "f1": 0.18666666666666668
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 207,
+            "fn": 26,
+            "precision": 0.06334841628959276,
+            "recall": 0.35,
+            "f1": 0.10727969348659004
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 207,
+            "fn": 26,
+            "precision": 0.06334841628959276,
+            "recall": 0.35,
+            "f1": 0.10727969348659004
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 111,
+          "relation": {
+            "tp": 14,
+            "fp": 96,
+            "fn": 26,
+            "precision": 0.12727272727272726,
+            "recall": 0.35,
+            "f1": 0.18666666666666668
+          }
+        }
+      },
+      "invalid_json_batches": 2
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "full_hash4",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 176,
+        "fn": 30,
+        "precision": 0.053763440860215055,
+        "recall": 0.25,
+        "f1": 0.08849557522123894
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 64,
+      "truncated_batches": 0,
+      "parse_error_batches": 20,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 160.8816426869962,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 99,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 176,
+            "fn": 30,
+            "precision": 0.053763440860215055,
+            "recall": 0.25,
+            "f1": 0.08849557522123894
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 176,
+            "fn": 30,
+            "precision": 0.053763440860215055,
+            "recall": 0.25,
+            "f1": 0.08849557522123894
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 99,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        }
+      },
+      "invalid_json_batches": 16
+    },
+    {
+      "job": "grounded64_screen",
+      "condition": "local_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 160,
+        "fn": 30,
+        "precision": 0.058823529411764705,
+        "recall": 0.25,
+        "f1": 0.09523809523809523
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 8,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 11,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 215.36433649999526,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 83,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 160,
+            "fn": 30,
+            "precision": 0.058823529411764705,
+            "recall": 0.25,
+            "f1": 0.09523809523809523
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 160,
+            "fn": 30,
+            "precision": 0.058823529411764705,
+            "recall": 0.25,
+            "f1": 0.09523809523809523
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 83,
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          }
+        }
+      },
+      "invalid_json_batches": 3
+    },
+    {
+      "job": "missing64_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 183,
+        "fn": 30,
+        "precision": 0.05181347150259067,
+        "recall": 0.25,
+        "f1": 0.08583690987124463
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 10,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 249.2430961699938,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 110,
+          "relation": {
+            "tp": 10,
+            "fp": 73,
+            "fn": 30,
+            "precision": 0.12048192771084337,
+            "recall": 0.25,
+            "f1": 0.16260162601626016
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 183,
+            "fn": 30,
+            "precision": 0.05181347150259067,
+            "recall": 0.25,
+            "f1": 0.08583690987124463
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 183,
+            "fn": 30,
+            "precision": 0.05181347150259067,
+            "recall": 0.25,
+            "f1": 0.08583690987124463
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 110,
+          "relation": {
+            "tp": 10,
+            "fp": 73,
+            "fn": 30,
+            "precision": 0.12048192771084337,
+            "recall": 0.25,
+            "f1": 0.16260162601626016
+          }
+        }
+      },
+      "invalid_json_batches": 4
+    },
+    {
+      "job": "base_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 10,
+        "fp": 327,
+        "fn": 30,
+        "precision": 0.02967359050445104,
+        "recall": 0.25,
+        "f1": 0.05305039787798409
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 2,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 3,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 313.8545755380037,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 123,
+          "relation": {
+            "tp": 10,
+            "fp": 204,
+            "fn": 30,
+            "precision": 0.04672897196261682,
+            "recall": 0.25,
+            "f1": 0.07874015748031496
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 327,
+            "fn": 30,
+            "precision": 0.02967359050445104,
+            "recall": 0.25,
+            "f1": 0.05305039787798409
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 10,
+            "fp": 327,
+            "fn": 30,
+            "precision": 0.02967359050445104,
+            "recall": 0.25,
+            "f1": 0.05305039787798409
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 123,
+          "relation": {
+            "tp": 10,
+            "fp": 204,
+            "fn": 30,
+            "precision": 0.04672897196261682,
+            "recall": 0.25,
+            "f1": 0.07874015748031496
+          }
+        }
+      },
+      "invalid_json_batches": 0
+    },
+    {
+      "job": "dpo_zero_medical",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 175,
+        "fn": 31,
+        "precision": 0.04891304347826087,
+        "recall": 0.225,
+        "f1": 0.08035714285714286
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 11,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 240.27660194700002,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 175,
+            "fn": 31,
+            "precision": 0.04891304347826087,
+            "recall": 0.225,
+            "f1": 0.08035714285714286
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 104,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        }
+      },
+      "invalid_json_batches": 4
+    },
+    {
+      "job": "dpo16_medical",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 171,
+        "fn": 31,
+        "precision": 0.05,
+        "recall": 0.225,
+        "f1": 0.08181818181818182
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 7,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 12,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 240.6591253009974,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 100,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 171,
+            "fn": 31,
+            "precision": 0.05,
+            "recall": 0.225,
+            "f1": 0.08181818181818182
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 171,
+            "fn": 31,
+            "precision": 0.05,
+            "recall": 0.225,
+            "f1": 0.08181818181818182
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 100,
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          }
+        }
+      },
+      "invalid_json_batches": 5
+    },
+    {
+      "job": "matched_control_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 2,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.09090909090909091,
+      "elapsed_seconds": 444.2002008999989,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 22
+    },
+    {
+      "job": "matched_control_screen",
+      "condition": "full_source16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 7,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.3181818181818182,
+      "elapsed_seconds": 876.8039048610008,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 22
+    },
+    {
+      "job": "matched_control_screen",
+      "condition": "full_hash4",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 55,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 64,
+      "truncated_batches": 9,
+      "parse_error_batches": 64,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.140625,
+      "elapsed_seconds": 949.1792056220002,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 17,
+          "relation": {
+            "tp": 0,
+            "fp": 38,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 55,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 55,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 17,
+          "relation": {
+            "tp": 0,
+            "fp": 38,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 56
+    },
+    {
+      "job": "matched_source_screen",
+      "condition": "full_source16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 8,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 5,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.22727272727272727,
+      "elapsed_seconds": 698.900989299007,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 3,
+          "relation": {
+            "tp": 0,
+            "fp": 5,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 8,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 8,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 3,
+          "relation": {
+            "tp": 0,
+            "fp": 5,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 20
+    },
+    {
+      "job": "matched_source_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 40,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 12,
+      "batches": 22,
+      "truncated_batches": 2,
+      "parse_error_batches": 22,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.09090909090909091,
+      "elapsed_seconds": 473.55567580799834,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 40,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "invalid_json_batches": 22
+    },
+    {
+      "job": "matched_short4_screen",
+      "condition": "full_hash4",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 9,
+        "fp": 167,
+        "fn": 31,
+        "precision": 0.05113636363636364,
+        "recall": 0.225,
+        "f1": 0.08333333333333333
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 6,
+      "batches": 64,
+      "truncated_batches": 0,
+      "parse_error_batches": 15,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 149.23734384900308,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 77,
+          "relation": {
+            "tp": 9,
+            "fp": 90,
+            "fn": 31,
+            "precision": 0.09090909090909091,
+            "recall": 0.225,
+            "f1": 0.12949640287769784
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 167,
+            "fn": 31,
+            "precision": 0.05113636363636364,
+            "recall": 0.225,
+            "f1": 0.08333333333333333
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 9,
+            "fp": 167,
+            "fn": 31,
+            "precision": 0.05113636363636364,
+            "recall": 0.225,
+            "f1": 0.08333333333333333
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 77,
+          "relation": {
+            "tp": 9,
+            "fp": 90,
+            "fn": 31,
+            "precision": 0.09090909090909091,
+            "recall": 0.225,
+            "f1": 0.12949640287769784
+          }
+        }
+      },
+      "invalid_json_batches": 8
+    },
+    {
+      "job": "matched_short4_screen",
+      "condition": "full_hash16",
+      "queue_status": "complete",
+      "status": "verified",
+      "job_status": "complete",
+      "relation": {
+        "tp": 8,
+        "fp": 128,
+        "fn": 32,
+        "precision": 0.058823529411764705,
+        "recall": 0.2,
+        "f1": 0.09090909090909091
+      },
+      "samples": 12,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 4,
+      "batches": 22,
+      "truncated_batches": 0,
+      "parse_error_batches": 7,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 194.37198004299717,
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 56,
+          "relation": {
+            "tp": 8,
+            "fp": 72,
+            "fn": 32,
+            "precision": 0.1,
+            "recall": 0.2,
+            "f1": 0.13333333333333333
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 8,
+            "fp": 128,
+            "fn": 32,
+            "precision": 0.058823529411764705,
+            "recall": 0.2,
+            "f1": 0.09090909090909091
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 8,
+            "fp": 128,
+            "fn": 32,
+            "precision": 0.058823529411764705,
+            "recall": 0.2,
+            "f1": 0.09090909090909091
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 56,
+          "relation": {
+            "tp": 8,
+            "fp": 72,
+            "fn": 32,
+            "precision": 0.1,
+            "recall": 0.2,
+            "f1": 0.13333333333333333
+          }
+        }
+      },
+      "invalid_json_batches": 3
+    }
+  ],
+  "mechanical": [
+    {
+      "job": "dpo_zero_mechanical",
+      "queue_status": "complete",
+      "condition": "mechanical",
+      "status": "verified",
+      "scope": "artificial_mechanical_only",
+      "relation": {
+        "tp": 14,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.875,
+        "f1": 0.9333333333333333
+      },
+      "samples": 16,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 0,
+      "batches": 16,
+      "truncated_batches": 0,
+      "parse_error_batches": 0,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 77.69606266599294,
+      "elapsed_scope": "generation_time_only",
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          }
+        }
+      }
+    },
+    {
+      "job": "dpo16_mechanical",
+      "queue_status": "complete",
+      "condition": "mechanical",
+      "status": "verified",
+      "scope": "artificial_mechanical_only",
+      "relation": {
+        "tp": 14,
+        "fp": 2,
+        "fn": 2,
+        "precision": 0.875,
+        "recall": 0.875,
+        "f1": 0.875
+      },
+      "samples": 16,
+      "invalid_predictions": 0,
+      "relation_stage_error_samples": 0,
+      "batches": 16,
+      "truncated_batches": 0,
+      "parse_error_batches": 0,
+      "runtime_error_batches": 0,
+      "truncation_rate": 0.0,
+      "elapsed_seconds": 79.95435764899594,
+      "elapsed_scope": "generation_time_only",
+      "rules": {
+        "all_rules": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        },
+        "different_disease_in_evidence": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        },
+        "enumerated_siblings": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        },
+        "symptom_disease_type_mismatch": {
+          "removed_tp": 0,
+          "removed_fp": 0,
+          "relation": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          }
+        }
+      }
+    }
+  ],
+  "matched_training_exposure": [
+    {
+      "job": "matched_control",
+      "status": "training_complete_evaluation_pending",
+      "planned_epochs": 1,
+      "per_class_exposure_directly_recorded": false,
+      "global_step": 16,
+      "observed": {
+        "rows": 256,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3544,
+        "unknown_pairs_context_only": 2238,
+        "input_tokens": 727732,
+        "supervised_completion_tokens": 33487,
+        "prompt_tokens": 664548,
+        "masked_completion_tokens_context_only": 29697
+      },
+      "observed_positive_pairs": null,
+      "observed_negative_pairs": null,
+      "observed_positive_edges": null,
+      "equal_positive_negative_exposure_verified": false,
+      "expected_one_pass": {
+        "rows": 256,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3544,
+        "unknown_pairs_context_only": 2238,
+        "input_tokens": 727732,
+        "supervised_completion_tokens": 33487,
+        "prompt_tokens": 664548,
+        "masked_completion_tokens_context_only": 29697
+      },
+      "recorded_totals_match_one_pass": true,
+      "expected_training_budget": {
+        "rows": 256,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3544,
+        "unknown_pairs_context_only": 2238,
+        "input_tokens": 727732,
+        "supervised_completion_tokens": 33487,
+        "prompt_tokens": 664548,
+        "masked_completion_tokens_context_only": 29697
+      },
+      "recorded_totals_match_training_budget": true
+    },
+    {
+      "job": "matched_source",
+      "status": "training_complete_evaluation_pending",
+      "planned_epochs": 1,
+      "per_class_exposure_directly_recorded": false,
+      "global_step": 16,
+      "observed": {
+        "rows": 253,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3512,
+        "unknown_pairs_context_only": 2206,
+        "input_tokens": 717353,
+        "supervised_completion_tokens": 33563,
+        "prompt_tokens": 654600,
+        "masked_completion_tokens_context_only": 29190
+      },
+      "observed_positive_pairs": null,
+      "observed_negative_pairs": null,
+      "observed_positive_edges": null,
+      "equal_positive_negative_exposure_verified": false,
+      "expected_one_pass": {
+        "rows": 253,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3512,
+        "unknown_pairs_context_only": 2206,
+        "input_tokens": 717353,
+        "supervised_completion_tokens": 33563,
+        "prompt_tokens": 654600,
+        "masked_completion_tokens_context_only": 29190
+      },
+      "recorded_totals_match_one_pass": true,
+      "expected_training_budget": {
+        "rows": 253,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 3512,
+        "unknown_pairs_context_only": 2206,
+        "input_tokens": 717353,
+        "supervised_completion_tokens": 33563,
+        "prompt_tokens": 654600,
+        "masked_completion_tokens_context_only": 29190
+      },
+      "recorded_totals_match_training_budget": true
+    },
+    {
+      "job": "matched_short4",
+      "status": "training_complete_evaluation_pending",
+      "planned_epochs": 1,
+      "per_class_exposure_directly_recorded": false,
+      "global_step": 43,
+      "observed": {
+        "rows": 679,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 2712,
+        "unknown_pairs_context_only": 1406,
+        "input_tokens": 1137530,
+        "supervised_completion_tokens": 35731,
+        "prompt_tokens": 1083047,
+        "masked_completion_tokens_context_only": 18752
+      },
+      "observed_positive_pairs": null,
+      "observed_negative_pairs": null,
+      "observed_positive_edges": null,
+      "equal_positive_negative_exposure_verified": false,
+      "expected_one_pass": {
+        "rows": 679,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 2712,
+        "unknown_pairs_context_only": 1406,
+        "input_tokens": 1137530,
+        "supervised_completion_tokens": 35731,
+        "prompt_tokens": 1083047,
+        "masked_completion_tokens_context_only": 18752
+      },
+      "recorded_totals_match_one_pass": true,
+      "expected_training_budget": {
+        "rows": 679,
+        "positive_pairs": 818,
+        "negative_pairs": 488,
+        "positive_edges": 821,
+        "supervised_pairs": 1306,
+        "candidate_pairs": 2712,
+        "unknown_pairs_context_only": 1406,
+        "input_tokens": 1137530,
+        "supervised_completion_tokens": 35731,
+        "prompt_tokens": 1083047,
+        "masked_completion_tokens_context_only": 18752
+      },
+      "recorded_totals_match_training_budget": true
+    }
+  ],
+  "counts": {
+    "medical_conditions": {
+      "verified": 15
+    },
+    "mechanical_conditions": {
+      "verified": 2
+    }
+  },
+  "limitations": [
+    "Medical gold and UNKNOWN handling are unchanged; every missing gold triple remains FN.",
+    "Candidates cover only the stated subset of gold; this is a recall ceiling, not measured recall.",
+    "Subset selection excludes zero-candidate and high-candidate documents; no full-130 or pipeline claim.",
+    "Mechanical preference tasks are artificial and never pooled with medical metrics.",
+    "Frozen runtime records total supervised/UNKNOWN/sequence exposure, not separate observed positive/negative/edge exposure; expected class counts are not measurements.",
+    "Incomplete, missing and invalid conditions have no accepted P/R/F1.",
+    "No automatic winner or causal direction conclusion is selected."
+  ],
+  "observed_at": "2026-10-12T09:15:36.091686+00:00",
+  "queue_completed_at": "2026-10-12T09:06:37.724960+00:00",
+  "adaptive_followup": {
+    "status": "finished_with_incomplete_jobs",
+    "jobs": [
+      {
+        "name": "matched_control",
+        "status": "skipped_deadline"
+      },
+      {
+        "name": "matched_source",
+        "status": "skipped_failed_dependency"
+      },
+      {
+        "name": "matched_short4",
+        "status": "skipped_failed_dependency"
+      },
+      {
+        "name": "matched_control_screen",
+        "status": "skipped_failed_dependency"
+      },
+      {
+        "name": "matched_source_screen",
+        "status": "skipped_failed_dependency"
+      },
+      {
+        "name": "matched_short4_screen",
+        "status": "skipped_failed_dependency"
+      }
+    ],
+    "trained": false,
+    "reason": "Original queue completed09:06:37UTC, after frozen09:05UTC admission gate; all3epoch jobs skipped, not evaluated."
+  }
+}

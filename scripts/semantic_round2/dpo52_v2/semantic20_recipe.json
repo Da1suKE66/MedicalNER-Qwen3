@@ -1,0 +1,452 @@
+{
+  "kind": "semantic_preference_single_mutation_v1",
+  "split": "train",
+  "input_file_sha256": "4d51e1c99473c5fb392e5dd78b01e7a0ff3024332a68f3b9974fbcbdbd0c1d13",
+  "items": [
+    {
+      "source_row_id": "train:148:short_canonical:relations:0",
+      "source_row_sha256": "9c61b8783c3336f806cc91883894ffab5d86b6b3b85b9dd7e4ad4f9dea7cff10",
+      "rejected_sha256": "ac2a9f79576db56e93213f1492a9cfa276df0b588e30445769f4e8fae5b8ffc4",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 3,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly states absence or non-occurrence of the named symptom in the named condition. Changing this one relation to core-symptom directly contradicts that explicit negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:234b29faf13ed465e96f3e615913e76c2bccb9e5e79e670a34e5d79e00315417",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "965d4f70816d2416853bcdcd9bda1bcb483d1074b4ef9a5a7fecdf043669b2db"
+      }
+    },
+    {
+      "source_row_id": "train:968:short_canonical:relations:0",
+      "source_row_sha256": "71db3b38e979a193580ad18e32e51902b815e9afcee2ca24cd9012554e0ca1d4",
+      "rejected_sha256": "72c64744d6d33377f30ef0d0471a0638cac7210895ffe279d6597f883fa035c4",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 3,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly states absence or non-occurrence of the named symptom in the named condition. Changing this one relation to core-symptom directly contradicts that explicit negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:c02573edaee2e63a060b8facd114ed20181deb0d4602c9119cbb2689041e3090",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "fe43e93532db73c29bf1db9c1c9202fc036e66be95f0105ed7396993b5385ecf"
+      }
+    },
+    {
+      "source_row_id": "train:968:short_canonical:relations:0",
+      "source_row_sha256": "71db3b38e979a193580ad18e32e51902b815e9afcee2ca24cd9012554e0ca1d4",
+      "rejected_sha256": "d709afb07215e25c178973a30f3b77ad1420d290f70bfb98fa549ba9e670cde4",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 5,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly states absence or non-occurrence of the named symptom in the named condition. Changing this one relation to core-symptom directly contradicts that explicit negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:da38b028576bb9d06978c219a0b04271a7caccb6df29be8d926b9c44736acbf5",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "fe43e93532db73c29bf1db9c1c9202fc036e66be95f0105ed7396993b5385ecf"
+      }
+    },
+    {
+      "source_row_id": "train:1252:short_canonical:relations:0",
+      "source_row_sha256": "b7e821a504c37cf9a601fbed00386a6717a3f3d86650a2d4b21bec261f64dfd5",
+      "rejected_sha256": "7b1e450c6db80864fa471048ae139627b6b7cbc950a9e5af2b525d075df1823a",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 0,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly states absence or non-occurrence of the named symptom in the named condition. Changing this one relation to core-symptom directly contradicts that explicit negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:28041c538b34300ebb819c7b1f3f3ce26c84b792063eaa57b1bf852d74889b40",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "e507a38f487975862f89a21f9e9a4d1e31f54a4764f0f6ac3b780f54bf6b5ec5"
+      }
+    },
+    {
+      "source_row_id": "train:1252:short_canonical:relations:0",
+      "source_row_sha256": "b7e821a504c37cf9a601fbed00386a6717a3f3d86650a2d4b21bec261f64dfd5",
+      "rejected_sha256": "5dcc2f239d817ae0368d7cd327f75d723922eb98abd66120bb58964e263e0226",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 1,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly states absence or non-occurrence of the named symptom in the named condition. Changing this one relation to core-symptom directly contradicts that explicit negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:b0738c6e7614f916b2cc66f6e97f30303bcfc11f804094fa791f40e2eff20afe",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "e507a38f487975862f89a21f9e9a4d1e31f54a4764f0f6ac3b780f54bf6b5ec5"
+      }
+    },
+    {
+      "source_row_id": "train:1256:short_canonical:relations:0",
+      "source_row_sha256": "329a4c7daa0c34bf122071ec2dbc816ef63727f2df53475034fdaf37a9235e6c",
+      "rejected_sha256": "f0daf51be2ac4bcf6a358b9a84e145e3ee8744438cba7189b9091d8e5b495ab9",
+      "mutation": {
+        "kind": "explicit_negation_label_flip",
+        "line_index": 1,
+        "original_label": "argues_against",
+        "rejected_label": "is_core_symptom_of",
+        "explanation": "The exact source explicitly states absence or non-occurrence of the named symptom in the named condition. Changing this one relation to core-symptom directly contradicts that explicit negation."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:80ada3245e1df77a7e0c7bfc652a031674961122a015194ca00533c723b17a40",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "4c24fa1e614f51a2245b64ab0f465267f1c2e116d99b2e46243ba694ec893126"
+      }
+    },
+    {
+      "source_row_id": "train:77:short_canonical:relations:0",
+      "source_row_sha256": "faf46857458f1962ed4051e21e2a2efa805ab08ac57d6381b662ec64e921452a",
+      "rejected_sha256": "ae4adea986b7fb7f864c212f9a0732866e1c2bf2e1cd8bb269a74113023a7a85",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 1,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:8f81ca335bbb03b550c41361e77737a8ed8cfc8a919c133f04b6225af4ef6e64",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "6b5fb9d075b2eca10bd20bcbd5d35ed30282302a2e8136b0e82ce611014f98c8"
+      }
+    },
+    {
+      "source_row_id": "train:88:short_canonical:relations:0",
+      "source_row_sha256": "9d84aa2c5e8be92aa21b60d3e2f395bdf208e16bcd1053818dcdbf5766a1ac0d",
+      "rejected_sha256": "03e5d1e6d5c222d3b7e67c1198012cc41b3bfc915c8f35276078cd13ae632c72",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 0,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:1965133e40fed8c5e4398a09bcb41da0b4ea8b2cebc762a11adc4d66cfce8107",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "80f03bb03e04a7135be8838d483996f650c3f0ee14ad43e580fb60d75517569d"
+      }
+    },
+    {
+      "source_row_id": "train:158:short_canonical:relations:0",
+      "source_row_sha256": "f002b3a3c767d60461e0189286ebff6883a5b21698f789ac76be0f5d7786df78",
+      "rejected_sha256": "3ffbb4587f44e07841268b753d2f1127188a91dc19fc8626b3da0106c425801d",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 0,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:e688396f21bb9a3e052d619670d719224c1d8b2515192aa96510f2d5f8600c43",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "f860225b9b7e632e8d53155902ad3d77d5019d4b1481962c324c8a369690ed8e"
+      }
+    },
+    {
+      "source_row_id": "train:210:short_canonical:relations:0",
+      "source_row_sha256": "5399fc977fa424ec5ffbc167443c303ce26071271e0380170367ba2dd8f84a0e",
+      "rejected_sha256": "46464042133664cef81ba10d1f1141e7a52c4952986424cba29fd315c2196642",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 1,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:ea14a7438cc03b9896b55758c7b3b4770fcb88fae106f24101dcbc5eabfa1c62",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "d8c512dc58f0d518a18830c9a3cb98714926048101f7f2de5caf368592d132df"
+      }
+    },
+    {
+      "source_row_id": "train:213:short_canonical:relations:0",
+      "source_row_sha256": "660b089da8f4815771b111f1b212e91eeece31a491b62ab449cea51007b07446",
+      "rejected_sha256": "e86999fed472fc5dd71c9e48e0cb69810cf05a9b2c53f1526baa53ccdaf78e13",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 2,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:212b67a24f8b198b8d056df024e7f6a67e48f2e61546c766d9a4fea2cbccf0cc",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "d773234812f86dc4bd48c42ed775c894f030ef65329afe19848e2e5a35712005"
+      }
+    },
+    {
+      "source_row_id": "train:224:short_canonical:relations:0",
+      "source_row_sha256": "284fa1058868f26db3b3896c2268acca9a3208ba03a58dc62d5d24e34e69bed6",
+      "rejected_sha256": "3e0758dc4434d31db0cc389fbc74effe9c0a996a6d8204973946dd1ebf9eecaf",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 6,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:d1954afed04966eaf1ccadf7cf0166321f5ee13d53b8cdf0877253f91a0ea7f8",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "3801875cd3c96c3c56c3595628536f971cf7769c64fce613734e6bfb0944de64"
+      }
+    },
+    {
+      "source_row_id": "train:226:short_canonical:relations:0",
+      "source_row_sha256": "0b697eac0b372fb2b8388eb8cc706f0dfe02c66fde4c6d7e5a49adaf814229f4",
+      "rejected_sha256": "c26acdc723af0ee16394f7614a9e028ccb7c7a3e71959561ca14e92378d3bf3c",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 4,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:67be312a685c9761ea9a71df39ff9926a1574cae5d88d1ee8c8ebb4f5127b4d8",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "a40b0d6489304a40f208d35999f22dafc6c2ba054fa22b8bd134ea373a1b1ffc"
+      }
+    },
+    {
+      "source_row_id": "train:246:short_canonical:relations:0",
+      "source_row_sha256": "95cb90bd2fcea573c2e23acf41f8688f31570d4c3915ad3abf1e111ef9c3efb9",
+      "rejected_sha256": "8d32be044b8b0d3f072ca54b79ec5906eba582a45e81b5f4e0ade5343e78c914",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 1,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:31a18b213b10c6eb82cb84377154dc4f4dfde130a884f7d1b8f563cbc48abd54",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "3b1d088923a2b7286b6c7b0630f0789d91c9bfc3f153626fee16ac7b57352e52"
+      }
+    },
+    {
+      "source_row_id": "train:259:short_canonical:relations:0",
+      "source_row_sha256": "7ea76892988904f10cc5a108e19f4bb099ad76bf3ba752a48096bf8797821bc1",
+      "rejected_sha256": "598944234bf8d16c60179be7a26fbbb5c6e194c89e5efa71b9293af7a8484940",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 3,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:615493eb03bb16e80b7c5de6812408d6366558a6f4656f8173d147a28a746700",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "857a6990ece1b5d6ad9718a9347280cf57ea9142156cc4367248ea2919116eb3"
+      }
+    },
+    {
+      "source_row_id": "train:269:short_canonical:relations:0",
+      "source_row_sha256": "ead83b55ac358edc59ca31e99fe35fc396474a7479aacabad4cff31203f1a984",
+      "rejected_sha256": "11e5baf7ebeb45466090a58db0b9420a130ee1017be724d80bf05ec665896683",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 2,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:0e98f90b84c1e8df94686f7ed2c05dab4579a4c8b435f4347795f2d02beecc59",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "1c83a3fff2c63d4ff165e8f20ecaed588f3e0c8dffc17923ddf37cd43d293259"
+      }
+    },
+    {
+      "source_row_id": "train:271:short_canonical:relations:0",
+      "source_row_sha256": "d5fa68ef6f325fb70542bf41cbb43ae9001da70d1d38bc8f3d89572f00803191",
+      "rejected_sha256": "5420a6b676f50f8fa83b1b29d28bd3443cdf9c0f838c40f1a7cb747d9b1088a2",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 2,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:0cc18d3ce98bb7d8d61482eb0bdc13d95c39df9e67855dcd414ed1c88137d565",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "f6993ecb576862bd234df33485517072055a277232dec917587123c36c5d4886"
+      }
+    },
+    {
+      "source_row_id": "train:285:short_canonical:relations:0",
+      "source_row_sha256": "fdd308415ceed2eef2020dbb250f14e304f52d79d2a82b3864d1fc3f5c1d9f5b",
+      "rejected_sha256": "3b17e99a25aa523be304b6b9cac92d633e675981e15690b13f2e4c274ac6ab05",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 2,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:e08295398352c79d96b9f0b76d4906ae3a0d36b58a8df2e454f506d2503c82ea",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "5ec59a77efa8a4ed1f717a7318b864d2ee347894b78ca17335bfbe9ea9df7b6f"
+      }
+    },
+    {
+      "source_row_id": "train:289:short_canonical:relations:0",
+      "source_row_sha256": "707b8a048c090baebebaeb5401368759e0030c67dc506181e98a80f0c879fc8e",
+      "rejected_sha256": "270075ce69400f3a424363149edb237ff543ae35ccc8eafc1602e0cbd2771ab4",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 2,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:635db694845bac8a33a6511e1ab101dc8cc1021b7c55c57171435e2434f87609",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "5d3f76926f063886c2af2d7d4032ea620c029d6b5dd1b676414cbd922040a1a7"
+      }
+    },
+    {
+      "source_row_id": "train:71:short_canonical:relations:0",
+      "source_row_sha256": "a51fe24629bfd055d733a30f68e98780690d597d435f569c82c7c0a5081c7b2b",
+      "rejected_sha256": "c37bd4b7bda39fb20544514e5137c37de8df636843c49b904aff923b005f1c48",
+      "mutation": {
+        "kind": "subtype_direction_reversal",
+        "line_index": 1,
+        "original_label": "subtype_of",
+        "rejected_label": "subtype_of",
+        "explanation": "The source defines the specifically named category by meeting the broader diagnosis plus a restricting presentation, episode, severity, remission, or injury condition. Reversing the same-type endpoints reverses that explicitly directed classification."
+      },
+      "review": {
+        "accepted": true,
+        "source_supported": true,
+        "negative_explicitly_contradicted": true,
+        "reviewer_model": "codex-local-source-review",
+        "review_id": "second_batch_source_review_v1:8b25bf5f4b9e58d08c9190500b4f422f1de1c81768f8c41ba92e3ff466f4e1b2",
+        "human_adjudicated": false,
+        "external_api_used": false,
+        "source_evidence_sha256": "b4a3b2ab15cc9d2fd098401b7f944c86403787a9dc40f0cfb8bc122625fcae13"
+      }
+    }
+  ],
+  "source_text_in_recipe": false,
+  "external_teacher_used": false,
+  "unchanged_silver_remainder_not_claimed_human_gold": true,
+  "excluded_previous_dpo208_sha256": "1191b1e6ffa56a352539e86614179e57f89efc760fe580ddb582a1c200bea3b9",
+  "frozen_split_sha256": "691e97fff38aa46f4716cf4f844905287acb28e264cf9a0512a8d6dfa29eb2bd"
+}

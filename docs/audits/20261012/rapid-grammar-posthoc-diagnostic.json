@@ -1,0 +1,425 @@
+{
+  "version": "posthoc-terminal-bracket-diagnostic-20261012-v1",
+  "scope": "12 frozen oracle relation documents, all 40 gold triples retained",
+  "posthoc_diagnostic": true,
+  "prespecified_ranked_condition": false,
+  "deployed": false,
+  "gold_used_to_select_repair": false,
+  "original_outputs_modified": false,
+  "primary_metrics_modified": false,
+  "repair_rule": "Only raw strings originally tagged invalid_json and ending exactly in }}]; swap final two characters to ]}; accept only if json.loads succeeds.",
+  "records_sha256": "6eb66b03eefacce0d330eb71bd505fd8a659cdadb32e6b5d1d764df041c64123",
+  "sample_indices_sha256": "945c27b3d91298a1aca9a58063384555cf530358b1bbd5678233bb59901235ae",
+  "metric_semantics": "Existing strict graph scorer and existing semantic-error FP sentinels/rules unchanged; only valid-JSON access to previously discarded raw content changes.",
+  "conditions": {
+    "base_screen/full_hash16": {
+      "before": {
+        "relation": {
+          "tp": 10,
+          "fp": 327,
+          "fn": 30,
+          "precision": 0.02967359050445104,
+          "recall": 0.25,
+          "f1": 0.05305039787798409
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 10,
+            "fp": 204,
+            "fn": 30,
+            "precision": 0.04672897196261682,
+            "recall": 0.25,
+            "f1": 0.07874015748031496
+          },
+          "removed": {
+            "removed_fp": 123,
+            "symptom_disease_type_mismatch": 123
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 3,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "after_posthoc": {
+        "relation": {
+          "tp": 10,
+          "fp": 327,
+          "fn": 30,
+          "precision": 0.02967359050445104,
+          "recall": 0.25,
+          "f1": 0.05305039787798409
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 10,
+            "fp": 204,
+            "fn": 30,
+            "precision": 0.04672897196261682,
+            "recall": 0.25,
+            "f1": 0.07874015748031496
+          },
+          "removed": {
+            "removed_fp": 123,
+            "symptom_disease_type_mismatch": 123
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 3,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "source_artifact_sha256": {
+        "metrics.json": "608b220431d80852535d04f97cbad3b9eda46b0974c94b52948e284e78c98639",
+        "predictions.jsonl": "bf4fd476771f5535b83517c65c375dc69d32d63f75de0146a47345065341eb7f",
+        "generations.jsonl": "69bbcef2157aaa9d6c6ac2f032d5c355310fcf675f768d660195a7b313d820fe",
+        "raw_stream.jsonl": "4edd2ad587e5deea0297691130a95f763a8690f3c05760dd39a82beb3858c055"
+      },
+      "before_exactly_reproduces_saved_metrics_and_all_rule_reports": true
+    },
+    "grounded64_screen/full_hash16": {
+      "before": {
+        "relation": {
+          "tp": 9,
+          "fp": 175,
+          "fn": 31,
+          "precision": 0.04891304347826087,
+          "recall": 0.225,
+          "f1": 0.08035714285714286
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 9,
+            "fp": 71,
+            "fn": 31,
+            "precision": 0.1125,
+            "recall": 0.225,
+            "f1": 0.15
+          },
+          "removed": {
+            "removed_fp": 104,
+            "symptom_disease_type_mismatch": 104
+          }
+        },
+        "invalid_json_batches": 4,
+        "batches_with_any_parse_error": 11,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "after_posthoc": {
+        "relation": {
+          "tp": 14,
+          "fp": 220,
+          "fn": 26,
+          "precision": 0.05982905982905983,
+          "recall": 0.35,
+          "f1": 0.10218978102189781
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 14,
+            "fp": 104,
+            "fn": 26,
+            "precision": 0.11864406779661017,
+            "recall": 0.35,
+            "f1": 0.17721518987341772
+          },
+          "removed": {
+            "removed_fp": 116,
+            "symptom_disease_type_mismatch": 116
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 7,
+        "repaired_batches": 4,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "source_artifact_sha256": {
+        "metrics.json": "87956bf2c8793eb9b182cc22d3912660cd128f5ef09cd5160002e55cd1c2f881",
+        "predictions.jsonl": "315762760ebcbcb03b5c3429ad633f71f420d621353746f29b7fa294f0160265",
+        "generations.jsonl": "0c5815016866c428a3919185684f47b8249327af619f262cd11910425277c35f",
+        "raw_stream.jsonl": "2487c2d187bf12b9b57a140b24d7ace177b89caa9f62a51d2fb019286b52922d"
+      },
+      "before_exactly_reproduces_saved_metrics_and_all_rule_reports": true
+    },
+    "grounded64_screen/full_hash4": {
+      "before": {
+        "relation": {
+          "tp": 10,
+          "fp": 176,
+          "fn": 30,
+          "precision": 0.053763440860215055,
+          "recall": 0.25,
+          "f1": 0.08849557522123894
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          },
+          "removed": {
+            "removed_fp": 99,
+            "symptom_disease_type_mismatch": 99
+          }
+        },
+        "invalid_json_batches": 16,
+        "batches_with_any_parse_error": 20,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "after_posthoc": {
+        "relation": {
+          "tp": 15,
+          "fp": 228,
+          "fn": 25,
+          "precision": 0.06172839506172839,
+          "recall": 0.375,
+          "f1": 0.10600706713780919
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 15,
+            "fp": 111,
+            "fn": 25,
+            "precision": 0.11904761904761904,
+            "recall": 0.375,
+            "f1": 0.18072289156626506
+          },
+          "removed": {
+            "removed_fp": 117,
+            "symptom_disease_type_mismatch": 117
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 5,
+        "repaired_batches": 16,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "source_artifact_sha256": {
+        "metrics.json": "571fb3772e59864ebafa0594abe78f3a0e9c9987366c485b0938148da3522a41",
+        "predictions.jsonl": "2b4a7c0e3bf2f31573dc2120c505559cc27a334a548f5cedd2503d03642aa401",
+        "generations.jsonl": "e6f355b7e752448fdfe7bca1bbc6b7ef1211335bce7ee5428ea018cd4152683a",
+        "raw_stream.jsonl": "0e6c89f6a5cde5e7c5338b44c3e0b535cdc81537f9b86688a5e684a5c001bc8f"
+      },
+      "before_exactly_reproduces_saved_metrics_and_all_rule_reports": true
+    },
+    "grounded64_screen/full_source16": {
+      "before": {
+        "relation": {
+          "tp": 14,
+          "fp": 207,
+          "fn": 26,
+          "precision": 0.06334841628959276,
+          "recall": 0.35,
+          "f1": 0.10727969348659004
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 14,
+            "fp": 96,
+            "fn": 26,
+            "precision": 0.12727272727272726,
+            "recall": 0.35,
+            "f1": 0.18666666666666668
+          },
+          "removed": {
+            "removed_fp": 111,
+            "symptom_disease_type_mismatch": 111
+          }
+        },
+        "invalid_json_batches": 2,
+        "batches_with_any_parse_error": 5,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "after_posthoc": {
+        "relation": {
+          "tp": 14,
+          "fp": 221,
+          "fn": 26,
+          "precision": 0.059574468085106386,
+          "recall": 0.35,
+          "f1": 0.10181818181818182
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 14,
+            "fp": 107,
+            "fn": 26,
+            "precision": 0.11570247933884298,
+            "recall": 0.35,
+            "f1": 0.17391304347826086
+          },
+          "removed": {
+            "removed_fp": 114,
+            "symptom_disease_type_mismatch": 114
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 3,
+        "repaired_batches": 2,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "source_artifact_sha256": {
+        "metrics.json": "b9ab9abbdb68f9abb6110b569373b2d870291bf8e4dcd8ca5b8a2fd0239454d9",
+        "predictions.jsonl": "5559d7b71e24217533db2395b8b754dd5c3a61145ef07b641a1a804d4e06a864",
+        "generations.jsonl": "df13cf0de1b2295d9eb14836a8e70ad2ff45354eef2e3609b96370aa3c23e05a",
+        "raw_stream.jsonl": "b16c3a0bbb2f19c5dd340f6e165b57d14e760125baa1bf38e67e81935c70f7ea"
+      },
+      "before_exactly_reproduces_saved_metrics_and_all_rule_reports": true
+    },
+    "grounded64_screen/local_hash16": {
+      "before": {
+        "relation": {
+          "tp": 10,
+          "fp": 160,
+          "fn": 30,
+          "precision": 0.058823529411764705,
+          "recall": 0.25,
+          "f1": 0.09523809523809523
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 10,
+            "fp": 77,
+            "fn": 30,
+            "precision": 0.11494252873563218,
+            "recall": 0.25,
+            "f1": 0.15748031496062992
+          },
+          "removed": {
+            "removed_fp": 83,
+            "symptom_disease_type_mismatch": 83
+          }
+        },
+        "invalid_json_batches": 3,
+        "batches_with_any_parse_error": 11,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "after_posthoc": {
+        "relation": {
+          "tp": 12,
+          "fp": 198,
+          "fn": 28,
+          "precision": 0.05714285714285714,
+          "recall": 0.3,
+          "f1": 0.096
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 12,
+            "fp": 98,
+            "fn": 28,
+            "precision": 0.10909090909090909,
+            "recall": 0.3,
+            "f1": 0.16
+          },
+          "removed": {
+            "removed_fp": 100,
+            "symptom_disease_type_mismatch": 100
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 8,
+        "repaired_batches": 3,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "source_artifact_sha256": {
+        "metrics.json": "ba21df464e2b2d91cef40091488967b150b0fe272904d6957931dfdf51486fb0",
+        "predictions.jsonl": "677b15d5dac3c6818e6096270f1ce653c094b75d9583f4754aee13bb2c7c5ec9",
+        "generations.jsonl": "703b03568faaeed49843fac1feda043e01e8dfd5ad8b5c8ecc2579f4cbd4c03f",
+        "raw_stream.jsonl": "94cd25ab6d495a3930dae7378e083a49e7a1bbd7cc0d0e7fd803fbed5d459f28"
+      },
+      "before_exactly_reproduces_saved_metrics_and_all_rule_reports": true
+    },
+    "missing64_screen/full_hash16": {
+      "before": {
+        "relation": {
+          "tp": 10,
+          "fp": 183,
+          "fn": 30,
+          "precision": 0.05181347150259067,
+          "recall": 0.25,
+          "f1": 0.08583690987124463
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 10,
+            "fp": 73,
+            "fn": 30,
+            "precision": 0.12048192771084337,
+            "recall": 0.25,
+            "f1": 0.16260162601626016
+          },
+          "removed": {
+            "removed_fp": 110,
+            "symptom_disease_type_mismatch": 110
+          }
+        },
+        "invalid_json_batches": 4,
+        "batches_with_any_parse_error": 10,
+        "repaired_batches": 0,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "after_posthoc": {
+        "relation": {
+          "tp": 14,
+          "fp": 229,
+          "fn": 26,
+          "precision": 0.05761316872427984,
+          "recall": 0.35,
+          "f1": 0.0989399293286219
+        },
+        "all_rules": {
+          "relation": {
+            "tp": 14,
+            "fp": 107,
+            "fn": 26,
+            "precision": 0.11570247933884298,
+            "recall": 0.35,
+            "f1": 0.17391304347826086
+          },
+          "removed": {
+            "removed_fp": 122,
+            "symptom_disease_type_mismatch": 122
+          }
+        },
+        "invalid_json_batches": 0,
+        "batches_with_any_parse_error": 6,
+        "repaired_batches": 4,
+        "denominator_gold": 40,
+        "samples": 12
+      },
+      "source_artifact_sha256": {
+        "metrics.json": "a1b30f125b4cfdab41ed3ecfcf920c47fdab046143a820c191fe40049527b800",
+        "predictions.jsonl": "4c0934b287d740b1cd52542c440f3ab473db10bedc769be9a2f6c432d174cdc8",
+        "generations.jsonl": "2673121a54c8835fe995de4aef771a5ea41164700a416a5e29e81f76fb67e016",
+        "raw_stream.jsonl": "d15c471a48c2d1122c2ad336d7c11ce1fa4940399055605351c474ea1add2475"
+      },
+      "before_exactly_reproduces_saved_metrics_and_all_rule_reports": true
+    }
+  },
+  "caveats": [
+    "The rule was selected after inspecting generation errors, so improvements cannot be used to rank it as a prespecified condition.",
+    "Restoring syntax also exposes hallucinated and semantically invalid relations; a larger recall alone is not a valid quality claim.",
+    "Gold was used only by the unchanged scorer after the text-only repair had been selected; no entity, relation, evidence or identity edits were made.",
+    "Results are an oracle-entity small-subset diagnostic, not complete pipeline performance."
+  ],
+  "condition_selection": "Explicit six-condition snapshot: base full_hash16, grounded64 four conditions, missing64 full_hash16."
+}
