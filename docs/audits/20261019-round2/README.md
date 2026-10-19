@@ -59,15 +59,32 @@ local-only table rule would also remove endpoints needed by 74 admitted training
 relation evidence atoms. No such rule was deployed. See the
 [context diagnosis and protected cross-window supervision](context-diagnosis.json).
 
-Progress at 16:33 Beijing:
+The entity three-epoch control has now completed the full 130-case evaluation.
+On the 69 free-text cases, entity TP/FP/FN changes from 401/117/247 to
+406/102/242: precision 79.9213%, recall 62.6543%, F1 **70.2422%**, up 1.4601
+percentage points. With the same relation checkpoint, downstream relation
+TP/FP/FN is 238/196/335 and F1 **47.2691%**, down 0.6182 points. This is a
+standalone entity gain, not an improvement in the selected final pipeline.
+The current best complete pipeline remains the original two-epoch pair.
+
+Long diagnostic criteria remain weak: exact matches increase from 3/53 to
+4/53. Relation false negatives with an absent entity endpoint decrease from
+262 to 253, but those with both endpoints available increase from 73 to 82.
+Neither arm has token-limit truncation. One source has an identical entity
+table and relation prompt but changed relation output; its batch composition
+and padding also changed. This limits per-source causal attribution to the
+entity changes alone. A static inference review is pending. See the
+[complete entity-control result and limitations](entity-e3-results.json).
+
+Progress at 17:10 Beijing:
 
 | Experiment | Scope | Status at this record |
 |---|---|---|
-| Entity three-epoch control | All 1361 admitted entity windows; same LR and data | Trained: 513 updates; full evaluation running |
+| Entity three-epoch control | All 1361 admitted entity windows; same LR and data | Full130 complete: entity F1 +1.4601 points; downstream relation F1 -0.6182 points |
 | Targeted DPO | 208 train preferences; 32 mechanical checks excluded | Trained: 52 updates; each pair used once |
 | DPO live pipeline evaluation | All 130 original cases; fixed actual entity output | Complete: F1 decreased 1.1341 percentage points |
 | Shorter input screening | Same 6 source-selected long cases, 2400 vs 1600 characters | Complete: keep 2400 after negative screen |
-| Final full-data training and validation | All 1361 base windows plus 148 complete long-criterion replays | Full training and 130-case evaluation queued |
+| Final full-data training and validation | All 1361 base windows plus 148 complete long-criterion replays | Full training running; 130-case evaluation follows |
 | Semantic-focused DPO52 | 36 reviewed semantic contrasts plus 16 table-reference contrasts | Resident preflight passed; fresh-parent training and full130 evaluation queued |
 
 The next preference candidate uses LR 2e-6, beta 0.1 and one epoch, for 13

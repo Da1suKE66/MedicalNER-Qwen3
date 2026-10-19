@@ -2,7 +2,7 @@
   "version": 1,
   "started_utc": "2026-10-19T07:10:13.552554+00:00",
   "deadline_utc": "2026-10-19T11:00:00Z",
-  "status": "dpo208_and_shortening_screen_complete_entity_e3_full130_running",
+  "status": "entity_e3_full130_complete_entity_gain_no_pipeline_gain_replay_sft_running",
   "baseline_live_free_relation": {
     "tp": 238,
     "fp": 183,
@@ -202,7 +202,7 @@
     "report": "current_record_isolation/report.json"
   },
   "scope": "Running experiment snapshot; queued jobs are not completed results",
-  "snapshot_utc": "2026-10-19T08:34:53.252715+00:00",
+  "snapshot_utc": "2026-10-19T09:09:25.636760+00:00",
   "entity_e3_training": {
     "completed": true,
     "global_step": 513,
@@ -212,7 +212,7 @@
     "initial_weights_equal_e2_control": true,
     "saved_weights_bitwise_verified": true,
     "training_manifest_sha256": "8a273c7bfc8d1eeb6b18b24b340d73c971b1dfe22bf70f2b81b2bd7852a4e8b6",
-    "quality_evaluation": "queued_not_yet_scored"
+    "quality_evaluation": "full130_completed_recount_pass"
   },
   "queue_jobs": 10,
   "data_quality_review": {
@@ -280,5 +280,78 @@
     "gpu_training_completed": false,
     "private_root": "dpo52_v2",
     "remote_root": "/workspace/medicalner/round2_20261019/dpo52_v2"
+  },
+  "entity_e3_evaluation": {
+    "completed": true,
+    "samples": 130,
+    "independent_recount": "PASS",
+    "evaluation_manifest_sha256": "76211a0f7ef1ded84624bd4f4a61cee624308f5ba90ef9339a2be1750b8c1652",
+    "metrics_sha256": "82a3ced63f48c6129092876b632c0cb364273e557522fca822cc1e150cb868f0",
+    "free_text": {
+      "entity": {
+        "f1": 0.7024221453287197,
+        "fn": 242,
+        "fp": 102,
+        "precision": 0.7992125984251969,
+        "recall": 0.6265432098765432,
+        "tp": 406
+      },
+      "relation": {
+        "f1": 0.4726911618669315,
+        "fn": 335,
+        "fp": 196,
+        "precision": 0.5483870967741935,
+        "recall": 0.41535776614310643,
+        "tp": 238
+      }
+    },
+    "entity_f1_change_percentage_points": 1.460053297880548,
+    "relation_f1_change_percentage_points": -0.6182077569688194,
+    "generation_checks": {
+      "live:entities": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 0,
+        "generated_tokens": 12569,
+        "missing_eos": 0
+      },
+      "live:relations": {
+        "budget_exhausted": 0,
+        "cached_entity_events": 0,
+        "deadline_exhausted": 0,
+        "eos_observed": 125,
+        "events": 125,
+        "failed": 16,
+        "generated_tokens": 43496,
+        "missing_eos": 0
+      }
+    },
+    "selected_as_best_pipeline": false,
+    "standalone_entity_candidate_improved": true,
+    "independent_comparison_sha256": "67cf5c5a638111d2e4ea1f5cf74f51463eae74e4f04cca3db9d73bf21ff5310e",
+    "long_criterion_exact_match": {
+      "E2": 3,
+      "E3": 4,
+      "gold": 53
+    }
+  },
+  "current_selected_pipeline": {
+    "entity": "entity_short_complete_lr1e4_r16_e2",
+    "relation": "relation_short_canonical_complete_lr1e4_r16_e2",
+    "free_relation_f1": 0.4788732394366197,
+    "selection_basis": "Best fully evaluated actual live free-text relation F1; standalone entity F1 is reported separately."
+  },
+  "current_job": "entity_criterion_replay_lr1e4_r16_e2",
+  "replay_training": {
+    "status": "running",
+    "rows": 1509,
+    "base_rows": 1361,
+    "complete_row_replays": 148,
+    "epochs": 2,
+    "learning_rate": 0.0001,
+    "full130_evaluation_queued": true
   }
 }

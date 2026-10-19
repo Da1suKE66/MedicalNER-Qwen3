@@ -1,0 +1,584 @@
+{
+  "status": "PASS",
+  "scope": "full130_live_pipeline_E2_vs_E3_fixed_relation_checkpoint",
+  "samples": 130,
+  "free_text_samples": 69,
+  "structured_samples": 61,
+  "all_original_gold_retained": true,
+  "fuzzy_credit": false,
+  "primary_metric": "typed normalized directed relation set micro F1 on the live free-text slice",
+  "run_manifest_sha256": {
+    "E2": "cfaf58d44db5e0c452e26f5942e6f07ff6f95ac24186fd95da57b5824cfa3d39",
+    "E3": "76211a0f7ef1ded84624bd4f4a61cee624308f5ba90ef9339a2be1750b8c1652"
+  },
+  "e3_metrics_sha256": "82a3ced63f48c6129092876b632c0cb364273e557522fca822cc1e150cb868f0",
+  "independent_comparison_sha256": "67cf5c5a638111d2e4ea1f5cf74f51463eae74e4f04cca3db9d73bf21ff5310e",
+  "root_recount_sha256": "aa971d0159d052e38969241b40bb3ac35a24640414541ace230d0568fa50bdbf",
+  "arms": {
+    "E2": {
+      "scores": {
+        "filtered": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6878216123499142,
+              "fn": 247,
+              "fp": 117,
+              "precision": 0.7741312741312741,
+              "recall": 0.6188271604938271,
+              "tp": 401
+            },
+            "relation": {
+              "f1": 0.4788732394366197,
+              "fn": 335,
+              "fp": 183,
+              "precision": 0.5653206650831354,
+              "recall": 0.41535776614310643,
+              "tp": 238
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7110808973487424,
+              "fn": 301,
+              "fp": 124,
+              "precision": 0.8083462132921174,
+              "recall": 0.6347087378640777,
+              "tp": 523
+            },
+            "relation": {
+              "f1": 0.5152838427947598,
+              "fn": 361,
+              "fp": 194,
+              "precision": 0.6032719836400818,
+              "recall": 0.4496951219512195,
+              "tp": 295
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        },
+        "raw": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6825531914893617,
+              "fn": 247,
+              "fp": 126,
+              "precision": 0.7609108159392789,
+              "recall": 0.6188271604938271,
+              "tp": 401
+            },
+            "relation": {
+              "f1": 0.47186574531095754,
+              "fn": 334,
+              "fp": 201,
+              "precision": 0.5431818181818182,
+              "recall": 0.41710296684118675,
+              "tp": 239
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7067567567567568,
+              "fn": 301,
+              "fp": 133,
+              "precision": 0.7972560975609756,
+              "recall": 0.6347087378640777,
+              "tp": 523
+            },
+            "relation": {
+              "f1": 0.5085910652920962,
+              "fn": 360,
+              "fp": 212,
+              "precision": 0.5826771653543307,
+              "recall": 0.45121951219512196,
+              "tp": 296
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        },
+        "strict_raw": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6825531914893617,
+              "fn": 247,
+              "fp": 126,
+              "precision": 0.7609108159392789,
+              "recall": 0.6188271604938271,
+              "tp": 401
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 97
+            },
+            "relation": {
+              "f1": 0.4306306306306306,
+              "fn": 334,
+              "fp": 298,
+              "precision": 0.4450651769087523,
+              "recall": 0.41710296684118675,
+              "tp": 239
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7067567567567568,
+              "fn": 301,
+              "fp": 133,
+              "precision": 0.7972560975609756,
+              "recall": 0.6347087378640777,
+              "tp": 523
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 97
+            },
+            "relation": {
+              "f1": 0.46946867565424266,
+              "fn": 360,
+              "fp": 309,
+              "precision": 0.48925619834710743,
+              "recall": 0.45121951219512196,
+              "tp": 296
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 0
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        }
+      },
+      "entity_per_type": {
+        "Diagnostic Criterion": {
+          "f1": 0.27450980392156865,
+          "fn": 69,
+          "fp": 5,
+          "precision": 0.7368421052631579,
+          "recall": 0.1686746987951807,
+          "tp": 14
+        },
+        "Disease": {
+          "f1": 0.7630057803468208,
+          "fn": 77,
+          "fp": 46,
+          "precision": 0.8114754098360656,
+          "recall": 0.72,
+          "tp": 198
+        },
+        "Etiology": {
+          "f1": 0.0,
+          "fn": 0,
+          "fp": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "tp": 0
+        },
+        "Symptom": {
+          "f1": 0.6948529411764706,
+          "fn": 101,
+          "fp": 65,
+          "precision": 0.7440944881889764,
+          "recall": 0.6517241379310345,
+          "tp": 189
+        }
+      },
+      "long_criterion": {
+        "fn": 50,
+        "gold": 53,
+        "tp": 3
+      },
+      "relation_fn_split": {
+        "both_available_no_filtered_relation_on_pair": 31,
+        "both_available_other_label_same_directed_pair": 41,
+        "both_available_removed_by_rule": 1,
+        "both_endpoints_available": 73,
+        "missing_entity_endpoint": 262
+      },
+      "generation_checks": {
+        "live:entities": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 125,
+          "deadline_exhausted": 0,
+          "eos_observed": 125,
+          "events": 125,
+          "failed": 0,
+          "generated_tokens": 12654,
+          "missing_eos": 0
+        },
+        "live:relations": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 125,
+          "events": 125,
+          "failed": 18,
+          "generated_tokens": 41217,
+          "missing_eos": 0
+        }
+      }
+    },
+    "E3": {
+      "scores": {
+        "filtered": {
+          "free_text": {
+            "entity": {
+              "f1": 0.7024221453287197,
+              "fn": 242,
+              "fp": 102,
+              "precision": 0.7992125984251969,
+              "recall": 0.6265432098765432,
+              "tp": 406
+            },
+            "relation": {
+              "f1": 0.4726911618669315,
+              "fn": 335,
+              "fp": 196,
+              "precision": 0.5483870967741935,
+              "recall": 0.41535776614310643,
+              "tp": 238
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7227926078028748,
+              "fn": 296,
+              "fp": 109,
+              "precision": 0.8288854003139717,
+              "recall": 0.6407766990291263,
+              "tp": 528
+            },
+            "relation": {
+              "f1": 0.5094991364421416,
+              "fn": 361,
+              "fp": 207,
+              "precision": 0.5876494023904383,
+              "recall": 0.4496951219512195,
+              "tp": 295
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        },
+        "raw": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6981943250214961,
+              "fn": 242,
+              "fp": 109,
+              "precision": 0.7883495145631068,
+              "recall": 0.6265432098765432,
+              "tp": 406
+            },
+            "relation": {
+              "f1": 0.46484375,
+              "fn": 335,
+              "fp": 213,
+              "precision": 0.5277161862527716,
+              "recall": 0.41535776614310643,
+              "tp": 238
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7193460490463215,
+              "fn": 296,
+              "fp": 116,
+              "precision": 0.8198757763975155,
+              "recall": 0.6407766990291263,
+              "tp": 528
+            },
+            "relation": {
+              "f1": 0.502127659574468,
+              "fn": 361,
+              "fp": 224,
+              "precision": 0.5684007707129094,
+              "recall": 0.4496951219512195,
+              "tp": 295
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        },
+        "strict_raw": {
+          "free_text": {
+            "entity": {
+              "f1": 0.6981943250214961,
+              "fn": 242,
+              "fp": 109,
+              "precision": 0.7883495145631068,
+              "recall": 0.6265432098765432,
+              "tp": 406
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 86
+            },
+            "relation": {
+              "f1": 0.42882882882882883,
+              "fn": 335,
+              "fp": 299,
+              "precision": 0.44320297951582865,
+              "recall": 0.41535776614310643,
+              "tp": 238
+            }
+          },
+          "overall": {
+            "entity": {
+              "f1": 0.7193460490463215,
+              "fn": 296,
+              "fp": 116,
+              "precision": 0.8198757763975155,
+              "recall": 0.6407766990291263,
+              "tp": 528
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 86
+            },
+            "relation": {
+              "f1": 0.46788263283108644,
+              "fn": 361,
+              "fp": 310,
+              "precision": 0.48760330578512395,
+              "recall": 0.4496951219512195,
+              "tp": 295
+            }
+          },
+          "structured_icd": {
+            "entity": {
+              "f1": 0.8,
+              "fn": 54,
+              "fp": 7,
+              "precision": 0.9457364341085271,
+              "recall": 0.6931818181818182,
+              "tp": 122
+            },
+            "invalid_attempt_fp": {
+              "entity": 0,
+              "relation": 0
+            },
+            "relation": {
+              "f1": 0.7549668874172185,
+              "fn": 26,
+              "fp": 11,
+              "precision": 0.8382352941176471,
+              "recall": 0.6867469879518072,
+              "tp": 57
+            }
+          }
+        }
+      },
+      "entity_per_type": {
+        "Diagnostic Criterion": {
+          "f1": 0.28846153846153844,
+          "fn": 68,
+          "fp": 6,
+          "precision": 0.7142857142857143,
+          "recall": 0.18072289156626506,
+          "tp": 15
+        },
+        "Disease": {
+          "f1": 0.7683397683397684,
+          "fn": 76,
+          "fp": 44,
+          "precision": 0.8189300411522634,
+          "recall": 0.7236363636363636,
+          "tp": 199
+        },
+        "Etiology": {
+          "f1": 0.0,
+          "fn": 0,
+          "fp": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "tp": 0
+        },
+        "Symptom": {
+          "f1": 0.7231638418079096,
+          "fn": 98,
+          "fp": 49,
+          "precision": 0.7966804979253111,
+          "recall": 0.6620689655172414,
+          "tp": 192
+        }
+      },
+      "long_criterion": {
+        "fn": 49,
+        "gold": 53,
+        "tp": 4
+      },
+      "relation_fn_split": {
+        "both_available_no_filtered_relation_on_pair": 28,
+        "both_available_other_label_same_directed_pair": 54,
+        "both_endpoints_available": 82,
+        "missing_entity_endpoint": 253
+      },
+      "generation_checks": {
+        "live:entities": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 125,
+          "events": 125,
+          "failed": 0,
+          "generated_tokens": 12569,
+          "missing_eos": 0
+        },
+        "live:relations": {
+          "budget_exhausted": 0,
+          "cached_entity_events": 0,
+          "deadline_exhausted": 0,
+          "eos_observed": 125,
+          "events": 125,
+          "failed": 16,
+          "generated_tokens": 43496,
+          "missing_eos": 0
+        }
+      }
+    }
+  },
+  "training_pair": {
+    "caveats": [
+      "Old run replays strictly identified E2 outputs; new run generates E3 outputs. Cache execution times are not a matched speed benchmark.",
+      "E3 was trained from the same initialization for3epochs; changing total epochs also changes the cosine learning-rate schedule. This is an epoch-recipe contrast, not simply appending one epoch to the saved E2 weights.",
+      "Only live slices are compared; old oracle predictions do not enter the comparison."
+    ],
+    "entity_epochs": [
+      2,
+      3
+    ],
+    "entity_microsteps": [
+      2722,
+      4083
+    ],
+    "entity_supervised_tokens": [
+      396202,
+      594303
+    ],
+    "entity_training_steps": [
+      342,
+      513
+    ],
+    "fixed_relation_adapter": true,
+    "same_batch4_and_generation_budgets": true,
+    "same_entity_training_data_initial_weights_and_other_parameters": true,
+    "same_full130_original_release": true,
+    "same_runtime_protocol_and_window_policy": true
+  },
+  "entity_changes": {
+    "lost_tp": 19,
+    "new_fp": 31,
+    "new_tp": 24,
+    "removed_fp": 46
+  },
+  "relation_changes": {
+    "lost_tp": 26,
+    "new_fp": 74,
+    "new_tp": 26,
+    "removed_fp": 61
+  },
+  "relation_change_context": {
+    "lost_tp_now_missing_entity_endpoint": 12,
+    "new_tp_previously_missing_entity_endpoint": 14,
+    "sources_with_identical_relation_prompts_but_different_R": 1,
+    "sources_with_semantically_changed_E_table": 32
+  },
+  "selected_pipeline": {
+    "entity": "entity_short_complete_lr1e4_r16_e2",
+    "relation": "relation_short_canonical_complete_lr1e4_r16_e2",
+    "free_relation_f1": 0.4788732394366197,
+    "selection_basis": "Best fully evaluated actual live free-text relation F1; standalone entity F1 is reported separately."
+  },
+  "entity_f1_change_percentage_points": 1.460053297880548,
+  "relation_f1_change_percentage_points": -0.6182077569688194,
+  "limitations": [
+    "E metrics and R metrics describe different stages; their gains must never be added.",
+    "R weights are fixed, but its entity inputs change; altered prompt lengths also change length-bucket composition/padding.",
+    "New correct relations with previously absent endpoints show that E recovery made those edges reachable; this does not isolate every downstream generation effect.",
+    "Exact same relation prompts can yield changed outputs in this BF16 batched pipeline when batch composition changes; observed differences alone do not prove a specific numerical cause.",
+    "Frozen tune silver labels are not a fresh blind test or clinically adjudicated truth."
+  ],
+  "batch_sensitivity_followup": "Static implementation review pending; no causal claim or runtime change."
+}
